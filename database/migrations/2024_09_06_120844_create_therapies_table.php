@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('therapies', function (Blueprint $table) {
             $table->id();
             $table->text('name');
-            $table->string('file');
+            $table->text('file');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
