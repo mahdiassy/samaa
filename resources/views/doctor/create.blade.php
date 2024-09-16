@@ -1,4 +1,5 @@
 @extends('layouts.master')
+
 @section('content')
     <section class="users-edit">
         <div class="card">
