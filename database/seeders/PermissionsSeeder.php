@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 use App\Enums\Permissions;
+use App\Models\Doctor;
+use App\Models\Patient;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -56,17 +58,27 @@ class PermissionsSeeder extends Seeder
         ]);
         $user->assignRole($role1);
 
-        $user = \App\Models\User::factory()->create([
+
+        $userdoctor = \App\Models\User::factory()->create([
             'name' => 'doctor1',
             'email' => 'doctor1@sama3.com',
         ]);
-        $user->assignRole($role2);
+        $userdoctor->assignRole($role2);
 
-        $user = \App\Models\User::factory()->create([
+        Doctor::create([
+            'first_name' => 'doctor1',
+            'user_id' => $userdoctor->id,
+        ]);
+
+        $userpatient = \App\Models\User::factory()->create([
             'name' => 'patient1',
             'email' => 'patient1@sama3.com',
         ]);
-        $user->assignRole($role3);
+        $userpatient->assignRole($role3);
 
+        Patient::create([
+            'first_name' => 'patient1',
+            'user_id' => $userpatient->id,
+        ]);
     }
 }

@@ -32,4 +32,8 @@ Route::middleware(['auth:web'])->group(function () {
     Route::resource('patient', PatientController::class)->middleware('role:Admin|Doctor');
     Route::resource('doctor', DoctorController::class)->middleware('role:Admin');
     Route::resource('therapy', TherapyController::class)->middleware('role:Admin|Doctor|Patient');
+    Route::get('/therapies/playlist', [TherapyController::class, 'playlist'])->name('playlist')->middleware('role:Admin|Doctor|Patient');
 });
+Route::get('/fetch-therapies', [TherapyController::class, 'fetchTherapies']);
+Route::post('/get-peaks', [TherapyController::class, 'getPeaks']);
+Route::post('/save-peaks', [TherapyController::class, 'savePeaks']);
