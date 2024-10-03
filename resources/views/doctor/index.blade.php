@@ -57,8 +57,14 @@
                                         <th>Phone Number</th>
                                         <th>Address</th>
                                         <th>Birthday</th>
-                                        <th>edit</th>
-                                        <th>Delete</th>
+                                        @role('Admin')
+                                            <th>edit</th>
+                                            <th>Delete</th>
+                                        @endrole
+                                        @role('Patient')
+                                            <th>Book an appointment</th>
+                                            <th></th>
+                                        @endrole
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -79,6 +85,15 @@
                                             <td>{{ $doctor->address }}</td>
                                             <td>{{ \Carbon\Carbon::parse($doctor->birthday)->format('d-m-Y') }}
                                             </td>
+                                            @role('Patient')
+                                                <td>
+                                                    <a href="{{ route('patients.calendar', $doctor) }}">
+                                                        <i class="fa fa-calendar-plus-o" aria-hidden="true"></i>
+                                                    </a>
+                                                </td>
+                                                <td></td>
+                                            @endrole
+                                            @role('Admin')
                                             <td><a href="{{ route('doctor.edit', $doctor) }}">
                                                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
                                                         width="24" height="24" class="main-grid-item-icon"
@@ -89,7 +104,6 @@
                                                 </a>
                                             </td>
                                             <td>
-
                                                 <form action="{{ route('doctor.destroy', $doctor) }}" method="post"
                                                     class="m-0">
                                                     @csrf
@@ -109,8 +123,8 @@
                                                         </svg>
                                                     </button>
                                                 </form>
-
                                             </td>
+                                            @endrole
                                         </tr>
                                     @endforeach
                                 </tbody>

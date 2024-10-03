@@ -32,4 +32,9 @@ class Patient extends Model
     {
         return $this->belongsToMany(Therapy::class, 'patient_therapy');
     }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class, 'patient_id');
+    }
 }

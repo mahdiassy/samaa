@@ -10,6 +10,7 @@
     <meta name="description" content="Sama3 Admin Dashboard">
     <meta name="keywords" content="Sama3 Admin Dashboard">
     <meta name="author">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Sama3</title>
     <link rel="apple-touch-icon" href="{{ asset('assets/images/ico/apple-icon-120.png') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/images/ico/favicon.ico') }}">
@@ -33,6 +34,8 @@
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- new -->
+
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/bootstrap-extended.min.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/colors.min.css') }}">
@@ -73,7 +76,8 @@
                             <h2 class="brand-text">Stack</h2>
                         </a></li>
                     <li class="nav-item d-none d-lg-block nav-toggle"><a class="nav-link modern-nav-toggle pr-0"
-                            data-toggle="collapse"><i class="toggle-icon feather icon-toggle-right font-medium-3 white"
+                            data-toggle="collapse"><i
+                                class="toggle-icon feather icon-toggle-right font-medium-3 white"
                                 data-ticon="feather.icon-toggle-right"></i></a></li>
                     <li class="nav-item d-lg-none"><a class="nav-link open-navbar-container" data-toggle="collapse"
                             data-target="#navbar-mobile"><i class="fa fa-ellipsis-v"></i></a></li>
@@ -136,47 +140,72 @@
                         data-placement="right" data-original-title="General"></i>
                 </li>
                 @role('Admin|Doctor')
-                <li class=" nav-item"><a href="#"><i class="fa fa-user"></i><span class="menu-title"
-                            data-i18n="Users">Patients</span></a>
-                    <ul class="menu-content">
-                        <li class="active">
-                            <a class="menu-item" href="{{ route('patient.index') }}" data-i18n="Users View">Patients
-                                List
-                            </a>
-                        </li>
-                        <li><a class="menu-item" href="{{ route('patient.create') }}" data-i18n="Users Edit">Create
-                                Patient</a>
-                        </li>
-                    </ul>
-                </li>
+                    <li class=" nav-item"><a href="#"><i class="fa fa-user"></i><span class="menu-title"
+                                data-i18n="Users">Patients</span></a>
+                        <ul class="menu-content">
+                            <li class="active">
+                                <a class="menu-item" href="{{ route('patient.index') }}" data-i18n="Users View">Patients
+                                    List
+                                </a>
+                            </li>
+                            <li><a class="menu-item" href="{{ route('patient.create') }}" data-i18n="Users Edit">Create
+                                    Patient</a>
+                            </li>
+                        </ul>
+                    </li>
                 @endrole
-                @role('Admin')
-                <li class=" nav-item"><a href="#"><i class="fa fa-user"></i><span class="menu-title"
-                            data-i18n="Users">Doctors</span></a>
-                    <ul class="menu-content">
-                        <li class="">
-                            <a class="menu-item" href="{{ route('doctor.index') }}" data-i18n="">Doctors
-                                List
-                            </a>
-                        </li>
-                        <li><a class="menu-item" href="{{ route('doctor.create') }}" data-i18n="">Create
-                                Doctor</a>
-                        </li>
-                    </ul>
-                </li>
+                @role('Admin|Patient')
+                    <li class=" nav-item"><a href="#"><i class="fa fa-user"></i><span class="menu-title"
+                                data-i18n="Users">Doctors</span></a>
+                        <ul class="menu-content">
+                            <li class="">
+                                <a class="menu-item" href="{{ route('doctor.index') }}" data-i18n="">Doctors
+                                    List
+                                </a>
+                            </li>
+                            @role('Admin')
+                                <li><a class="menu-item" href="{{ route('doctor.create') }}" data-i18n="">Create
+                                        Doctor</a>
+                                </li>
+                            @endrole
+                        </ul>
+                    </li>
                 @endrole
                 @role('Admin|Doctor|Patient')
-                <li class=" nav-item"><a href="#"><i class="fa fa-notes-medical"></i><span class="menu-title"
-                            data-i18n="Users">Therapy</span></a>
-                    <ul class="menu-content">
-                        <li class="">
-                            <a class="menu-item" href="{{ route('therapy.index') }}" data-i18n="">Therapy
-                                List
-                            </a>
-                        </li>
-                    </ul>
-                </li>
+                    <li class=" nav-item"><a href="#"><i class="fa fa-notes-medical"></i><span class="menu-title"
+                                data-i18n="Users">Therapy</span></a>
+                        <ul class="menu-content">
+                            <li class="">
+                                <a class="menu-item" href="{{ route('therapy.index') }}" data-i18n="">Therapy
+                                    List
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                 @endrole
+                    <li class=" nav-item"><a href="#"><i class="fa fa-user"></i><span class="menu-title"
+                                data-i18n="Users">Appointments</span></a>
+                        @role('Doctor')
+                            <ul class="menu-content">
+                                <li><a class="menu-item" href="{{ route('doctors.booking.index') }}" data-i18n="">Patients
+                                        Bookings</a>
+                                </li>
+                            </ul>
+                            <ul class="menu-content">
+                                <li><a class="menu-item" href="{{ route('doctors.calendar') }}" data-i18n="">Add available
+                                        times</a>
+                                </li>
+                            </ul>
+                        @endrole
+                        @role('Patient')
+                        <ul class="menu-content">
+                            <li><a class="menu-item" href="{{ route('patients.booking.index') }}"
+                                    data-i18n="">Patients Bookings</a>
+                            </li>
+                        </ul>
+                        @endrole
+
+                    </li>
             </ul>
         </div>
     </div>
@@ -208,13 +237,8 @@
     <script src="{{ asset('assets/vendors/js/vendors.min.js') }}"></script>
     <!-- BEGIN Vendor JS-->
 
-    <!-- BEGIN: Page Vendor JS-->
-    <script src="{{ asset('assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
-    <script src="{{ asset('assets/vendors/js/forms/validation/jqBootstrapValidation.js') }}"></script>
-    <script src="{{ asset('assets/vendors/js/pickers/pickadate/picker.js') }}"></script>
-    <script src="{{ asset('assets/vendors/js/pickers/pickadate/picker.date.js') }}"></script>
-    <script src="{{ asset('assets/vendors/js/extensions/unslider-min.js') }}"></script>
-    <script src="{{ asset('assets/vendors/js/timeline/horizontal-timeline.js') }}"></script>
+    <!-- new -->
+
     <!-- END: Page Vendor JS-->
 
     <!-- BEGIN: Page Vendor JS-->
@@ -231,6 +255,21 @@
     <script src="{{ asset('assets/js/scripts/navs/navs.min.js') }}"></script>
     <script src="{{ asset('assets/js/scripts/pages/dashboard-ecommerce.min.js') }}"></script>
 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!-- new -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script><!-- new -->
+
+    <!-- BEGIN: Page Vendor JS-->
+    <script src="{{ asset('assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/js/forms/validation/jqBootstrapValidation.js') }}"></script>
+    <script src="{{ asset('assets/vendors/js/pickers/pickadate/picker.js') }}"></script>
+    <script src="{{ asset('assets/vendors/js/pickers/pickadate/picker.date.js') }}"></script>
+    <script src="{{ asset('assets/vendors/js/extensions/unslider-min.js') }}"></script>
+    <script src="{{ asset('assets/vendors/js/timeline/horizontal-timeline.js') }}"></script>
+
+    <!-- FullCalendar CSS and JS -->
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"><!-- new -->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script><!-- new -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
 
     <!-- END: Page JS-->

@@ -47,6 +47,9 @@ class PermissionsSeeder extends Seeder
 
         $role3 = Role::create(['name' => 'Patient']);
         $role3->givePermissionTo([
+            Permissions::DOCTOR_LIST,
+            Permissions::DOCTOR_SHOW,
+            
             Permissions::THERAPY_SHOW,
             Permissions::THERAPY_LIST,
         ]);

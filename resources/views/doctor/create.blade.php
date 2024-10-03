@@ -91,6 +91,14 @@
                                                 @endforeach
                                             </select>
                                         </div>
+                                        <div class="form-group">
+                                            <div class="controls">
+                                                <label>Specialization</label>
+                                                <input type="text" class="form-control" name="specialization"
+                                                    placeholder="Specialization" required
+                                                    data-validation-required-message="This specialization field is required">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="table-responsive">
@@ -296,7 +304,7 @@
                         <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
                             <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">Save
                                 changes</button>
-                                <a type="reset" href="{{ route('patient.index') }}" class="btn btn-light">Cancel</a>
+                                <a type="reset" href="{{ route('doctor.index') }}" class="btn btn-light">Cancel</a>
                             </div>
                     </form>
                 </div>

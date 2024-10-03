@@ -44,7 +44,7 @@ class User extends Authenticatable implements JWTSubject
         'email_verified_at' => 'datetime',
     ];
 
-    public function patients()
+    /*public function patients()
     {
         return $this->hasMany(Patient::class);
     }
@@ -52,6 +52,16 @@ class User extends Authenticatable implements JWTSubject
     public function doctors()
     {
         return $this->hasMany(Doctor::class);
+    }*/
+
+    public function doctor()
+    {
+        return $this->hasOne(Doctor::class);
+    }
+
+    public function patient()
+    {
+        return $this->hasOne(Patient::class);
     }
 
    /* public function therapies​​()
