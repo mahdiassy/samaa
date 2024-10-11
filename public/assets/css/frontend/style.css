@@ -1,0 +1,671 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap');
+
+body {
+    font-family: 'Inter', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f5f5;
+}
+
+nav {
+    background-color: #1A655E;
+    padding: 10px 8px 10px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(27, 26, 26, 0.1);
+}
+
+.logo img {
+    height: 60px;
+}
+
+.menu {
+    display: flex;
+    gap: 20px;
+    padding-right: 20px;
+}
+
+.menu a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.52px;
+    text-align: left;
+    padding: 10px 8px;
+    position: relative;
+}
+
+.menu a:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    right: -10px;
+    top: 10%;
+    height: 80%;
+    width: 2px;
+    background: linear-gradient(180deg, #D67E0D 0%, rgba(255, 255, 255, 0.04) 100%);
+}
+
+.menu a:hover {
+    opacity: 0.5;
+    transform: scale(1.005);
+    transition: all 0.1s ease;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: white;
+    padding-left: 60px;
+    padding-right: 30px;
+}
+
+.profile img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.profile span {
+    font-family: 'Inter', Arial, sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 14.52px;
+    text-align: left;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.menu-toggle div {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+}
+
+/* Section 1 */
+
+.hero {
+    position: relative;
+    margin: 0 auto;
+}
+
+.hero img {
+    width: 100%;
+    height: 529px;
+    object-fit: cover;
+    object-position: bottom;
+}
+
+/* Section 2*/
+
+.therapy-section {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    background-color: #f5f5f5;
+
+}
+
+.therapy-section img {
+    width: 50%;
+    height: auto;
+}
+
+.therapy-content {
+    max-width: 500px;
+    padding: 0px 60px 0px 120px;
+}
+
+.therapy-content h2 {
+    font-size: 28px;
+    color: #1A655E;
+    font-weight: 500;
+    text-align: left;
+}
+
+.therapy-content p {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.therapy-section2 {
+    display: flex;
+    gap: 50px;
+    background-color: #f5f5f5;
+}
+
+.therapy-section2 img {
+    width: 50%;
+    height: auto;
+}
+
+.therapy-content2 {
+    max-width: 50%;
+    text-align: left;
+    padding: 10px 60px 10px 10px;
+}
+
+.therapy-content2 h2 {
+    font-size: 28px;
+    color: #1A655E;
+    font-weight: 500;
+    text-align: left;
+}
+
+.therapy-content2 p {
+    font-size: 16px;
+    line-height: 24px;
+}
+
+
+/* Sections 4*/
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0;
+    gap: 90px;
+    background-color: #f5f5f5;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 250px;
+    height: 227px;
+    gap: 10px;
+    border-radius: 5px;
+    opacity: 0;
+    background-color: white;
+    text-align: center;
+    box-shadow: 8px 8px 0px 0px #FB8A2ECC;
+    position: relative;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.card img {
+    width: 50px;
+    height: 50px;
+    margin-top: 20px;
+}
+
+.card h3 {
+    font-size: 20px;
+    margin: 15px 0;
+}
+
+.card p {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: justify;
+    margin: 10px 15px;
+    color: #333;
+}
+
+.card:hover {
+    opacity: 1;
+    transform: translateY(-10px);
+}
+
+.section2 {
+    background-image: url('../../images/therapy-backgeound.png');
+    background-size: cover;
+    background-position: center;
+    padding: 100px 20px;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.section2 h2 {
+    font-size: 40px;
+    font-weight: bold;
+}
+
+.section2 p {
+    font-size: 18px;
+    margin: 20px 25%;
+}
+
+.section2 button {
+    background-color: #FFFFFF;
+    color: #D67E0D;
+    width: 280px;
+    height: 50px;
+    padding: 10px 70px;
+    gap: 10px;
+    border-radius: 35px;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 19.36px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    opacity: 1;
+}
+
+.section2 button:hover {
+    background-color: #FB8A2ECC;
+    color: #FFFFFF;
+    transform: scale(1.05);
+}
+
+.section2 button:active {
+    transform: scale(0.95);
+    transition: transform 0.2s ease;
+}
+
+
+/* Fotter*/
+
+.footer {
+    background-color: #1A655E;
+    padding: 15px 20px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 2% 10%;
+    border-bottom: 1px solid #FFFFFF33;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo img {
+    width: 80px;
+}
+
+.footer-logo p {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFA538;
+}
+
+.footer-links {
+    display: flex;
+    gap: 40px;
+}
+
+.footer-links .column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 40px;
+    font-size: 13px;
+}
+
+.footer-links a:hover {
+    opacity: 0.5;
+    transform: scale(1.005);
+    transition: all 0.1s ease;
+}
+
+.footer-help {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.help-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid #D67E0D;
+    padding: 10px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.social-icons img {
+    width: 25px;
+    height: 25px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 10%;
+    font-size: 13px;
+    border-top: 1px solid #FFFFFF33;
+}
+
+.footer-bottom img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 18px;
+    height: 25.43px;
+    opacity: 1;
+}
+
+.social-icons a {
+    text-decoration: none;
+}
+
+.social-icons i {
+    width: 26.4px;
+    height: 25.43px;
+    color: #F1EEEC;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.social-icons i:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}
+
+
+@media(max-width: 459px) {
+
+    .footer-links {
+        padding-top: 15% !important;
+    }
+}
+
+@media(max-width: 680px) {
+
+    .footer-help {
+        margin-left: 2% !important;
+    }
+}
+
+@media(max-width: 880px) {
+
+    .section2 h2 {
+        font-size: 30px !important;
+    }
+
+    .section2 p {
+        margin: 20px 15% !important;
+    }
+
+    .therapy-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: #f5f5f5;
+    }
+
+    .therapy-section img {
+        width: 90% !important;
+    }
+
+    .therapy-content {
+        padding: 0px !important;
+        text-align: center !important;
+    }
+
+    .therapy-content h2 {
+        font-size: 28px;
+        color: #1A655E;
+        font-weight: 500;
+        text-align: center !important;
+    }
+
+
+    /* Section 2 */
+
+    .therapy-section2 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background-color: #f5f5f5;
+    }
+
+    .therapy-section2 img {
+        order: 2;
+        width: 90% !important;
+    }
+
+    .therapy-content2 {
+        order: 1;
+        padding: 0px !important;
+        text-align: center !important;
+        max-width: 80% !important;
+    }
+
+    .therapy-content2 h2 {
+        font-size: 28px;
+        color: #1A655E;
+        font-weight: 500;
+        text-align: center !important;
+    }
+
+}
+
+@media (max-width: 1093px) {
+    .menu {
+        display: flex;
+        flex-direction: column;
+        width: 250px;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: -250px;
+        background-color: #1A655E;
+        padding: 10px 0;
+        z-index: 1;
+        transition: transform 0.3s ease;
+        overflow-y: auto;
+        scrollbar-width: none;
+    }
+
+    .menu::-webkit-scrollbar {
+        display: none;
+    }
+
+    .menu.active {
+        transform: translateX(250px);
+    }
+
+    .menu a {
+        padding: 0px 15px 20px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .menu-toggle {
+        display: flex;
+        padding-right: 80px;
+    }
+
+    .close-menu {
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
+        margin: 10px 20px;
+        align-self: flex-end;
+    }
+
+    .menu-title {
+        color: white;
+        font-size: 24px;
+        text-align: center;
+        margin: 20px 0;
+    }
+
+    /* section 1*/
+
+    .hero-text {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        transform: translateY(-50%);
+        text-align: left;
+        color: white;
+        padding: 20px;
+    }
+
+    .hero-text h1 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 50px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .hero-text h2 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 20px;
+        font-weight: 300;
+        line-height: 50px;
+        text-align: left;
+        margin: 0;
+    }
+
+    .hero-text p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 15px;
+        font-weight: 500;
+        line-height: 37.5px;
+        text-align: left;
+        margin: 10px 0 0;
+    }
+
+}
+
+@media (min-width: 1093px) {
+
+    .close-menu,
+    .menu-title {
+        display: none;
+    }
+
+    .hero-text {
+        position: absolute;
+        top: 50%;
+        left: 10%;
+        right: 50%;
+        transform: translateY(-50%);
+        text-align: left;
+        color: white;
+        padding: 20px;
+    }
+
+    .hero-text h1 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 60px;
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .hero-text h2 {
+        font-family: 'Roboto', sans-serif;
+        font-size: 30px;
+        font-weight: 300;
+        line-height: 50px;
+        text-align: left;
+        margin: 0;
+    }
+
+    .hero-text p {
+        font-family: 'Roboto', sans-serif;
+        font-size: 25px;
+        font-weight: 500;
+        line-height: 37.5px;
+        text-align: left;
+        margin: 10px 0 0;
+    }
+
+}
+
+@media(max-width: 995px) {
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 60px 0;
+        gap: 30px !important;
+        background-color: #f5f5f5;
+    }
+}
+
+@media (min-width: 680px) and (max-width: 844px) {
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 60px 0;
+        gap: 20px !important;
+        background-color: #f5f5f5;
+    }
+
+    .card {
+        width: 200px !important;
+        height: 210px !important;
+        gap: 10px !important;
+    }
+
+    .card h3 {
+        font-size: 17px !important;
+        margin: 0px 0 !important;
+    }
+
+    .card p {
+        line-height: 1;
+    }
+}
+
+@media (min-width: 681px) and (max-width: 400px) {
+
+    .container {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 20px;
+        padding: 30px 0;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 300px;
+        height: auto;
+        box-shadow: none;
+    }
+
+    .card p {
+        text-align: left;
+    }
+}

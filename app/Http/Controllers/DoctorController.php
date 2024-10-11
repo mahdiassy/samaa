@@ -158,14 +158,15 @@ class DoctorController extends Controller
 
     public function deleteTime($id)
     {
-        $time = Availability::find($id);
+        $booking = Booking::where('available_id',$id);
+        //$time = Availability::find($id);
         // if ($time->booking()->exists()) {
         /*$booking = $time->booking;
             $booking->status = BookingEnum::DOCTOR_CANCEL;
             $booking->save();*/
         //$time->delete();
         //} else {
-        $time->delete();
+        $booking->delete();
         //}
 
         return response()->json(['message' => 'deleted']);
