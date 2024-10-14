@@ -1,6 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap');
 
+::selection {
+    background-color: #0F4140;
+    color: white;
+}
+
+select option:checked {
+    background-color: #0F4140;
+    color: white;
+}
+
 body {
     font-family: 'Inter', Arial, sans-serif;
     margin: 0;
@@ -36,7 +46,7 @@ nav {
     color: white;
     text-decoration: none;
     font-family: 'Inter', Arial, sans-serif;
-    font-size: 12px;
+    font-size: 15px;
     font-weight: 400;
     line-height: 14.52px;
     text-align: left;
@@ -65,7 +75,7 @@ nav {
     align-items: center;
     gap: 10px;
     color: white;
-    padding-left: 60px;
+    padding-left: 40px;
     padding-right: 30px;
 }
 
@@ -668,4 +678,473 @@ nav {
     .card p {
         text-align: left;
     }
+}
+/* Register page */
+.register-section {
+    font-family: 'Roboto', sans-serif;
+    background-color: #4b807b;
+    color: white;
+    padding: 7% 2% 1%;
+}
+
+.form-step {
+    display: none;
+    padding: 40px 0;
+    background-color: #4b807b;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: auto;
+}
+
+.form-step h2 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #EAEAEA;
+
+}
+
+.profile-image img {
+    display: block;
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    margin-bottom: 3%;
+    gap: 8%; /* Space between elements */
+}
+
+.form-group div {
+    flex: 1;
+    min-width: 36px;
+}
+
+.form-group .custom-number-container {
+    flex: 1;
+    /* min-width: 200px; */
+    min-width: 36px;
+    margin: -30px 10px 30px 10px;
+}
+
+.form-group label {
+    display: block; /* Ensures the label is on its own line */
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 25.43px;
+    margin-bottom: 5px; /* Space between label and input */
+    color: #EAEAEA;
+    ;
+}
+
+.form-group input, .form-group select {
+    width: 100%; /* Full width for inputs and selects */
+    height: 60px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: #EAEAEA;
+}
+
+.gender-group {
+    /*margin: -15px 0px;*/
+    color: #EAEAEA;
+    display: flex;
+}
+
+.gender-group label {
+    /*margin-right: 10px;*/
+    font-size: 16px;
+    padding-top: 10px;
+}
+
+
+@media (max-width: 600px) {
+    .form-section {
+        flex-direction: column; /* Stack left and right columns */
+        gap: 40px; /* Increase spacing between columns */
+    }
+    .form-group input,
+    .form-group select {
+        width: 100%; /* Full width on smaller screens */
+    }
+}
+
+.profile-container {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.profile-picture {
+    width: 153px;
+    height: 153px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 5px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    position: relative; /* Position relative to allow absolute positioning of the vector */
+}
+
+.profile-picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.vector-icon {
+    width: 35px;
+    height: 35px;
+    position: absolute; /* Position it inside the profile picture */
+    top: 110px; /* Adjust as needed */
+    left: 95px; /* Adjust as needed */
+    background-color: #EAEAEA; /* Optional background color */
+    border-radius: 50%; /* Make it circular */
+    display: flex; /* Center the icon */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+.vector-icon i {
+    color: #2C6463; /* Color of the plus icon */
+    font-size: 15px; /* Adjust size as needed */
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adds space between the checkbox and the label text */
+}
+
+.checkbox-group label {
+    position: relative;
+    padding-left: 25px; /* Space for the checkbox */
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    color: white; /* Ensure the text color matches the background if needed */
+    font-size: 14px;
+}
+
+.checkbox-group input {
+    position: absolute;
+    left: 0;
+    opacity: 0; /* Hide the default checkbox */
+}
+
+.checkbox-group label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 18px;
+    height: 18px;
+    border: 1px solid #EAEAEA; /* Light border as requested */
+    border-radius: 3px;
+    background-color: #4b807b; /* Match the background color */
+}
+
+.checkbox-group input:checked + label::before {
+    background-color: #EAEAEA; /* Change background color when checked */
+    border-color: #EAEAEA; /* Update border to match background when checked */
+}
+
+.checkbox-group input:checked + label::after {
+    content: "✓";
+    position: absolute;
+    left: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #4b807b; /* Checkmark color contrasting with the new background */
+    font-size: 12px;
+}
+
+
+.questions-group {
+    color: #EAEAEA;
+    margin: 20px 0;
+}
+
+.questions-group label {
+    /*display: block;*/
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 25.43px;
+    margin-bottom: 5px;
+    color: #EAEAEA;
+}
+
+.questions-group input[type="radio"] {
+    margin-left: 10px;
+    margin-right: 5px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; /* Centers the button horizontally */
+   /* margin-top: 50px;*/ /* Space above the button */
+}
+
+.next-btn, .done-btn {
+    width: 25%;
+    padding: 13px;
+    background-color: #0F4140;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+
+.next-btn:hover, .done-btn:hover {
+    background-color: #053930;
+}
+
+.form-navigation {
+    text-align: center;
+    margin: 0;
+    padding: 10px 0;
+}
+
+.step-indicator span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: white;
+    color: black;
+    border-radius: 50%;
+    line-height: 30px;
+    text-align: center;
+    margin: 0 5px;
+    font-size: 14px;
+}
+
+.step-indicator .active-step {
+    background-color: #084C43;
+    color: white;
+}
+
+/* Display the active step */
+.form-step.active {
+    display: block;
+}
+
+.step-indicator {
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+    position: relative; /* Relative positioning for the line */
+}
+
+.step-indicator span {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    background-color: white; /* Circle background color */
+    color: black;
+    border-radius: 50%;
+    line-height: 30px; /* Center text vertically */
+    text-align: center;
+    margin: 0 5px; /* Space between circles */
+    border: 1.8px solid #0F4140; /* Circle border color */
+}
+
+.step-line {
+    width: 250px; /* Set width to 279px */
+    height: 1.8px; /* Change height to 1.8px for the line thickness */
+    top: 109px; /* Position the line 109px from the top */
+    left: 50px; /* Position the line 50px from the left */
+    background-color: #0F4140; /* Line color */
+    z-index: 1; /* Send the line behind the circles */
+}
+
+.radio-container {
+    display: flex; /* Aligns radio buttons in a row */
+    /*gap: 15px;*/ /* Space between radio buttons */
+}
+
+.radio-option {
+    position: relative; /* Allows absolute positioning for background */
+    cursor: pointer; /* Changes cursor to pointer for better UX */
+    padding: 10px; /* Adds padding for a better click area */
+    display: flex; /* Ensures label content is aligned correctly */
+    align-items: center; /* Center aligns items vertically */
+}
+
+.radio-option input {
+    display: none; /* Hides the default radio button */
+}
+.radio-option label {
+    font-size: 14px;
+    padding: 0px;
+}
+.radio-option span {
+    display: inline-block;
+    width: 16px; /* Size of the custom radio button */
+    height: 16px;
+    border: 2px solid #EAEAEA; /* Border color for the radio button */
+    border-radius: 50%; /* Makes it circular */
+    margin: 0px 10px; /* Space between the radio button and the label */
+    position: relative; /* Positioning context for the pseudo-element */
+}
+
+.radio-option input:checked + span {
+    border-color: #EAEAEA; /* Ensure the border remains visible */
+}
+
+.radio-option input:checked + span::after {
+    content: ''; /* Adds a pseudo-element for custom styling */
+    position: absolute;
+    top: 2px; /* Adjusts the position of the inner circle */
+    left: 2px; /* Adjusts the position of the inner circle */
+    width: 12px; /* Inner circle size */
+    height: 12px;
+    border-radius: 50%; /* Makes it circular */
+    background-color: #EAEAEA; /* Inner circle color when checked */
+}
+.info {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 1%;
+    gap: 28%;
+    justify-content: center;
+}
+.info p {
+    color: #EAEAEA;
+    font-size: 15px;
+}
+
+/* Form Layout */
+.form-section {
+    display: flex;
+    justify-content: space-between;
+    gap: 8%; /* Space between left and right columns */
+    flex-wrap: wrap;
+}
+
+/* Left Column */
+.left-column {
+    flex: 1; /* Takes up equal space on the left */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.checkbox-group {
+    margin-top: 20px;
+}
+
+/* Right Column */
+.right-column {
+    flex: 1; /* Takes up equal space on the right */
+}
+
+.questions-group {
+    margin-bottom: 20px;
+}
+
+/* Styling for inputs and select */
+input, select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+/* Styling for radio buttons */
+input[type="radio"] {
+    margin-left: 10px;
+}
+
+.done-btn:hover {
+    background-color: #084C43;
+}
+.link{
+    color: #86C9AE;
+}
+.link {
+    color: #86C9AE; /* Set the color to match the background or preferred color */
+    text-decoration: underline; /* Underline the link */
+    margin: 0px 5px; /* Add some space between the text and the link */
+}
+
+.link:hover {
+    color: #EAEAEA; /* Optional: Change color on hover */
+    text-decoration: underline; /* Keep the underline on hover */
+}
+.custom-number-input {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    text-align: left;
+    border: 1.5px solid #EAEAEA; /* Border similar to the image */
+    border-radius: 10px; /* Rounded corners */
+    font-family: inherit;
+    appearance: none;
+    position: relative;
+    background-color: transparent;
+    padding-right: 50px; /* To make space for the arrows */
+}
+
+/* Hide the default arrows */
+.custom-number-input::-webkit-outer-spin-button,
+.custom-number-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+.custom-number-input[type="number"] {
+    -moz-appearance: textfield; /* Firefox */
+}
+
+/* Container for the custom spin buttons */
+.spin-buttons-container {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    gap: 4px; /* Space between up and down buttons */
+}
+
+/* Up and down buttons */
+.spin-button {
+    width: 25px;
+    height: 25px;
+    /*background-color: #F2F4F5; *//* Light background similar to the image */
+    border: 2px solid #2C646366; /* Border around arrows */
+    border-radius: 8px; /* Rounded edges */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.spin-button:hover {
+    background-color: #D0D8DB; /* Slightly darker on hover */
+}
+
+/* Styling for arrow icons */
+.spin-button svg {
+    color: #78909C; /* Arrow color */
+    font-size: 26px; /* Size of the arrow */
 }
