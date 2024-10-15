@@ -25,6 +25,9 @@ Route::get('/', function () {
 Route::get('/register', function () {
     return view('register');
 });
+Route::get('/contact-us', function () {
+    return view('frontend/contact-us');
+});
 // Auth
 
 Route::get('login', [AuthController::class, 'showLoginForm']);

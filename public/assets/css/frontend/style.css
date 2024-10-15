@@ -679,6 +679,7 @@ nav {
         text-align: left;
     }
 }
+
 /* Register page */
 .register-section {
     font-family: 'Roboto', sans-serif;
@@ -715,9 +716,9 @@ nav {
 
 .form-group {
     display: flex;
-    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    flex-wrap: wrap;
     margin-bottom: 3%;
-    gap: 8%; /* Space between elements */
+    gap: 8%;
 }
 
 .form-group div {
@@ -733,18 +734,19 @@ nav {
 }
 
 .form-group label {
-    display: block; /* Ensures the label is on its own line */
+    display: block;
     font-family: 'Roboto', sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 25.43px;
-    margin-bottom: 5px; /* Space between label and input */
+    margin-bottom: 5px;
     color: #EAEAEA;
     ;
 }
 
-.form-group input, .form-group select {
-    width: 100%; /* Full width for inputs and selects */
+.form-group input,
+.form-group select {
+    width: 100%;
     height: 60px;
     padding: 10px;
     font-size: 16px;
@@ -769,12 +771,13 @@ nav {
 
 @media (max-width: 600px) {
     .form-section {
-        flex-direction: column; /* Stack left and right columns */
-        gap: 40px; /* Increase spacing between columns */
+        flex-direction: column;
+        gap: 40px;
     }
+
     .form-group input,
     .form-group select {
-        width: 100%; /* Full width on smaller screens */
+        width: 100%;
     }
 }
 
@@ -793,7 +796,7 @@ nav {
     justify-content: center;
     align-items: center;
     opacity: 1;
-    position: relative; /* Position relative to allow absolute positioning of the vector */
+    position: relative;
 }
 
 .profile-picture img {
@@ -805,41 +808,42 @@ nav {
 .vector-icon {
     width: 35px;
     height: 35px;
-    position: absolute; /* Position it inside the profile picture */
-    top: 110px; /* Adjust as needed */
-    left: 95px; /* Adjust as needed */
-    background-color: #EAEAEA; /* Optional background color */
-    border-radius: 50%; /* Make it circular */
-    display: flex; /* Center the icon */
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    position: absolute;
+    top: 110px;
+    left: 95px;
+    background-color: #EAEAEA;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .vector-icon i {
-    color: #2C6463; /* Color of the plus icon */
-    font-size: 15px; /* Adjust size as needed */
+    color: #2C6463;
+    font-size: 15px;
 }
 
 .checkbox-group {
     display: flex;
     align-items: center;
-    gap: 10px; /* Adds space between the checkbox and the label text */
+    gap: 10px;
+    position: relative;
 }
 
 .checkbox-group label {
     position: relative;
-    padding-left: 25px; /* Space for the checkbox */
+    padding-left: 25px;
     cursor: pointer;
     display: inline-flex;
     align-items: center;
-    color: white; /* Ensure the text color matches the background if needed */
+    color: white;
     font-size: 14px;
 }
 
 .checkbox-group input {
     position: absolute;
-    left: 0;
-    opacity: 0; /* Hide the default checkbox */
+    left: 0; /* Move the checkbox far outside the viewport */
+    opacity: 0;
 }
 
 .checkbox-group label::before {
@@ -850,23 +854,23 @@ nav {
     transform: translateY(-50%);
     width: 18px;
     height: 18px;
-    border: 1px solid #EAEAEA; /* Light border as requested */
+    border: 1px solid #EAEAEA;
     border-radius: 3px;
-    background-color: #4b807b; /* Match the background color */
+    background-color: #4b807b;
 }
 
-.checkbox-group input:checked + label::before {
-    background-color: #EAEAEA; /* Change background color when checked */
-    border-color: #EAEAEA; /* Update border to match background when checked */
+.checkbox-group input:checked+label::before {
+    background-color: #EAEAEA;
+    border-color: #EAEAEA;
 }
 
-.checkbox-group input:checked + label::after {
+.checkbox-group input:checked+label::after {
     content: "✓";
     position: absolute;
     left: 5px;
     top: 50%;
     transform: translateY(-50%);
-    color: #4b807b; /* Checkmark color contrasting with the new background */
+    color: #4b807b;
     font-size: 12px;
 }
 
@@ -893,11 +897,12 @@ nav {
 
 .button-container {
     display: flex;
-    justify-content: center; /* Centers the button horizontally */
-   /* margin-top: 50px;*/ /* Space above the button */
+    justify-content: center;
+    /* margin-top: 50px;*/
 }
 
-.next-btn, .done-btn {
+.next-btn,
+.done-btn {
     width: 25%;
     padding: 13px;
     background-color: #0F4140;
@@ -910,7 +915,8 @@ nav {
 }
 
 
-.next-btn:hover, .done-btn:hover {
+.next-btn:hover,
+.done-btn:hover {
     background-color: #053930;
 }
 
@@ -938,84 +944,86 @@ nav {
     color: white;
 }
 
-/* Display the active step */
 .form-step.active {
     display: block;
 }
 
 .step-indicator {
     display: flex;
-    align-items: center; /* Center items vertically */
-    justify-content: center; /* Center items horizontally */
-    position: relative; /* Relative positioning for the line */
+    align-items: center;
+    justify-content: center;
+    position: relative;
 }
 
 .step-indicator span {
     display: inline-block;
     width: 30px;
     height: 30px;
-    background-color: white; /* Circle background color */
+    background-color: white;
     color: black;
     border-radius: 50%;
-    line-height: 30px; /* Center text vertically */
+    line-height: 30px;
     text-align: center;
-    margin: 0 5px; /* Space between circles */
-    border: 1.8px solid #0F4140; /* Circle border color */
+    margin: 0 5px;
+    border: 1.8px solid #0F4140;
 }
 
 .step-line {
-    width: 250px; /* Set width to 279px */
-    height: 1.8px; /* Change height to 1.8px for the line thickness */
-    top: 109px; /* Position the line 109px from the top */
-    left: 50px; /* Position the line 50px from the left */
-    background-color: #0F4140; /* Line color */
-    z-index: 1; /* Send the line behind the circles */
+    width: 250px;
+    height: 1.8px;
+    top: 109px;
+    left: 50px;
+    background-color: #0F4140;
+    z-index: 1;
 }
 
 .radio-container {
-    display: flex; /* Aligns radio buttons in a row */
-    /*gap: 15px;*/ /* Space between radio buttons */
+    display: flex;
+    /*gap: 15px;*/
 }
 
 .radio-option {
-    position: relative; /* Allows absolute positioning for background */
-    cursor: pointer; /* Changes cursor to pointer for better UX */
-    padding: 10px; /* Adds padding for a better click area */
-    display: flex; /* Ensures label content is aligned correctly */
-    align-items: center; /* Center aligns items vertically */
+    position: relative;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
 }
 
 .radio-option input {
-    display: none; /* Hides the default radio button */
+    display: none;
 }
+
 .radio-option label {
     font-size: 14px;
     padding: 0px;
 }
+
 .radio-option span {
     display: inline-block;
-    width: 16px; /* Size of the custom radio button */
+    width: 16px;
     height: 16px;
-    border: 2px solid #EAEAEA; /* Border color for the radio button */
-    border-radius: 50%; /* Makes it circular */
-    margin: 0px 10px; /* Space between the radio button and the label */
-    position: relative; /* Positioning context for the pseudo-element */
+    border: 2px solid #EAEAEA;
+    border-radius: 50%;
+    margin: 0px 10px;
+    position: relative;
 }
 
-.radio-option input:checked + span {
-    border-color: #EAEAEA; /* Ensure the border remains visible */
+.radio-option input:checked+span {
+    border-color: #EAEAEA;
 }
 
-.radio-option input:checked + span::after {
-    content: ''; /* Adds a pseudo-element for custom styling */
+.radio-option input:checked+span::after {
+    content: '';
     position: absolute;
-    top: 2px; /* Adjusts the position of the inner circle */
-    left: 2px; /* Adjusts the position of the inner circle */
-    width: 12px; /* Inner circle size */
+    top: 2px;
+    left: 2px;
+    width: 12px;
     height: 12px;
-    border-radius: 50%; /* Makes it circular */
-    background-color: #EAEAEA; /* Inner circle color when checked */
+    border-radius: 50%;
+    background-color: #EAEAEA;
 }
+
 .info {
     display: flex;
     flex-wrap: wrap;
@@ -1023,22 +1031,21 @@ nav {
     gap: 28%;
     justify-content: center;
 }
+
 .info p {
     color: #EAEAEA;
     font-size: 15px;
 }
 
-/* Form Layout */
 .form-section {
     display: flex;
     justify-content: space-between;
-    gap: 8%; /* Space between left and right columns */
+    gap: 8%;
     flex-wrap: wrap;
 }
 
-/* Left Column */
 .left-column {
-    flex: 1; /* Takes up equal space on the left */
+    flex: 1;
 }
 
 .form-group {
@@ -1049,17 +1056,16 @@ nav {
     margin-top: 20px;
 }
 
-/* Right Column */
 .right-column {
-    flex: 1; /* Takes up equal space on the right */
+    flex: 1;
 }
 
 .questions-group {
     margin-bottom: 20px;
 }
 
-/* Styling for inputs and select */
-input, select {
+input,
+select {
     width: 100%;
     padding: 10px;
     border-radius: 5px;
@@ -1067,7 +1073,6 @@ input, select {
     margin-top: 5px;
 }
 
-/* Styling for radio buttons */
 input[type="radio"] {
     margin-left: 10px;
 }
@@ -1075,44 +1080,46 @@ input[type="radio"] {
 .done-btn:hover {
     background-color: #084C43;
 }
-.link{
+
+.link {
     color: #86C9AE;
 }
+
 .link {
-    color: #86C9AE; /* Set the color to match the background or preferred color */
-    text-decoration: underline; /* Underline the link */
-    margin: 0px 5px; /* Add some space between the text and the link */
+    color: #86C9AE;
+    text-decoration: underline;
+    margin: 0px 5px;
 }
 
 .link:hover {
-    color: #EAEAEA; /* Optional: Change color on hover */
-    text-decoration: underline; /* Keep the underline on hover */
+    color: #EAEAEA;
+    text-decoration: underline;
 }
+
 .custom-number-input {
     width: 100%;
     padding: 12px;
     font-size: 16px;
     text-align: left;
-    border: 1.5px solid #EAEAEA; /* Border similar to the image */
-    border-radius: 10px; /* Rounded corners */
+    border: 1.5px solid #EAEAEA;
+    border-radius: 10px;
     font-family: inherit;
     appearance: none;
     position: relative;
     background-color: transparent;
-    padding-right: 50px; /* To make space for the arrows */
+    padding-right: 50px;
 }
 
-/* Hide the default arrows */
 .custom-number-input::-webkit-outer-spin-button,
 .custom-number-input::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
+
 .custom-number-input[type="number"] {
-    -moz-appearance: textfield; /* Firefox */
+    -moz-appearance: textfield;
 }
 
-/* Container for the custom spin buttons */
 .spin-buttons-container {
     position: absolute;
     top: 0;
@@ -1121,16 +1128,15 @@ input[type="radio"] {
     flex-direction: column;
     justify-content: center;
     height: 100%;
-    gap: 4px; /* Space between up and down buttons */
+    gap: 4px;
 }
 
-/* Up and down buttons */
 .spin-button {
     width: 25px;
     height: 25px;
-    /*background-color: #F2F4F5; *//* Light background similar to the image */
-    border: 2px solid #2C646366; /* Border around arrows */
-    border-radius: 8px; /* Rounded edges */
+    /*background-color: #F2F4F5; */
+    border: 2px solid #2C646366;
+    border-radius: 8px;
     text-align: center;
     display: flex;
     justify-content: center;
@@ -1140,11 +1146,243 @@ input[type="radio"] {
 }
 
 .spin-button:hover {
-    background-color: #D0D8DB; /* Slightly darker on hover */
+    background-color: #D0D8DB;
 }
 
-/* Styling for arrow icons */
 .spin-button svg {
-    color: #78909C; /* Arrow color */
-    font-size: 26px; /* Size of the arrow */
+    color: #78909C;
+    font-size: 26px;
+}
+
+/* Contact Us Section */
+
+.contact-section {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 124.64%), url(../../images/contactUs.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    margin-top: 5%;
+}
+
+.contact-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+}
+
+.contact-info {
+    flex: 1;
+    max-width: 50%;
+    padding: 5% 0px;
+}
+.contact-info h3 {
+    font-family: 'Sue Ellen Francisco', cursive;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 37.9px;
+    text-align: left;
+    color: #D67E0D;
+    margin-bottom: 10px;
+}
+
+.contact-info h2 {
+    font-size: 38px;
+    margin: 0px 0px;
+    color: #F1EEEC;
+}
+
+.contact-info p {
+    font-size: 16px;
+    color: #F1EEEC;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.contact-item .icon {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #F1EEEC;
+    border-radius: 50%;
+}
+
+.contact-item .icon img {
+    width: 50%;
+    height: auto;
+}
+
+.contact-item p {
+    font-family: 'Work Sans', sans-serif;
+    font-size: 15px;
+    line-height: 24.44px;
+    text-align: left;
+    color: #FFFFFF;
+    margin: 0;
+    padding: 15px 0px;
+}
+
+.contact-item p strong {
+    font-family: 'Shippori Mincho', serif;
+    font-size: 25px;
+    font-weight: 500;
+    color: #F1EEEC;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-details {
+    padding: 30px 0px;
+}
+
+.social-links a {
+    text-decoration: none;
+}
+
+.social-links svg {
+    color: #2E4049;
+    font-size: 23px;
+    margin-right: 15px;
+}
+
+.social-links svg:hover {
+    transform: scale(1.1);
+    transition: all 0.1s ease;
+}
+
+.contact-form {
+    flex: 1;
+    max-width: 35%;
+    background-color: white;
+    padding: 30px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.contact-form .form-group {
+    margin-bottom: 20px;
+}
+
+.contact-form input {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 0px;
+    border: 1px solid #ECF1F0;
+    background-color: #ECF1F0;
+}
+
+.contact-form textarea {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 0px;
+    border: 1px solid #ECF1F0;
+    background-color: #ECF1F0;
+    height: 190px;
+}
+
+.contact-form button {
+    background-color: #2E4049;
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.contact-form button:hover {
+    background-color: #143041;
+}
+
+@media (max-width: 768px) {
+    .contact-section {
+        padding: 80px 20px;
+    }
+
+    .contact-form
+    {
+        width: 80% !important;
+    }
+    .contact-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-info,
+    .contact-form {
+        max-width: 100%;
+        padding: 5%;
+    }
+
+    .contact-item p {
+        font-size: 16px;
+    }
+
+    .contact-item p strong {
+        font-size: 20px;
+    }
+
+    .social-links svg {
+        font-size: 30px;
+        margin-right: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-section {
+        padding: 60px 10px;
+    }
+    .contact-info h3 {
+        font-size: 20px;
+    }
+
+    .contact-info h2 {
+        font-size: 28px;
+    }
+
+    .contact-item p {
+        font-size: 14px;
+    }
+
+    .contact-item p strong {
+        font-size: 18px;
+    }
+
+    .contact-form {
+        padding: 20px;
+        max-width: 100%;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+        padding: 10px;
+    }
+
+    .contact-form button {
+        padding: 12px 30px;
+    }
+
+    .social-links svg {
+        font-size: 25px;
+        margin-right: 8px;
+    }
 }
