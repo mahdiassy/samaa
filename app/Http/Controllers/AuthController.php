@@ -22,7 +22,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
         if(Auth::attempt($credentials)) {
             return redirect()
-                ->intended(route('doctor.index'))
+                ->intended(route('dashboard'))
                 ->with('status', [
                     'type' => 'success',
                     'msg' => 'Successfully Logged-in'

@@ -13,6 +13,47 @@ WE WILL RELEASE FUTURE UPDATES SO IN ORDER TO NOT OVERWRITE YOUR STYLES IT'S BET
     position: relative;
     display: inline-block;
 }
+.logo {
+    width: 100px;
+    height: 100px;
+}
+.brand-logo {
+    width: 35px;
+    height: 35px;
+}
+/* Parent container to center the card */
+.dashboard-container {
+    /*height: 100vh;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 50px;
+    width: 100vh;
+    height: 50vh;
+    text-align: center;
+}
+
+.dashboard-card-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.dashboard-card-description {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
+
 
 .image-placeholder {
     position: relative;

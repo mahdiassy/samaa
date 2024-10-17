@@ -72,8 +72,8 @@
                             class="nav-link nav-menu-main menu-toggle hidden-xs" href="#"><i
                                 class="feather icon-menu font-large-1"></i></a></li>
                     <li class="nav-item mr-auto"><a class="navbar-brand" href="index-2.html"><img class="brand-logo"
-                                alt="stack admin logo" src="{{ asset('assets/images/logo/stack-logo-light.png') }}">
-                            <h2 class="brand-text">Stack</h2>
+                                alt="samaa admin logo" src="{{ asset('../assets/images/samaa-logo.png')}}">
+                            <h2 class="brand-text">Samaa</h2>
                         </a></li>
                     <li class="nav-item d-none d-lg-block nav-toggle"><a class="nav-link modern-nav-toggle pr-0"
                             data-toggle="collapse"><i
@@ -91,7 +91,7 @@
                         <li class="nav-item nav-search"><a class="nav-link nav-link-search" href="#"><i
                                     class="fa fa-search"></i></a>
                             <div class="search-input">
-                                <input class="input" type="text" placeholder="Explore Stack..." tabindex="0"
+                                <input class="input" type="text" placeholder="Explore Samaa..." tabindex="0"
                                     data-search="template-search">
                                 <div class="search-input-close"><i class="fa-solid fa-x"></i></div>
                                 <ul class="search-list"></ul>
@@ -183,6 +183,7 @@
                         </ul>
                     </li>
                 @endrole
+                @role('Doctor|Patient')
                     <li class=" nav-item"><a href="#"><i class="fa fa-user"></i><span class="menu-title"
                                 data-i18n="Users">Appointments</span></a>
                         @role('Doctor')
@@ -206,6 +207,7 @@
                         @endrole
 
                     </li>
+                    @endrole
             </ul>
         </div>
     </div>
@@ -276,7 +278,5 @@
 
 </body>
 <!-- END: Body-->
-
-<!-- Mirrored from demos.pixinvent.com/stack-html-admin-template/html/ltr/vertical-modern-menu-template/page-users-list.html by HTTrack Website Copier/3.x [XR&CO'2014], Fri, 30 Aug 2024 10:38:55 GMT -->
 
 </html>
