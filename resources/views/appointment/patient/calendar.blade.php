@@ -171,7 +171,7 @@
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                     },
-                    url: "/control/patients/addAppointment/",
+                    url: "{{ route('addAppointment') }}",
                     type: 'POST',
                     success: function(data) {
                         // location.reload();
