@@ -252,7 +252,7 @@ window.mobileCheck = function () {
 
     window.fetch_songs = function (id_container, directory) {
         $.ajax({
-            url: '/fetch-therapies', //'/assets/ajax/fetch_songs.php',//'/fetch-therapies',
+            url: fetchTherapiesUrl, //'/assets/ajax/fetch_songs.php',//'/fetch-therapies',
             type: "GET",
             async: true,
             timeout: 99999,
@@ -464,7 +464,7 @@ window.mobileCheck = function () {
                     var peaks_url = current_src.substr(0, current_src.lastIndexOf(".")) + ".json";
 
                     $.ajax({
-                        url: '/get-peaks',
+                        url: getpeaksTherapiesUrl,
                         type: "POST",
                         data: {
                             peaks_url: peaks_url
@@ -483,7 +483,7 @@ window.mobileCheck = function () {
                                     var currentIndex = Amplitude.getActiveIndex();
                                     var current_src = songs_array[currentIndex].url;
                                     $.ajax({
-                                        url: "/save-peaks",
+                                        url: savepeaksTherapiesUrl,
                                         type: "POST",
                                         data: {
                                             current_src: current_src,

@@ -18,5 +18,10 @@
     <script src="{{ asset('assets/js/music.js') }}"></script>
     <script src="{{ asset('assets/js/music2.js') }}"></script>
 </body>
+<script>
+    let fetchTherapiesUrl = "{{ route('fetch-therapies') }}";
+    let getpeaksTherapiesUrl = "{{ route('get-peaks') }}";
+    let savepeaksTherapiesUrl = "{{ route('save-peaks') }}";
+</script>
 
 </html>

@@ -34,9 +34,9 @@ Route::get('/about-us', function () {
 });
 // Auth
 
-Route::get('/fetch-therapies', [TherapyController::class, 'fetchTherapies']);
-Route::post('/get-peaks', [TherapyController::class, 'getPeaks']);
-Route::post('/save-peaks', [TherapyController::class, 'savePeaks']);
+Route::get('/fetch-therapies', [TherapyController::class, 'fetchTherapies'])->name('fetch-therapies');
+Route::post('/get-peaks', [TherapyController::class, 'getPeaks'])->name('get-peaks');
+Route::post('/save-peaks', [TherapyController::class, 'savePeaks'])->name('save-peaks');
 
 Route::group([
     'prefix' => 'control',
