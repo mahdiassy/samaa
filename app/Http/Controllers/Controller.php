@@ -14,16 +14,27 @@ class Controller extends BaseController
 
     public function storeFile(UploadedFile $file, string $path = 'files', string $disk = 'public')
     {
-        $filename = $path . '/' . time() . \Str::random(3) . '-' . $file->getClientOriginalName();
+        $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $extension = strtolower($file->getClientOriginalExtension());
+
+        $filename = $path . '/' . time() . \Str::random(3) . '-' . $originalName . '.' . $extension;
+
         Storage::disk($disk)->put($filename, file_get_contents($file));
+
         return $filename;
     }
 
     public function storeFileEncrypt(UploadedFile $file, string $path = 'files', string $disk = 'public')
     {
-        $filename = $path . '/' . time() . \Str::random(3) . '-' . $file->getClientOriginalName();
+        $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+        $extension = strtolower($file->getClientOriginalExtension());
+
+        $filename = $path . '/' . time() . \Str::random(3) . '-' . $originalName . '.' . $extension;
+
         $filenameEncrypt = encrypt($filename);
+
         Storage::disk($disk)->put($filename, file_get_contents($file));
+
         return $filenameEncrypt;
     }
 }
