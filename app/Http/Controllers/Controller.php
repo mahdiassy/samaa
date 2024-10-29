@@ -25,16 +25,13 @@ class Controller extends BaseController
     }
 
     public function storeFileEncrypt(UploadedFile $file, string $path = 'files', string $disk = 'public')
-    {
-        $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-        $extension = strtolower($file->getClientOriginalExtension());
-
-        $filename = $path . '/' . time() . \Str::random(3) . '-' . $originalName . '.' . $extension;
-
-        $filenameEncrypt = encrypt($filename);
-
-        Storage::disk($disk)->put($filename, file_get_contents($file));
-
-        return $filenameEncrypt;
+	{
+		$originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
+		$extension = strtolower($file->getClientOriginalExtension());
+		$sanitizedOriginalName = preg_replace('/[^A-Za-z0-9\-]/', '_', $originalName);
+		$filename = time() . \Str::random(3) . '-' . $sanitizedOriginalName . '.' . $extension;
+		$file->storeAs($path, $filename, $disk);
+		$filenameEncrypt = encrypt($filename);
+		return $filenameEncrypt;
     }
 }

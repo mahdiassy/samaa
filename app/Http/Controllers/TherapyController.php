@@ -140,7 +140,7 @@ class TherapyController extends Controller
 
             $therapies = Therapy::all()->map(function ($therapy) {
                 $getID3 = new GetID3();
-                $filePath = storage_path('app/public/' . decrypt($therapy->file));
+                $filePath = storage_path('app/public/Doctor therapy/' . decrypt($therapy->file));
                 $fileInfo = $getID3->analyze($filePath);
                 $duration = $fileInfo['playtime_string'];
                 return [
@@ -148,7 +148,7 @@ class TherapyController extends Controller
                     'artist' => $therapy->user->name,
                     //'album' => $therapy->name,
                     //'album_id' => '12696106c5ee8d3575d14752011dd275',
-                    'url' => Storage::url(decrypt($therapy->file)),
+                    'url' => Storage::url('Doctor therapy/' .decrypt($therapy->file)),
                     'live' => false,
                     'type' => 'direct',
                     'cover_art_url' =>  Storage::url($therapy->image),
@@ -165,7 +165,7 @@ class TherapyController extends Controller
                 ->get();
             $therapies = $getTherapies->map(function ($therapy) {
                 $getID3 = new GetID3();
-                $filePath = storage_path('app/public/' . decrypt($therapy->file));
+                $filePath = storage_path('app/public/Doctor therapy/' . decrypt($therapy->file));
                 $fileInfo = $getID3->analyze($filePath);
                 $duration = $fileInfo['playtime_string'];
                 return [
@@ -173,7 +173,7 @@ class TherapyController extends Controller
                     'artist' => $therapy->user->name,
                     //'album' => $therapy->name,
                     //'album_id' => '12696106c5ee8d3575d14752011dd275',
-                    'url' => Storage::url(decrypt($therapy->file)),
+                    'url' => Storage::url('Doctor therapy/' .decrypt($therapy->file)),
                     'live' => false,
                     'type' => 'direct',
                     'cover_art_url' =>  Storage::url($therapy->image),
@@ -189,7 +189,7 @@ class TherapyController extends Controller
 
             $therapies = $getTherapies->map(function ($therapy) {
                 $getID3 = new GetID3();
-                $filePath = storage_path('app/public/' . decrypt($therapy->file));
+                $filePath = storage_path('app/public/Doctor therapy/' . decrypt($therapy->file));
                 $fileInfo = $getID3->analyze($filePath);
                 $duration = $fileInfo['playtime_string'];
                 return [
@@ -197,7 +197,7 @@ class TherapyController extends Controller
                     'artist' => $therapy->user->name,
                     //'album' => $therapy->name,
                     //'album_id' => '12696106c5ee8d3575d14752011dd275',
-                    'url' => Storage::url(decrypt($therapy->file)),
+                    'url' => Storage::url('Doctor therapy/' .decrypt($therapy->file)),
                     'live' => false,
                     'type' => 'direct',
                     'cover_art_url' =>  Storage::url($therapy->image),

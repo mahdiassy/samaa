@@ -23,6 +23,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('frontend/home');
 });
+Route::get('/login', function () {
+    return view('frontend/login');
+});
 Route::get('/register', function () {
     return view('frontend/register');
 });
@@ -31,6 +34,30 @@ Route::get('/contact-us', function () {
 });
 Route::get('/about-us', function () {
     return view('frontend/about-us');
+});
+Route::get('/patient-show', function () {
+    return view('frontend/patient-show');
+});
+Route::get('/patient-list', function () {
+    return view('frontend/patient-list');
+});
+Route::get('/patient-edit', function () {
+    return view('frontend/patient-edit');
+});
+Route::get('/doctor-show', function () {
+    return view('frontend/doctor-show');
+});
+Route::get('/feedback', function () {
+    return view('frontend/feedback');
+});
+Route::get('/feedback-list', function () {
+    return view('frontend/feedback-list');
+});
+Route::get('/listenToMusic', function () {
+    return view('frontend/listenToMusic');
+});
+Route::get('/listener-statistics', function () {
+    return view('frontend/listener-statistics');
 });
 // Auth
 

@@ -63,7 +63,7 @@
                                         <label for="audioFile" class="mr-3 mb-0 pb-2">Old Audio:</label>
                                         <div>
                                         <audio controls>
-                                            <source src="{{ Storage::url(decrypt($therapy->file)) }}" type="audio/mpeg">
+                                            <source src="{{ Storage::url('Doctor therapy/' .decrypt($therapy->file)) }}" type="audio/mpeg">
                                             Your browser does not support the audio element.
                                         </audio>
                                     </div>

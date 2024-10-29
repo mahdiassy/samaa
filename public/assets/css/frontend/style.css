@@ -81,11 +81,15 @@ nav {
     padding-left: 350px;
     padding-right: 20px;
 }
-@media (min-width: 1092px) and (max-width: 1150px) {  /* newer */
+
+@media (min-width: 1092px) and (max-width: 1150px) {
+
+    /* newer */
     .profile {
         padding-left: 250px !important;
     }
 }
+
 .profile img {
     width: 40px;
     height: 40px;
@@ -685,6 +689,57 @@ nav {
     }
 }
 
+/* Login page */
+.login-section {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 124.64%), url(../../images/login.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 20px;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    margin-top: 5%;
+}
+
+.login-container {
+    /*display: flex;*/
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+    padding: 0px 40px;
+}
+
+.login-text {
+    margin-bottom: 20px;
+    color: #F1EEEC;
+}
+
+.login-text h1{
+    font-size: 60px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.login-text h2{
+    font-size: 25px;
+    font-weight: 500;
+    margin: 0;
+}
+.login-text h2 span{
+    font-size: 25px;
+    font-weight: 500;
+    margin: 0;
+    color: #D67E0D;
+}
 /* Register page */
 .register-section {
     font-family: 'Roboto', sans-serif;
@@ -1320,13 +1375,19 @@ input[type="radio"] {
     background-color: #143041;
 }
 
+@media (max-width: 1100px) {
+    .contact-form {
+        max-width: 45%;
+    }
+}
+
 @media (max-width: 768px) {
     .contact-section {
         padding: 80px 20px;
     }
 
-    .contact-form {
-        width: 80% !important;
+    .login-container {
+        padding: 0px 20px;
     }
 
     .contact-container {
@@ -1352,11 +1413,24 @@ input[type="radio"] {
         font-size: 30px;
         margin-right: 10px;
     }
+    .login-text h1{
+        font-size: 40px;
+    }
+    .login-text h2{
+        font-size: 20px;
+    }
+    .login-text h2 span{
+        font-size: 20px;
+    }
 }
 
 @media (max-width: 480px) {
     .contact-section {
         padding: 60px 10px;
+    }
+
+    .login-container {
+        padding: 0px 20px;
     }
 
     .contact-info h3 {
@@ -1431,6 +1505,7 @@ input[type="radio"] {
 .sidebar .menu-icon:hover {
     color: #f8a200;
 }
+
 .about-section {
     display: flex;
     justify-content: center;
@@ -1440,6 +1515,7 @@ input[type="radio"] {
     position: relative;
     z-index: 1;
 }
+
 .about-container {
     /* margin-left: 100px; */
     max-width: 1200px;
@@ -1938,11 +2014,13 @@ input[type="radio"] {
         padding-left: 55% !important;
     }*/
 }
+
 @media (max-width: 574px) {
 
     .doctor-cards {
         flex-direction: column;
     }
+
     .doctor-card {
         flex-direction: column;
     }
