@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use JamesHeinrich\GetID3\GetID3;
+use App\Events\MusicControlEvent;
 
 class TherapyController extends Controller
 {
@@ -29,6 +30,22 @@ class TherapyController extends Controller
         $this->middleware('permission:' . Permissions::THERAPY_DELETE)->only(['destroy']);
     }
 
+    public function controlMusic(Request $request)
+    {
+        $data = [
+            'action' => $request->action,
+            'track' => $request->track,
+        ];
+
+        broadcast(new MusicControlEvent($data))->toOthers();
+
+        return response()->json(['message' => 'Music control updated successfully.']);
+    }
+
+    public function showSession($id)
+    {
+        return view('sessions.session', compact('id'));
+    }
     public function index()
     {
         $patients = Patient::all();

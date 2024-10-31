@@ -59,86 +59,101 @@ window.mobileCheck = function () {
             current_option.albums = option.albums;
         } catch (e) {
         }
-        $('#' + id_container).html('<div id="loading">\n' +
-            '    <div>\n' +
-            '        <img src="/assets/img/blue_loading.gif">\n' +
-            '        <h2>INITIALIZING MUSIC PLAYER</h2>\n' +
-            '    </div>\n' +
-            '</div>\n' +
-            '<div id="blue-playlist-container">\n' +
-            '    <div id="amplitude-player">\n' +
-            '        <div id="amplitude-left">\n' +
-            '            <img class="main-cover" data-amplitude-song-info="cover_art_url"/>\n' +
-            '            <div id="player-left-bottom">\n' +
-            '                <div id="time-container">\n' +
-            '                    <span class="current-time">\n' +
-            '                        <span class="amplitude-current-minutes" ></span>:<span class="amplitude-current-seconds"></span>\n' +
-            '                    </span>\n' +
-            '                    <div id="progress-container">\n' +
-            '                        <input type="range" class="amplitude-song-slider"/>\n' +
-            '                        <progress id="song-played-progress" class="amplitude-song-played-progress"></progress>\n' +
-            '                        <progress id="song-buffered-progress" class="amplitude-buffered-progress" value="0"></progress>\n' +
-            '                    </div>\n' +
-            '                    <span class="duration">\n' +
-            '\t\t\t\t\t\t\t\t<span class="amplitude-duration-minutes"></span>:<span class="amplitude-duration-seconds"></span>\n' +
-            '\t\t\t\t\t\t\t</span>\n' +
-            '                </div>\n' +
-            '                <div id="waveform"></div>\n' +
-            '                <div id="control-container">\n' +
-            '                    <div id="repeat-container">\n' +
-            '                        <div class="amplitude-repeat" id="repeat"></div>\n' +
-            '                        <div class="amplitude-shuffle amplitude-shuffle-off" id="shuffle"></div>\n' +
-            '                    </div>\n' +
-            '                    <div id="central-control-container">\n' +
-            '                        <div id="central-controls">\n' +
-            '                            <div class="amplitude-prev" id="previous"></div>\n' +
-            '                            <div class="amplitude-play-pause" id="play-pause">\n' +
-            '                                <img class="loading_song" src="/assets/img/blue_loading.gif" />\n' +
-            '                            </div>\n' +
-            '                            <div class="amplitude-next" id="next"></div>\n' +
-            '                        </div>\n' +
-            '                    </div>\n' +
-            '                    <div id="volume-container">\n' +
-            '                        <div class="volume-controls">\n' +
-            '                            <div class="amplitude-mute amplitude-not-muted"></div>\n' +
-            '                            <input type="range" class="amplitude-volume-slider"/>\n' +
-            '                            <div class="ms-range-fix"></div>\n' +
-            '                        </div>\n' +
-            '                        <div class="amplitude-shuffle amplitude-shuffle-off" id="shuffle-right"></div>\n' +
-            '                    </div>\n' +
-            '                </div>\n' +
-            '                <div id="album-cover-mobile">\n' +
-            '                    <img data-amplitude-song-info="cover_art_url"/>\n' +
-            '                </div>\n' +
-            '                <div id="meta-container">\n' +
-            '                    <span data-amplitude-song-info="name" class="song-name"></span>\n' +
-            '                    <div class="song-artist-album">\n' +
-            '                        <span data-amplitude-song-info="artist"></span>\n' +
-            '                        <span data-amplitude-song-info="album"></span>\n' +
-            '                    </div>\n' +
-            '                </div>\n' +
-            '                <div id="control-container-mobile">\n' +
-            '                    <div class="volume-controls">\n' +
-            '                        <div class="amplitude-mute amplitude-not-muted"></div>\n' +
-            '                        <input type="range" class="amplitude-volume-slider"/>\n' +
-            '                        <div class="ms-range-fix"></div>\n' +
-            '                    </div>\n' +
-            '                </div>\n' +
-            '            </div>\n' +
-            '        </div>\n' +
-            '        <div id="amplitude-right">' +
-            '           <div id="selector">' +
-            '               <div onclick="view_songs();" id="songs_btn" class="active"><i class="fa-solid fa-music"></i>&nbsp;&nbsp;SONGS</div>' +
-            '               <div onclick="view_albums();" id="albums_btn"><i class="fa-solid fa-record-vinyl"></i>&nbsp;&nbsp;ALBUMS</div>' +
-            '           </div>' +
-            '           <div class="search_div"></div>' +
-            '           <div id="albums_list"></div>' +
-            '           <div id="songs_list"></div>' +
-            '       </div>\n' +
-            '    </div>\n' +
-            '</div>').promise().done(function () {
-            fetch_songs(id_container, directory);
-        });
+        $('#' + id_container).html(`
+        <div id="loading">
+            <div>
+                <img src="/assets/img/blue_loading.gif">
+                <h2>INITIALIZING MUSIC PLAYER</h2>
+            </div>
+        </div>
+        <div id="blue-playlist-container">
+            <div id="amplitude-player">
+                <div id="amplitude-left">
+                    <img class="main-cover" data-amplitude-song-info="cover_art_url"/>
+                    <div id="player-left-bottom">
+                        <div id="time-container">
+                            <span class="current-time">
+                                <span class="amplitude-current-minutes"></span>:<span class="amplitude-current-seconds"></span>
+                            </span>
+                            <div id="progress-container">
+                                <input type="range" class="amplitude-song-slider"/>
+                                <progress id="song-played-progress" class="amplitude-song-played-progress"></progress>
+                                <progress id="song-buffered-progress" class="amplitude-buffered-progress" value="0"></progress>
+                            </div>
+                            <span class="duration">
+                                <span class="amplitude-duration-minutes"></span>:<span class="amplitude-duration-seconds"></span>
+                            </span>
+                        </div>
+                        <div id="waveform"></div>
+                        <div id="control-container">
+                            <div id="repeat-container">
+                                <div class="amplitude-repeat" id="repeat"></div>
+                                <div class="amplitude-shuffle amplitude-shuffle-off" id="shuffle"></div>
+                            </div>
+                            <div id="central-control-container">
+                                <div id="central-controls">
+                                    <div class="amplitude-prev" id="previous"></div>
+                                    <div class="amplitude-play-pause" id="play-pause">
+                                        <img class="loading_song" src="/assets/img/blue_loading.gif" />
+                                    </div>
+                                    <div class="amplitude-next" id="next"></div>
+                                </div>
+                            </div>
+                            <div id="volume-container">
+                                <div class="volume-controls">
+                                    <div class="amplitude-mute amplitude-not-muted"></div>
+                                    <input type="range" class="amplitude-volume-slider"/>
+                                    <div class="ms-range-fix"></div>
+                                </div>
+                                <div class="amplitude-shuffle amplitude-shuffle-off" id="shuffle-right"></div>
+                            </div>
+                        </div>
+                        <div id="album-cover-mobile">
+                            <img data-amplitude-song-info="cover_art_url"/>
+                        </div>
+                        <div id="meta-container">
+                            <span data-amplitude-song-info="name" class="song-name"></span>
+                            <div class="song-artist-album">
+                                <span data-amplitude-song-info="artist"></span>
+                                <span data-amplitude-song-info="album"></span>
+                            </div>
+                        </div>
+                        <div id="control-container-mobile">
+                            <div class="volume-controls">
+                                <div class="amplitude-mute amplitude-not-muted"></div>
+                                <input type="range" class="amplitude-volume-slider"/>
+                                <div class="ms-range-fix"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="amplitude-right">
+                    <div id="selector">
+                        <div onclick="view_songs();" id="songs_btn" class="active">
+                            <i class="fa-solid fa-music"></i>&nbsp;&nbsp;SONGS
+                        </div>
+                        <div onclick="view_albums();" id="albums_btn">
+                            <i class="fa-solid fa-record-vinyl"></i>&nbsp;&nbsp;ALBUMS
+                        </div>
+                    </div>
+                    <div class="search_div"></div>
+
+                    <div id="albums_list"></div>
+                    <div id="songs_list"></div>
+
+                    <div class="doctor-controls">
+                    <h5>Control patient music player</h5>
+                    <button class="btn btn-primary" onclick="controlMusic('start')"><i class="fas fa-play"></i> Play</button>
+                    <button class="btn btn-primary" onclick="controlMusic('pause')"><i class="fas fa-pause"></i> Pause</button>
+                    <button class="btn btn-primary" onclick="controlMusic('change')"><i class="fas fa-sync-alt"></i> Change Track</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `).promise().done(function () {
+        fetch_songs(id_container, directory);
+    });
+
     }
 
     window.view_songs = function () {
@@ -12101,3 +12116,17 @@ License: MIT
     };
 
 })(jQuery, window, document);
+const socket = io("https://test.clingroup.net");
+socket.on('music-control', (data) => {
+    const playPauseButton = document.getElementById('play-pause');
+
+    if (data.action === 'start') {
+        if (playPauseButton.classList.contains('amplitude-paused')) {
+            playPauseButton.click();
+        }
+    } else if (data.action === 'pause') {
+        if (playPauseButton.classList.contains('amplitude-playing')) {
+            playPauseButton.click();
+        }
+    }
+});
