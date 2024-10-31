@@ -63,7 +63,7 @@
                                     @role('Admin')
                                         <a href="{{ route('doctor.edit', $doctor) }}" class="btn edit-btn">Edit</a>
 
-                                        <form action="{{ route('doctor.destroy', $doctor) }}" method="post" class="m-0"
+                                        <!--<form action="{{ route('doctor.destroy', $doctor) }}" method="post" class="m-0"
                                             id="deleteForm-{{ $doctor->id }}">
                                             @csrf
                                             @method('delete')
@@ -71,7 +71,7 @@
                                                 onclick="event.preventDefault(); document.getElementById('deleteForm-{{ $doctor->id }}').submit();">
                                                 <strong>X</strong>
                                             </a>
-                                        </form>
+                                        </form>-->
                                     @endrole
                                 </td>
                             </tr>

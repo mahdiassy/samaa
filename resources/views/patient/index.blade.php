@@ -56,13 +56,13 @@
                                     <a href="{{ route('patient.edit', $patient) }}" class="btn edit-btn">Edit</a>
                                     <a href="{{ route('patient.show', $patient) }}" class="btn view-btn">View</a>
 
-                                    <form action="{{ route('patient.destroy', $patient) }}" method="post" class="m-0" id="deleteForm-{{ $patient->id }}">
+                                    <!--<form action="{{ route('patient.destroy', $patient) }}" method="post" class="m-0" id="deleteForm-{{ $patient->id }}">
                                         @csrf
                                         @method('delete')
                                         <a class="btn delete-btn" onclick="event.preventDefault(); document.getElementById('deleteForm-{{ $patient->id }}').submit();">
                                             <strong>X</strong>
                                         </a>
-                                    </form>
+                                    </form>-->
 
                                 </td>
                             </tr>
