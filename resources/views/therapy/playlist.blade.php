@@ -14,14 +14,14 @@
 <body>
     <div id="smp_container" class="smp"></div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="{{ asset('assets/js/music.js') }}"></script>
-    <script src="{{ asset('assets/js/music2.js') }}"></script>
+
 </body>
 <script>
     let fetchTherapiesUrl = "{{ route('fetch-therapies') }}";
     let getpeaksTherapiesUrl = "{{ route('get-peaks') }}";
     let savepeaksTherapiesUrl = "{{ route('save-peaks') }}";
 </script>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="{{ asset('assets/js/music.js') }}"></script>
+<script src="{{ asset('assets/js/music2.js') }}"></script>
 </html>
