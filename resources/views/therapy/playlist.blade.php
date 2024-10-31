@@ -96,24 +96,26 @@
         .send-btn:hover {
             background-color: #005bb5;
         }
-    .call-btn, .end-call-btn {
-        background-color: #0078ff;
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        border-radius: 5px;
-        cursor: pointer;
-        margin-left: 5px;
-    }
 
-.end-call-btn {
-    background-color: #ff4d4d;
-}
+        .call-btn,
+        .end-call-btn {
+            background-color: #0078ff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
 
-.call-btn:hover, .end-call-btn:hover {
-    opacity: 0.8;
-}
+        .end-call-btn {
+            background-color: #ff4d4d;
+        }
 
+        .call-btn:hover,
+        .end-call-btn:hover {
+            opacity: 0.8;
+        }
     </style>
 </head>
 
@@ -224,28 +226,39 @@
 <script>
     let localStream;
     let peerConnection;
+    let callActive = false;
 
     const iceServers = {
-        iceServers: [{
-                urls: 'stun:stun.l.google.com:19302'
-            }
-        ]
-    };
+    iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+     };
+
 
     async function startCall() {
-        localStream = await navigator.mediaDevices.getUserMedia({
-            audio: true
-        });
-        document.querySelector('.call-btn').style.display = 'none';
-        document.querySelector('.end-call-btn').style.display = 'inline';
-        socket.emit('start-call');
-        initializePeerConnection();
+        try {
+            localStream = await navigator.mediaDevices.getUserMedia({
+                audio: true
+            });
+            showEndCallButton();
+
+            callActive = true;
+            socket.emit('start-call');
+            initializePeerConnection();
+        } catch (error) {
+            console.error("Failed to access audio stream:", error);
+            alert("Could not access audio. Please check permissions.");
+        }
     }
+
 
     function initializePeerConnection() {
         peerConnection = new RTCPeerConnection(iceServers);
 
-        localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+        if (localStream) {
+            localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+        } else {
+            console.error("Local stream is not initialized.");
+            return;
+        }
 
         peerConnection.onicecandidate = (event) => {
             if (event.candidate) {
@@ -258,30 +271,23 @@
             remoteAudio.srcObject = event.streams[0];
             remoteAudio.play();
         };
+
         peerConnection.createOffer()
             .then(offer => peerConnection.setLocalDescription(offer))
             .then(() => socket.emit('offer', peerConnection.localDescription));
     }
 
-    socket.on('offer', (offer) => {
-        if (!peerConnection) initializePeerConnection();
-        peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
-        peerConnection.createAnswer()
-            .then(answer => peerConnection.setLocalDescription(answer))
-            .then(() => socket.emit('answer', peerConnection.localDescription));
+    socket.on('end-call', () => {
+        if (callActive) {
+            alert("The call has been ended by the other user.");
+            endCall();
+            callActive = false;
+        }
     });
 
-    socket.on('answer', (answer) => {
-        peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
-    });
-
-    socket.on('ice-candidate', (candidate) => {
-        peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
-    });
 
     function endCall() {
-        document.querySelector('.end-call-btn').style.display = 'none';
-        document.querySelector('.call-btn').style.display = 'inline';
+        hideEndCallButton();
 
         if (peerConnection) {
             peerConnection.close();
@@ -293,10 +299,18 @@
         }
 
         socket.emit('end-call');
+        callActive = false;
     }
-    socket.on('end-call', () => {
-        endCall();
-    });
+
+    function showEndCallButton() {
+        document.querySelector('.call-btn').style.display = 'none';
+        document.querySelector('.end-call-btn').style.display = 'inline';
+    }
+
+    function hideEndCallButton() {
+        document.querySelector('.end-call-btn').style.display = 'none';
+        document.querySelector('.call-btn').style.display = 'inline';
+    }
 </script>
 
 </html>
