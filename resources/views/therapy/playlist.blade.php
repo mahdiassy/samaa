@@ -127,8 +127,8 @@
     <div class="chat-container">
         <div class="chat-header">
             Session Chat
-            <button onclick="startCall()" class="call-btn">Start Call</button>
-            <button onclick="endCall()" class="end-call-btn" style="display:none;">End Call</button>
+            <button  id="startCallButton" class="call-btn">Start Call</button>
+            <button  id="endCallButton"  onclick="endCall()" class="end-call-btn" style="display:none;">End Call</button>
         </div>
 
         <div id="chat-box" class="chat-box">
@@ -226,21 +226,38 @@
 <script>
     let localStream;
     let peerConnection;
+    let audioContext;
     let callActive = false;
+    const socket = io("https://test.clingroup.net");
+
 
     const iceServers = {
-    iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
-     };
+        iceServers: [{ urls: 'stun:stun.l.google.com:19302' }]
+    };
+
+
+    document.getElementById("startCallButton").addEventListener("click", () => {
+        if (!audioContext) {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioContext.state === "suspended") {
+            audioContext.resume().then(() => {
+                console.log("AudioContext is resumed.");
+                startCall();
+            });
+        } else {
+            startCall();
+        }
+    });
 
 
     async function startCall() {
         try {
-            localStream = await navigator.mediaDevices.getUserMedia({
-                audio: true
-            });
-            showEndCallButton();
 
+            localStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+            showEndCallButton();
             callActive = true;
+
             socket.emit('start-call');
             initializePeerConnection();
         } catch (error) {
@@ -252,6 +269,7 @@
 
     function initializePeerConnection() {
         peerConnection = new RTCPeerConnection(iceServers);
+
 
         if (localStream) {
             localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
@@ -266,28 +284,57 @@
             }
         };
 
+
         peerConnection.ontrack = (event) => {
             const remoteAudio = new Audio();
             remoteAudio.srcObject = event.streams[0];
             remoteAudio.play();
         };
 
+
         peerConnection.createOffer()
             .then(offer => peerConnection.setLocalDescription(offer))
             .then(() => socket.emit('offer', peerConnection.localDescription));
     }
 
+
+    socket.on('offer', (offer) => {
+        if (!peerConnection) initializePeerConnection();
+        peerConnection.setRemoteDescription(new RTCSessionDescription(offer))
+            .then(() => peerConnection.createAnswer())
+            .then(answer => peerConnection.setLocalDescription(answer))
+            .then(() => socket.emit('answer', peerConnection.localDescription));
+    });
+
+    socket.on('answer', (answer) => {
+        peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+    });
+
+
+    socket.on('ice-candidate', (candidate) => {
+        peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
+    });
+
+
     socket.on('end-call', () => {
         if (callActive) {
             alert("The call has been ended by the other user.");
             endCall();
-            callActive = false;
+        }
+    });
+
+
+    socket.on('resume-call', (data) => {
+        if (data.isActive) {
+            alert("A call is currently active. Rejoining the call...");
+            startCall();
         }
     });
 
 
     function endCall() {
         hideEndCallButton();
+        callActive = false;
 
         if (peerConnection) {
             peerConnection.close();
@@ -299,17 +346,17 @@
         }
 
         socket.emit('end-call');
-        callActive = false;
     }
 
+
     function showEndCallButton() {
-        document.querySelector('.call-btn').style.display = 'none';
-        document.querySelector('.end-call-btn').style.display = 'inline';
+        document.getElementById('startCallButton').style.display = 'none';
+        document.getElementById('endCallButton').style.display = 'inline';
     }
 
     function hideEndCallButton() {
-        document.querySelector('.end-call-btn').style.display = 'none';
-        document.querySelector('.call-btn').style.display = 'inline';
+        document.getElementById('endCallButton').style.display = 'none';
+        document.getElementById('startCallButton').style.display = 'inline';
     }
 </script>
 
