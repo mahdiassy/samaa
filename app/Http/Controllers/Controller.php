@@ -11,27 +11,27 @@ use Illuminate\Support\Facades\Storage;
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
-
-    public function storeFile(UploadedFile $file, string $path = 'files', string $disk = 'public')
-    {
-        $originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-        $extension = strtolower($file->getClientOriginalExtension());
-
-        $filename = $path . '/' . time() . \Str::random(3) . '-' . $originalName . '.' . $extension;
-
-        Storage::disk($disk)->put($filename, file_get_contents($file));
-
-        return $filename;
+public function storeFile(UploadedFile $file, string $path = 'files', string $disk = 'public')
+{
+    $filename = time() . \Str::random(3) . '-' . $file->getClientOriginalName();
+    $storagePath = Storage::disk($disk)->path($path);
+    if (!is_dir($storagePath)) {
+        mkdir($storagePath, 0755, true);
     }
+    $file->move($storagePath, $filename);
 
-    public function storeFileEncrypt(UploadedFile $file, string $path = 'files', string $disk = 'public')
-	{
-		$originalName = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
-		$extension = strtolower($file->getClientOriginalExtension());
-		$sanitizedOriginalName = preg_replace('/[^A-Za-z0-9\-]/', '_', $originalName);
-		$filename = time() . \Str::random(3) . '-' . $sanitizedOriginalName . '.' . $extension;
-		$file->storeAs($path, $filename, $disk);
-		$filenameEncrypt = encrypt($filename);
-		return $filenameEncrypt;
+    return $path . '/' . $filename;
+}
+
+public function storeFileEncrypt(UploadedFile $file, string $path = 'files', string $disk = 'public')
+{
+    $filename = time() . \Str::random(3) . '-' . $file->getClientOriginalName();
+    $filenameEncrypt = encrypt($filename);
+    $storagePath = Storage::disk($disk)->path($path);
+    if (!is_dir($storagePath)) {
+        mkdir($storagePath, 0755, true);
     }
+    $file->move($storagePath, $filename);
+    return $filenameEncrypt;
+}
 }
