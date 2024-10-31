@@ -126,17 +126,21 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!-- new -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script><!-- new -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
 <!-- FullCalendar CSS and JS -->
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"><!-- new -->
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script><!-- new -->
 
-<script src="{{ asset('assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
+
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
     $('#users-movies-select2').select2({
         placeholder: "Select a time",
-        allowClear: true
+        width: '100%',
+        allowClear: true,
+        dropdownParent: $('#monthModal')
     });
         var availabilities = [{!! $availabilities !!}];
         availabile = []
