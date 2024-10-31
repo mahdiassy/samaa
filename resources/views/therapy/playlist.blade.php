@@ -228,7 +228,6 @@
     let peerConnection;
     let audioContext;
     let callActive = false;
-    const socket = io("https://test.clingroup.net");
 
 
     const iceServers = {
