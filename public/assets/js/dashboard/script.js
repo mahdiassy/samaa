@@ -62,7 +62,7 @@ document.getElementById('imageUpload').addEventListener('change', function() {
 });*/
 
 let currentPage = 1;
-const rowsPerPage = 1;
+const rowsPerPage = 10;
 const patientRows = Array.from(document.querySelectorAll('#patientTbody tr'));
 const totalRows = patientRows.length;
 const totalPages = Math.ceil(totalRows / rowsPerPage);

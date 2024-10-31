@@ -12,6 +12,9 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&family=Roboto:wght@400;800&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
@@ -27,40 +30,93 @@
         <div class="menu" id="menu">
             <button class="close-menu" id="closeMenu">×</button>
             <h2 class="menu-title">Menu</h2>
-            <a href="/">Home</a>
-            <a href="/about-us">About Us</a>
+            <a href="{{ route('home') }}">Home</a>
+            <a href="{{ route('about-us') }}">About Us</a>
             <!--<a href="#">Library</a>
             <a href="#">Listen to Music</a>
             <a href="#">Patient List</a>
             <a href="#">Feedback</a>
             <a href="#">Schedule</a>
             <a href="#">Therapy</a>-->
-            <a href="/contact-us">Contact Us</a>
+            <a href="{{ route('contact-us') }}">Contact Us</a>
             <!--<a href="#">Login</a>-->
+            @if (Auth::check())
+                <a href="{{ route('dashboard') }}">Dashboard</a>
+                <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    Logout
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+            @else
+                <a href="{{ route('login') }}">Login</a>
+                <a href="{{ route('register') }}">register</a>
+            @endif
 
             <div class="profile">
-                <span>Doctor Youssef</span>
-                <img src="assets/images/user.jfif" alt="Profile">
+
+                @if (Auth::check() && Auth::user()->hasRole('Patient'))
+
+                    <span>{{ Auth::user()->patient->first_name }} {{ Auth::user()->patient->last_name }}</span>
+
+                    @if (Auth::check() && Auth::user()->patient && Auth::user()->patient->image)
+                        <img src="{{ asset('storage/' . Auth::user()->patient->image) }}" alt="Profile">
+                    @else
+                        <img src="{{ asset('storage/avatar1.png') }}" alt="Profile">
+                    @endif
+                @elseif (Auth::check() && Auth::user()->hasRole('Doctor'))
+                    <span>{{ Auth::user()->doctor->first_name }} {{ Auth::user()->doctor->last_name }}</span>
+                    @if (Auth::check() && Auth::user()->doctor && Auth::user()->doctor->image)
+                        <img src="{{ asset('storage/' . Auth::user()->doctor->image) }}" alt="Profile">
+                    @else
+                        <img src="{{ asset('storage/avatar1.png') }}" alt="Profile">
+                    @endif
+                @elseif (Auth::check() && Auth::user()->hasRole('Admin'))
+                    <span>{{ Auth::user()->name }}</span>
+                    <img src="{{ asset('storage/avatar1.png') }}" alt="Profile">
+                @endif
             </div>
         </div>
     </nav>
+
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: "{{ session('error') }}",
+            });
+        </script>
+    @endif
 
     @yield('content')
 
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-logo">
-                <img src="assets/images/samaa-logo.png" alt="Logo">
+                <img src="{{ asset('assets/images/samaa-logo.png') }}" alt="Logo">
             </div>
             <div class="footer-links">
                 <div class="column">
-                    <a href="/">Home</a>
+                    <a href="{{ route('home') }}">Home</a>
                     <a href="#">Therapy</a>
-                    <a href="#">Register</a>
+                    @if (Auth::check())
+                        <a href="#"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('register') }}">register</a>
+                    @endif
+
                 </div>
                 <div class="column">
-                    <a href="/about-us">About Us</a>
-                    <a href="/contact-us">Contact Us</a>
+                    <a href="{{ route('about-us') }}">About Us</a>
+                    <a href="{{ route('contact-us') }}">Contact Us</a>
                 </div>
                 <div class="column">
                     <a href="#">Library</a>

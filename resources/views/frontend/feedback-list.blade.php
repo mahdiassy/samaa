@@ -37,7 +37,7 @@
                                 stroke-linejoin="round" />
                         </svg>
                     </a>
-                    <button class="add-patient-btn">Add New Patient</button>
+                    <button class="add-patient-btn">Add Feedback</button>
                 </div>
             </div>
 
@@ -61,9 +61,9 @@
                             <td class="custom-date">1/2/2024</td>
                             <td class="custom-date">10/2/2024</td>
                             <td>
-                                <button class="btn edit-btn">Edit</button>
-                                <button class="btn view-btn">View</button>
-                                <button class="btn delete-btn"><strong>X</strong></button>
+                                <a class="btn edit-btn">Edit</a>
+                                <a class="btn view-btn">View</a>
+                                <a class="btn delete-btn"><strong>X</strong></a>
                             </td>
                         </tr>
                         <tr>
@@ -73,9 +73,9 @@
                             <td class="custom-date">1/3/2024</td>
                             <td class="custom-date">10/6/2024</td>
                             <td>
-                                <button class="btn edit-btn">Edit</button>
-                                <button class="btn view-btn">View</button>
-                                <button class="btn delete-btn"><strong>X</strong></button>
+                                <a class="btn edit-btn">Edit</a>
+                                <a class="btn view-btn">View</a>
+                                <a class="btn delete-btn"><strong>X</strong></a>
                             </td>
                         </tr>
                         <tr>
@@ -85,9 +85,9 @@
                             <td class="custom-date">1/3/2024</td>
                             <td class="custom-date">10/6/2024</td>
                             <td>
-                                <button class="btn edit-btn">Edit</button>
-                                <button class="btn view-btn">View</button>
-                                <button class="btn delete-btn"><strong>X</strong></button>
+                                <a class="btn edit-btn">Edit</a>
+                                <a class="btn view-btn">View</a>
+                                <a class="btn delete-btn"><strong>X</strong></a>
                             </td>
                         </tr>
                         <!-- More rows as needed -->

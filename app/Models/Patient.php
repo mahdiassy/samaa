@@ -28,6 +28,16 @@ class Patient extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function country()
+    {
+        return $this->belongsTo(Country::class);
+    }
+
+    public function language()
+    {
+        return $this->belongsTo(Language::class);
+    }
+
     public function therapies()
     {
         return $this->belongsToMany(Therapy::class, 'patient_therapy');

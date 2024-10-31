@@ -12,9 +12,10 @@
             </button>
         </div>
         <div class="header">
-            <a href="#" class="btn-back">
+            <a href="javascript:void(0);" onclick="history.back();" class="btn-back">
                 <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Go Back
             </a>
+
         </div>
         <div>
             <div class="profile-details">

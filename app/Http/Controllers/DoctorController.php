@@ -37,23 +37,18 @@ class DoctorController extends Controller
 
     public function create()
     {
-        $roles = Role::all();
-        return view($this->dir . "create", compact('roles'));
+        return view($this->dir . "create");
     }
 
     public function store(Request $request)
     {
-        $dateString = $request->birthday;
-        $date = DateTime::createFromFormat('F, j, Y', $dateString);
-        $birthday = $date->format('Y-m-d');
-
         $doctor = new Doctor;
         $doctor->first_name = $request->first_name;
         $doctor->last_name = $request->last_name;
         $doctor->phone = $request->phone;
         $doctor->specialization = $request->specialization;
         $doctor->address = $request->address;
-        $doctor->birthday = $birthday;
+        $doctor->birthday = $request->birthday;
         $doctor->twitter = $request->twitter;
         $doctor->facebook = $request->facebook;
         $doctor->instagram = $request->instagram;
@@ -84,22 +79,18 @@ class DoctorController extends Controller
 
     public function edit(Request $request, Doctor $doctor)
     {
-        $roles = Role::all();
-        return view($this->dir . "edit", compact('doctor', 'roles'));
+        return view($this->dir . "edit", compact('doctor'));
     }
 
     public function update(Request $request, Doctor $doctor)
     {
-        $dateString = $request->birthday;
-        $date = DateTime::createFromFormat('F, j, Y', $dateString);
-        $birthday = $date->format('Y-m-d');
 
         $doctor->first_name = $request->first_name;
         $doctor->last_name = $request->last_name;
         $doctor->phone = $request->phone;
         $doctor->specialization = $request->specialization;
         $doctor->address = $request->address;
-        $doctor->birthday = $birthday;
+        $doctor->birthday = $request->birthday;
         $doctor->twitter = $request->twitter;
         $doctor->facebook = $request->facebook;
         $doctor->instagram = $request->instagram;
@@ -113,8 +104,6 @@ class DoctorController extends Controller
         if ($request->has('image')) {
             $image = $request->file('image');
             $doctor->image = $this->storeFile($image, 'Doctor image');
-        } else {
-            $doctor->image = '/avatar1.png';
         }
 
         $doctor->save();
@@ -158,18 +147,23 @@ class DoctorController extends Controller
 
     public function deleteTime($id)
     {
-        $booking = Booking::where('available_id',$id);
-        //$time = Availability::find($id);
-        // if ($time->booking()->exists()) {
+        //dd($id);
+        //$booking = Booking::where('available_id',$id);
+        $time = Availability::find($id);
+        if (!$time->booking()->exists()) {
+            $time->delete();
+            return response()->json(['message' => 'deleted']);
+        } else {
+            return response()->json(['message' => 'no deleted']);
+        }
         /*$booking = $time->booking;
             $booking->status = BookingEnum::DOCTOR_CANCEL;
             $booking->save();*/
         //$time->delete();
-        //} else {
+        /*} else {
         $booking->delete();
-        //}
+        }*/
 
-        return response()->json(['message' => 'deleted']);
         /*$time = Availability::find($id);
         $time->delete();
         return response()->json(['message' => 'deleted']);*/

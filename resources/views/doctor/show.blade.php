@@ -1,188 +1,71 @@
-@extends('layouts.master')
+@extends('layouts.master2')
 @section('content')
-    <section class="users-view">
-        <!-- users view media object start -->
-        <div class="row">
-            <div class="col-12 col-sm-7">
-                <div class="media mb-2">
-                    <a class="mr-1" href="#">
-                        <img src="{{ Storage::url($doctor->image) }}" alt="users view avatar"
-                            class="users-avatar-shadow rounded-circle" height="64" width="64">
-                    </a>
-                    <div class="media-body pt-25">
-                        <h4 class="media-heading"><span class="users-view-name">{{ $doctor->first_name }}
-                                {{ $doctor->last_name }}</span>
-                        </h4>
-                        <span>ID:</span>
-                        <span class="users-view-id">{{ $doctor->id }}</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-5 px-0 d-flex justify-content-end align-items-center px-1 mb-2">
-                <a href="{{ route('doctor.index') }}" class="btn btn-sm mr-25 border">Back</a>
-                <a href="{{ route('doctor.edit', $doctor) }}"
-                    class="btn btn-sm btn-primary">Edit</a>
-            </div>
+    <div class="main-content">
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+            <button>
+                <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M20.75 20.1895L15.086 14.5255C16.4471 12.8914 17.1259 10.7956 16.981 8.67389C16.8362 6.55219 15.879 4.56801 14.3085 3.1341C12.7379 1.7002 10.6751 0.92697 8.54899 0.975279C6.42291 1.02359 4.39729 1.88971 2.89353 3.39347C1.38977 4.89723 0.523649 6.92284 0.47534 9.04893C0.427031 11.175 1.20026 13.2379 2.63416 14.8084C4.06807 16.3789 6.05225 17.3361 8.17395 17.481C10.2957 17.6258 12.3915 16.9471 14.0255 15.586L19.6895 21.25L20.75 20.1895ZM2.00003 9.24996C2.00003 7.91494 2.39591 6.6099 3.13761 5.49987C3.87931 4.38983 4.93351 3.52467 6.16691 3.01378C7.40031 2.50289 8.75751 2.36921 10.0669 2.62966C11.3763 2.89011 12.579 3.53299 13.523 4.47699C14.467 5.421 15.1099 6.62373 15.3703 7.9331C15.6308 9.24248 15.4971 10.5997 14.9862 11.8331C14.4753 13.0665 13.6102 14.1207 12.5001 14.8624C11.3901 15.6041 10.085 16 8.75003 16C6.96042 15.998 5.24469 15.2862 3.97925 14.0207C2.71381 12.7553 2.00201 11.0396 2.00003 9.24996Z"
+                        fill="#818181" />
+                </svg>
+            </button>
         </div>
-        <!-- users view media object ends -->
-        <!-- users view card data start -->
-        <div class="card">
-            <div class="card-content">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12 col-md-4">
-                            <table class="table table-borderless">
-                                <tbody>
-                                    <tr>
-                                        <td>Registered:</td>
-                                        <td>{{ \Carbon\Carbon::parse($doctor->created_at)->format('d-m-Y') }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Latest update: </td>
-                                        <td class="users-view-latest-activity">
-                                            {{ \Carbon\Carbon::parse($doctor->updated_at)->format('d-m-Y') }}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Doctor Role: </td>
-                                        <td class="users-view-latest-activity">
-                                            {{$doctor->user->roles->pluck('name')->implode(', ')}}
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>Verified:</td>
-                                        <td>
-                                            @if ($doctor->user->email_verified_at != null)
-                                                <span class="badge badge-success ">Active</span>
-                                            @else
-                                                <span class="badge badge-danger ">Unactive</span>
-                                            @endif
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="col-12 col-md-8">
-                            <div class="table-responsive">
-                                <table class="table mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>Module Permission</th>
-                                            <th>Read</th>
-                                            <th>Write</th>
-                                            <th>Create</th>
-                                            <th>Delete</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Users</td>
-                                            <td>Yes</td>
-                                            <td>No</td>
-                                            <td>No</td>
-                                            <td>Yes</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Articles</td>
-                                            <td>No</td>
-                                            <td>Yes</td>
-                                            <td>No</td>
-                                            <td>Yes</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Staff</td>
-                                            <td>Yes</td>
-                                            <td>Yes</td>
-                                            <td>No</td>
-                                            <td>No</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+        <div class="header">
+            <a href="{{ route('doctor.index') }}" class="btn-back">
+                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Go Back
+            </a>
+        </div>
+        <div>
+            <div class="profile-details">
+                <div class="doctor-details">
+                    <img src="{{ asset('assets/images/patient.png') }}" alt="Patient Photo" class="profile-img">
+                    <div class="user-info">
+                        <div class="extra-user-info">
+                            <p class="big-title">{{ $doctor->first_name }} {{ $doctor->last_name }}</p>
+                            <div class="small-title">
+                                <p>ID:#{{ $doctor->id }}</p>
+                            </div>
+                            <div class="text-info">
+                                <p><strong>Specialization</strong></p>
+                                <p>{{ $doctor->specialization }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- users view card data ends -->
-        <!-- users view card details start -->
-        <div class="card">
-            <div class="card-content">
-                <div class="card-body">
-                    <div style="display: none"
-                        class="row bg-primary bg-lighten-5 rounded mb-2 mx-25 text-center text-lg-left">
-                        <div class="col-12 col-sm-4 p-2">
-                            <h6 class="text-primary mb-0">Posts: <span class="font-large-1 align-middle">125</span></h6>
+
+                <div class="doctor-details">
+
+                    <div class="user-info">
+                        <p class="big-title">{{ $doctor->first_name }} {{ $doctor->last_name }}</p>
+                        <div class="small-title">
+                            <p>ID:#{{ $doctor->id }}</p>
                         </div>
-                        <div class="col-12 col-sm-4 p-2">
-                            <h6 class="text-primary mb-0">Followers: <span class="font-large-1 align-middle">534</span></h6>
-                        </div>
-                        <div class="col-12 col-sm-4 p-2">
-                            <h6 class="text-primary mb-0">Following: <span class="font-large-1 align-middle">256</span></h6>
+                        <div class="text-info">
+                            <p><strong>Address:</strong> {{ $doctor->address }}</p>
+
+                            <p><strong>Birthday:</strong> {{ \Carbon\Carbon::parse($doctor->birthday)->format('d-m-Y') }}</p>
                         </div>
                     </div>
-                    <div class="col-12">
-                        <table class="table table-borderless">
-                            <tbody>
-                                <tr>
-                                    <td>First Name:</td>
-                                    <td class="users-view-username">{{ $doctor->first_name }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Last Name:</td>
-                                    <td class="users-view-name">
-                                        {{ $doctor->last_name }}</td>
-                                </tr>
-                                <tr>
-                                    <td>E-mail:</td>
-                                    <td class="users-view-email">{{ $doctor->user->email }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <h5 class="mb-1"><i class="feather icon-link"></i> Social
-                            Links</h5>
-                        <table class="table table-borderless">
-                            <tbody>
-                                <tr>
-                                    <td>Twitter:</td>
-                                    <td><a target="_blank" href="{{ $doctor->twitter }}">{{ $doctor->twitter }}</a></td>
-                                </tr>
-                                <tr>
-                                    <td>Facebook:</td>
-                                    <td><a target="_blank" href="{{ $doctor->facebook }}">{{ $doctor->facebook }}</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Instagram:</td>
-                                    <td><a target="_blank" href="{{ $doctor->instagram }}">{{ $doctor->instagram }}</a>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <h5 class="mb-1"><i class="feather icon-info"></i> Personal
-                            Info</h5>
-                        <table class="table table-borderless mb-0">
-                            <tbody>
-                                <tr>
-                                    <td>Birthday:</td>
-                                    <td>{{ \Carbon\Carbon::parse($doctor->birthday)->format('d-m-Y') }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Address:</td>
-                                    <td>{{ $doctor->address }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Contact:</td>
-                                    <td>{{ $doctor->phone }}</td>
-                                </tr>
-                            </tbody>
-                        </table>
+                    <div class="diagnosis">
+                        <div class="text-info">
+                            <p><strong>Email:</strong></p>
+                            <p>{{ $doctor->user->email }}</p>
+
+                            <p><strong>Phone:</strong></p>
+                            <p>{{ $doctor->phone }}</p>
+                        </div>
                     </div>
+                </div>
+                <div class="action-buttons">
+                    <a href="{{ route('doctor.index') }}" class="btn patient-btn">Doctor List</a>
+                    <a href="{{ route('feedback') }}" class="btn patient-btn">Feedback</a>
+
+                    @role('Doctor')
+                        <a href="{{ route('doctors.calendar') }}" class="btn patient-btn">+ Schedule Appointment</a>
+                    @endrole
                 </div>
             </div>
         </div>
-        <!-- users view card details ends -->
-
-    </section>
+    </div>
 @endsection

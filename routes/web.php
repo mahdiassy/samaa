@@ -22,19 +22,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('frontend/home');
-});
-Route::get('/login', function () {
+})->name('home');
+/*Route::get('/login', function () {
     return view('frontend/login');
-});
-Route::get('/register', function () {
+});*/
+/*Route::get('/register', function () {
     return view('frontend/register');
-});
+});*/
 Route::get('/contact-us', function () {
     return view('frontend/contact-us');
-});
+})->name('contact-us');
 Route::get('/about-us', function () {
     return view('frontend/about-us');
-});
+})->name('about-us');
 Route::get('/patient-show', function () {
     return view('frontend/patient-show');
 });
@@ -49,10 +49,10 @@ Route::get('/doctor-show', function () {
 });
 Route::get('/feedback', function () {
     return view('frontend/feedback');
-});
+})->name('feedback');
 Route::get('/feedback-list', function () {
     return view('frontend/feedback-list');
-});
+})->name('feedback-list');
 Route::get('/listenToMusic', function () {
     return view('frontend/listenToMusic');
 });
@@ -61,6 +61,13 @@ Route::get('/listener-statistics', function () {
 });
 // Auth
 
+Route::get('login', [AuthController::class, 'showLoginForm']);
+Route::post('login', [AuthController::class, 'login'])->name('login');
+Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+
+Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
+Route::post('registerPatient', [AuthController::class, 'registerPatient'])->name('registerPatient');
+
 Route::get('/fetch-therapies', [TherapyController::class, 'fetchTherapies'])->name('fetch-therapies');
 Route::post('/get-peaks', [TherapyController::class, 'getPeaks'])->name('get-peaks');
 Route::post('/save-peaks', [TherapyController::class, 'savePeaks'])->name('save-peaks');
@@ -68,13 +75,11 @@ Route::post('/save-peaks', [TherapyController::class, 'savePeaks'])->name('save-
 Route::group([
     'prefix' => 'control',
 ], function () {
-    Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
-
-    Route::get('login', [AuthController::class, 'showLoginForm']);
-    Route::post('login', [AuthController::class, 'login'])->name('login');
-    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
     Route::middleware(['auth:web'])->group(function () {
+
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+
         Route::resource('patient', PatientController::class)->middleware('role:Admin|Doctor');
         Route::resource('doctor', DoctorController::class)->middleware('role:Admin|Patient');
         Route::resource('therapy', TherapyController::class)->middleware('role:Admin|Doctor|Patient');

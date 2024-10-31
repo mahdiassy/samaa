@@ -49,7 +49,7 @@ class PermissionsSeeder extends Seeder
         $role3->givePermissionTo([
             Permissions::DOCTOR_LIST,
             Permissions::DOCTOR_SHOW,
-            
+
             Permissions::THERAPY_SHOW,
             Permissions::THERAPY_LIST,
         ]);
@@ -82,6 +82,8 @@ class PermissionsSeeder extends Seeder
         Patient::create([
             'first_name' => 'patient1',
             'user_id' => $userpatient->id,
+            'language_id' => 1,
+            'country_id' => 1,
         ]);
     }
 }

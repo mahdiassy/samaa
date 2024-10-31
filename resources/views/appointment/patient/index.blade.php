@@ -1,68 +1,97 @@
-@extends('layouts.master')
+@extends('layouts.master2')
 @section('content')
-    <!-- users list start -->
-    <section class="users-list-wrapper">
-        <div class="col-12 px-0 d-flex justify-content-end align-items-right mb-2">
-            <a href="{{ route('patient.create') }}" class="btn btn-sm btn-primary">Create Patient</a>
+    <div class="main-content">
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+            <button>
+                <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M20.75 20.1895L15.086 14.5255C16.4471 12.8914 17.1259 10.7956 16.981 8.67389C16.8362 6.55219 15.879 4.56801 14.3085 3.1341C12.7379 1.7002 10.6751 0.92697 8.54899 0.975279C6.42291 1.02359 4.39729 1.88971 2.89353 3.39347C1.38977 4.89723 0.523649 6.92284 0.47534 9.04893C0.427031 11.175 1.20026 13.2379 2.63416 14.8084C4.06807 16.3789 6.05225 17.3361 8.17395 17.481C10.2957 17.6258 12.3915 16.9471 14.0255 15.586L19.6895 21.25L20.75 20.1895ZM2.00003 9.24996C2.00003 7.91494 2.39591 6.6099 3.13761 5.49987C3.87931 4.38983 4.93351 3.52467 6.16691 3.01378C7.40031 2.50289 8.75751 2.36921 10.0669 2.62966C11.3763 2.89011 12.579 3.53299 13.523 4.47699C14.467 5.421 15.1099 6.62373 15.3703 7.9331C15.6308 9.24248 15.4971 10.5997 14.9862 11.8331C14.4753 13.0665 13.6102 14.1207 12.5001 14.8624C11.3901 15.6041 10.085 16 8.75003 16C6.96042 15.998 5.24469 15.2862 3.97925 14.0207C2.71381 12.7553 2.00201 11.0396 2.00003 9.24996Z"
+                        fill="#818181" />
+                </svg>
+            </button>
         </div>
-        <div class="users-list-table">
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-body">
-                        <!-- datatable start -->
-                        <div class="table-responsive">
-                            <table id="users-list-datatable" class="table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Doctor Name</th>
-                                        <th>Doctor Specialization</th>
-                                        <th>Booking Date</th>
-                                        <th></th>
-                                        <th>Booking status</th>
-                                        <th></th>
-                                        <th>Canceled</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($patientBookings as $patientBooking)
-                                        <tr>
-                                            <td>{{ $patientBooking->id }}</td>
-                                            <td>
-                                                <span class="text-truncate">
-                                                    <a
-                                                        href="{{ route('doctor.show', $patientBooking->availability->doctor) }}">{{ $patientBooking->availability->doctor->first_name .' '. $patientBooking->availability->doctor->last_name }}</a></span>
-                                            </td>
-                                            <td>{{ $patientBooking->availability->doctor->specialization }}</td>
-                                            <td>{{ $patientBooking->availability->time }}</td>
-                                            <td></td>
-                                            <td>{{ $patientBooking->status }}</td>
-                                            <td></td>
-                                            <td>
-                                                <form action="{{ route('changeStatus', [$patientBooking->availability->id, \App\Enums\BookingEnum::PATIENT_CANCEL]) }}" method="POST" style="display:inline;">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-link" style="border: none; background: none;">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24"
-                                                            class="main-grid-item-icon" fill="none" stroke="currentColor" stroke-linecap="round"
-                                                            stroke-linejoin="round" stroke-width="2">
-                                                            <polyline points="3 6 5 6 21 6" />
-                                                            <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                                                            <line x1="10" x2="10" y1="11" y2="17" />
-                                                            <line x1="14" x2="14" y1="11" y2="17" />
-                                                        </svg>
-                                                    </button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- datatable ends -->
-                    </div>
+        <div class="patient-contaier">
+
+            <div class="actions">
+                <div class="title-container">
+                    <h1 class="page-title">My Bookings</h1>
+                </div>
+                <div class="button-container">
+                    <a href="{{ route('doctor.index') }}" class="add-patient-btn">Booking with a doctor                    </a>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="patientTable" class="patient-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Doctor Name</th>
+                            <th>Doctor Specialization</th>
+                            <th>Booking Date</th>
+                            <th>Booking status</th>
+                            <th>Canceled</th>
+                        </tr>
+                    </thead>
+                    <tbody id="patientTbody">
+                        @foreach ($patientBookings as $patientBooking)
+                            <tr>
+                                <td>{{ $patientBooking->id }}</td>
+                                <td>
+                                    <span class="text-truncate">
+                                        <a class="link" href="{{ route('doctor.show', $patientBooking->availability->doctor) }}">{{ $patientBooking->availability->doctor->first_name . ' ' . $patientBooking->availability->doctor->last_name }}</a></span>
+                                </td>
+                                <td>{{ $patientBooking->availability->doctor->specialization }}</td>
+                                <td >{{ \Carbon\Carbon::parse($patientBooking->availability->time)->format('d-m-Y') }}</td>
+
+                                <td class="custom-date">{{ $patientBooking->status }}</td>
+                                <td>
+                                    <form
+                                        action="{{ route('changeStatus', [$patientBooking->availability->id, \App\Enums\BookingEnum::PATIENT_CANCEL]) }}"
+                                        method="POST" style="display:inline;">
+                                        @csrf
+                                        <button type="submit" class="btn btn-link" style="border: none; background: none;">
+                                            <strong>X</strong>
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <span id="paginationInfo">Showing 1 to 2 of 2 entries</span>
+
+                    <ul class="page-list" id="pageList">
+                        <li><a href="#" id="prevBtn" onclick="changePage(currentPage - 1)" disabled>
+                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7.41 11.3869L2.83 6.79688L7.41 2.20687L6 0.796875L0 6.79688L6 12.7969L7.41 11.3869Z"
+                                        fill="#2E4049" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li><a href="#" onclick="changePage(1)">1</a></li>
+                        <li><a href="#" onclick="changePage(2)">2</a></li>
+                        <li><a href="#" onclick="changePage(3)">3</a></li>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#" onclick="changePage(99)">99</a></li>
+                        <li>
+                            <a href="#" id="nextBtn" onclick="changePage(currentPage + 1)">
+                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0.589844 11.3869L5.16984 6.79688L0.589844 2.20687L1.99984 0.796875L7.99984 6.79688L1.99984 12.7969L0.589844 11.3869Z"
+                                        fill="#2E4049" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- users list ends -->
+    </div>
 @endsection

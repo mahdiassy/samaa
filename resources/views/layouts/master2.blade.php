@@ -11,10 +11,14 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&family=Roboto:wght@400;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/dashboard/style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </head>
 
 <body>
@@ -31,34 +35,88 @@
         </div>
 
         <div class="user-profile">
-            <img src="assets/images/user.jfif" alt="Profile">
-            <div class="desc-profile">
-                <h3>Doctor youssef</h3>
-                <p>Therapy</p>
-            </div>
+
+            @if (Auth::check() && Auth::user()->hasRole('Patient'))
+
+                @if (Auth::check() && Auth::user()->patient && Auth::user()->patient->image)
+                    <img src="{{ asset('storage/' . Auth::user()->patient->image) }}" alt="Profile">
+                @else
+                    <img src="{{ asset('storage/avatar1.png') }}" alt="Profile">
+                @endif
+
+                <div class="desc-profile">
+                    <h3>{{ Auth::user()->patient->first_name }} {{ Auth::user()->patient->last_name }}</h3>
+                </div>
+            @elseif (Auth::check() && Auth::user()->hasRole('Doctor'))
+                @if (Auth::check() && Auth::user()->doctor && Auth::user()->doctor->image)
+                    <img src="{{ asset('storage/' . Auth::user()->doctor->image) }}" alt="Profile">
+                @else
+                    <img src="{{ asset('storage/avatar1.png') }}" alt="Profile">
+                @endif
+
+                <div class="desc-profile">
+                    <h3>{{ Auth::user()->doctor->first_name }} {{ Auth::user()->doctor->last_name }}</h3>
+                </div>
+            @elseif (Auth::check() && Auth::user()->hasRole('Admin'))
+                <img src="{{ asset('storage/avatar1.png') }}" alt="Profile">
+                <div class="desc-profile">
+                    <h3>{{ Auth::user()->name }}</h3>
+                </div>
+            @endif
         </div>
+
         <div class="sidebar-content">
             <ul class="menu-items">
-                <li><a href="#"><img src="{{ asset('assets/images/icons/dashboard.svg') }}"
+                <li><a href="{{ route('dashboard') }}"><img src="{{ asset('assets/images/icons/dashboard.svg') }}"
                             alt="Dashboard"><span>Home</span></a></li>
-                <li><a href="#"><img src="{{ asset('assets/images/icons/profile.svg') }}"
+                <li><a href="{{ route('about-us') }}"><img src="{{ asset('assets/images/icons/profile.svg') }}"
                             alt="Profile"><span>About Us</span></a></li>
-                <li><a href="#"><img src="{{ asset('assets/images/icons/listen-to-music.svg') }}"
+                <!--<li><a href="#"><img src="{{ asset('assets/images/icons/listen-to-music.svg') }}"
                             alt="Listen to music"><span>Listen to Music</span></a></li>
                 <li><a href="#"><img src="{{ asset('assets/images/icons/library.svg') }}"
-                            alt="Library"><span>Library</span></a></li>
-                <li><a href="#"><img src="{{ asset('assets/images/icons/treatment.svg') }}"
-                            alt="Treatment"><span>patient list</span></a></li>
-                <li><a href="#"><img src="{{ asset('assets/images/icons/review.svg') }}"
-                            alt="Review"><span>Feedback</span></a></li>
-                <li><a href="#"><img src="{{ asset('assets/images/icons/calendar.svg') }}"
-                            alt="Calendar"><span>Schedule</span></a></li>
-                <li><a href="#"><img src="{{ asset('assets/images/icons/therapy.svg') }}"
-                            alt="Therapy"><span>Therapy</span></a></li>
-                <li><a href="#"><img src="{{ asset('assets/images/icons/phone.svg') }}"
+                            alt="Library"><span>Library</span></a></li>-->
+                @role('Admin|Doctor')
+                    <li><a href="{{ route('patient.index') }}"><img src="{{ asset('assets/images/icons/treatment.svg') }}"
+                                alt="Treatment"><span>Patient list</span></a></li>
+                @endrole
+                @role('Admin|Patient')
+                    <li><a href="{{ route('doctor.index') }}"><img src="{{ asset('assets/images/icons/profile.svg') }}"
+                                alt="Profile"><span>Doctor list</span></a></li>
+                @endrole
+                @role('Admin')
+                    <li><a href="{{ route('feedback-list') }}"><img src="{{ asset('assets/images/icons/review.svg') }}"
+                                alt="Review"><span>Feedback</span></a></li>
+                @endrole
+                @role('Doctor')
+                    <li><a href="{{ route('doctors.booking.index') }}"><img
+                                src="{{ asset('assets/images/icons/calendar.svg') }}" alt="Calendar"><span>Patients
+                                Bookings</span></a></li>
+                    <li><a href="{{ route('doctors.calendar') }}"><img
+                                src="{{ asset('assets/images/icons/calendar.svg') }}"
+                                alt="Calendar"><span>Schedule</span></a></li>
+                @endrole
+                @role('Patient')
+                    <li><a href="{{ route('patients.booking.index') }}"><img
+                                src="{{ asset('assets/images/icons/calendar.svg') }}" alt="Calendar"><span>My
+                                Bookings</span></a></li>
+                @endrole
+                @role('Admin|Doctor|Patient')
+                    <li><a href="{{ route('therapy.index') }}"><img src="{{ asset('assets/images/icons/therapy.svg') }}"
+                                alt="Therapy"><span>Therapy</span></a></li>
+                @endrole
+                <li><a href="{{ route('contact-us') }}"><img src="{{ asset('assets/images/icons/phone.svg') }}"
                             alt="Phone"><span>Contact Us</span></a></li>
-                <li><a href="#"><img src="{{ asset('assets/images/icons/logout.svg') }}"
-                            alt="Logout"><span>Logout</span></a></li>
+                <li>
+                    @if (Auth::check())
+                        <a href="#"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                            <img src="{{ asset('assets/images/icons/logout.svg') }}" alt="Logout"><span>Logout</span>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
+                    @endif
+                </li>
             </ul>
         </div>
     </div>
@@ -66,7 +124,7 @@
     <div class="profile-container">
         <!--<div class="main-content">-->
 
-            <!--<div class="search-container">
+        <!--<div class="search-container">
                 <input type="text" placeholder="Search...">
                 <button>
                     <svg width="19" height="20" viewBox="0 0 21 22" fill="none"
@@ -78,23 +136,47 @@
                 </button>
             </div>-->
 
-            @yield('content')
+        @if (session('status'))
+            <script>
+                Swal.fire({
+                    icon: '{{ session('status')['type'] }}',
+                    title: 'Success',
+                    text: '{{ session('status')['msg'] }}',
+                    confirmButtonText: 'OK'
+                });
+            </script>
+        @endif
+
+        @yield('content')
 
         <!--</div>-->
         <footer class="footer">
             <div class="footer-container">
                 <div class="footer-logo">
-                    <img src="assets/images/samaa-logo.png" alt="Logo">
+                    <img src="{{ asset('assets/images/samaa-logo.png') }}" alt="Logo">
                 </div>
                 <div class="footer-links">
                     <div class="column">
-                        <a href="/">Home</a>
+                        <a href="{{ route('home') }}">Home</a>
                         <a href="#">Therapy</a>
-                        <a href="#">Register</a>
+                        @if (Auth::check())
+                            <a href="#"
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                Logout
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                style="display: none;">
+                                @csrf
+                            </form>
+                        @else
+                            <a href="{{ route('login') }}">Login</a>
+                            <a href="{{ route('register') }}">register</a>
+                        @endif
+
                     </div>
                     <div class="column">
-                        <a href="/about-us">About Us</a>
-                        <a href="/contact-us">Contact Us</a>
+                        <a href="{{ route('about-us') }}">About Us</a>
+                        <a href="{{ route('contact-us') }}">Contact Us</a>
                     </div>
                     <div class="column">
                         <a href="#">Library</a>
@@ -116,8 +198,10 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
     <script src="{{ asset('assets/js/dashboard/script.js') }}"></script>
+
 
 </body>
 

@@ -68,7 +68,13 @@ class TherapyController extends Controller
         $patient = Patient::find($request->patient_id);
         $therapy->patients()->sync($patient->id);
 
-        return view($this->dir . "index", compact('therapies', 'patients'));
+        $status = [
+            'type' => 'success',
+            'msg' => 'Patient Created successfully'
+        ];
+
+        return redirect()->route('therapy.index')->with(compact('therapies', 'patients'))->with('status', $status);
+
     }
 
     public function edit(Request $request, Therapy $therapy)
@@ -112,7 +118,12 @@ class TherapyController extends Controller
         $therapy->patients()->sync($patient->id);
         //$therapy->patients()->sync($request->patients);
 
-        return view($this->dir . "index", compact('therapies', 'patients'));
+        $status = [
+            'type' => 'success',
+            'msg' => 'Patient Updates successfully'
+        ];
+
+        return redirect()->route('therapy.index')->with(compact('therapies', 'patients'))->with('status', $status);
     }
 
     public function show(Therapy $therapy)
@@ -148,7 +159,7 @@ class TherapyController extends Controller
                     'artist' => $therapy->user->name,
                     //'album' => $therapy->name,
                     //'album_id' => '12696106c5ee8d3575d14752011dd275',
-                    'url' => Storage::url('Doctor therapy/' .decrypt($therapy->file)),
+                    'url' => Storage::url('Doctor therapy/' . decrypt($therapy->file)),
                     'live' => false,
                     'type' => 'direct',
                     'cover_art_url' =>  Storage::url($therapy->image),
@@ -173,7 +184,7 @@ class TherapyController extends Controller
                     'artist' => $therapy->user->name,
                     //'album' => $therapy->name,
                     //'album_id' => '12696106c5ee8d3575d14752011dd275',
-                    'url' => Storage::url('Doctor therapy/' .decrypt($therapy->file)),
+                    'url' => Storage::url('Doctor therapy/' . decrypt($therapy->file)),
                     'live' => false,
                     'type' => 'direct',
                     'cover_art_url' =>  Storage::url($therapy->image),
@@ -197,7 +208,7 @@ class TherapyController extends Controller
                     'artist' => $therapy->user->name,
                     //'album' => $therapy->name,
                     //'album_id' => '12696106c5ee8d3575d14752011dd275',
-                    'url' => Storage::url('Doctor therapy/' .decrypt($therapy->file)),
+                    'url' => Storage::url('Doctor therapy/' . decrypt($therapy->file)),
                     'live' => false,
                     'type' => 'direct',
                     'cover_art_url' =>  Storage::url($therapy->image),
@@ -245,7 +256,7 @@ class TherapyController extends Controller
         }
     }
 
-    public function getTherapiesBasedRole ()
+    public function getTherapiesBasedRole()
     {
         $therapies = collect();
         if (auth()->user()->hasRole('Admin')) {

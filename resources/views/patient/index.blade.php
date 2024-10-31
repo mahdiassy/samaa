@@ -1,128 +1,106 @@
-@extends('layouts.master')
+@extends('layouts.master2')
 @section('content')
-    <!-- users list start -->
-    <section class="users-list-wrapper">
-        <div class="col-12 px-0 d-flex justify-content-end align-items-right mb-2">
-            <a href="{{ route('patient.create') }}" class="btn btn-sm btn-primary">Create Patient</a>
+    <div class="main-content">
+        <div class="search-container">
+            <input type="text" placeholder="Search...">
+            <button>
+                <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M20.75 20.1895L15.086 14.5255C16.4471 12.8914 17.1259 10.7956 16.981 8.67389C16.8362 6.55219 15.879 4.56801 14.3085 3.1341C12.7379 1.7002 10.6751 0.92697 8.54899 0.975279C6.42291 1.02359 4.39729 1.88971 2.89353 3.39347C1.38977 4.89723 0.523649 6.92284 0.47534 9.04893C0.427031 11.175 1.20026 13.2379 2.63416 14.8084C4.06807 16.3789 6.05225 17.3361 8.17395 17.481C10.2957 17.6258 12.3915 16.9471 14.0255 15.586L19.6895 21.25L20.75 20.1895ZM2.00003 9.24996C2.00003 7.91494 2.39591 6.6099 3.13761 5.49987C3.87931 4.38983 4.93351 3.52467 6.16691 3.01378C7.40031 2.50289 8.75751 2.36921 10.0669 2.62966C11.3763 2.89011 12.579 3.53299 13.523 4.47699C14.467 5.421 15.1099 6.62373 15.3703 7.9331C15.6308 9.24248 15.4971 10.5997 14.9862 11.8331C14.4753 13.0665 13.6102 14.1207 12.5001 14.8624C11.3901 15.6041 10.085 16 8.75003 16C6.96042 15.998 5.24469 15.2862 3.97925 14.0207C2.71381 12.7553 2.00201 11.0396 2.00003 9.24996Z"
+                        fill="#818181" />
+                </svg>
+            </button>
         </div>
-        <div style="display: none" class="users-list-filter px-1">
-            <form>
-                <div class="row border border-light rounded py-2 mb-2">
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <label for="users-list-verified">Verified</label>
-                        <fieldset class="form-group">
-                            <select class="form-control" id="users-list-verified">
-                                <option value>Any</option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </fieldset>
-                    </div>
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <label for="users-list-role">Role</label>
-                        <fieldset class="form-group">
-                            <select class="form-control" id="users-list-role">
-                                <option value>Any</option>
-                                <option value="User">User</option>
-                                <option value="Staff">Staff</option>
-                            </select>
-                        </fieldset>
-                    </div>
-                    <div class="col-12 col-sm-6 col-lg-3">
-                        <label for="users-list-status">Status</label>
-                        <fieldset class="form-group">
-                            <select class="form-control" id="users-list-status">
-                                <option value>Any</option>
-                                <option value="Active">Active</option>
-                                <option value="Close">Close</option>
-                                <option value="Banned">Banned</option>
-                            </select>
-                        </fieldset>
-                    </div>
-                    <div class="col-12 col-sm-6 col-lg-3 d-flex align-items-center">
-                        <button class="btn btn-block btn-primary glow">Show</button>
-                    </div>
+        <div class="patient-contaier">
+
+            <div class="actions">
+                <div class="title-container">
+                    <h1 class="page-title">patient list</h1>
                 </div>
-            </form>
-        </div>
-        <div class="users-list-table">
-            <div class="card">
-                <div class="card-content">
-                    <div class="card-body">
-                        <!-- datatable start -->
-                        <div class="table-responsive">
-                            <table id="users-list-datatable" class="table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>First name</th>
-                                        <th>Last Name</th>
-                                        <th>Phone Number</th>
-                                        <th>Address</th>
-                                        <th>Birthday</th>
-                                        <th>edit</th>
-                                        <th>Delete</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($patients as $patient)
-                                        <tr>
-                                            <td>{{ $patient->id }}</td>
-                                            <td>
-                                                <div class="avatar avatar-md mr-1">
-                                                    <img class="rounded-circle" src="{{ Storage::url($patient->image) }}"
-                                                        alt="Generic placeholder image">
-                                                </div>
-                                                <span class="text-truncate"><a
-                                                        href="{{ route('patient.show', $patient) }}">{{ $patient->first_name }}</a></span>
-                                            </td>
-                                            <td>{{ $patient->last_name }}</td>
-                                            <td>{{ $patient->phone }}</td>
-                                            <td>{{ $patient->address }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($patient->birthday)->format('d-m-Y') }}
-                                            </td>
-                                            <td><a href="{{ route('patient.edit', $patient) }}">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                        width="24" height="24" class="main-grid-item-icon"
-                                                        fill="none" stroke="currentColor" stroke-linecap="round"
-                                                        stroke-linejoin="round" stroke-width="2">
-                                                        <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z" />
-                                                    </svg>
-                                                </a>
-                                            </td>
-                                            <td>
+                <div class="button-container">
+                    <a href="#" class="filter-link">
+                        Filter
+                        <svg width="19" height="22" viewBox="0 0 19 22" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M8.3298 1L3.3998 8.9M2.7998 1H15.9998C17.0998 1 17.9998 1.9 17.9998 3V5.2C17.9998 6 17.4998 7 16.9998 7.5L12.6998 11.3C12.0998 11.8 11.6998 12.8 11.6998 13.6V17.9C11.6998 18.5 11.2998 19.3 10.7998 19.6L9.39981 20.5C8.09981 21.3 6.2998 20.4 6.2998 18.8V13.5C6.2998 12.8 5.8998 11.9 5.4998 11.4L1.6998 7.4C1.1998 6.9 0.799805 6 0.799805 5.4V3.1C0.799805 1.9 1.6998 1 2.7998 1Z"
+                                stroke="#1A655E" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </a>
+                    <a href="{{ route('patient.create') }}" class="add-patient-btn">Add New Patient</a>
+                </div>
+            </div>
 
-                                                <form action="{{ route('patient.destroy', $patient) }}" method="post"
-                                                    class="m-0">
-                                                    @csrf
-                                                    @method('delete')
-                                                    <button type="submit" value="delete" class="dropdown-item"><svg
-                                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
-                                                            width="24" height="24" class="main-grid-item-icon"
-                                                            fill="none" stroke="currentColor" stroke-linecap="round"
-                                                            stroke-linejoin="round" stroke-width="2">
-                                                            <polyline points="3 6 5 6 21 6" />
-                                                            <path
-                                                                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2" />
-                                                            <line x1="10" x2="10" y1="11"
-                                                                y2="17" />
-                                                            <line x1="14" x2="14" y1="11"
-                                                                y2="17" />
-                                                        </svg>
-                                                    </button>
-                                                </form>
+            <div class="table-container">
+                <table id="patientTable" class="patient-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Full Name</th>
+                            <th>Phone</th>
+                            <th>Country</th>
+                            <th>Blood Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="patientTbody">
+                        @foreach ($patients as $patient)
+                            <tr>
+                                <td>{{ $patient->id }}</td>
+                                <td>{{ $patient->first_name }} {{ $patient->last_name }}</td>
+                                <td>{{ $patient->phone }}</td>
+                                <td>{{ $patient->country->name }}</td>
+                                <td class="custom-date">{{ $patient->blood_type }}</td>
+                                <td>
+                                    <a href="{{ route('patient.edit', $patient) }}" class="btn edit-btn">Edit</a>
+                                    <a href="{{ route('patient.show', $patient) }}" class="btn view-btn">View</a>
 
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                        </div>
-                        <!-- datatable ends -->
-                    </div>
+                                    <form action="{{ route('patient.destroy', $patient) }}" method="post" class="m-0" id="deleteForm-{{ $patient->id }}">
+                                        @csrf
+                                        @method('delete')
+                                        <a class="btn delete-btn" onclick="event.preventDefault(); document.getElementById('deleteForm-{{ $patient->id }}').submit();">
+                                            <strong>X</strong>
+                                        </a>
+                                    </form>
+
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+
+                <div class="pagination">
+                    <span id="paginationInfo">Showing 1 to 2 of 2 entries</span>
+
+                    <ul class="page-list" id="pageList">
+                        <li><a href="#" id="prevBtn" onclick="changePage(currentPage - 1)" disabled>
+                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M7.41 11.3869L2.83 6.79688L7.41 2.20687L6 0.796875L0 6.79688L6 12.7969L7.41 11.3869Z"
+                                        fill="#2E4049" />
+                                </svg>
+                            </a>
+                        </li>
+                        <li><a href="#" onclick="changePage(1)">1</a></li>
+                        <li><a href="#" onclick="changePage(2)">2</a></li>
+                        <li><a href="#" onclick="changePage(3)">3</a></li>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#" onclick="changePage(99)">99</a></li>
+                        <li>
+                            <a href="#" id="nextBtn" onclick="changePage(currentPage + 1)">
+                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M0.589844 11.3869L5.16984 6.79688L0.589844 2.20687L1.99984 0.796875L7.99984 6.79688L1.99984 12.7969L0.589844 11.3869Z"
+                                        fill="#2E4049" />
+                                </svg>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- users list ends -->
+    </div>
 @endsection
