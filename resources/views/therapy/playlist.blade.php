@@ -96,6 +96,24 @@
         .send-btn:hover {
             background-color: #005bb5;
         }
+    .call-btn, .end-call-btn {
+        background-color: #0078ff;
+        color: white;
+        border: none;
+        padding: 5px 10px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-left: 5px;
+    }
+
+.end-call-btn {
+    background-color: #ff4d4d;
+}
+
+.call-btn:hover, .end-call-btn:hover {
+    opacity: 0.8;
+}
+
     </style>
 </head>
 
@@ -105,7 +123,12 @@
 
 
     <div class="chat-container">
-        <div class="chat-header">Chat</div>
+        <div class="chat-header">
+            Session Chat
+            <button onclick="startCall()" class="call-btn">Start Call</button>
+            <button onclick="endCall()" class="end-call-btn" style="display:none;">End Call</button>
+        </div>
+
         <div id="chat-box" class="chat-box">
         </div>
         <div class="chat-input-container">
@@ -196,6 +219,84 @@
         chatBox.appendChild(messageElement);
         chatBox.scrollTop = chatBox.scrollHeight;
     }
+</script>
+
+<script>
+    let localStream;
+    let peerConnection;
+
+    const iceServers = {
+        iceServers: [{
+                urls: 'stun:stun.l.google.com:19302'
+            }
+        ]
+    };
+
+    async function startCall() {
+        localStream = await navigator.mediaDevices.getUserMedia({
+            audio: true
+        });
+        document.querySelector('.call-btn').style.display = 'none';
+        document.querySelector('.end-call-btn').style.display = 'inline';
+        socket.emit('start-call');
+        initializePeerConnection();
+    }
+
+    function initializePeerConnection() {
+        peerConnection = new RTCPeerConnection(iceServers);
+
+        localStream.getTracks().forEach(track => peerConnection.addTrack(track, localStream));
+
+        peerConnection.onicecandidate = (event) => {
+            if (event.candidate) {
+                socket.emit('ice-candidate', event.candidate);
+            }
+        };
+
+        peerConnection.ontrack = (event) => {
+            const remoteAudio = new Audio();
+            remoteAudio.srcObject = event.streams[0];
+            remoteAudio.play();
+        };
+        peerConnection.createOffer()
+            .then(offer => peerConnection.setLocalDescription(offer))
+            .then(() => socket.emit('offer', peerConnection.localDescription));
+    }
+
+    socket.on('offer', (offer) => {
+        if (!peerConnection) initializePeerConnection();
+        peerConnection.setRemoteDescription(new RTCSessionDescription(offer));
+        peerConnection.createAnswer()
+            .then(answer => peerConnection.setLocalDescription(answer))
+            .then(() => socket.emit('answer', peerConnection.localDescription));
+    });
+
+    socket.on('answer', (answer) => {
+        peerConnection.setRemoteDescription(new RTCSessionDescription(answer));
+    });
+
+    socket.on('ice-candidate', (candidate) => {
+        peerConnection.addIceCandidate(new RTCIceCandidate(candidate));
+    });
+
+    function endCall() {
+        document.querySelector('.end-call-btn').style.display = 'none';
+        document.querySelector('.call-btn').style.display = 'inline';
+
+        if (peerConnection) {
+            peerConnection.close();
+            peerConnection = null;
+        }
+        if (localStream) {
+            localStream.getTracks().forEach(track => track.stop());
+            localStream = null;
+        }
+
+        socket.emit('end-call');
+    }
+    socket.on('end-call', () => {
+        endCall();
+    });
 </script>
 
 </html>
