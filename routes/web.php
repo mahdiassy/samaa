@@ -5,6 +5,7 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BookingController;
+use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -23,36 +24,14 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('frontend/home');
 })->name('home');
-/*Route::get('/login', function () {
-    return view('frontend/login');
-});*/
-/*Route::get('/register', function () {
-    return view('frontend/register');
-});*/
+
 Route::get('/contact-us', function () {
     return view('frontend/contact-us');
 })->name('contact-us');
 Route::get('/about-us', function () {
     return view('frontend/about-us');
 })->name('about-us');
-Route::get('/patient-show', function () {
-    return view('frontend/patient-show');
-});
-Route::get('/patient-list', function () {
-    return view('frontend/patient-list');
-});
-Route::get('/patient-edit', function () {
-    return view('frontend/patient-edit');
-});
-Route::get('/doctor-show', function () {
-    return view('frontend/doctor-show');
-});
-Route::get('/feedback', function () {
-    return view('frontend/feedback');
-})->name('feedback');
-Route::get('/feedback-list', function () {
-    return view('frontend/feedback-list');
-})->name('feedback-list');
+
 Route::get('/listenToMusic', function () {
     return view('frontend/listenToMusic');
 });
@@ -84,6 +63,14 @@ Route::group([
         Route::resource('doctor', DoctorController::class)->middleware('role:Admin|Patient');
         Route::resource('therapy', TherapyController::class)->middleware('role:Admin|Doctor|Patient');
         Route::get('/therapies/playlist', [TherapyController::class, 'playlist'])->name('playlist')->middleware('role:Admin|Doctor|Patient');
+
+        // Feedback
+        Route::get('/feedback/create', [FeedbackController::class,'create'])->name('feedback')->middleware('role:Patient');
+        Route::post('/feedback/store', [FeedbackController::class,'store'])->name('feedback.store')->middleware('role:Patient');
+        Route::get('/feedback/index', [FeedbackController::class,'index'])->name('feedback-list')->middleware('role:Admin|Patient');
+        Route::get('/feedback/show/{feedback}', [FeedbackController::class,'show'])->name('feedback.show')->middleware('role:Admin|Patient');
+        Route::delete('/feedback/delete/{feedback}', [FeedbackController::class,'destroy'])->name('feedback.destroy')->middleware('role:Admin');
+
     });
 
     // Availabilities

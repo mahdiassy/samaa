@@ -451,18 +451,18 @@ body {
     margin: 0px;
 }
 
-.user-info .big-title {
+.big-title {
     font-size: 30px;
     font-weight: 600;
     margin: 0px;
 }
 
-.user-info .small-title p {
+.small-title p {
     font-size: 13px;
     margin: 0px;
 }
 
-.user-info .small-title {
+.small-title {
     margin-bottom: 15px;
 }
 

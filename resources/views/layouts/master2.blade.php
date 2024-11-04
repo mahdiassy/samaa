@@ -99,6 +99,9 @@
                     <li><a href="{{ route('patients.booking.index') }}"><img
                                 src="{{ asset('assets/images/icons/calendar.svg') }}" alt="Calendar"><span>My
                                 Bookings</span></a></li>
+
+                    <li><a href="{{ route('feedback') }}"><img src="{{ asset('assets/images/icons/review.svg') }}"
+                        alt="Review"><span>Feedback</span></a></li>
                 @endrole
                 @role('Admin|Doctor|Patient')
                     <li><a href="{{ route('therapy.index') }}"><img src="{{ asset('assets/images/icons/therapy.svg') }}"

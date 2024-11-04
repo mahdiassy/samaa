@@ -31,4 +31,11 @@ abstract class Permissions extends BasicEnum
     const THERAPY_EDIT = 'therapy-edit';
     const THERAPY_DELETE = 'therapy-delete';
     const THERAPY_SHOW = 'therapy-show';
+
+    // FEEDBACK
+    const FEEDBACK_LIST = 'feedbacK-list';
+    const FEEDBACK_CREATE = 'feedbacK-create';
+    const FEEDBACK_EDIT = 'feedbacK-edit';
+    const FEEDBACK_DELETE = 'feedbacK-delete';
+    const FEEDBACK_SHOW = 'feedbacK-show';
 }

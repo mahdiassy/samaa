@@ -52,6 +52,10 @@ class PermissionsSeeder extends Seeder
 
             Permissions::THERAPY_SHOW,
             Permissions::THERAPY_LIST,
+
+            Permissions::FEEDBACK_CREATE,
+            Permissions::FEEDBACK_LIST,
+            Permissions::FEEDBACK_SHOW,
         ]);
 
         // create users

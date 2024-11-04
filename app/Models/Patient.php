@@ -47,4 +47,9 @@ class Patient extends Model
     {
         return $this->hasMany(Booking::class, 'patient_id');
     }
+
+    public function feedbacks()
+    {
+        return $this->hasMany(Feedback::class, 'patient_id');
+    }
 }

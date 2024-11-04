@@ -59,8 +59,12 @@
                 </div>
                 <div class="action-buttons">
                     <a href="{{ route('doctor.index') }}" class="btn patient-btn">Doctor List</a>
+                    @role('Patient')
                     <a href="{{ route('feedback') }}" class="btn patient-btn">Feedback</a>
-
+                    @endrole
+                    @role('Admin')
+                    <a href="{{ route('feedback-list') }}" class="btn patient-btn">Feedback</a>
+                    @endrole
                     @role('Doctor')
                         <a href="{{ route('doctors.calendar') }}" class="btn patient-btn">+ Schedule Appointment</a>
                     @endrole

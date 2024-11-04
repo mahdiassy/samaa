@@ -12,19 +12,21 @@
             </button>
         </div>
         <div class="header">
-            <a href="#" class="btn-back">
+            <a href="javascript:void(0);" onclick="history.back();" class="btn-back">
                 <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Go Back
             </a>
         </div>
         <div class="patient-contaier">
 
-            <div class="actions">
+            <div class="actions" style="padding-bottom: 20px">
                 <div class="title-container">
-                    <p class="big-title">Firas Reaaidi</p>
-                    <div class="small-title">
-                        <p>Patient</p>
-                        <p>ID:#1234</p>
-                    </div>
+                    @role('Patient')
+                        <p class="big-title">{{ Auth::user()->patient->first_name . ' ' . Auth::user()->patient->last_name }}</p>
+                        <div class="small-title">
+                            <p>Patient</p>
+                            <p>ID:#<strong>{{ Auth::user()->patient->id }}</strong></p>
+                        </div>
+                    @endrole
                 </div>
                 <div class="button-container">
                     <a href="#" class="filter-link">
@@ -37,7 +39,9 @@
                                 stroke-linejoin="round" />
                         </svg>
                     </a>
-                    <button class="add-patient-btn">Add Feedback</button>
+                    @role('Patient')
+                        <a href="{{ route('feedback') }}" class="add-patient-btn">Add Feedback</a>
+                    @endrole
                 </div>
             </div>
 
@@ -46,50 +50,37 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Condition</th>
-                            <th>Last Visit</th>
-                            <th>Next Visit</th>
+                            <th>Patient Name</th>
+                            <th>Feedback</th>
+                            <th>Improvement</th>
+                            <th>Date</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody id="patientTbody">
-                        <tr>
-                            <td>1</td>
-                            <td>Firas</td>
-                            <td>Autism</td>
-                            <td class="custom-date">1/2/2024</td>
-                            <td class="custom-date">10/2/2024</td>
-                            <td>
-                                <a class="btn edit-btn">Edit</a>
-                                <a class="btn view-btn">View</a>
-                                <a class="btn delete-btn"><strong>X</strong></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Rola</td>
-                            <td>Alsd</td>
-                            <td class="custom-date">1/3/2024</td>
-                            <td class="custom-date">10/6/2024</td>
-                            <td>
-                                <a class="btn edit-btn">Edit</a>
-                                <a class="btn view-btn">View</a>
-                                <a class="btn delete-btn"><strong>X</strong></a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Ahmad</td>
-                            <td>Ahmad</td>
-                            <td class="custom-date">1/3/2024</td>
-                            <td class="custom-date">10/6/2024</td>
-                            <td>
-                                <a class="btn edit-btn">Edit</a>
-                                <a class="btn view-btn">View</a>
-                                <a class="btn delete-btn"><strong>X</strong></a>
-                            </td>
-                        </tr>
+                        @foreach ($feedbacks as $feedback)
+                            <tr>
+                                <td>{{ $feedback->id }}</td>
+                                <td>{{ $feedback->patient->first_name.' '. $feedback->patient->last_name }}</td>
+                                <td>{{ $feedback->feedback }}</td>
+                                <td>{{ $feedback->improvement }}</td>
+                                <td class="custom-date">{{ \Carbon\Carbon::parse($feedback->date)->format('d-m-Y') }}</td>
+                                <td>
+                                    <a href="{{ route('feedback.show', $feedback) }}" class="btn view-btn">View</a>
+                                    @role('Admin')
+                                        <form action="{{ route('feedback.destroy', $feedback) }}" method="post" class="m-0"
+                                            id="deleteForm-{{ $feedback->id }}">
+                                            @csrf
+                                            @method('delete')
+                                            <a class="btn delete-btn"
+                                                onclick="event.preventDefault(); document.getElementById('deleteForm-{{ $feedback->id }}').submit();">
+                                                <strong>X</strong>
+                                            </a>
+                                        </form>
+                                    @endrole
+                                </td>
+                            </tr>
+                        @endforeach
                         <!-- More rows as needed -->
                     </tbody>
                 </table>
