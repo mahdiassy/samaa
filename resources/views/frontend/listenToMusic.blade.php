@@ -1,6 +1,6 @@
 @extends('layouts.master2')
 @section('content')
-    <div class="search-bar">
+    <div class="search-bar" style="background-image: url('/assets/images/listen2.png');" >
         <input type="text" placeholder="Search...">
     </div>
 

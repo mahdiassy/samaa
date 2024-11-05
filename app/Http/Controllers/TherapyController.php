@@ -54,15 +54,15 @@ class TherapyController extends Controller
         return view($this->dir . "index", compact('therapies', 'patients'));
     }
 
-    public function create()
+    public function create(Patient $patient)
     {
-        $patients = Patient::all();
-        return view($this->dir . "index", compact('patients'));
+        //$patients = Patient::all();
+        return view($this->dir . "create", compact('patient'));
     }
 
     public function store(Request $request)
     {
-        $patients = Patient::all();
+        //$patients = Patient::all();
 
         $therapy = new Therapy;
         $therapy->name = $request->name;
@@ -78,7 +78,7 @@ class TherapyController extends Controller
         }
         $therapy->save();
 
-        $therapies = $this->getTherapiesBasedRole();
+        //$therapies = $this->getTherapiesBasedRole();
 
         //$patient = Patient::find($request->patients);
         ///$therapy->patients()->sync($request->patients);
@@ -87,16 +87,17 @@ class TherapyController extends Controller
 
         $status = [
             'type' => 'success',
-            'msg' => 'Patient Created successfully'
+            'msg' => 'Therapy Created successfully'
         ];
 
-        return redirect()->route('therapy.index')->with(compact('therapies', 'patients'))->with('status', $status);
+        return redirect()->route('therapy.index')->with('status', $status);
+        //return redirect()->route('therapy.index')->with(compact('therapies', 'patients'))->with('status', $status);
 
     }
 
     public function edit(Request $request, Therapy $therapy)
     {
-        $patients = Patient::all();
+        //$patients = Patient::all();
         //dd($therapy->file ,Storage::disk('public')->url($therapy->file) );
         /*if (auth()->user()->hasRole('Admin')) {
             $therapy = $therapy;
@@ -109,7 +110,7 @@ class TherapyController extends Controller
                 $therapy = $therapy;
             }
         }*/
-        return view($this->dir . "edit", compact('therapy', 'patients'));
+        return view($this->dir . "edit", compact('therapy'));
     }
 
     public function update(Request $request, Therapy $therapy)

@@ -17,7 +17,9 @@
                 <div class="title-container">
                     <h1 class="page-title">Patients Booking</h1>
                 </div>
-                <div class="button-container">
+                <div class="button-container2">
+                    <a href="{{ route('therapy.index') }}" class="add-primery-btn">All Therapies</a>
+
                     @role('Doctor')
                         <a href="{{ route('doctors.calendar') }}" class="add-patient-btn">Schedule</a>
                     @endrole
@@ -33,6 +35,7 @@
                             <th>Patient Phone</th>
                             <th>Booking Date</th>
                             <th>Booking status</th>
+                            <th>Add Therapy</th>
                             <th>Change Status</th>
                         </tr>
                     </thead>
@@ -40,11 +43,19 @@
                         @foreach ($patientBookings as $patientBooking)
                             <tr>
                                 <td>{{ $patientBooking->id }}</td>
-                                <td>{{ $patientBooking->patient->first_name . ' '. $patientBooking->patient->last_name }}</td>
+                                <td>
+                                    <span class="text-truncate">
+                                        <a class="link" href="{{ route('patient.show', $patientBooking->patient) }}">{{ $patientBooking->patient->first_name . ' ' . $patientBooking->patient->last_name }}</a></span>
+                                </td>
                                 <td>{{ $patientBooking->patient->phone }}</td>
-                                <td >{{ \Carbon\Carbon::parse($patientBooking->availability->time)->format('d-m-Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($patientBooking->availability->time)->format('d-m-Y') }}</td>
 
                                 <td class="custom-date">{{ $patientBooking->status }}</td>
+                                @if ($patientBooking->status == \App\Enums\BookingEnum::APPROVED)
+                                    <td><a href="{{ route('therapy-create',$patientBooking->patient) }}" class="btn edit-btn">Add</a></td>
+                                @else
+                                    <td>be Approved before</td>
+                                @endif
                                 <td>
                                     <form id="status-form-{{ $patientBooking->availability->id }}"
                                         action="{{ route('changeStatus', [$patientBooking->availability->id, 'status_placeholder']) }}"

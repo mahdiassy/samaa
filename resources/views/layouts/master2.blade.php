@@ -161,7 +161,7 @@
                 <div class="footer-links">
                     <div class="column">
                         <a href="{{ route('home') }}">Home</a>
-                        <a href="#">Therapy</a>
+                        <a href="{{ route('therapy.index') }}">Therapy</a>
                         @if (Auth::check())
                             <a href="#"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

@@ -17,66 +17,19 @@
                 <div class="title-container">
                     <h1 class="page-title">therapy list</h1>
                 </div>
+
+                <div class="button-container2">
+                    @if (!$therapies->isEmpty())
+                    <a class="add-patient-btn" href="{{ route('playlist') }}">My Playlist</a>
+                    @endif
+                    @role('Doctor')
+                    <a href="{{ route('doctors.booking.index') }}" class="add-primery-btn">Patients Booking</a>
+                    @endrole
+                    @role('Patient')
+                    <a href="{{ route('patients.booking.index') }}" class="add-primery-btn">My Booking</a>
+                    @endrole
+                </div>
             </div>
-
-            <div class="user-form-container">
-                @role('Admin|Doctor')
-                    <div class="users-list-filter">
-                        <form action="{{ route('therapy.store') }}" method="post" enctype="multipart/form-data">
-                            @csrf
-                            <div class="form-section">
-                                <div class="image-upload-wrapper">
-                                    <input type="file" id="image-upload" name="image" accept="image/*" onchange="showPreview(event)" style="display:none;">
-                                    <label for="image-upload" class="upload-label">
-                                        <div class="image-placeholder">
-                                            <img id="image-preview" src="https://via.placeholder.com/150" alt="Placeholder" class="placeholder-img">
-                                            <div class="edit-icon">
-                                                <img src="https://img.icons8.com/ios-filled/30/000000/edit.png" alt="Edit" />
-                                            </div>
-                                        </div>
-                                    </label>
-                                    <p class="image-upload-instruction">Set the Therapy thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted</p>
-                                </div>
-
-                                <!-- Flex container for File Name and Upload File -->
-                                <div class="input-row">
-                                    <div class="input-group">
-                                        <label for="file-name">File Name</label>
-                                        <input type="text" id="file-name" class="form-input" name="name" placeholder="File Name" required>
-                                    </div>
-                                    <div class="input-group">
-                                        <label for="file-upload">Upload File</label>
-                                        <input type="file" class="form-input" name="file" id="file-upload" required>
-                                    </div>
-                                </div>
-
-                                <!-- New input row for Select Patient and additional input -->
-                                <div class="input-row">
-                                    <div class="input-group">
-                                        <label>Select Patient</label>
-                                        <select class="form-input" name="patient_id">
-                                            @foreach ($patients as $patient)
-                                                <option value="{{ $patient->id }}">{{ $patient->first_name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="button-group">
-                                    <button type="submit" class="custom-button">Create</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                @endrole
-
-                @if (!$therapies->isEmpty())
-                    <div class="button-group-left">
-                        <a class="custom-button" href="{{ route('playlist') }}">My Playlist</a>
-                    </div>
-                @endif
-            </div>
-
 
             <div class="table-container">
                 <table id="patientTable" class="patient-table">
@@ -100,21 +53,21 @@
                                 <td>{{ $therapy->user->name }}</td>
                                 <td class="custom-date">{{ \Carbon\Carbon::parse($therapy->created_at)->format('d-m-Y') }}
                                 <td class="custom-date">{{ \Carbon\Carbon::parse($therapy->updated_at)->format('d-m-Y') }}
-                                <td>
                                     @role('Admin|Doctor')
+                                    <td>
                                         <a href="{{ route('therapy.edit', $therapy) }}" class="btn edit-btn">Edit</a>
 
-                                        <form action="{{ route('therapy.destroy', $therapy) }}" method="post" class="m-0"
+                                        <form class="btn delete-btn" action="{{ route('therapy.destroy', $therapy) }}" method="post" class="m-0"
                                             id="deleteForm-{{ $therapy->id }}">
                                             @csrf
                                             @method('delete')
-                                            <a class="btn delete-btn"
+                                            <a
                                                 onclick="event.preventDefault(); document.getElementById('deleteForm-{{ $therapy->id }}').submit();">
                                                 <strong>X</strong>
                                             </a>
                                         </form>
-                                    @endrole
-                                </td>
+                                    </td>
+                                @endrole
                             </tr>
                         @endforeach
                     </tbody>

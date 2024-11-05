@@ -31,6 +31,9 @@
                     @role('Admin')
                         <a href="{{ route('doctor.create') }}" class="add-patient-btn">Add New Doctor</a>
                     @endrole
+                    @role('Patient')
+                        <a href="{{ route('patients.booking.index') }}" class="add-patient-btn">My Booking</a>
+                    @endrole
                 </div>
             </div>
 

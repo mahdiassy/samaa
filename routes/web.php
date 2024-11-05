@@ -62,6 +62,7 @@ Route::group([
         Route::resource('patient', PatientController::class)->middleware('role:Admin|Doctor');
         Route::resource('doctor', DoctorController::class)->middleware('role:Admin|Patient');
         Route::resource('therapy', TherapyController::class)->middleware('role:Admin|Doctor|Patient');
+        Route::get('therapy/create/{patient}', [TherapyController::class,'create'])->middleware('role:Admin|Doctor|Patient')->name('therapy-create');
         Route::get('/therapies/playlist', [TherapyController::class, 'playlist'])->name('playlist')->middleware('role:Admin|Doctor|Patient');
 
         // Feedback

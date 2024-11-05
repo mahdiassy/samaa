@@ -331,7 +331,7 @@
                                 });
                                 alert('{{ __('This time has been add successfully') }}');
                                 // Optionally reload or update UI here
-                                // location.reload();
+                                location.reload();
                             } else {
                                 alert('{{ __('This time has been predetermined') }}');
                             }

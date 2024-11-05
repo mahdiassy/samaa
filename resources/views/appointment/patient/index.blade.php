@@ -17,7 +17,9 @@
                 <div class="title-container">
                     <h1 class="page-title">My Bookings</h1>
                 </div>
-                <div class="button-container">
+                <div class="button-container2">
+                    <a href="{{ route('therapy.index') }}" class="add-primery-btn">All Therapies</a>
+
                     <a href="{{ route('doctor.index') }}" class="add-patient-btn">Booking with a doctor                    </a>
                 </div>
             </div>
@@ -47,7 +49,7 @@
 
                                 <td class="custom-date">{{ $patientBooking->status }}</td>
                                 <td>
-                                    <form
+                                    <form class="btn delete-btn"
                                         action="{{ route('changeStatus', [$patientBooking->availability->id, \App\Enums\BookingEnum::PATIENT_CANCEL]) }}"
                                         method="POST" style="display:inline;">
                                         @csrf

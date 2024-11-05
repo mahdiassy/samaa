@@ -1,5 +1,5 @@
 ::selection {
-    background-color: #0F4140;
+    background-color: #309e93;
     color: white;
 }
 
@@ -485,6 +485,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    display: inline;
 }
 
 .patient-btn {
@@ -501,10 +502,6 @@ body {
 .new-btn {
     background-color: #D6861F;
     color: #EAEAEA;
-}
-
-.btn:hover {
-    opacity: 0.9;
 }
 
 .styled-input {
@@ -640,6 +637,12 @@ body {
     align-items: flex-end;
     gap: 10px;
 }
+.button-container2 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    gap: 10px;
+}
 
 .filter-link {
     font-size: 16px;
@@ -671,6 +674,22 @@ body {
 }
 
 .add-patient-btn:hover {
+    opacity: 0.8;
+}
+
+.add-primery-btn {
+    font-family: 'Poppins', sans-serif !important;
+    padding: 10px 20px;
+    background-color: #D6861F;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.add-primery-btn:hover {
     opacity: 0.8;
 }
 
@@ -729,6 +748,13 @@ body {
     background: transparent;
     color: #000 !important;
     margin-left: 20px !important;
+}
+
+.delete-btn a , .delete-btn button{
+    color: #1A655E;
+}
+.delete-btn a:hover, .delete-btn button:hover {
+    color: #D6861F;
 }
 
 .pagination {
@@ -877,8 +903,15 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-image: url('/assets/images/listen2.png');
     padding: 40px 30px;
+}
+
+.search-bar-title{
+    position: absolute;
+    top: 60%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    color: white;
 }
 
 .search-bar button {
@@ -1325,12 +1358,18 @@ select {
     .footer-links {
         padding-top: 15% !important;
     }
+    .button-container2{
+        flex-direction: column !important;
+    }
 }
 
 @media(max-width: 680px) {
 
     .footer-help {
         margin-left: 2% !important;
+    }
+    .search-bar-title{
+        left: 40%;
     }
 }
 
@@ -1353,6 +1392,16 @@ select {
 }
 
 @media (max-width: 768px) {
+
+    .input-row {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .input-group {
+        width: 100%;
+    }
+
     .main-content {
         padding: 20px 0px;
     }
@@ -1426,7 +1475,10 @@ select {
         padding: 5px 10px;
         font-size: 12px;
     }
-
+    .add-primery-btn {
+        padding: 5px 10px;
+        font-size: 12px;
+    }
     /* Listen to Music */
 
     .search-bar {
@@ -1510,16 +1562,16 @@ select {
 .form-section {
     width: 100%;
     padding: 20px;
-    border: 2px solid #ddd;
+    /*border: 2px solid #ddd;
     border-radius: 8px;
-    background-color: #f9f9f9;
+    background-color: #f9f9f9;*/
     display: flex;
     flex-direction: column;
     gap: 1rem;
 }
 
 .image-upload-wrapper {
-    text-align: center;
+    text-align: left;
 }
 
 .image-placeholder {
@@ -1553,6 +1605,7 @@ select {
 .input-row {
     display: flex;
     gap: 1rem;
+    flex-wrap: wrap;
 }
 
 .input-group {
@@ -1561,7 +1614,9 @@ select {
     gap: 0.5rem;
     flex: 1;
 }
-
+.form-input, audio {
+    width: 100%;
+}
 .input-group label {
     font-weight: bold;
     font-size: 0.95rem;
@@ -1581,6 +1636,34 @@ select {
 .button-group-left {
     display: flex;
     justify-content: flex-end;
+}
+/* Styling for custom audio player */
+.custom-audio {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.play-btn {
+    background: none;
+    border: 2px solid #f2a900;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    color: #f2a900;
+    cursor: pointer;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 5px;
+    background-color: #29bfbf;
+    cursor: pointer;
+}
+
+.volume-control {
+    width: 30px;
+    cursor: pointer;
 }
 
 .custom-button {
@@ -1611,3 +1694,32 @@ select {
     gap: 1rem;
     padding: 20px 0px;
 }
+.fc-v-event
+{
+    background-color: #1A655E !important;
+    border: 1px solid #1A655E !important;
+}
+.fc-daygrid-event-dot
+{
+    border: calc(var(--fc-daygrid-event-dot-width) / 2) solid #1A655E !important;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice
+{
+    background-color: #309e93 !important;
+    border: 1px solid #309e93 !important;
+    color: #F1EEEC ;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove
+{
+    color: #F1EEEC;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #1A655E;
+    color: white;
+}
+.select2-container--default .select2-results__option[aria-selected=true] {
+    background-color: #309e93;
+    color: #F1EEEC;
+}
+
