@@ -67,49 +67,49 @@
 
         <div class="sidebar-content">
             <ul class="menu-items">
-                <li><a href="{{ route('dashboard') }}"><img src="{{ asset('assets/images/icons/dashboard.svg') }}"
-                            alt="Dashboard"><span>Home</span></a></li>
-                <li><a href="{{ route('about-us') }}"><img src="{{ asset('assets/images/icons/profile.svg') }}"
-                            alt="Profile"><span>About Us</span></a></li>
+                <li title="Home"><a href="{{ route('dashboard') }}"><img src="{{ asset('assets/images/icons/dashboard.svg') }}"
+                            alt="Dashboard"><span >Home</span></a></li>
+                <li title="About Us"><a href="{{ route('about-us') }}"><img src="{{ asset('assets/images/icons/profile.svg') }}"
+                            alt="Profile"><span >About Us</span></a></li>
                 <!--<li><a href="#"><img src="{{ asset('assets/images/icons/listen-to-music.svg') }}"
                             alt="Listen to music"><span>Listen to Music</span></a></li>
                 <li><a href="#"><img src="{{ asset('assets/images/icons/library.svg') }}"
                             alt="Library"><span>Library</span></a></li>-->
                 @role('Admin|Doctor')
-                    <li><a href="{{ route('patient.index') }}"><img src="{{ asset('assets/images/icons/treatment.svg') }}"
+                    <li title="Patient list"><a href="{{ route('patient.index') }}"><img src="{{ asset('assets/images/icons/treatment.svg') }}"
                                 alt="Treatment"><span>Patient list</span></a></li>
                 @endrole
                 @role('Admin|Patient')
-                    <li><a href="{{ route('doctor.index') }}"><img src="{{ asset('assets/images/icons/profile.svg') }}"
+                    <li title="Doctor list"><a href="{{ route('doctor.index') }}"><img src="{{ asset('assets/images/icons/profile.svg') }}"
                                 alt="Profile"><span>Doctor list</span></a></li>
                 @endrole
                 @role('Admin')
-                    <li><a href="{{ route('feedback-list') }}"><img src="{{ asset('assets/images/icons/review.svg') }}"
+                    <li title="Feedback"><a href="{{ route('feedback-list') }}"><img src="{{ asset('assets/images/icons/review.svg') }}"
                                 alt="Review"><span>Feedback</span></a></li>
                 @endrole
                 @role('Doctor')
-                    <li><a href="{{ route('doctors.booking.index') }}"><img
+                    <li title="Patients Bookings" ><a href="{{ route('doctors.booking.index') }}"><img
                                 src="{{ asset('assets/images/icons/calendar.svg') }}" alt="Calendar"><span>Patients
                                 Bookings</span></a></li>
-                    <li><a href="{{ route('doctors.calendar') }}"><img
+                    <li title="Schedule"><a href="{{ route('doctors.calendar') }}"><img
                                 src="{{ asset('assets/images/icons/calendar.svg') }}"
                                 alt="Calendar"><span>Schedule</span></a></li>
                 @endrole
                 @role('Patient')
-                    <li><a href="{{ route('patients.booking.index') }}"><img
+                    <li title="My Bookings"><a href="{{ route('patients.booking.index') }}"><img
                                 src="{{ asset('assets/images/icons/calendar.svg') }}" alt="Calendar"><span>My
                                 Bookings</span></a></li>
 
-                    <li><a href="{{ route('feedback') }}"><img src="{{ asset('assets/images/icons/review.svg') }}"
+                    <li title="Feedback"><a href="{{ route('feedback') }}"><img src="{{ asset('assets/images/icons/review.svg') }}"
                         alt="Review"><span>Feedback</span></a></li>
                 @endrole
                 @role('Admin|Doctor|Patient')
-                    <li><a href="{{ route('therapy.index') }}"><img src="{{ asset('assets/images/icons/therapy.svg') }}"
+                    <li title="Therapy"><a href="{{ route('therapy.index') }}"><img src="{{ asset('assets/images/icons/therapy.svg') }}"
                                 alt="Therapy"><span>Therapy</span></a></li>
                 @endrole
-                <li><a href="{{ route('contact-us') }}"><img src="{{ asset('assets/images/icons/phone.svg') }}"
+                <li title="Contact Us"><a href="{{ route('contact-us') }}"><img src="{{ asset('assets/images/icons/phone.svg') }}"
                             alt="Phone"><span>Contact Us</span></a></li>
-                <li>
+                <li title="Logout">
                     @if (Auth::check())
                         <a href="#"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

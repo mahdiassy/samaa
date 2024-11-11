@@ -110,10 +110,6 @@ class PatientController extends Controller
 
     public function update(Request $request, Patient $patient)
     {
-        /*$dateString = $request->birthday;
-        $date = DateTime::createFromFormat('F, j, Y', $dateString);
-        $birthday = $date->format('Y-m-d');*/
-
         $patient->first_name = $request->first_name;
         $patient->last_name = $request->last_name;
         $patient->phone = $request->phone;

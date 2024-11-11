@@ -20,7 +20,7 @@
                 <div class="button-container2">
                     <a href="{{ route('therapy.index') }}" class="add-primery-btn">All Therapies</a>
 
-                    <a href="{{ route('doctor.index') }}" class="add-patient-btn">Booking with a doctor                    </a>
+                    <a href="{{ route('doctor.index') }}" class="add-patient-btn">Booking with a doctor</a>
                 </div>
             </div>
 
@@ -37,18 +37,26 @@
                         </tr>
                     </thead>
                     <tbody id="patientTbody">
-                        @foreach ($patientBookings as $patientBooking)
-                            <tr>
+                        @foreach ($patientBookings as $key => $patientBooking)
+                            <tr id="{{ $key }}">
                                 <td>{{ $patientBooking->id }}</td>
                                 <td>
                                     <span class="text-truncate">
-                                        <a class="link" href="{{ route('doctor.show', $patientBooking->availability->doctor) }}">{{ $patientBooking->availability->doctor->first_name . ' ' . $patientBooking->availability->doctor->last_name }}</a></span>
+                                        <a class="link"
+                                            href="{{ route('doctor.show', $patientBooking->availability->doctor) }}">{{ $patientBooking->availability->doctor->first_name . ' ' . $patientBooking->availability->doctor->last_name }}</a></span>
                                 </td>
                                 <td>{{ $patientBooking->availability->doctor->specialization }}</td>
-                                <td >{{ \Carbon\Carbon::parse($patientBooking->availability->time)->format('d-m-Y') }}</td>
+                                <td>{{ \Carbon\Carbon::parse($patientBooking->availability->time)->format('d-m-Y') }}</td>
 
                                 <td class="custom-date">{{ $patientBooking->status }}</td>
                                 <td>
+                                    @if ($patientBooking->status == \App\Enums\BookingEnum::DOCTOR_CANCEL)
+                                        <a href="{{ route('patients.calendar', $patientBooking->availability->doctor) }}"
+                                            class="btn edit-btn">
+                                            Reschedule appointment
+                                        </a>
+                                    @endif
+
                                     <form class="btn delete-btn"
                                         action="{{ route('changeStatus', [$patientBooking->availability->id, \App\Enums\BookingEnum::PATIENT_CANCEL]) }}"
                                         method="POST" style="display:inline;">
@@ -63,35 +71,8 @@
                     </tbody>
                 </table>
 
-                <div class="pagination">
-                    <span id="paginationInfo">Showing 1 to 2 of 2 entries</span>
-
-                    <ul class="page-list" id="pageList">
-                        <li><a href="#" id="prevBtn" onclick="changePage(currentPage - 1)" disabled>
-                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M7.41 11.3869L2.83 6.79688L7.41 2.20687L6 0.796875L0 6.79688L6 12.7969L7.41 11.3869Z"
-                                        fill="#2E4049" />
-                                </svg>
-                            </a>
-                        </li>
-                        <li><a href="#" onclick="changePage(1)">1</a></li>
-                        <li><a href="#" onclick="changePage(2)">2</a></li>
-                        <li><a href="#" onclick="changePage(3)">3</a></li>
-                        <li><a href="#">...</a></li>
-                        <li><a href="#" onclick="changePage(99)">99</a></li>
-                        <li>
-                            <a href="#" id="nextBtn" onclick="changePage(currentPage + 1)">
-                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M0.589844 11.3869L5.16984 6.79688L0.589844 2.20687L1.99984 0.796875L7.99984 6.79688L1.99984 12.7969L0.589844 11.3869Z"
-                                        fill="#2E4049" />
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="pagination1">
+                    {{ $patientBookings->links('pagination::bootstrap-4') }}
                 </div>
             </div>
         </div>

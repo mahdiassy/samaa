@@ -70,35 +70,8 @@
                     </tbody>
                 </table>
 
-                <div class="pagination">
-                    <span id="paginationInfo">Showing 1 to 2 of 2 entries</span>
-
-                    <ul class="page-list" id="pageList">
-                        <li><a href="#" id="prevBtn" onclick="changePage(currentPage - 1)" disabled>
-                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M7.41 11.3869L2.83 6.79688L7.41 2.20687L6 0.796875L0 6.79688L6 12.7969L7.41 11.3869Z"
-                                        fill="#2E4049" />
-                                </svg>
-                            </a>
-                        </li>
-                        <li><a href="#" onclick="changePage(1)">1</a></li>
-                        <li><a href="#" onclick="changePage(2)">2</a></li>
-                        <li><a href="#" onclick="changePage(3)">3</a></li>
-                        <li><a href="#">...</a></li>
-                        <li><a href="#" onclick="changePage(99)">99</a></li>
-                        <li>
-                            <a href="#" id="nextBtn" onclick="changePage(currentPage + 1)">
-                                <svg width="8" height="13" viewBox="0 0 8 13" fill="none"
-                                    xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M0.589844 11.3869L5.16984 6.79688L0.589844 2.20687L1.99984 0.796875L7.99984 6.79688L1.99984 12.7969L0.589844 11.3869Z"
-                                        fill="#2E4049" />
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
+                <div class="pagination1">
+                    {{$patients->links('pagination::bootstrap-4')}}
                 </div>
             </div>
         </div>

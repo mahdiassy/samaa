@@ -136,12 +136,12 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-    $('#users-movies-select2').select2({
-        placeholder: "Select a time",
-        width: '100%',
-        allowClear: true,
-        dropdownParent: $('#monthModal')
-    });
+        $('#users-movies-select2').select2({
+            placeholder: "Select a time",
+            width: '100%',
+            allowClear: true,
+            dropdownParent: $('#monthModal')
+        });
         var availabilities = [{!! $availabilities !!}];
         availabile = []
         $(availabilities[0]).each(function(i, time) {
@@ -151,8 +151,13 @@
                 id: time.id,
             };
             if (time.booking) {
-                availabile[i].title = `{{ __('reserved:') }} \n ${time.booking.user_name}`
-                availabile[i].color = 'red'
+                if (time.booking.status === 'Canceled By Patient') {
+                    availabile[i].title = `${time.booking.status}`
+                    availabile[i].color = 'rgb(13 110 253)'
+                } else {
+                    availabile[i].title = `${time.booking.status}`
+                    availabile[i].color = 'rgb(249 57 57)'
+                }
             }
         })
 
@@ -415,11 +420,13 @@
                             previewEvent.remove();
                             deleteModal.hide();
                             previewEvent = null;
-                            alert( '{{ __('The appointment has been successfully deleted') }}');
+                            alert(
+                                '{{ __('The appointment has been successfully deleted') }}');
 
                         } else {
                             deleteModal.hide();
-                            alert( '{{ __('You cannot delete it. It has already been booked') }}');
+                            alert(
+                                '{{ __('You cannot delete it. It has already been booked') }}');
                         }
                     },
                 });

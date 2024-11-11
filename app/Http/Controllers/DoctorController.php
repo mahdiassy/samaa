@@ -147,8 +147,6 @@ class DoctorController extends Controller
 
     public function deleteTime($id)
     {
-        //dd($id);
-        //$booking = Booking::where('available_id',$id);
         $time = Availability::find($id);
         if (!$time->booking()->exists()) {
             $time->delete();
@@ -156,17 +154,6 @@ class DoctorController extends Controller
         } else {
             return response()->json(['message' => 'no deleted']);
         }
-        /*$booking = $time->booking;
-            $booking->status = BookingEnum::DOCTOR_CANCEL;
-            $booking->save();*/
-        //$time->delete();
-        /*} else {
-        $booking->delete();
-        }*/
-
-        /*$time = Availability::find($id);
-        $time->delete();
-        return response()->json(['message' => 'deleted']);*/
     }
 
     public function addTimes(Request $request)
@@ -218,6 +205,9 @@ class DoctorController extends Controller
         $booking->status = $status;
         $booking->save();
 
-        return redirect()->route('doctors.booking.index');
+        return redirect()->route('doctors.booking.index')->with('status', [
+            'type' => 'success',
+            'msg' => 'Doctor updated status successfully'
+        ]);
     }
 }

@@ -217,6 +217,20 @@ body {
     display: inline-block;
 }
 
+.sidebar:not(.open) .menu-items li:hover::after {
+    content: attr(title);
+    position: absolute;
+    background-color:  rgba(48, 163, 144, 0.7);
+    color: white;
+    left:50%;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    white-space: nowrap;
+    pointer-events: none;
+    z-index: 1000;
+}
+
 .search-container {
     position: relative;
     margin: 10px 0;
@@ -614,7 +628,7 @@ body {
 .page-title {
     font-size: 36px;
     font-weight: 700;
-    text-transform: lowercase;
+    text-transform: capitalize;
     margin-bottom: 20px;
     color: #2E4049;
     padding: 20px;
@@ -757,11 +771,59 @@ body {
     color: #D6861F;
 }
 
-.pagination {
-    display: flex;
-    justify-content: space-between;
+.pagination .page-item {
+    list-style: none;
+}
+
+.pagination .page-link {
+    display: block;
+    padding: 8px 12px;
+    text-decoration: none;
+    color: #2E4049;
+    border-radius: 4px;
+    justify-content:right;
     align-items: center;
-    /* margin-top: 20px; */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination .page-link:hover {
+    background-color: #1A655E;
+    color: #ffffff;
+    border-color: #1A655E;
+}
+
+.pagination .page-item.active .page-link {
+    background-color: #1A655E;
+    color: #ffffff;
+    border-color: #1A655E;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #ccc;
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: #f8f8f8;
+    border-color: #ddd;
+}
+
+
+/*.pagination1 {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 10%;
+    background-color: #fff;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 50px;
+    position: sticky;
+    bottom: 0;
+    z-index: 2;
+}*/
+.pagination1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #fff;
     border-bottom-left-radius: 10px;
     border-bottom-right-radius: 10px;
@@ -771,56 +833,23 @@ body {
     z-index: 2;
 }
 
-.pagination span {
-    padding-left: 40px;
+.pagination-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 0 10%;
 }
 
-.page-list {
-    list-style-type: none;
-    padding-right: 70px;
+.pagination-info {
+    text-align: left;
+}
+
+.pagination {
     display: flex;
     gap: 10px;
-}
-
-.page-list li a {
-    padding: 6px 12px;
-    text-decoration: none;
-    color: #2E4049;
-    border-radius: 4px;
-}
-
-.page-list li a:hover {
-    background-color: #1A655E;
-    color: white;
-}
-
-#prevBtn,
-#nextBtn {
-    color: #1A655E;
-    cursor: pointer;
-    transition: color 0.3s ease;
-}
-
-#prevBtn.disabled,
-#nextBtn.disabled {
-    background-color: #ccc !important;
-    cursor: not-allowed;
-}
-
-#prevBtn.disabled:hover,
-#nextBtn.disabled:hover {
-    background-color: #ccc;
-}
-
-.page-list li a#prevBtn:hover,
-.page-list li a#nextBtn:hover {
-    background-color: #1A655E;
-}
-
-.page-list li a#prevBtn:hover svg path,
-.page-list li a#nextBtn:hover svg path {
-    cursor: pointer;
-    fill: white;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
 #patientTable thead tr:first-child th:first-child {
@@ -1454,8 +1483,8 @@ select {
         min-width: 600px;
     }
 
-    .pagination {
-        min-width: 600px;
+    .pagination1 {
+        min-width: 610px;
         padding: 0px;
     }
 
@@ -1696,12 +1725,15 @@ select {
 }
 .fc-v-event
 {
-    background-color: #1A655E !important;
-    border: 1px solid #1A655E !important;
+    background-color: #1A655E ;
+    border: 1px solid #1A655E;
 }
 .fc-daygrid-event-dot
 {
-    border: calc(var(--fc-daygrid-event-dot-width) / 2) solid #1A655E !important;
+    border: calc(var(--fc-daygrid-event-dot-width) / 2) solid #1A655E ;
+}
+.fc .fc-daygrid-event-harness {
+    cursor: pointer;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice
 {

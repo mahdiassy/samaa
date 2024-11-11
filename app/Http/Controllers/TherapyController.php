@@ -56,14 +56,11 @@ class TherapyController extends Controller
 
     public function create(Patient $patient)
     {
-        //$patients = Patient::all();
         return view($this->dir . "create", compact('patient'));
     }
 
     public function store(Request $request)
     {
-        //$patients = Patient::all();
-
         $therapy = new Therapy;
         $therapy->name = $request->name;
         $therapy->user_id = Auth::id();
@@ -78,10 +75,6 @@ class TherapyController extends Controller
         }
         $therapy->save();
 
-        //$therapies = $this->getTherapiesBasedRole();
-
-        //$patient = Patient::find($request->patients);
-        ///$therapy->patients()->sync($request->patients);
         $patient = Patient::find($request->patient_id);
         $therapy->patients()->sync($patient->id);
 
@@ -91,8 +84,6 @@ class TherapyController extends Controller
         ];
 
         return redirect()->route('therapy.index')->with('status', $status);
-        //return redirect()->route('therapy.index')->with(compact('therapies', 'patients'))->with('status', $status);
-
     }
 
     public function edit(Request $request, Therapy $therapy)
@@ -280,7 +271,6 @@ class TherapyController extends Controller
         if (auth()->user()->hasRole('Admin')) {
             $therapies = Therapy::paginate(9);
         } elseif (auth()->user()->hasRole('Doctor')) {
-            //$therapies = Therapy::where('user_id', Auth::id())->paginate(9); /// edit
             $therapies = Therapy::where('user_id', Auth::id())
                 ->orWhereHas('user', function ($query) {
                     $query->whereHas('roles', function ($roleQuery) {
@@ -294,7 +284,7 @@ class TherapyController extends Controller
                 ->where('patient_id', $user->id)
                 ->pluck('therapy_id');
 
-            $therapies = Therapy::whereIn('id', $therapyIds)->get();
+            $therapies = Therapy::whereIn('id', $therapyIds)->paginate(9);
         }
         return $therapies;
     }

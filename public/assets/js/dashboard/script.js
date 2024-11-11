@@ -61,47 +61,6 @@ document.getElementById('imageUpload').addEventListener('change', function() {
     }
 });*/
 
-let currentPage = 1;
-const rowsPerPage = 10;
-const patientRows = Array.from(document.querySelectorAll('#patientTbody tr'));
-const totalRows = patientRows.length;
-const totalPages = Math.ceil(totalRows / rowsPerPage);
-
-function displayTable(page) {
-    const start = (page - 1) * rowsPerPage;
-    const end = start + rowsPerPage;
-
-    patientRows.forEach((row, index) => {
-        row.style.display = (index >= start && index < end) ? '' : 'none';
-    });
-
-    document.getElementById('paginationInfo').textContent = `Showing ${start + 1} to ${Math.min(end, totalRows)} of ${totalRows} entries`;
-
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
-
-    if (currentPage === 1) {
-        prevBtn.classList.add('disabled');
-    } else {
-        prevBtn.classList.remove('disabled');
-    }
-
-    if (currentPage === totalPages) {
-        nextBtn.classList.add('disabled');
-    } else {
-        nextBtn.classList.remove('disabled');
-    }
-}
-
-function changePage(page) {
-    if (page < 1 || page > totalPages) return;
-    currentPage = page;
-    displayTable(currentPage);
-}
-document.addEventListener('DOMContentLoaded', () => {
-    displayTable(currentPage);
-});
-
 /*const questions = {
     stressed: [
         {
