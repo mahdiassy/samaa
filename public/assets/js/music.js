@@ -340,7 +340,7 @@ window.mobileCheck = function () {
 
         for (var i = 0; i < songElements.length; i++) {
             songElements[i].addEventListener('mouseover', function () {
-                this.style.backgroundColor = '#00A0FF';
+                this.style.backgroundColor = '#2bc7b7';
                 this.querySelectorAll('.song-meta-data .song-title')[0].style.color = '#FFFFFF';
                 this.querySelectorAll('.song-meta-data .song-artist')[0].style.color = '#FFFFFF';
                 if (!this.classList.contains('amplitude-active-song-container')) {
@@ -352,9 +352,9 @@ window.mobileCheck = function () {
             songElements[i].addEventListener('mouseout', function () {
                 this.style.backgroundColor = '#FFFFFF';
                 this.querySelectorAll('.song-meta-data .song-title')[0].style.color = '#272726';
-                this.querySelectorAll('.song-meta-data .song-artist')[0].style.color = '#607D8B';
+                this.querySelectorAll('.song-meta-data .song-artist')[0].style.color = '#608b80';
                 this.querySelectorAll('.play-button-container')[0].style.display = 'none';
-                this.querySelectorAll('.song-duration')[0].style.color = '#607D8B';
+                this.querySelectorAll('.song-duration')[0].style.color = '#608b80';
             });
 
             songElements[i].addEventListener('click', function () {
@@ -384,8 +384,8 @@ window.mobileCheck = function () {
                             wavesurfer = WaveSurfer.create({
                                 container: '#waveform',
                                 waveColor: linGrad,
-                                progressColor: 'hsla(200,89%,46%,1)',
-                                cursorColor: '#5183ce',
+                                progressColor: 'hsl(174, 57%, 46%)',
+                                cursorColor: '#1A655E',
                                 barWidth: current_option.waveform_width,
                                 barRadius: 5,
                                 cursorWidth: 1,
