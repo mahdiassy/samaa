@@ -145,6 +145,50 @@ class PatientController extends Controller
         ]);
     }
 
+    public function editProfile(Request $request, Patient $patient)
+    {
+        $languages = Language::all();
+        $countries = Country::all();
+        return view($this->dir . "profile", compact('patient', 'countries', 'languages'));
+    }
+
+    public function updateProfile(Request $request, Patient $patient)
+    {
+        $patient->first_name = $request->first_name;
+        $patient->last_name = $request->last_name;
+        $patient->phone = $request->phone;
+        $patient->address = $request->address;
+        $patient->birthday = $request->birthday;
+        $patient->country_id = $request->country;
+        $patient->language_id = $request->language;
+        $patient->gender = $request->gender;
+        $patient->blood_type = $request->blood_type;
+        $patient->weight = $request->weight;
+        $patient->height = $request->height;
+        $patient->is_smoker = $request->smoker;
+        $patient->twitter = null;
+        $patient->facebook = null;
+        $patient->instagram = null;
+
+        $user = User::find($patient->user_id);
+        $user->name = $request->first_name;
+        $user->email = $request->email;
+        $user->save();
+        $user->syncRoles('Patient');
+
+        if ($request->has('image')) {
+            $image = $request->file('image');
+            $patient->image = $this->storeFile($image, 'Patient image');
+        }
+
+        $patient->save();
+
+        return redirect()->back()->with('status', [
+            'type' => 'success',
+            'msg' => 'Patient Profile updated successfully'
+        ]);
+    }
+
     public function destroy(Patient $patient)
     {
         $patient->delete();

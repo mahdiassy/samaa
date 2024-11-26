@@ -61,7 +61,13 @@ Route::group([
         Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
         Route::resource('patient', PatientController::class)->middleware('role:Admin|Doctor');
+        Route::get('profile/patient/edit/{patient}', [PatientController::class,'editProfile'])->name('profile.patient.edit');
+        Route::put('profile/patient/update/{patient}', [PatientController::class,'updateProfile'])->name('profile.patient.update');
+
         Route::resource('doctor', DoctorController::class)->middleware('role:Admin|Patient');
+        Route::get('profile/doctor/edit/{doctor}', [DoctorController::class,'editProfile'])->name('profile.doctor.edit');
+        Route::put('profile/doctor/update/{doctor}', [DoctorController::class,'updateProfile'])->name('profile.doctor.update');
+
         Route::resource('therapy', TherapyController::class)->middleware('role:Admin|Doctor|Patient');
         Route::get('therapy/create/{patient}', [TherapyController::class,'create'])->middleware('role:Admin|Doctor|Patient')->name('therapy-create');
         Route::get('/therapies/playlist', [TherapyController::class, 'playlist'])->name('playlist')->middleware('role:Admin|Doctor|Patient');

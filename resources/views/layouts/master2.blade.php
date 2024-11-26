@@ -45,7 +45,7 @@
                 @endif
 
                 <div class="desc-profile">
-                    <h3>{{ Auth::user()->patient->first_name }} {{ Auth::user()->patient->last_name }}</h3>
+                    <a title="edit Profile" href="{{ route('profile.patient.edit',Auth::user()->patient) }}"><h3>{{ Auth::user()->patient->first_name }} {{ Auth::user()->patient->last_name }}</h3></a>
                 </div>
             @elseif (Auth::check() && Auth::user()->hasRole('Doctor'))
                 @if (Auth::check() && Auth::user()->doctor && Auth::user()->doctor->image)
@@ -55,7 +55,7 @@
                 @endif
 
                 <div class="desc-profile">
-                    <h3>{{ Auth::user()->doctor->first_name }} {{ Auth::user()->doctor->last_name }}</h3>
+                    <a title="edit Profile" href="{{ route('profile.doctor.edit',Auth::user()->doctor) }}"><h3>{{ Auth::user()->doctor->first_name }} {{ Auth::user()->doctor->last_name }}</h3></a>
                 </div>
             @elseif (Auth::check() && Auth::user()->hasRole('Admin'))
                 <img src="{{ asset('storage/avatar1.png') }}" alt="Profile">

@@ -82,6 +82,42 @@ class DoctorController extends Controller
         return view($this->dir . "edit", compact('doctor'));
     }
 
+    public function editProfile(Request $request, Doctor $doctor)
+    {
+        return view($this->dir . "profile", compact('doctor'));
+    }
+
+    public function updateProfile(Request $request, Doctor $doctor)
+    {
+        $doctor->first_name = $request->first_name;
+        $doctor->last_name = $request->last_name;
+        $doctor->phone = $request->phone;
+        $doctor->specialization = $request->specialization;
+        $doctor->address = $request->address;
+        $doctor->birthday = $request->birthday;
+        $doctor->twitter = $request->twitter;
+        $doctor->facebook = $request->facebook;
+        $doctor->instagram = $request->instagram;
+
+        $user = User::find($doctor->user_id);
+        $user->name = $request->first_name;
+        $user->email = $request->email;
+        $user->save();
+        $user->syncRoles('Doctor');
+
+        if ($request->has('image')) {
+            $image = $request->file('image');
+            $doctor->image = $this->storeFile($image, 'Doctor image');
+        }
+
+        $doctor->save();
+
+        return redirect()->back()->with('status', [
+            'type' => 'success',
+            'msg' => 'Doctor Profile updated successfully'
+        ]);
+    }
+
     public function update(Request $request, Doctor $doctor)
     {
 
