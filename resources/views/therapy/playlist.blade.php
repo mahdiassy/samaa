@@ -29,7 +29,7 @@
         </div>
         <div class="chat-input-container">
             <input type="text" id="chat-message" class="chat-input" placeholder="Type your message here..."
-                onkeydown="if(event.key === 'Enter') sendMessage()">
+                onkeydown="if(event.key === 'Enter') sendMessage()"/>
             <button onclick="sendMessage()" class="send-btn">&#9658;</button>
         </div>
     </div>

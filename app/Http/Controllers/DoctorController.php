@@ -58,7 +58,7 @@ class DoctorController extends Controller
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
         $user->save();
-        $user->assignRole($request->role);
+        $user->assignRole('Doctor');
 
         $doctor->user_id = $user->id;
 
@@ -99,7 +99,7 @@ class DoctorController extends Controller
         $user->name = $request->first_name;
         $user->email = $request->email;
         $user->save();
-        $user->syncRoles($request->role);
+        $user->syncRoles('Doctor');
 
         if ($request->has('image')) {
             $image = $request->file('image');
