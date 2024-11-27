@@ -27,10 +27,10 @@ class BookingController extends Controller
         $doctor = Doctor::find($request->id);
         //$availabilities = $doctor->availabilities()->whereDoesntHave('booking')->get();
         $availabilities = $doctor->availabilities()
-            ->whereHas('booking', function ($query) {
+            ->WhereDoesntHave('booking')
+            ->orwhereHas('booking', function ($query) {
                 $query->where('status', BookingEnum::PATIENT_CANCEL);
             })
-            ->orWhereDoesntHave('booking')
             ->get();
 
         return view($this->dir . "calendar", compact('availabilities'));
