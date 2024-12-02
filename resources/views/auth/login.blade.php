@@ -4,7 +4,9 @@
         <div class="login-container">
             <div class="login-text">
                 <h2>Welcome to <span>SAMAA </span></h2>
-                <h1>Hear to Heal</h1>
+                <h1 class="heal">
+                    Hea<span class="different-r">r</span> to Hea<span class="different-l">l</span>
+                </h1>
             </div>
             <div class="contact-form">
                 <form class="form-horizontal form-simple" action="{{ route('login') }}" method="POST">

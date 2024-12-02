@@ -4,7 +4,9 @@
     <img src="assets/images/piano-background.png" alt="Piano background">
     <div class="hero-text">
         <h2>Welcome to SAMAA</h2>
-        <h1>Hear to Heal</h1>
+        <h1 class="heal">
+            Hea<span class="different-r">r</span> to Hea<span class="different-l">l</span>
+        </h1>
         <p>Experience The Power Of Music For Relaxation, Healing, And Rejuvenation.</p>
     </div>
 </section>

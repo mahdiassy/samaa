@@ -291,6 +291,86 @@ nav {
     transition: transform 0.2s ease;
 }
 
+/* Hear to Heal animation*/
+.heal {
+    font-family: 'Arial', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    color: white;
+}
+
+.different-r {
+    display: inline-block;
+    position: relative;
+    animation: change-color-r 3s forwards infinite;
+}
+
+.different-l {
+    display: inline-block;
+    color: white;
+    animation: change-color-l 3s forwards infinite;
+    animation-delay: 2.5s;
+}
+
+.heal::after {
+    content: "♪";
+    position: absolute;
+    font-size: 40px;
+    color: #D67E0D;
+    left: 34%;
+    top: 42%;
+    animation: note-motion 4s forwards ease-out infinite;
+    animation-delay: 1.5s;
+}
+
+@keyframes change-color-r {
+    0% {
+        color: white;
+    }
+
+    100% {
+        color: #D67E0D;
+    }
+}
+
+@keyframes change-color-l {
+    0% {
+        color: white;
+    }
+
+    100% {
+        color: #D67E0D;
+    }
+}
+
+@keyframes note-motion {
+    0% {
+        top: 42%;
+        left: 34%;
+        transform: scale(1);
+    }
+
+    25% {
+        top: 65%;
+        left: 34%;
+        transform: scale(1);
+    }
+
+    50% {
+        top: 65%;
+        left: 98%;
+        transform: scale(1);
+    }
+
+    100% {
+        top: 42%;
+        left: 98%;
+        transform: scale(1);
+    }
+}
 
 /* Fotter*/
 
@@ -561,7 +641,7 @@ nav {
 
     .hero-text h1 {
         font-family: 'Roboto', sans-serif;
-        font-size: 50px;
+        font-size: 45px;
         font-weight: 600;
         margin: 0;
     }
@@ -723,23 +803,25 @@ nav {
     color: #F1EEEC;
 }
 
-.login-text h1{
+.login-text h1 {
     font-size: 60px;
     font-weight: 600;
     margin: 0;
 }
 
-.login-text h2{
+.login-text h2 {
     font-size: 25px;
     font-weight: 500;
     margin: 0;
 }
-.login-text h2 span{
+
+.login-text h2 span {
     font-size: 25px;
     font-weight: 500;
     margin: 0;
     color: #D67E0D;
 }
+
 /* Register page */
 .register-section {
     font-family: 'Roboto', sans-serif;
@@ -1414,13 +1496,16 @@ input[type="radio"] {
         font-size: 30px;
         margin-right: 10px;
     }
-    .login-text h1{
+
+    .login-text h1 {
         font-size: 40px;
     }
-    .login-text h2{
+
+    .login-text h2 {
         font-size: 20px;
     }
-    .login-text h2 span{
+
+    .login-text h2 span {
         font-size: 20px;
     }
 }
