@@ -2,7 +2,7 @@
 @section('content')
     <div class="main-content">
         <div class="search-container">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="{{ __('site.Search') }}">
             <button>
                 <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -13,7 +13,11 @@
         </div>
         <div class="header">
             <a href="{{ route('patient.index') }}" class="btn-back">
-                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Go Back
+                @if (App::getLocale() == 'ar')
+                <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @else
+                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @endif
             </a>
         </div>
         <div>
@@ -45,22 +49,22 @@
 
                         <div class="user-info">
                             <div class="text-info">
-                                <p>First Name</p>
-                                <input type="text" name="first_name" placeholder="First Name" value=""
+                                <p>{{ __('site.First Name') }}</p>
+                                <input type="text" name="first_name" placeholder="{{ __('site.First Name') }}" value=""
                                     class="styled-input" required />
                             </div>
                             <div class="text-info">
-                                <p>Email</p>
-                                <input type="text" name="email" placeholder="Email Adress" value=""
+                                <p>{{ __('site.Email Address') }}</p>
+                                <input type="text" name="email" placeholder="{{ __('site.Email Address') }}" value=""
                                     class="styled-input" required/>
                             </div>
                             <div class="text-info">
-                                <p>Phone</p>
-                                <input type="text" name="phone" placeholder="Phone" value=""
+                                <p>{{ __('site.Phone') }}</p>
+                                <input type="text" name="phone" placeholder="{{ __('site.Phone') }}" value=""
                                     class="styled-input" />
                             </div>
                             <div class="text-info">
-                                <p>Language</p>
+                                <p>{{ __('site.Language Spoken') }}</p>
                                 <select name="language" style="margin-top: 0px;" class="styled-input">
                                     @foreach ($languages as $language)
                                         <option value="{{ $language->id }}">{{ $language->name }}</option>
@@ -72,9 +76,9 @@
                                 <input type="number" name="weight" placeholder="54" value="" class="styled-input" />
                             </div>
                             <div class="text-info">
-                                <p>Blood Type</p>
+                                <p>{{ __('site.Blood Type') }}</p>
                                 <select name="blood_type" style="margin-top: 0px;" class="styled-input">
-                                    <option>Blood Type</option>
+                                    <option>{{ __('site.Blood Type') }}</option>
                                     <option value="A+">A+</option>
                                     <option value="A-">A-</option>
                                     <option value="AB+">AB+</option>
@@ -86,22 +90,22 @@
                                 </select>
                             </div>
                             <div class="text-info">
-                                <p>Is Smoker?</p>
+                                <p>{{ __('site.Are You A Regular Smoker?') }}</p>
                                 <select name="smoker" style="margin-top: 0px;" class="styled-input">
-                                    <option>Is Smoker?</option>
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option>{{ __('site.Are You A Regular Smoker?') }}</option>
+                                    <option value="yes">{{ __('site.Yes') }}</option>
+                                    <option value="no">{{ __('site.No') }}</option>
                                 </select>
                             </div>
                         </div>
                         <div class="diagnosis">
                             <div class="text-info">
-                                <p>Last Name</p>
-                                <input type="text" name="last_name" placeholder="Last Name" value=""
+                                <p>{{ __('site.Last Name') }}</p>
+                                <input type="text" name="last_name" placeholder="{{ __('site.Last Name') }}" value=""
                                     class="styled-input" />
                             </div>
                             <div class="text-info">
-                                <p>Country</p>
+                                <p>{{ __('site.Country') }}</p>
                                 <select name="country" style="margin-top: 0px;" class="styled-input">
                                     @foreach ($countries as $country)
                                         <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -109,12 +113,12 @@
                                 </select>
                             </div>
                             <div class="text-info">
-                                <p>Birthday</p>
+                                <p>{{ __('site.Birthday') }}</p>
                                 <input type="date" name="birthday" value="2024-10-22"
                                     class="styled-input date-input" />
                             </div>
                             <div class="text-info">
-                                <p>Password</p>
+                                <p>{{ __('site.Password') }}</p>
                                 <input type="password" name="password" value="" class="styled-input" />
                             </div>
                             <div class="text-info">
@@ -123,17 +127,17 @@
                                     class="styled-input" />
                             </div>
                             <div class="text-info">
-                                <p>Gender</p>
+                                <p>{{ __('site.Gender') }}</p>
                                 <select name="gender" style="margin-top: 0px;" class="styled-input">
-                                    <option>Gender</option>
-                                    <option value="female">Female</option>
-                                    <option value="male">Male</option>
+                                    <option>{{ __('site.Gender') }}</option>
+                                    <option value="female">{{ __('site.Female') }}</option>
+                                    <option value="male">{{ __('site.Male') }}</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <div class="action-buttons">
-                        <button class="btn patient-btn">Create</button>
+                        <button class="btn patient-btn">{{ __('site.Create') }}</button>
                     </div>
                 </form>
             </div>

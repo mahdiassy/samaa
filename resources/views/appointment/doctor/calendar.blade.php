@@ -3,7 +3,7 @@
 @section('content')
     <div class="main-content">
         <div class="search-container">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="{{ __('site.Search') }}">
             <button>
                 <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -14,7 +14,11 @@
         </div>
         <div class="header">
             <a href="{{ route('doctors.booking.index') }}" class="btn-back">
-                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Go Back
+                @if (App::getLocale() == 'ar')
+                <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @else
+                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @endif
             </a>
         </div>
         <div class="container" id="content">
@@ -31,7 +35,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="monthModalLabel">Select Appointment - Month View</h5>
+                                    <h5 class="modal-title" id="monthModalLabel">{{ __('site.Select Appointment - Month View') }}</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -39,35 +43,35 @@
                                     <input type="text" id="selectedMonthDate" class="form-control"
                                         placeholder="Selected Date" readonly />
                                     <div class="pt-2">
-                                        <label for="users-movies-select2">Select Time:</label>
+                                        <label for="users-movies-select2">{{ __('site.Select Time') }}:</label>
                                         <select class="form-control select2" id="users-movies-select2" multiple="multiple">
-                                            <option value="08:00">08:00 AM</option>
-                                            <option value="08:30">08:30 AM</option>
-                                            <option value="09:00">09:00 AM</option>
-                                            <option value="09:30">09:30 AM</option>
-                                            <option value="10:00">10:00 AM</option>
-                                            <option value="10:30">10:30 AM</option>
-                                            <option value="11:00">11:00 AM</option>
-                                            <option value="11:30">11:30 AM</option>
-                                            <option value="12:00">12:00 PM</option>
-                                            <option value="12:30">12:30 PM</option>
-                                            <option value="13:00">01:00 PM</option>
-                                            <option value="13:30">01:30 PM</option>
-                                            <option value="14:00">02:00 PM</option>
-                                            <option value="14:30">02:30 PM</option>
-                                            <option value="15:00">03:00 PM</option>
-                                            <option value="15:30">03:30 PM</option>
-                                            <option value="16:00">04:00 PM</option>
-                                            <option value="16:30">04:30 PM</option>
-                                            <option value="17:00">05:00 PM</option>
-                                            <option value="17:30">05:30 PM</option>
-                                            <option value="18:00">06:00 PM</option>
+                                            <option value="08:00">08:00 {{ __('site.AM') }}</option>
+                                            <option value="08:30">08:30 {{ __('site.AM') }}</option>
+                                            <option value="09:00">09:00 {{ __('site.AM') }}</option>
+                                            <option value="09:30">09:30 {{ __('site.AM') }}</option>
+                                            <option value="10:00">10:00 {{ __('site.AM') }}</option>
+                                            <option value="10:30">10:30 {{ __('site.AM') }}</option>
+                                            <option value="11:00">11:00 {{ __('site.AM') }}</option>
+                                            <option value="11:30">11:30 {{ __('site.AM') }}</option>
+                                            <option value="12:00">12:00 {{ __('site.PM') }}</option>
+                                            <option value="12:30">12:30 {{ __('site.PM') }}</option>
+                                            <option value="13:00">01:00 {{ __('site.PM') }}</option>
+                                            <option value="13:30">01:30 {{ __('site.PM') }}</option>
+                                            <option value="14:00">02:00 {{ __('site.PM') }}</option>
+                                            <option value="14:30">02:30 {{ __('site.PM') }}</option>
+                                            <option value="15:00">03:00 {{ __('site.PM') }}</option>
+                                            <option value="15:30">03:30 {{ __('site.PM') }}</option>
+                                            <option value="16:00">04:00 {{ __('site.PM') }}</option>
+                                            <option value="16:30">04:30 {{ __('site.PM') }}</option>
+                                            <option value="17:00">05:00 {{ __('site.PM') }}</option>
+                                            <option value="17:30">05:30 {{ __('site.PM') }}</option>
+                                            <option value="18:00">06:00 {{ __('site.PM') }}</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" id="saveMonthModalEvent">Save</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('site.Close') }}</button>
+                                    <button type="button" class="btn btn-primary" id="saveMonthModalEvent">{{ __('site.Save') }}</button>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +83,7 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="weekModalLabel">Select Appointment - Week View</h5>
+                                    <h5 class="modal-title" id="weekModalLabel">{{ __('site.Select Appointment - Week View') }}</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
@@ -88,8 +92,8 @@
                                         placeholder="Selected Date" readonly />
                                 </div>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary" id="saveWeekModalEvent">Save</button>
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('site.Close') }}</button>
+                                    <button type="button" class="btn btn-primary" id="saveWeekModalEvent">{{ __('site.Save') }}</button>
                                 </div>
                             </div>
                         </div>
@@ -101,17 +105,17 @@
                         <div class="modal-dialog">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                    <h5 class="modal-title" id="deleteEventModalLabel">Delete Event</h5>
+                                    <h5 class="modal-title" id="deleteEventModalLabel">{{ __('site.Delete Event') }}</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                         aria-label="Close"></button>
                                 </div>
                                 <div class="modal-body">
-                                    Are you sure you want to delete this event?
+                                    {{ __('site.Are you sure you want to delete this event?') }}
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cancel</button>
-                                    <button type="button" class="btn btn-danger" id="confirmDeleteEvent">Delete</button>
+                                        data-bs-dismiss="modal">{{ __('site.Cancel') }}</button>
+                                    <button type="button" class="btn btn-danger" id="confirmDeleteEvent">{{ __('site.Delete') }}</button>
                                 </div>
                             </div>
                         </div>
@@ -132,7 +136,11 @@
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"><!-- new -->
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script><!-- new -->
 
-
+@if (app()->getLocale() == 'fr')
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.0/dist/locale/fr.js"></script>
+    @elseif (app()->getLocale() == 'ar')
+        <script src="https://cdn.jsdelivr.net/npm/fullcalendar@3.10.0/dist/locale/ar.js"></script>
+    @endif
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
@@ -217,7 +225,10 @@
             return timeArray;
         }
 
+        var locale = '{{ app()->getLocale() }}';
+
         var calendar = new FullCalendar.Calendar(calendarEl, {
+            locale: locale === 'ar' ? 'ar' : locale === 'fr' ? 'fr' : 'en',
             initialView: 'dayGridMonth',
             headerToolbar: {
                 left: 'prev,next today',

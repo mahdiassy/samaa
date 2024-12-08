@@ -1,16 +1,21 @@
 @extends('layouts.master2')
 @section('content')
     <div class="search-bar" style="background-image: url('/assets/images/therapy.png');">
-        <input type="text" placeholder="Search...">
+        <input type="text" placeholder="{{ __('site.Search') }}">
         <div class="search-bar-title">
-            <h1>start your<br>music therapy</h1>
+            <h1>{{ __('site.start your') }}<br>{{ __('site.music therapy') }}</h1>
+            <h1>{{ __('site.start your music therapy') }}</h1>
         </div>
     </div>
     <div class="main-content">
 
         <div class="header">
             <a href="{{ route('therapy.index') }}" class="btn-back">
-                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Go Back
+                @if (App::getLocale() == 'ar')
+                <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @else
+                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @endif
             </a>
         </div>
         <section class="users-view">
@@ -32,21 +37,19 @@
                                     </div>
                                 </div>
                             </label>
-                            <p class="image-upload-instruction">Set the Therapy thumbnail image. Only *.png, *.jpg, and
-                                *.jpeg
-                                image files are accepted.</p>
+                            <p class="image-upload-instruction">{{ __('site.Set the Therapy thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted') }}</p>
                         </div>
 
                         <!-- File Name and Patient Selection Row -->
                         <div class="input-row">
                             <div class="input-group">
-                                <label for="users-movies-select2">Patient Name:</label>
+                                <label for="users-movies-select2">{{ __('site.Patient Name') }}:</label>
                                 <input value="{{ $therapy->patients->pluck('id')[0] }}" class="form-input" name="patient_id"
                                     hidden required>
                                 <h1>{{ $therapy->patients->pluck('first_name')[0] }}</h1>
                             </div>
                             <div class="input-group">
-                                <label for="filename">File Name:</label>
+                                <label for="filename">{{ __('site.File Name') }}:</label>
                                 <input class="form-input" id="filename" name="name" type="text"
                                     value="{{ $therapy->name }}">
                             </div>
@@ -55,11 +58,11 @@
                         <!-- Audio Edit and Old Audio Section -->
                         <div class="input-row">
                             <div class="input-group">
-                                <label for="audioFile">Edit Audio (optional):</label>
+                                <label for="audioFile">{{ __('site.Edit Audio (optional)') }}:</label>
                                 <input type="file" class="form-input" id="audioFile" name="file" accept="audio/mp3">
                             </div>
                             <div class="input-group">
-                                <label for="oldAudio">Old Audio:</label>
+                                <label for="oldAudio">{{ __('site.Old Audio') }}:</label>
                                 <div>
                                     <audio controls>
                                         <source src="{{ Storage::url('Doctor therapy/' . decrypt($therapy->file)) }}"
@@ -74,7 +77,7 @@
 
                 <!-- Buttons Section -->
                 <div class="action-buttons">
-                    <button class="btn patient-btn">Update</button>
+                    <button class="btn patient-btn">{{ __('site.Update') }}</button>
                 </div>
             </form>
         </section>

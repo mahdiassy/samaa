@@ -2,7 +2,7 @@
 @section('content')
     <div class="main-content">
         <div class="search-container">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="{{ __('site.Search') }}">
             <button>
                 <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -13,7 +13,11 @@
         </div>
         <div class="header">
             <a href="javascript:void(0);" onclick="history.back();" class="btn-back">
-                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Go Back
+                @if (App::getLocale() == 'ar')
+                <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @else
+                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @endif
             </a>
         </div>
         <div class="patient-contaier">
@@ -23,14 +27,14 @@
                     @role('Patient')
                         <p class="big-title">{{ Auth::user()->patient->first_name . ' ' . Auth::user()->patient->last_name }}</p>
                         <div class="small-title">
-                            <p>Patient</p>
-                            <p>ID:#<strong>{{ Auth::user()->patient->id }}</strong></p>
+                            <p>{{ __('site.Patient') }}</p>
+                            <p>{{ __('site.ID') }}:#<strong>{{ Auth::user()->patient->id }}</strong></p>
                         </div>
                     @endrole
                 </div>
                 <div class="button-container">
                     <a href="#" class="filter-link">
-                        Filter
+                        {{ __('site.Filter') }}
                         <svg width="19" height="22" viewBox="0 0 19 22" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -40,7 +44,7 @@
                         </svg>
                     </a>
                     @role('Patient')
-                        <a href="{{ route('feedback') }}" class="add-patient-btn">Add Feedback</a>
+                        <a href="{{ route('feedback') }}" class="add-patient-btn">{{ __('site.Add Feedback') }}</a>
                     @endrole
                 </div>
             </div>
@@ -50,11 +54,11 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Patient Name</th>
-                            <th>Feedback</th>
-                            <th>Improvement</th>
-                            <th>Date</th>
-                            <th>Actions</th>
+                            <th>{{ __('site.Patient Name') }}</th>
+                            <th>{{ __('site.Feedback') }}</th>
+                            <th>{{ __('site.Improvement') }}</th>
+                            <th>{{ __('site.Date') }}</th>
+                            <th>{{ __('site.Actions') }}</th>
                         </tr>
                     </thead>
                     <tbody id="patientTbody">
@@ -66,7 +70,7 @@
                                 <td>{{ $feedback->improvement }}</td>
                                 <td class="custom-date">{{ \Carbon\Carbon::parse($feedback->date)->format('d-m-Y') }}</td>
                                 <td>
-                                    <a href="{{ route('feedback.show', $feedback) }}" class="btn view-btn">View</a>
+                                    <a href="{{ route('feedback.show', $feedback) }}" class="btn view-btn">{{ __('site.View') }}</a>
                                     @role('Admin')
                                         <form action="{{ route('feedback.destroy', $feedback) }}" method="post" class="m-0"
                                             id="deleteForm-{{ $feedback->id }}">

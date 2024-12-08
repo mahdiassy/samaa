@@ -2,7 +2,7 @@
 @section('content')
     <div class="main-content">
         <div class="search-container">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="{{ __('site.Search') }}">
             <button>
                 <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -15,11 +15,11 @@
 
             <div class="actions">
                 <div class="title-container">
-                    <h1 class="page-title">Doctor list</h1>
+                    <h1 class="page-title">{{ __('site.Doctor list') }}</h1>
                 </div>
                 <div class="button-container">
                     <a href="#" class="filter-link">
-                        Filter
+                        {{ __('site.Filter') }}
                         <svg width="19" height="22" viewBox="0 0 19 22" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -29,10 +29,10 @@
                         </svg>
                     </a>
                     @role('Admin')
-                        <a href="{{ route('doctor.create') }}" class="add-patient-btn">Add New Doctor</a>
+                        <a href="{{ route('doctor.create') }}" class="add-patient-btn">{{ __('site.Add New Doctor') }}</a>
                     @endrole
                     @role('Patient')
-                        <a href="{{ route('patients.booking.index') }}" class="add-patient-btn">My Booking</a>
+                        <a href="{{ route('patients.booking.index') }}" class="add-patient-btn">{{ __('site.My Bookings') }}</a>
                     @endrole
                 </div>
             </div>
@@ -42,11 +42,11 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Full Name</th>
-                            <th>Phone</th>
-                            <th>Address</th>
-                            <th>Birthday</th>
-                            <th>Actions</th>
+                            <th>{{ __('site.Full Name') }}</th>
+                            <th>{{ __('site.Phone') }}</th>
+                            <th>{{ __('site.Address') }}</th>
+                            <th>{{ __('site.Birthday') }}</th>
+                            <th>{{ __('site.Actions') }}</th>
                         </tr>
                     </thead>
                     <tbody id="patientTbody">
@@ -59,12 +59,11 @@
                                 <td class="custom-date">{{ \Carbon\Carbon::parse($doctor->birthday)->format('d-m-Y') }}</td>
                                 <td>
                                     @role('Patient')
-                                        <a href="{{ route('patients.calendar', $doctor) }}" class="btn edit-btn">Book an
-                                            appointment</a>
+                                        <a href="{{ route('patients.calendar', $doctor) }}" class="btn edit-btn">{{ __('site.Book an appointment') }}</a>
                                     @endrole
-                                    <a href="{{ route('doctor.show', $doctor) }}" class="btn view-btn">View</a>
+                                    <a href="{{ route('doctor.show', $doctor) }}" class="btn view-btn">{{ __('site.View') }}</a>
                                     @role('Admin')
-                                        <a href="{{ route('doctor.edit', $doctor) }}" class="btn edit-btn">Edit</a>
+                                        <a href="{{ route('doctor.edit', $doctor) }}" class="btn edit-btn">{{ __('site.Edit') }}</a>
 
                                         <!--<form action="{{ route('doctor.destroy', $doctor) }}" method="post" class="m-0"
                                             id="deleteForm-{{ $doctor->id }}">

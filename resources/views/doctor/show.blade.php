@@ -2,7 +2,7 @@
 @section('content')
     <div class="main-content">
         <div class="search-container">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="{{ __('site.Search') }}">
             <button>
                 <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -13,7 +13,11 @@
         </div>
         <div class="header">
             <a href="{{ route('doctor.index') }}" class="btn-back">
-                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Go Back
+                @if (App::getLocale() == 'ar')
+                <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @else
+                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @endif
             </a>
         </div>
         <div>
@@ -24,10 +28,10 @@
                         <div class="extra-user-info">
                             <p class="big-title">{{ $doctor->first_name }} {{ $doctor->last_name }}</p>
                             <div class="small-title">
-                                <p>ID:#{{ $doctor->id }}</p>
+                                <p>{{ __('site.ID') }}:#{{ $doctor->id }}</p>
                             </div>
                             <div class="text-info">
-                                <p><strong>Specialization</strong></p>
+                                <p><strong>{{ __('site.Specialization') }}</strong></p>
                                 <p>{{ $doctor->specialization }}</p>
                             </div>
                         </div>
@@ -39,34 +43,34 @@
                     <div class="user-info">
                         <p class="big-title">{{ $doctor->first_name }} {{ $doctor->last_name }}</p>
                         <div class="small-title">
-                            <p>ID:#{{ $doctor->id }}</p>
+                            <p>{{ __('site.ID') }}:#{{ $doctor->id }}</p>
                         </div>
                         <div class="text-info">
-                            <p><strong>Address:</strong> {{ $doctor->address }}</p>
+                            <p><strong>{{ __('site.Address') }}:</strong> {{ $doctor->address }}</p>
 
-                            <p><strong>Birthday:</strong> {{ \Carbon\Carbon::parse($doctor->birthday)->format('d-m-Y') }}</p>
+                            <p><strong>{{ __('site.Birthday') }}:</strong> {{ \Carbon\Carbon::parse($doctor->birthday)->format('d-m-Y') }}</p>
                         </div>
                     </div>
                     <div class="diagnosis">
                         <div class="text-info">
-                            <p><strong>Email:</strong></p>
+                            <p><strong>{{ __('site.Email Address') }}:</strong></p>
                             <p>{{ $doctor->user->email }}</p>
 
-                            <p><strong>Phone:</strong></p>
+                            <p><strong>{{ __('site.Phone') }}:</strong></p>
                             <p>{{ $doctor->phone }}</p>
                         </div>
                     </div>
                 </div>
                 <div class="action-buttons">
-                    <a href="{{ route('doctor.index') }}" class="btn patient-btn">Doctor List</a>
+                    <a href="{{ route('doctor.index') }}" class="btn patient-btn">{{ __('site.Doctor List') }}</a>
                     @role('Patient')
-                    <a href="{{ route('feedback') }}" class="btn patient-btn">Feedback</a>
+                    <a href="{{ route('feedback') }}" class="btn patient-btn">{{ __('site.Feedback') }}</a>
                     @endrole
                     @role('Admin')
-                    <a href="{{ route('feedback-list') }}" class="btn patient-btn">Feedback</a>
+                    <a href="{{ route('feedback-list') }}" class="btn patient-btn">{{ __('site.Feedback') }}</a>
                     @endrole
                     @role('Doctor')
-                        <a href="{{ route('doctors.calendar') }}" class="btn patient-btn">+ Schedule Appointment</a>
+                        <a href="{{ route('doctors.calendar') }}" class="btn patient-btn">+ {{ __('site.Schedule Appointment') }}</a>
                     @endrole
                 </div>
             </div>

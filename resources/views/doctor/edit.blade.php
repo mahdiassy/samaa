@@ -2,7 +2,7 @@
 @section('content')
     <div class="main-content">
         <div class="search-container">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="{{ __('site.Search') }}">
             <button>
                 <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -13,7 +13,11 @@
         </div>
         <div class="header">
             <a href="{{ route('doctor.index') }}" class="btn-back">
-                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Go Back
+                @if (App::getLocale() == 'ar')
+                <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @else
+                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @endif
             </a>
         </div>
         <div>
@@ -46,46 +50,46 @@
 
                         <div class="user-info">
                             <div class="text-info">
-                                <p>First Name</p>
-                                <input type="text" name="first_name" placeholder="First Name" value="{{ $doctor->first_name }}"
+                                <p>{{ __('site.First Name') }}</p>
+                                <input type="text" name="first_name" placeholder="{{ __('site.First Name') }}" value="{{ $doctor->first_name }}"
                                     class="styled-input" required />
                             </div>
                             <div class="text-info">
-                                <p>Email</p>
-                                <input type="text" name="email" placeholder="Email Adress" value="{{ $doctor->user->email }}"
+                                <p>{{ __('site.Email Address') }}</p>
+                                <input type="text" name="email" placeholder="{{ __('site.Email Address') }}" value="{{ $doctor->user->email }}"
                                     class="styled-input" required/>
                             </div>
                             <div class="text-info">
-                                <p>Phone</p>
-                                <input type="text" name="phone" placeholder="Phone" value="{{ $doctor->phone }}"
+                                <p>{{ __('site.Phone') }}</p>
+                                <input type="text" name="phone" placeholder="{{ __('site.Phone') }}" value="{{ $doctor->phone }}"
                                     class="styled-input" />
                             </div>
                             <div class="text-info">
-                                <p>Specialization</p>
-                                <input type="text" name="specialization" placeholder="Specialization" value="{{ $doctor->specialization }}"
+                                <p>{{ __('site.Specialization') }}</p>
+                                <input type="text" name="specialization" placeholder="{{ __('site.Specialization') }}" value="{{ $doctor->specialization }}"
                                     class="styled-input" />
                             </div>
                         </div>
                         <div class="diagnosis">
                             <div class="text-info">
-                                <p>Last Name</p>
-                                <input type="text" name="last_name" placeholder="Last Name" value="{{ $doctor->last_name }}"
+                                <p>{{ __('site.Last Name') }}</p>
+                                <input type="text" name="last_name" placeholder="{{ __('site.Last Name') }}" value="{{ $doctor->last_name }}"
                                     class="styled-input" />
                             </div>
                             <div class="text-info">
-                                <p>Birthday</p>
+                                <p>{{ __('site.Birthday') }}</p>
                                 <input type="date" name="birthday" value="{{ $doctor->birthday }}"
                                     class="styled-input date-input" />
                             </div>
                             <div class="text-info">
-                                <p>Address</p>
-                                <input type="text" name="address" placeholder="Address" value="{{ $doctor->address }}"
+                                <p>{{ __('site.Address') }}</p>
+                                <input type="text" name="address" placeholder="{{ __('site.Address') }}" value="{{ $doctor->address }}"
                                     class="styled-input" />
                             </div>
                         </div>
                     </div>
                     <div class="action-buttons">
-                        <button class="btn patient-btn">Update</button>
+                        <button class="btn patient-btn">{{ __('site.Update') }}</button>
                     </div>
                 </form>
             </div>

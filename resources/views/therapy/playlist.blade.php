@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>ٍSamaa Music Player</title>
+    <title>{{ __('site.Samaa Music Player') }}</title>
     <link rel="stylesheet" href="{{ asset('assets/css/music.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/music2.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -20,15 +20,15 @@
 
     <div class="chat-container">
         <div class="chat-header">
-            Session Chat
-            <button  id="startCallButton" class="call-btn">Start Call</button>
-            <button  id="endCallButton"  onclick="endCall()" class="end-call-btn" style="display:none;">End Call</button>
+             {{ __('site.Session Chat') }}
+            <button  id="startCallButton" class="call-btn">{{ __('site.Start Call') }}</button>
+            <button  id="endCallButton"  onclick="endCall()" class="end-call-btn" style="display:none;">{{ __('site.End Call') }}</button>
         </div>
 
         <div id="chat-box" class="chat-box">
         </div>
         <div class="chat-input-container">
-            <input type="text" id="chat-message" class="chat-input" placeholder="Type your message here..."
+            <input type="text" id="chat-message" class="chat-input" placeholder="{{ __('site.Type your message here') }}"
                 onkeydown="if(event.key === 'Enter') sendMessage()"/>
             <button onclick="sendMessage()" class="send-btn">&#9658;</button>
         </div>

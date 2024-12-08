@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="{{ App::getLocale() == 'ar' ? "rtl" : "ltr" }}" lang="{{
+    App::getLocale() == 'ar' ? 'ar' :
+    (App::getLocale() == 'fr' ? 'fr' :
+    (App::getLocale() == 'en' ? 'en' : 'en'))
+}}">
 
 <head>
     <meta charset="UTF-8">
@@ -67,53 +71,51 @@
 
         <div class="sidebar-content">
             <ul class="menu-items">
-                <li title="Home"><a href="{{ route('dashboard') }}"><img src="{{ asset('assets/images/icons/dashboard.svg') }}"
-                            alt="Dashboard"><span >Home</span></a></li>
-                <li title="About Us"><a href="{{ route('about-us') }}"><img src="{{ asset('assets/images/icons/profile.svg') }}"
-                            alt="Profile"><span >About Us</span></a></li>
+                <li title="{{ __('site.Home') }}"><a href="{{ route('dashboard') }}"><img src="{{ asset('assets/images/icons/dashboard.svg') }}"
+                            alt="Dashboard"><span >{{ __('site.Home') }}</span></a></li>
+                <li title="{{ __('site.About Us') }}"><a href="{{ route('about-us') }}"><img src="{{ asset('assets/images/icons/profile.svg') }}"
+                            alt="Profile"><span >{{ __('site.About Us') }}</span></a></li>
                 <!--<li><a href="#"><img src="{{ asset('assets/images/icons/listen-to-music.svg') }}"
                             alt="Listen to music"><span>Listen to Music</span></a></li>
                 <li><a href="#"><img src="{{ asset('assets/images/icons/library.svg') }}"
                             alt="Library"><span>Library</span></a></li>-->
                 @role('Admin|Doctor')
-                    <li title="Patient list"><a href="{{ route('patient.index') }}"><img src="{{ asset('assets/images/icons/treatment.svg') }}"
-                                alt="Treatment"><span>Patient list</span></a></li>
+                    <li title="{{ __('site.Patient list') }}"><a href="{{ route('patient.index') }}"><img src="{{ asset('assets/images/icons/treatment.svg') }}"
+                                alt="Treatment"><span>{{ __('site.Patient list') }}</span></a></li>
                 @endrole
                 @role('Admin|Patient')
-                    <li title="Doctor list"><a href="{{ route('doctor.index') }}"><img src="{{ asset('assets/images/icons/profile.svg') }}"
-                                alt="Profile"><span>Doctor list</span></a></li>
+                    <li title="{{ __('site.Doctor list') }}"><a href="{{ route('doctor.index') }}"><img src="{{ asset('assets/images/icons/profile.svg') }}"
+                                alt="Profile"><span>{{ __('site.Doctor list') }}</span></a></li>
                 @endrole
                 @role('Admin')
-                    <li title="Feedback"><a href="{{ route('feedback-list') }}"><img src="{{ asset('assets/images/icons/review.svg') }}"
-                                alt="Review"><span>Feedback</span></a></li>
+                    <li title="{{ __('site.Feedback') }}"><a href="{{ route('feedback-list') }}"><img src="{{ asset('assets/images/icons/review.svg') }}"
+                                alt="Review"><span>{{ __('site.Feedback') }}</span></a></li>
                 @endrole
                 @role('Doctor')
-                    <li title="Patients Bookings" ><a href="{{ route('doctors.booking.index') }}"><img
-                                src="{{ asset('assets/images/icons/calendar.svg') }}" alt="Calendar"><span>Patients
-                                Bookings</span></a></li>
-                    <li title="Schedule"><a href="{{ route('doctors.calendar') }}"><img
+                    <li title="{{ __('site.Patients Booking') }}" ><a href="{{ route('doctors.booking.index') }}"><img
+                                src="{{ asset('assets/images/icons/calendar.svg') }}" alt="Calendar"><span>{{ __('site.Patients Booking') }}</span></a></li>
+                    <li title="{{ __('site.Schedule') }}"><a href="{{ route('doctors.calendar') }}"><img
                                 src="{{ asset('assets/images/icons/calendar.svg') }}"
-                                alt="Calendar"><span>Schedule</span></a></li>
+                                alt="Calendar"><span>{{ __('site.Schedule') }}</span></a></li>
                 @endrole
                 @role('Patient')
-                    <li title="My Bookings"><a href="{{ route('patients.booking.index') }}"><img
-                                src="{{ asset('assets/images/icons/calendar.svg') }}" alt="Calendar"><span>My
-                                Bookings</span></a></li>
+                    <li title="{{ __('site.My Bookings') }}"><a href="{{ route('patients.booking.index') }}"><img
+                                src="{{ asset('assets/images/icons/calendar.svg') }}" alt="Calendar"><span>{{ __('site.My Bookings') }}</span></a></li>
 
-                    <li title="Feedback"><a href="{{ route('feedback') }}"><img src="{{ asset('assets/images/icons/review.svg') }}"
-                        alt="Review"><span>Feedback</span></a></li>
+                    <li title="{{ __('site.Feedback') }}"><a href="{{ route('feedback') }}"><img src="{{ asset('assets/images/icons/review.svg') }}"
+                        alt="Review"><span>{{ __('site.Feedback') }}</span></a></li>
                 @endrole
                 @role('Admin|Doctor|Patient')
-                    <li title="Therapy"><a href="{{ route('therapy.index') }}"><img src="{{ asset('assets/images/icons/therapy.svg') }}"
-                                alt="Therapy"><span>Therapy</span></a></li>
+                    <li title="{{ __('site.Therapy') }}"><a href="{{ route('therapy.index') }}"><img src="{{ asset('assets/images/icons/therapy.svg') }}"
+                                alt="Therapy"><span>{{ __('site.Therapy') }}</span></a></li>
                 @endrole
-                <li title="Contact Us"><a href="{{ route('contact-us') }}"><img src="{{ asset('assets/images/icons/phone.svg') }}"
-                            alt="Phone"><span>Contact Us</span></a></li>
-                <li title="Logout">
+                <li title="{{ __('site.Contact Us') }}"><a href="{{ route('contact-us') }}"><img src="{{ asset('assets/images/icons/phone.svg') }}"
+                            alt="Phone"><span>{{ __('site.Contact Us') }}</span></a></li>
+                <li title="{{ __('site.Logout') }}">
                     @if (Auth::check())
                         <a href="#"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            <img src="{{ asset('assets/images/icons/logout.svg') }}" alt="Logout"><span>Logout</span>
+                            <img src="{{ asset('assets/images/icons/logout.svg') }}" alt="Logout"><span>{{ __('site.Logout') }}</span>
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
@@ -124,7 +126,11 @@
         </div>
     </div>
 
-    <div class="profile-container">
+    @if (App::getLocale() == 'ar')
+        <div class="profile-container-Arabic">
+    @else
+        <div class="profile-container">
+    @endif
         <!--<div class="main-content">-->
 
         <!--<div class="search-container">
@@ -160,33 +166,33 @@
                 </div>
                 <div class="footer-links">
                     <div class="column">
-                        <a href="{{ route('home') }}">Home</a>
-                        <a href="{{ route('therapy.index') }}">Therapy</a>
+                        <a href="{{ route('home') }}">{{ __('site.Home') }}</a>
+                        <a href="{{ route('therapy.index') }}">{{ __('site.Therapy') }}</a>
                         @if (Auth::check())
                             <a href="#"
                                 onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                Logout
+                                {{ __('site.Logout') }}
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                 style="display: none;">
                                 @csrf
                             </form>
                         @else
-                            <a href="{{ route('login') }}">Login</a>
-                            <a href="{{ route('register') }}">register</a>
+                            <a href="{{ route('login') }}">{{ __('site.Login') }}</a>
+                            <a href="{{ route('register') }}">{{ __('site.Register') }}</a>
                         @endif
 
                     </div>
                     <div class="column">
-                        <a href="{{ route('about-us') }}">About Us</a>
-                        <a href="{{ route('contact-us') }}">Contact Us</a>
+                        <a href="{{ route('about-us') }}">{{ __('site.About Us') }}</a>
+                        <a href="{{ route('contact-us') }}">{{ __('site.Contact Us') }}</a>
                     </div>
                     <div class="column">
-                        <a href="#">Library</a>
+                        <a href="#">{{ __('site.Library') }}</a>
                     </div>
                 </div>
                 <div class="footer-help">
-                    <a href="#" class="help-btn">Help Center</a>
+                    <a href="#" class="help-btn">{{ __('site.Help Center') }}</a>
                     <div class="social-icons">
                         <a href="#"><i class="fab fa-instagram"></i></a>
                         <a href="#"><i class="fab fa-facebook-f"></i></a>

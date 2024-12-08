@@ -1,15 +1,20 @@
 @extends('layouts.master2')
 @section('content')
     <div class="search-bar" style="background-image: url('/assets/images/therapy.png');">
-        <input type="text" placeholder="Search...">
+        <input type="text" placeholder="{{ __('site.Search') }}">
         <div class="search-bar-title">
-            <h1>start your<br>music therapy</h1>
+            <h1>{{ __('site.start your') }}<br>{{ __('site.music therapy') }}</h1>
+            <h1>{{ __('site.start your music therapy') }}</h1>
         </div>
     </div>
     <div class="main-content">
         <div class="header">
             <a href="javascript:void(0);" onclick="history.back();" class="btn-back">
-                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Go Back
+                @if (App::getLocale() == 'ar')
+                <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @else
+                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @endif
             </a>
         </div>
         <div class="users-list-filter">
@@ -28,9 +33,7 @@
                                 </div>
                             </div>
                         </label>
-                        <p class="image-upload-instruction">Set the Therapy thumbnail image. Only *.png, *.jpg, and *.jpeg
-                            image
-                            files are accepted</p>
+                        <p class="image-upload-instruction">Set the Therapy thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted</p>
                     </div>
                     <div class="input-row">
                         <div class="input-group">
@@ -40,18 +43,18 @@
                     </div>
                     <div class="input-row">
                         <div class="input-group">
-                            <label for="file-name">File Name</label>
-                            <input type="text" id="file-name" class="form-input" name="name" placeholder="File Name"
+                            <label for="file-name">{{ __('site.File Name') }}</label>
+                            <input type="text" id="file-name" class="form-input" name="name" placeholder="File Name{{ __('site.File Name') }}"
                                 required>
                         </div>
                         <div class="input-group">
-                            <label for="file-upload">Upload File</label>
+                            <label for="file-upload">{{ __('site.Upload File') }}</label>
                             <input type="file" class="form-input" name="file" id="file-upload" accept="audio/mp3" required>
                         </div>
                     </div>
 
                     <div class="action-buttons">
-                        <button type="submit" class="btn patient-btn">Create</button>
+                        <button type="submit" class="btn patient-btn">{{ __('site.Create') }}</button>
                     </div>
                 </div>
             </form>

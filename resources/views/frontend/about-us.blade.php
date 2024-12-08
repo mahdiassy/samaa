@@ -5,7 +5,7 @@
     <div class="about-container">
 
         <div class="search-container">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="{{ __('site.Search') }}">
             <button><svg width="19" height="20" viewBox="0 0 21 22" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -17,39 +17,38 @@
 
         <div class="header-container">
             <div class="header">
-                <h1>About</h1>
-                <h1>Therapy With<span> Sama’a</span></h1>
+                <h1>{{ __('site.About') }}</h1>
+                <h1>{{ __('site.Therapy With') }}<span> {{ __('site.Sama’a') }}</span></h1>
                 <div class="bar-graph"></div>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt
-                    ut labore et dolore magna aliqua. Ut enim ad minim veniam–quis.</p>
+                <p>{{ __('site.Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam–quis.') }}</p>
                 <div class="buttons">
-                    <button class="btn-sponsor">BECOME SPONSOR</button>
-                    <button class="btn-subscribe">SUBSCRIBE</button>
+                    <button class="btn-sponsor">{{ __('site.BECOME SPONSOR') }}</button>
+                    <button class="btn-subscribe">{{ __('site.SUBSCRIBE') }}</button>
                 </div>
             </div>
         </div>
 
         <div class="stats">
             <div class="stat-card">
-                <h3>76<span>K</span></h3>
-                <p>Community Members</p>
+                <h3>76<span>{{ __('site.K') }}</span></h3>
+                <p>{{ __('site.Community Members') }}</p>
             </div>
             <div class="stat-card">
-                <h3>128<span>K</span></h3>
-                <p>Patients</p>
+                <h3>128<span>{{ __('site.K') }}</span></h3>
+                <p>{{ __('site.Patients') }}</p>
             </div>
             <div class="stat-card">
-                <h3>59<span>K</span></h3>
-                <p>Participating Doctors</p>
+                <h3>59<span>{{ __('site.K') }}</span></h3>
+                <p>{{ __('site.Participating Doctors') }}</p>
             </div>
         </div>
 
         <div class="listeners-section">
-            <h2>What our listeners say</h2>
-            <p>Their experience throughout every platform</p>
+            <h2>{{ __('site.What our listeners say') }}</h2>
+            <p>{{ __('site.Their experience throughout every platform') }}</p>
 
             <div class="image-container">
-                <img src="assets/images/about-us.jfif" alt="Microphone" class="main-image">
+                <img src="{{ asset('assets/images/about-us.jfif') }}" alt="Microphone" class="main-image">
 
                 <svg class="overlay-svg" width="425" height="333" viewBox="0 0 425 333" fill="none"
                     xmlns="http://www.w3.org/2000/svg">
@@ -68,19 +67,19 @@
         </div>
 
         <div class="doctors-section">
-            <h2>Our Doctors</h2>
+            <h2>{{ __('site.Our Doctors') }}</h2>
 
             <div class="doctor-cards">
                 <div class="doctor-card">
                     <div class="doctor-image" style="background-image: url('../../assets/images/doctor1.png');"></div>
                     <div class="doctor-info">
-                        <h4>Host 1</h4>
-                        <h3>doctor <br>kate smeth</h3>
+                        <h4>{{ __('site.Host') }} 1 </h4>
+                        <h3>{{ __('site.doctor') }} <br>kate smeth</h3>
                         <p>Lorem ipsum dolor sit amet con
                             sectet piscing elit, sed do eiusmod tempor rarylet podofcast.</p>
                         <hr class="info-separator">
                         <div class="social-media">
-                            <p>follow me:</p>
+                            <p>{{ __('site.follow me') }}</p>
                             <div class="medias">
                                 <a href="#">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
@@ -162,13 +161,13 @@
                 <div class="doctor-card">
                     <div class="doctor-image" style="background-image: url('../../assets/images/doctor2.png');"></div>
                     <div class="doctor-info">
-                        <h4>Host 2</h4>
-                        <h3>doctor <br>ali samuel</h3>
+                        <h4>{{ __('site.Host') }} 2</h4>
+                        <h3>{{ __('site.doctor') }} <br>ali samuel</h3>
                         <p>Lorem ipsum dolor sit amet con
                             sectet piscing elit, sed do eiusmod tempor rarylet podofcast.</p>
                         <hr class="info-separator">
                         <div class="social-media">
-                            <p>follow me:</p>
+                            <p>{{ __('site.follow me') }}</p>
                             <div class="medias">
                                 <a href="#">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"

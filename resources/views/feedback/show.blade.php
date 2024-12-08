@@ -2,7 +2,7 @@
 @section('content')
     <div class="main-content">
         <div class="search-container">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="{{ __('site.Search') }}">
             <button>
                 <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -13,7 +13,11 @@
         </div>
         <div class="header">
             <a href="{{ route('feedback-list') }}" onclick="history.back();" class="btn-back">
-                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Go Back
+                @if (App::getLocale() == 'ar')
+                <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @else
+                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @endif
             </a>
 
         </div>
@@ -22,31 +26,31 @@
                     <div class="feedback">
 
                         <div class="feedback-container">
-                            <p class="feedback-title">Feedback</p>
+                            <p class="feedback-title">{{ __('site.Feedback') }}</p>
 
                             <div class="text-info">
-                                <p>ID</p>
+                                <p>{{ __('site.ID') }}</p>
                                 <input type="text" name="id" value="{{ $feedback->id }}" class="styled-input" disabled />
                             </div>
                             <div class="text-info">
-                                <p>Patient name</p>
+                                <p>{{ __('site.Patient Name') }}</p>
                                 <input type="text" name="patient-name" value="{{ $feedback->patient->first_name .' '. $feedback->patient->last_name }}" class="styled-input" disabled />
                             </div>
                             <div class="text-info">
-                                <p>Feedback (1/10)</p>
+                                <p>{{ __('site.Feedback') }} (1/10)</p>
                                 <input type="number" name="feedback" placeholder="form (1-10)" min="1" max="10" value="{{$feedback->feedback}}"
                                     class="styled-input" disabled />
                             </div>
                             <div class="text-info">
-                                <p>Date</p>
+                                <p>{{ __('site.Date') }}</p>
                                 <input name="date" value="{{ \Carbon\Carbon::parse($feedback->date)->format('m/d/Y') }}" class="styled-input date-input" disabled />
                             </div>
                             <div class="text-info">
-                                <p>Improvement (1% - 100%)</p>
+                                <p>{{ __('site.Improvement') }} (1% - 100%)</p>
                                 <input type="number" name="improvement" min="1" max="100" value="{{$feedback->improvement}}" class="styled-input" disabled />
                             </div>
                             <div class="text-info">
-                                <p>Note</p>
+                                <p>{{ __('site.Note') }}</p>
                                 <textarea name="note" value="{{$feedback->note}}" class="styled-input textarea-input" disabled >{{$feedback->note}}</textarea>
                             </div>
                         </div>

@@ -2,7 +2,7 @@
 @section('content')
     <div class="main-content">
         <div class="search-container">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="{{ __('site.Search') }}">
             <button>
                 <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -15,13 +15,13 @@
 
             <div class="actions">
                 <div class="title-container">
-                    <h1 class="page-title">Patients Booking</h1>
+                    <h1 class="page-title">{{ __('site.Patients Booking') }}</h1>
                 </div>
                 <div class="button-container2">
-                    <a href="{{ route('therapy.index') }}" class="add-primery-btn">All Therapies</a>
+                    <a href="{{ route('therapy.index') }}" class="add-primery-btn">{{ __('site.All Therapies') }}</a>
 
                     @role('Doctor')
-                        <a href="{{ route('doctors.calendar') }}" class="add-patient-btn">Schedule</a>
+                        <a href="{{ route('doctors.calendar') }}" class="add-patient-btn">{{ __('site.Schedule') }}</a>
                     @endrole
                 </div>
             </div>
@@ -31,12 +31,12 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Patient Name</th>
-                            <th>Booking Date</th>
-                            <th>Booking Reason</th>
-                            <th>Booking status</th>
-                            <th>Add Therapy</th>
-                            <th>Change Status</th>
+                            <th>{{ __('site.Patient Name') }}</th>
+                            <th>{{ __('site.Booking Date') }}</th>
+                            <th>{{ __('site.Booking Reason') }}</th>
+                            <th>{{ __('site.Booking status') }}</th>
+                            <th>{{ __('site.Add Therapy') }}</th>
+                            <th>{{ __('site.Change Status') }}</th>
                         </tr>
                     </thead>
                     <tbody id="patientTbody">
@@ -52,9 +52,9 @@
 
                                 <td class="custom-date">{{ $patientBooking->status }}</td>
                                 @if ($patientBooking->status == \App\Enums\BookingEnum::APPROVED)
-                                    <td><a href="{{ route('therapy-create',$patientBooking->patient) }}" class="btn edit-btn">Add</a></td>
+                                    <td><a href="{{ route('therapy-create',$patientBooking->patient) }}" class="btn edit-btn">{{ __('site.Add') }}</a></td>
                                 @else
-                                    <td>be Approved before</td>
+                                    <td>{{ __('site.be Approved before') }}</td>
                                 @endif
                                 <td>
                                     <form id="status-form-{{ $patientBooking->availability->id }}"
@@ -64,7 +64,7 @@
                                         <select class="status" name="status"
                                             onchange="updateFormAction(this, '{{ $patientBooking->availability->id }}')"
                                             class="form-select">
-                                            <option value="" disabled selected>Change Status</option>
+                                            <option value="" disabled selected>{{ __('site.Change Status') }}</option>
                                             @foreach (\App\Enums\BookingEnum::doctorActions() as $status)
                                                 <option value="{{ $status }}">{{ $status }}</option>
                                             @endforeach

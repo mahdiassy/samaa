@@ -2,7 +2,7 @@
 @section('content')
     <div class="main-content">
         <div class="search-container">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="{{ __('site.Search') }}">
             <button>
                 <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -15,18 +15,18 @@
 
             <div class="actions">
                 <div class="title-container">
-                    <h1 class="page-title">therapy list</h1>
+                    <h1 class="page-title">{{ __('site.therapy list') }}</h1>
                 </div>
 
                 <div class="button-container2">
                     @if (!$therapies->isEmpty())
-                    <a class="add-patient-btn" href="{{ route('playlist') }}">My Playlist</a>
+                    <a class="add-patient-btn" href="{{ route('playlist') }}">{{ __('site.My Playlist') }}</a>
                     @endif
                     @role('Doctor')
-                    <a href="{{ route('doctors.booking.index') }}" class="add-primery-btn">Patients Booking</a>
+                    <a href="{{ route('doctors.booking.index') }}" class="add-primery-btn">{{ __('site.Patients Booking') }}</a>
                     @endrole
                     @role('Patient')
-                    <a href="{{ route('patients.booking.index') }}" class="add-primery-btn">My Booking</a>
+                    <a href="{{ route('patients.booking.index') }}" class="add-primery-btn">{{ __('site.My Bookings') }}</a>
                     @endrole
                 </div>
             </div>
@@ -36,12 +36,12 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Doctor Name</th>
-                            <th>Created</th>
-                            <th>Updated</th>
+                            <th>{{ __('site.Name') }}</th>
+                            <th>{{ __('site.Doctor Name') }}</th>
+                            <th>{{ __('site.Created') }}</th>
+                            <th>{{ __('site.Updated') }}</th>
                             @role('Admin|Doctor')
-                                <th>Actions</th>
+                                <th>{{ __('site.Actions') }}</th>
                             @endrole
                         </tr>
                     </thead>
@@ -55,7 +55,7 @@
                                 <td class="custom-date">{{ \Carbon\Carbon::parse($therapy->updated_at)->format('d-m-Y') }}
                                     @role('Admin|Doctor')
                                     <td>
-                                        <a href="{{ route('therapy.edit', $therapy) }}" class="btn edit-btn">Edit</a>
+                                        <a href="{{ route('therapy.edit', $therapy) }}" class="btn edit-btn">{{ __('site.Edit') }}</a>
 
                                         <form class="btn delete-btn" action="{{ route('therapy.destroy', $therapy) }}" method="post" class="m-0"
                                             id="deleteForm-{{ $therapy->id }}">

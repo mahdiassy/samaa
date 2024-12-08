@@ -2,7 +2,7 @@
 @section('content')
     <div class="main-content">
         <div class="search-container">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="{{ __('site.Search') }}">
             <button>
                 <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -15,11 +15,11 @@
 
             <div class="actions">
                 <div class="title-container">
-                    <h1 class="page-title">patient list</h1>
+                    <h1 class="page-title">{{ __('site.Patient list') }}</h1>
                 </div>
                 <div class="button-container">
                     <a href="#" class="filter-link">
-                        Filter
+                        {{ __('site.Filter') }}
                         <svg width="19" height="22" viewBox="0 0 19 22" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -28,7 +28,7 @@
                                 stroke-linejoin="round" />
                         </svg>
                     </a>
-                    <a href="{{ route('patient.create') }}" class="add-patient-btn">Add New Patient</a>
+                    <a href="{{ route('patient.create') }}" class="add-patient-btn">{{ __('site.Add New Patient') }}</a>
                 </div>
             </div>
 
@@ -37,11 +37,11 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Full Name</th>
-                            <th>Phone</th>
-                            <th>Country</th>
-                            <th>Blood Type</th>
-                            <th>Actions</th>
+                            <th>{{ __('site.Full Name') }}</th>
+                            <th>{{ __('site.Phone') }}</th>
+                            <th>{{ __('site.Country') }}</th>
+                            <th>{{ __('site.Blood Type') }}</th>
+                            <th>{{ __('site.Actions') }}</th>
                         </tr>
                     </thead>
                     <tbody id="patientTbody">
@@ -53,8 +53,8 @@
                                 <td>{{ $patient->country->name }}</td>
                                 <td class="custom-date">{{ $patient->blood_type }}</td>
                                 <td>
-                                    <a href="{{ route('patient.edit', $patient) }}" class="btn edit-btn">Edit</a>
-                                    <a href="{{ route('patient.show', $patient) }}" class="btn view-btn">View</a>
+                                    <a href="{{ route('patient.edit', $patient) }}" class="btn edit-btn">{{ __('site.Edit') }}</a>
+                                    <a href="{{ route('patient.show', $patient) }}" class="btn view-btn">{{ __('site.View') }}</a>
 
                                     <!--<form class="btn delete-btn" action="{{ route('patient.destroy', $patient) }}" method="post" class="m-0" id="deleteForm-{{ $patient->id }}">
                                         @csrf

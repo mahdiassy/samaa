@@ -6,10 +6,10 @@
             @csrf
 
         <div class="form-step personal-info active">
-            <h2>Personal Information</h2>
+            <h2> {{ __('site.Personal Information') }}</h2>
             <div class="profile-container">
                 <div class="profile-picture">
-                    <img id="profileImage" src="assets/images/profile.jfif" alt="Profile Picture">
+                    <img id="profileImage" src="{{ asset('assets/images/profile.jfif') }}" alt="Profile Picture">
                 </div>
                 <div class="vector-icon" onclick="document.getElementById('fileInput').click();">
                     <i class="fas fa-plus"></i>
@@ -20,23 +20,23 @@
 
             <div class="form-group">
                 <div>
-                    <label>Full Name</label>
+                    <label>{{ __('site.Full Name') }}</label>
 
-                    <input type="text" name="first_name" placeholder="Full Name">
+                    <input type="text" name="first_name" placeholder="{{ __('site.Full Name') }}">
                 </div>
 
                 <div>
-                    <label>Birthday</label>
-                    <input type="date" name="birthday" placeholder="MM/DD/YYYY">
+                    <label>{{ __('site.Birthday') }}</label>
+                    <input type="date" name="birthday" placeholder="{{ __('site.date') }}">
                 </div>
             </div>
             <div class="form-group">
                 <div>
-                    <label>Email</label>
-                    <input type="email" name="email" placeholder="Enter Your Registered Email Address">
+                    <label>{{ __('site.Email') }}</label>
+                    <input type="email" name="email" placeholder="{{ __('site.Enter Your Registered Email Address') }}">
                 </div>
                 <div>
-                    <label>Country</label>
+                    <label>{{ __('site.Country') }}</label>
                     <select name="country">
                         @foreach ($countries as $country)
                             <option value="{{ $country->id }}">{{ $country->name }}</option>
@@ -46,17 +46,17 @@
             </div>
             <div class="form-group">
                 <div>
-                    <label>Phone</label>
+                    <label>{{ __('site.Phone') }}</label>
                     <input type="tel" name="phone" placeholder="0918657965">
                 </div>
                 <div>
-                    <label>New Password</label>
+                    <label>{{ __('site.New Password') }}</label>
                     <input type="password" name="password" placeholder="XXXXXXXXXXXXXXX">
                 </div>
             </div>
             <div class="form-group">
                 <div>
-                    <label>Language Spoken</label>
+                    <label>{{ __('site.Language Spoken') }}</label>
                     <select name="language">
                         @foreach ($languages as $language)
                             <option value="{{ $language->id }}">{{ $language->name }}</option>
@@ -69,37 +69,37 @@
                         </div>-->
             </div>
             <div class="gender-group">
-                <label>Gender</label>
+                <label>{{ __('site.Gender') }}</label>
                 <div class="radio-container">
                     <label class="radio-option">
                         <input type="radio" name="gender" value="male">
                         <span></span>
-                        <label>Male</label>
+                        <label>{{ __('site.Male') }}</label>
                     </label>
                     <label class="radio-option">
                         <input type="radio" name="gender" value="female">
                         <span></span>
-                        <label>Female</label>
+                        <label>{{ __('site.Female') }}</label>
                     </label>
                 </div>
             </div>
 
             <div class="button-container">
-                <button type="button" class="next-btn" onclick="showNextStep()">Next</button>
+                <button type="button" class="next-btn" onclick="showNextStep()">{{ __('site.Next') }}</button>
             </div>
 
         </div>
 
         <div class="form-step medical-history">
-            <h2>Medical History</h2>
+            <h2>{{ __('site.Medical History') }}</h2>
             <div class="form-section">
                 <!-- Left Section (Inputs) -->
                 <div class="left-column">
                     <div>
                         <div class="form-group">
-                            <label>Blood Type</label>
+                            <label>{{ __('site.Blood Type') }}</label>
                             <select name="blood_type">
-                                <option>Blood Type</option>
+                                <option>{{ __('site.Blood Type') }}</option>
                                 <option value="A+">A+</option>
                                 <option value="A-">A-</option>
                                 <option value="AB+">AB+</option>
@@ -172,17 +172,17 @@
                 <!-- Right Section (Radio Buttons) -->
                 <div class="right-column">
                     <div class="questions-group">
-                        <label>Are You A Regular Smoker?</label>
+                        <label>{{ __('site.Are You A Regular Smoker?') }}</label>
                         <div class="radio-container">
                             <label class="radio-option">
                                 <input type="radio" name="smoker" value="yes">
                                 <span></span>
-                                <label>Yes</label>
+                                <label>{{ __('site.Yes') }}</label>
                             </label>
                             <label class="radio-option">
                                 <input type="radio" name="smoker" value="no">
                                 <span></span>
-                                <label>No</label>
+                                <label>{{ __('site.No') }}</label>
                             </label>
                         </div>
                     </div>
@@ -234,7 +234,7 @@
                 </div>
             </div>
             <div class="button-container">
-                <button type="submit" class="done-btn">Done</button>
+                <button type="submit" class="done-btn">{{ __('site.Done') }}</button>
             </div>
         </div>
         </form>
@@ -248,10 +248,10 @@
 
         <div class="info">
             <div>
-                <p>Copyright © 2022 Pharma Co. All rights reserved.</p>
+                <p>{{ __('site.Copyright © 2022 Pharma Co. All rights reserved.') }}</p>
             </div>
             <div>
-                <p>Terms & Conditions</p>
+                <p>{{ __('site.Terms & Conditions') }}</p>
             </div>
         </div>
         <!-- End Form Steps Content -->

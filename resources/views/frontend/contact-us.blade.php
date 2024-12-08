@@ -3,24 +3,23 @@
     <section class="contact-section">
         <div class="contact-container">
             <div class="contact-info">
-                <h3>Contact</h3>
-                <h2>Get In Touch With Us</h2>
+                <h3>{{ __('site.Contact') }}</h3>
+                <h2>{{ __('site.Get In Touch With Us') }}</h2>
                 <p>
-                    Lorem Ipsum is simply dummy text of the printin typesetting dummy text ever when an unknown printer took
-                    a galley of type and scrambled it to make a type specimen book.
+                    {{ __('site.Lorem Ipsum is simply dummy text of the printin typesetting dummy text ever when an unknown printer took a galley of type and scrambled it to make a type specimen book.') }}
                 </p>
                 <div class="contact-details">
                     <div class="contact-item">
                         <div class="icon">
-                            <img src="assets/images/email.png" alt="Email Icon">
+                            <img src="{{ asset('assets/images/email.png') }}" alt="Email Icon">
                         </div>
-                        <p><strong>Message</strong> Samaa@gmail.com</p>
+                        <p><strong>{{ __('site.Message') }}</strong> Samaa@gmail.com</p>
                     </div>
                     <div class="contact-item">
                         <div class="icon">
-                            <img src="assets/images/phone.png" alt="Phone Icon">
+                            <img src="{{ asset('assets/images/phone.png') }}" alt="Phone Icon">
                         </div>
-                        <p><strong>Contact Us</strong>+961 0 551 511</p>
+                        <p><strong>{{ __('site.Contact Us') }}</strong>+961 0 551 511</p>
                     </div>
                 </div>
 
@@ -54,18 +53,18 @@
             <div class="contact-form">
                 <form action="#">
                     <div class="form-group">
-                        <input type="text" placeholder="Enter Your Name*" required>
+                        <input type="text" placeholder="{{ __('site.Enter Your Name') }}*" required>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="Phone Number*" required>
+                        <input type="text" placeholder="{{ __('site.Phone Number') }}*" required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="Email Address*" required>
+                        <input type="email" placeholder="{{ __('site.Email Address') }}*" required>
                     </div>
                     <div class="form-group">
-                        <textarea placeholder="Your Message*" required></textarea>
+                        <textarea placeholder="{{ __('site.Your Message') }}*" required></textarea>
                     </div>
-                    <button type="submit">Submit</button>
+                    <button type="submit">{{ __('site.Submit') }}</button>
                 </form>
             </div>
         </div>

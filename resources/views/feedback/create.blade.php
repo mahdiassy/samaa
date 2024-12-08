@@ -2,7 +2,7 @@
 @section('content')
     <div class="main-content">
         <div class="search-container">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="{{ __('site.Search...') }}">
             <button>
                 <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -13,7 +13,11 @@
         </div>
         <div class="header">
             <a href="{{ route('feedback-list') }}" onclick="history.back();" class="btn-back">
-                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Go Back
+                @if (App::getLocale() == 'ar')
+                <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @else
+                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @endif
             </a>
 
         </div>
@@ -25,36 +29,36 @@
                     <div class="feedback">
 
                         <div class="feedback-container">
-                            <p class="feedback-title">Feedback</p>
+                            <p class="feedback-title">{{ __('site.Feedback') }}</p>
 
                             <div class="text-info">
-                                <p>ID</p>
+                                <p>{{ __('site.ID') }}</p>
                                 <input type="text" name="id" value="{{ $newFeedback }}" class="styled-input" disabled />
                             </div>
                             <div class="text-info">
-                                <p>Patient name</p>
+                                <p>{{ __('site.Patient Name') }}</p>
                                 <input type="text" name="patient-name" value="{{ Auth::user()->name }}" class="styled-input" disabled />
                             </div>
                             <div class="text-info">
-                                <p>Feedback (1/10)</p>
+                                <p>{{ __('site.Feedback') }} (1/10)</p>
                                 <input type="number" name="feedback" placeholder="form (1-10)" min="1" max="10" value=""
                                     class="styled-input" required />
                             </div>
                             <div class="text-info">
-                                <p>Date</p>
+                                <p>{{ __('site.Date') }}</p>
                                 <input type="date" name="date" value="2024-10-22" class="styled-input date-input" />
                             </div>
                             <div class="text-info">
-                                <p>Improvement (1% - 100%)</p>
+                                <p>{{ __('site.Improvement') }} (1% - 100%)</p>
                                 <input type="number" name="improvement" min="1" max="100" value="" class="styled-input" required/>
                             </div>
                             <div class="text-info">
-                                <p>Note</p>
+                                <p>{{ __('site.Note') }}</p>
                                 <textarea name="note" required class="styled-input textarea-input"></textarea>
                             </div>
                         </div>
                         <div class="feedback-action-buttons">
-                            <button class="btn submit-btn">Submit Feedback</button>
+                            <button class="btn submit-btn">{{ __('site.Submit Feedback') }}</button>
                             <!--<button class="btn new-btn">+ add new seqtion</button>-->
                         </div>
                     </div>

@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html dir="{{ App::getLocale() == 'ar' ? "rtl" : "ltr" }}" lang="{{
+    App::getLocale() == 'ar' ? 'ar' :
+    (App::getLocale() == 'fr' ? 'fr' :
+    (App::getLocale() == 'en' ? 'en' : 'en'))
+}}">
 
 <head>
     <meta charset="UTF-8">
@@ -20,7 +24,7 @@
 <body>
     <nav>
         <div class="logo">
-            <img src="assets/images/samaa-logo.png" alt="Logo">
+            <img src="{{ asset('assets/images/samaa-logo.png') }}" alt="Logo">
         </div>
         <div class="menu-toggle" id="menuToggle">
             <div></div>
@@ -29,28 +33,28 @@
         </div>
         <div class="menu" id="menu">
             <button class="close-menu" id="closeMenu">×</button>
-            <h2 class="menu-title">Menu</h2>
-            <a href="{{ route('home') }}">Home</a>
-            <a href="{{ route('about-us') }}">About Us</a>
+            <h2 class="menu-title">{{ __('site.Menu') }}</h2>
+            <a href="{{ route('home') }}">{{ __('site.Home') }}</a>
+            <a href="{{ route('about-us') }}">{{ __('site.About Us') }}</a>
             <!--<a href="#">Library</a>
             <a href="#">Listen to Music</a>
             <a href="#">Patient List</a>
             <a href="#">Feedback</a>
             <a href="#">Schedule</a>
             <a href="#">Therapy</a>-->
-            <a href="{{ route('contact-us') }}">Contact Us</a>
+            <a href="{{ route('contact-us') }}">{{ __('site.Contact Us') }}</a>
             <!--<a href="#">Login</a>-->
             @if (Auth::check())
-                <a href="{{ route('dashboard') }}">Dashboard</a>
+                <a href="{{ route('dashboard') }}">{{ __('site.Dashboard') }}</a>
                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    Logout
+                    {{ __('site.Logout') }}
                 </a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     @csrf
                 </form>
             @else
-                <a href="{{ route('login') }}">Login</a>
-                <a href="{{ route('register') }}">register</a>
+                <a href="{{ route('login') }}">{{ __('site.Login') }}</a>
+                <a href="{{ route('register') }}">{{ __('site.Register') }}</a>
             @endif
 
             <div class="profile">
@@ -76,6 +80,27 @@
                     <img src="{{ asset('storage/avatar1.png') }}" alt="Profile">
                 @endif
             </div>
+
+            <div class="language-selector">
+                <select id="language-select" class="form-select" onchange="location = this.value;">
+                    @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                        <option value="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                            {{ App::getLocale() == $localeCode ? 'selected' : '' }}>
+                            @if ($localeCode == 'en')
+                                <img src="https://cdn.jsdelivr.net/npm/svg-country-flags@1.2.10/svg/gb.svg"
+                                    width="23px" /> {{ $properties['native'] }}
+                            @elseif ($localeCode == 'fr')
+                                <img src="https://cdn.jsdelivr.net/npm/svg-country-flags@1.2.10/svg/fr.svg"
+                                    width="23px" /> {{ $properties['native'] }}
+                            @elseif ($localeCode == 'ar')
+                                <img src="https://cdn.jsdelivr.net/npm/svg-country-flags@1.2.10/svg/sa.svg"
+                                    width="23px" /> {{ $properties['native'] }}
+                            @endif
+
+                        </option>
+                    @endforeach
+                </select>
+            </div>
         </div>
     </nav>
 
@@ -98,32 +123,32 @@
             </div>
             <div class="footer-links">
                 <div class="column">
-                    <a href="{{ route('home') }}">Home</a>
-                    <a href="{{ route('therapy.index') }}">Therapy</a>
+                    <a href="{{ route('home') }}">{{ __('site.Home') }}</a>
+                    <a href="{{ route('therapy.index') }}">{{ __('site.Therapy') }}</a>
                     @if (Auth::check())
                         <a href="#"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                            Logout
+                            {{ __('site.Logout') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
                         </form>
                     @else
-                        <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">register</a>
+                        <a href="{{ route('login') }}"> {{ __('site.Login') }}</a>
+                        <a href="{{ route('register') }}"> {{ __('site.Register') }}</a>
                     @endif
 
                 </div>
                 <div class="column">
-                    <a href="{{ route('about-us') }}">About Us</a>
-                    <a href="{{ route('contact-us') }}">Contact Us</a>
+                    <a href="{{ route('about-us') }}"> {{ __('site.About Us') }}</a>
+                    <a href="{{ route('contact-us') }}"> {{ __('site.Contact Us') }}</a>
                 </div>
                 <div class="column">
-                    <a href="#">Library</a>
+                    <a href="#"> {{ __('site.Library') }}</a>
                 </div>
             </div>
             <div class="footer-help">
-                <a href="#" class="help-btn">Help Center</a>
+                <a href="#" class="help-btn"> {{ __('site.Help Center') }}</a>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-instagram"></i></a>
                     <a href="#"><i class="fab fa-facebook-f"></i></a>

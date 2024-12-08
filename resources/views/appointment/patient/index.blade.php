@@ -2,7 +2,7 @@
 @section('content')
     <div class="main-content">
         <div class="search-container">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="{{ __('site.Search') }}">
             <button>
                 <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -15,12 +15,12 @@
 
             <div class="actions">
                 <div class="title-container">
-                    <h1 class="page-title">My Bookings</h1>
+                    <h1 class="page-title">{{ __('site.My Bookings') }}</h1>
                 </div>
                 <div class="button-container2">
-                    <a href="{{ route('therapy.index') }}" class="add-primery-btn">All Therapies</a>
+                    <a href="{{ route('therapy.index') }}" class="add-primery-btn">{{ __('site.All Therapies') }}</a>
 
-                    <a href="{{ route('doctor.index') }}" class="add-patient-btn">Booking with a doctor</a>
+                    <a href="{{ route('doctor.index') }}" class="add-patient-btn">{{ __('site.Booking with a doctor') }}</a>
                 </div>
             </div>
 
@@ -29,11 +29,11 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Doctor Name</th>
-                            <th>Doctor Specialization</th>
-                            <th>Booking Date</th>
-                            <th>Booking status</th>
-                            <th>Canceled</th>
+                            <th>{{ __('site.Doctor Name') }}</th>
+                            <th>{{ __('site.Doctor Specialization') }}</th>
+                            <th>{{ __('site.Booking Date') }}</th>
+                            <th>{{ __('site.Booking status') }}</th>
+                            <th>{{ __('site.Canceled') }}</th>
                         </tr>
                     </thead>
                     <tbody id="patientTbody">
@@ -53,7 +53,7 @@
                                     @if ($patientBooking->status == \App\Enums\BookingEnum::DOCTOR_CANCEL)
                                         <a href="{{ route('patients.calendar', $patientBooking->availability->doctor) }}"
                                             class="btn edit-btn">
-                                            Reschedule appointment
+                                            {{ __('site.Reschedule appointment') }}
                                         </a>
                                     @endif
 

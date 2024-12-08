@@ -2,7 +2,7 @@
 @section('content')
     <div class="main-content">
         <div class="search-container">
-            <input type="text" placeholder="Search...">
+            <input type="text" placeholder="{{ __('site.Search') }}">
             <button>
                 <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path
@@ -13,7 +13,11 @@
         </div>
         <div class="header">
             <a href="{{ route('patient.index') }}" class="btn-back">
-                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> Go Back
+                @if (App::getLocale() == 'ar')
+                <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @else
+                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
+                @endif
             </a>
         </div>
         <div>
@@ -21,7 +25,7 @@
                 <div class="profile-info">
                     <div class="profile-header">
                         <img src="{{ Storage::url($patient->image) }}" alt="Patient Photo" class="profile-img">
-                        <a href="{{ route('patient.edit', $patient) }}" class="btn-edit">+ Edit</a>
+                        <a href="{{ route('patient.edit', $patient) }}" class="btn-edit">+ {{ __('site.Edit') }}</a>
                     </div>
 
                 </div>
@@ -30,29 +34,29 @@
                     <div class="user-info">
                         <p class="big-title">{{ $patient->first_name }} {{ $patient->last_name }}</p>
                         <div class="small-title">
-                            <p>Patient Gender: {{ $patient->gender}}</p>
-                            <p>ID:#{{ $patient->id }}</p>
+                            <p>{{ __('site.Patient Gender') }}: {{ $patient->gender}}</p>
+                            <p>{{ __('site.ID') }}:#{{ $patient->id }}</p>
                         </div>
                         <div class="text-info">
-                            <p><strong>Country:</strong> {{ $patient->country->name }}</p>
+                            <p><strong>{{ __('site.Country') }}:</strong> {{ $patient->country->name }}</p>
 
-                            <p><strong>Birthday:</strong> {{ \Carbon\Carbon::parse($patient->birthday)->format('d-m-Y') }}</p>
+                            <p><strong>{{ __('site.Birthday') }}:</strong> {{ \Carbon\Carbon::parse($patient->birthday)->format('d-m-Y') }}</p>
                         </div>
                         <div class="text-info">
-                            <p><strong>Email:</strong></p>
+                            <p><strong>{{ __('site.Email Address') }}:</strong></p>
                             <p>{{ $patient->user->email }}</p>
 
-                            <p><strong>Phone:</strong></p>
+                            <p><strong>{{ __('site.Phone') }}:</strong></p>
                             <p>{{ $patient->phone }}</p>
                         </div>
                     </div>
                     <div class="diagnosis">
                         <div class="text-info">
-                            <p><strong>Blood Type</strong></p>
+                            <p><strong>{{ __('site.Blood Type') }}</strong></p>
                             <p>{{ $patient->blood_type }}</p>
                         </div>
                         <div class="text-info">
-                            <p><strong>Smoker:</strong> {{ $patient->is_smoker }}</p>
+                            <p><strong>{{ __('site.Smoker') }}:</strong> {{ $patient->is_smoker }}</p>
                         </div>
                         <div class="text-info">
                             <p><strong>Weight (Kg)</strong></p>

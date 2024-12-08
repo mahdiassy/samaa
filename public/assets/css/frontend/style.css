@@ -21,7 +21,7 @@ body {
 nav {
     background-color: #1A655E;
     /*padding: 10px 8px 10px 24px;*/
-    padding: 10px 10px 10px 50px;
+    padding: 10px 50px 10px 50px !important;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -372,6 +372,87 @@ nav {
     }
 }
 
+/* Hear to Heal animation in Arabic*/
+.heal-Arabic {
+    font-family: 'Arial', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+    text-align: center;
+    position: relative;
+    display: inline-block;
+    color: white;
+}
+
+.different-r-Arabic {
+    display: inline-block;
+    position: relative;
+    animation: change-color-r-Arabic 3s forwards infinite;
+}
+
+.different-l-Arabic {
+    display: inline-block;
+    color: white;
+    animation: change-color-l-Arabic 3s forwards infinite;
+    animation-delay: 2.5s;
+}
+
+.heal-Arabic::after {
+    content: "♪";
+    position: absolute;
+    font-size: 40px;
+    color: #D67E0D;
+    right: 42%;
+    top: 42%;
+    animation: note-motion-Arabic 4s forwards ease-out infinite;
+    animation-delay: 1.5s;
+}
+
+@keyframes  change-color-r-Arabic {
+    0% {
+        color: white;
+    }
+
+    100% {
+        color: #D67E0D;
+    }
+}
+
+@keyframes change-color-l-Arabic {
+    0% {
+        color: white;
+    }
+
+    100% {
+        color: #D67E0D;
+    }
+}
+
+@keyframes note-motion-Arabic {
+    0% {
+        top: 42%;
+        right: 42%;
+        transform: scale(1);
+    }
+
+    25% {
+        top: 65%;
+        right: 42%;
+        transform: scale(1);
+    }
+
+    50% {
+        top: 65%;
+        right: 99%;
+        transform: scale(1);
+    }
+
+    100% {
+        top: 42%;
+        right: 99%;
+        transform: scale(1);
+    }
+}
+
 /* Fotter*/
 
 .footer {
@@ -607,7 +688,24 @@ nav {
 
     .menu-toggle {
         display: flex;
-        padding-right: 80px;
+        /*padding-right: 80px;*/
+    }
+
+    .language-selector {
+        margin-top: 15px;
+        text-align: center;
+    }
+
+    .language-selector select {
+        padding: 8px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+        width: 100%;
+        max-width: 200px;
+        margin: 0 auto;
+        cursor: pointer;
     }
 
     .close-menu {
@@ -632,16 +730,16 @@ nav {
     .hero-text {
         position: absolute;
         top: 50%;
-        left: 10%;
+        /*left: 10%;*/
         transform: translateY(-50%);
-        text-align: left;
+        /*text-align: left;*/
         color: white;
-        padding: 20px;
+        padding: 20px 60px;
     }
 
     .hero-text h1 {
         font-family: 'Roboto', sans-serif;
-        font-size: 45px;
+        font-size: 36px;
         font-weight: 600;
         margin: 0;
     }
@@ -651,7 +749,7 @@ nav {
         font-size: 20px;
         font-weight: 300;
         line-height: 50px;
-        text-align: left;
+        /*text-align: left;*/
         margin: 0;
     }
 
@@ -660,7 +758,7 @@ nav {
         font-size: 15px;
         font-weight: 500;
         line-height: 37.5px;
-        text-align: left;
+        /*text-align: left;*/
         margin: 10px 0 0;
     }
 
@@ -676,12 +774,12 @@ nav {
     .hero-text {
         position: absolute;
         top: 50%;
-        left: 10%;
-        right: 50%;
+        /*left: 10%;*/
+        /*right: 50%;*/
         transform: translateY(-50%);
-        text-align: left;
+        /*text-align: left;*/
         color: white;
-        padding: 20px;
+        padding: 20px 60px;
     }
 
     .hero-text h1 {
@@ -696,7 +794,7 @@ nav {
         font-size: 30px;
         font-weight: 300;
         line-height: 50px;
-        text-align: left;
+        /*text-align: left;*/
         margin: 0;
     }
 
@@ -705,7 +803,7 @@ nav {
         font-size: 25px;
         font-weight: 500;
         line-height: 37.5px;
-        text-align: left;
+        /*text-align: left;*/
         margin: 10px 0 0;
     }
 
