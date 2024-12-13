@@ -8,14 +8,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SAMAA</title>
+    <title>SAMAA FOR KIDS</title>
 
     <link rel="icon" href="{{ asset('assets/images/favicon.png') }}" type="image/x-icon">
 
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/kids-style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Work+Sans:wght@400;800&display=swap"
         rel="stylesheet">
@@ -117,7 +117,7 @@
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-logo">
-                <img src="{{ asset('assets/images/samaa-logo.png') }}" alt="Logo">
+                <img src="{{ asset('assets/images/kids-samaa-logo.png') }}" alt="Logo">
             </div>
             <div class="footer-links">
                 <div class="column">

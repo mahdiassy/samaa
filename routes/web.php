@@ -33,6 +33,10 @@ Route::group(
             return view('frontend/home');
         })->name('home');
 
+        Route::get('/kids', function () {
+            return view('frontend/kids-home');
+        })->name('home');
+
         Route::get('/contact-us', function () {
             return view('frontend/contact-us');
         })->name('contact-us');

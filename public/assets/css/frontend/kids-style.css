@@ -20,7 +20,7 @@ body {
 }
 
 nav {
-    background-color: #CECECE42;
+    background-color: #ececec;
     padding: 10px 50px 10px 50px !important;
     display: flex;
     justify-content: space-between;
@@ -134,12 +134,12 @@ nav.scrolled {
 
 .hero {
     position: relative;
-    margin: 0 auto;
+    margin-top: 60px;
 }
 
 .hero img {
     width: 100%;
-    height: 600px;
+    height: 100%;
     object-fit: cover;
     object-position: bottom;
 }
@@ -252,7 +252,7 @@ nav.scrolled {
 }
 
 .section2 {
-    background-image: url('../../images/therapy-backgeound.jpg');
+    background-image: url('../../images/kids-therapy-backgeound.png');
     background-size: cover;
     background-position: center;
     text-align: center;
@@ -260,7 +260,7 @@ nav.scrolled {
     position: relative;
     overflow: hidden;
     width: 100%;
-    height: 100vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -276,23 +276,6 @@ nav.scrolled {
     position: absolute;
     text-align: center;
     color: white;
-}
-
-.section2::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(202, 158, 92, 0) 0%, rgba(214, 126, 13, 0.44) 0%, rgba(202, 158, 92, 0) 105%);
-    pointer-events: none;
-    z-index: 1;
-}
-
-.section2 > * {
-    position: relative;
-    z-index: 2;
 }
 
 .section2 h2 {
@@ -579,7 +562,7 @@ nav.scrolled {
 /* Fotter*/
 
 .footer {
-    background-color: #1F1F1F;
+    background-color: rgba(228, 144, 40, 1);
     padding: 15px 20px;
     color: white;
     font-family: 'Inter', sans-serif;
@@ -643,7 +626,7 @@ nav.scrolled {
 .help-btn {
     background-color: transparent;
     color: white;
-    border: 1px solid #D67E0D;
+    border: 1px solid rgba(241, 238, 236, 1);
     padding: 10px 30px;
     border-radius: 5px;
     text-decoration: none;
@@ -853,18 +836,19 @@ nav.scrolled {
 
     .hero-text {
         position: absolute;
-        top: 40%;
+        top: 35%;
         /*left: 10%;*/
         transform: translateY(-50%);
         /*text-align: left;*/
         color: white;
         padding: 20px 60px;
+        width: 80%;
     }
 
     .hero-text h1 {
         font-family: 'M PLUS Rounded 1c', sans-serif;
         text-transform: uppercase;
-        font-size: 22px;
+        font-size: 19px;
         font-weight: 600;
         margin: 0;
     }
@@ -883,6 +867,7 @@ nav.scrolled {
         font-size: 14px;
         font-weight: 500;
         line-height: 37.5px;
+        text-transform: capitalize;
         /*text-align: left;*/
         margin: 10px 0 0;
     }
@@ -898,7 +883,7 @@ nav.scrolled {
 
     .hero-text {
         position: absolute;
-        top: 40%;
+        top: 35%;
         /*left: 10%;*/
         /*right: 50%;*/
         transform: translateY(-50%);
@@ -930,6 +915,7 @@ nav.scrolled {
         font-size: 19px;
         font-weight: 500;
         line-height: 37.5px;
+        text-transform: capitalize;
         /*text-align: left;*/
         margin: 10px 0 0;
     }
@@ -1738,6 +1724,13 @@ input[type="radio"] {
 }
 
 @media (max-width: 480px) {
+
+    .hero {
+        margin-top: 0px;
+    }
+    .hero img {
+        height: 80vh;
+    }
     .contact-section {
         padding: 60px 10px;
     }
@@ -2240,6 +2233,11 @@ input[type="radio"] {
 }
 
 @media (max-width: 688px) {
+
+    .hero-text {
+        top: 45%;
+        width: 90%;
+    }
 
     .doctor-info h4 {
         font-size: 14px;
