@@ -55,7 +55,7 @@ class BookingController extends Controller
             $booking->save();
         }
         return response()->json([
-            'message' => 'Successfully Added!',
+            'message' => '__("site.Successfully Added!")',
             'booking' => $patient->id,
         ]);
     }
@@ -69,7 +69,7 @@ class BookingController extends Controller
 
         return redirect()->route('patients.booking.index')->with('status', [
             'type' => 'success',
-            'msg' => 'Patient Canceled successfully'
+            'msg' => '__("site.Patient Canceled successfully")'
         ]);
     }
 }

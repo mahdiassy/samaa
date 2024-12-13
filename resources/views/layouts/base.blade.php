@@ -9,6 +9,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Work+Sans:wght@400;800&display=swap"
@@ -57,7 +60,7 @@
                 <a href="{{ route('register') }}">{{ __('site.Register') }}</a>
             @endif
 
-            <div class="profile">
+            <div class="profile" style="{{ App::getLocale() == 'ar' ? 'padding-right: 350px;' : (App::getLocale() == 'fr' ? 'padding-left: 200px;' : 'padding-left: 350px;') }}">
 
                 @if (Auth::check() && Auth::user()->hasRole('Patient'))
 
@@ -84,23 +87,15 @@
             <div class="language-selector">
                 <select id="language-select" class="form-select" onchange="location = this.value;">
                     @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                        <option value="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                        <option class="menu-flag" value="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
                             {{ App::getLocale() == $localeCode ? 'selected' : '' }}>
-                            @if ($localeCode == 'en')
-                                <img src="https://cdn.jsdelivr.net/npm/svg-country-flags@1.2.10/svg/gb.svg"
-                                    width="23px" /> {{ $properties['native'] }}
-                            @elseif ($localeCode == 'fr')
-                                <img src="https://cdn.jsdelivr.net/npm/svg-country-flags@1.2.10/svg/fr.svg"
-                                    width="23px" /> {{ $properties['native'] }}
-                            @elseif ($localeCode == 'ar')
-                                <img src="https://cdn.jsdelivr.net/npm/svg-country-flags@1.2.10/svg/sa.svg"
-                                    width="23px" /> {{ $properties['native'] }}
-                            @endif
-
+                            <img src="https://cdn.jsdelivr.net/npm/svg-country-flags@1.2.10/svg/{{ $localeCode == 'ar' ? 'sa' : ($localeCode == 'fr' ? 'fr' : 'gb') }}.svg" width="20px" alt="{{ $properties['name'] }}" />
+                            {{ $properties['name'] }}
                         </option>
                     @endforeach
                 </select>
             </div>
+
         </div>
     </nav>
 

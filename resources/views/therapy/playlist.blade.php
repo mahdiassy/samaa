@@ -64,6 +64,18 @@
 <script src="{{ asset('assets/js/music2.js') }}"></script>
 
 <script>
+    const Control_patient = @json(__('site.Control_patient'));
+    const Search = @json(__('site.Search'));
+    const Songs = @json(__('site.Songs'));
+    const Albums = @json(__('site.Albums'));
+    const Play = @json(__('site.Play'));
+    const Pause = @json(__('site.Pause'));
+    const Change_track = @json(__('site.Change_track'));
+    const INITIALIZING = @json(__('site.INITIALIZING MUSIC PLAYER'));
+    const All_the_songs = @json(__('site.All the songs'));
+</script>
+
+<script>
     const echo = new Echo({
         broadcaster: 'socket.io',
         host: "https://test.clingroup.net"

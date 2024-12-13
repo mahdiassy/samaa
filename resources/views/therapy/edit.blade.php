@@ -4,7 +4,6 @@
         <input type="text" placeholder="{{ __('site.Search') }}">
         <div class="search-bar-title">
             <h1>{{ __('site.start your') }}<br>{{ __('site.music therapy') }}</h1>
-            <h1>{{ __('site.start your music therapy') }}</h1>
         </div>
     </div>
     <div class="main-content">

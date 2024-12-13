@@ -4,7 +4,6 @@
         <input type="text" placeholder="{{ __('site.Search') }}">
         <div class="search-bar-title">
             <h1>{{ __('site.start your') }}<br>{{ __('site.music therapy') }}</h1>
-            <h1>{{ __('site.start your music therapy') }}</h1>
         </div>
     </div>
     <div class="main-content">
@@ -44,7 +43,7 @@
                     <div class="input-row">
                         <div class="input-group">
                             <label for="file-name">{{ __('site.File Name') }}</label>
-                            <input type="text" id="file-name" class="form-input" name="name" placeholder="File Name{{ __('site.File Name') }}"
+                            <input type="text" id="file-name" class="form-input" name="name" placeholder="{{ __('site.File Name') }}"
                                 required>
                         </div>
                         <div class="input-group">

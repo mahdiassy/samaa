@@ -35,7 +35,7 @@ class AuthController extends Controller
                 ->intended(route('dashboard'))
                 ->with('status', [
                     'type' => 'success',
-                    'msg' => 'Successfully Logged-in'
+                    'msg' => __("site.Successfully Logged-in"),
                 ]);
         }
         return redirect()->route('dashboard')->with('success', 'success');
@@ -97,7 +97,7 @@ class AuthController extends Controller
             return redirect()->route('dashboard')->with('success', 'success');
         } catch (\Illuminate\Database\QueryException $e) {
             if ($e->getCode() === '23000') {
-                Session::flash('error', 'This email is already registered.');
+                Session::flash('error',  __("site.This email is already registered."));
             } else {
                 throw $e;
             }

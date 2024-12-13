@@ -1,8 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap');
 
 ::selection {
-    background-color: #1A655E;
+    background-color: #1F1F1F;
     color: white;
 }
 
@@ -19,8 +20,7 @@ body {
 }
 
 nav {
-    background-color: #1A655E;
-    /*padding: 10px 8px 10px 24px;*/
+    background-color: #CECECE42;
     padding: 10px 50px 10px 50px !important;
     display: flex;
     justify-content: space-between;
@@ -31,6 +31,13 @@ nav {
     width: 100%;
     z-index: 1000;
     box-shadow: 0 2px 10px rgba(27, 26, 26, 0.1);
+    transition: box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+nav.scrolled {
+    backdrop-filter: blur(25.4px);
+    background: rgba(199, 199, 199, 0.38);
+    box-shadow: 0 15px 17px rgba(0, 0, 0, 0.2)
 }
 
 .logo img {
@@ -44,7 +51,7 @@ nav {
 }
 
 .menu a {
-    color: white;
+    color: rgba(0, 0, 0, 1);
     text-decoration: none;
     font-family: 'Inter', Arial, sans-serif;
     font-size: 15px;
@@ -78,8 +85,7 @@ nav {
     color: white;
     /*padding-left: 40px;
     padding-right: 30px;*/
-    padding-left: 350px;
-    padding-right: 20px;
+
 }
 
 @media (min-width: 1092px) and (max-width: 1150px) {
@@ -102,6 +108,7 @@ nav {
     font-weight: 400;
     line-height: 14.52px;
     text-align: left;
+    color: rgba(0, 0, 0, 1);
 }
 
 .menu-toggle {
@@ -110,6 +117,8 @@ nav {
     cursor: pointer;
 }
 
+
+
 .menu-toggle div {
     width: 25px;
     height: 3px;
@@ -117,6 +126,10 @@ nav {
     margin: 4px 0;
 }
 
+.menu-toggle:hover div {
+    background-color: rgba(31, 31, 31, 1);
+
+}
 /* Section 1 */
 
 .hero {
@@ -126,7 +139,7 @@ nav {
 
 .hero img {
     width: 100%;
-    height: 529px;
+    height: 600px;
     object-fit: cover;
     object-position: bottom;
 }
@@ -151,9 +164,8 @@ nav {
 
 .therapy-content h2 {
     font-size: 28px;
-    color: #1A655E;
-    font-weight: 500;
-    text-align: left;
+    color: #1F1F1F;
+    font-weight: 600;
 }
 
 .therapy-content p {
@@ -174,15 +186,13 @@ nav {
 
 .therapy-content2 {
     max-width: 50%;
-    text-align: left;
     padding: 10px 60px 10px 10px;
 }
 
 .therapy-content2 h2 {
     font-size: 28px;
-    color: #1A655E;
-    font-weight: 500;
-    text-align: left;
+    color: #1F1F1F;
+    font-weight: 600;
 }
 
 .therapy-content2 p {
@@ -242,23 +252,57 @@ nav {
 }
 
 .section2 {
-    background-image: url('../../images/therapy-backgeound.png');
+    background-image: url('../../images/therapy-backgeound.jpg');
     background-size: cover;
     background-position: center;
-    padding: 100px 20px;
     text-align: center;
     color: white;
     position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.section-description {
+    backdrop-filter: blur(25.4px);
+    background: rgba(199, 199, 199, 0.38);
+    width: 591px;
+    height: 280px;
+    gap: 0px;
+    border-radius: 22px;
+    position: absolute;
+    text-align: center;
+    color: white;
+}
+
+.section2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(202, 158, 92, 0) 0%, rgba(214, 126, 13, 0.44) 0%, rgba(202, 158, 92, 0) 105%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.section2 > * {
+    position: relative;
+    z-index: 2;
 }
 
 .section2 h2 {
-    font-size: 40px;
+    font-size: 31px;
     font-weight: bold;
 }
 
 .section2 p {
     font-size: 18px;
-    margin: 20px 25%;
+    margin: 20px 10%;
 }
 
 .section2 button {
@@ -375,9 +419,8 @@ nav {
 /* Hear to Heal animation in Arabic*/
 .heal-Arabic {
     font-family: 'Arial', sans-serif;
-    font-size: 50px;
+    font-size: 44px !important;
     font-weight: bold;
-    text-align: center;
     position: relative;
     display: inline-block;
     color: white;
@@ -456,7 +499,7 @@ nav {
 /* Fotter*/
 
 .footer {
-    background-color: #1A655E;
+    background-color: #1F1F1F;
     padding: 15px 20px;
     color: white;
     font-family: 'Inter', sans-serif;
@@ -594,11 +637,11 @@ nav {
 @media(max-width: 880px) {
 
     .section2 h2 {
-        font-size: 30px !important;
+        font-size: 22px !important;
     }
 
     .section2 p {
-        margin: 20px 15% !important;
+        margin: 20px 8% !important;
     }
 
     .therapy-section {
@@ -619,8 +662,8 @@ nav {
 
     .therapy-content h2 {
         font-size: 28px;
-        color: #1A655E;
-        font-weight: 500;
+        color: #1F1F1F;
+        font-weight: 600;
         text-align: center !important;
     }
 
@@ -649,8 +692,8 @@ nav {
 
     .therapy-content2 h2 {
         font-size: 28px;
-        color: #1A655E;
-        font-weight: 500;
+        color: #1F1F1F;
+        font-weight: 600;
         text-align: center !important;
     }
 
@@ -665,7 +708,7 @@ nav {
         position: fixed;
         top: 0;
         left: -250px;
-        background-color: #1A655E;
+        background-color: #1F1F1F;
         padding: 10px 0;
         z-index: 1;
         transition: transform 0.3s ease;
@@ -682,6 +725,7 @@ nav {
     }
 
     .menu a {
+        color: #EAEAEA !important;
         padding: 0px 15px 20px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
@@ -691,7 +735,7 @@ nav {
         /*padding-right: 80px;*/
     }
 
-    .language-selector {
+    /*.language-selector {
         margin-top: 15px;
         text-align: center;
     }
@@ -706,7 +750,7 @@ nav {
         max-width: 200px;
         margin: 0 auto;
         cursor: pointer;
-    }
+    }*/
 
     .close-menu {
         background: none;
@@ -729,7 +773,7 @@ nav {
 
     .hero-text {
         position: absolute;
-        top: 50%;
+        top: 40%;
         /*left: 10%;*/
         transform: translateY(-50%);
         /*text-align: left;*/
@@ -738,7 +782,8 @@ nav {
     }
 
     .hero-text h1 {
-        font-family: 'Roboto', sans-serif;
+        font-family: 'M PLUS Rounded 1c', sans-serif;
+        text-transform: uppercase;
         font-size: 36px;
         font-weight: 600;
         margin: 0;
@@ -748,14 +793,14 @@ nav {
         font-family: 'Roboto', sans-serif;
         font-size: 20px;
         font-weight: 300;
-        line-height: 50px;
+        /*line-height: 50px;*/
         /*text-align: left;*/
         margin: 0;
     }
 
     .hero-text p {
         font-family: 'Roboto', sans-serif;
-        font-size: 15px;
+        font-size: 14px;
         font-weight: 500;
         line-height: 37.5px;
         /*text-align: left;*/
@@ -773,18 +818,20 @@ nav {
 
     .hero-text {
         position: absolute;
-        top: 50%;
+        top: 40%;
         /*left: 10%;*/
         /*right: 50%;*/
         transform: translateY(-50%);
         /*text-align: left;*/
         color: white;
-        padding: 20px 60px;
+        padding: 20px 150px;
+        width: 60%;
     }
 
     .hero-text h1 {
-        font-family: 'Roboto', sans-serif;
-        font-size: 60px;
+        font-family: 'M PLUS Rounded 1c', sans-serif;
+        text-transform: uppercase;
+        font-size: 50px;
         font-weight: 600;
         margin: 0;
     }
@@ -793,14 +840,14 @@ nav {
         font-family: 'Roboto', sans-serif;
         font-size: 30px;
         font-weight: 300;
-        line-height: 50px;
+        /*line-height: 50px;*/
         /*text-align: left;*/
         margin: 0;
     }
 
     .hero-text p {
         font-family: 'Roboto', sans-serif;
-        font-size: 25px;
+        font-size: 19px;
         font-weight: 500;
         line-height: 37.5px;
         /*text-align: left;*/
@@ -876,11 +923,11 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 100px 20px;
+    padding: 150px 20px;
     min-height: 100vh;
     position: relative;
     z-index: 1;
-    margin-top: 5%;
+    /*margin-top: 5%;*/
 }
 
 .login-container {
@@ -889,11 +936,10 @@ nav {
     align-items: flex-start;
     width: 100%;
     max-width: 1200px;
-    margin: 0 auto;
     position: relative;
     z-index: 1;
     flex-wrap: wrap;
-    padding: 0px 40px;
+    padding: 100px 40px;
 }
 
 .login-text {
@@ -923,7 +969,8 @@ nav {
 /* Register page */
 .register-section {
     font-family: 'Roboto', sans-serif;
-    background-color: #4b807b;
+    background-color: rgba(224, 224, 224, 0.29);
+    backdrop-filter: blur(110px);
     color: white;
     padding: 7% 2% 1%;
 }
@@ -931,7 +978,6 @@ nav {
 .form-step {
     display: none;
     padding: 40px 0;
-    background-color: #4b807b;
     border-radius: 8px;
     max-width: 800px;
     margin: auto;
@@ -942,7 +988,7 @@ nav {
     font-size: 30px;
     font-weight: 600;
     margin-bottom: 20px;
-    color: #EAEAEA;
+    color: #1A655E;
 
 }
 
@@ -980,7 +1026,7 @@ nav {
     font-weight: 400;
     line-height: 25.43px;
     margin-bottom: 5px;
-    color: #EAEAEA;
+    color: rgba(0, 0, 0, 1);
     ;
 }
 
@@ -990,10 +1036,15 @@ nav {
     height: 60px;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #ccc;
+    border: 1px solid #EAEAEA;
     border-radius: 10px;
     box-sizing: border-box;
     background-color: #EAEAEA;
+}
+
+.form-group input:focus, .form-group select:focus {
+    outline: none;
+    border-color: #dbab52;
 }
 
 .gender-group {
@@ -1050,13 +1101,13 @@ nav {
     height: 35px;
     position: absolute;
     top: 110px;
-    left: 95px;
     background-color: #EAEAEA;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    border: 2px solid rgba(44, 100, 99, 1);
 }
 
 .vector-icon i {
@@ -1406,11 +1457,11 @@ input[type="radio"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 100px 20px;
+    padding: 120px 20px;
     min-height: 100vh;
     position: relative;
     z-index: 1;
-    margin-top: 5%;
+    /*margin-top: 5%;*/
 }
 
 .contact-container {
@@ -1436,7 +1487,6 @@ input[type="radio"] {
     font-size: 23px;
     font-weight: 400;
     line-height: 37.9px;
-    text-align: left;
     color: #D67E0D;
     margin-bottom: 10px;
 }
@@ -1477,7 +1527,6 @@ input[type="radio"] {
     font-family: 'Work Sans', sans-serif;
     font-size: 15px;
     line-height: 24.44px;
-    text-align: left;
     color: #FFFFFF;
     margin: 0;
     padding: 15px 0px;
@@ -1747,7 +1796,6 @@ input[type="radio"] {
     font-size: 16px;
     font-weight: 400;
     line-height: 21.79px;
-    text-align: left;
     color: #888;
 }
 

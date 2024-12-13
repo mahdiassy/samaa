@@ -1,21 +1,21 @@
 .btn-primary {
-    --bs-btn-bg: #1A655E !important;
+    --bs-btn-bg: #1F1F1F !important;
 }
 .btn-primary {
     --bs-btn-color: #fff;
-    --bs-btn-bg: #1A655E !important;
-    --bs-btn-border-color: #1A655E !important;
+    --bs-btn-bg: #1F1F1F !important;
+    --bs-btn-border-color: #1F1F1F !important;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #23867c !important;
-    --bs-btn-hover-border-color: #23867c !important;;
+    --bs-btn-hover-bg: #6e6d6d !important;
+    --bs-btn-hover-border-color: #6e6d6d !important;;
     --bs-btn-focus-shadow-rgb: 49, 132, 253;
     --bs-btn-active-color: #fff;
-    --bs-btn-active-bg: #23867c !important;
-    --bs-btn-active-border-color: #23867c !important;
+    --bs-btn-active-bg: #6e6d6d !important;
+    --bs-btn-active-border-color: #6e6d6d !important;
     --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
     --bs-btn-disabled-color: #fff;
-    --bs-btn-disabled-bg: #1A655E !important;
-    --bs-btn-disabled-border-color: #1A655E !important;
+    --bs-btn-disabled-bg: #1F1F1F !important;
+    --bs-btn-disabled-border-color: #1F1F1F !important;
 }
 #blue-playlist-container {
     display: none;
@@ -243,7 +243,7 @@ div#amplitude-right div.song div.song-meta-data span.song-title {
 }
 
 div#amplitude-right div.song div.song-meta-data span.song-artist {
-    color: #608b80;
+    color: #9bb1ab;
     font-size: 14px;
     font-weight: bold;
     text-transform: uppercase;
@@ -271,7 +271,7 @@ div#amplitude-right div.song span.song-duration {
     width: 55px;
     text-align: center;
     line-height: 45px;
-    color: #608b80;
+    color: #635c5e;
     font-size: 16px;
     font-weight: 500;
 }
@@ -330,7 +330,7 @@ div#progress-container progress#song-played-progress {
 
     div#progress-container *::-ms-backdrop,
     div#progress-container progress#song-played-progress {
-        color: #29bfbf;
+        color: #beabaf;
         border: none;
         background-color: #CFD8DC;
     }
@@ -338,7 +338,7 @@ div#progress-container progress#song-played-progress {
 
 @supports (-ms-ime-align: auto) {
     div#progress-container progress#song-played-progress {
-        color: #29bfbf;
+        color: #beabb8;
         border: none;
     }
 }
@@ -349,14 +349,14 @@ div#progress-container progress#song-played-progress[value]::-webkit-progress-ba
 }
 
 div#progress-container progress#song-played-progress[value]::-webkit-progress-value {
-    background-color: #29bfbf;
+    background-color: #D6861F;
     border-radius: 5px;
 }
 
 div#progress-container progress#song-played-progress::-moz-progress-bar {
     background: none;
     border-radius: 5px;
-    background-color: #29bfbf;
+    background-color: #abbebe;
     height: 5px;
     margin-top: -2px;
 }
@@ -452,11 +452,11 @@ div#progress-container input[type=range]::-webkit-slider-runnable-track {
 
 div#progress-container input[type=range]::-webkit-slider-thumb {
     box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-    border: 1px solid #29bfbf;
+    border: 1px solid #D6861F;
     height: 15px;
     width: 15px;
     border-radius: 16px;
-    background: #29bfbf;
+    background: #D6861F;
     cursor: pointer;
     -webkit-appearance: none;
     margin-top: -7.5px;
@@ -478,11 +478,11 @@ div#progress-container input[type=range]::-moz-range-track {
 
 div#progress-container input[type=range]::-moz-range-thumb {
     box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-    border: 1px solid #29bfbf;
+    border: 1px solid #abbebe;
     height: 15px;
     width: 15px;
     border-radius: 16px;
-    background: #29bfbf;
+    background: #abbebe;
     cursor: pointer;
 }
 
@@ -511,11 +511,11 @@ div#progress-container input[type=range]::-ms-fill-upper {
 
 div#progress-container input[type=range]::-ms-thumb {
     box-shadow: 0px 0px 0px #000000, 0px 0px 0px #0d0d0d;
-    border: 1px solid #29bfbf;
+    border: 1px solid #abbebe;
     height: 15px;
     width: 15px;
     border-radius: 16px;
-    background: #29bfbf;
+    background: #abbebe;
     cursor: pointer;
     height: 0px;
     display: block;
@@ -903,7 +903,7 @@ input[type=range].amplitude-volume-slider::-webkit-slider-thumb {
     height: 10px;
     width: 10px;
     border-radius: 10px;
-    background: #29bfbf;
+    background: #abbebe;
     cursor: pointer;
     margin-top: -4px;
     -webkit-appearance: none;
@@ -925,7 +925,7 @@ input[type=range].amplitude-volume-slider::-moz-range-thumb {
     height: 10px;
     width: 10px;
     border-radius: 10px;
-    background: #29bfbf;
+    background: #abbebe;
     cursor: pointer;
     margin-top: -4px;
 }
@@ -955,7 +955,7 @@ input[type=range].amplitude-volume-slider::-ms-thumb {
     height: 10px;
     width: 10px;
     border-radius: 10px;
-    background: #29bfbf;
+    background: #abbebe;
     cursor: pointer;
     margin-top: 2px;
 }
@@ -973,7 +973,7 @@ input[type=range].amplitude-volume-slider::-ms-tooltip {
 }
 
 div#time-container span.current-time {
-    color: #608b80;
+    color: #635c5e;
     font-size: 14px;
     font-weight: 700;
     float: left;
@@ -984,7 +984,7 @@ div#time-container span.current-time {
 }
 
 div#time-container span.duration {
-    color: #608b80;
+    color: #635c5e;
     font-size: 14px;
     font-weight: 700;
     float: left;
@@ -1016,7 +1016,7 @@ div#meta-container span.song-name {
 }
 
 div#meta-container div.song-artist-album {
-    color: #608b80;
+    color: #9bb1ab;
     font-size: 14px;
     font-weight: 700;
     text-transform: uppercase;
@@ -1059,12 +1059,12 @@ div#amplitude-right #selector #albums_btn {
 
 div#amplitude-right #selector #songs_btn:hover,
 div#amplitude-right #selector #albums_btn:hover {
-    color: rgb(117 189 171);
+    color: rgb(89, 97, 95);
 }
 
 div#amplitude-right #selector #songs_btn.active,
 div#amplitude-right #selector #albums_btn.active {
-    background-color: rgb(117 189 171);
+    background-color: rgb(89, 97, 95);
     color: white;
 }
 
@@ -1091,7 +1091,7 @@ div#amplitude-right #albums_list .album img {
 }
 
 div#amplitude-right #albums_list .all-album img {
-    background-color: #608b80;
+    background-color: #9bb1ab;
 }
 
 div#amplitude-right #albums_list .album p {
@@ -1120,11 +1120,11 @@ div#amplitude-right #albums_list .all-album p.artist_name {
 }
 
 div#amplitude-right #albums_list .album:hover p.album_name {
-    color: rgb(117 189 171);;
+    color: rgb(89, 97, 95);;
 }
 
 div#amplitude-right #albums_list .album.active p.album_name {
-    color: rgb(117 189 171);
+    color: rgb(89, 97, 95);
 }
 
 @media screen and (max-width: 1240px) {
@@ -1169,7 +1169,7 @@ div#amplitude-right #albums_list .album.active p.album_name {
 }
 
 .chat-header {
-    background-color: rgb(88 157 140);
+    background-color: rgb(107, 119, 116);
     color: white;
     padding: 10px;
     font-weight: bold;
@@ -1196,7 +1196,7 @@ div#amplitude-right #albums_list .album.active p.album_name {
 }
 
 .chat-message.user {
-    background-color: rgb(117 189 171);
+    background-color: rgb(89, 97, 95);
     color: white;
     align-self: flex-end;
     border-radius: 15px 15px 0 15px;
@@ -1226,7 +1226,7 @@ div#amplitude-right #albums_list .album.active p.album_name {
 
 .send-btn {
     margin-left: 8px;
-    background-color: #1A655E;
+    background-color: #1F1F1F;
     color: white;
     border: none;
     padding: 8px 12px;
@@ -1236,12 +1236,12 @@ div#amplitude-right #albums_list .album.active p.album_name {
 }
 
 .send-btn:hover {
-    background-color: #23867c;
+    background-color: #6e6d6d;
 }
 
 .call-btn,
 .end-call-btn {
-    background-color: rgb(117 189 171);
+    background-color: rgb(89, 97, 95);
     color: white;
     border: none;
     padding: 5px 10px;

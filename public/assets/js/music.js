@@ -63,7 +63,7 @@ window.mobileCheck = function () {
         <div id="loading">
             <div>
                 <img src="/assets/img/blue_loading.gif">
-                <h2>INITIALIZING MUSIC PLAYER</h2>
+                <h2>${INITIALIZING}</h2>
             </div>
         </div>
         <div id="blue-playlist-container">
@@ -130,10 +130,10 @@ window.mobileCheck = function () {
                 <div id="amplitude-right">
                     <div id="selector">
                         <div onclick="view_songs();" id="songs_btn" class="active">
-                            <i class="fa-solid fa-music"></i>&nbsp;&nbsp;SONGS
+                            <i class="fa-solid fa-music"></i>&nbsp;&nbsp;${Songs}
                         </div>
                         <div onclick="view_albums();" id="albums_btn">
-                            <i class="fa-solid fa-record-vinyl"></i>&nbsp;&nbsp;ALBUMS
+                            <i class="fa-solid fa-record-vinyl"></i>&nbsp;&nbsp;${Albums}
                         </div>
                     </div>
                     <div class="search_div"></div>
@@ -142,10 +142,10 @@ window.mobileCheck = function () {
                     <div id="songs_list"></div>
 
                     <div class="doctor-controls">
-                    <h5>Control patient music player</h5>
-                    <button class="btn btn-primary" onclick="controlMusic('start')"><i class="fas fa-play"></i> Play</button>
-                    <button class="btn btn-primary" onclick="controlMusic('pause')"><i class="fas fa-pause"></i> Pause</button>
-                    <button class="btn btn-primary" onclick="controlMusic('change')"><i class="fas fa-sync-alt"></i> Change Track</button>
+                    <h5>${Control_patient}</h5>
+                    <button class="btn btn-primary" onclick="controlMusic('start')"><i class="fas fa-play"></i>${Play}</button>
+                    <button class="btn btn-primary" onclick="controlMusic('pause')"><i class="fas fa-pause"></i>${Pause}</button>
+                    <button class="btn btn-primary" onclick="controlMusic('change')"><i class="fas fa-sync-alt"></i>${Change_track}</button>
                     </div>
                 </div>
             </div>
@@ -202,11 +202,13 @@ window.mobileCheck = function () {
                 $('div#amplitude-right #songs_list').css('padding-top', '0px');
             }
             if(first_time) {
-                var html_albums = "<div data-id='all' onclick=\"filter_album('all');\" class=\"album all-album active\">\n" +
-                    "        <img src=\"data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==\">\n" +
-                    "        <p class='album_name'>All the songs</p>\n" +
-                    "        <p class='artist_name'>.</p>\n" +
-                    "    </div>";
+                var html_albums = `
+                <div data-id='all' onclick="filter_album('all');" class="album all-album active">
+                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                    <p class='album_name'>${All_the_songs}</p>
+                    <p class='artist_name'>.</p>
+                </div>`;
+
                 $.each(albums_array, function (index, album) {
                     html_albums += "<div data-id='" + album.album_id + "' onclick=\"filter_album('" + album.album_id + "');\" class=\"album\">\n" +
                         "        <img src=\"" + album.image + "\">\n" +
@@ -252,8 +254,8 @@ window.mobileCheck = function () {
                 "                <span class=\"song-duration\">" + duration + "</span>\n" +
                 "            </div>";
         });
-        $('.search_div').html('<input placeholder="Search..." id="search_' + search_index + '" class="search_input" type="text" />');
-        $('#' + id_container + ' #amplitude-right #songs_list').html(html_songs).promise().done(function () {
+        $('.search_div').html(`<input placeholder="${Search}" id="search_${search_index}" class="search_input" type="text" />`);
+                $('#' + id_container + ' #amplitude-right #songs_list').html(html_songs).promise().done(function () {
             $('#amplitude-right #songs_list').searchable({
                 selector: '.song',
                 childSelector: 'div',
@@ -340,21 +342,21 @@ window.mobileCheck = function () {
 
         for (var i = 0; i < songElements.length; i++) {
             songElements[i].addEventListener('mouseover', function () {
-                this.style.backgroundColor = '#2bc7b7';
-                this.querySelectorAll('.song-meta-data .song-title')[0].style.color = '#FFFFFF';
-                this.querySelectorAll('.song-meta-data .song-artist')[0].style.color = '#FFFFFF';
+                this.style.backgroundColor = '#dce0e0';
+                this.querySelectorAll('.song-meta-data .song-title')[0].style.color = '#1F1F1F';
+                this.querySelectorAll('.song-meta-data .song-artist')[0].style.color = '#1F1F1F';
                 if (!this.classList.contains('amplitude-active-song-container')) {
                     this.querySelectorAll('.play-button-container')[0].style.display = 'block';
                 }
-                this.querySelectorAll('.song-duration')[0].style.color = '#FFFFFF';
+                this.querySelectorAll('.song-duration')[0].style.color = '#D6861F';
             });
 
             songElements[i].addEventListener('mouseout', function () {
                 this.style.backgroundColor = '#FFFFFF';
                 this.querySelectorAll('.song-meta-data .song-title')[0].style.color = '#272726';
-                this.querySelectorAll('.song-meta-data .song-artist')[0].style.color = '#608b80';
+                this.querySelectorAll('.song-meta-data .song-artist')[0].style.color = '#6b7573';
                 this.querySelectorAll('.play-button-container')[0].style.display = 'none';
-                this.querySelectorAll('.song-duration')[0].style.color = '#608b80';
+                this.querySelectorAll('.song-duration')[0].style.color = '#6b7573';
             });
 
             songElements[i].addEventListener('click', function () {
@@ -384,8 +386,8 @@ window.mobileCheck = function () {
                             wavesurfer = WaveSurfer.create({
                                 container: '#waveform',
                                 waveColor: linGrad,
-                                progressColor: 'hsl(174, 57%, 46%)',
-                                cursorColor: '#1A655E',
+                                progressColor: 'hsl(34, 75%, 48%)',
+                                cursorColor: '#f7a00a',
                                 barWidth: current_option.waveform_width,
                                 barRadius: 5,
                                 cursorWidth: 1,

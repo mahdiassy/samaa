@@ -1,3 +1,38 @@
+$(document).ready(function() {
+    $('#language-select').select2({
+        templateResult: formatState,
+        templateSelection: formatState,
+        minimumResultsForSearch: Infinity,
+        width: '100%',
+    });
+    function formatState(state) {
+        if (!state.id) { return state.text; }
+        var flag;
+        if (state.element.text == "English") {
+            flag = "gb";
+        } else if (state.element.text == "Arabic") {
+            flag = "sa";
+        } else {
+            flag = "fr";
+        }
+
+        let $state = $(
+            `<span><img src="https://cdn.jsdelivr.net/npm/svg-country-flags@1.2.10/svg/${flag}.svg"
+                class="flag" width="23px" style="margin-right: 8px;" /> ${state.text}</span>`
+        );
+        return $state;
+    }
+});
+
+document.addEventListener('scroll', function () {
+    const nav = document.querySelector('nav');
+    if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+    } else {
+        nav.classList.remove('scrolled');
+    }
+});
+
 const menuToggle = document.getElementById('menuToggle');
 const menu = document.getElementById('menu');
 const closeMenu = document.getElementById('closeMenu');

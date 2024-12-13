@@ -80,7 +80,7 @@ class TherapyController extends Controller
 
         $status = [
             'type' => 'success',
-            'msg' => 'Therapy Created successfully'
+            'msg' => '__("site.Therapy Created successfully")'
         ];
 
         return redirect()->route('therapy.index')->with('status', $status);
@@ -129,7 +129,7 @@ class TherapyController extends Controller
 
         $status = [
             'type' => 'success',
-            'msg' => 'Patient Updates successfully'
+            'msg' => '__("site.Therapy Updated successfully")'
         ];
 
         return redirect()->route('therapy.index')->with(compact('therapies', 'patients'))->with('status', $status);
@@ -150,7 +150,7 @@ class TherapyController extends Controller
         $therapy->delete();
         return redirect()->route('therapy.index')->with('status', [
             'type' => 'success',
-            'msg' => 'Therapy deleted successfully'
+            'msg' => '__("site.Therapy deleted successfully")'
         ]);
     }
 

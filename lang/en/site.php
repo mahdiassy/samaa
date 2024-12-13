@@ -51,7 +51,7 @@ return [
 
     'Hear to Heal' => 'Hear to Heal',
 
-    'Experience The Power Of Music For Relaxation, Healing, And Rejuvenation.' => 'Experience The Power Of Music For Relaxation, Healing, And Rejuvenation.',
+    'When healthcare professionals educate you using sound to enhance your health and well-being.' => 'When healthcare professionals educate you using sound to enhance your health and well-being.',
 
     'Music Therapy' => 'Music Therapy',
 
@@ -77,11 +77,9 @@ return [
 
     'Immerse yourself in calming melodies to unwind, reduce stress, and find tranquility.' => 'Immerse yourself in calming melodies to unwind, reduce stress, and find tranquility.',
 
-    'Music Therapy and Composers' => 'Music Therapy and Composers',
+    'Sound Therapy and Composers' => 'Sound Therapy and Composers',
 
-    'Learn about the role of music therapy in healing and relaxation. Discover how famous composers like Beethoven
-    utilized the power of music to overcome challenges and inspire others.' => 'Learn about the role of music therapy in healing and relaxation. Discover how famous composers like Beethoven
-    utilized the power of music to overcome challenges and inspire others.',
+    'Learn about the role of music therapy in healing and relaxation. Discover how famous composers like Beethoven utilized the power of music to overcome challenges and inspire others.' => 'Learn about the role of music therapy in healing and relaxation. Discover how famous composers like Beethoven utilized the power of music to overcome challenges and inspire others.',
 
     'LISTEN TO MUSIC' => 'LISTEN TO MUSIC',
 
@@ -168,6 +166,8 @@ return [
     'Created' => 'Created',
     'Updated' => 'Updated',
     'start your music therapy' => 'start your music therapy',
+    'start your' => 'start your',
+    'music therapy' => 'music therapy',
     'Set the Therapy thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted' => 'Set the Therapy thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted',
     'File Name' => 'File Name',
     'Upload File' => 'Upload File',
@@ -211,4 +211,58 @@ return [
     'Start Call' => 'Start Call',
     'End Call' => 'End Call',
     'Type your message here' => 'Type your message here...',
+
+    //Calendar
+
+    'Select a time' => 'Select a time',
+    'Available (Preview)' => 'Available (Preview)',
+    'Available' => 'Available',
+    'From' => 'From',
+    'To' => 'To',
+    'next' => 'next',
+    'prev' => 'prev',
+    'today' => 'today',
+    'week' => 'week',
+    'month' => 'month',
+    'day' => 'day',
+    'list' => 'list',
+    'This time has been added successfully' => 'This time has been add successfully',
+    'Success' => 'Success',
+    'Error' => 'Error',
+    'OK' => 'OK',
+    'This time has been predetermined' => 'This time has been predetermined',
+    'The appointment has been successfully deleted' => 'The appointment has been successfully deleted',
+    'You cannot delete it. It has already been booked' => 'You cannot delete it. It has already been booked',
+    'The appointment has been booked successfully, If you want to check your reservation, click (go back)' => 'The appointment has been booked successfully, If you want to check your reservation, click (go back)',
+    'reserved' => 'reserved',
+
+    // Messages
+    'Successfully Logged-in' => 'Successfully Logged-in',
+    'This email is already registered.' => 'This email is already registered.',
+    'Successfully Added!' => 'Successfully Added!',
+    'Patient Canceled successfully' => 'Patient Canceled successfully',
+    'Doctor created successfully' => 'Doctor created successfully',
+    'Doctor Profile updated successfully' => 'Doctor Profile updated successfully',
+    'Doctor updated successfully' => 'Doctor updated successfully',
+    'Doctor deleted successfully' => 'Doctor deleted successfully',
+    'Doctor updated status successfully' => 'Doctor updated status successfully',
+    'Feedback created successfully' => 'Feedback created successfully',
+    'Feedback deleted successfully' => 'Feedback deleted successfully',
+    'Patient created successfully' => 'Patient created successfully',
+    'Patient updated successfully' => 'Patient updated successfully',
+    'Patient Profile updated successfully' => 'Patient Profile updated successfully',
+    'Patient deleted successfully' => 'Patient deleted successfully',
+    'Therapy Created successfully' => 'Therapy Created successfully',
+    'Therapy deleted successfully' => 'Therapy deleted successfully',
+    'Therapy Updated successfully' => 'Therapy Updated successfully',
+
+    // Playlist
+    'Control_patient' => 'Control patient music player',
+    'Songs' => 'SONGS',
+    'Albums' => 'ALBUMS',
+    'Play' => 'Play',
+    'Pause' => 'Pause',
+    'Change_track' => 'Change Track',
+    'INITIALIZING MUSIC PLAYER' => 'INITIALIZING MUSIC PLAYER',
+    'All the songs' => 'All the songs',
 ];

@@ -1,7 +1,7 @@
 @extends('layouts.base')
 @section('content')
     <section class="hero">
-        <img src="assets/images/piano-background.png" alt="Piano background">
+        <img src="{{ asset('assets/images/landing-page.png') }}" alt="Piano background">
         <div class="hero-text {{ App::getLocale() == 'ar' ? 'text-right' : 'text-left' }}">
             <h2>{{ __('site.Welcome to SAMAA') }}</h2>
             @if (App::getLocale() == 'ar')
@@ -14,7 +14,8 @@
                 </h1>
             @endif
 
-            <p>{{ __('site.Experience The Power Of Music For Relaxation, Healing, And Rejuvenation.') }}</p>
+            <p>{{ __('site.When healthcare professionals educate you using sound to enhance your health and well-being.') }}
+            </p>
         </div>
     </section>
 
@@ -25,11 +26,11 @@
                 {{ __('site.Music Therapy (description)') }}
             </p>
         </div>
-        <img src="assets/images/music-therapy.png" alt="Music Therapy">
+        <img src="{{ asset('assets/images/music-therapy.jpg') }}" alt="Music Therapy">
     </section>
 
     <section class="therapy-section2">
-        <img src="assets/images/music-therapy2.png" alt="Music Therapy">
+        <img src="{{ asset('assets/images/music-therapy2.png') }}" alt="Music Therapy">
         <div class="therapy-content2">
             <h2>{{ __('site.What is Music Therapy?') }}</h2>
             <p>
@@ -58,9 +59,11 @@
     </div>
 
     <section class="section2">
-        <h2>{{ __('site.Music Therapy and Composers') }}</h2>
-        <p>{{ __('site.Learn about the role of music therapy in healing and relaxation. Discover how famous composers like Beethoven utilized the power of music to overcome challenges and inspire others.') }}
-        </p>
-        <button>{{ __('site.LISTEN TO MUSIC') }}</button>
+        <div class="section-description">
+            <h2>{{ __('site.Sound Therapy and Composers') }}</h2>
+            <p>{{ __('site.Learn about the role of music therapy in healing and relaxation. Discover how famous composers like Beethoven utilized the power of music to overcome challenges and inspire others.') }}
+            </p>
+            <button>{{ __('site.LISTEN TO MUSIC') }}</button>
+        </div>
     </section>
 @endsection

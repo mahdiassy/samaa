@@ -52,7 +52,7 @@ return [
 
     'Hear to Heal' => 'صحتك في سمعك',
 
-    'Experience The Power Of Music For Relaxation, Healing, And Rejuvenation.' => 'استمتع بتجربة موسيقية فريدة تجمع بين الراحة والشفاء بأسلوب يعيد لك التوازن.',
+    'When healthcare professionals educate you using sound to enhance your health and well-being.' => 'عندما يقوم متخصصو الرعاية الصحية بتثقيفك باستخدام الصوت لتعزيز صحتك ورفاهيتك.',
 
     'Music Therapy' => 'العلاج بالموسيقى',
 
@@ -73,7 +73,7 @@ return [
 
     'Immerse yourself in calming melodies to unwind, reduce stress, and find tranquility.' => 'اندمج في الألحان الهادئة للاسترخاء، وتقليل التوتر، والبحث عن السكون.',
 
-    'Music Therapy and Composers' => 'العلاج بالموسيقى والمؤلفون',
+    'Sound Therapy and Composers' => 'العلاج الصوتي والمؤلفون',
 
     'Learn about the role of music therapy in healing and relaxation. Discover how famous composers like Beethoven utilized the power of music to overcome challenges and inspire others.' => 'تعرف على دور العلاج بالموسيقى في الشفاء والاسترخاء. اكتشف كيف استخدم المؤلفون والملحنون المشهورون مثل بيتهوفن قوة الموسيقى لتجاوز التحديات وإلهام الآخرين.',
 
@@ -161,7 +161,9 @@ return [
     'Name' => 'الاسم',
     'Created' => 'تم الإنشاء',
     'Updated' => 'تم التحديث',
-    'start your music therapy' => 'ابدأ العلاج بالموسيقى',
+    'start your music therapy' => 'ابدأ علاجك بالموسيقى',
+    'start your' => 'ابدأ',
+    'music therapy' => 'علاجك بالموسيقى',
     'Set the Therapy thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted' => 'قم بتعيين الصورة المصغرة للعلاج. يتم قبول ملفات الصور *.png و*.jpg و*.jpeg فقط',
     'File Name' => 'اسم الملف',
     'Upload File' => 'تحميل الملف',
@@ -205,5 +207,57 @@ return [
     'Start Call' => 'بدء الاتصال',
     'End Call' => 'إنهاء الاتصال',
     'Type your message here' => 'اكتب رسالتك هنا...',
+
+    'Select a time' => 'حدد وقت',
+    'Available (Preview)' => 'متاح (معاينة)',
+    'Available' => 'متاح',
+    'From' => 'من',
+    'To' => 'إلى',
+    'next' => 'التالي',
+    'prev' => 'السابق',
+    'today' => 'اليوم',
+    'week' => 'أسبوع',
+    'month' => 'شهر',
+    'day' => 'يوم',
+    'list' => 'قائمة',
+    'This time has been added successfully' => 'تم إضافة الوقت بنجاح',
+    'Success' => 'نجاح',
+    'Error' => 'خطأ',
+    'OK' => 'تم',
+    'This time has been predetermined' => 'تم تحديده مسبقاً',
+    'The appointment has been successfully deleted' => 'تم حذف الموعد بنجاح',
+    'You cannot delete it. It has already been booked' => 'لا يمكنك حذفه. لقد تم حجزه بالفعل',
+    'The appointment has been booked successfully, If you want to check your reservation, click (go back)' => 'تم حجز الموعد بنجاح، إذا أردت التأكد من حجزك اضغط (رجوع)',
+    'reserved' => 'محجوز',
+
+    // messages
+    'Successfully Logged-in' => 'تم تسجيل الدخول بنجاح',
+    'This email is already registered.' => ' تم تسجيل البريد الإلكتروني هذا.',
+    'Successfully Added!' => 'تمت الإضافة بنجاح!',
+    'Patient Canceled successfully' => 'تم إلغاء المريض بنجاح',
+    'Doctor created successfully' => 'تم إنشاء الطبيب بنجاح',
+    'Doctor Profile updated successfully' => 'تم تحديث ملف تعريف الطبيب بنجاح',
+    'Doctor updated successfully' => 'تم تحديث معلومات الطبيب بنجاح',
+    'Doctor deleted successfully' => 'تم حذف الطبيب بنجاح',
+    'Doctor updated status successfully' => 'قام الطبيب بتحديث الحالة بنجاح',
+    'Feedback created successfully' => 'تم إنشاء التعليق بنجاح',
+    'Feedback deleted successfully' => 'تم حذف التعليق بنجاح',
+    'Patient created successfully' => 'تم إنشاء المريض بنجاح',
+    'Patient updated successfully' => 'تم تحديث معلومات المريض بنجاح',
+    'Patient Profile updated successfully' => 'تم تحديث ملف تعريف المريض بنجاح',
+    'Patient deleted successfully' => 'تم حذف المريض بنجاح',
+    'Therapy Created successfully' => 'تم إنشاء العلاج بنجاح',
+    'Therapy deleted successfully' => 'تم حذف العلاج بنجاح',
+    'Therapy Updated successfully' => 'تم تحديث العلاج بنجاح',
+
+    // Playlist
+    'Control_patient' => 'تحكم في مشغل موسيقى المريض',
+    'Songs' => 'الأغاني',
+    'Albums' => 'الألبومات',
+    'Play' => 'تشغيل',
+    'Pause' => 'إيقاف',
+    'Change_track' => 'تغيير المسار',
+    'INITIALIZING MUSIC PLAYER' => 'تهيئة مشغل الموسيقى',
+    'All the songs' => 'جميع الأغاني',
 
 ];

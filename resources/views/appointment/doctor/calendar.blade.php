@@ -145,7 +145,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         $('#users-movies-select2').select2({
-            placeholder: "Select a time",
+            placeholder: "{{__('site.Select a time')}}",
             width: '100%',
             allowClear: true,
             dropdownParent: $('#monthModal')
@@ -154,14 +154,14 @@
         availabile = []
         $(availabilities[0]).each(function(i, time) {
             availabile[i] = {
-                title: '{{ __('Available') }}',
+                title: "{{__('site.Available')}}",
                 start: time.time,
                 id: time.id,
             };
             if (time.booking) {
                 if (time.booking.status === 'Canceled By Patient') {
                     availabile[i].title = `${time.booking.status}`
-                    availabile[i].color = 'rgb(13 110 253)'
+                    availabile[i].color = 'rgb(214 126 13)'
                 } else {
                     availabile[i].title = `${time.booking.status}`
                     availabile[i].color = 'rgb(249 57 57)'
@@ -242,6 +242,15 @@
             validRange: {
                 start: new Date()
             },
+            buttonText: {
+                today: "{{__('site.today')}}",
+                month: "{{__('site.month')}}",
+                week: "{{__('site.week')}}",
+                day: "{{__('site.day')}}",
+                list: "{{__('site.list')}}",
+                prev: "{{__('site.prev')}}",
+                next: "{{__('site.next')}}",
+            },
             selectable: true,
             editable: true,
             eventStartEditable: false,
@@ -263,11 +272,11 @@
                     monthModal.show();
                 } else if (calendar.view.type === 'timeGridWeek') {
                     previewEvent = calendar.addEvent({
-                        title: 'Available (Preview)',
+                        title: "{{__('site.Available (Preview)')}}",
                         start: selectedStartDate,
                         end: selectedEndDate,
-                        backgroundColor: '#1A655E',
-                        borderColor: '#184947',
+                        backgroundColor: '#1F1F1F',
+                        borderColor: '#828787',
                         textColor: '#fff'
                     });
                     document.getElementById('selectedWeekDate').value = 'From: ' +
@@ -339,17 +348,27 @@
                                             end: new Date(eventStart
                                                 .getTime() +
                                                 30 * 60 * 1000),
-                                            backgroundColor: '#1A655E',
-                                            borderColor: '#184947',
+                                            backgroundColor: '#1F1F1F',
+                                            borderColor: '#828787',
                                             textColor: '#fff'
                                         });
                                     });
                                 });
-                                alert('{{ __('This time has been add successfully') }}');
+                                Swal.fire({
+                                title: "{{ __('site.Success') }}",
+                                text: "{{ __('site.This time has been added successfully') }}",
+                                icon: "success",
+                                confirmButtonText: "{{ __('site.OK') }}"
+                                });
                                 // Optionally reload or update UI here
                                 location.reload();
                             } else {
-                                alert('{{ __('This time has been predetermined') }}');
+                                Swal.fire({
+                                title: "{{ __('site.Error') }}",
+                                text: "{{ __('site.This time has been predetermined') }}",
+                                icon: "error",
+                                confirmButtonText: "{{ __('site.OK') }}"
+                                });
                             }
                         }
                     });
@@ -366,8 +385,8 @@
         document.getElementById('saveWeekModalEvent').addEventListener('click', function() {
             if (previewEvent) {
                 previewEvent.setProp('title', 'Available');
-                previewEvent.setProp('backgroundColor', '#1A655E');
-                previewEvent.setProp('borderColor', '#184947');
+                previewEvent.setProp('backgroundColor', '#1F1F1F');
+                previewEvent.setProp('borderColor', '#828787');
                 previewEvent.setProp('textColor', '#fff');
 
                 var weekModal = bootstrap.Modal.getInstance(document.getElementById('weekModal'));
@@ -396,10 +415,21 @@
                         if (Array.isArray(e.added_times) && e.added_times.length > 0) {
                             // Optionally reload or update UI here
                             // location.reload();
-                            alert('{{ __('This time has been add successfully') }}');
+                            Swal.fire({
+                            title: "{{ __('site.Success') }}",
+                            text: "{{ __('site.This time has been added successfully') }}",
+                            icon: "success",
+                            confirmButtonText: "{{ __('site.OK') }}"
+                            });
 
                         } else {
-                            alert('{{ __('This time has been predetermined') }}');
+                            //alert('{{ __('This time has been predetermined') }}');
+                            Swal.fire({
+                            title: "{{ __('site.Error') }}",
+                            text: "{{ __('site.This time has been predetermined') }}",
+                            icon: "error",
+                            confirmButtonText: "{{ __('site.OK') }}"
+                            });
                         }
                     }
                 });
@@ -431,13 +461,21 @@
                             previewEvent.remove();
                             deleteModal.hide();
                             previewEvent = null;
-                            alert(
-                                '{{ __('The appointment has been successfully deleted') }}');
+                            Swal.fire({
+                            title: "{{ __('site.Success') }}",
+                            text: "{{ __('site.The appointment has been successfully deleted') }}",
+                            icon: "Success",
+                            confirmButtonText: "{{ __('site.OK') }}"
+                            });
 
                         } else {
                             deleteModal.hide();
-                            alert(
-                                '{{ __('You cannot delete it. It has already been booked') }}');
+                            Swal.fire({
+                            title: "{{ __('site.Error') }}",
+                            text: "{{ __('site.You cannot delete it. It has already been booked') }}",
+                            icon: "error",
+                            confirmButtonText: "{{ __('site.OK') }}"
+                            });
                         }
                     },
                 });

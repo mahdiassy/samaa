@@ -88,11 +88,11 @@ class PatientController extends Controller
 
             return redirect()->route('patient.index')->with('status', [
                 'type' => 'success',
-                'msg' => 'Patient created successfully'
+                'msg' => '__("site.Patient created successfully")'
             ]);
         } catch (\Illuminate\Database\QueryException $e) {
             if ($e->getCode() === '23000') {
-                Session::flash('error', 'This email is already registered.');
+                Session::flash('error', '__("site.This email is already registered.")');
             } else {
                 throw $e;
             }
@@ -141,7 +141,7 @@ class PatientController extends Controller
 
         return redirect()->route('patient.index')->with('status', [
             'type' => 'success',
-            'msg' => 'Patient updated successfully'
+            'msg' => '__("site.Patient updated successfully")'
         ]);
     }
 
@@ -185,7 +185,7 @@ class PatientController extends Controller
 
         return redirect()->back()->with('status', [
             'type' => 'success',
-            'msg' => 'Patient Profile updated successfully'
+            'msg' => '__("site.Patient Profile updated successfully")'
         ]);
     }
 
@@ -194,7 +194,7 @@ class PatientController extends Controller
         $patient->delete();
         return redirect()->route('patient.index')->with('status', [
             'type' => 'success',
-            'msg' => 'Patient deleted successfully'
+            'msg' => '__("site.Patient deleted successfully")'
         ]);
     }
 

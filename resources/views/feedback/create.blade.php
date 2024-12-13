@@ -2,7 +2,7 @@
 @section('content')
     <div class="main-content">
         <div class="search-container">
-            <input type="text" placeholder="{{ __('site.Search...') }}">
+            <input type="text" placeholder="{{ __('site.Search') }}">
             <button>
                 <svg width="19" height="20" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path

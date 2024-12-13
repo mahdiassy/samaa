@@ -142,12 +142,12 @@
         availabile = []
         $(availabilities[0]).each(function(i, time) {
             availabile[i] = {
-                title: '{{ __('Available') }}',
+                title: "{{__('site.Available')}}",
                 start: time.time,
                 id: time.id,
             };
             if (time.booking) {
-                availabile[i].title = `{{ __('reserved:') }} \n ${time.booking.user_name}`
+                availabile[i].title = `{{ __('site.reserved') }} \n ${time.booking.user_name}`
                 availabile[i].color = 'red'
             }
         })
@@ -165,6 +165,15 @@
                 left: 'prev,next today',
                 center: 'title',
                 right: 'dayGridMonth,timeGridWeek'
+            },
+            buttonText: {
+                today: "{{__('site.today')}}",
+                month: "{{__('site.month')}}",
+                week: "{{__('site.week')}}",
+                day: "{{__('site.day')}}",
+                list: "{{__('site.list')}}",
+                prev: "{{__('site.prev')}}",
+                next: "{{__('site.next')}}",
             },
             slotMinTime: "08:00:00",
             slotMaxTime: "18:30:00",
@@ -212,7 +221,12 @@
                         document.getElementById("reason").value = "";
                         appointmentModal.hide();
                         previewEvent = null;
-                        alert( '{{ __('The appointment has been booked successfully, If you want to check your reservation, click (go back)') }}');
+                        Swal.fire({
+                            title: "{{ __('site.Success') }}",
+                            text: "{{ __('site.The appointment has been booked successfully, If you want to check your reservation, click (go back)') }}",
+                            icon: "success",
+                            confirmButtonText: "{{ __('site.OK') }}"
+                            });
 
                     },
                 });

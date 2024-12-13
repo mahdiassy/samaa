@@ -1,5 +1,5 @@
 ::selection {
-    background-color: #309e93;
+    background-color: #aaa5a6;
     color: white;
 }
 
@@ -9,13 +9,13 @@ select option:checked {
 }
 
 a {
-    color: #1A655E;
+    color: #26413e;
     text-decoration: none;
 }
 
 .btn-primary {
-    background-color: #1A655E;
-    --bs-btn-hover-bg: #309e93;
+    background-color: #26413e;
+    --bs-btn-hover-bg: #aaa5a6;
 }
 
 @media (max-width: 535px) {
@@ -85,7 +85,7 @@ body {
     top: 0;
     width: 70px;
     height: 100vh;
-    background-color: #1A655E;
+    background-color: #1F1F1F;
     transition: width 0.3s ease;
     display: flex;
     flex-direction: column;
@@ -108,7 +108,7 @@ body {
 }
 
 .sidebar-content::-webkit-scrollbar-track {
-    background: #1A655E;
+    background: #1F1F1F;
     border-radius: 10px;
 }
 
@@ -145,7 +145,7 @@ body {
 }
 
 .toggle-btn:hover svg path {
-    stroke: #184947;
+    stroke: #635e5e;
 }
 
 .toggle {
@@ -212,7 +212,7 @@ body {
 }
 
 .menu-items li:hover {
-    background-color: #184947;
+    background-color: #635e5e;
     border-radius: 10px;
 }
 
@@ -240,7 +240,7 @@ body {
 .sidebar:not(.open) .menu-items li:hover::after {
     content: attr(title);
     position: absolute;
-    background-color:  rgba(48, 163, 144, 0.7);
+    background-color:  #b9b2b2ad;
     color: white;
     padding: 8px 15px;
     border-radius: 5px;
@@ -326,6 +326,10 @@ body {
     line-height: 14.52px;
     text-align: left;
     color: #F1EEEC;
+}
+
+.desc-profile a:hover h3{
+    color: #dd915e;
 }
 
 .sidebar.open .user-profile .desc-profile {
@@ -522,7 +526,7 @@ body {
 }
 
 .patient-btn {
-    background-color: #1A655E;
+    background-color: #26413e;
     color: #EAEAEA;
     text-decoration: none;
 }
@@ -556,7 +560,7 @@ body {
 }
 
 .styled-input:focus {
-    border-color: #1A655E;
+    border-color: #D67E0D;
     box-shadow: 0 0 5px rgba(26, 101, 94, 0.5);
 }
 
@@ -589,8 +593,8 @@ body {
 }
 
 .styled-input.textarea-input:focus {
-    border-color: #1A655E;
-    box-shadow: 0 0 5px rgba(26, 101, 94, 0.5);
+    border-color: #D67E0D;
+    box-shadow: 0 0 5px rgba(228, 177, 38, 0.829);
 }
 
 .btn-back {
@@ -679,7 +683,7 @@ body {
 
 .filter-link {
     font-size: 16px;
-    color: #1A655E;
+    color: #26413e;
     display: flex;
     align-items: center;
     gap: 8px;
@@ -697,7 +701,7 @@ body {
 .add-patient-btn {
     font-family: 'Poppins', sans-serif !important;
     padding: 10px 20px;
-    background-color: #1A655E;
+    background-color: #26413e;
     color: white;
     border: none;
     border-radius: 4px;
@@ -760,7 +764,7 @@ body {
 }
 
 .edit-btn {
-    background: #1A655E;
+    background: #26413e;
     width: 50%;
     /* 81px; */
     padding: 5px 50px;
@@ -784,7 +788,7 @@ body {
 }
 
 .delete-btn a , .delete-btn button{
-    color: #1A655E;
+    color: #26413e;
 }
 .delete-btn a:hover, .delete-btn button:hover {
     color: #D6861F;
@@ -806,15 +810,15 @@ body {
 }
 
 .pagination .page-link:hover {
-    background-color: #1A655E;
+    background-color: #26413e;
     color: #ffffff;
-    border-color: #1A655E;
+    border-color: #26413e;
 }
 
 .pagination .page-item.active .page-link {
-    background-color: #1A655E;
+    background-color: #26413e;
     color: #ffffff;
-    border-color: #1A655E;
+    border-color: #26413e;
 }
 
 .pagination .page-item.disabled .page-link {
@@ -904,10 +908,10 @@ body {
 
 #patientTable td .link {
     font-size: 15px;
-    font-weight: 400;
+    font-weight: 600;
     line-height: 18.75px;
     text-align: left;
-    color: #288d83;
+    color: #ad9292;
 }
 
 #patientTable tbody tr:hover {
@@ -933,7 +937,7 @@ body {
 }
 
 .table-container::-webkit-scrollbar-thumb {
-    background-color: #1A655E;
+    background-color: #26413e;
     border-radius: 10px;
 }
 
@@ -1116,7 +1120,7 @@ body {
     width: 80% !important;
     padding: 10px !important;
     border-radius: 5px;
-    border: 1px solid #1A655E !important;
+    border: 1px solid #9e9179 !important;
 }
 
 select {
@@ -1277,7 +1281,7 @@ select {
 }
 
 .footer {
-    background-color: #1A655E;
+    background-color: #1F1F1F;
     padding: 15px 20px;
     color: white;
     font-family: 'Inter', sans-serif;
@@ -1674,12 +1678,15 @@ select {
 .form-input {
     padding: 10px;
     font-size: 1rem;
-    border: 1px solid #1A655E;
+    border: 1px solid #26413e;
     border-radius: 4px;
     width: 100%;
     margin: 0px;
 }
-
+.input-group input:focus {
+    outline: none;
+    border-color: #d19524;
+}
 .button-group,
 .button-group-left {
     display: flex;
@@ -1715,7 +1722,7 @@ select {
 }
 
 .custom-button {
-    background-color: #1A655E;
+    background-color: #26413e;
     color: white;
     padding: 10px 20px;
     font-size: 1rem;
@@ -1744,20 +1751,20 @@ select {
 }
 .fc-v-event
 {
-    background-color: #1A655E ;
-    border: 1px solid #1A655E;
+    background-color: #26413e ;
+    border: 1px solid #26413e;
 }
 .fc-daygrid-event-dot
 {
-    border: calc(var(--fc-daygrid-event-dot-width) / 2) solid #1A655E ;
+    border: calc(var(--fc-daygrid-event-dot-width) / 2) solid #26413e ;
 }
 .fc .fc-daygrid-event-harness {
     cursor: pointer;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice
 {
-    background-color: #309e93 !important;
-    border: 1px solid #309e93 !important;
+    background-color: #aaa5a6 !important;
+    border: 1px solid #aaa5a6 !important;
     color: #F1EEEC ;
 }
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove
@@ -1766,11 +1773,14 @@ select {
 }
 
 .select2-container--default .select2-results__option--highlighted[aria-selected] {
-    background-color: #1A655E;
+    background-color: #26413e;
     color: white;
 }
 .select2-container--default .select2-results__option[aria-selected=true] {
-    background-color: #309e93;
+    background-color: #aaa5a6;
     color: #F1EEEC;
 }
-
+.modal-header .btn-close
+{
+    margin: 0 !important;
+}
