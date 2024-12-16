@@ -1,6 +1,10 @@
 <?php
 
 return [
+    //popup
+    'theme-message' => 'Pour plus d’interaction, choisissez le thème réservé aux moins de quinze ans.',
+    'Default' => 'Défaut',
+    'Kids' => 'Enfants',
     // Menu & Footer
     'Menu' => 'Menu',
     'Home' => 'Accueil',

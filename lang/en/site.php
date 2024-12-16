@@ -1,6 +1,10 @@
 <?php
 
 return [
+    //popup
+    'theme-message' => 'For more interaction, choose the theme designated for children under fifteen',
+    'Default' => 'Default',
+    'Kids' => 'Kids',
     // Menu & Footer
     'Menu' => 'Menu',
     'Home' => 'Home',

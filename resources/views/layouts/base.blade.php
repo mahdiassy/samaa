@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html dir="{{ App::getLocale() == 'ar' ? "rtl" : "ltr" }}" lang="{{
-    App::getLocale() == 'ar' ? 'ar' :
-    (App::getLocale() == 'fr' ? 'fr' :
-    (App::getLocale() == 'en' ? 'en' : 'en'))
-}}">
+<html dir="{{ App::getLocale() == 'ar' ? 'rtl' : 'ltr' }}"
+    lang="{{ App::getLocale() == 'ar'
+        ? 'ar'
+        : (App::getLocale() == 'fr'
+            ? 'fr'
+            : (App::getLocale() == 'en'
+                ? 'en'
+                : 'en')) }}">
 
 <head>
     <meta charset="UTF-8">
@@ -15,7 +18,12 @@
     <link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/frontend/style.css') }}">
+
+    <!-- Default Theme Styles -->
+    <link id="theme-style" type="text/css" rel="stylesheet" href="{{ asset('assets/css/frontend/style.css') }}">
+    <!-- Include Kids Theme Styles (Loaded Dynamically) -->
+    <link id="kids-style" type="text/css" rel="stylesheet" href="{{ asset('assets/css/frontend/kids-style.css') }}">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Work+Sans:wght@400;800&display=swap"
         rel="stylesheet">
@@ -28,6 +36,14 @@
 </head>
 
 <body>
+
+    <div id="theme-popup" class="popup">
+        <p>{{ __('site.theme-message') }}</p>
+        <button class="popup-button" id="default-theme-btn">{{ __('site.Default') }}</button>
+        <button class="popup-button" id="kids-theme-btn">{{ __('site.Kids') }}</button>
+    </div>
+    <div id="overlay" class="overlay"></div>
+
     <nav>
         <div class="logo">
             <img src="{{ asset('assets/images/samaa-logo.png') }}" alt="Logo">
@@ -63,7 +79,8 @@
                 <a href="{{ route('register') }}">{{ __('site.Register') }}</a>
             @endif
 
-            <div class="profile" style="{{ App::getLocale() == 'ar' ? 'padding-right: 350px;' : (App::getLocale() == 'fr' ? 'padding-left: 200px;' : 'padding-left: 350px;') }}">
+            <div class="profile"
+                style="{{ App::getLocale() == 'ar' ? 'padding-right: 350px;' : (App::getLocale() == 'fr' ? 'padding-left: 200px;' : 'padding-left: 350px;') }}">
 
                 @if (Auth::check() && Auth::user()->hasRole('Patient'))
 
@@ -90,9 +107,11 @@
             <div class="language-selector">
                 <select id="language-select" class="form-select" onchange="location = this.value;">
                     @foreach (LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
-                        <option class="menu-flag" value="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
+                        <option class="menu-flag"
+                            value="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}"
                             {{ App::getLocale() == $localeCode ? 'selected' : '' }}>
-                            <img src="https://cdn.jsdelivr.net/npm/svg-country-flags@1.2.10/svg/{{ $localeCode == 'ar' ? 'sa' : ($localeCode == 'fr' ? 'fr' : 'gb') }}.svg" width="20px" alt="{{ $properties['name'] }}" />
+                            <img src="https://cdn.jsdelivr.net/npm/svg-country-flags@1.2.10/svg/{{ $localeCode == 'ar' ? 'sa' : ($localeCode == 'fr' ? 'fr' : 'gb') }}.svg"
+                                width="20px" alt="{{ $properties['name'] }}" />
                             {{ $properties['name'] }}
                         </option>
                     @endforeach
@@ -116,9 +135,7 @@
 
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-logo">
-                <img src="{{ asset('assets/images/samaa-logo.png') }}" alt="Logo">
-            </div>
+            <div class="footer-logo"></div>
             <div class="footer-links">
                 <div class="column">
                     <a href="{{ route('home') }}">{{ __('site.Home') }}</a>

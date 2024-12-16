@@ -1,7 +1,8 @@
 @extends('layouts.base')
 @section('content')
     <section class="hero">
-        <img src="{{ asset('assets/images/landing-page.png') }}" alt="Piano background">
+        <div class="landing-page"></div>
+        <!--<img src="{{ asset('assets/images/landing-page.png') }}" alt="Piano background">-->
         <div class="hero-text {{ App::getLocale() == 'ar' ? 'text-right' : 'text-left' }}">
             <h2>{{ __('site.Welcome to SAMAA') }}</h2>
             @if (App::getLocale() == 'ar')
@@ -30,11 +31,13 @@
                 {{ __('site.Music Therapy (description)') }}
             </p>
         </div>
-        <img src="{{ asset('assets/images/music-therapy.jpg') }}" alt="Music Therapy">
+        <div class="therapy-image"></div>
+        <!--<img src="{{ asset('assets/images/music-therapy.jpg') }}" alt="Music Therapy">-->
     </section>
 
     <section class="therapy-section2">
-        <img src="{{ asset('assets/images/music-therapy2.png') }}" alt="Music Therapy">
+        <div class="therapy-image2"></div>
+        <!--<img src="{{ asset('assets/images/music-therapy2.png') }}" alt="Music Therapy">-->
         <div class="therapy-content2">
             <h2>{{ __('site.What is Music Therapy?') }}</h2>
             <p>
