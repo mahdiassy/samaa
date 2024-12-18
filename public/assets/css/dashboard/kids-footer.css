@@ -1,0 +1,135 @@
+
+.footer {
+    background-color:  rgba(228, 144, 40, 1);
+    padding: 15px 20px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    position: relative;
+    bottom: auto;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    padding: 2% 10%;
+    border-bottom: 1px solid #FFFFFF33;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('../../images/kids-samaa-logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 100px;
+}
+
+.footer-logo img {
+    width: 80px;
+}
+
+.footer-logo p {
+    margin-top: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFA538;
+}
+
+.footer-links {
+    display: flex;
+    gap: 40px;
+}
+
+.footer-links .column {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    margin-bottom: 40px;
+    font-size: 13px;
+}
+
+.footer-links a:hover {
+    opacity: 0.5;
+    transform: scale(1.005);
+    transition: all 0.1s ease;
+}
+
+.footer-help {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.help-btn {
+    background-color: transparent;
+    color: white;
+    border: 1px solid rgba(241, 238, 236, 1);
+    padding: 10px 30px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.help-btn:hover{
+    background-color: white;
+    color: rgba(228, 144, 40, 1);
+    border: 1px solid white;
+}
+
+.social-icons img {
+    width: 25px;
+    height: 25px;
+}
+
+.footer-bottom {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding: 20px 0px 0px 10%;
+    font-size: 13px;
+    border-top: 1px solid #FFFFFF33;
+}
+
+.footer-bottom img {
+    width: 20px;
+    margin-right: 10px;
+}
+
+.social-icons {
+    display: flex;
+    gap: 18px;
+    height: 25.43px;
+    opacity: 1;
+}
+
+.social-icons a {
+    text-decoration: none;
+}
+
+.social-icons i {
+    width: 26.4px;
+    height: 25.43px;
+    color: #F1EEEC;
+    padding: 5px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+}
+
+.social-icons i:hover {
+    opacity: 0.8;
+    transform: scale(1.05);
+    transition: all 0.3s ease;
+}

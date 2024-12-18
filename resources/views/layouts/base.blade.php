@@ -46,7 +46,7 @@
 
     <nav>
         <div class="logo">
-            <img src="{{ asset('assets/images/samaa-logo.png') }}" alt="Logo">
+            <a href="{{ route('home') }}" ><img src="{{ asset('assets/images/samaa-logo.png') }}" alt="Logo"></a>
         </div>
         <div class="menu-toggle" id="menuToggle">
             <div></div>
@@ -135,7 +135,7 @@
 
     <footer class="footer">
         <div class="footer-container">
-            <div class="footer-logo"></div>
+            <a href="{{ route('home') }}"><div class="footer-logo"></div></a>
             <div class="footer-links">
                 <div class="column">
                     <a href="{{ route('home') }}">{{ __('site.Home') }}</a>
@@ -176,6 +176,7 @@
         </div>
     </footer>
 
+    <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/frontend/scripts.js') }}"></script>
 
 </body>

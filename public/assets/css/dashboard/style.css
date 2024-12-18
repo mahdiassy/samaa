@@ -1,5 +1,5 @@
 ::selection {
-    background-color: #aaa5a6;
+    background-color: #1F1F1F;
     color: white;
 }
 
@@ -1280,16 +1280,6 @@ select {
     color: #333;
 }
 
-.footer {
-    background-color: #1F1F1F;
-    padding: 15px 20px;
-    color: white;
-    font-family: 'Inter', sans-serif;
-    width: 100%;
-    position: relative;
-    bottom: auto;
-}
-
 .footer-container {
     display: flex;
     justify-content: space-between;
@@ -1297,12 +1287,6 @@ select {
     flex-wrap: wrap;
     padding: 2% 10%;
     border-bottom: 1px solid #FFFFFF33;
-}
-
-.footer-logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
 }
 
 .footer-logo img {

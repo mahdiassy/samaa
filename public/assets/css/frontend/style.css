@@ -3,7 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@700&display=swap');
 
 ::selection {
-    background-color: #aaa5a6;
+    background-color: #1F1F1F;
     color: white;
 }
 
@@ -692,6 +692,12 @@ nav.scrolled {
     margin-bottom: 20px;
 }
 
+.help-btn:hover{
+    background-color: #D67E0D;
+    color: #1F1F1F;
+    border: 1px solid #1F1F1F;
+}
+
 .social-icons img {
     width: 25px;
     height: 25px;
@@ -1172,7 +1178,7 @@ nav.scrolled {
     background-color: #EAEAEA;
 }
 
-.form-group input:focus, .form-group select:focus {
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
     outline: none;
     border-color: #dbab52;
 }

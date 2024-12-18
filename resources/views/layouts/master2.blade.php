@@ -22,6 +22,12 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&family=Roboto:wght@400;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/dashboard/style.css') }}">
+
+    <!-- Default Theme Styles -->
+    <link id="theme-style" type="text/css" rel="stylesheet" href="{{ asset('assets/css/dashboard/footer.css') }}">
+    <!-- Include Kids Theme Styles (Loaded Dynamically) -->
+    <link id="kids-style" type="text/css" rel="stylesheet" href="{{ asset('assets/css/dashboard/kids-footer.css') }}">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
@@ -163,9 +169,7 @@
         <!--</div>-->
         <footer class="footer">
             <div class="footer-container">
-                <div class="footer-logo">
-                    <img src="{{ asset('assets/images/samaa-logo.png') }}" alt="Logo">
-                </div>
+                <a href="{{ route('home') }}"><div class="footer-logo"></div></a>
                 <div class="footer-links">
                     <div class="column">
                         <a href="{{ route('home') }}">{{ __('site.Home') }}</a>
@@ -211,6 +215,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
+    <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard/script.js') }}"></script>
 
 
