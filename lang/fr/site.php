@@ -15,6 +15,7 @@ return [
     'Login' => 'Connexion',
     'Register' => 'S’inscrire',
     'Therapy' => 'Thérapie',
+    'Therapeutic Area' => 'Espace Thérapeutique',
     'Library' => 'Bibliothèque',
     'Help Center' => 'Centre d’aide',
 
@@ -27,6 +28,7 @@ return [
     'Full Name' => 'Nom complet',
     'First Name' => 'Prénom',
     'Last Name' => 'Nom de famille',
+    'Surname' => 'Nom de famille',
     'date' => 'JJ/MM/AAAA',
     'Birthday' => 'Date de naissance',
     'Email' => 'Email',
@@ -41,6 +43,11 @@ return [
     'Next' => 'Suivant',
     'Medical History' => 'Historique médical',
     'Blood Type' => 'Groupe sanguin',
+    'Therapeutic_area' => 'Tous les domaines thérapeutiques',
+    'Diseases' => 'Maladies',
+    'Psychological_diseases' => 'Maladie psychologique',
+    'open_description' => 'Ajoutez une description ouverte de votre état de santé',
+    'more_description' => 'Plus de description',
     'Are You A Regular Smoker?' => 'Êtes-vous un fumeur régulier ?',
     'Yes' => 'Oui',
     'No'=> 'Non',
@@ -90,6 +97,8 @@ return [
     'Therapy With' =>'Thérapie avec',
 
     'Sama’a' => 'SAMAA',
+
+    'Sama’a for kids' => 'SAMAA POUR LES ENFANTS',
 
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam–quis.' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam–quis.',
 

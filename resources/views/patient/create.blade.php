@@ -72,10 +72,6 @@
                                 </select>
                             </div>
                             <div class="text-info">
-                                <p>weight (Kg)</p>
-                                <input type="number" name="weight" placeholder="54" value="" class="styled-input" />
-                            </div>
-                            <div class="text-info">
                                 <p>{{ __('site.Blood Type') }}</p>
                                 <select name="blood_type" style="margin-top: 0px;" class="styled-input">
                                     <option>{{ __('site.Blood Type') }}</option>
@@ -89,12 +85,21 @@
                                     <option value="B-">B-</option>
                                 </select>
                             </div>
+
+                            <h2>{{ __('site.Medical History') }}</h2>
                             <div class="text-info">
-                                <p>{{ __('site.Are You A Regular Smoker?') }}</p>
-                                <select name="smoker" style="margin-top: 0px;" class="styled-input">
-                                    <option>{{ __('site.Are You A Regular Smoker?') }}</option>
-                                    <option value="yes">{{ __('site.Yes') }}</option>
-                                    <option value="no">{{ __('site.No') }}</option>
+                                <label>{{ __('site.Therapeutic_area') }}</label>
+                                <select name="therapeutic_area" id="therapeutic_area" style="margin-top: 0px;" class="styled-input">
+                                    <option value="" disabled selected>{{ __('site.Therapeutic_area') }}</option>
+                                    @foreach ($therapeutic_areas as $therapeutic_area)
+                                        <option value="{{ $therapeutic_area->id }}">{{ $therapeutic_area->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="text-info">
+                                <label>{{ __('site.Diseases') }}</label>
+                                <select name="disease" id="disease" disabled style="margin-top: 0px;" class="styled-input">
+                                    <option value="" disabled selected>{{ __('site.Diseases') }}</option>
                                 </select>
                             </div>
                         </div>
@@ -119,13 +124,9 @@
                             </div>
                             <div class="text-info">
                                 <p>{{ __('site.Password') }}</p>
-                                <input type="password" name="password" value="" class="styled-input" />
+                                <input type="password" placeholder="XXXXXXXXXX" name="password" value="" class="styled-input" />
                             </div>
-                            <div class="text-info">
-                                <p>Height (cm)</p>
-                                <input type="number" name="height" placeholder="163" value=""
-                                    class="styled-input" />
-                            </div>
+
                             <div class="text-info">
                                 <p>{{ __('site.Gender') }}</p>
                                 <select name="gender" style="margin-top: 0px;" class="styled-input">
@@ -133,6 +134,25 @@
                                     <option value="female">{{ __('site.Female') }}</option>
                                     <option value="male">{{ __('site.Male') }}</option>
                                 </select>
+                            </div>
+
+                            <br>
+                            <br>
+
+                            <div class="text-info">
+                                <label>{{ __('site.Psychological_diseases') }}</label>
+                                <select name="psychological_disease" style="margin-top: 0px;" class="styled-input">
+                                    @foreach ($psychological_diseases as $psychological_disease)
+                                        <option value="{{ $psychological_disease->id }}">
+                                            {{ $psychological_disease->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="text-info">
+                                <div class="form-group">
+                                    <label>{{ __('site.open_description') }}</label>
+                                    <textarea name="open_description" class="styled-input textarea-input"></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>

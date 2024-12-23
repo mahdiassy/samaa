@@ -1,3 +1,40 @@
+document.addEventListener('DOMContentLoaded', function () {
+    const therapeuticAreaSelect = document.getElementById('therapeutic_area');
+    const diseaseSelect = document.getElementById('disease');
+
+    therapeuticAreaSelect.addEventListener('change', function () {
+        const therapeuticAreaId = this.value;
+
+        diseaseSelect.innerHTML = `<option value="" disabled selected>${selectDiseaseText}</option>`;
+
+        diseaseSelect.disabled = true;
+
+        if (therapeuticAreaId) {
+            fetch(`/getDiseases/${therapeuticAreaId}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    if (data && data.diseases) {
+                        data.diseases.forEach(disease => {
+                            const option = document.createElement('option');
+                            option.value = disease.id;
+                            option.textContent = disease.name;
+                            diseaseSelect.appendChild(option);
+                        });
+                        diseaseSelect.disabled = false;
+                    }
+                })
+                .catch(error => {
+                    console.error('Error fetching diseases:', error);
+                });
+        }
+    });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
 
@@ -15,11 +52,11 @@ function applyTheme(theme) {
     if (theme === 'kids') {
         themeStyle.disabled = true;
         kidsStyle.disabled = false;
-        document.title = "SAMAA FOR KIDS";
+        document.title = `${samaaKidsTitle}`;
     } else {
         themeStyle.disabled = false;
         kidsStyle.disabled = true;
-        document.title = "SAMAA";
+        document.title = `${samaaTitle}`;
     }
 
     localStorage.setItem('theme', theme);

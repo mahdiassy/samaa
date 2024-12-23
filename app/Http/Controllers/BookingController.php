@@ -69,7 +69,7 @@ class BookingController extends Controller
 
         return redirect()->route('patients.booking.index')->with('status', [
             'type' => 'success',
-            'msg' => '__("site.Patient Canceled successfully")'
+            'msg' => __("site.Patient Canceled successfully")
         ]);
     }
 }

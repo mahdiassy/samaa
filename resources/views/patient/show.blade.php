@@ -52,21 +52,22 @@
                     </div>
                     <div class="diagnosis">
                         <div class="text-info">
-                            <p><strong>{{ __('site.Blood Type') }}</strong></p>
-                            <p>{{ $patient->blood_type }}</p>
+                            <p><strong>{{ __('site.Blood Type') }}: </strong> {{ $patient->blood_type }}</p>
                         </div>
                         <div class="text-info">
-                            <p><strong>{{ __('site.Smoker') }}:</strong> {{ $patient->is_smoker }}</p>
+                            <p><strong>{{ __('site.Psychological_diseases') }}:</strong> {{ $patient->psychological->name }}</p>
                         </div>
                         <div class="text-info">
-                            <p><strong>Weight (Kg)</strong></p>
-                            <p>{{ $patient->weight }}</p>
+                            <p><strong>{{ __('site.Therapeutic Area') }}:</strong> {{ $patient->therapeutic->name }}</p>
                         </div>
 
                         <div class="text-info">
+                            <p><strong>{{ __('site.Diseases') }}:</strong> {{ $patient->disease->name }}</p>
+                        </div>
 
-                            <p><strong>Height (cm)</strong></p>
-                            <p>{{ $patient->height }}</p>
+                        <div class="text-info">
+                            <p><strong>{{ __('site.more_description') }} </strong></p>
+                            <p>{{ $patient->open_description }}</p>
                         </div>
                     </div>
                 </div>

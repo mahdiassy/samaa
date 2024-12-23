@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Enums\Permissions;
 use App\Models\Country;
+use App\Models\Disease;
 use App\Models\Language;
 use App\Models\Patient;
+use App\Models\Psychological;
+use App\Models\Therapeutic_area;
 use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
@@ -44,7 +47,10 @@ class PatientController extends Controller
     {
         $languages = Language::all();
         $countries = Country::all();
-        return view($this->dir . "create", compact('countries', 'languages'));
+        $therapeutic_areas = Therapeutic_area::all();
+        $diseases = Disease::all();
+        $psychological_diseases = Psychological::all();
+        return view($this->dir . "create", compact('countries', 'languages','therapeutic_areas', 'diseases','psychological_diseases'));
     }
 
     public function store(Request $request)
@@ -53,16 +59,17 @@ class PatientController extends Controller
             $patient = new Patient;
             $patient->first_name = $request->first_name;
             $patient->last_name = $request->last_name;
-            $patient->phone = $request->phone;
-            $patient->address = $request->address;
             $patient->birthday = $request->birthday;
+            $patient->phone = $request->phone;
+            $patient->address = null;
             $patient->country_id = $request->country;
             $patient->language_id = $request->language;
             $patient->gender = $request->gender;
             $patient->blood_type = $request->blood_type;
-            $patient->weight = $request->weight;
-            $patient->height = $request->height;
-            $patient->is_smoker = $request->smoker;
+            $patient->psychological_id = $request->psychological_disease;
+            $patient->disease_id = $request->disease;
+            $patient->therapeutic_area_id = $request->therapeutic_area;
+            $patient->open_description = $request->open_description;
             $patient->twitter = null;
             $patient->facebook = null;
             $patient->instagram = null;
@@ -88,11 +95,11 @@ class PatientController extends Controller
 
             return redirect()->route('patient.index')->with('status', [
                 'type' => 'success',
-                'msg' => '__("site.Patient created successfully")'
+                'msg' => __("site.Patient created successfully")
             ]);
         } catch (\Illuminate\Database\QueryException $e) {
             if ($e->getCode() === '23000') {
-                Session::flash('error', '__("site.This email is already registered.")');
+                Session::flash('error', __("site.This email is already registered."));
             } else {
                 throw $e;
             }
@@ -105,23 +112,27 @@ class PatientController extends Controller
     {
         $languages = Language::all();
         $countries = Country::all();
-        return view($this->dir . "edit", compact('patient', 'countries', 'languages'));
+        $therapeutic_areas = Therapeutic_area::all();
+        $diseases = Disease::all();
+        $psychological_diseases = Psychological::all();
+        return view($this->dir . "edit", compact('patient', 'countries', 'languages','therapeutic_areas', 'diseases','psychological_diseases'));
     }
 
     public function update(Request $request, Patient $patient)
     {
         $patient->first_name = $request->first_name;
         $patient->last_name = $request->last_name;
-        $patient->phone = $request->phone;
-        $patient->address = $request->address;
         $patient->birthday = $request->birthday;
+        $patient->phone = $request->phone;
+        $patient->address = null;
         $patient->country_id = $request->country;
         $patient->language_id = $request->language;
         $patient->gender = $request->gender;
         $patient->blood_type = $request->blood_type;
-        $patient->weight = $request->weight;
-        $patient->height = $request->height;
-        $patient->is_smoker = $request->smoker;
+        $patient->psychological_id = $request->psychological_disease;
+        $patient->disease_id = $request->disease;
+        $patient->therapeutic_area_id = $request->therapeutic_area;
+        $patient->open_description = $request->open_description;
         $patient->twitter = null;
         $patient->facebook = null;
         $patient->instagram = null;
@@ -141,7 +152,7 @@ class PatientController extends Controller
 
         return redirect()->route('patient.index')->with('status', [
             'type' => 'success',
-            'msg' => '__("site.Patient updated successfully")'
+            'msg' => __("site.Patient updated successfully")
         ]);
     }
 
@@ -149,23 +160,27 @@ class PatientController extends Controller
     {
         $languages = Language::all();
         $countries = Country::all();
-        return view($this->dir . "profile", compact('patient', 'countries', 'languages'));
+        $therapeutic_areas = Therapeutic_area::all();
+        $diseases = Disease::all();
+        $psychological_diseases = Psychological::all();
+        return view($this->dir . "profile", compact('patient', 'countries', 'languages','therapeutic_areas', 'diseases','psychological_diseases'));
     }
 
     public function updateProfile(Request $request, Patient $patient)
     {
         $patient->first_name = $request->first_name;
         $patient->last_name = $request->last_name;
-        $patient->phone = $request->phone;
-        $patient->address = $request->address;
         $patient->birthday = $request->birthday;
+        $patient->phone = $request->phone;
+        $patient->address = null;
         $patient->country_id = $request->country;
         $patient->language_id = $request->language;
         $patient->gender = $request->gender;
         $patient->blood_type = $request->blood_type;
-        $patient->weight = $request->weight;
-        $patient->height = $request->height;
-        $patient->is_smoker = $request->smoker;
+        $patient->psychological_id = $request->psychological_disease;
+        $patient->disease_id = $request->disease;
+        $patient->therapeutic_area_id = $request->therapeutic_area;
+        $patient->open_description = $request->open_description;
         $patient->twitter = null;
         $patient->facebook = null;
         $patient->instagram = null;
@@ -185,7 +200,7 @@ class PatientController extends Controller
 
         return redirect()->back()->with('status', [
             'type' => 'success',
-            'msg' => '__("site.Patient Profile updated successfully")'
+            'msg' => __("site.Patient Profile updated successfully")
         ]);
     }
 
@@ -194,7 +209,7 @@ class PatientController extends Controller
         $patient->delete();
         return redirect()->route('patient.index')->with('status', [
             'type' => 'success',
-            'msg' => '__("site.Patient deleted successfully")'
+            'msg' => __("site.Patient deleted successfully")
         ]);
     }
 

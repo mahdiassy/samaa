@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use JamesHeinrich\GetID3\GetID3;
 use App\Events\MusicControlEvent;
+use App\Models\Disease;
+use App\Models\Therapeutic_area;
 
 class TherapyController extends Controller
 {
@@ -80,7 +82,7 @@ class TherapyController extends Controller
 
         $status = [
             'type' => 'success',
-            'msg' => '__("site.Therapy Created successfully")'
+            'msg' => __("site.Therapy Created successfully")
         ];
 
         return redirect()->route('therapy.index')->with('status', $status);
@@ -129,7 +131,7 @@ class TherapyController extends Controller
 
         $status = [
             'type' => 'success',
-            'msg' => '__("site.Therapy Updated successfully")'
+            'msg' => __("site.Therapy Updated successfully")
         ];
 
         return redirect()->route('therapy.index')->with(compact('therapies', 'patients'))->with('status', $status);
@@ -150,7 +152,7 @@ class TherapyController extends Controller
         $therapy->delete();
         return redirect()->route('therapy.index')->with('status', [
             'type' => 'success',
-            'msg' => '__("site.Therapy deleted successfully")'
+            'msg' => __("site.Therapy deleted successfully")
         ]);
     }
 
@@ -288,4 +290,14 @@ class TherapyController extends Controller
         }
         return $therapies;
     }
+
+    public function getDiseases($id)
+    {
+        $diseases = Disease::where('therapeutic_area_id', $id)->get(['id', 'name']);
+
+        return response()->json([
+            'diseases' => $diseases
+        ]);
+    }
+
 }

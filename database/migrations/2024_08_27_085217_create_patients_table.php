@@ -24,12 +24,19 @@ return new class extends Migration
             $table->string('facebook')->nullable();
             $table->string('instagram')->nullable();
             $table->string('blood_type')->nullable();
-            $table->string('weight')->nullable();
-            $table->string('height')->nullable();
-            $table->string('is_smoker')->nullable();
+            $table->text('open_description')->nullable();
 
             $table->unsignedBigInteger('language_id');
             $table->foreign('language_id')->references('id')->on('languages');
+
+            $table->unsignedBigInteger('psychological_id');
+            $table->foreign('psychological_id')->references('id')->on('psychologicals');
+
+            $table->unsignedBigInteger('disease_id');
+            $table->foreign('disease_id')->references('id')->on('diseases');
+
+            $table->unsignedBigInteger('therapeutic_area_id');
+            $table->foreign('therapeutic_area_id')->references('id')->on('therapeutic_areas');
 
             $table->unsignedBigInteger('country_id');
             $table->foreign('country_id')->references('id')->on('countries');

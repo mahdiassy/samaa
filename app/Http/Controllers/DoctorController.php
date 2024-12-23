@@ -73,7 +73,7 @@ class DoctorController extends Controller
 
         return redirect()->route('doctor.index')->with('status', [
             'type' => 'success',
-            'msg' => ' __("site.Doctor created successfully")'
+            'msg' => __("site.Doctor created successfully")
         ]);
     }
 
@@ -114,7 +114,7 @@ class DoctorController extends Controller
 
         return redirect()->back()->with('status', [
             'type' => 'success',
-            'msg' => '__("site.Doctor Profile updated successfully")'
+            'msg' => __("site.Doctor Profile updated successfully")
         ]);
     }
 
@@ -146,7 +146,7 @@ class DoctorController extends Controller
 
         return redirect()->route('doctor.index')->with('status', [
             'type' => 'success',
-            'msg' => '__("site.Doctor updated successfully")'
+            'msg' => __("site.Doctor updated successfully")
         ]);
     }
 
@@ -155,7 +155,7 @@ class DoctorController extends Controller
         $doctor->delete();
         return redirect()->route('doctor.index')->with('status', [
             'type' => 'success',
-            'msg' => '__("site.Doctor deleted successfully")'
+            'msg' => __("site.Doctor deleted successfully")
         ]);
     }
 
@@ -243,7 +243,7 @@ class DoctorController extends Controller
 
         return redirect()->route('doctors.booking.index')->with('status', [
             'type' => 'success',
-            'msg' => '__("site.Doctor updated status successfully")'
+            'msg' => __("site.Doctor updated status successfully")
         ]);
     }
 }

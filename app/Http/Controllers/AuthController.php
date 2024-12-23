@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\Country;
+use App\Models\Disease;
 use App\Models\Language;
 use App\Models\Patient;
+use App\Models\Psychological;
+use App\Models\Therapeutic_area;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -51,7 +54,10 @@ class AuthController extends Controller
     {
         $countries = Country::all();
         $languages = Language::all();
-        return view($this->dir . "register", compact('countries', 'languages'));
+        $therapeutic_areas = Therapeutic_area::all();
+        $diseases = Disease::all();
+        $psychological_diseases = Psychological::all();
+        return view($this->dir . "register", compact('countries', 'languages','therapeutic_areas', 'diseases','psychological_diseases'));
     }
 
     public function registerPatient(Request $request)
@@ -59,17 +65,18 @@ class AuthController extends Controller
         try {
             $patient = new Patient;
             $patient->first_name = $request->first_name;
-            $patient->last_name = null;
-            $patient->phone = $request->phone;
-            $patient->address = $request->address;
+            $patient->last_name = $request->last_name;
             $patient->birthday = $request->birthday;
+            $patient->phone = $request->phone;
+            $patient->address = null;
             $patient->country_id = $request->country;
             $patient->language_id = $request->language;
             $patient->gender = $request->gender;
             $patient->blood_type = $request->blood_type;
-            $patient->weight = $request->weight;
-            $patient->height = $request->height;
-            $patient->is_smoker = $request->smoker;
+            $patient->psychological_id = $request->psychological_disease;
+            $patient->disease_id = $request->disease;
+            $patient->therapeutic_area_id = $request->therapeutic_area;
+            $patient->open_description = $request->open_description;
             $patient->twitter = null;
             $patient->facebook = null;
             $patient->instagram = null;

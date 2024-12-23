@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
 
             CountriesSeeder::class,
             LanguageSeeder::class,
+            TherapeuticSeeder::class,
+            DiseaseSeeder::class,
+            PsychologicalSeeder::class,
             PermissionsSeeder::class,
         ]);
     }

@@ -14,9 +14,10 @@ class LanguageSeeder extends Seeder
     public function run()
     {
         $languages_list = array(
-            "Arabic",
             "English",
-            "French"
+            "Arabic",
+            "French",
+            "Spanish "
         );
 
         foreach ($languages_list as $language){

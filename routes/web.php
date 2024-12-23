@@ -113,3 +113,4 @@ Route::get('/fetch-therapies', [TherapyController::class, 'fetchTherapies'])->na
 Route::post('/get-peaks', [TherapyController::class, 'getPeaks'])->name('get-peaks');
 Route::post('/save-peaks', [TherapyController::class, 'savePeaks'])->name('save-peaks');
 Route::post('/control-music', [TherapyController::class, 'controlMusic'])->name('controlMusic');
+Route::get('/getDiseases/{id}', [TherapyController::class, 'getDiseases'])->name('getDiseases');

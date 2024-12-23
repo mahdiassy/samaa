@@ -20,7 +20,15 @@ class Patient extends Model
         'twitter',
         'facebook',
         'instagram',
-        'user_id'
+        'blood_type',
+        'gender',
+        'user_id',
+        'therapeutic_area_id',
+        'disease_id',
+        'psychological_id',
+        'country_id',
+        'language_id',
+        'open_description'
     ];
 
     public function user()
@@ -36,6 +44,21 @@ class Patient extends Model
     public function language()
     {
         return $this->belongsTo(Language::class);
+    }
+
+    public function disease()
+    {
+        return $this->belongsTo(Disease::class);
+    }
+
+    public function psychological()
+    {
+        return $this->belongsTo(Psychological::class);
+    }
+
+    public function therapeutic()
+    {
+        return $this->belongsTo(Therapeutic_area::class, 'therapeutic_area_id');
     }
 
     public function therapies()

@@ -51,7 +51,7 @@ class FeedbackController extends Controller
 
         return redirect()->route('feedback-list')->with('status', [
             'type' => 'success',
-            'msg' => '__("site.Feedback created successfully")'
+            'msg' => __("site.Feedback created successfully")
         ]);
     }
 
@@ -65,7 +65,7 @@ class FeedbackController extends Controller
         $feedback->delete();
         return redirect()->route('feedback-list')->with('status', [
             'type' => 'success',
-            'msg' => '__("site.Feedback deleted successfully")'
+            'msg' => __("site.Feedback deleted successfully")
         ]);
     }
 }

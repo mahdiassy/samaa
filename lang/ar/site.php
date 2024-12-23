@@ -15,6 +15,7 @@ return [
     'Login' => 'تسجيل الدخول',
     'Register' => 'انشاء حساب',
     'Therapy' => 'العلاج',
+    'Therapeutic Area' => 'المجال العلاجي',
     'Library' => 'المكتبة',
     'Help Center' => 'مركز المساعدة',
 
@@ -30,6 +31,7 @@ return [
     'Full Name' => 'الاسم الكامل',
     'First Name' => 'الاسم',
     'Last Name' => 'الشهرة ',
+    'Surname' => 'الشهرة ',
     'date' => 'الشهر/ اليوم/السنة',
     'Birthday' => 'تاريخ الولادة',
     'Email' => 'البريد الالكتروني',
@@ -44,6 +46,11 @@ return [
     'Next' => 'التالي',
     'Medical History' => 'التاريخ الطبي',
     'Blood Type' => 'فئة الدم',
+    'Therapeutic_area' => 'جميع المجالات العلاجية',
+    'Diseases' => 'الأمراض',
+    'Psychological_diseases' => 'الأمراض النفسية',
+    'open_description' => 'أضف وصفًا مفتوحًا عن حالتك الصحية',
+    'more_description' => 'المزيد من الوصف',
     'Are You A Regular Smoker?' => 'هل انت من المدخنين؟',
     'Yes' => 'نعم',
     'No'=> 'لا',
@@ -89,6 +96,8 @@ return [
     'Therapy With' =>'العلاج بواسطة',
 
     'Sama’a' => 'سمع',
+
+    'Sama’a for kids' => 'موقع سمع للأطفال',
 
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam–quis.' => '',
 

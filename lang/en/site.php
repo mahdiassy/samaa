@@ -15,6 +15,7 @@ return [
     'Login' => 'Login',
     'Register' => 'Register',
     'Therapy' => 'Therapy',
+    'Therapeutic Area' => 'Therapeutic Area',
     'Library' => 'Library',
     'Help Center' => 'Help Center',
 
@@ -27,6 +28,7 @@ return [
     'Full Name' => 'Full Name',
     'First Name' => 'First Name',
     'Last Name' => 'Last Name',
+    'Surname' => 'Surname',
     'date' => 'MM/DD/YYYY',
     'Birthday' => 'Birthday',
     'Email' => 'Email',
@@ -41,6 +43,11 @@ return [
     'Next' => 'Next',
     'Medical History' => 'Medical History',
     'Blood Type' => 'Blood Type',
+    'Therapeutic_area' => 'All Therapeutic Aareas',
+    'Diseases' => 'Diseases',
+    'Psychological_diseases' => 'Psychological Diseases',
+    'open_description' => 'Add an open description about your health condition',
+    'more_description' => 'More Description',
     'Are You A Regular Smoker?' => 'Are You A Regular Smoker?',
     'Yes' => 'Yes',
     'No'=> 'No',
@@ -93,6 +100,8 @@ return [
     'Therapy With' =>'Therapy With ',
 
     'Sama’a' => 'SAMAA',
+
+    'Sama’a for kids' => 'SAMAA FOR KIDS',
 
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam–quis.' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam–quis.',
 

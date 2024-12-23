@@ -175,7 +175,11 @@
             <p><i class="fas fa-envelope"></i> Samaa@Gmail.Com</p>
         </div>
     </footer>
-
+    <script>
+        let selectDiseaseText = "{{ __('site.Diseases') }}";
+        let samaaKidsTitle = "{{ __('site.Sama’a for kids') }}";
+        let samaaTitle = "{{ __('site.Sama’a') }}";
+    </script>
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/frontend/scripts.js') }}"></script>
 

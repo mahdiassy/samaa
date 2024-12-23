@@ -1178,6 +1178,17 @@ nav.scrolled {
     background-color: #EAEAEA;
 }
 
+.form-group textarea{
+    width: 100%;
+    height: 160px;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #EAEAEA;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: #EAEAEA;
+}
+
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
     outline: none;
     border-color: #dbab52;
@@ -1185,7 +1196,7 @@ nav.scrolled {
 
 .gender-group {
     /*margin: -15px 0px;*/
-    color: #EAEAEA;
+    color: #1F1F1F;
     display: flex;
 }
 
@@ -1203,6 +1214,7 @@ nav.scrolled {
     }
 
     .form-group input,
+    .form-group textarea,
     .form-group select {
         width: 100%;
     }
@@ -1316,7 +1328,7 @@ nav.scrolled {
     font-weight: 400;
     line-height: 25.43px;
     margin-bottom: 5px;
-    color: #EAEAEA;
+    color: #1F1F1F;
 }
 
 .questions-group input[type="radio"] {
@@ -1430,16 +1442,16 @@ nav.scrolled {
 
 .radio-option span {
     display: inline-block;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #EAEAEA;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #1F1F1F;
     border-radius: 50%;
     margin: 0px 10px;
     position: relative;
 }
 
 .radio-option input:checked+span {
-    border-color: #EAEAEA;
+    border-color: #1F1F1F;
 }
 
 .radio-option input:checked+span::after {
@@ -1450,7 +1462,7 @@ nav.scrolled {
     width: 12px;
     height: 12px;
     border-radius: 50%;
-    background-color: #EAEAEA;
+    background-color: #1F1F1F;
 }
 
 .info {
@@ -1471,6 +1483,10 @@ nav.scrolled {
     justify-content: space-between;
     gap: 8%;
     flex-wrap: wrap;
+}
+
+.form-section2 {
+    flex-direction: column;
 }
 
 .left-column {

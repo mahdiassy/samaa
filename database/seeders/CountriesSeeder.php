@@ -12,9 +12,9 @@ class CountriesSeeder extends Seeder
     public function run()
     {
         $countryArray = array(
+            'LBBA'=>array('name'=>'Beirut'),
             'LBAK'=>array('name'=>'Akkar'),
             'LBAS'=>array('name'=>'North'),
-            'LBBA'=>array('name'=>'Beirut'),
             'LBBH'=>array('name'=>'Baalbek-El Hermel'),
             'LBBI'=>array('name'=>'Bekaa'),
             'LBJA'=>array('name'=>'South'),
