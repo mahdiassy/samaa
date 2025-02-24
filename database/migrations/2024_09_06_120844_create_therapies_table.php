@@ -16,8 +16,13 @@ return new class extends Migration
             $table->text('name');
             $table->text('file');
             $table->text('image')->nullable();
+
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
+
+            $table->unsignedBigInteger('album_id');
+            $table->foreign('album_id')->references('id')->on('albums');
+
             $table->timestamps();
         });
     }

@@ -199,6 +199,7 @@ return [
     'Booking Reason' => 'Booking Reason',
     'Booking status' => 'Booking status',
     'Add Therapy' => 'Add Therapy',
+    'Create by Admin, No Patient Available' => 'Create by Admin, No Patient Available',
     'Change Status' => 'Change Status',
     'be Approved before' => 'be Approved before',
     'Add' => 'Add',
@@ -278,4 +279,5 @@ return [
     'Change_track' => 'Change Track',
     'INITIALIZING MUSIC PLAYER' => 'INITIALIZING MUSIC PLAYER',
     'All the songs' => 'All the songs',
+    'Search or Create Album' => 'Search or Create Album',
 ];

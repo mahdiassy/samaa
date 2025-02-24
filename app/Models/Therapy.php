@@ -13,12 +13,18 @@ class Therapy extends Model
     [
         'name',
         'file',
-        'user_id'
+        'user_id',
+        'album_id'
     ];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function album()
+    {
+        return $this->belongsTo(Album::class);
     }
 
     public function patients()

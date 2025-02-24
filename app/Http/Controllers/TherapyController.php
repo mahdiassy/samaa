@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use JamesHeinrich\GetID3\GetID3;
 use App\Events\MusicControlEvent;
+use App\Models\Album;
 use App\Models\Disease;
 use App\Models\Therapeutic_area;
 
@@ -56,15 +57,56 @@ class TherapyController extends Controller
         return view($this->dir . "index", compact('therapies', 'patients'));
     }
 
+    public function admin_therapy_create()
+    {
+        $albums = Album::all();
+        return view($this->dir . "admin-create", compact('albums'));
+    }
+
+    public function admin_therapy_store(Request $request)
+    {
+        $albumName = $request->album_name;
+
+        $album = Album::firstOrCreate(['name' => $albumName]);
+
+        $therapy = new Therapy;
+        $therapy->name = $request->name;
+        $therapy->album_id = $album->id;
+        $therapy->user_id = Auth::id();
+
+        if ($request->has('image')) {
+            $image = $request->file('image');
+            $therapy->image = $this->storeFile($image, 'Doctor therapy');
+        }
+        if ($request->has('file')) {
+            $file = $request->file('file');
+            $therapy->file = $this->storeFileEncrypt($file, 'Doctor therapy');
+        }
+        $therapy->save();
+
+        $status = [
+            'type' => 'success',
+            'msg' => __("site.Therapy Created successfully")
+        ];
+
+        return redirect()->route('therapy.index')->with('status', $status);
+    }
+
     public function create(Patient $patient)
     {
-        return view($this->dir . "create", compact('patient'));
+        $albums = Album::all();
+        return view($this->dir . "create", compact('patient','albums'));
     }
 
     public function store(Request $request)
     {
+        $albumName = $request->album_name;
+
+        $album = Album::firstOrCreate(['name' => $albumName]);
+
         $therapy = new Therapy;
         $therapy->name = $request->name;
+        $therapy->album_id = $album->id;
         $therapy->user_id = Auth::id();
 
         if ($request->has('image')) {
@@ -103,13 +145,19 @@ class TherapyController extends Controller
                 $therapy = $therapy;
             }
         }*/
-        return view($this->dir . "edit", compact('therapy'));
+        $albums = Album::all();
+        return view($this->dir . "edit", compact('therapy','albums'));
     }
 
     public function update(Request $request, Therapy $therapy)
     {
+        $albumName = $request->album_name;
+
+        $album = Album::firstOrCreate(['name' => $albumName]);
+
         $patients = Patient::all();
         $therapy->name = $request->name;
+        $therapy->album_id = $album->id;
         $therapy->user_id = Auth::id();
 
         if ($request->has('image')) {
@@ -125,9 +173,11 @@ class TherapyController extends Controller
 
         $therapies = $this->getTherapiesBasedRole();
 
-        $patient = Patient::find($request->patient_id);
-        $therapy->patients()->sync($patient->id);
-        //$therapy->patients()->sync($request->patients);
+        if($request->patient_id){
+            $patient = Patient::find($request->patient_id);
+            $therapy->patients()->sync($patient->id);
+            //$therapy->patients()->sync($request->patients);
+        }
 
         $status = [
             'type' => 'success',
@@ -168,8 +218,8 @@ class TherapyController extends Controller
                 return [
                     'name' => $therapy->name,
                     'artist' => $therapy->user->name,
-                    //'album' => $therapy->name,
-                    //'album_id' => '12696106c5ee8d3575d14752011dd275',
+                    'album' => $therapy->album->name,
+                    'album_id' => $therapy->album->id,
                     'url' => Storage::url('Doctor therapy/' . decrypt($therapy->file)),
                     'live' => false,
                     'type' => 'direct',
@@ -193,8 +243,8 @@ class TherapyController extends Controller
                 return [
                     'name' => $therapy->name,
                     'artist' => $therapy->user->name,
-                    //'album' => $therapy->name,
-                    //'album_id' => '12696106c5ee8d3575d14752011dd275',
+                    'album' => $therapy->album->name,
+                    'album_id' => $therapy->album->id,
                     'url' => Storage::url('Doctor therapy/' . decrypt($therapy->file)),
                     'live' => false,
                     'type' => 'direct',
@@ -207,8 +257,13 @@ class TherapyController extends Controller
             $therapyIds = DB::table('patient_therapy')
                 ->where('patient_id', $user->id)
                 ->pluck('therapy_id');
-            $getTherapies = Therapy::whereIn('id', $therapyIds)->get();
-
+            //$getTherapies = Therapy::whereIn('id', $therapyIds)->get();
+            $getTherapies = Therapy::whereIn('id', $therapyIds)
+                ->orWhereHas('user', function ($query) {
+                    $query->whereHas('roles', function ($roleQuery) {
+                        $roleQuery->where('name', 'Admin');
+                    });
+                })->paginate(9);
             $therapies = $getTherapies->map(function ($therapy) {
                 $getID3 = new GetID3();
                 $filePath = storage_path('app/public/Doctor therapy/' . decrypt($therapy->file));
@@ -217,8 +272,8 @@ class TherapyController extends Controller
                 return [
                     'name' => $therapy->name,
                     'artist' => $therapy->user->name,
-                    //'album' => $therapy->name,
-                    //'album_id' => '12696106c5ee8d3575d14752011dd275',
+                    'album' => $therapy->album->name,
+                    'album_id' => $therapy->album->id,
                     'url' => Storage::url('Doctor therapy/' . decrypt($therapy->file)),
                     'live' => false,
                     'type' => 'direct',
@@ -228,7 +283,9 @@ class TherapyController extends Controller
             });
         }
 
-        return json_encode((object)["songs" => $therapies]);
+        $albums = Album::with('therapies')->get();
+
+        return json_encode((object)["songs" => $therapies,"albums" => $albums]);
     }
 
     public function getPeaks(Request $request)
@@ -286,7 +343,17 @@ class TherapyController extends Controller
                 ->where('patient_id', $user->id)
                 ->pluck('therapy_id');
 
-            $therapies = Therapy::whereIn('id', $therapyIds)->paginate(9);
+            //$therapies = Therapy::whereIn('id', $therapyIds)->paginate(9);
+            $therapies = Therapy::whereIn('id', $therapyIds)
+                ->orWhereHas('user', function ($query) {
+                    $query->whereHas('roles', function ($roleQuery) {
+                        $roleQuery->where('name', 'Admin');
+                    });
+                })->paginate(9);
+            /*$therapies = Therapy::whereIn('id', $therapyIds)
+            ->orWhereDoesntHave('patients')
+            ->paginate(9);*/
+
         }
         return $therapies;
     }

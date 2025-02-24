@@ -196,6 +196,7 @@ return [
     'Booking Reason' => 'Raison de la réservation',
     'Booking status' => 'Statut de la réservation',
     'Add Therapy' => 'Ajouter une thérapie',
+    'Create by Admin, No Patient Available' => 'Créer par l’administrateur, aucun patient disponible',
     'Change Status' => 'Changer le statut',
     'be Approved before' => 'être approuvé avant',
     'Add' => 'Ajouter',
@@ -274,4 +275,5 @@ return [
     'Change_track' => 'Changer de piste',
     'INITIALIZING MUSIC PLAYER' => 'INITIALISATION DU LECTEUR DE MUSIQUE',
     'All the songs' => 'Toutes les chansons',
+    'Search or Create Album' => 'Rechercher ou créer un album',
 ];

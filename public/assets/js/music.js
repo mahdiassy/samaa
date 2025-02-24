@@ -204,17 +204,21 @@ window.mobileCheck = function () {
             if(first_time) {
                 var html_albums = `
                 <div data-id='all' onclick="filter_album('all');" class="album all-album active">
-                    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==">
+                    <img src="/storage/album_default.png">
                     <p class='album_name'>${All_the_songs}</p>
                     <p class='artist_name'>.</p>
                 </div>`;
 
                 $.each(albums_array, function (index, album) {
-                    html_albums += "<div data-id='" + album.album_id + "' onclick=\"filter_album('" + album.album_id + "');\" class=\"album\">\n" +
-                        "        <img src=\"" + album.image + "\">\n" +
-                        "        <p class='album_name'>" + album.album + "</p>\n" +
-                        "        <p class='artist_name'>" + ((album.artists.length == 1) ? album.artists[0] : 'Various Artists') + "</p>\n" +
-                        "    </div>";
+
+                    var albumImage = album.therapies && album.therapies.length > 0 && album.therapies[0].image
+                        ? '/storage/' + album.therapies[0].image
+                        : '/storage/album_default.png';
+
+                    html_albums += "<div data-id='" + album.id + "' onclick=\"filter_album('" + album.id + "');\" class=\"album\">\n" +
+                        "    <img src=\"" + window.location.origin + albumImage + "\" alt=\"Album Image\">\n" +
+                        "    <p class='album_name'>" + album.name + "</p>\n" +
+                        "</div>";
                 });
                 $('#' + id_container + ' #amplitude-right #albums_list').html(html_albums).promise().done(function () {
 
@@ -280,7 +284,7 @@ window.mobileCheck = function () {
             success: function (json) {
                 var rsp = JSON.parse(json);
                 all_songs_array = songs_array = rsp.songs;
-                //albums_array = rsp.albums;
+                albums_array = rsp.albums;
                 parse_songs_player(id_container, songs_array, albums_array, true);
             },
             error: function (jqXHR, textStatus, errorThrown) {

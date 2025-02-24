@@ -195,6 +195,7 @@ return [
     'Booking Reason' => 'سبب الحجز',
     'Booking status' => 'حالة الحجز',
     'Add Therapy' => 'إضافة علاج',
+    'Create by Admin, No Patient Available' => 'تم الإنشاء بواسطة المشرف، لا يوجد مريض متاح',
     'Change Status' => 'تغيير الحالة',
     'be Approved before' => 'تتم الموافقة عليها من قبل',
     'Add' => 'إضافة',
@@ -272,5 +273,5 @@ return [
     'Change_track' => 'تغيير المسار',
     'INITIALIZING MUSIC PLAYER' => 'تهيئة مشغل الموسيقى',
     'All the songs' => 'جميع الأغاني',
-
+    'Search or Create Album' => 'بحث أو إنشاء الألبوم',
 ];

@@ -22,6 +22,9 @@
                     @if (!$therapies->isEmpty())
                     <a class="add-patient-btn" href="{{ route('playlist') }}">{{ __('site.My Playlist') }}</a>
                     @endif
+                    @role('Admin')
+                    <a href="{{ route('admin_therapy_create') }}" class="add-primery-btn">{{ __('site.Add Therapy') }}</a>
+                    @endrole
                     @role('Doctor')
                     <a href="{{ route('doctors.booking.index') }}" class="add-primery-btn">{{ __('site.Patients Booking') }}</a>
                     @endrole

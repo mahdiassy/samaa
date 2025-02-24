@@ -17,7 +17,7 @@
             </a>
         </div>
         <div class="users-list-filter">
-            <form action="{{ route('therapy.store') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ route('admin_therapy_store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-section">
                     <div class="image-upload-wrapper">
@@ -36,12 +36,6 @@
                     </div>
                     <div class="input-row">
                         <div class="input-group">
-                            <input value="{{$patient->id}}" class="form-input" name="patient_id" hidden required>
-                            <h1>{{$patient->first_name}}</h1>
-                        </div>
-                    </div>
-                    <div class="input-row">
-                        <div class="input-group">
                             <label for="file-name">{{ __('site.File Name') }}</label>
                             <input type="text" id="file-name" class="form-input" name="name" placeholder="{{ __('site.File Name') }}"
                                 required>
@@ -54,7 +48,7 @@
 
                     <div class="input-row">
                         <div class="input-group">
-                            <label for="album-select">{{ __('site.Search or Create Album') }}</label>
+                            <label for="album-select">{{ __('site.Select or Create Album') }}</label>
                             <select id="album-select" class="form-control select2" name="album_name" style="width: 100%;">
                                 <option value="">{{ __('site.Search or Create Album') }}</option>
                                 @foreach($albums as $album)

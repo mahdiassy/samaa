@@ -100,7 +100,7 @@
 
                             <div class="text-info">
                                 <label>{{ __('site.Diseases') }}</label>
-                                <select name="disease" id="disease" style="margin-top: 0px;" class="styled-input" disabled>
+                                <select name="disease" id="disease" style="margin-top: 0px;" class="styled-input">
                                     <option value="{{ $patient->disease->id }}" selected>
                                         {{ $patient->disease->name }}
                                     </option>

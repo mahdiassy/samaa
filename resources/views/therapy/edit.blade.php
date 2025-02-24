@@ -43,10 +43,14 @@
                         <div class="input-row">
                             <div class="input-group">
                                 <label for="users-movies-select2">{{ __('site.Patient Name') }}:</label>
-                                <input value="{{ $therapy->patients->pluck('id')[0] }}" class="form-input" name="patient_id"
-                                    hidden required>
-                                <h1>{{ $therapy->patients->pluck('first_name')[0] }}</h1>
+                                @if($therapy->patients->isNotEmpty())
+                                    <input value="{{ $therapy->patients->pluck('id')[0] }}" class="form-input" name="patient_id" hidden required>
+                                    <h1>{{ $therapy->patients->pluck('first_name')[0] }}</h1>
+                                @else
+                                    <h1>{{ __('site.Create by Admin, No Patient Available') }}</h1>
+                                @endif
                             </div>
+
                             <div class="input-group">
                                 <label for="filename">{{ __('site.File Name') }}:</label>
                                 <input class="form-input" id="filename" name="name" type="text"
@@ -71,6 +75,22 @@
                                 </div>
                             </div>
                         </div>
+
+                        <div class="input-row">
+                            <div class="input-group">
+                                <label for="album-select">{{ __('site.Select or Create Album') }}</label>
+                                <select id="album-select" class="form-control select2" name="album_name" style="width: 100%;">
+                                    <option value="">{{ __('site.Search or Create Album') }}</option>
+                                    @foreach($albums as $album)
+                                        <option value="{{ $album->name }}"
+                                            @if ($album->name == $therapy->album->name) selected @endif>
+                                            {{ $album->name }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -82,6 +102,9 @@
         </section>
     </div>
 @endsection
+<link href="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
 <script>
     function showPreview(event) {
@@ -95,4 +118,27 @@
             reader.readAsDataURL(file);
         }
     }
+
+    $(document).ready(function() {
+        $('#album-select').select2({
+            tags: true,
+            placeholder: "{{ __('site.Search or Create Album') }}",
+            allowClear: true,
+            width: '100%',
+            createTag: function(params) {
+                var term = $.trim(params.term);
+                if (term === '') {
+                    return null;
+                }
+
+                return {
+                    id: term,
+                    text: term,
+                };
+            },
+            insertTag: function(data, tag) {
+                data.push(tag);
+            }
+        });
+    });
 </script>
