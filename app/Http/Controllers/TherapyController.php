@@ -158,7 +158,9 @@ class TherapyController extends Controller
         $patients = Patient::all();
         $therapy->name = $request->name;
         $therapy->album_id = $album->id;
-        $therapy->user_id = Auth::id();
+        if (Auth::user()->hasRole('Doctor')) {
+            $therapy->user_id = Auth::id();
+        }
 
         if ($request->has('image')) {
             $image = $request->file('image');
