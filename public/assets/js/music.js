@@ -204,7 +204,7 @@ window.mobileCheck = function () {
             if(first_time) {
                 var html_albums = `
                 <div data-id='all' onclick="filter_album('all');" class="album all-album active">
-                    <img src="/storage/album_default.png">
+                    <img src="/assets/images/album_default.png">
                     <p class='album_name'>${All_the_songs}</p>
                     <p class='artist_name'>.</p>
                 </div>`;
@@ -213,7 +213,7 @@ window.mobileCheck = function () {
 
                     var albumImage = album.therapies && album.therapies.length > 0 && album.therapies[0].image
                         ? '/storage/' + album.therapies[0].image
-                        : '/storage/album_default.png';
+                        : '/assets/images/album_default.png';
 
                     html_albums += "<div data-id='" + album.id + "' onclick=\"filter_album('" + album.id + "');\" class=\"album\">\n" +
                         "    <img src=\"" + window.location.origin + albumImage + "\" alt=\"Album Image\">\n" +

@@ -238,6 +238,7 @@ return [
     'Success' => 'نجاح',
     'Error' => 'خطأ',
     'OK' => 'تم',
+    'The email address is already in use by another user' => 'عنوان البريد الإلكتروني مستخدم بالفعل من قبل مستخدم آخر',
     'This time has been predetermined' => 'تم تحديده مسبقاً',
     'The appointment has been successfully deleted' => 'تم حذف الموعد بنجاح',
     'You cannot delete it. It has already been booked' => 'لا يمكنك حذفه. لقد تم حجزه بالفعل',

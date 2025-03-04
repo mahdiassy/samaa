@@ -53,7 +53,7 @@
                 @if (Auth::check() && Auth::user()->patient && Auth::user()->patient->image)
                     <img src="{{ asset('storage/' . Auth::user()->patient->image) }}" alt="Profile">
                 @else
-                    <img src="{{ asset('storage/avatar1.png') }}" alt="Profile">
+                    <img src="{{ asset('assets/images/avatar1.png') }}}" alt="Profile">
                 @endif
 
                 <div class="desc-profile">
@@ -63,14 +63,14 @@
                 @if (Auth::check() && Auth::user()->doctor && Auth::user()->doctor->image)
                     <img src="{{ asset('storage/' . Auth::user()->doctor->image) }}" alt="Profile">
                 @else
-                    <img src="{{ asset('storage/avatar1.png') }}" alt="Profile">
+                    <img src="{{ asset('assets/images/avatar1.png') }}" alt="Profile">
                 @endif
 
                 <div class="desc-profile">
                     <a title="edit Profile" href="{{ route('profile.doctor.edit',Auth::user()->doctor) }}"><h3>{{ Auth::user()->doctor->first_name }} {{ Auth::user()->doctor->last_name }}</h3></a>
                 </div>
             @elseif (Auth::check() && Auth::user()->hasRole('Admin'))
-                <img src="{{ asset('storage/avatar1.png') }}" alt="Profile">
+                <img src="{{ asset('assets/images/avatar1.png') }}" alt="Profile">
                 <div class="desc-profile">
                     <h3>{{ Auth::user()->name }}</h3>
                 </div>
@@ -157,9 +157,9 @@
             <script>
                 Swal.fire({
                     icon: '{{ session('status')['type'] }}',
-                    title: 'Success',
+                    title: '{{ session('status')['title'] }}',
                     text: '{{ session('status')['msg'] }}',
-                    confirmButtonText: 'OK'
+                    confirmButtonText: '{{ __("site.OK") }}'
                 });
             </script>
         @endif
@@ -220,7 +220,7 @@
         let samaaKidsTitle = "{{ __('site.Sama’a for kids') }}";
         let samaaTitle = "{{ __('site.Sama’a') }}";
     </script>
-    
+
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard/script.js') }}"></script>
 

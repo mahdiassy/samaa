@@ -62,7 +62,7 @@
                     </div>
                 </div>
                 <div class="action-buttons">
-                    <a href="{{ route('doctor.index') }}" class="btn patient-btn">{{ __('site.Doctor List') }}</a>
+                    <a href="{{ route('doctor.index') }}" class="btn patient-btn">{{ __('site.Doctor list') }}</a>
                     @role('Patient')
                     <a href="{{ route('feedback') }}" class="btn patient-btn">{{ __('site.Feedback') }}</a>
                     @endrole

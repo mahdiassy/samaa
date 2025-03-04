@@ -86,6 +86,7 @@ class TherapyController extends Controller
 
         $status = [
             'type' => 'success',
+            'title' =>  __("site.Success"),
             'msg' => __("site.Therapy Created successfully")
         ];
 
@@ -124,6 +125,7 @@ class TherapyController extends Controller
 
         $status = [
             'type' => 'success',
+            'title' =>  __("site.Success"),
             'msg' => __("site.Therapy Created successfully")
         ];
 
@@ -183,6 +185,7 @@ class TherapyController extends Controller
 
         $status = [
             'type' => 'success',
+            'title' =>  __("site.Success"),
             'msg' => __("site.Therapy Updated successfully")
         ];
 
@@ -204,6 +207,7 @@ class TherapyController extends Controller
         $therapy->delete();
         return redirect()->route('therapy.index')->with('status', [
             'type' => 'success',
+            'title' =>  __("site.Success"),
             'msg' => __("site.Therapy deleted successfully")
         ]);
     }
@@ -265,7 +269,7 @@ class TherapyController extends Controller
                     $query->whereHas('roles', function ($roleQuery) {
                         $roleQuery->where('name', 'Admin');
                     });
-                })->paginate(9);
+                })->get();
             $therapies = $getTherapies->map(function ($therapy) {
                 $getID3 = new GetID3();
                 $filePath = storage_path('app/public/Doctor therapy/' . decrypt($therapy->file));

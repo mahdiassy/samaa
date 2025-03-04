@@ -240,6 +240,7 @@ return [
     'Success' => 'Succès',
     'Error' => 'Erreur',
     'OK' => 'D’ACCORD',
+    'The email address is already in use by another user' => 'L’adresse e-mail est déjà utilisée par un autre utilisateur',
     'This time has been predetermined' => 'Cette heure a été prédéterminée',
     'The appointment has been successfully deleted' => 'Le rendez-vous a été supprimé avec succès',
     'You cannot delete it. It has already been booked' => 'Vous ne pouvez pas le supprimer. Il a déjà été réservé',

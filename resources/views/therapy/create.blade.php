@@ -32,7 +32,7 @@
                                 </div>
                             </div>
                         </label>
-                        <p class="image-upload-instruction">Set the Therapy thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted</p>
+                        <p class="image-upload-instruction">{{ __('site.Set the Therapy thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted') }}</p>
                     </div>
                     <div class="input-row">
                         <div class="input-group">
@@ -55,7 +55,7 @@
                     <div class="input-row">
                         <div class="input-group">
                             <label for="album-select">{{ __('site.Search or Create Album') }}</label>
-                            <select id="album-select" class="form-control select2" name="album_name" style="width: 100%;">
+                            <select id="album-select" class="form-control select2" name="album_name" style="width: 100%;" required>
                                 <option value="">{{ __('site.Search or Create Album') }}</option>
                                 @foreach($albums as $album)
                                     <option value="{{ $album->name }}">{{ $album->name }}</option>

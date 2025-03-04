@@ -88,11 +88,37 @@ nav.scrolled {
 
 }
 
+.profile-ar {
+    padding-right: 350px;
+}
+
+.profile-fr {
+    padding-left: 200px;
+}
+
+.profile-en {
+    padding-left: 350px;
+}
 @media (min-width: 1092px) and (max-width: 1150px) {
 
     /* newer */
     .profile {
         padding-left: 250px !important;
+    }
+    [dir="rtl"] .profile {
+        padding-left: 0px !important;
+    }
+
+    .profile-ar {
+        padding-right: 350px;
+    }
+
+    .profile-fr {
+        padding-left: 200px;
+    }
+
+    .profile-en {
+        padding-left: 350px;
     }
 }
 
@@ -836,6 +862,11 @@ nav.scrolled {
 }
 
 @media (max-width: 1093px) {
+    .profile-ar,
+    .profile-fr,
+    .profile-en {
+        padding: 20px !important;
+    }
     .menu {
         display: flex;
         flex-direction: column;

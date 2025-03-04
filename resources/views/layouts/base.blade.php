@@ -79,8 +79,7 @@
                 <a href="{{ route('register') }}">{{ __('site.Register') }}</a>
             @endif
 
-            <div class="profile"
-                style="{{ App::getLocale() == 'ar' ? 'padding-right: 350px;' : (App::getLocale() == 'fr' ? 'padding-left: 200px;' : 'padding-left: 350px;') }}">
+            <div class="profile {{ App::getLocale() == 'ar' ? 'profile-ar' : (App::getLocale() == 'fr' ? 'profile-fr' : 'profile-en') }}">
 
                 @if (Auth::check() && Auth::user()->hasRole('Patient'))
 
@@ -89,18 +88,18 @@
                     @if (Auth::check() && Auth::user()->patient && Auth::user()->patient->image)
                         <img src="{{ asset('storage/' . Auth::user()->patient->image) }}" alt="Profile">
                     @else
-                        <img src="{{ asset('storage/avatar1.png') }}" alt="Profile">
+                        <img src="{{ asset('assets/images/avatar1.png') }}" alt="Profile">
                     @endif
                 @elseif (Auth::check() && Auth::user()->hasRole('Doctor'))
                     <span>{{ Auth::user()->doctor->first_name }} {{ Auth::user()->doctor->last_name }}</span>
                     @if (Auth::check() && Auth::user()->doctor && Auth::user()->doctor->image)
                         <img src="{{ asset('storage/' . Auth::user()->doctor->image) }}" alt="Profile">
                     @else
-                        <img src="{{ asset('storage/avatar1.png') }}" alt="Profile">
+                        <img src="{{ asset('assets/images/avatar1.png') }}" alt="Profile">
                     @endif
                 @elseif (Auth::check() && Auth::user()->hasRole('Admin'))
                     <span>{{ Auth::user()->name }}</span>
-                    <img src="{{ asset('storage/avatar1.png') }}" alt="Profile">
+                    <img src="{{ asset('assets/images/avatar1.png') }}" alt="Profile">
                 @endif
             </div>
 

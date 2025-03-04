@@ -38,10 +38,15 @@ class AuthController extends Controller
                 ->intended(route('dashboard'))
                 ->with('status', [
                     'type' => 'success',
+                    'title' =>  __("site.Success"),
                     'msg' => __("site.Successfully Logged-in"),
                 ]);
         }
-        return redirect()->route('dashboard')->with('success', 'success');
+        return redirect()->back()->with('status', [
+            'type' => 'error',
+            'title' =>  __("site.Error"),
+            'msg' => __("site.Error")
+        ]);
     }
 
     public function logout()
@@ -57,54 +62,65 @@ class AuthController extends Controller
         $therapeutic_areas = Therapeutic_area::all();
         $diseases = Disease::all();
         $psychological_diseases = Psychological::all();
-        return view($this->dir . "register", compact('countries', 'languages','therapeutic_areas', 'diseases','psychological_diseases'));
+        return view($this->dir . "register", compact('countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases'));
     }
 
     public function registerPatient(Request $request)
     {
         try {
-            $patient = new Patient;
-            $patient->first_name = $request->first_name;
-            $patient->last_name = $request->last_name;
-            $patient->birthday = $request->birthday;
-            $patient->phone = $request->phone;
-            $patient->address = null;
-            $patient->country_id = $request->country;
-            $patient->language_id = $request->language;
-            $patient->gender = $request->gender;
-            $patient->blood_type = $request->blood_type;
-            $patient->psychological_id = $request->psychological_disease;
-            $patient->disease_id = $request->disease;
-            $patient->therapeutic_area_id = $request->therapeutic_area;
-            $patient->open_description = $request->open_description;
-            $patient->twitter = null;
-            $patient->facebook = null;
-            $patient->instagram = null;
-
-            $user = new User;
-            $user->name = $request->first_name;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->save();
-            $user->assignRole('Patient');
-
-            $patient->user_id = $user->id;
-
-            if ($request->has('image')) {
-                $image = $request->file('image');
-                $patient->image = $this->storeFile($image, 'Patient image');
+            if (User::where('email', $request->email)->exists()) {
+                Session::flash('error', __("site.The email address is already in use by another user"));
             } else {
-                $patient->image = '/avatar1.png';
+                $patient = new Patient;
+                $patient->first_name = $request->first_name;
+                $patient->last_name = $request->last_name;
+                $patient->birthday = $request->birthday;
+                $patient->phone = $request->phone;
+                $patient->address = null;
+                $patient->country_id = $request->country;
+                $patient->language_id = $request->language;
+                $patient->gender = $request->gender;
+                $patient->blood_type = $request->blood_type;
+                $patient->psychological_id = $request->psychological_disease;
+                $patient->disease_id = $request->disease;
+                $patient->therapeutic_area_id = $request->therapeutic_area;
+                $patient->open_description = $request->open_description;
+                $patient->twitter = null;
+                $patient->facebook = null;
+                $patient->instagram = null;
+
+                $user = new User;
+                $user->name = $request->first_name;
+                $user->email = $request->email;
+                $user->password = Hash::make($request->password);
+                $user->save();
+                $user->assignRole('Patient');
+
+
+                $patient->user_id = $user->id;
+
+                if ($request->has('image')) {
+                    $image = $request->file('image');
+                    $patient->image = $this->storeFile($image, 'Patient image');
+                } else {
+                    $patient->image = '/avatar1.png';
+                }
+
+                $patient->save();
+
+                Auth::guard()->login($user);
+
+                return redirect()
+                    ->intended(route('dashboard'))
+                    ->with('status', [
+                        'type' => 'success',
+                        'title' =>  __("site.Success"),
+                        'msg' => __("site.Successfully Logged-in"),
+                    ]);
             }
-
-            $patient->save();
-
-            Auth::guard()->login($user);
-
-            return redirect()->route('dashboard')->with('success', 'success');
         } catch (\Illuminate\Database\QueryException $e) {
             if ($e->getCode() === '23000') {
-                Session::flash('error',  __("site.This email is already registered."));
+                Session::flash('error',  __("site.Error"));
             } else {
                 throw $e;
             }

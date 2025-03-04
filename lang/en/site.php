@@ -244,6 +244,7 @@ return [
     'Success' => 'Success',
     'Error' => 'Error',
     'OK' => 'OK',
+    'The email address is already in use by another user' =>'The email address is already in use by another user',
     'This time has been predetermined' => 'This time has been predetermined',
     'The appointment has been successfully deleted' => 'The appointment has been successfully deleted',
     'You cannot delete it. It has already been booked' => 'You cannot delete it. It has already been booked',

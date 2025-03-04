@@ -22,7 +22,7 @@
                     <div>
                         <label>{{ __('site.First Name') }}</label>
 
-                        <input type="text" name="first_name" placeholder="{{ __('site.First Name') }}">
+                        <input type="text" name="first_name" placeholder="{{ __('site.First Name') }}" required>
                     </div>
 
                     <div>
@@ -49,12 +49,12 @@
                     <div>
                         <label>{{ __('site.Email') }}</label>
                         <input type="email" name="email"
-                            placeholder="{{ __('site.Enter Your Registered Email Address') }}">
+                            placeholder="{{ __('site.Enter Your Registered Email Address') }}" required>
                     </div>
 
                     <div>
                         <label>{{ __('site.New Password') }}</label>
-                        <input type="password" name="password" placeholder="XXXXXXXXXXXXXXX">
+                        <input type="password" name="password" placeholder="XXXXXXXXXXXXXXX" required>
                     </div>
                 </div>
                 <div class="form-group">
