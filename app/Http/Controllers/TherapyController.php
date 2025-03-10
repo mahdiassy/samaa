@@ -356,9 +356,6 @@ class TherapyController extends Controller
                         $roleQuery->where('name', 'Admin');
                     });
                 })->paginate(9);
-            /*$therapies = Therapy::whereIn('id', $therapyIds)
-            ->orWhereDoesntHave('patients')
-            ->paginate(9);*/
 
         }
         return $therapies;
