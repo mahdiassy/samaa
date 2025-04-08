@@ -49,26 +49,110 @@
                             <p><strong>{{ __('site.Phone') }}:</strong></p>
                             <p>{{ $patient->phone }}</p>
                         </div>
-                    </div>
-                    <div class="diagnosis">
-                        <div class="text-info">
-                            <p><strong>{{ __('site.Blood Type') }}: </strong> {{ $patient->blood_type }}</p>
-                        </div>
-                        <div class="text-info">
-                            <p><strong>{{ __('site.Psychological_diseases') }}:</strong> {{ $patient->psychological->name }}</p>
-                        </div>
-                        <div class="text-info">
-                            <p><strong>{{ __('site.Therapeutic Area') }}:</strong> {{ $patient->therapeutic->name }}</p>
-                        </div>
-
-                        <div class="text-info">
-                            <p><strong>{{ __('site.Diseases') }}:</strong> {{ $patient->disease->name }}</p>
-                        </div>
 
                         <div class="text-info">
                             <p><strong>{{ __('site.more_description') }} </strong></p>
                             <p>{{ $patient->open_description }}</p>
                         </div>
+                    </div>
+                    <div class="diagnosis">
+                        @if($psychologicals && $psychologicals->count())
+                            <div class="text-info">
+                                <p><strong>{{ __('site.Have you been diagnosed with any of the following mental health conditions?') }}:</strong></p>
+                                <p>    @foreach($psychologicals as $psychological)
+                                    {{ $psychological->getTranslatedName() }}
+                                    @if (!$loop->last), @endif
+                                    @endforeach
+                                </p>
+                            </div>
+                        @endif
+
+                        @if($nervouses && $nervouses->count())
+                            <div class="text-info">
+                                <p><strong>{{ __('site.Have you ever been diagnosed with any neurological conditions?') }}:</strong></p>
+                                <p>
+                                    @foreach($nervouses as $nervous)
+                                        {{ $nervous->getTranslatedName() }}
+                                        @if (!$loop->last), @endif
+                                    @endforeach
+                                </p>
+                            </div>
+                        @endif
+
+                        @if($therapeutic_areas && $therapeutic_areas->count())
+                            <div class="text-info">
+                                <p><strong>{{ __('site.Are you currently taking any medications for mental health conditions?') }}:</strong></p>
+                                <p>
+                                    @foreach($therapeutic_areas as $therapeutic_area)
+                                        {{ $therapeutic_area->getTranslatedName() }}
+                                        @if (!$loop->last), @endif
+                                    @endforeach
+                                </p>
+                            </div>
+                        @endif
+
+                        @if($medications)
+                        <div class="text-info">
+                            <p><strong>{{ __('site.medication names') }}:</strong></p>
+                            <p>{{$medications}}</p>
+                        </div>
+                        @endif
+
+                        @if($symptomes && $symptomes->count())
+                            <div class="text-info">
+                                <p><strong>{{ __('site.Have you experienced any of the following symptoms in the past 6 months?') }}:</strong></p>
+                                <p>
+                                    @foreach($symptomes as $symptom)
+                                    {{ $symptom->getTranslatedName() }}
+                                    @if (!$loop->last), @endif
+                                    @endforeach
+                                </p>
+                            </div>
+                        @endif
+
+                        @if($addictiones && $addictiones->count())
+                            <div class="text-info">
+                                <p><strong>{{ __('site.Do you have a history of substance use or addiction?') }}:</strong></p>
+                                <p>
+                                    @foreach($addictiones as $addiction)
+                                        {{ $addiction->getTranslatedName() }}
+                                        @if (!$loop->last), @endif
+                                    @endforeach
+                                </p>
+                            </div>
+                        @endif
+
+                        <div class="text-info">
+                            <p><strong>{{ __('site.Do you have any chronic physical health conditions?') }}:</strong></p>
+                            <p>
+                                @foreach($diseases as $disease)
+                                    {{ $disease->getTranslatedName() }}
+                                    @if (!$loop->last), @endif
+                                @endforeach
+                            </p>
+                        </div>
+
+                        <div class="text-info">
+                            <p><strong>{{ __('site.Have you experienced any major life events or traumas that may impact your mental health?') }}:</strong></p>
+                            <p>
+                                @foreach($incidents as $incident)
+                                    {{ $incident->getTranslatedName() }}
+                                    @if (!$loop->last), @endif
+                                @endforeach
+                            </p>
+                        </div>
+                        @if($consultationes)
+                            <div class="text-info">
+                                <p><strong>{{ __('site.Have you ever received therapy or counseling before?') }}:</strong></p>
+                                <p>
+                                    @foreach($consultationes as $consultation)
+                                        {{ $consultation->getTranslatedName() }}
+                                        @if (!$loop->last), @endif
+                                    @endforeach
+                                </p>
+                            </div>
+                        @endif
+
                     </div>
                 </div>
                 <div class="action-buttons">

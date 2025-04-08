@@ -18,6 +18,7 @@ return [
     'Therapeutic Area' => 'المجال العلاجي',
     'Library' => 'المكتبة',
     'Help Center' => 'مركز المساعدة',
+    'update' => 'تحديث',
 
     // Login Page
     'Welcome to SAMAA' => 'أهلاً بكم في سمع',
@@ -57,6 +58,32 @@ return [
     'Done' => 'إرسال',
     'Terms & Conditions' => 'الشروط والأحكام',
     'Copyright © 2022 Pharma Co. All rights reserved.' => '.حقوق الطباعة والنشر © 2022 لشركة فارما. جميع الحقوق محفوظة',
+
+    'Have you been diagnosed with any of the following mental health conditions?' => 'هل تم تشخيصك بأيٍّ من الحالات الصحية النفسية التالية؟',
+    'Are you currently taking any medications for mental health conditions?' => 'هل تتناول حاليًا أي أدوية لعلاج مشاكل الصحة العقلية؟',
+    'Please list the medications you are taking' => 'يرجى ذكر الأدوية التي تتناولها',
+    'Enter medication names' => 'أدخل أسماء الأدوية',
+    'medication names' => 'أسماء الأدوية',
+    'Please select' => 'الرجاء التحديد',
+    'Have you experienced any of the following symptoms in the past 6 months?' => 'هل عانيت من أيٍّ من الأعراض التالية خلال الأشهر الستة الماضية؟',
+    'Have you ever received therapy or counseling before?' => 'هل سبق لك أن تلقيت علاجًا أو استشارة من قبل؟',
+    'Have you ever been diagnosed with any neurological conditions?' => 'هل سبق تشخيصك بأي حالة عصبية؟',
+    'Do you have a history of substance use or addiction?' => 'هل لديك تاريخ من تعاطي المخدرات أو الإدمان؟',
+    'Have you experienced any major life events or traumas that may impact your mental health?' => 'هل مررتَ بأحداثٍ أو صدماتٍ حياتيةٍ جسيمةٍ قد تؤثر على صحتك النفسية؟',
+    'Do you have any chronic physical health conditions?' => 'هل تعاني من أية حالات صحية مزمنة؟',
+    'Select one or more diseases' => 'اختر مرضًا واحدًا أو أكثر',
+    'Select all that apply' => '(اختر كل ما ينطبق)',
+
+    // Password
+    'change password' => 'تغيير كلمة المرور',
+    'Old Password' => 'كلمة المرور القديمة',
+    'Please enter your old password.' => 'يرجى إدخال كلمة مرورك القديمة.',
+    'New Password' => 'كلمة المرور الجديدة',
+    'Please enter a new password.' => 'يرجى إدخال كلمة مرور جديدة.',
+    'Passwords do not match.' => 'كلمات المرور غير متطابقة.',
+    'Confirm Password' => 'تأكيد كلمة المرور',
+    'The old password is incorrect' =>'كلمة المرور القديمة غير صحيحة',
+    'Password updated successfully' =>'تم تحديث كلمة المرور بنجاح',
 
     // Layout Page
     'Welcome to SAMAA' => 'أهلاً بكم في سمع',
@@ -247,6 +274,9 @@ return [
 
     // messages
     'Successfully Logged-in' => 'تم تسجيل الدخول بنجاح',
+    'The email address is incorrect' => 'عنوان البريد الإلكتروني غير صحيح',
+    'Password is incorrect' => 'كلمة المرور غير صحيحة',
+    'Login failed due to unknown reason' => 'فشل تسجيل الدخول بسبب سبب غير معروف',
     'This email is already registered.' => ' تم تسجيل البريد الإلكتروني هذا.',
     'Successfully Added!' => 'تمت الإضافة بنجاح!',
     'Patient Canceled successfully' => 'تم إلغاء المريض بنجاح',

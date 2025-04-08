@@ -81,3 +81,20 @@ document.getElementById('kids-theme-btn').addEventListener('click', () => {
     applyTheme('kids');
     closePopup();
 });
+document.getElementById('therapeutic_areas_select').addEventListener('change', function () {
+    const selectedValue = this.value;
+    const inputWrapper = document.getElementById('medication_input_wrapper');
+
+    if (selectedValue === '2') {
+        inputWrapper.style.display = 'block';
+    } else {
+        inputWrapper.style.display = 'none';
+    }
+});
+$(document).ready(function() {
+    $('.diseases-select').select2({
+        placeholder: "{{ __('site.Select one or more diseases') }}",
+        /*allowClear: true,*/
+        width: '100%'
+    });
+});

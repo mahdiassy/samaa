@@ -63,6 +63,9 @@ Route::group(
 
                 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
+                Route::get('change-password', [UserController::class, 'changePassword'])->name('changePassword');
+                Route::post('change-password-saved', [UserController::class, 'changePasswordSaved'])->name('changePasswordSaved');
+
                 Route::resource('patient', PatientController::class)->middleware('role:Admin|Doctor');
                 Route::get('profile/patient/edit/{patient}', [PatientController::class, 'editProfile'])->name('profile.patient.edit');
                 Route::put('profile/patient/update/{patient}', [PatientController::class, 'updateProfile'])->name('profile.patient.update');

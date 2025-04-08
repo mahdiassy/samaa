@@ -23,9 +23,9 @@ class Patient extends Model
         'blood_type',
         'gender',
         'user_id',
-        'therapeutic_area_id',
+        /*'therapeutic_area_id',
         'disease_id',
-        'psychological_id',
+        'psychological_id',*/
         'country_id',
         'language_id',
         'open_description'
@@ -46,19 +46,44 @@ class Patient extends Model
         return $this->belongsTo(Language::class);
     }
 
-    public function disease()
+    public function diseases()
     {
-        return $this->belongsTo(Disease::class);
+        return $this->morphedByMany(Disease::class, 'diseasable', 'patient_diseases');
     }
 
-    public function psychological()
+    public function addictiones()
     {
-        return $this->belongsTo(Psychological::class);
+        return $this->morphedByMany(Addiction::class, 'diseasable', 'patient_diseases');
     }
 
-    public function therapeutic()
+    public function consultationes()
     {
-        return $this->belongsTo(Therapeutic_area::class, 'therapeutic_area_id');
+        return $this->morphedByMany(Consultation::class, 'diseasable', 'patient_diseases');
+    }
+
+    public function incidents()
+    {
+        return $this->morphedByMany(Incident::class, 'diseasable', 'patient_diseases');
+    }
+
+    public function psychologicals()
+    {
+        return $this->morphedByMany(Psychological::class, 'diseasable', 'patient_diseases');
+    }
+
+    public function symptomes()
+    {
+        return $this->morphedByMany(Symptom::class, 'diseasable', 'patient_diseases');
+    }
+
+    public function therapeutic_areas()
+    {
+        return $this->morphedByMany(Therapeutic_area::class, 'diseasable', 'patient_diseases');
+    }
+
+    public function nervouses()
+    {
+        return $this->morphedByMany(Nervous::class, 'diseasable', 'patient_diseases');
     }
 
     public function therapies()

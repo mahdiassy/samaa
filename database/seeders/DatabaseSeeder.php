@@ -26,6 +26,11 @@ class DatabaseSeeder extends Seeder
             TherapeuticSeeder::class,
             DiseaseSeeder::class,
             PsychologicalSeeder::class,
+            AddictionSeeder::class,
+            ConsultationSeeder::class,
+            IncidentSeeder::class,
+            NervousSeeder::class,
+            SymptomSeeder::class,
             PermissionsSeeder::class,
         ]);
     }

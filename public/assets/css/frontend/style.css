@@ -710,7 +710,7 @@ nav.scrolled {
 .help-btn {
     background-color: transparent;
     color: white;
-    border: 1px solid #D67E0D;
+    border: 1px solid #FFCB89;
     padding: 10px 30px;
     border-radius: 5px;
     text-decoration: none;
@@ -719,7 +719,7 @@ nav.scrolled {
 }
 
 .help-btn:hover{
-    background-color: #D67E0D;
+    background-color: #FFCB89;
     color: #1F1F1F;
     border: 1px solid #1F1F1F;
 }
@@ -895,6 +895,16 @@ nav.scrolled {
         color: #EAEAEA !important;
         padding: 0px 15px 20px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .menu .a-desc-profile a {
+        color: #EAEAEA !important;
+        padding: 0px 15px 20px;
+    }
+
+    .menu-desc-profile{
+        color: #EAEAEA !important;
+        padding: 0px 15px 20px;
     }
 
     .menu-toggle {
@@ -1200,13 +1210,45 @@ nav.scrolled {
 .form-group input,
 .form-group select {
     width: 100%;
-    height: 60px;
+    /*height: 60px;*/
     padding: 10px;
     font-size: 16px;
     border: 1px solid #EAEAEA;
     border-radius: 10px;
     box-sizing: border-box;
     background-color: #EAEAEA;
+}
+
+.select2-container--default .select2-selection--multiple {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #EAEAEA;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: #EAEAEA;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border-color: #dbab52 !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #1A655E !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+.select2-dropdown {
+    background-color: #fff;
+    border: 1px solid #dbab52;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #1A655E !important;
+    color: white !important;
 }
 
 .form-group textarea{

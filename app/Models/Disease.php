@@ -5,17 +5,15 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Disease extends Model
+class Disease extends AllDiseases
 {
     use HasFactory;
 
     protected $fillable = [
-        'name',
-        'therapeutic_area_id',
+        'name'
     ];
 
-    public function therapeutic()
-    {
-        return $this->belongsTo(Therapeutic_area::class);
-    }
+    protected $casts = [
+        'name' => 'array',
+    ];
 }

@@ -18,6 +18,7 @@ return [
     'Therapeutic Area' => 'Espace Thérapeutique',
     'Library' => 'Bibliothèque',
     'Help Center' => 'Centre d’aide',
+    'update' => 'Mise à jour',
 
     // Login Page
     'Welcome to SAMAA' => 'Bienvenue chez SAMAA',
@@ -54,6 +55,32 @@ return [
     'Done' => 'Terminé',
     'Terms & Conditions' => 'Termes et conditions',
     'Copyright © 2022 Pharma Co. All rights reserved.' => 'Copyright © 2022 Pharma Co. Tous droits réservés.',
+
+    'Have you been diagnosed with any of the following mental health conditions?' => 'Avez-vous reçu un diagnostic de l’une des conditions de santé mentale suivantes ?',
+    'Are you currently taking any medications for mental health conditions?' => 'Prenez-vous actuellement des médicaments pour des troubles de santé mentale ?',
+    'Please list the medications you are taking' => 'Veuillez énumérer les médicaments que vous prenez',
+    'Enter medication names' => 'Entrez les noms des médicaments',
+    'medication names' => 'Noms des médicaments',
+    'Please select' => 'Veuillez sélectionner',
+    'Have you experienced any of the following symptoms in the past 6 months?' => 'Avez-vous ressenti l’un des symptômes suivants au cours des 6 derniers mois ?',
+    'Have you ever received therapy or counseling before?' => 'Avez-vous déjà suivi une thérapie ou un accompagnement psychologique ?',
+    'Have you ever been diagnosed with any neurological conditions?' => 'Avez-vous déjà reçu un diagnostic de troubles neurologiques ?',
+    'Do you have a history of substance use or addiction?' => 'Avez-vous des antécédents de consommation de substances ou de dépendance ?',
+    'Have you experienced any major life events or traumas that may impact your mental health?' => 'Avez-vous vécu des événements majeurs ou des traumatismes pouvant affecter votre santé mentale ?',
+    'Do you have any chronic physical health conditions?' => 'Avez-vous des maladies physiques chroniques ?',
+    'Select one or more diseases' => 'Sélectionnez une ou plusieurs maladies',
+    'Select all that apply' => '(Sélectionnez toutes celles qui s’appliquent)',
+
+    // Password
+    'change password' => 'Changer le mot de passe',
+    'Old Password' => 'Ancien mot de passe',
+    'Please enter your old password.' => 'Veuillez saisir votre ancien mot de passe.',
+    'New Password' => 'Nouveau mot de passe',
+    'Please enter a new password.' => 'Veuillez saisir un nouveau mot de passe.',
+    'Passwords do not match.' => 'Les mots de passe ne correspondent pas.',
+    'Confirm Password' => 'Confirmez le mot de passe',
+    'The old password is incorrect' =>'L’ancien mot de passe est incorrect',
+    'Password updated successfully' =>'Mot de passe mis à jour avec succès',
 
     // Layout Page
     'Welcome to SAMAA' => 'Bienvenue chez SAMAA',
@@ -249,6 +276,9 @@ return [
 
     // Messages
     'Successfully Logged-in' => 'Connecté avec succès',
+    'The email address is incorrect' => 'L’adresse e-mail est incorrecte',
+    'Password is incorrect' => 'Le mot de passe est incorrect',
+    'Login failed due to unknown reason' => 'La connexion a échoué pour une raison inconnue.',
     'This email is already registered.' => 'Cet e-mail est déjà enregistré.',
     'Successfully Added!' => 'Ajouté avec succès !',
     'Patient Canceled successfully' => 'Patient annulé avec succès',

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Therapeutic_area extends Model
+class Therapeutic_area extends AllDiseases
 {
     use HasFactory;
 
@@ -15,9 +15,7 @@ class Therapeutic_area extends Model
         'name',
     ];
 
-    /*public function diseases()
-    {
-        return $this->hasMany(Disease::class);
-    }*/
-
+    protected $casts = [
+        'name' => 'array',
+    ];
 }

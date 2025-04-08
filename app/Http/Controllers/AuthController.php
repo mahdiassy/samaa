@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Addiction;
+use App\Models\Consultation;
 use App\Models\Country;
 use App\Models\Disease;
+use App\Models\Incident;
 use App\Models\Language;
+use App\Models\Nervous;
 use App\Models\Patient;
+use App\Models\PatientDisease;
 use App\Models\Psychological;
+use App\Models\Symptom;
 use App\Models\Therapeutic_area;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -33,20 +39,28 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         $credentials = $request->only('email', 'password');
+
         if (Auth::attempt($credentials)) {
             return redirect()
                 ->intended(route('dashboard'))
                 ->with('status', [
                     'type' => 'success',
-                    'title' =>  __("site.Success"),
+                    'title' => __("site.Success"),
                     'msg' => __("site.Successfully Logged-in"),
                 ]);
+        } else {
+            $user = User::where('email', $request->email)->first();
+
+            if (!$user) {
+                Session::flash('error', __("site.The email address is incorrect"));
+            } elseif (!Hash::check($request->password, $user->password)) {
+                Session::flash('error', __("site.Password is incorrect"));
+            } else {
+                Session::flash('error', __("site.Login failed. Please try again."));
+            }
+
+            return redirect()->back()->withInput();
         }
-        return redirect()->back()->with('status', [
-            'type' => 'error',
-            'title' =>  __("site.Error"),
-            'msg' => __("site.Error")
-        ]);
     }
 
     public function logout()
@@ -61,8 +75,13 @@ class AuthController extends Controller
         $languages = Language::all();
         $therapeutic_areas = Therapeutic_area::all();
         $diseases = Disease::all();
+        $nervouses = Nervous::all();
+        $symptoms = Symptom::all();
+        $addictions = Addiction::all();
+        $incidents = Incident::all();
+        $consultations = Consultation::all();
         $psychological_diseases = Psychological::all();
-        return view($this->dir . "register", compact('countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases'));
+        return view($this->dir . "register", compact('countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases', 'nervouses', 'symptoms', 'addictions', 'incidents', 'consultations'));
     }
 
     public function registerPatient(Request $request)
@@ -71,6 +90,7 @@ class AuthController extends Controller
             if (User::where('email', $request->email)->exists()) {
                 Session::flash('error', __("site.The email address is already in use by another user"));
             } else {
+
                 $patient = new Patient;
                 $patient->first_name = $request->first_name;
                 $patient->last_name = $request->last_name;
@@ -80,10 +100,6 @@ class AuthController extends Controller
                 $patient->country_id = $request->country;
                 $patient->language_id = $request->language;
                 $patient->gender = $request->gender;
-                $patient->blood_type = $request->blood_type;
-                $patient->psychological_id = $request->psychological_disease;
-                $patient->disease_id = $request->disease;
-                $patient->therapeutic_area_id = $request->therapeutic_area;
                 $patient->open_description = $request->open_description;
                 $patient->twitter = null;
                 $patient->facebook = null;
@@ -96,7 +112,6 @@ class AuthController extends Controller
                 $user->save();
                 $user->assignRole('Patient');
 
-
                 $patient->user_id = $user->id;
 
                 if ($request->has('image')) {
@@ -107,6 +122,99 @@ class AuthController extends Controller
                 }
 
                 $patient->save();
+
+                $Ttherapeutic_area = Therapeutic_area::find($request->therapeutic_areas);
+                $medications = $request->therapeutic_areas == '2' ? $request->medications : null;
+                PatientDisease::create([
+                    'patient_id' => $patient->id,
+                    'diseasable_id' => $Ttherapeutic_area->id,
+                    'diseasable_type' => get_class($Ttherapeutic_area),
+                    'medications' => $medications,
+                ]);
+
+                $addiction = Addiction::find($request->addiction);
+                PatientDisease::create([
+                    'patient_id' => $patient->id,
+                    'diseasable_id' => $addiction->id,
+                    'diseasable_type' => get_class($addiction),
+                    'medications' => null,
+                ]);
+
+                $consultation = Consultation::find($request->consultation);
+                PatientDisease::create([
+                    'patient_id' => $patient->id,
+                    'diseasable_id' => $consultation->id,
+                    'diseasable_type' => get_class($consultation),
+                    'medications' => null,
+                ]);
+
+                if ($request->diseases) {
+                    foreach ($request->diseases as $disease) {
+
+                        $Disease = Disease::find($disease);
+                        PatientDisease::create([
+                            'patient_id' => $patient->id,
+                            'diseasable_id' => $Disease->id,
+                            'diseasable_type' => get_class($Disease),
+                            'medications' => null,
+                        ]);
+                    }
+                }
+
+                if ($request->nervouses) {
+                    foreach ($request->nervouses as $nervous) {
+
+                        $Nervous = Nervous::find($nervous);
+                        PatientDisease::create([
+                            'patient_id' => $patient->id,
+                            'diseasable_id' => $Nervous->id,
+                            'diseasable_type' => get_class($Nervous),
+                            'medications' => null,
+                        ]);
+                    }
+                }
+
+                if ($request->symptoms) {
+                    foreach ($request->symptoms as $symptom) {
+
+                        $Symptom = Symptom::find($symptom);
+                        PatientDisease::create([
+                            'patient_id' => $patient->id,
+                            'diseasable_id' => $Symptom->id,
+                            'diseasable_type' => get_class($Symptom),
+                            'medications' => null,
+                        ]);
+                    }
+                }
+
+                if ($request->incidents) {
+                    foreach ($request->incidents as $incident) {
+
+                        $Incident = Incident::find($incident);
+                        PatientDisease::create([
+                            'patient_id' => $patient->id,
+                            'diseasable_id' => $Incident->id,
+                            'diseasable_type' => get_class($Incident),
+                            'medications' => null,
+                        ]);
+                    }
+                }
+
+                if ($request->psychological_diseases) {
+                    foreach ($request->psychological_diseases as $psychological_disease) {
+
+                        $Psychological = Psychological::find($psychological_disease);
+                        if ($Psychological) {
+
+                            PatientDisease::create([
+                                'patient_id' => $patient->id,
+                                'diseasable_id' => $Psychological->id,
+                                'diseasable_type' => get_class($Psychological),
+                                'medications' => null,
+                            ]);
+                        }
+                    }
+                }
 
                 Auth::guard()->login($user);
 

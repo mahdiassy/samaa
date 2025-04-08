@@ -616,9 +616,11 @@ nav.scrolled {
 /* Fotter*/
 
 .footer {
-    background-color: rgba(228, 144, 40, 1);
+    /*background-color: rgba(228, 144, 40, 1);*/
+    background-color: #FFCB89;
     padding: 15px 20px;
-    color: white;
+    /*color: white;*/
+    color: black;
     font-family: 'Inter', sans-serif;
 }
 
@@ -670,7 +672,8 @@ nav.scrolled {
 }
 
 .footer-links a {
-    color: white;
+    /*color: white;*/
+    color: black;
     text-decoration: none;
     margin-bottom: 40px;
     font-size: 13px;
@@ -690,8 +693,10 @@ nav.scrolled {
 
 .help-btn {
     background-color: transparent;
-    color: white;
-    border: 1px solid rgba(241, 238, 236, 1);
+    /*color: white;*/
+    color: black;
+    /*border: 1px solid rgba(241, 238, 236, 1);*/
+    border: 1px solid rgb(19, 12, 8);
     padding: 10px 30px;
     border-radius: 5px;
     text-decoration: none;
@@ -702,7 +707,7 @@ nav.scrolled {
 .help-btn:hover{
     background-color: white;
     color: rgba(228, 144, 40, 1);
-    border: 1px solid white;
+    border: 1px solid rgba(228, 144, 40, 1);
 }
 
 .social-icons img {
@@ -738,7 +743,8 @@ nav.scrolled {
 .social-icons i {
     width: 26.4px;
     height: 25.43px;
-    color: #F1EEEC;
+    /*color: #F1EEEC;*/
+    color: black;
     padding: 5px;
     border-radius: 50%;
     display: flex;
@@ -876,6 +882,16 @@ nav.scrolled {
         color: #EAEAEA !important;
         padding: 0px 15px 20px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .menu .a-desc-profile a {
+        color: #EAEAEA !important;
+        padding: 0px 15px 20px;
+    }
+
+    .menu-desc-profile{
+        color: #EAEAEA !important;
+        padding: 0px 15px 20px;
     }
 
     .menu-toggle {
@@ -1184,13 +1200,45 @@ nav.scrolled {
 .form-group input,
 .form-group select {
     width: 100%;
-    height: 60px;
+    /*height: 60px;*/
     padding: 10px;
     font-size: 16px;
     border: 1px solid #EAEAEA;
     border-radius: 10px;
     box-sizing: border-box;
     background-color: #EAEAEA;
+}
+
+.select2-container--default .select2-selection--multiple {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #EAEAEA;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: #EAEAEA;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border-color: #dbab52 !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #1A655E !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 4px;
+    padding: 5px 10px;
+}
+
+.select2-dropdown {
+    background-color: #fff;
+    border: 1px solid #dbab52;
+}
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+    background-color: #1A655E !important;
+    color: white !important;
 }
 
 .form-group textarea {
@@ -1681,7 +1729,8 @@ input[type="radio"] {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: #F1EEEC;
+    /*background: #F1EEEC;*/
+    background: black;
     border-radius: 50%;
 }
 

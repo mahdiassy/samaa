@@ -88,9 +88,9 @@ class PermissionsSeeder extends Seeder
             'user_id' => $userpatient->id,
             'language_id' => 1,
             'country_id' => 1,
-            'therapeutic_area_id' => 1,
-            'disease_id' => 1,
-            'psychological_id' => 1,
+            //'therapeutic_area_id' => 1,
+            //'disease_id' => 1,
+            //'psychological_id' => 1,
         ]);
     }
 }

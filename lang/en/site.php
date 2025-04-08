@@ -18,6 +18,7 @@ return [
     'Therapeutic Area' => 'Therapeutic Area',
     'Library' => 'Library',
     'Help Center' => 'Help Center',
+    'update' => 'Update',
 
     // Login Page
     'Welcome to SAMAA' => 'Welcome to SAMAA',
@@ -54,6 +55,32 @@ return [
     'Done' => 'Done',
     'Terms & Conditions' => 'Terms & Conditions',
     'Copyright © 2022 Pharma Co. All rights reserved.' => 'Copyright © 2022 Pharma Co. All rights reserved.',
+
+    'Have you been diagnosed with any of the following mental health conditions?' => 'Have you been diagnosed with any of the following mental health conditions?',
+    'Are you currently taking any medications for mental health conditions?' => 'Are you currently taking any medications for mental health conditions?',
+    'Please list the medications you are taking' => 'Please list the medications you are taking',
+    'Enter medication names' => 'Enter medication names',
+    'medication names' => 'Names of medications',
+    'Please select' => 'Please select',
+    'Have you experienced any of the following symptoms in the past 6 months?' => 'Have you experienced any of the following symptoms in the past 6 months?',
+    'Have you ever received therapy or counseling before?' => 'Have you ever received therapy or counseling before?',
+    'Have you ever been diagnosed with any neurological conditions?' => 'Have you ever been diagnosed with any neurological conditions?',
+    'Do you have a history of substance use or addiction?' => 'Do you have a history of substance use or addiction?',
+    'Have you experienced any major life events or traumas that may impact your mental health?' => 'Have you experienced any major life events or traumas that may impact your mental health?',
+    'Do you have any chronic physical health conditions?' => 'Do you have any chronic physical health conditions?',
+    'Select one or more diseases' => 'Select one or more diseases',
+    'Select all that apply' => '(Select all that apply)',
+
+    // Password
+    'change password' => 'Change password',
+    'Old Password' =>'Old Password',
+    'Please enter your old password.' =>'Please enter your old password.',
+    'New Password' =>'New Password',
+    'Please enter a new password.' =>'Please enter a new password.',
+    'Passwords do not match.' =>'Passwords do not match.',
+    'Confirm Password' =>'Confirm Password',
+    'The old password is incorrect' =>'The old password is incorrect',
+    'Password updated successfully' =>'Password updated successfully',
 
     // Layout Page
     'Welcome to SAMAA' => 'Welcome to SAMAA',
@@ -253,6 +280,9 @@ return [
 
     // Messages
     'Successfully Logged-in' => 'Successfully Logged-in',
+    'The email address is incorrect' => 'The email address is incorrect',
+    'Password is incorrect' => 'Password is incorrect',
+    'Login failed due to unknown reason' => 'Login failed due to unknown reason',
     'This email is already registered.' => 'This email is already registered.',
     'Successfully Added!' => 'Successfully Added!',
     'Patient Canceled successfully' => 'Patient Canceled successfully',

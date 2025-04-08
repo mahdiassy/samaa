@@ -13,11 +13,10 @@ class TherapeuticSeeder extends Seeder
      */
     public function run(): void
     {
-        $therapeutic_list = array(
-            "None",
-            "Cardiovascular",
-            "Nephrology"
-        );
+        $therapeutic_list = [
+            ['en' => 'No', 'ar' => 'لا', 'fr' => 'Non'],
+            ['en' => 'Yes', 'ar' => 'نعم', 'fr' => 'Oui'],
+        ];
 
         foreach ($therapeutic_list as $therapeutic){
             Therapeutic_area::create([

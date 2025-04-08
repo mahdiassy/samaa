@@ -76,13 +76,13 @@ function showNextStep() {
 }
 document.getElementById("increment").addEventListener("click", function() {
     let input = document.getElementById("height");
-    let currentValue = parseInt(input.value) || 0; // Defaults to 0 if input is empty or invalid
+    let currentValue = parseInt(input.value) || 0;
     input.value = currentValue + 1;
 });
 
 document.getElementById("decrement").addEventListener("click", function() {
     let input = document.getElementById("height");
-    let currentValue = parseInt(input.value) || 0; // Defaults to 0 if input is empty or invalid
+    let currentValue = parseInt(input.value) || 0;
     if (currentValue > 0) {
         input.value = currentValue - 1;
     }
@@ -90,13 +90,13 @@ document.getElementById("decrement").addEventListener("click", function() {
 
 document.getElementById("incrementWeight").addEventListener("click", function() {
     let inputWeight = document.getElementById("weight");
-    let currentValueWeight = parseInt(inputWeight.value) || 0; // Defaults to 0 if input is empty or invalid
+    let currentValueWeight = parseInt(inputWeight.value) || 0;
     inputWeight.value = currentValueWeight + 1;
 });
 
 document.getElementById("decrementWeight").addEventListener("click", function() {
     let inputWeight = document.getElementById("weight");
-    let currentValueWeight = parseInt(inputWeight.value) || 0; // Defaults to 0 if input is empty or invalid
+    let currentValueWeight = parseInt(inputWeight.value) || 0;
     if (currentValueWeight > 0) {
         inputWeight.value = currentValueWeight - 1;
     }

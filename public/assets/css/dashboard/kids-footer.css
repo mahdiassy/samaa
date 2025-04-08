@@ -1,8 +1,9 @@
-
 .footer {
-    background-color:  rgba(228, 144, 40, 1);
+    /*background-color:  rgba(228, 144, 40, 1);*/
+    background-color: #FFCB89;
     padding: 15px 20px;
-    color: white;
+    /*color: white;*/
+    color: black;
     font-family: 'Inter', sans-serif;
     width: 100%;
     position: relative;
@@ -51,7 +52,8 @@
 }
 
 .footer-links a {
-    color: white;
+    /*color: white;*/
+    color: black;
     text-decoration: none;
     margin-bottom: 40px;
     font-size: 13px;
@@ -71,8 +73,10 @@
 
 .help-btn {
     background-color: transparent;
-    color: white;
-    border: 1px solid rgba(241, 238, 236, 1);
+    /*color: white;*/
+    color: black;
+    /*border: 1px solid rgba(241, 238, 236, 1);*/
+    border: 1px solid rgb(19, 12, 8);
     padding: 10px 30px;
     border-radius: 5px;
     text-decoration: none;
@@ -81,8 +85,9 @@
 }
 
 .help-btn:hover{
-    background-color: white;
-    color: rgba(228, 144, 40, 1);
+    background-color: #FFCB89;
+    /*color: rgba(228, 144, 40, 1);*/
+    color: white;
     border: 1px solid white;
 }
 
@@ -119,7 +124,8 @@
 .social-icons i {
     width: 26.4px;
     height: 25.43px;
-    color: #F1EEEC;
+    /*color: #F1EEEC;*/
+    color: black;
     padding: 5px;
     border-radius: 50%;
     display: flex;

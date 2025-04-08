@@ -46,7 +46,7 @@
 
     <nav>
         <div class="logo">
-            <a href="{{ route('home') }}" ><img src="{{ asset('assets/images/samaa-logo.png') }}" alt="Logo"></a>
+            <a href="{{ route('home') }}"><img src="{{ asset('assets/images/samaa-logo.png') }}" alt="Logo"></a>
         </div>
         <div class="menu-toggle" id="menuToggle">
             <div></div>
@@ -79,11 +79,16 @@
                 <a href="{{ route('register') }}">{{ __('site.Register') }}</a>
             @endif
 
-            <div class="profile {{ App::getLocale() == 'ar' ? 'profile-ar' : (App::getLocale() == 'fr' ? 'profile-fr' : 'profile-en') }}">
+            <div
+                class="profile {{ App::getLocale() == 'ar' ? 'profile-ar' : (App::getLocale() == 'fr' ? 'profile-fr' : 'profile-en') }}">
 
                 @if (Auth::check() && Auth::user()->hasRole('Patient'))
 
-                    <span>{{ Auth::user()->patient->first_name }} {{ Auth::user()->patient->last_name }}</span>
+                    <div class="a-desc-profile">
+                        <a title="edit Profile" href="{{ route('profile.patient.edit', Auth::user()->patient) }}">
+                            <span class="menu-desc-profile">{{ Auth::user()->patient->first_name }} {{ Auth::user()->patient->last_name }}</span>
+                        </a>
+                    </div>
 
                     @if (Auth::check() && Auth::user()->patient && Auth::user()->patient->image)
                         <img src="{{ asset('storage/' . Auth::user()->patient->image) }}" alt="Profile">
@@ -91,7 +96,13 @@
                         <img src="{{ asset('assets/images/avatar1.png') }}" alt="Profile">
                     @endif
                 @elseif (Auth::check() && Auth::user()->hasRole('Doctor'))
-                    <span>{{ Auth::user()->doctor->first_name }} {{ Auth::user()->doctor->last_name }}</span>
+
+                    <div class="a-desc-profile">
+                        <a title="edit Profile" href="{{ route('profile.doctor.edit', Auth::user()->doctor) }}">
+                            <span class="menu-desc-profile">{{ Auth::user()->doctor->first_name }} {{ Auth::user()->doctor->last_name }}</span>
+                        </a>
+                    </div>
+
                     @if (Auth::check() && Auth::user()->doctor && Auth::user()->doctor->image)
                         <img src="{{ asset('storage/' . Auth::user()->doctor->image) }}" alt="Profile">
                     @else
@@ -134,7 +145,9 @@
 
     <footer class="footer">
         <div class="footer-container">
-            <a href="{{ route('home') }}"><div class="footer-logo"></div></a>
+            <a href="{{ route('home') }}">
+                <div class="footer-logo"></div>
+            </a>
             <div class="footer-links">
                 <div class="column">
                     <a href="{{ route('home') }}">{{ __('site.Home') }}</a>

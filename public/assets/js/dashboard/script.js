@@ -2,6 +2,7 @@ function toggleMenu() {
     const sidebar = document.getElementById('sidebar');
     const descProfile = document.querySelector('.user-profile .desc-profile');
     const logo = document.querySelector('.toggle img');
+    const toggle = document.querySelector('.toggle');
 
     sidebar.classList.toggle('open');
 
@@ -11,14 +12,19 @@ function toggleMenu() {
 
         logo.style.opacity = '1';
         logo.style.display = 'block';
+
+        toggle.style.gap = '100px';
     } else {
         descProfile.style.opacity = '0';
         descProfile.style.display = 'none';
 
         logo.style.opacity = '0';
         logo.style.display = 'none';
+
+        toggle.style.gap = '0px';
     }
 }
+
 document.addEventListener('DOMContentLoaded', () => {
     const replaceBtn = document.getElementById('replaceBtn');
     const imageUpload = document.getElementById('imageUpload');

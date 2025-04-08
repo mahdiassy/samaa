@@ -46,6 +46,9 @@ a {
     padding: 0;
     box-sizing: border-box;
 }
+.form-label{
+    color: #000 !important;
+}
 
 body {
     display: flex;
@@ -151,7 +154,8 @@ body {
 .toggle {
     display: flex;
     align-items: center;
-    gap: 100px;
+    gap: 0px;
+    transition: gap 0.3s ease;
 }
 
 .toggle img {
@@ -541,6 +545,13 @@ body {
     color: #EAEAEA;
 }
 
+.submit-btn:hover,
+.new-btn:hover {
+    background-color: #D6861F;
+    color: #EAEAEA;
+    opacity: 0.9;
+}
+
 .styled-input {
     width: 100%;
     height: 50px;
@@ -562,6 +573,39 @@ body {
 .styled-input:focus {
     border-color: #D67E0D;
     box-shadow: 0 0 5px rgba(26, 101, 94, 0.5);
+}
+
+.select2-container .select2-selection--multiple {
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #727272;
+    background: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered {
+    color: #000000;
+    font-family: 'Roboto', sans-serif;
+}
+
+.select2-container--default.select2-container--focus .select2-selection--multiple {
+    border-color: #dbab52 !important;
+}
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #1A655E;
+    color: white;
+    border-radius: 10px;
+}
+
+.select2-container--default .select2-results__option {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
 }
 
 .date-input {
@@ -876,10 +920,18 @@ body {
 }
 
 #patientTable thead tr:first-child th:first-child {
-    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
 }
 
 #patientTable thead tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+
+[dir="rtl"] #patientTable thead tr:first-child th:first-child {
+    border-top-right-radius: 10px;
+}
+
+[dir="rtl"] #patientTable thead tr:first-child th:last-child {
     border-top-left-radius: 10px;
 }
 
@@ -1332,7 +1384,7 @@ select {
 .help-btn {
     background-color: transparent;
     color: white;
-    border: 1px solid #D67E0D;
+    border: 1px solid #FFCB89;
     padding: 10px 30px;
     border-radius: 5px;
     text-decoration: none;

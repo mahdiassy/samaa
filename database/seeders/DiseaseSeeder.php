@@ -13,28 +13,67 @@ class DiseaseSeeder extends Seeder
     public function run(): void
     {
         $diseases_list = [
-            1 => [
-                ['name' => 'None'],
+            [
+                'en' => 'None',
+                'ar' => 'لا شيء',
+                'fr' => 'Aucun'
             ],
-            2 => [
-                ['name' => 'Hypertension'],
-                ['name' => 'Cardiac Failure'],
-                ['name' => 'Heart Attacks'],
+            [
+                'en' => 'Hypertension',
+                'ar' => 'ارتفاع ضغط الدم',
+                'fr' => 'Hypertension'
             ],
-            3 => [
-                ['name' => 'Glomerulonephritis'],
-                ['name' => 'Hemodialysis'],
-                ['name' => 'Nephrolithiasis'],
+            [
+                'en' => 'Diabetes (Type 1 & Type 2)',
+                'ar' => 'السكري (النوع الأول والثاني)',
+                'fr' => 'Diabète (Type 1 & Type 2)'
+            ],
+            [
+                'en' => 'Cardiovascular Disease',
+                'ar' => 'أمراض القلب والأوعية الدموية',
+                'fr' => 'Maladie cardiovasculaire'
+            ],
+            [
+                'en' => 'Chronic Respiratory Diseases (Asthma, COPD)',
+                'ar' => 'أمراض الجهاز التنفسي المزمنة (الربو، الانسداد الرئوي)',
+                'fr' => 'Maladies respiratoires chroniques (asthme, BPCO)'
+            ],
+            [
+                'en' => 'Arthritis (Osteoarthritis, Rheumatoid Arthritis)',
+                'ar' => 'التهاب المفاصل (الفُصال العظمي، التهاب المفاصل الروماتويدي)',
+                'fr' => 'Arthrite (arthrose, polyarthrite rhumatoïde)'
+            ],
+            [
+                'en' => 'Chronic Kidney Disease (CKD)',
+                'ar' => 'مرض الكلى المزمن',
+                'fr' => 'Maladie rénale chronique (MRC)'
+            ],
+            [
+                'en' => 'Cancer (Breast, Lung, Prostate, Colorectal, etc.)',
+                'ar' => 'السرطان (الثدي، الرئة، البروستاتا، القولون، إلخ.)',
+                'fr' => 'Cancer (sein, poumon, prostate, colorectal, etc.)'
+            ],
+            [
+                'en' => 'Obesity',
+                'ar' => 'السمنة',
+                'fr' => 'Obésité'
+            ],
+            [
+                'en' => 'Osteoporosis',
+                'ar' => 'هشاشة العظام',
+                'fr' => 'Ostéoporose'
+            ],
+            [
+                'en' => 'Other',
+                'ar' => 'أخرى',
+                'fr' => 'Autre'
             ],
         ];
 
-        foreach ($diseases_list as $therapeutic_area_id => $diseases) {
-            foreach ($diseases as $disease) {
-                Disease::create([
-                    'name' => $disease['name'],
-                    'therapeutic_area_id' => $therapeutic_area_id,
-                ]);
-            }
+        foreach ($diseases_list as $disease) {
+            Disease::create([
+                'name' => $disease,
+            ]);
         }
     }
 }

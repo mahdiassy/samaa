@@ -72,7 +72,7 @@
 .help-btn {
     background-color: transparent;
     color: white;
-    border: 1px solid #D67E0D;
+    border: 1px solid #FFCB89;
     padding: 10px 30px;
     border-radius: 5px;
     text-decoration: none;
@@ -81,7 +81,7 @@
 }
 
 .help-btn:hover{
-    background-color: #D67E0D;
+    background-color: #FFCB89;
     color: #1F1F1F;
     border: 1px solid #1F1F1F;
 }

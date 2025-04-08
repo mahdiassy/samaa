@@ -5,14 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Psychological extends AllDiseases
+class Consultation extends AllDiseases
 {
     use HasFactory;
 
-    protected $table = 'psychologicals';
-
     protected $fillable = [
-        'name',
+        'name'
     ];
 
     protected $casts = [

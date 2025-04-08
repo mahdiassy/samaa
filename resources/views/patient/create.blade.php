@@ -22,7 +22,7 @@
         </div>
         <div>
             <div class="profile-details">
-                <form novalidate action="{{ route('patient.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('patient.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="profile-info">
                         <div class="profile-header2">
@@ -41,7 +41,7 @@
                                     </svg>
                                 </a>
                             </div>
-                            <input type="file" name="image" id="imageUpload" style="display:none" accept="image/*" required>
+                            <input type="file" name="image" id="imageUpload" style="display:none" accept="image/*" >
                         </div>
                     </div>
 
@@ -71,37 +71,56 @@
                                     @endforeach
                                 </select>
                             </div>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+                            <br>
+
+                            <h2>{{ __('site.Medical History') }}</h2>
+
                             <div class="text-info">
-                                <p>{{ __('site.Blood Type') }}</p>
-                                <select name="blood_type" style="margin-top: 0px;" class="styled-input">
-                                    <option>{{ __('site.Blood Type') }}</option>
-                                    <option value="A+">A+</option>
-                                    <option value="A-">A-</option>
-                                    <option value="AB+">AB+</option>
-                                    <option value="AB-">AB-</option>
-                                    <option value="O+">O+</option>
-                                    <option value="O-">O-</option>
-                                    <option value="B+">B+</option>
-                                    <option value="B-">B-</option>
+                                <label>{{ __('site.Have you been diagnosed with any of the following mental health conditions?') }} {{ __('site.Select all that apply') }}</label>
+                                <select name="psychological_diseases[]" style="margin-top: 0px;" class="styled-input form-control select2 diseases-select-backend" multiple>
+                                    @foreach ($psychological_diseases as $psychological_disease)
+                                        <option value="{{ $psychological_disease->id }}">
+                                            {{ $psychological_disease->getTranslatedName() }}</option>
+                                    @endforeach
                                 </select>
                             </div>
 
-                            <h2>{{ __('site.Medical History') }}</h2>
                             <div class="text-info">
-                                <label>{{ __('site.Therapeutic_area') }}</label>
-                                <select name="therapeutic_area" id="therapeutic_area" style="margin-top: 0px;" class="styled-input">
-                                    <option value="" disabled selected>{{ __('site.Therapeutic_area') }}</option>
+                                <label>{{ __('site.Are you currently taking any medications for mental health conditions?') }}</label>
+                                <select name="therapeutic_areas"  id="therapeutic_areas_select" style="margin-top: 0px;" class="styled-input">
                                     @foreach ($therapeutic_areas as $therapeutic_area)
-                                        <option value="{{ $therapeutic_area->id }}">{{ $therapeutic_area->name }}</option>
+                                        <option value="{{ $therapeutic_area->id }}">{{ $therapeutic_area->getTranslatedName() }}</option>
+                                    @endforeach
+                                </select>
+
+                                <div id="medication_input_wrapper" style="display: none; margin-top: 10px;">
+                                    <label for="medications">{{ __('site.Please list the medications you are taking') }}</label>
+                                    <input type="text" name="medications" id="medications" class="styled-input" placeholder="{{ __('site.Enter medication names') }}">
+                                </div>
+                            </div>
+
+                            <div class="text-info">
+                                <label>{{ __('site.Have you experienced any of the following symptoms in the past 6 months?') }} {{ __('site.Select all that apply') }}</label>
+                                <select name="symptoms[]" style="margin-top: 0px;" class="styled-input form-control select2 diseases-select-backend" multiple>
+                                    @foreach ($symptoms as $symptom)
+                                        <option value="{{ $symptom->id }}">
+                                            {{ $symptom->getTranslatedName() }}</option>
                                     @endforeach
                                 </select>
                             </div>
                             <div class="text-info">
-                                <label>{{ __('site.Diseases') }}</label>
-                                <select name="disease" id="disease" disabled style="margin-top: 0px;" class="styled-input">
-                                    <option value="" disabled selected>{{ __('site.Diseases') }}</option>
+                                <label>{{ __('site.Have you ever received therapy or counseling before?') }}</label>
+                                <select name="consultation" style="margin-top: 0px;" class="styled-input">
+                                    @foreach ($consultations as $consultation)
+                                        <option value="{{ $consultation->id }}">{{ $consultation->getTranslatedName() }}</option>
+                                    @endforeach
                                 </select>
                             </div>
+
                         </div>
                         <div class="diagnosis">
                             <div class="text-info">
@@ -124,7 +143,7 @@
                             </div>
                             <div class="text-info">
                                 <p>{{ __('site.Password') }}</p>
-                                <input type="password" placeholder="XXXXXXXXXX" name="password" value="" class="styled-input" />
+                                <input type="password" placeholder="XXXXXXXXXX" name="password" value="" class="styled-input" required/>
                             </div>
 
                             <div class="text-info">
@@ -140,19 +159,45 @@
                             <br>
 
                             <div class="text-info">
-                                <label>{{ __('site.Psychological_diseases') }}</label>
-                                <select name="psychological_disease" style="margin-top: 0px;" class="styled-input">
-                                    @foreach ($psychological_diseases as $psychological_disease)
-                                        <option value="{{ $psychological_disease->id }}">
-                                            {{ $psychological_disease->name }}</option>
+                                <label>{{ __('site.Have you ever been diagnosed with any neurological conditions?') }} {{ __('site.Select all that apply') }}</label>
+                                <select name="nervouses[]" style="margin-top: 0px;" class="styled-input select2 diseases-select-backend" multiple>
+                                    @foreach ($nervouses as $nervous)
+                                        <option value="{{ $nervous->id }}">
+                                            {{ $nervous->getTranslatedName() }}
+                                        </option>
                                     @endforeach
                                 </select>
                             </div>
+
                             <div class="text-info">
-                                <div class="form-group">
-                                    <label>{{ __('site.open_description') }}</label>
-                                    <textarea name="open_description" class="styled-input textarea-input"></textarea>
-                                </div>
+                                <label>{{ __('site.Do you have a history of substance use or addiction?') }}</label>
+                                <select name="addiction" style="margin-top: 0px;" class="styled-input">
+                                    @foreach ($addictions as $addiction)
+                                        <option value="{{ $addiction->id }}">{{ $addiction->getTranslatedName() }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="text-info">
+                                <label>{{ __('site.Have you experienced any major life events or traumas that may impact your mental health?') }} {{ __('site.Select all that apply') }}</label>
+                                <select name="incidents[]" style="margin-top: 0px;" class="styled-input form-control select2 diseases-select-backend" multiple >
+                                    @foreach ($incidents as $incident)
+                                        <option value="{{ $incident->id }}">
+                                            {{ $incident->getTranslatedName() }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+
+                            <div class="text-info">
+                                <label>{{ __('site.Do you have any chronic physical health conditions?') }}</label>
+                                <select name="diseases[]" style="margin-top: 0px;" class="styled-input form-control select2 diseases-select-backend" multiple >
+                                    @foreach ($diseases as $disease)
+                                        <option value="{{ $disease->id }}">
+                                            {{ $disease->getTranslatedName() }}
+                                        </option>
+                                    @endforeach
+                                </select>
                             </div>
                         </div>
                     </div>

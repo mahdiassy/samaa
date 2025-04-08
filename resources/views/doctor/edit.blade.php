@@ -22,7 +22,7 @@
         </div>
         <div>
             <div class="profile-details">
-                <form novalidate action="{{ route('doctor.update', $doctor) }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('doctor.update', $doctor) }}" method="post" enctype="multipart/form-data">
                     @csrf
                     @method('put')
                     <div class="profile-info">
