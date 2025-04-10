@@ -110,11 +110,6 @@
                                 src="{{ asset('assets/images/icons/profile.svg') }}"
                                 alt="Profile"><span>{{ __('site.Doctor list') }}</span></a></li>
                 @endrole
-                @role('Admin')
-                    <li title="{{ __('site.Feedback') }}"><a href="{{ route('feedback-list') }}"><img
-                                src="{{ asset('assets/images/icons/review.svg') }}"
-                                alt="Review"><span>{{ __('site.Feedback') }}</span></a></li>
-                @endrole
                 @role('Doctor')
                     <li title="{{ __('site.Patients Booking') }}"><a href="{{ route('doctors.booking.index') }}"><img
                                 src="{{ asset('assets/images/icons/calendar.svg') }}"
@@ -127,15 +122,16 @@
                     <li title="{{ __('site.My Bookings') }}"><a href="{{ route('patients.booking.index') }}"><img
                                 src="{{ asset('assets/images/icons/calendar.svg') }}"
                                 alt="Calendar"><span>{{ __('site.My Bookings') }}</span></a></li>
-
-                    <li title="{{ __('site.Feedback') }}"><a href="{{ route('feedback') }}"><img
-                                src="{{ asset('assets/images/icons/review.svg') }}"
-                                alt="Review"><span>{{ __('site.Feedback') }}</span></a></li>
                 @endrole
                 @role('Admin|Doctor|Patient')
                     <li title="{{ __('site.Therapy') }}"><a href="{{ route('therapy.index') }}"><img
                                 src="{{ asset('assets/images/icons/therapy.svg') }}"
                                 alt="Therapy"><span>{{ __('site.Therapy') }}</span></a></li>
+                @endrole
+                @role('Admin|Doctor|Patient')
+                    <li title="{{ __('site.Feedback') }}"><a href="{{ route('feedback-list') }}"><img
+                                src="{{ asset('assets/images/icons/review.svg') }}"
+                                alt="Review"><span>{{ __('site.Feedback') }}</span></a></li>
                 @endrole
                 <li title="{{ __('site.Contact Us') }}"><a href="{{ route('contact-us') }}"><img
                             src="{{ asset('assets/images/icons/phone.svg') }}"

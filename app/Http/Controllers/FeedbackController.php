@@ -24,7 +24,7 @@ class FeedbackController extends Controller
         if (auth()->user()->hasRole('Admin')) {
             $feedbacks = Feedback::paginate(9);
         } else {
-            $feedbacks = Feedback::where('patient_id', Auth::user()->patient->id)->paginate(9);
+            $feedbacks = Feedback::where('user_id', Auth::user()->id)->paginate(9);
         }
         return view($this->dir . "index", compact('feedbacks'));
     }
@@ -41,7 +41,7 @@ class FeedbackController extends Controller
     public function store(Request $request)
     {
         $feedback = new Feedback;
-        $feedback->patient_id = Auth::user()->patient->id;
+        $feedback->user_id = Auth::user()->id;
         $feedback->feedback = $request->feedback;
         $feedback->date = $request->date;
         $feedback->improvement = $request->improvement;

@@ -30,15 +30,37 @@
 
             <div class="stats">
                 <div class="stat-card">
-                    <h3>76<span>{{ __('site.K') }}</span></h3>
+                    <h3>
+                        @if($allUsers >= 1000)
+                            {{ number_format($allUsers / 1000, 1) }}
+                            <span>{{ __('site.K') }}</span>
+                        @else
+                            {{ $allUsers }}
+                        @endif
+                    </h3>
                     <p>{{ __('site.Community Members') }}</p>
                 </div>
                 <div class="stat-card">
-                    <h3>128<span>{{ __('site.K') }}</span></h3>
+                    <h3>
+                        @if($patientsCount >= 1000)
+                            {{ number_format($patientsCount / 1000, 1) }}
+                            <span>{{ __('site.K') }}</span>
+                        @else
+                            {{ $patientsCount }}
+                        @endif
+                    </h3>
                     <p>{{ __('site.Patients') }}</p>
                 </div>
                 <div class="stat-card">
-                    <h3>59<span>{{ __('site.K') }}</span></h3>
+                    <h3>
+                        @if($doctorsCount >= 1000)
+                            {{ number_format($doctorsCount / 1000, 1) }}
+                            <span>{{ __('site.K') }}</span>
+                        @else
+                            {{ $doctorsCount }}
+                        @endif
+                    </h3>
+
                     <p>{{ __('site.Participating Doctors') }}</p>
                 </div>
             </div>

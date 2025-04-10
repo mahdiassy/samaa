@@ -42,7 +42,11 @@ class PermissionsSeeder extends Seeder
             Permissions::THERAPY_CREATE,
             Permissions::THERAPY_EDIT,
             Permissions::THERAPY_SHOW,
-            Permissions::THERAPY_DELETE
+            Permissions::THERAPY_DELETE,
+
+            Permissions::FEEDBACK_CREATE,
+            Permissions::FEEDBACK_LIST,
+            Permissions::FEEDBACK_SHOW,
         ]);
 
         $role3 = Role::create(['name' => 'Patient']);

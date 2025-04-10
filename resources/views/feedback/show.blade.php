@@ -33,8 +33,8 @@
                                 <input type="text" name="id" value="{{ $feedback->id }}" class="styled-input" disabled />
                             </div>
                             <div class="text-info">
-                                <p>{{ __('site.Patient Name') }}</p>
-                                <input type="text" name="patient-name" value="{{ $feedback->patient->first_name .' '. $feedback->patient->last_name }}" class="styled-input" disabled />
+                                <p>{{ __('site.User Name') }}</p>
+                                <input type="text" name="patient-name" value="{{ $feedback->user->name }}" class="styled-input" disabled />
                             </div>
                             <div class="text-info">
                                 <p>{{ __('site.Feedback') }} (1/10)</p>

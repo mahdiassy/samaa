@@ -135,7 +135,7 @@
                 </div>
                 <div class="action-buttons">
                     <a href="{{ route('doctor.index') }}" class="btn patient-btn">{{ __('site.Doctor list') }}</a>
-                    @role('Patient')
+                    @role('Patient|Doctor')
                     <a href="{{ route('feedback') }}" class="btn patient-btn">{{ __('site.Feedback') }}</a>
                     @endrole
                     @role('Admin')

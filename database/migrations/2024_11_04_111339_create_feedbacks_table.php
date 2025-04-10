@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -13,13 +14,13 @@ return new class extends Migration
     {
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->id();
-            $table->integer('feedback');
-            $table->datetime('date');
-            $table->integer('improvement');
-            $table->text('note');
+            $table->integer('feedback')->nullable();
+            $table->datetime('date')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->integer('improvement')->nullable();
+            $table->text('note')->nullable();
 
-            $table->unsignedBigInteger('patient_id');
-            $table->foreign('patient_id')->references('id')->on('patients');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->timestamps();
         });

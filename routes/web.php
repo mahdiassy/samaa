@@ -33,9 +33,8 @@ Route::group(
             return view('frontend/home');
         })->name('home');
 
-        Route::get('/contact-us', function () {
-            return view('frontend/contact-us');
-        })->name('contact-us');
+        Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact-us');
+        Route::post('/store-contact-us', [HomeController::class, 'storeContactUsForm'])->name('contactUs.store');
 
         Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
 
@@ -80,10 +79,10 @@ Route::group(
                 Route::get('/therapies/playlist', [TherapyController::class, 'playlist'])->name('playlist')->middleware('role:Admin|Doctor|Patient');
 
                 // Feedback
-                Route::get('/feedback/create', [FeedbackController::class, 'create'])->name('feedback')->middleware('role:Patient');
-                Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store')->middleware('role:Patient');
-                Route::get('/feedback/index', [FeedbackController::class, 'index'])->name('feedback-list')->middleware('role:Admin|Patient');
-                Route::get('/feedback/show/{feedback}', [FeedbackController::class, 'show'])->name('feedback.show')->middleware('role:Admin|Patient');
+                Route::get('/feedback/create', [FeedbackController::class, 'create'])->name('feedback')->middleware('role:Patient|Doctor');
+                Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store')->middleware('role:Patient|Doctor');
+                Route::get('/feedback/index', [FeedbackController::class, 'index'])->name('feedback-list')->middleware('role:Admin|Patient|Doctor');
+                Route::get('/feedback/show/{feedback}', [FeedbackController::class, 'show'])->name('feedback.show')->middleware('role:Admin|Patient|Doctor');
                 Route::delete('/feedback/delete/{feedback}', [FeedbackController::class, 'destroy'])->name('feedback.destroy')->middleware('role:Admin');
             });
 

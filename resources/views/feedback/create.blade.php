@@ -36,7 +36,7 @@
                                 <input type="text" name="id" value="{{ $newFeedback }}" class="styled-input" disabled />
                             </div>
                             <div class="text-info">
-                                <p>{{ __('site.Patient Name') }}</p>
+                                <p>{{ __('site.User Name') }}</p>
                                 <input type="text" name="patient-name" value="{{ Auth::user()->name }}" class="styled-input" disabled />
                             </div>
                             <div class="text-info">
@@ -59,7 +59,6 @@
                         </div>
                         <div class="feedback-action-buttons">
                             <button class="btn submit-btn">{{ __('site.Submit Feedback') }}</button>
-                            <!--<button class="btn new-btn">+ add new seqtion</button>-->
                         </div>
                     </div>
                 </form>

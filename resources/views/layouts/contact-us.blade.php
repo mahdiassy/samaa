@@ -51,18 +51,16 @@
             </div>
 
             <div class="contact-form">
-                <form action="#">
+                <form action="{{ route('contactUs.store') }}" method="post">
+                    @csrf
                     <div class="form-group">
-                        <input type="text" placeholder="{{ __('site.Enter Your Name') }}*" required>
+                        <input type="text" name="name" placeholder="{{ __('site.Enter Your Name') }}*" value="{{ Auth::check() ? Auth::user()->name : '' }}" {{ Auth::check() ? 'readonly' : '' }} required>
                     </div>
                     <div class="form-group">
-                        <input type="text" placeholder="{{ __('site.Phone Number') }}*" required>
+                        <input type="email" name="email" placeholder="{{ __('site.Email Address') }}*" value="{{ Auth::check() ? Auth::user()->email : '' }}" {{ Auth::check() ? 'readonly' : '' }} required>
                     </div>
                     <div class="form-group">
-                        <input type="email" placeholder="{{ __('site.Email Address') }}*" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea placeholder="{{ __('site.Your Message') }}*" required></textarea>
+                        <textarea name="message" placeholder="{{ __('site.Your Message') }}*" required></textarea>
                     </div>
                     <button type="submit">{{ __('site.Submit') }}</button>
                 </form>
