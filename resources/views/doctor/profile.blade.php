@@ -22,8 +22,7 @@
                     <div class="profile-info">
                         <div class="profile-header2">
                             <div class="image-container">
-                                <img src="{{ Storage::url($doctor->image) }}" alt="Doctor Photo" class="profile-img"
-                                    id="patientPhoto">
+                                <img src="{{ $doctor->image ? Storage::url($doctor->image) : asset('assets/images/avatar1.png') }}" alt="Doctor Photo" class="profile-img" id="patientPhoto">
                                 <a href="#" class="btn-replace" id="replaceBtn">
                                     <svg width="25" height="25" viewBox="0 0 30 29" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -36,7 +35,7 @@
                                     </svg>
                                 </a>
                             </div>
-                            <input type="file" name="image" id="imageUpload" style="display:none" accept="image/*" required>
+                            <input type="file" name="image" id="imageUpload" style="display:none" accept="image/*" >
                         </div>
                     </div>
 
@@ -63,6 +62,11 @@
                                 <input type="text" name="specialization" placeholder="{{ __('site.Specialization') }}" value="{{ $doctor->specialization }}"
                                     class="styled-input" />
                             </div>
+                            <div class="text-info">
+                                <p>{{ __('site.Instagram link') }}</p>
+                                <input type="text" name="instagram" placeholder="{{ __('site.Instagram link') }}" value="{{ $doctor->instagram }}"
+                                    class="styled-input" />
+                            </div>
                         </div>
                         <div class="diagnosis">
                             <div class="text-info">
@@ -78,6 +82,16 @@
                             <div class="text-info">
                                 <p>{{ __('site.Address') }}</p>
                                 <input type="text" name="address" placeholder="{{ __('site.Address') }}" value="{{ $doctor->address }}"
+                                    class="styled-input" />
+                            </div>
+                            <div class="text-info">
+                                <p>{{ __('site.Facebook link') }}</p>
+                                <input type="text" name="facebook" placeholder="{{ __('site.Facebook link') }}" value="{{ $doctor->facebook }}"
+                                    class="styled-input" />
+                            </div>
+                            <div class="text-info">
+                                <p>{{ __('site.Twitter link') }}</p>
+                                <input type="text" name="twitter" placeholder="{{ __('site.Twitter link') }}" value="{{ $doctor->twitter }}"
                                     class="styled-input" />
                             </div>
                         </div>

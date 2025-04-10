@@ -24,7 +24,7 @@
             <div class="profile-details">
                 <div class="profile-info">
                     <div class="profile-header">
-                        <img src="{{ Storage::url($patient->image) }}" alt="Patient Photo" class="profile-img">
+                        <img src="{{ $patient->image ? Storage::url($patient->image) : asset('assets/images/avatar1.png') }}" alt="Patient Photo" class="profile-img">
                         <a href="{{ route('patient.edit', $patient) }}" class="btn-edit">+ {{ __('site.Edit') }}</a>
                     </div>
 

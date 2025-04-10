@@ -101,9 +101,9 @@ class PatientController extends Controller
                 if ($request->has('image')) {
                     $image = $request->file('image');
                     $patient->image = $this->storeFile($image, 'Patient image');
-                } else {
+                }/* else {
                     $patient->image = '/avatar1.png';
-                }
+                }*/
 
                 $patient->save();
 

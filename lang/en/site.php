@@ -174,6 +174,12 @@ return [
 
     'Submit' => 'Submit',
 
+    'Facebook link' => 'Facebook link',
+
+    'Twitter link' => 'Twitter link',
+
+    'Instagram link' => 'Instagram link',
+
     //Dashboard Menu
     'Patient list' => 'Patient list',
     'Doctor list' => 'Doctor list',

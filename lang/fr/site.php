@@ -171,6 +171,12 @@ return [
 
     'Submit' => 'Soumettre',
 
+    'Facebook link' => 'Lien Facebook',
+
+    'Twitter link' => 'Lien Twitter',
+
+    'Instagram link' => 'Lien Instagram',
+
     //Dashboard Menu
     'Patient list' => 'Liste des patients',
     'Doctor list' => 'Liste des médecins',

@@ -36,9 +36,8 @@ Route::group(
         Route::get('/contact-us', function () {
             return view('frontend/contact-us');
         })->name('contact-us');
-        Route::get('/about-us', function () {
-            return view('frontend/about-us');
-        })->name('about-us');
+
+        Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
 
         Route::get('/listenToMusic', function () {
             return view('frontend/listenToMusic');

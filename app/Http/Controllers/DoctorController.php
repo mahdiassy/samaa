@@ -65,14 +65,13 @@ class DoctorController extends Controller
         if ($request->has('image')) {
             $image = $request->file('image');
             $doctor->image = $this->storeFile($image, 'Doctor image');
-        } else {
-            $doctor->image = '/avatar1.png';
         }
 
         $doctor->save();
 
         return redirect()->route('doctor.index')->with('status', [
             'type' => 'success',
+            'title' =>  __("site.Success"),
             'msg' => __("site.Doctor created successfully")
         ]);
     }
@@ -114,6 +113,7 @@ class DoctorController extends Controller
 
         return redirect()->back()->with('status', [
             'type' => 'success',
+            'title' =>  __("site.Success"),
             'msg' => __("site.Doctor Profile updated successfully")
         ]);
     }
@@ -146,6 +146,7 @@ class DoctorController extends Controller
 
         return redirect()->route('doctor.index')->with('status', [
             'type' => 'success',
+            'title' =>  __("site.Success"),
             'msg' => __("site.Doctor updated successfully")
         ]);
     }
@@ -155,6 +156,7 @@ class DoctorController extends Controller
         $doctor->delete();
         return redirect()->route('doctor.index')->with('status', [
             'type' => 'success',
+            'title' =>  __("site.Success"),
             'msg' => __("site.Doctor deleted successfully")
         ]);
     }
@@ -243,6 +245,7 @@ class DoctorController extends Controller
 
         return redirect()->route('doctors.booking.index')->with('status', [
             'type' => 'success',
+            'title' =>  __("site.Success"),
             'msg' => __("site.Doctor updated status successfully")
         ]);
     }

@@ -23,8 +23,7 @@
                     <div class="profile-info">
                         <div class="profile-header2">
                             <div class="image-container">
-                                <img src="{{ Storage::url($patient->image) }}" alt="Patient Photo" class="profile-img"
-                                    id="patientPhoto">
+                                <img src="{{ $patient->image ? Storage::url($patient->image) : asset('assets/images/avatar1.png') }}" alt="Patient Photo" class="profile-img" id="patientPhoto">
                                 <a href="#" class="btn-replace" id="replaceBtn">
                                     <svg width="25" height="25" viewBox="0 0 30 29" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">

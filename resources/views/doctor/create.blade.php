@@ -41,7 +41,7 @@
                                     </svg>
                                 </a>
                             </div>
-                            <input type="file" name="image" id="imageUpload" style="display:none" accept="image/*" required>
+                            <input type="file" name="image" id="imageUpload" style="display:none" accept="image/*">
                         </div>
                     </div>
 
@@ -68,6 +68,16 @@
                                 <input type="text" name="specialization" placeholder="{{ __('site.Specialization') }}" value=""
                                     class="styled-input" />
                             </div>
+                            <div class="text-info">
+                                <p>{{ __('site.Facebook link') }}</p>
+                                <input type="text" name="facebook" placeholder="{{ __('site.Facebook link') }}" value=""
+                                    class="styled-input" />
+                            </div>
+                            <div class="text-info">
+                                <p>{{ __('site.Twitter link') }}</p>
+                                <input type="text" name="twitter" placeholder="{{ __('site.Twitter link') }}" value=""
+                                    class="styled-input" />
+                            </div>
                         </div>
                         <div class="diagnosis">
                             <div class="text-info">
@@ -87,6 +97,11 @@
                             <div class="text-info">
                                 <p>{{ __('site.Address') }}</p>
                                 <input type="text" name="address" placeholder="{{ __('site.Address') }}" value=""
+                                    class="styled-input" />
+                            </div>
+                            <div class="text-info">
+                                <p>{{ __('site.Instagram link') }}</p>
+                                <input type="text" name="instagram" placeholder="{{ __('site.Instagram link') }}" value=""
                                     class="styled-input" />
                             </div>
                         </div>

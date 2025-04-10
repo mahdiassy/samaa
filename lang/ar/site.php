@@ -170,6 +170,12 @@ return [
 
     'Submit' => 'أرسل',
 
+    'Facebook link' => 'رابط الفيسبوك',
+
+    'Twitter link' => 'رابط تويتر',
+
+    'Instagram link' => 'رابط الانستغرام',
+
     //Dashboard Menu
     'Patient list' => 'قائمة المرضى',
     'Doctor list' => 'قائمة الأطباء',

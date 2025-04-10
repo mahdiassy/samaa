@@ -65,6 +65,15 @@ body {
     /*max-width: 1200px;*/
 }
 
+.medias a {
+    text-decoration: none;
+}
+
+.medias a svg:hover {
+    transform: scale(1.1);
+    transition: all 0.1s ease;
+}
+
 .sidebar.open~.profile-container {
     margin-left: 250px;
     width: calc(100% - 250px);

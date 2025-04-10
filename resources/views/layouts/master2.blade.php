@@ -60,7 +60,7 @@
                 @if (Auth::check() && Auth::user()->patient && Auth::user()->patient->image)
                     <img src="{{ asset('storage/' . Auth::user()->patient->image) }}" alt="Profile">
                 @else
-                    <img src="{{ asset('assets/images/avatar1.png') }}}" alt="Profile">
+                    <img src="{{ asset('assets/images/avatar1.png') }}" alt="Profile">
                 @endif
 
                 <div class="desc-profile">
@@ -245,46 +245,53 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
     <script>
-        document.getElementById('changePasswordForm').addEventListener('submit', function(event) {
-        const oldPassword = document.getElementById('old_pass');
-        const newPassword = document.getElementById('new_pass');
-        const confirmPassword = document.getElementById('confirm_pass');
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('changePasswordForm');
+            if (form) {
+                form.addEventListener('submit', function (event) {
+                    const oldPassword = document.getElementById('old_pass');
+                    const newPassword = document.getElementById('new_pass');
+                    const confirmPassword = document.getElementById('confirm_pass');
 
-        newPassword.classList.remove('is-invalid');
-        confirmPassword.classList.remove('is-invalid');
+                    newPassword.classList.remove('is-invalid');
+                    confirmPassword.classList.remove('is-invalid');
 
-        let isValid = true;
+                    let isValid = true;
 
-        if (newPassword.value !== confirmPassword.value) {
-            confirmPassword.classList.add('is-invalid');
-            isValid = false;
-        }
+                    if (newPassword.value !== confirmPassword.value) {
+                        confirmPassword.classList.add('is-invalid');
+                        isValid = false;
+                    }
 
-        if (!isValid) {
-            event.preventDefault();
-        }
-        });
+                    if (!isValid) {
+                        event.preventDefault();
+                    }
+                });
+            }
 
-        document.addEventListener('DOMContentLoaded', function() {
             const selectEl = document.getElementById('therapeutic_areas_select');
             const inputWrapper = document.getElementById('medication_input_wrapper');
 
-            selectEl.addEventListener('change', function() {
-                const selectedValue = this.value;
+            if (selectEl && inputWrapper) {
+                selectEl.addEventListener('change', function () {
+                    const selectedValue = this.value;
 
-                if (selectedValue === '2') {
-                    inputWrapper.style.display = 'block';
-                } else {
-                    inputWrapper.style.display = 'none';
-                }
-            });
+                    if (selectedValue === '2') {
+                        inputWrapper.style.display = 'block';
+                    } else {
+                        inputWrapper.style.display = 'none';
+                    }
+                });
+            }
         });
-        $(document).ready(function() {
+
+        $(document).ready(function () {
             $('.diseases-select-backend').select2({
                 placeholder: "{{ __('site.Select one or more diseases') }}",
                 width: '100%'
             });
         });
+
         let selectDiseaseText = "{{ __('site.Diseases') }}";
         let samaaKidsTitle = "{{ __('site.Sama’a for kids') }}";
         let samaaTitle = "{{ __('site.Sama’a') }}";
