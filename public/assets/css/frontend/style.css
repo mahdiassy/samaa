@@ -900,6 +900,7 @@ nav.scrolled {
     .menu .a-desc-profile a {
         color: #EAEAEA !important;
         padding: 0px 15px 20px;
+        border-bottom: none !important;
     }
 
     .menu-desc-profile{
@@ -1986,6 +1987,32 @@ input[type="radio"] {
 }
 
 /* Search Bar */
+
+.rounded-top {
+    border-top-left-radius: 50px !important;
+    border-top-right-radius: 50px !important;
+    border-bottom-left-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+}
+
+.suggestions-box{
+    position: absolute;
+    z-index: 10;
+    display: none;
+    width: 80%;
+    padding: 12px 20px 12px 50px;
+    font-size: 16px;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    background-color: #F1F1F1;
+    border: 1px solid #F1F1F1;
+    box-shadow: 0px 4px 4px 0px #00000040;
+    top: 100%;
+    border-top: none;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
 .search-container {
     position: relative;
     margin: 10px 0;

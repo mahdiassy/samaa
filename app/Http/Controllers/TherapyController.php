@@ -52,7 +52,7 @@ class TherapyController extends Controller
     public function index()
     {
         $patients = Patient::all();
-        $therapies = $this->getTherapiesBasedRole();
+        $therapies = Therapy::getTherapiesBasedRole();
 
         return view($this->dir . "index", compact('therapies', 'patients'));
     }
@@ -134,19 +134,6 @@ class TherapyController extends Controller
 
     public function edit(Request $request, Therapy $therapy)
     {
-        //$patients = Patient::all();
-        //dd($therapy->file ,Storage::disk('public')->url($therapy->file) );
-        /*if (auth()->user()->hasRole('Admin')) {
-            $therapy = $therapy;
-        } elseif (auth()->user()->hasRole('Patient'))
-            if ($therapy->patients()->where('patient_id', Patient::where('user_id', Auth::id())->first()->id)->first()) {
-                $therapy = $therapy;
-            }
-        elseif (auth()->user()->hasRole('Doctor')) {
-            if ($therapy->user_id == Auth::id()) {
-                $therapy = $therapy;
-            }
-        }*/
         $albums = Album::all();
         return view($this->dir . "edit", compact('therapy','albums'));
     }
@@ -175,7 +162,7 @@ class TherapyController extends Controller
         }
         $therapy->save();
 
-        $therapies = $this->getTherapiesBasedRole();
+        $therapies = Therapy::getTherapiesBasedRole();;
 
         if($request->patient_id){
             $patient = Patient::find($request->patient_id);
@@ -328,37 +315,6 @@ class TherapyController extends Controller
         } else {
             return response()->json(['status' => 'error', 'message' => 'Unable to save peaks'], 500);
         }
-    }
-
-    public function getTherapiesBasedRole()
-    {
-        $therapies = collect();
-        if (auth()->user()->hasRole('Admin')) {
-            $therapies = Therapy::paginate(9);
-        } elseif (auth()->user()->hasRole('Doctor')) {
-            $therapies = Therapy::where('user_id', Auth::id())
-                ->orWhereHas('user', function ($query) {
-                    $query->whereHas('roles', function ($roleQuery) {
-                        $roleQuery->where('name', 'Admin');
-                    });
-                })
-                ->paginate(9);
-        } elseif (auth()->user()->hasRole('Patient')) {
-            $user = Patient::where('user_id', Auth::id())->first();
-            $therapyIds = DB::table('patient_therapy')
-                ->where('patient_id', $user->id)
-                ->pluck('therapy_id');
-
-            //$therapies = Therapy::whereIn('id', $therapyIds)->paginate(9);
-            $therapies = Therapy::whereIn('id', $therapyIds)
-                ->orWhereHas('user', function ($query) {
-                    $query->whereHas('roles', function ($roleQuery) {
-                        $roleQuery->where('name', 'Admin');
-                    });
-                })->paginate(9);
-
-        }
-        return $therapies;
     }
 
     public function getDiseases($id)

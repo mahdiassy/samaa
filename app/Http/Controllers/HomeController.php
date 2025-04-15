@@ -16,6 +16,11 @@ class HomeController extends Controller
 {
     protected $dir = "layouts.";
 
+    public function home()
+    {
+        return view($this->dir . "home");
+    }
+
     public function index()
     {
         return view($this->dir . "dashboard");

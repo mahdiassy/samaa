@@ -66,7 +66,7 @@ document.getElementById('imageUpload').addEventListener('change', function() {
         reader.readAsDataURL(file);
     }
 });*/
-
+/*
 const questions = {
     stressed: [
         {
@@ -127,8 +127,8 @@ const questions = {
             ]
         },
     ],
-};
-
+};*/
+/*
 let currentQuestionIndex = 0;
 let currentQuiz = 'stressed';
 let userResponses = [];
@@ -241,3 +241,4 @@ function removeResult() {
 }
 
 updateQuestion();
+*/

@@ -86,7 +86,8 @@
 
                     <div class="a-desc-profile">
                         <a title="edit Profile" href="{{ route('profile.patient.edit', Auth::user()->patient) }}">
-                            <span class="menu-desc-profile">{{ Auth::user()->patient->first_name }} {{ Auth::user()->patient->last_name }}</span>
+                            <span class="menu-desc-profile">{{ Auth::user()->patient->first_name }}
+                                {{ Auth::user()->patient->last_name }}</span>
                         </a>
                     </div>
 
@@ -96,10 +97,10 @@
                         <img src="{{ asset('assets/images/avatar1.png') }}" alt="Profile">
                     @endif
                 @elseif (Auth::check() && Auth::user()->hasRole('Doctor'))
-
                     <div class="a-desc-profile">
                         <a title="edit Profile" href="{{ route('profile.doctor.edit', Auth::user()->doctor) }}">
-                            <span class="menu-desc-profile">{{ Auth::user()->doctor->first_name }} {{ Auth::user()->doctor->last_name }}</span>
+                            <span class="menu-desc-profile">{{ Auth::user()->doctor->first_name }}
+                                {{ Auth::user()->doctor->last_name }}</span>
                         </a>
                     </div>
 
@@ -151,6 +152,8 @@
         </script>
     @endif
 
+    @routes
+
     @yield('content')
 
     <footer class="footer">
@@ -167,7 +170,8 @@
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('site.Logout') }}
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                            style="display: none;">
                             @csrf
                         </form>
                     @else
@@ -181,7 +185,10 @@
                     <a href="{{ route('contact-us') }}"> {{ __('site.Contact Us') }}</a>
                 </div>
                 <div class="column">
-                    <a href="#"> {{ __('site.Library') }}</a>
+                    <a
+                        href="{{ Auth::check() ? (\App\Models\Therapy::getTherapiesBasedRole()->isNotEmpty() ? route('playlist') : route('therapy.index')) : route('login') }}">
+                        {{ __('site.Library') }}
+                    </a>
                 </div>
             </div>
             <div class="footer-help">
@@ -201,6 +208,7 @@
         let selectDiseaseText = "{{ __('site.Diseases') }}";
         let samaaKidsTitle = "{{ __('site.Sama’a for kids') }}";
         let samaaTitle = "{{ __('site.Sama’a') }}";
+        let noResult = "{{ __('site.No results found') }}";
     </script>
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/frontend/scripts.js') }}"></script>

@@ -25,13 +25,11 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 Route::group(
     [
         'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'] //, 'firewall.all']
+        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
     ],
     function () {
 
-        Route::get('/', function () {
-            return view('frontend/home');
-        })->name('home');
+        Route::get('/', [HomeController::class, 'home'])->name('home');
 
         Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact-us');
         Route::post('/store-contact-us', [HomeController::class, 'storeContactUsForm'])->name('contactUs.store');
@@ -44,6 +42,8 @@ Route::group(
         Route::get('/listener-statistics', function () {
             return view('frontend/listener-statistics');
         });
+
+        Route::get('/doctor-search', [DoctorController::class, 'search'])->name('doctor.search');
 
         // Auth
         Route::get('login', [AuthController::class, 'showLoginForm']);
@@ -68,7 +68,7 @@ Route::group(
                 Route::get('profile/patient/edit/{patient}', [PatientController::class, 'editProfile'])->name('profile.patient.edit');
                 Route::put('profile/patient/update/{patient}', [PatientController::class, 'updateProfile'])->name('profile.patient.update');
 
-                Route::resource('doctor', DoctorController::class)->middleware('role:Admin|Patient');
+                Route::resource('doctor', DoctorController::class)->middleware('role:Admin|Patient|Doctor');
                 Route::get('profile/doctor/edit/{doctor}', [DoctorController::class, 'editProfile'])->name('profile.doctor.edit');
                 Route::put('profile/doctor/update/{doctor}', [DoctorController::class, 'updateProfile'])->name('profile.doctor.update');
 

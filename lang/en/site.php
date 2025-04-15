@@ -150,11 +150,11 @@ return [
 
     'Our Doctors' => 'Our Doctors',
 
-    'follow me' => 'follow me:',
+    'follow me' => 'Follow me:',
 
     'Host' => 'Host',
 
-    'doctor' => 'doctor',
+    'doctor' => 'Doctor',
 
     'Contact' => 'Contact',
 
@@ -183,6 +183,7 @@ return [
     //Dashboard Menu
     'Patient list' => 'Patient list',
     'Doctor list' => 'Doctor list',
+    'Feedback list' => 'Feedback list',
     'Feedback' => 'Feedback',
     'Patients Booking' => 'Patients Booking',
     'Schedule' => 'Schedule',
@@ -211,9 +212,9 @@ return [
     'Name' => 'Name',
     'Created' => 'Created',
     'Updated' => 'Updated',
-    'start your music therapy' => 'start your music therapy',
-    'start your' => 'start your',
-    'music therapy' => 'music therapy',
+    'start your music therapy' => 'Start your music therapy',
+    'start your' => 'Start your',
+    'music therapy' => 'Music therapy',
     'Set the Therapy thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted' => 'Set the Therapy thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted',
     'File Name' => 'File Name',
     'Upload File' => 'Upload File',
@@ -227,6 +228,8 @@ return [
     'Improvement' => 'Improvement',
     'Date' => 'Date',
     'Search' => 'Search...',
+    'Search doctors...' => 'Search doctors...',
+    'No results found' => 'No results found',
     'Note' => 'Note',
     'Submit Feedback' => 'Submit Feedback',
     'All Therapies' => 'All Therapies',
@@ -236,7 +239,7 @@ return [
     'Add Therapy' => 'Add Therapy',
     'Create by Admin, No Patient Available' => 'Create by Admin, No Patient Available',
     'Change Status' => 'Change Status',
-    'be Approved before' => 'be Approved before',
+    'be Approved before' => 'Be Approved before',
     'Add' => 'Add',
     'Booking with a doctor' => 'Booking with a doctor',
     'Doctor Specialization' => 'Doctor Specialization',
@@ -268,13 +271,13 @@ return [
     'Available' => 'Available',
     'From' => 'From',
     'To' => 'To',
-    'next' => 'next',
-    'prev' => 'prev',
-    'today' => 'today',
-    'week' => 'week',
-    'month' => 'month',
-    'day' => 'day',
-    'list' => 'list',
+    'next' => 'Next',
+    'prev' => 'Prev',
+    'today' => 'Today',
+    'week' => 'Week',
+    'month' => 'Month',
+    'day' => 'Day',
+    'list' => 'List',
     'This time has been added successfully' => 'This time has been add successfully',
     'Success' => 'Success',
     'Error' => 'Error',
@@ -284,7 +287,7 @@ return [
     'The appointment has been successfully deleted' => 'The appointment has been successfully deleted',
     'You cannot delete it. It has already been booked' => 'You cannot delete it. It has already been booked',
     'The appointment has been booked successfully, If you want to check your reservation, click (go back)' => 'The appointment has been booked successfully, If you want to check your reservation, click (go back)',
-    'reserved' => 'reserved',
+    'reserved' => 'Reserved',
 
     // Messages
     'Successfully Logged-in' => 'Successfully Logged-in',

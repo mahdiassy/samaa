@@ -14,7 +14,8 @@
         "mcamara/laravel-localization": "^2.0",
         "php-open-source-saver/jwt-auth": "^2.7",
         "plutuss/getid3-laravel": "^1.2",
-        "spatie/laravel-permission": "^6.9"
+        "spatie/laravel-permission": "^6.9",
+        "tightenco/ziggy": "^2.5"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

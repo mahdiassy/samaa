@@ -1,11 +1,6 @@
 @extends('layouts.master2')
 @section('content')
-    <div class="search-bar" style="background-image: url('/assets/images/therapy.png');">
-        <input type="text" placeholder="{{ __('site.Search') }}">
-        <div class="search-bar-title">
-            <h1>{{ __('site.start your') }}<br>{{ __('site.music therapy') }}</h1>
-        </div>
-    </div>
+    @include('search_form_with_backbround')
     <div class="main-content">
 
         <div class="header">

@@ -74,7 +74,7 @@ function showNextStep() {
         }
     });
 }
-document.getElementById("increment").addEventListener("click", function() {
+/*document.getElementById("increment").addEventListener("click", function() {
     let input = document.getElementById("height");
     let currentValue = parseInt(input.value) || 0;
     input.value = currentValue + 1;
@@ -100,7 +100,7 @@ document.getElementById("decrementWeight").addEventListener("click", function() 
     if (currentValueWeight > 0) {
         inputWeight.value = currentValueWeight - 1;
     }
-});
+});*/
 
 function updateProfilePicture(event) {
     const file = event.target.files[0];

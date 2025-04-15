@@ -252,9 +252,11 @@ window.mobileCheck = function () {
                 "                    <span class=\"song-title\">" + song.name + "</span>\n" +
                 "                    <span class=\"song-artist\">" + song.artist + "</span>\n" +
                 "                </div>\n" +
-                "                <span class=\"bandcamp-link\">\n" +
-                "                    <img class=\"bandcamp-grey\" style=\"width:24px;height:24px;\" src=\"" + song.cover_art_url + "\">\n" +
-                "                </span>\n" +
+                "<span class=\"bandcamp-link\">\n" +
+                "    <img class=\"bandcamp-grey\" style=\"width:24px;height:24px;\" src=\"" +
+                    ((song.cover_art_url && song.cover_art_url.trim() !== '/storage/') ? song.cover_art_url : '/assets/images/album_default.png') +
+                "\">\n" +
+                "</span>\n" +
                 "                <span class=\"song-duration\">" + duration + "</span>\n" +
                 "            </div>";
         });
@@ -412,7 +414,14 @@ window.mobileCheck = function () {
                             $(document).trigger('resize');
                         }, 50);
                         $('#' + id_container + ' #waveform').css('opacity', 0);
-                        $('#' + id_container + ' #amplitude-left').css('background-image', 'url(\'' + songs_array[0].cover_art_url + '\')');
+                        /*$('#' + id_container + ' #amplitude-left').css('background-image', 'url(\'' + songs_array[0].cover_art_url + '\')');*/
+                        var coverArt = songs_array[0].cover_art_url;
+                        if (!coverArt || coverArt.trim() === '/storage/') {
+                            coverArt = '/assets/images/album_default.png';
+                        }
+                        $('.main-cover').attr('src', coverArt); //new
+                        $('#' + id_container + ' #amplitude-left').css('background-image', 'url(\'' + coverArt + '\')');
+
                         if (songs_array[0].live) {
                             update_nowplayng(songs_array[0].url, songs_array[0].type);
                             interval_nowplayng = setInterval(function () {
@@ -425,7 +434,14 @@ window.mobileCheck = function () {
                 song_change: function () {
                     clearInterval(interval_nowplayng);
                     var currentIndex = Amplitude.getActiveIndex();
-                    $('#' + id_container + ' #amplitude-left').css('background-image', 'url(\'' + songs_array[currentIndex].cover_art_url + '\')');
+                    /*$('#' + id_container + ' #amplitude-left').css('background-image', 'url(\'' + songs_array[currentIndex].cover_art_url + '\')');*/
+                    var coverArt = songs_array[currentIndex].cover_art_url;
+                    if (!coverArt || coverArt.trim() === '/storage/') {
+                        coverArt = '/assets/images/album_default.png';
+                    }
+                    $('.main-cover').attr('src', coverArt); //new
+                    $('#' + id_container + ' #amplitude-left').css('background-image', 'url(\'' + coverArt + '\')');
+
                     Amplitude.setVolume(Amplitude.getVolume());
                     $('#' + id_container + ' #waveform').css('opacity', 0);
                     wavesurfer.cancelAjax();

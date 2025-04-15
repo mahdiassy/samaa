@@ -179,6 +179,7 @@ return [
     //Dashboard Menu
     'Patient list' => 'قائمة المرضى',
     'Doctor list' => 'قائمة الأطباء',
+    'Feedback list' => 'قائمة التعليقات',
     'Feedback' => 'التعليقات',
     'Patients Booking' => 'حجوزات المرضى',
     'Schedule' => 'الجدول',
@@ -223,6 +224,8 @@ return [
     'Improvement' => 'تحسين',
     'Date' => 'التاريخ',
     'Search' => 'البحث...',
+    'Search doctors...' => 'بحث عن الأطباء...',
+    'No results found' => 'لم يتم العثور على نتائج',
     'Note' => 'ملاحظة',
     'Submit Feedback' => 'إرسال التعليق',
     'All Therapies' => 'جميع العلاجات',

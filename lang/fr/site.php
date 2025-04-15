@@ -180,6 +180,7 @@ return [
     //Dashboard Menu
     'Patient list' => 'Liste des patients',
     'Doctor list' => 'Liste des médecins',
+    'Feedback list' => 'Liste de commentaires',
     'Feedback' => 'Retour',
     'Patients Booking' => 'Réservation des patients',
     'Schedule' => 'Calendrier',
@@ -224,6 +225,8 @@ return [
     'Improvement' => 'Amélioration',
     'Date' => 'Date',
     'Search' => 'Recherche...',
+    'Search doctors...' => 'Rechercher des médecins...',
+    'No results found' => 'Aucun résultat trouvé',
     'Note' => 'Note',
     'Submit Feedback' => 'Envoyer des commentaires',
     'All Therapies' => 'Toutes les thérapies',

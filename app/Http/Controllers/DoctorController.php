@@ -166,6 +166,18 @@ class DoctorController extends Controller
         return view($this->dir . "show", compact('doctor'));
     }
 
+    public function search(Request $request)
+    {
+        $query = $request->get('q');
+
+        $doctors = Doctor::where('first_name', 'like', '%' . $query . '%')
+        ->select('id', 'first_name')
+        ->limit(10)
+        ->get();
+
+        return response()->json($doctors);
+    }
+
     // Availabilities
     public function calendar()
     {

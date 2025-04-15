@@ -1,36 +1,80 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const therapeuticAreaSelect = document.getElementById('therapeutic_area');
-    const diseaseSelect = document.getElementById('disease');
+    const doctorSearch = document.getElementById('doctor-search');
+    const box = document.getElementById('search-suggestions');
+    let input = document.querySelector('.search-bar input[type="text"]') || document.querySelector('.search-container input[type="text"]');
 
-    therapeuticAreaSelect.addEventListener('change', function () {
-        const therapeuticAreaId = this.value;
+    if (!doctorSearch || !box || !input) {
+        console.warn('Doctor search input or suggestion box not found in the DOM.');
+        return;
+    }
 
-        diseaseSelect.innerHTML = `<option value="" disabled selected>${selectDiseaseText}</option>`;
+    doctorSearch.addEventListener('input', function () {
+        const query = this.value.trim();
 
-        diseaseSelect.disabled = true;
+        if (query.length === 0) {
+            box.style.display = 'none';
+            box.innerHTML = '';
+            input.classList.remove('rounded-top');
+            return;
+        }
 
-        if (therapeuticAreaId) {
-            fetch(`/getDiseases/${therapeuticAreaId}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    if (data && data.diseases) {
-                        data.diseases.forEach(disease => {
-                            const option = document.createElement('option');
-                            option.value = disease.id;
-                            option.textContent = disease.name;
-                            diseaseSelect.appendChild(option);
+        if (query.length < 2) {
+            box.style.display = 'none';
+            return;
+        }
+
+        fetch(route('doctor.search', { q: query }))
+            .then(res => res.json())
+            .then(data => {
+                box.innerHTML = '';
+
+                if (data.length === 0) {
+                    box.innerHTML = `<div style="padding: 8px;">${noResult}</div>`;
+                    input.classList.add('rounded-top');
+                } else {
+                    input.classList.add('rounded-top');
+
+                    data.forEach((doctor, index) => {
+                        const div = document.createElement('div');
+                        div.textContent = doctor.first_name;
+                        div.style.padding = '5px';
+                        div.style.borderBottom = '1px solid #ccc';
+                        div.style.cursor = 'pointer';
+                        div.style.transition = 'background-color 0.2s ease';
+
+                        div.addEventListener('mouseenter', () => {
+                            div.style.backgroundColor = '#e4e3e3';
+                            div.style.borderRadius = '20px';
                         });
-                        diseaseSelect.disabled = false;
-                    }
-                })
-                .catch(error => {
-                    console.error('Error fetching diseases:', error);
-                });
+
+                        div.addEventListener('mouseleave', () => {
+                            div.style.backgroundColor = '';
+                            div.style.borderRadius = '';
+                        });
+
+                        if (index === data.length - 1) {
+                            div.style.borderBottom = 'none';
+                        }
+
+                        div.addEventListener('click', () => {
+                            window.location.href = route('doctor.show', { doctor: doctor.id });
+                        });
+                        box.appendChild(div);
+                    });
+                }
+
+                box.style.display = 'block';
+            })
+            .catch(err => {
+                console.error('Error fetching doctors:', err);
+            });
+    });
+
+    document.addEventListener('click', function (e) {
+        if (!doctorSearch.contains(e.target) && !box.contains(e.target)) {
+            box.style.display = 'none';
+            box.innerHTML = '';
+            input.classList.remove('rounded-top');
         }
     });
 });
@@ -81,16 +125,26 @@ document.getElementById('kids-theme-btn').addEventListener('click', () => {
     applyTheme('kids');
     closePopup();
 });
-document.getElementById('therapeutic_areas_select').addEventListener('change', function () {
-    const selectedValue = this.value;
+document.addEventListener('DOMContentLoaded', function () {
+    const therapeuticSelect = document.getElementById('therapeutic_areas_select');
     const inputWrapper = document.getElementById('medication_input_wrapper');
 
-    if (selectedValue === '2') {
-        inputWrapper.style.display = 'block';
-    } else {
-        inputWrapper.style.display = 'none';
+    if (!therapeuticSelect || !inputWrapper) {
+        console.warn('therapeutic_areas_select or medication_input_wrapper not found.');
+        return;
     }
+
+    therapeuticSelect.addEventListener('change', function () {
+        const selectedValue = this.value;
+
+        if (selectedValue === '2') {
+            inputWrapper.style.display = 'block';
+        } else {
+            inputWrapper.style.display = 'none';
+        }
+    });
 });
+
 $(document).ready(function() {
     $('.diseases-select').select2({
         placeholder: "{{ __('site.Select one or more diseases') }}",
