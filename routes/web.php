@@ -51,7 +51,10 @@ Route::group(
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
         Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
+        Route::get('register/patient', [AuthController::class, 'showRegisterPatient'])->name('showRegisterPatient');
         Route::post('registerPatient', [AuthController::class, 'registerPatient'])->name('registerPatient');
+        Route::get('register/doctor', [AuthController::class, 'showRegisterDoctor'])->name('showRegisterDoctor');
+        Route::post('registerDoctor', [AuthController::class, 'registerDoctor'])->name('registerDoctor');
 
         Route::group([
             'prefix' => 'control',

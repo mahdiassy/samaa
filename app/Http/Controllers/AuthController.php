@@ -6,6 +6,7 @@ use App\Models\Addiction;
 use App\Models\Consultation;
 use App\Models\Country;
 use App\Models\Disease;
+use App\Models\Doctor;
 use App\Models\Incident;
 use App\Models\Language;
 use App\Models\Nervous;
@@ -71,6 +72,11 @@ class AuthController extends Controller
 
     public function showRegisterForm()
     {
+        return view($this->dir . "register");
+    }
+
+    public function showRegisterPatient()
+    {
         $countries = Country::all();
         $languages = Language::all();
         $therapeutic_areas = Therapeutic_area::all();
@@ -81,7 +87,7 @@ class AuthController extends Controller
         $incidents = Incident::all();
         $consultations = Consultation::all();
         $psychological_diseases = Psychological::all();
-        return view($this->dir . "register", compact('countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases', 'nervouses', 'symptoms', 'addictions', 'incidents', 'consultations'));
+        return view($this->dir . "register-patient", compact('countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases', 'nervouses', 'symptoms', 'addictions', 'incidents', 'consultations'));
     }
 
     public function registerPatient(Request $request)
@@ -213,6 +219,76 @@ class AuthController extends Controller
                         }
                     }
                 }
+
+                Auth::guard()->login($user);
+
+                return redirect()
+                    ->intended(route('dashboard'))
+                    ->with('status', [
+                        'type' => 'success',
+                        'title' =>  __("site.Success"),
+                        'msg' => __("site.Successfully Logged-in"),
+                    ]);
+            }
+        } catch (\Illuminate\Database\QueryException $e) {
+            if ($e->getCode() === '23000') {
+                Session::flash('error',  __("site.Error"));
+            } else {
+                throw $e;
+            }
+        }
+
+        return redirect()->back();
+    }
+
+    public function showRegisterDoctor()
+    {
+        $countries = Country::all();
+        $languages = Language::all();
+        $therapeutic_areas = Therapeutic_area::all();
+        $diseases = Disease::all();
+        $nervouses = Nervous::all();
+        $symptoms = Symptom::all();
+        $addictions = Addiction::all();
+        $incidents = Incident::all();
+        $consultations = Consultation::all();
+        $psychological_diseases = Psychological::all();
+        return view($this->dir . "register-doctor", compact('countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases', 'nervouses', 'symptoms', 'addictions', 'incidents', 'consultations'));
+    }
+
+    public function registerDoctor(Request $request)
+    {
+        try {
+            if (User::where('email', $request->email)->exists()) {
+                Session::flash('error', __("site.The email address is already in use by another user"));
+            } else {
+
+                $doctor = new Doctor;
+                $doctor->first_name = $request->first_name;
+                $doctor->last_name = $request->last_name;
+                $doctor->birthday = $request->birthday;
+                $doctor->phone = $request->phone;
+                $doctor->address = $request->address;
+                $doctor->specialization = $request->specialization;
+                $doctor->twitter = null;
+                $doctor->facebook = null;
+                $doctor->instagram = null;
+
+                $user = new User;
+                $user->name = $request->first_name;
+                $user->email = $request->email;
+                $user->password = Hash::make($request->password);
+                $user->save();
+                $user->assignRole('Doctor');
+
+                $doctor->user_id = $user->id;
+
+                if ($request->has('image')) {
+                    $image = $request->file('image');
+                    $doctor->image = $this->storeFile($image, 'Doctor image');
+                }
+
+                $doctor->save();
 
                 Auth::guard()->login($user);
 

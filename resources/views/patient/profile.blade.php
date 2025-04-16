@@ -128,8 +128,8 @@
                         <div class="diagnosis">
 
                             <div class="text-info">
-                                <p>{{ __('site.Last Name') }}</p>
-                                <input type="text" name="last_name" placeholder="{{ __('site.Last Name') }}"
+                                <p>{{ __('site.Surname') }}</p>
+                                <input type="text" name="last_name" placeholder="{{ __('site.Surname') }}"
                                     value="{{ $patient->last_name }}" class="styled-input" />
                             </div>
                             <div class="text-info">
@@ -145,7 +145,7 @@
                             </div>
                             <div class="text-info">
                                 <p>{{ __('site.Birthday') }}</p>
-                                <input type="date" name="birthday" value="{{ $patient->birthday }}"
+                                <input type="date" name="birthday" value="{{ $patient->birthday ? \Carbon\Carbon::parse($patient->birthday)->format('Y-m-d') : '' }}"
                                     class="styled-input date-input" />
                             </div>
                             <div class="text-info">

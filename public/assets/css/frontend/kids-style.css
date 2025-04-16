@@ -161,22 +161,49 @@ nav.scrolled {
     margin-top: 60px;
 }
 
-/*.hero img {
+.hero img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: bottom;
-}*/
+}
 
-.landing-page {
+/*.landing-page {
     width: 100%;
     height: 100vh;
-    background-image: url('../../images/kids-landing-page3.png');
+    background-image: url('../../images/kids-landing-page1.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     object-fit: cover;
+}*/
+
+/*.landing-page {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background-image: url('../../images/kids-landing-page1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
 }
+
+.landing-page::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+}
+
+.landing-page > * {
+    position: relative;
+    z-index: 2;
+}*/
 
 /* Section 2*/
 .therapy-section {
@@ -945,6 +972,7 @@ nav.scrolled {
         color: white;
         padding: 20px 60px;
         width: 80%;
+        z-index: 2;
     }
 
     .hero-text h1 {
@@ -953,6 +981,7 @@ nav.scrolled {
         font-size: 19px;
         font-weight: 600;
         margin: 0;
+        z-index: 2;
     }
 
     .hero-text h2 {
@@ -962,6 +991,7 @@ nav.scrolled {
         /*line-height: 50px;*/
         /*text-align: left;*/
         margin: 0;
+        z-index: 2;
     }
 
     .hero-text p {
@@ -972,6 +1002,7 @@ nav.scrolled {
         text-transform: capitalize;
         /*text-align: left;*/
         margin: 10px 0 0;
+        z-index: 2;
     }
 
 }
@@ -993,6 +1024,7 @@ nav.scrolled {
         color: white;
         padding: 20px 150px;
         width: 60%;
+        z-index: 2;
     }
 
     .hero-text h1 {
@@ -1001,6 +1033,7 @@ nav.scrolled {
         /*font-size: 50px;*/
         font-weight: 600;
         margin: 0;
+        z-index: 2;
     }
 
     .hero-text h2 {
@@ -1010,6 +1043,7 @@ nav.scrolled {
         /*line-height: 50px;*/
         /*text-align: left;*/
         margin: 0;
+        z-index: 2;
     }
 
     .hero-text p {
@@ -1020,6 +1054,7 @@ nav.scrolled {
         text-transform: capitalize;
         /*text-align: left;*/
         margin: 10px 0 0;
+        z-index: 2;
     }
 
 }
@@ -1261,14 +1296,12 @@ nav.scrolled {
 .gender-group {
     /*margin: -15px 0px;*/
     color: #1F1F1F;
-    display: flex;
 }
 
-.gender-group label {
-    /*margin-right: 10px;*/
+/*.gender-group label {
     font-size: 16px;
     padding-top: 10px;
-}
+}*/
 
 
 @media (max-width: 600px) {
@@ -1403,11 +1436,11 @@ nav.scrolled {
 .button-container {
     display: flex;
     justify-content: center;
-    /* margin-top: 50px;*/
+    margin-top: 30px;
 }
 
 .next-btn,
-.done-btn {
+.prv-btn{
     width: 25%;
     padding: 13px;
     background-color: #0F4140;
@@ -1421,8 +1454,24 @@ nav.scrolled {
 
 
 .next-btn:hover,
-.done-btn:hover {
+.prv-btn:hover {
     background-color: #053930;
+}
+
+.done-btn {
+    width: 25%;
+    padding: 13px;
+    background-color: #D67E0D;
+    color: white;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.done-btn:hover {
+    background-color: #da9030;
 }
 
 .form-navigation {
@@ -1482,12 +1531,13 @@ nav.scrolled {
     z-index: 1;
 }
 
-.radio-container {
+.form-group .radio-container {
     display: flex;
-    /*gap: 15px;*/
+    flex-wrap: wrap;
+    align-items: center;
 }
 
-.radio-option {
+.form-group .radio-option {
     position: relative;
     cursor: pointer;
     padding: 10px;
@@ -1495,30 +1545,30 @@ nav.scrolled {
     align-items: center;
 }
 
-.radio-option input {
+.form-group .radio-option input {
     display: none;
 }
 
-.radio-option label {
+.form-group .radio-option label {
     font-size: 14px;
-    padding: 0px;
+    padding: 0;
 }
 
-.radio-option span {
+.form-group .radio-option span {
     display: inline-block;
     width: 20px;
     height: 20px;
     border: 2px solid #1F1F1F;
     border-radius: 50%;
-    margin: 0px 10px;
+    margin: 0 10px;
     position: relative;
 }
 
-.radio-option input:checked+span {
+.form-group .radio-option input:checked + span {
     border-color: #1F1F1F;
 }
 
-.radio-option input:checked+span::after {
+.form-group .radio-option input:checked + span::after {
     content: '';
     position: absolute;
     top: 2px;
@@ -1586,9 +1636,9 @@ input[type="radio"] {
     margin-left: 10px;
 }
 
-.done-btn:hover {
+/*.done-btn:hover {
     background-color: #084C43;
-}
+}*/
 
 .link {
     color: #86C9AE;

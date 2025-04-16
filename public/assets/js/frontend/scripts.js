@@ -54,19 +54,71 @@ document.addEventListener('click', (event) => {
     }
 });
 
+function showPreviousStep() {
+    const currentStep = document.querySelector('.form-step.active');
+    const prevStep = currentStep.previousElementSibling;
+    const stepIndicators = document.querySelectorAll('.step-indicator span');
+
+    if (prevStep && prevStep.classList.contains('form-step')) {
+        currentStep.classList.remove('active');
+        prevStep.classList.add('active');
+    }
+
+    stepIndicators.forEach((step, index) => {
+        if (prevStep.classList.contains('personal-info')) {
+            step.classList.remove('active-step');
+            stepIndicators[0].classList.add('active-step');
+        }
+    });
+}
+
+function validatePersonalInfoStep() {
+    const step = document.querySelector('.form-step.personal-info');
+    const requiredFields = step.querySelectorAll('input[required], select[required]');
+
+    let isValid = true;
+
+    requiredFields.forEach(field => {
+        if (!field.value.trim()) {
+            field.classList.add('is-invalid');
+            isValid = false;
+        } else {
+            field.classList.remove('is-invalid');
+        }
+    });
+
+    const password = document.getElementById('new_pass');
+    const confirmPassword = document.getElementById('confirm_pass');
+    const feedback = confirmPassword.nextElementSibling;
+
+    if (password.value !== confirmPassword.value) {
+        confirmPassword.classList.add('is-invalid');
+        if (feedback) feedback.style.display = 'block';
+        isValid = false;
+    } else {
+        confirmPassword.classList.remove('is-invalid');
+        if (feedback) feedback.style.display = 'none';
+    }
+
+    return isValid;
+}
+
+function validateAndGoToNext() {
+    if (validatePersonalInfoStep()) {
+        showNextStep();
+    }
+}
+
 function showNextStep() {
-    // Get the current active step and the next step
     const currentStep = document.querySelector('.form-step.active');
     const nextStep = currentStep.nextElementSibling;
     const stepIndicators = document.querySelectorAll('.step-indicator span');
 
-    // If there is a next step, toggle active classes
     if (nextStep && nextStep.classList.contains('form-step')) {
         currentStep.classList.remove('active');
         nextStep.classList.add('active');
     }
 
-    // Update step indicator
     stepIndicators.forEach((step, index) => {
         if (nextStep.classList.contains('medical-history')) {
             step.classList.remove('active-step');

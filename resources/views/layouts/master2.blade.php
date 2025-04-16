@@ -222,45 +222,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const form = document.getElementById('changePasswordForm');
-            if (form) {
-                form.addEventListener('submit', function (event) {
-                    const oldPassword = document.getElementById('old_pass');
-                    const newPassword = document.getElementById('new_pass');
-                    const confirmPassword = document.getElementById('confirm_pass');
-
-                    newPassword.classList.remove('is-invalid');
-                    confirmPassword.classList.remove('is-invalid');
-
-                    let isValid = true;
-
-                    if (newPassword.value !== confirmPassword.value) {
-                        confirmPassword.classList.add('is-invalid');
-                        isValid = false;
-                    }
-
-                    if (!isValid) {
-                        event.preventDefault();
-                    }
-                });
-            }
-
-            const selectEl = document.getElementById('therapeutic_areas_select');
-            const inputWrapper = document.getElementById('medication_input_wrapper');
-
-            if (selectEl && inputWrapper) {
-                selectEl.addEventListener('change', function () {
-                    const selectedValue = this.value;
-
-                    if (selectedValue === '2') {
-                        inputWrapper.style.display = 'block';
-                    } else {
-                        inputWrapper.style.display = 'none';
-                    }
-                });
-            }
-        });
 
         $(document).ready(function () {
             $('.diseases-select-backend').select2({
