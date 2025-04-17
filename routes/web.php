@@ -61,7 +61,7 @@ Route::group(
         ], function () {
 
             Route::middleware(['auth:web'])->group(function () {
-
+ 
                 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
                 Route::get('change-password', [UserController::class, 'changePassword'])->name('changePassword');

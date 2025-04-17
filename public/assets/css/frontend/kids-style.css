@@ -1170,6 +1170,72 @@ nav.scrolled {
 }
 
 /* Register page */
+.content-container {
+    position: relative;
+    z-index: 1;
+}
+
+.background-style{
+    min-height: 80vh;
+    background-image: url('../../images/kids-landing-page2.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.custom-content-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+#roleModal {
+    z-index: 2;
+    position: relative;
+}
+
+.custom-modal-width {
+    max-width: 500px;
+    margin: auto;
+}
+
+.custom-modal-content {
+    padding: 2rem;
+    border-radius: 12px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn-patient {
+    background-color: #0F4140 !important;
+    color: white !important;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-doctor {
+    background-color: #D67E0D !important;
+    color: white !important;
+    border: none;
+    border-radius: 9px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.btn-doctor:hover {
+    background-color: #da9030 !important;
+}
+
+.btn-patient:hover {
+    background-color: #053930 !important;
+}
+
 .register-section {
     font-family: 'Roboto', sans-serif;
     background-color: rgba(224, 224, 224, 0.29);
