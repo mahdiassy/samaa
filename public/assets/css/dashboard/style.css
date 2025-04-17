@@ -241,10 +241,10 @@ body {
     display: none;
 }
 
-.sidebar.open .menu-items li img {
+/*.sidebar.open .menu-items li img {
     width: 30px;
     height: 30px;
-}
+}*/
 
 .sidebar.open .menu-items li span {
     display: inline-block;

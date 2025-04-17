@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             NervousSeeder::class,
             SymptomSeeder::class,
             PermissionsSeeder::class,
+            TherapySeeder::class,
         ]);
     }
 }
