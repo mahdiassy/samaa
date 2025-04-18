@@ -99,7 +99,7 @@
                             alt="Profile"><span>{{ __('site.About Us') }}</span></a></li>
                 @role('Doctor')
                     <li title="{{ __('site.Patients Booking') }}"><a href="{{ route('doctors.booking.index') }}"><img
-                                src="{{ asset('assets/images/icons/calendar.svg') }}"
+                                src="{{ asset('assets/images/icons/Appointment.svg') }}"
                                 alt="Calendar"><span>{{ __('site.Patients Booking') }}</span></a></li>
                     <li title="{{ __('site.Schedule') }}"><a href="{{ route('doctors.calendar') }}"><img
                                 src="{{ asset('assets/images/icons/calendar.svg') }}"
@@ -107,7 +107,7 @@
                 @endrole
                 @role('Patient')
                     <li title="{{ __('site.My Bookings') }}"><a href="{{ route('patients.booking.index') }}"><img
-                                src="{{ asset('assets/images/icons/calendar.svg') }}"
+                                src="{{ asset('assets/images/icons/Appointment.svg') }}"
                                 alt="Calendar"><span>{{ __('site.My Bookings') }}</span></a></li>
                 @endrole
                 @role('Admin|Doctor')
@@ -117,7 +117,7 @@
                 @endrole
                 @role('Admin|Doctor|Patient')
                     <li title="{{ __('site.Doctor list') }}"><a href="{{ route('doctor.index') }}"><img
-                        src="{{ asset('assets/images/icons/profile.svg') }}"
+                        src="{{ asset('assets/images/icons/Medical history.svg') }}"
                         alt="Profile"><span>{{ __('site.Doctor list') }}</span></a></li>
                     <li title="{{ __('site.Therapy') }}"><a href="{{ route('therapy.index') }}"><img
                                 src="{{ asset('assets/images/icons/therapy.svg') }}"
@@ -131,7 +131,7 @@
                             alt="Phone"><span>{{ __('site.Contact Us') }}</span></a></li>
 
                 <li title="{{ __('site.change password') }}"><a href="{{ route('changePassword') }}"><img
-                    src="{{ asset('assets/images/icons/profile.svg') }}"
+                    src="{{ asset('assets/images/icons/Reset password.svg') }}"
                     alt="Phone"><span>{{ __('site.change password') }}</span></a></li>
                 <li title="{{ __('site.Logout') }}">
                     @if (Auth::check())

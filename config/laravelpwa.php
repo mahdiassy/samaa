@@ -12,7 +12,7 @@ return [
         'orientation'=> 'any',
         'status_bar'=> 'black',
         'icons' => [
-            /*'72x72' => [
+            '72x72' => [
                 'path' => '/images/icons/icon-72x72.png',
                 'purpose' => 'any'
             ],
@@ -39,7 +39,7 @@ return [
             '384x384' => [
                 'path' => '/images/icons/icon-384x384.png',
                 'purpose' => 'any'
-            ],*/
+            ],
             '512x512' => [
                 'path' => '/images/icons/icon-512x512.png',
                 'purpose' => 'any'
