@@ -13,6 +13,7 @@ return [
     'Dashboard' => 'Dashboard',
     'Logout' => 'Logout',
     'Login' => 'Login',
+    'Login/Sign-up' => 'Login/Sign-up',
     'Register' => 'Register',
     'Therapy' => 'Therapy',
     'Therapeutic Area' => 'Therapeutic Area',
@@ -23,8 +24,10 @@ return [
     // Login Page
     'Welcome to SAMAA' => 'Welcome to SAMAA',
     'Enter Your Password' => 'Enter Your Password',
+    'Don’t have an account?' => 'Don’t have an account?',
 
     // Register
+    'Already have an account?' => 'Already have an account?',
     'Personal Information' => 'Personal Information',
     'Full Name' => 'Full Name',
     'First Name' => 'First Name',
@@ -99,15 +102,10 @@ return [
 
     'Music Therapy' => 'Music Therapy',
 
-    'Music Therapy (description)' => 'Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.',
+    'Music Therapy (description)' => 'SAMAA combines the therapeutic power of music with artificial intelligence to deliver personalized music therapy experiences tailored to support emotional and physical healing. Validated by the American European Music Therapy Association, SAMAA offers a scientifically grounded approach to enhancing mental and physical well-being.',
     'What is Music Therapy?' => 'What is Music Therapy?',
 
-    'What is Music Therapy (answer)' => 'Music therapy involves harnessing music elements such as lyrics, melody, and rhythm to facilitate
-    recovery from various conditions. Music therapists are responsible for organizing activities and
-    selecting songs for therapeutic purposes based on the rehabilitation goals. Physical aspects of music
-    therapy may involve movement in response to the music, playing musical instruments, or singing. On the
-    other hand, using music therapy for emotional purposes entails listening to music and engaging in
-    activities that promote emotional well-being.',
+    'What is Music Therapy (answer)' => 'Children with ASD often show reduced connectivity in sensorimotor brain networks. Sound therapy has shown promise in addressing these neural challenges. Listening to music can create a calming, tranquil state, helping individuals transition from distress to receptivity.',
 
     'Music Selection' => 'Music Selection',
 
@@ -164,11 +162,15 @@ return [
 
     'Contact' => 'Contact',
 
-    'Get In Touch With Us' => 'Get In Touch With Us',
+    'Get In Touch' => 'Get In Touch',
 
-    'Lorem Ipsum is simply dummy text of the printin typesetting dummy text ever when an unknown printer took a galley of type and scrambled it to make a type specimen book.' => 'Lorem Ipsum is simply dummy text of the printin typesetting dummy text ever when an unknown printer took a galley of type and scrambled it to make a type specimen book.',
+    'We’re Here to Help You Heal' => 'We’re Here to Help You Heal',
+
+    'contact-description' => 'Whether you’re a parent exploring therapy options, a therapist interested in collaboration, or a healthcare institution seeking partnerships, the SAMAA team is ready to assist.',
 
     'Message' => 'Message',
+
+    'Let’s Start Your Journey' => 'Let’s Start Your Journey',
 
     'Enter Your Name' => 'Enter Your Name',
 
@@ -176,9 +178,29 @@ return [
 
     'Email Address' => 'Email Address',
 
+    'Subject' => 'Subject',
+
+    'Choose Subject' => 'Choose Subject',
+
+    'general_inquiry' => 'General Inquiry',
+
+    'therapist_registration' => 'Therapist Registration',
+
+    'institutional_partnership' => 'Institutional Partnership',
+
+    'technical_support' => 'Technical Support',
+
     'Your Message' => 'Your Message',
 
+    'How can we support your healing journey?' => 'How can we support your healing journey?',
+
     'Submit' => 'Submit',
+
+    'Follow SAMAA' => 'Follow SAMAA:',
+
+    'Join Our Newsletter' => 'Join Our Newsletter:',
+
+    'Get free sound therapy tips and updates' => 'Get free sound therapy tips and updates',
 
     'Facebook link' => 'Facebook link',
 
@@ -330,4 +352,10 @@ return [
     'INITIALIZING MUSIC PLAYER' => 'INITIALIZING MUSIC PLAYER',
     'All the songs' => 'All the songs',
     'Search or Create Album' => 'Search or Create Album',
+
+    // Blog
+    'User not found' =>'User not found',
+    'Blog created successfully' =>'Blog created successfully',
+    'Blog updated successfully' =>'Blog updated successfully',
+    'Blog deleted successfully' =>'Blog deleted successfully',
 ];

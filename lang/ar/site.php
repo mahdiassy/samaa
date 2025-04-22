@@ -14,6 +14,7 @@ return [
     'Logout' => 'تسجيل الخروج',
     'Login' => 'تسجيل الدخول',
     'Register' => 'انشاء حساب',
+    'Login/Sign-up' => 'تسجيل الدخول/التسجيل',
     'Therapy' => 'العلاج',
     'Therapeutic Area' => 'المجال العلاجي',
     'Library' => 'المكتبة',
@@ -27,7 +28,10 @@ return [
 
     'Enter Your Password' => 'ادخل كلمة المرور',
 
+    'Don’t have an account?' => 'ليس لديك حساب؟',
+
     // Register
+    'Already have an account?' => 'هل لديك حساب بالفعل؟',
     'Personal Information' => 'المعلومات الشخصية',
     'Full Name' => 'الاسم الكامل',
     'First Name' => 'الاسم',
@@ -100,10 +104,10 @@ return [
 
     'Music Therapy' => 'العلاج بالموسيقى',
 
-    'Music Therapy (description)' => 'العلاج بالموسيقى هو تخصص يُستخدم على نطاق واسع في المجال الطبي كأداة علاجية. يمكن أن يساهم في إعادة التأهيل البدني والعاطفي للأفراد، كما يساعد في تطوير مهارات التواصل وبناء علاقات إيجابية مع الآخرين',
+    'Music Therapy (description)' => 'تجمع SAMAA بين القوة العلاجية للموسيقى والذكاء الاصطناعي لتقديم تجارب علاجية موسيقية شخصية مصممة خصيصًا لدعم الشفاء العاطفي والجسدي. SAMAA، المعتمدة من الجمعية الأمريكية الأوروبية للعلاج بالموسيقى، تقدم نهجًا قائمًا على أسس علمية لتعزيز الصحة العقلية والجسدية.',
     'What is Music Therapy?' => 'ما هو العلاج بالموسيقى؟',
 
-    'What is Music Therapy (answer)' => 'يتضمن العلاج بالموسيقى استخدام عناصر الموسيقى مثل الكلمات، اللحن، والإيقاع لتسهيل التعافي من حالات مختلفة. يتحمل معالجو الموسيقى مسؤولية تنظيم الأنشطة واختيار الأغاني لأغراض علاجية بناءً على أهداف إعادة التأهيل. من الجوانب الملموسة للعلاج بالموسيقى التفاعل الحركي، العزف على الآلات الموسيقية، الغناء. من ناحية أخرى، العلاج بالموسيقى يستخدم لأغراض عاطفية من خلال دمج الموسيقى بالأنشطة الترفيهية.',
+    'What is Music Therapy (answer)' => 'غالبًا ما يُظهر الأطفال المصابون باضطراب طيف التوحد ضعفًا في الاتصال بين شبكات الدماغ الحسية والحركية. وقد أظهر العلاج الصوتي نتائج واعدة في معالجة هذه التحديات العصبية. فالاستماع إلى الموسيقى يُهيئ حالة من الهدوء والسكينة، مما يُساعد الأفراد على الانتقال من الضيق إلى التقبل.',
 
     'Music Selection' => 'اختيار الموسيقى',
 
@@ -160,11 +164,15 @@ return [
 
     'Contact' => 'تواصل',
 
-    'Get In Touch With Us' => 'تواصل معنا',
+    'Get In Touch' => 'تواصل معنا',
 
-    'Lorem Ipsum is simply dummy text of the printin typesetting dummy text ever when an unknown printer took a galley of type and scrambled it to make a type specimen book.' => '',
+    'We’re Here to Help You Heal' => 'نحن هنا لمساعدتك على الشفاء',
+
+    'contact-description' => 'سواء كنت أحد الوالدين الذين يستكشفون خيارات العلاج، أو معالجًا مهتمًا بالتعاون، أو مؤسسة رعاية صحية تبحث عن شراكات، فإن فريق SAMAA جاهز للمساعدة.',
 
     'Message' => 'أرسل لنا',
+
+    'Let’s Start Your Journey' => 'لنبدأ رحلتك',
 
     'Enter Your Name' => 'أدخل اسمك',
 
@@ -172,9 +180,29 @@ return [
 
     'Email Address' => 'البريد الاكتروني',
 
+    'Subject' => 'الموضوع',
+
+    'Choose Subject' => 'اختر موضوع',
+
+    'general_inquiry' => 'استفسار عام',
+
+    'therapist_registration' => 'تسجيل المعالج',
+
+    'institutional_partnership' => 'شراكة مؤسسية',
+
+    'technical_support' => 'الدعم الفني',
+
     'Your Message' => 'الرسالة',
 
+    'How can we support your healing journey?' => 'كيف يمكننا دعم رحلة الشفاء الخاصة بك؟',
+
     'Submit' => 'أرسل',
+
+    'Follow SAMAA' => 'متابعة سمع:',
+
+    'Join Our Newsletter' => 'انضم إلى نشرتنا الإخبارية:',
+
+    'Get free sound therapy tips and updates' => 'احصل على نصائح وتحديثات مجانية حول العلاج الصوتي',
 
     'Facebook link' => 'رابط الفيسبوك',
 
@@ -324,4 +352,10 @@ return [
     'INITIALIZING MUSIC PLAYER' => 'تهيئة مشغل الموسيقى',
     'All the songs' => 'جميع الأغاني',
     'Search or Create Album' => 'بحث أو إنشاء الألبوم',
+
+    // Blog
+    'User not found' => 'لم يتم العثور على المستخدم',
+    'Blog created successfully' => 'تم إنشاء المدونة بنجاح',
+    'Blog updated successfully' => 'تم تحديث المدونة بنجاح',
+    'Blog deleted successfully' => 'تم حذف المدونة بنجاح',
 ];

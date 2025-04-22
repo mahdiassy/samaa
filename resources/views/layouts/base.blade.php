@@ -76,8 +76,8 @@
                     @csrf
                 </form>
             @else
-                <a href="{{ route('login') }}">{{ __('site.Login') }}</a>
-                <a href="{{ route('register') }}">{{ __('site.Register') }}</a>
+                <a href="{{ route('login') }}">{{ __('site.Login/Sign-up') }}</a>
+                <!--<a href="{{ route('register') }}">{{ __('site.Register') }}</a>-->
             @endif
 
             <div
@@ -124,7 +124,7 @@
                             {{ App::getLocale() == $localeCode ? 'selected' : '' }}>
                             <img src="https://cdn.jsdelivr.net/npm/svg-country-flags@1.2.10/svg/{{ $localeCode == 'ar' ? 'sa' : ($localeCode == 'fr' ? 'fr' : 'gb') }}.svg"
                                 width="20px" alt="{{ $properties['name'] }}" />
-                            {{ $properties['name'] }}
+                                {{ strtoupper($localeCode) }}
                         </option>
                     @endforeach
                 </select>
@@ -176,8 +176,8 @@
                             @csrf
                         </form>
                     @else
-                        <a href="{{ route('login') }}"> {{ __('site.Login') }}</a>
-                        <a href="{{ route('register') }}"> {{ __('site.Register') }}</a>
+                        <a href="{{ route('login') }}"> {{ __('site.Login/Sign-up') }}</a>
+                        <!--<a href="{{ route('register') }}"> {{ __('site.Register') }}</a>-->
                     @endif
 
                 </div>
@@ -196,13 +196,13 @@
                 <a href="#" class="help-btn"> {{ __('site.Help Center') }}</a>
                 <div class="social-icons">
                     <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a target="__blank" href="https://www.facebook.com/profile.php?id=61573920330522"><i class="fab fa-facebook-f"></i></a>
+                    <a target="__blank" href="https://www.linkedin.com/showcase/samaa-dnci/about/?viewAsMember=true"><i class="fab fa fa-linkedin"></i></a>
                 </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p><i class="fas fa-envelope"></i> Samaa@Gmail.Com</p>
+            <p><i class="fas fa-envelope"></i> <a href="mailto:Samaa@gmail.com">Samaa@gmail.com </a></p>
         </div>
     </footer>
     <script>

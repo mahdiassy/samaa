@@ -21,9 +21,12 @@
                         <input type="email" name="email" placeholder=" {{ __('site.Email Address') }}*" required>
                     </div>
                     <div class="form-group">
-                        <input type="password" name="password" placeholder=" {{ __('site.Enter Your Password') }}*" required>
+                        <input type="password" name="password" placeholder="{{ __('site.Enter Your Password') }}*" required>
                     </div>
-                    <button type="submit"> {{ __('site.Submit') }}</button>
+                    <div class="btn-register">
+                        <button type="submit"> {{ __('site.Submit') }} </button>
+                        <a href="{{ route('register') }}">{{__('site.Don’t have an account?')}}</a>
+                    </div>
                 </form>
             </div>
         </div>

@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             SymptomSeeder::class,
             PermissionsSeeder::class,
             TherapySeeder::class,
+            BlogSeeder::class,
         ]);
     }
 }

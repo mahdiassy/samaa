@@ -39,7 +39,7 @@
                             <th>#</th>
                             <th>{{ __('site.User Name') }}</th>
                             <th>{{ __('site.Feedback') }}</th>
-                            <th>{{ __('site.Improvement') }}</th>
+                            <th>{{ __('site.Subject') }}</th>
                             <th>{{ __('site.Date') }}</th>
                             <th>{{ __('site.Actions') }}</th>
                         </tr>
@@ -50,7 +50,7 @@
                                 <td>{{ $feedback->id }}</td>
                                 <td>{{ $feedback->user->name }}</td>
                                 <td>{{ $feedback->feedback }}</td>
-                                <td>{{ $feedback->improvement }}</td>
+                                <td>{{ __($feedback->subject) }}</td>
                                 <td class="custom-date">{{ \Carbon\Carbon::parse($feedback->date)->format('d-m-Y') }}</td>
                                 <td>
                                     <a href="{{ route('feedback.show', $feedback) }}" class="btn view-btn">{{ __('site.View') }}</a>

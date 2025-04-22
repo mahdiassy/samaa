@@ -171,7 +171,7 @@ nav.scrolled {
 .landing-page {
     width: 100%;
     height: 100vh;
-    background-image: url('../../images/kids-landing-page3.jpg');
+    background-image: url('../../images/kids-landing-page7.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -211,6 +211,8 @@ nav.scrolled {
     align-items: center;
     /*gap: 50px;*/
     background-color: #f5f5f5;
+    justify-content: space-between; /* distributes items across the row */
+    align-items: center;
 }
 
 /*.therapy-section img {
@@ -230,7 +232,7 @@ nav.scrolled {
 
 .therapy-content {
     max-width: 50%;
-    padding: 0px 60px 0px 120px;
+    padding: 0px 60px 0px 60px;
 }
 
 .therapy-content h2 {
@@ -247,6 +249,7 @@ nav.scrolled {
 .therapy-section2 {
     display: flex;
     /*gap: 50px;*/
+    align-items:center;
     background-color: #f5f5f5;
 }
 
@@ -267,7 +270,7 @@ nav.scrolled {
 
 .therapy-content2 {
     max-width: 50%;
-    padding: 0px 60px 0px 120px;
+    padding: 0px 60px 0px 60px;
 }
 
 .therapy-content2 h2 {
@@ -756,6 +759,15 @@ nav.scrolled {
     margin-right: 10px;
 }
 
+.footer-bottom a{
+    text-decoration: none;
+    color: black;
+}
+
+.footer-bottom a:hover{
+    opacity: 0.6;
+}
+
 .social-icons {
     display: flex;
     gap: 18px;
@@ -861,7 +873,7 @@ nav.scrolled {
 
     .therapy-content2 {
         order: 1;
-        padding: 0px !important;
+        /*padding: 0px !important;*/
         text-align: center !important;
         max-width: 80% !important;
     }
@@ -1167,6 +1179,33 @@ nav.scrolled {
     font-weight: 500;
     margin: 0;
     color: #D67E0D;
+}
+
+.btn-login a{
+    text-decoration: none;
+    color: #D67E0D;
+    font-size: 14px;
+}
+
+.btn-login a:hover {
+    color: #fd9103;
+}
+
+.btn-register {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.btn-register a {
+    text-decoration: none;
+    color: #D67E0D;
+    font-size: 14px;
+}
+
+.btn-register a:hover {
+    color: #fd9103;
 }
 
 /* Register page */
@@ -1799,7 +1838,7 @@ input[type="radio"] {
 .contact-container {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: anchor-center ;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
@@ -1821,6 +1860,36 @@ input[type="radio"] {
     line-height: 37.9px;
     color: #D67E0D;
     margin-bottom: 10px;
+}
+
+.social-links h4 {
+    font-family: 'Sue Ellen Francisco', cursive;
+    font-size: 15px;
+    font-weight: 400;
+    color: #F1EEEC;
+    margin-bottom: 10px;
+}
+
+.social-links p{
+    font-family: 'Sue Ellen Francisco', cursive !important;
+    font-size: 13px !important;
+    color: #f3ccb2 !important;
+    margin-bottom: 10px !important;
+}
+
+.social-links p a {
+    text-transform: uppercase;
+    color: #D67E0D;
+}
+
+.social-links p a:hover {
+    color: #d19546;
+}
+
+.contact-p{
+    font-size: 13px !important;
+    color: #524f4e !important;
+    margin-bottom: 0px !important;
 }
 
 .contact-info h2 {
@@ -1847,7 +1916,7 @@ input[type="radio"] {
     justify-content: center;
     align-items: center;
     /*background: #F1EEEC;*/
-    background: black;
+    background: #F1EEEC;
     border-radius: 50%;
 }
 
@@ -1856,13 +1925,18 @@ input[type="radio"] {
     height: auto;
 }
 
-.contact-item p {
+.contact-item p a {
     font-family: 'Work Sans', sans-serif;
     font-size: 15px;
     line-height: 24.44px;
     color: #FFFFFF;
     margin: 0;
     padding: 15px 0px;
+    text-decoration: none;
+}
+
+.contact-item p a:hover{
+    color: #f3ccb2;
 }
 
 .contact-item p strong {
@@ -1905,7 +1979,7 @@ input[type="radio"] {
     margin-bottom: 20px;
 }
 
-.contact-form input {
+.contact-form input, .contact-form select {
     width: 100%;
     padding: 15px;
     margin-bottom: 10px;
@@ -1921,7 +1995,7 @@ input[type="radio"] {
     border-radius: 0px;
     border: 1px solid #ECF1F0;
     background-color: #ECF1F0;
-    height: 190px;
+    height: 300px;
 }
 
 .contact-form button {
@@ -1964,7 +2038,11 @@ input[type="radio"] {
         padding: 5%;
     }
 
-    .contact-item p {
+    .btn-register {
+        gap: 100px !important;
+    }
+
+    .contact-item p a {
         font-size: 16px;
     }
 
@@ -2017,7 +2095,12 @@ input[type="radio"] {
         font-size: 28px;
     }
 
-    .contact-item p {
+    .btn-register {
+        flex-direction: column !important;
+        gap: 20px !important;
+    }
+
+    .contact-item p a{
         font-size: 14px;
     }
 
@@ -2470,6 +2553,15 @@ input[type="radio"] {
 
     .social-media {
         padding-left: 0% !important;
+    }
+}
+
+@media (min-width: 800px) and (max-width: 997px),
+(min-width: 480px) and (max-width: 525px),
+(min-width: 769px) and (max-width: 799px){
+    .btn-register {
+        flex-direction: column !important;
+        gap: 20px !important;
     }
 }
 

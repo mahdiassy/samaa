@@ -5,18 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Feedback extends Model
+class Blog extends Model
 {
     use HasFactory;
 
-    protected $table = 'feedbacks';
-
     protected $fillable = [
-        'date',
-        'feedback',
-        'subject',
-        'improvement',
-        'note',
+        'title',
+        'description',
+        'image',
         'user_id',
     ];
 

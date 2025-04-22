@@ -55,6 +55,7 @@ class HomeController extends Controller
             $feedback->user_id = $user->id;
             $feedback->feedback = null;
             $feedback->date = now();
+            $feedback->subject = $request->subject;
             $feedback->improvement = null;
             $feedback->note = $request->message;
             $feedback->save();
@@ -73,6 +74,7 @@ class HomeController extends Controller
             $feedback->user_id = Auth::user()->id;
             $feedback->feedback = null;
             $feedback->date = now();
+            $feedback->subject = $request->subject;
             $feedback->improvement = null;
             $feedback->note = $request->message;
             $feedback->save();

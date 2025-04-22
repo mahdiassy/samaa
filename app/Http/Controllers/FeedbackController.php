@@ -44,6 +44,7 @@ class FeedbackController extends Controller
         $feedback->user_id = Auth::user()->id;
         $feedback->feedback = $request->feedback;
         $feedback->date = $request->date;
+        $feedback->subject = $request->subject;
         $feedback->improvement = $request->improvement;
         $feedback->note = $request->note;
 

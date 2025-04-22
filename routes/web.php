@@ -4,6 +4,7 @@ use App\Http\Controllers\TherapyController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\HomeController;
@@ -56,12 +57,15 @@ Route::group(
         Route::get('register/doctor', [AuthController::class, 'showRegisterDoctor'])->name('showRegisterDoctor');
         Route::post('registerDoctor', [AuthController::class, 'registerDoctor'])->name('registerDoctor');
 
+        Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
+        Route::get('blog/{blog}', [BlogController::class, 'show'])->name('blog.show');
+
         Route::group([
             'prefix' => 'control',
         ], function () {
 
             Route::middleware(['auth:web'])->group(function () {
- 
+
                 Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
                 Route::get('change-password', [UserController::class, 'changePassword'])->name('changePassword');
@@ -81,12 +85,18 @@ Route::group(
                 Route::post('therapy/admin/store', [TherapyController::class, 'admin_therapy_store'])->middleware('role:Admin')->name('admin_therapy_store');
                 Route::get('/therapies/playlist', [TherapyController::class, 'playlist'])->name('playlist')->middleware('role:Admin|Doctor|Patient');
 
-                // Feedback
                 Route::get('/feedback/create', [FeedbackController::class, 'create'])->name('feedback')->middleware('role:Patient|Doctor');
                 Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store')->middleware('role:Patient|Doctor');
                 Route::get('/feedback/index', [FeedbackController::class, 'index'])->name('feedback-list')->middleware('role:Admin|Patient|Doctor');
                 Route::get('/feedback/show/{feedback}', [FeedbackController::class, 'show'])->name('feedback.show')->middleware('role:Admin|Patient|Doctor');
                 Route::delete('/feedback/delete/{feedback}', [FeedbackController::class, 'destroy'])->name('feedback.destroy')->middleware('role:Admin');
+
+                Route::get('blogs/list', [BlogController::class, 'list'])->name('blog.list');
+                Route::get('blogs/create', [BlogController::class, 'create'])->name('blog.create');
+                Route::post('blogs/store', [BlogController::class, 'store'])->name('blog.store');
+                Route::get('blogs/edit/{blog}', [BlogController::class, 'edit'])->name('blog.edit');
+                Route::post('blogs/update/{blog}', [BlogController::class, 'update'])->name('blog.update');
+                Route::delete('blogs/{blog}', [BlogController::class, 'destroy'])->name('blog.destroy');
             });
 
             // Availabilities
@@ -101,7 +111,6 @@ Route::group(
                 Route::post('/changeStatus/{id}/{status}', [DoctorController::class, 'doctorChangeStatus'])->name('doctorChangeStatus');
             });
 
-            // Booking
             Route::group([
                 'prefix' => 'patients',
                 'middleware' => ['auth:web', 'role:Patient']

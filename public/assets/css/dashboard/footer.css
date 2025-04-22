@@ -105,6 +105,15 @@
     margin-right: 10px;
 }
 
+.footer-bottom a{
+    text-decoration: none;
+    color: white;
+}
+
+.footer-bottom a:hover{
+    opacity: 0.6;
+}
+
 .social-icons {
     display: flex;
     gap: 18px;

@@ -41,6 +41,10 @@
                                 <input type="number" name="improvement" min="1" max="100" value="{{$feedback->improvement}}" class="styled-input" disabled />
                             </div>
                             <div class="text-info">
+                                <p>{{ __('site.Subject') }}</p>
+                                <input type="text" name="subject" value="{{ __($feedback->subject) }}" class="styled-input" disabled />
+                            </div>
+                            <div class="text-info">
                                 <p>{{ __('site.Note') }}</p>
                                 <textarea name="note" value="{{$feedback->note}}" class="styled-input textarea-input" disabled >{{$feedback->note}}</textarea>
                             </div>

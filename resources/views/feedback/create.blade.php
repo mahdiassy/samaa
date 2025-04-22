@@ -44,6 +44,14 @@
                                 <input type="number" name="improvement" min="1" max="100" value="" class="styled-input"/>
                             </div>
                             <div class="text-info">
+                                <p style="margin-bottom: -20px">{{ __('site.Subject') }}</p>
+                                <select name="subject" class="styled-input">
+                                    @foreach (\App\Enums\SubjectsEnum::all() as $key)
+                                        <option value="{{ $key }}">{{ __($key) }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="text-info">
                                 <p>{{ __('site.Note') }}</p>
                                 <textarea name="note" required class="styled-input textarea-input"></textarea>
                             </div>

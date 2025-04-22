@@ -13,6 +13,7 @@ return [
     'Dashboard' => 'Tableau de bord',
     'Logout' => 'Déconnexion',
     'Login' => 'Connexion',
+    'Login/Sign-up' => 'Connexion/Inscription',
     'Register' => 'S’inscrire',
     'Therapy' => 'Thérapie',
     'Therapeutic Area' => 'Espace Thérapeutique',
@@ -23,8 +24,10 @@ return [
     // Login Page
     'Welcome to SAMAA' => 'Bienvenue chez SAMAA',
     'Enter Your Password' => 'Entrez votre mot de passe',
+    'Don’t have an account?' => 'Vous n’avez pas de compte ?',
 
     // Register
+    'Already have an account?' => 'Vous avez déjà un compte ?',
     'Personal Information' => 'Informations personnelles',
     'Full Name' => 'Nom complet',
     'First Name' => 'Prénom',
@@ -100,11 +103,11 @@ return [
 
     'Music Therapy' => 'Musicothérapie',
 
-    'Music Therapy (description)' => 'La musicothérapie est une discipline largement utilisée dans le domaine médical comme outil thérapeutique. Elle peut aider à la réhabilitation physique et émotionnelle des individus et favoriser le développement des compétences en communication et des relations positives avec les autres.',
+    'Music Therapy (description)' => 'SAMAA allie le pouvoir thérapeutique de la musique à l’intelligence artificielle pour offrir des expériences de musicothérapie personnalisées, adaptées à la guérison émotionnelle et physique. Validée par l’American European Music Therapy Association, SAMAA propose une approche scientifiquement fondée pour améliorer le bien-être mental et physique.',
 
     'What is Music Therapy?' => 'Qu’est-ce que la musicothérapie ?',
 
-    'What is Music Therapy (answer)' => 'La musicothérapie consiste à utiliser des éléments musicaux tels que les paroles, la mélodie et le rythme pour faciliter la guérison de diverses affections. Les musicothérapeutes sont responsables de l’organisation des activités et de la sélection des chansons à des fins thérapeutiques en fonction des objectifs de réhabilitation. Les aspects physiques de la musicothérapie peuvent inclure des mouvements en réponse à la musique, jouer d’un instrument de musique ou chanter. D’autre part, l’utilisation de la musicothérapie à des fins émotionnelles implique d’écouter de la musique et de participer à des activités favorisant le bien-être émotionnel.',
+    'What is Music Therapy (answer)' => 'Les enfants atteints de TSA présentent souvent une connectivité réduite des réseaux sensorimoteurs cérébraux. La thérapie sonore s’est révélée prometteuse pour remédier à ces difficultés neuronales. Écouter de la musique peut créer un état d’apaisement et de tranquillité, aidant les individus à passer de la détresse à la réceptivité.',
 
     'Music Selection' => 'Sélection musicale',
 
@@ -161,11 +164,15 @@ return [
 
     'Contact' => 'Contact',
 
-    'Get In Touch With Us' => 'Contactez-nous',
+    'Get In Touch' => 'Entrer en contact',
 
-    'Lorem Ipsum is simply dummy text of the printin typesetting dummy text ever when an unknown printer took a galley of type and scrambled it to make a type specimen book.' => 'Lorem Ipsum est simplement un texte factice de l’imprimerie et de la composition typographique, utilisé depuis toujours, lorsqu’un imprimeur inconnu a pris une galée de texte et l’a brouillée pour en faire un livre spécimen.',
+    'We’re Here to Help You Heal' => 'Nous sommes là pour vous aider à guérir',
+
+    'contact-description' => 'Que vous soyez un parent explorant des options thérapeutiques, un thérapeute intéressé par une collaboration ou un établissement de santé à la recherche de partenariats, l’équipe SAMAA est prête à vous aider.',
 
     'Message' => 'Message',
+
+    'Let’s Start Your Journey' => 'Commençons votre voyage',
 
     'Enter Your Name' => 'Entrez votre nom',
 
@@ -173,9 +180,29 @@ return [
 
     'Email Address' => 'Adresse e-mail',
 
+    'Subject' => 'Sujette',
+
+    'Choose Subject' => 'Choisir le sujet',
+
+    'general_inquiry' => 'Demande générale',
+
+    'therapist_registration' => 'Inscription du thérapeute',
+
+    'institutional_partnership' => 'Partenariat institutionnel',
+
+    'technical_support' => 'Support technique',
+
     'Your Message' => 'Votre message',
 
+    'How can we support your healing journey?' => 'Comment pouvons-nous soutenir votre cheminement vers la guérison ?',
+
     'Submit' => 'Soumettre',
+
+    'Follow SAMAA' => 'Suivre SAMAA:',
+
+    'Join Our Newsletter' => 'Inscrivez-vous à notre newsletter:',
+
+    'Get free sound therapy tips and updates' => 'Obtenez des conseils et des mises à jour gratuits sur la thérapie sonore',
 
     'Facebook link' => 'Lien Facebook',
 
@@ -326,4 +353,10 @@ return [
     'INITIALIZING MUSIC PLAYER' => 'INITIALISATION DU LECTEUR DE MUSIQUE',
     'All the songs' => 'Toutes les chansons',
     'Search or Create Album' => 'Rechercher ou créer un album',
+
+    // Blog
+    'User not found' => 'Utilisateur introuvable',
+    'Blog created successfully' => 'Blog créé avec succès',
+    'Blog updated successfully' => 'Blog mis à jour avec succès',
+    'Blog deleted successfully' => 'Blog supprimé avec succès',
 ];

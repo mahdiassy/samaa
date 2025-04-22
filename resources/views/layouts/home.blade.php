@@ -26,7 +26,7 @@
 
     <section class="therapy-section">
         <div class="therapy-content">
-            <h2>{{ __('site.Music Therapy') }}</h2>
+            <!--<h2>{{ __('site.Music Therapy') }}</h2>-->
             <p>
                 {{ __('site.Music Therapy (description)') }}
             </p>
@@ -39,7 +39,7 @@
         <div class="therapy-image2"></div>
         <!--<img src="{{ asset('assets/images/music-therapy2.png') }}" alt="Music Therapy">-->
         <div class="therapy-content2">
-            <h2>{{ __('site.What is Music Therapy?') }}</h2>
+            <!--<h2>{{ __('site.What is Music Therapy?') }}</h2>-->
             <p>
                 {{ __('site.What is Music Therapy (answer)') }}
             </p>

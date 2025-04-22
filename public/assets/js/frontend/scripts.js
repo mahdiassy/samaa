@@ -8,9 +8,9 @@ $(document).ready(function() {
     function formatState(state) {
         if (!state.id) { return state.text; }
         var flag;
-        if (state.element.text == "English") {
+        if (state.element.text == "EN") {
             flag = "gb";
-        } else if (state.element.text == "Arabic") {
+        } else if (state.element.text == "AR") {
             flag = "sa";
         } else {
             flag = "fr";
