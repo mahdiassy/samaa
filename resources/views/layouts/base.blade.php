@@ -58,15 +58,9 @@
             <button class="close-menu" id="closeMenu">×</button>
             <h2 class="menu-title">{{ __('site.Menu') }}</h2>
             <a href="{{ route('home') }}">{{ __('site.Home') }}</a>
+            <a href="{{ route('how-it-work') }}">{{ __('site.How It Works') }}</a>
             <a href="{{ route('about-us') }}">{{ __('site.About Us') }}</a>
-            <!--<a href="#">Library</a>
-            <a href="#">Listen to Music</a>
-            <a href="#">Patient List</a>
-            <a href="#">Feedback</a>
-            <a href="#">Schedule</a>
-            <a href="#">Therapy</a>-->
             <a href="{{ route('contact-us') }}">{{ __('site.Contact Us') }}</a>
-            <!--<a href="#">Login</a>-->
             @if (Auth::check())
                 <a href="{{ route('dashboard') }}">{{ __('site.Dashboard') }}</a>
                 <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

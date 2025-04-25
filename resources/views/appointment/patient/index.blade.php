@@ -39,7 +39,7 @@
                                 <td>{{ $patientBooking->availability->doctor->specialization }}</td>
                                 <td>{{ \Carbon\Carbon::parse($patientBooking->availability->time)->format('d-m-Y') }}</td>
 
-                                <td class="custom-date">{{ $patientBooking->status }}</td>
+                                <td class="custom-date">{{ __($patientBooking->status) }}</td>
                                 <td>
                                     @if ($patientBooking->status == \App\Enums\BookingEnum::DOCTOR_CANCEL)
                                         <a href="{{ route('patients.calendar', $patientBooking->availability->doctor) }}"

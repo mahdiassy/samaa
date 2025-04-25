@@ -128,6 +128,34 @@ return [
     'LISTEN TO MUSIC' => 'ÉCOUTEZ DE LA MUSIQUE',
 
     // About Us Page
+    'Where' => 'Là Où',
+    'Science' => 'la science',
+    'Meets' => 'Rencontre',
+    'Soul' => 'l’âme',
+    'story-description' => 'SAMAA, née de l’héritage de ClinGroup Euromed dans l’innovation en santé, est une plateforme révolutionnaire de thérapie sonore alimentée par l’IA, conçue pour transformer le bien-être mental et physique. Fondée par la Dre Nadia Cheaib — scientifique reconnue par Forbes, survivante du cancer et défenseure d’une santé éthique — SAMAA fusionne la technologie de pointe et les traditions de guérison ancestrales pour accompagner les personnes atteintes d’autisme, de TDAH, d’anxiété et de maladies chroniques.',
+    'Our' => 'Notre',
+    'Founder' => 'Fondatrice',
+    'Dr. Nadia Cheaib' => 'Dre Nadia Cheaib',
+    'Forbes Most Influential Arab Woman (2014-2018).' => 'Femme arabe la plus influente selon Forbes (2014-2018).',
+    'Pioneer in integrating AI with holistic therapies.' => 'Pionnière dans l’intégration de l’IA aux thérapies holistiques.',
+    'Music isn’t just art—it’s a language of healing' => "La musique n’est pas qu’un art — c’est un langage de guérison",
+    'Let’s' => 'Unissons-nous pour',
+    'Heal' => 'Guérir',
+    'Together' => 'Ensemble',
+    'Become a Partner' => 'Devenez Partenaire',
+    'Explore SAMAA’s Therapy' => 'Découvrez la Thérapie SAMAA',
+    'Join Our Movement' => 'Rejoignez Notre Mouvement',
+    'our' => 'notre',
+    'Mission' => 'Mission',
+    'Mission Description' => 'Nous pensons que chaque individu mérite d’avoir accès à des soins bienveillants et fondés sur des données probantes. L’IA de SAMAA adapte les séances de musicothérapie au profil émotionnel et sensoriel unique de chaque utilisateur, comblant ainsi les lacunes des soins de santé traditionnels et favorisant le bien-être général.',
+    'Trusted By' => 'Approuvé par',
+    'Dubai Autism Center' => 'Centre de l’autisme de Dubaï',
+    'American European Music Therapy Association' => 'Association américano-européenne de musicothérapie',
+    'Forbes' => 'Forbes',
+    'Hope MCF Foundation' => 'Fondation Espoir MCF',
+    'Awards' => 'Récompenses',
+    'Go Global Award 2022 (Corporate Social Responsibility)' => 'Prix ​​Go Global 2022 (Responsabilité sociale des entreprises)',
+
     'About' => 'À propos',
 
     'Therapy With' =>'Thérapie avec',
@@ -293,6 +321,10 @@ return [
     'Start Call' => 'Démarrer l’appel',
     'End Call' => 'Terminer l’appel',
     'Type your message here' => 'Tapez votre message ici...',
+    'Pending' => 'En attente',
+    'Approved' => 'Approuvée',
+    'Done' => 'Fait',
+    'Canceled By Patient' => 'Annulé par le patient',
 
     //Calendar
     'Select a time' => 'Sélectionnez une heure',
@@ -359,4 +391,19 @@ return [
     'Blog created successfully' => 'Blog créé avec succès',
     'Blog updated successfully' => 'Blog mis à jour avec succès',
     'Blog deleted successfully' => 'Blog supprimé avec succès',
+    'Blog list' => 'Liste des blogs',
+    'Add New Blog' => 'Ajouter un nouveau blog',
+    'Description' => 'Description',
+    'Title' => 'Titre',
+    'posted Date' => 'Date de publication',
+    'Set the Blog thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted' => 'Définissez l’image miniature du blog. Seuls les fichiers *.png, *.jpg et *.jpeg sont acceptés.',
+
+    // How it work
+    'How It Works' => 'Comment ça marche',
+    'The' => 'la',
+    'science' => 'science',
+    'Healing Through Sound, Perfected by Science' => 'La guérison par le son, perfectionnée par la science',
+    'Behind SAMAA'=> 'Derrière SAMAA',
+    'work-description' => 'Développé par le Dr Nadia Cheaib, scientifique répertoriée dans Forbes, SAMAA combine des décennies de recherche clinique avec l’innovation de l’IA pour offrir une thérapie sonore personnalisée pour l’autisme, l’anxiété et au-delà.',
+
 ];

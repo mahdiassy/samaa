@@ -38,4 +38,11 @@ abstract class Permissions extends BasicEnum
     const FEEDBACK_EDIT = 'feedbacK-edit';
     const FEEDBACK_DELETE = 'feedbacK-delete';
     const FEEDBACK_SHOW = 'feedbacK-show';
+
+    // BLOG
+    const BLOG_LIST = 'blog-list';
+    const BLOG_CREATE = 'blog-create';
+    const BLOG_EDIT = 'blog-edit';
+    const BLOG_DELETE = 'blog-delete';
+    const BLOG_SHOW = 'blog-show';
 }

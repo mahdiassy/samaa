@@ -3,11 +3,11 @@
 namespace App\Enums;
 
 final class BookingEnum{
-    const PENDING = "Pending";
-    const APPROVED = "Approved";
-    const DONE = "Done";
-    const DOCTOR_CANCEL = "Canceled";
-    const PATIENT_CANCEL = "Canceled By Patient";
+    const PENDING = "site.Pending";
+    const APPROVED = "site.Approved";
+    const DONE = "site.Done";
+    const DOCTOR_CANCEL = "site.Canceled";
+    const PATIENT_CANCEL = "site.Canceled By Patient";
 
     public static function all() {
         return [
@@ -23,5 +23,10 @@ final class BookingEnum{
             self::APPROVED,
             self::DOCTOR_CANCEL,
         ];
+    }
+
+    public static function translated(): array
+    {
+        return array_map(fn($key) => __($key), self::all());
     }
 }

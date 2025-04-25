@@ -41,7 +41,7 @@
                                 <td>{{ \Carbon\Carbon::parse($patientBooking->availability->time)->format('d-m-Y') }}</td>
                                 <td>{{ $patientBooking->reason }}</td>
 
-                                <td class="custom-date">{{ $patientBooking->status }}</td>
+                                <td class="custom-date">{{ __($patientBooking->status) }}</td>
                                 @if ($patientBooking->status == \App\Enums\BookingEnum::APPROVED)
                                     <td><a href="{{ route('therapy-create',$patientBooking->patient) }}" class="btn edit-btn">{{ __('site.Add') }}</a></td>
                                 @else
@@ -57,7 +57,7 @@
                                             class="form-select">
                                             <option value="" disabled selected>{{ __('site.Change Status') }}</option>
                                             @foreach (\App\Enums\BookingEnum::doctorActions() as $status)
-                                                <option value="{{ $status }}">{{ $status }}</option>
+                                                <option value="{{ $status }}">{{ __($status) }}</option>
                                             @endforeach
                                         </select>
                                     </form>

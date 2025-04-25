@@ -3,62 +3,59 @@
     <section class="about-section">
 
         <div class="about-container">
+            <div class="our-story">
+                <div class="story-text">
+                    <h2>{{ __('site.Where') }} </h2>
+                    <h2><span>{{ __('site.Science') }}</span></h2>
+                    <h2>{{ __('site.Meets') }} <span>{{ __('site.Soul') }} </span> </h2>
+                    <p>{{ __('site.story-description') }}</p>
+                </div>
+            </div>
 
-            @include('search_form')
-
-            <div class="header-container">
-                <div class="header">
-                    <h1>{{ __('site.About') }}</h1>
-                    <h1>{{ __('site.Therapy With') }}<span> {{ __('site.Sama’a') }}</span></h1>
-                    <div class="bar-graph"></div>
-                    <p>{{ __('site.Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam–quis.') }}
-                    </p>
-                    <div class="buttons">
-                        <button class="btn-sponsor">{{ __('site.BECOME SPONSOR') }}</button>
-                        <button class="btn-subscribe">{{ __('site.SUBSCRIBE') }}</button>
+            <div class="doctors-section">
+                <div class="doctor-cards">
+                    <div class="doctor-card">
+                        <div class="doctor-content">
+                            <h2><span>{{ __('site.our') }}</span> {{ __('site.Mission') }}</h2>
+                        </div>
+                    </div>
+                    <div class="mission-center">
+                        <img src="{{ asset('assets/images/headphone2.png') }}" alt="Headphones">
+                    </div>
+                    <div class="doctor-card">
+                        <div class="doctor-content">
+                            <p>
+                                {{ __('site.Mission Description') }}
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div class="stats">
-                <div class="stat-card">
-                    <h3>
-                        @if($allUsers >= 1000)
-                            {{ number_format($allUsers / 1000, 1) }}
-                            <span>{{ __('site.K') }}</span>
-                        @else
-                            {{ $allUsers }}
-                        @endif
-                    </h3>
-                    <p>{{ __('site.Community Members') }}</p>
-                </div>
-                <div class="stat-card">
-                    <h3>
-                        @if($patientsCount >= 1000)
-                            {{ number_format($patientsCount / 1000, 1) }}
-                            <span>{{ __('site.K') }}</span>
-                        @else
-                            {{ $patientsCount }}
-                        @endif
-                    </h3>
-                    <p>{{ __('site.Patients') }}</p>
-                </div>
-                <div class="stat-card">
-                    <h3>
-                        @if($doctorsCount >= 1000)
-                            {{ number_format($doctorsCount / 1000, 1) }}
-                            <span>{{ __('site.K') }}</span>
-                        @else
-                            {{ $doctorsCount }}
-                        @endif
-                    </h3>
+            <div class="doctors-section">
+                <div class="doctor-cards">
+                    <div class="doctor-card">
+                        <div class="doctor-content">
+                            <h2> <span> {{ __('site.Our') }} </span> {{ __('site.Founder') }} </h2>
+                            <h3>{{ __('site.Dr. Nadia Cheaib') }} </h3>
+                            <p>{{ __('site.Forbes Most Influential Arab Woman (2014-2018).') }}</p>
+                            <p>{{ __('site.Pioneer in integrating AI with holistic therapies.') }}</p>
+                        </div>
+                    </div>
 
-                    <p>{{ __('site.Participating Doctors') }}</p>
+                    <div class="doctor-card">
+                        <div class="doctor-image"
+                            style="background-image: url('{{ asset('assets/images/Dr.Nadia.png') }}');">
+                            <div class="stat-card">
+                                <p>{{ __('site.Music isn’t just art—it’s a language of healing') }}</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <div class="listeners-section">
-                <h2>{{ __('site.What our listeners say') }}</h2>
+                <h2>{{ __('site.Join Our Movement') }}</h2>
                 <p>{{ __('site.Their experience throughout every platform') }}</p>
 
                 <div class="image-container">
@@ -76,107 +73,27 @@
                             d="M86.2082 240.505C77.0983 235.232 68.2021 230.38 59.8316 225.088C47.5501 217.344 36.2484 209.596 24.5359 201.859C21.4837 199.855 19.2556 197.516 12.6327 196.661C8.29554 196.104 7.91435 197.526 11.3188 200.956C13.315 202.943 15.6279 204.966 18.4215 207.022C34.2208 218.685 53.4707 230.257 76.1894 241.669C80.0753 243.605 84.3599 245.576 88.9515 247.315C97.6961 250.602 105.033 250.922 104.946 247.898C104.898 245.949 103.251 243.571 101.896 241.32C99.2907 237.04 96.1344 232.685 93.6872 228.423C93.022 227.253 92.31 225.344 94.4002 225.153C97.9511 224.992 106.894 230.583 110.863 233.122C123.063 240.869 134.769 248.628 146.804 256.379C158.833 264.152 172.347 271.863 188.55 279.279C193.273 281.44 198.407 283.59 203.772 285.487C212.413 288.553 219.881 288.69 220.004 285.794C220.05 284.403 219.12 282.702 217.538 280.995C213.471 276.687 208.69 272.308 204.384 267.983C199.885 263.462 195.158 258.88 194.305 254.149C197.768 256.142 200.052 257.359 201.925 258.587C214.171 266.467 226.093 274.333 238.503 282.208C249.797 289.373 261.996 296.514 277.225 303.305C282.983 305.864 289.557 308.425 296.182 310.49C305.37 313.339 312.325 312.952 311.231 309.73C310.4 307.354 308.028 304.637 305.632 302.01C301.014 297.021 295.839 291.98 291.057 286.996C289.969 285.881 286.495 283.015 290.121 283.792C293.605 286.009 297.084 288.248 300.651 290.462C310.072 296.399 319.253 302.32 329.003 308.248C337.766 313.597 347.697 318.848 361.002 323.381C372.213 327.208 380.843 327.27 379.936 323.348C379.464 321.455 378.092 319.272 375.903 317.088C366.4 307.499 356.498 297.875 346.679 288.25C345.572 287.203 344.326 286.07 342.404 285.023C340.623 284.061 337.565 282.686 335.684 282.399C333.803 282.113 330.261 281.939 330.26 283.463C330.29 284.875 331.324 286.192 332.759 287.836C339.375 295.417 346.465 303.053 353.396 310.67C355.292 312.727 357.347 314.802 359.319 316.88C360.041 317.533 359.794 317.539 359.295 317.575C356.998 317.323 351.278 314.314 348.96 312.918C335.677 304.954 322.635 297.006 309.674 289.056C304.56 285.919 299.945 282.746 294.831 279.609C290.627 277.03 285.201 274.754 278.642 273.964C272.083 273.175 269.825 274.603 270.406 276.695C271.22 279.745 272.403 282.942 275.409 286.337C279.902 291.486 286.124 296.88 291.561 302.161C292.464 303.056 293.201 303.956 294.637 305.599C290.813 304.042 288.432 303.186 286.321 302.233C272.502 295.965 261.115 289.453 251.041 282.905C238.954 275.044 227.765 267.181 215.848 259.293C211.139 256.167 206.289 252.956 200.5 249.904C189.289 243.947 176.947 242.214 174.233 246.254C172.985 248.171 173.458 250.669 174.582 253.173C177.37 259.51 185.667 266.598 193.419 273.589C195.062 275.069 196.704 276.55 197.626 277.983C183.367 272.444 172.232 266.508 162.336 260.516C146.963 251.218 132.583 241.871 117.615 232.584C113.768 230.198 109.452 227.734 104.601 225.442C96.3421 221.559 86.5841 220.227 83.6666 222.592C81.4935 224.309 80.7821 226.66 81.3429 229.133C82.088 232.745 87.5227 240.47 87.1215 240.75C87.0307 241.089 86.2082 240.505 86.2082 240.505Z"
                             fill="#CD4631" />
                     </svg>
-
+                    <div class="overlay-text">
+                        <h1>{{ __('site.Trusted By')}}:</h1>
+                        <p>{{ __('site.Dubai Autism Center')}}</p>
+                        <p>{{ __('site.American European Music Therapy Association')}}</p>
+                        <p>{{ __('site.Forbes')}}</p>
+                        <p>{{ __('site.Hope MCF Foundation')}}</p>
+                        <h1>{{ __('site.Awards')}}:</h1>
+                        <p>{{ __('site.Go Global Award 2022 (Corporate Social Responsibility)')}}</p>
+                    </div>
                 </div>
             </div>
 
-            <div class="doctors-section">
-                <h2>{{ __('site.Our Doctors') }}</h2>
-
-                <div class="doctor-cards">
-                    @foreach ($doctors as $doctor)
-                        <div class="doctor-card">
-                            <div class="doctor-image"
-                                style="background-image: url('{{ $doctor->image ? Storage::url($doctor->image) : asset('assets/images/avatar1.png') }}');">
-                            </div>
-                            <div class="doctor-info">
-                                <h4>#{{ $doctor->id }}</h4>
-                                <h3>{{ __('site.doctor') }} <br>{{ $doctor->first_name }} {{ $doctor->last_name }}</h3>
-                                <p>{{ __('site.Specialization') }}: {{ $doctor->specialization }}</p>
-                                <p>{{ __('site.Phone') }}: {{ $doctor->phone }}</p>
-                                <p>{{ __('site.Address') }}: {{ $doctor->address }}</p>
-                                <hr class="info-separator">
-                                <div class="social-media">
-                                    @if ($doctor->facebook || $doctor->instagram || $doctor->twitter)
-                                        <p>{{ __('site.follow me') }}</p>
-                                    @endif
-                                    <div class="medias">
-                                        @if ($doctor->facebook)
-                                            <a target="_blank" href="{{ $doctor->facebook }}">
-                                                <svg width="19" height="19" version="1.1" id="Layer_1"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 291.319 291.319"
-                                                    xml:space="preserve">
-                                                    <g>
-                                                        <path style="fill:#3B5998;" d="M145.659,0c80.45,0,145.66,65.219,145.66,145.66c0,80.45-65.21,145.659-145.66,145.659
-                                                            S0,226.109,0,145.66C0,65.219,65.21,0,145.659,0z" />
-                                                                                                            <path style="fill:#FFFFFF;" d="M163.394,100.277h18.772v-27.73h-22.067v0.1c-26.738,0.947-32.218,15.977-32.701,31.763h-0.055
-                                                            v13.847h-18.207v27.156h18.207v72.793h27.439v-72.793h22.477l4.342-27.156h-26.81v-8.366
-                                                            C154.791,104.556,158.341,100.277,163.394,100.277z" />
-                                                    </g>
-                                                </svg>
-                                            </a>
-                                        @endif
-                                        @if ($doctor->instagram)
-                                            <a target="_blank" href="{{ $doctor->instagram }}">
-                                                <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                                    xmlns="http://www.w3.org/2000/svg">
-                                                    <rect x="1.25" y="1.25" width="17.5" height="17.5" rx="8.75"
-                                                        fill="url(#paint0_radial_124_18375)" />
-                                                    <rect x="1.25" y="1.25" width="17.5" height="17.5" rx="8.75"
-                                                        fill="url(#paint1_radial_124_18375)" />
-                                                    <rect x="1.25" y="1.25" width="17.5" height="17.5" rx="8.75"
-                                                        fill="url(#paint2_radial_124_18375)" />
-                                                    <path
-                                                        d="M13.5 7.25C13.5 7.66421 13.1642 8 12.75 8C12.3358 8 12 7.66421 12 7.25C12 6.83579 12.3358 6.5 12.75 6.5C13.1642 6.5 13.5 6.83579 13.5 7.25Z"
-                                                        fill="white" />
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5ZM10 11.5C10.8284 11.5 11.5 10.8284 11.5 10C11.5 9.17157 10.8284 8.5 10 8.5C9.17157 8.5 8.5 9.17157 8.5 10C8.5 10.8284 9.17157 11.5 10 11.5Z"
-                                                        fill="white" />
-                                                    <path fill-rule="evenodd" clip-rule="evenodd"
-                                                        d="M5 9.8C5 8.11984 5 7.27976 5.32698 6.63803C5.6146 6.07354 6.07354 5.6146 6.63803 5.32698C7.27976 5 8.11984 5 9.8 5H10.2C11.8802 5 12.7202 5 13.362 5.32698C13.9265 5.6146 14.3854 6.07354 14.673 6.63803C15 7.27976 15 8.11984 15 9.8V10.2C15 11.8802 15 12.7202 14.673 13.362C14.3854 13.9265 13.9265 14.3854 13.362 14.673C12.7202 15 11.8802 15 10.2 15H9.8C8.11984 15 7.27976 15 6.63803 14.673C6.07354 14.3854 5.6146 13.9265 5.32698 13.362C5 12.7202 5 11.8802 5 10.2V9.8ZM9.8 6H10.2C11.0566 6 11.6389 6.00078 12.089 6.03755C12.5274 6.07337 12.7516 6.1383 12.908 6.21799C13.2843 6.40973 13.5903 6.71569 13.782 7.09202C13.8617 7.24842 13.9266 7.47262 13.9624 7.91104C13.9992 8.36113 14 8.94342 14 9.8V10.2C14 11.0566 13.9992 11.6389 13.9624 12.089C13.9266 12.5274 13.8617 12.7516 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.7516 13.8617 12.5274 13.9266 12.089 13.9624C11.6389 13.9992 11.0566 14 10.2 14H9.8C8.94342 14 8.36113 13.9992 7.91104 13.9624C7.47262 13.9266 7.24842 13.8617 7.09202 13.782C6.71569 13.5903 6.40973 13.2843 6.21799 12.908C6.1383 12.7516 6.07337 12.5274 6.03755 12.089C6.00078 11.6389 6 11.0566 6 10.2V9.8C6 8.94342 6.00078 8.36113 6.03755 7.91104C6.07337 7.47262 6.1383 7.24842 6.21799 7.09202C6.40973 6.71569 6.71569 6.40973 7.09202 6.21799C7.24842 6.1383 7.47262 6.07337 7.91104 6.03755C8.36113 6.00078 8.94342 6 9.8 6Z"
-                                                        fill="white" />
-                                                    <defs>
-                                                        <radialGradient id="paint0_radial_124_18375" cx="0"
-                                                            cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                                            gradientTransform="translate(7.5 14.375) rotate(-55.3758) scale(15.9498)">
-                                                            <stop stop-color="#B13589" />
-                                                            <stop offset="0.79309" stop-color="#C62F94" />
-                                                            <stop offset="1" stop-color="#8A3AC8" />
-                                                        </radialGradient>
-                                                        <radialGradient id="paint1_radial_124_18375" cx="0"
-                                                            cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                                            gradientTransform="translate(6.875 19.375) rotate(-65.1363) scale(14.1214)">
-                                                            <stop stop-color="#E0E8B7" />
-                                                            <stop offset="0.444662" stop-color="#FB8A2E" />
-                                                            <stop offset="0.71474" stop-color="#E2425C" />
-                                                            <stop offset="1" stop-color="#E2425C" stop-opacity="0" />
-                                                        </radialGradient>
-                                                        <radialGradient id="paint2_radial_124_18375" cx="0"
-                                                            cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                                            gradientTransform="translate(0.312501 1.875) rotate(-8.1301) scale(24.3068 5.19897)">
-                                                            <stop offset="0.156701" stop-color="#406ADC" />
-                                                            <stop offset="0.467799" stop-color="#6A45BE" />
-                                                            <stop offset="1" stop-color="#6A45BE" stop-opacity="0" />
-                                                        </radialGradient>
-                                                    </defs>
-                                                </svg>
-                                            </a>
-                                        @endif
-                                        @if ($doctor->twitter)
-                                        <a target="_blank" href="{{ $doctor->twitter }}">
-                                            <svg width="22" height="22" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <circle cx="24" cy="24" r="20" fill="#1DA1F2"/>
-                                                <path fill-rule="evenodd" clip-rule="evenodd" d="M36 16.3086C35.1177 16.7006 34.1681 16.9646 33.1722 17.0838C34.1889 16.4742 34.9697 15.5095 35.3368 14.36C34.3865 14.9247 33.3314 15.3335 32.2107 15.5551C31.3123 14.5984 30.0316 14 28.6165 14C25.8975 14 23.6928 16.2047 23.6928 18.9237C23.6928 19.3092 23.7368 19.6852 23.8208 20.046C19.7283 19.8412 16.1005 17.8805 13.6719 14.9015C13.2479 15.6287 13.0055 16.4742 13.0055 17.3766C13.0055 19.0845 13.8735 20.5916 15.1958 21.4747C14.3878 21.4491 13.6295 21.2275 12.9647 20.8587V20.9203C12.9647 23.3066 14.663 25.296 16.9141 25.7496C16.5013 25.8616 16.0661 25.9224 15.6174 25.9224C15.2998 25.9224 14.991 25.8912 14.6902 25.8336C15.3166 27.7895 17.1357 29.2134 19.2899 29.2534C17.6052 30.5733 15.4822 31.3612 13.1751 31.3612C12.7767 31.3612 12.3848 31.338 12 31.2916C14.1791 32.6884 16.7669 33.5043 19.5475 33.5043C28.6037 33.5043 33.5562 26.0016 33.5562 19.4956C33.5562 19.282 33.5522 19.0693 33.5418 18.8589C34.5049 18.1629 35.34 17.2958 36 16.3086Z" fill="white"/>
-                                            </svg>
-                                        </a>
-                                        @endif
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-
+            <div class="header-container">
+                <div class="header">
+                    <h1>{{ __('site.Let’s') }}</h1>
+                    <h1><span> {{ __('site.Heal') }}</span> {{ __('site.Together') }}</h1>
+                    <div class="bar-graph"></div>
+                    <div class="buttons">
+                        <button class="btn-sponsor">{{ __('site.Explore SAMAA’s Therapy') }}</button>
+                        <button class="btn-subscribe">{{ __('site.Become a Partner') }}</button>
+                    </div>
                 </div>
             </div>
 

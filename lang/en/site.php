@@ -126,6 +126,34 @@ return [
     'LISTEN TO MUSIC' => 'LISTEN TO MUSIC',
 
     // About Us Page
+    'Where' => 'Where',
+    'Science' => 'Science',
+    'Meets' => 'Meets',
+    'Soul' => 'Soul',
+    'story-description' => 'SAMAA, born from ClinGroup Euromed’s legacy in healthcare innovation, is a revolutionary AI-powered sound therapy platform designed to transform mental and physical wellness. Founded by Dr. Nadia Cheaib—a Forbes-listed scientist, cancer survivor, and advocate for ethical healthcare—SAMAA merges cutting-edge technology with ancient healing traditions to empower individuals with autism, ADHD, anxiety, and chronic conditions.',
+    'Our' => 'Our',
+    'Founder' => 'Founder',
+    'Dr. Nadia Cheaib' => 'Dr. Nadia Cheaib',
+    'Forbes Most Influential Arab Woman (2014-2018).' => 'Forbes Most Influential Arab Woman (2014-2018).',
+    'Pioneer in integrating AI with holistic therapies.' => 'Pioneer in integrating AI with holistic therapies.',
+    'Music isn’t just art—it’s a language of healing' => 'Music isn’t just art—it’s a language of healing',
+    'Let’s' => 'Let’s',
+    'Heal' => 'Heal',
+    'Together' => 'Together',
+    'Become a Partner' => 'Become a Partner',
+    'Explore SAMAA’s Therapy' => 'Explore SAMAA’s Therapy',
+    'Join Our Movement' => 'Join Our Movement',
+    'our' => 'our',
+    'Mission' => 'Mission',
+    'Mission Description' => 'We believe every individual deserves access to compassionate, evidence-based care. SAMAA’s AI tailors music therapy sessions to each user’s unique emotional and sensory profile, bridging gaps in traditional healthcare and fostering global well-being.',
+    'Trusted By' => 'Trusted By',
+    'Dubai Autism Center' => 'Dubai Autism Center',
+    'American European Music Therapy Association' => 'American European Music Therapy Association',
+    'Forbes' => 'Forbes',
+    'Hope MCF Foundation' => 'Hope MCF Foundation',
+    'Awards' => 'Awards',
+    'Go Global Award 2022 (Corporate Social Responsibility)' => 'Go Global Award 2022 (Corporate Social Responsibility)',
+
     'About' => 'About',
 
     'Therapy With' =>'Therapy With ',
@@ -291,6 +319,10 @@ return [
     'Start Call' => 'Start Call',
     'End Call' => 'End Call',
     'Type your message here' => 'Type your message here...',
+    'Pending' => 'Pending',
+    'Approved' => 'Approved',
+    'Done' => 'Done',
+    'Canceled By Patient' => 'Canceled By Patient',
 
     //Calendar
 
@@ -358,4 +390,18 @@ return [
     'Blog created successfully' =>'Blog created successfully',
     'Blog updated successfully' =>'Blog updated successfully',
     'Blog deleted successfully' =>'Blog deleted successfully',
+    'Blog list' => 'Blog list',
+    'Add New Blog' => 'Add New Blog',
+    'Description' => 'Description',
+    'Title' => 'Title',
+    'posted Date' => 'posted Date',
+    'Set the Blog thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted' => 'Set the Blog thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted',
+
+    // How it work
+    'How It Works' => 'How It Works',
+    'The' => 'The',
+    'science' => 'science',
+    'Healing Through Sound, Perfected by Science' => 'Healing Through Sound, Perfected by Science',
+    'Behind SAMAA'=> 'Behind SAMAA',
+    'work-description' => 'Developed by Forbes-listed scientist Dr. Nadia Cheaib, SAMAA combines decades of clinical research with AI innovation to deliver personalized sound therapy for autism, anxiety, and beyond.',
 ];

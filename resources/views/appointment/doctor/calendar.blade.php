@@ -150,11 +150,11 @@
                 id: time.id,
             };
             if (time.booking) {
-                if (time.booking.status === 'Canceled By Patient') {
-                    availabile[i].title = `${time.booking.status}`
+                if (time.booking.status === BookingEnum.PATIENT_CANCEL) {
+                    availabile[i].title = translations[time.booking.status]// `${time.booking.status}`
                     availabile[i].color = 'rgb(214 126 13)'
                 } else {
-                    availabile[i].title = `${time.booking.status}`
+                    availabile[i].title = translations[time.booking.status]//`${time.booking.status}`
                     availabile[i].color = 'rgb(249 57 57)'
                 }
             }

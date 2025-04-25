@@ -37,6 +37,8 @@ Route::group(
 
         Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
 
+        Route::get('/how-it-work', [HomeController::class, 'howItWork'])->name('how-it-work');
+
         Route::get('/listenToMusic', function () {
             return view('frontend/listenToMusic');
         });
@@ -91,12 +93,12 @@ Route::group(
                 Route::get('/feedback/show/{feedback}', [FeedbackController::class, 'show'])->name('feedback.show')->middleware('role:Admin|Patient|Doctor');
                 Route::delete('/feedback/delete/{feedback}', [FeedbackController::class, 'destroy'])->name('feedback.destroy')->middleware('role:Admin');
 
-                Route::get('blogs/list', [BlogController::class, 'list'])->name('blog.list');
-                Route::get('blogs/create', [BlogController::class, 'create'])->name('blog.create');
-                Route::post('blogs/store', [BlogController::class, 'store'])->name('blog.store');
-                Route::get('blogs/edit/{blog}', [BlogController::class, 'edit'])->name('blog.edit');
-                Route::post('blogs/update/{blog}', [BlogController::class, 'update'])->name('blog.update');
-                Route::delete('blogs/{blog}', [BlogController::class, 'destroy'])->name('blog.destroy');
+                Route::get('blogs/list', [BlogController::class, 'list'])->name('blog.list')->middleware('role:Admin');
+                Route::get('blogs/create', [BlogController::class, 'create'])->name('blog.create')->middleware('role:Admin');
+                Route::post('blogs/store', [BlogController::class, 'store'])->name('blog.store')->middleware('role:Admin');
+                Route::get('blogs/edit/{blog}', [BlogController::class, 'edit'])->name('blog.edit')->middleware('role:Admin');
+                Route::post('blogs/update/{blog}', [BlogController::class, 'update'])->name('blog.update')->middleware('role:Admin');
+                Route::delete('blogs/{blog}', [BlogController::class, 'destroy'])->name('blog.destroy')->middleware('role:Admin');
             });
 
             // Availabilities

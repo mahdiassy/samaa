@@ -50,6 +50,9 @@ class PermissionsSeeder extends Seeder
             Permissions::FEEDBACK_CREATE,
             Permissions::FEEDBACK_LIST,
             Permissions::FEEDBACK_SHOW,
+
+            Permissions::BLOG_LIST,
+            Permissions::BLOG_SHOW,
         ]);
 
         $role3 = Role::create(['name' => 'Patient']);
@@ -63,6 +66,9 @@ class PermissionsSeeder extends Seeder
             Permissions::FEEDBACK_CREATE,
             Permissions::FEEDBACK_LIST,
             Permissions::FEEDBACK_SHOW,
+
+            Permissions::BLOG_LIST,
+            Permissions::BLOG_SHOW,
         ]);
 
         // create users

@@ -90,10 +90,11 @@ class HomeController extends Controller
 
     public function aboutUs()
     {
-        $doctors = Doctor::orderBy('id', 'desc')->take(2)->get();
-        $allUsers = User::count();
-        $patientsCount = Patient::count();
-        $doctorsCount = Doctor::count();
-        return view($this->dir . "about-us", compact('doctors', 'doctorsCount', 'patientsCount', 'doctorsCount', 'allUsers'));
+        return view($this->dir . "about-us");
+    }
+
+    public function howItWork()
+    {
+        return view($this->dir . "how-it-work");
     }
 }

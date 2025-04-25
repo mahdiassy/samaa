@@ -126,6 +126,11 @@
                                 src="{{ asset('assets/images/icons/review.svg') }}"
                                 alt="Review"><span>{{ __('site.Feedback') }}</span></a></li>
                 @endrole
+                @role('Admin')
+                    <li title="{{ __('site.Blog list') }}"><a href="{{ route('blog.list') }}"><img
+                        src="{{ asset('assets/images/icons/library.svg') }}"
+                        alt="Profile"><span>{{ __('site.Blog list') }}</span></a></li>
+                @endrole
                 <li title="{{ __('site.Contact Us') }}"><a href="{{ route('contact-us') }}"><img
                             src="{{ asset('assets/images/icons/phone.svg') }}"
                             alt="Phone"><span>{{ __('site.Contact Us') }}</span></a></li>
@@ -221,6 +226,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ckeditor5-classic-free-full-feature@35.4.1/build/ckeditor.min.js"></script>
 
     <script>
 
@@ -235,11 +241,25 @@
         let samaaKidsTitle = "{{ __('site.Sama’a for kids') }}";
         let samaaTitle = "{{ __('site.Sama’a') }}";
         let noResult = "{{ __('site.No results found') }}";
+        const BookingEnum = {
+            PATIENT_CANCEL: "{{ \App\Enums\BookingEnum::PATIENT_CANCEL }}",
+        };
+        const translations = {
+            "site.Pending": "{{ __('site.Pending') }}",
+            "site.Done": "{{ __('site.Done') }}",
+            "site.Approved": "{{ __('site.Approved') }}",
+            "site.Canceled": "{{ __('site.Canceled') }}",
+            "site.Canceled By Patient": "{{ __('site.Canceled By Patient') }}",
+        };
+        ClassicEditor
+            .create(document.querySelector('#Bio'))
+            .catch(error => {
+                console.error(error);
+            });
     </script>
 
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard/script.js') }}"></script>
-
 
 </body>
 
