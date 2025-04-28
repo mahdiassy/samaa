@@ -156,6 +156,17 @@ return [
     'Awards' => 'Récompenses',
     'Go Global Award 2022 (Corporate Social Responsibility)' => 'Prix ​​Go Global 2022 (Responsabilité sociale des entreprises)',
 
+    'Partners' => 'Partenaires',
+    'Month Trial Results' => 'Résultats des essais mensuels',
+    'NAAM Women’s Empowerment' => 'Autonomisation des femmes NAAM',
+    '80% better sleep quality reported by parents.' => 'Les parents rapportent une qualité de sommeil 80 % meilleure.',
+    '65% reduced anxiety/emotional outbursts.' => '65 % de réduction de l’anxiété et des crises émotionnelles.',
+    '70% improved sensory processing.' => '70 % de traitement sensoriel amélioré.',
+    'Proven Impact on Autism & Beyond' => 'Impact prouvé sur l’autisme et au-delà',
+    'Clinical' => 'Preuve',
+    'Proof' => 'clinique',
+    'Global Recognition' => 'Reconnaissance mondiale',
+
     'About' => 'À propos',
 
     'Therapy With' =>'Thérapie avec',
@@ -400,10 +411,39 @@ return [
 
     // How it work
     'How It Works' => 'Comment ça marche',
-    'The' => 'la',
+    'The' => 'la ',
     'science' => 'science',
     'Healing Through Sound, Perfected by Science' => 'La guérison par le son, perfectionnée par la science',
     'Behind SAMAA'=> 'Derrière SAMAA',
     'work-description' => 'Développé par le Dr Nadia Cheaib, scientifique répertoriée dans Forbes, SAMAA combine des décennies de recherche clinique avec l’innovation de l’IA pour offrir une thérapie sonore personnalisée pour l’autisme, l’anxiété et au-delà.',
+
+    'The' => 'Le ',
+    'U-Shaped' => 'en forme de U',
+    'Sound' => 'sonore',
+    'Therapy' => 'de thérapie',
+    'Protocol' => 'protocole',
+    'How U-Shaped Sound Transforms Lives' => 'How U-Shaped Sound Transforms Lives',
+    'U-Saped-description' => 'The U-shaped montage technique, conceptualized by Jean-Marie Guiraud-Caladou, uses structured sound progression (tempo, pitch, intensity) to induce relaxation and improve neural connectivity. SAMAA’s AI adapts this method for modern therapy',
+
+    'Ready to Experience' => 'Prêt à expérimenter',
+    'Healing Through' => 'la guérison par',
+    'sound?' => 'Le son?',
+    'Partner With SAMAA' => 'Devenez partenaire de SAMAA',
+    'Join Our Waitlist' => 'Rejoignez notre liste d’attente',
+    'SAMAA adheres to GDPR and global privacy standards. Your data is never shared without consent' => 'SAMAA adhère au RGPD et aux normes internationales de confidentialité. Vos données ne sont jamais partagées sans votre consentement.',
+    'SAMAA’s AI replicates the U-shaped technique validated in European clinical studies' => 'L’IA de SAMAA reproduit la technique en U validée dans les études cliniques européennes',
+
+    'The 4-Step Process' => 'Le processus en 4 étapes',
+    'Personalized Profile Setup' => 'Configuration du profil personnalisé',
+    'Tell Us About Your Needs (Age, Condition, Goals). SAMAA Respects Privacy—No Medical Data Is Stored Without Consent.' => 'Parlez-nous de vos besoins (âge, état, objectifs). SAMAA respecte la confidentialité — Aucune donnée médicale n’est stockée sans consentement.',
+    'Dr-Nadia’s Quote: "Just As Every Patient Is Unique, So Is Their Path To Healing."' => 'Citation du Dr Nadia : "Tout comme chaque patient est unique, son chemin vers la guérison l’est aussi."',
+    'AI-Driven Customization' => 'Personnalisation pilotée par l’IA',
+    'SAMAA’s AI Crafts A U-Shaped Sound Journey Tailored To Your Profile.' => 'L’IA de SAMAA crée un voyage sonore en forme de U adapté à votre profil.',
+    'Clinicals Backing: European Studies Show U-Shaped Therapy Improves Emotional Regulation In 60% Of Autism Cases.' => 'Soutien clinique : Les études européennes montrent que la thérapie en forme de U améliore la régulation émotionnelle dans 60 % des cas d’autisme.',
+    'Real-Time Adjustments' => 'Ajustements en temps réel',
+    'SAMAA Adapts Tempo/Pitch Mid-Session Using Machine Learning.' => 'SAMAA ajuste le tempo/la hauteur en cours de session en utilisant l’apprentissage automatique.',
+    'Tech Proof: Powered By Clinicouris AI. Recognized At The Go Global Awards 2022.' => 'Preuve technologique : alimenté par l’IA de Clinicouris. Reconnu aux Go Global Awards 2022.',
+    'Progress Tracking' => 'Suivi des progrès',
+    'Monthly Reports Track Improvements In Focus, Behavior, And Sensory Responses Against Clinical Benchmarks.' => 'Les rapports mensuels suivent les améliorations de la concentration, du comportement et des réponses sensorielles par rapport aux critères cliniques.'
 
 ];

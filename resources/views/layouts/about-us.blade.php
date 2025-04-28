@@ -59,7 +59,7 @@
                 <p>{{ __('site.Their experience throughout every platform') }}</p>
 
                 <div class="image-container">
-                    <img src="{{ asset('assets/images/about-us.jfif') }}" alt="Microphone" class="main-image">
+                    <!--<img src="{{ asset('assets/images/about-us.jfif') }}" alt="Microphone" class="main-image">-->
 
                     <svg class="overlay-svg" width="425" height="333" viewBox="0 0 425 333" fill="none"
                         xmlns="http://www.w3.org/2000/svg">

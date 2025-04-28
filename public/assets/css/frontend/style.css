@@ -335,6 +335,21 @@ nav.scrolled {
     transform: translateY(-10px);
 }
 
+.section2-work {
+    background-image: url('../../images/section-how-work.png');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    /*overflow: hidden;*/
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .section2 {
     background-image: url('../../images/therapy-backgeound.jpg');
     background-size: cover;
@@ -351,15 +366,25 @@ nav.scrolled {
 }
 
 .section-description {
-    backdrop-filter: blur(25.4px);
-    background: rgba(199, 199, 199, 0.38);
-    width: 591px;
-    height: 280px;
-    gap: 0px;
-    border-radius: 22px;
+    /*backdrop-filter: blur(25.4px);
+    background: rgba(199, 199, 199, 0.38);*/
+    width: 50%;
+    /*height: 280px;*/
+    height: 90%;
     position: absolute;
     text-align: center;
-    color: white;
+    color: #000;
+    text-transform: capitalize;
+}
+
+.section-description h2{
+    color: #000;
+    font-size: 35px;
+    line-height: 10px;
+}
+
+.section-description h2 span{
+    color: #D67E0D;
 }
 
 .section2::before {
@@ -1045,7 +1070,7 @@ nav.scrolled {
         color: white;
         padding: 20px 150px;
         z-index: 2;
-        width: 60%;
+        /*width: 60%;*/
     }
 
     .hero-text h1 {
@@ -2280,7 +2305,7 @@ color: #FFFFFF;
 .header {
     text-align: center;
     /*padding: 10% 0;*/
-    padding: 5% 0 10% 0;
+    padding: 10% 10px;
 }
 
 .header-container .header {
@@ -2298,6 +2323,11 @@ color: #FFFFFF;
     text-align: center;
     color: #000;
 
+}
+
+.header-container .header .custom-h1{
+    font-size: 45px !important;
+    line-height: normal !important;
 }
 
 .header-container .header h1 span {
@@ -2449,18 +2479,33 @@ color: #FFFFFF;
     color: #4D4D4D;
 }
 
-.image-container {
+/*.image-container {
     position: relative;
     display: inline-block;
     width: 100%;
     /*max-width: 1100px;
     height: auto;*/
+/*}*/
+
+.image-container {
+    background-image: url('../../images/about-us.jfif');
+    background-size: cover;
+    background-position: center;
+    text-align: center;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .main-image {
     width: 100%;
     height: auto;
-    border-radius: 8px;
+    /*border-radius: 8px;*/
     display: block;
 }
 
@@ -2505,20 +2550,19 @@ color: #FFFFFF;
     margin: 0;
 }
 
-@media (max-width: 539px) {
+/*@media (max-width: 539px) {
     .overlay-text {
         padding: 10px !important;
         width: 95%;
     }
-
 }
 
-@media (max-width: 344px) {
+@media (max-width: 370px) {
     .overlay-text {
         padding: 5px !important;
         width: 100%;
      }
-}
+}*/
 
 /* Doctors Section */
 .doctors-section {
@@ -2671,6 +2715,249 @@ color: #FFFFFF;
     color: #000000;
 }
 
+.timeline {
+    position: relative;
+    margin: 40px auto;
+    padding-left: 20px;
+    width: fit-content;
+  }
+
+  .timeline::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 5px;
+    width: 4px;
+    background-color: #e69138;
+    border-radius: 10px;
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 30px;
+    padding-left: 20px;
+  }
+
+.timeline-dot {
+    position: absolute;
+    left: -19px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    background: radial-gradient(50% 50% at 50% 50%, #F3BA6F 0%, #D27C0C 100%);
+    border-radius: 50%;
+}
+
+.timeline-content {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    color: #000;
+    line-height: 1.5;
+}
+
+.proof-work {
+    background-image: url('../../images/section-headphone.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    padding: 0px 15%;
+}
+
+[dir="rtl"] .proof-work {
+    background-image: url('../../images/section-headphone-ar.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    padding: 0px 15%;
+}
+
+.proof-text h2 {
+    font-size: clamp(20px, 4vw, 32px);
+    color: #fff;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.proof-text h2 span{
+    font-size: clamp(20px, 4vw, 32px);
+    color: #D67E0D;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.proof-text h1 {
+    font-size: clamp(20px, 4vw, 20px);
+    color: #FFCB89;
+    margin: 0;
+    line-height: 2.5;
+}
+
+.proof-text p {
+    font-size: clamp(14px, 2.5vw, 16px);
+    color: #fff;
+    line-height: 1.6;
+    margin: 0;
+}
+.proof-title{
+    padding-bottom: 20px;
+}
+
+.stat-card-work {
+    background-color: #fff;
+    border-radius: 10px;
+    border: 1.5px solid #E7A959;
+    box-shadow: 6px 6px 0px 0px #00000040;
+    position: absolute;
+    bottom: -50px;
+    padding: 20px 30px;
+}
+
+.stat-card-work p {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 16px;
+    line-height: 120%;
+    letter-spacing: -0.02em;
+    text-align: center;
+    vertical-align: middle;
+    color: #4D4D4D;
+}
+
+.four-step-section {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 50px;
+    padding-top: 50px;
+}
+
+.text-side {
+    padding: 0px 0px 50px 15%;
+}
+[dir="rtl"] .text-side{
+    padding: 0px 15% 50px 0px !important
+}
+.text-side h2 {
+    font-size: 36px;
+    font-size: clamp(26px, 2.5vw, 36px);
+    font-weight: bold;
+    margin-top: 50px;
+    margin-bottom: 0px;
+}
+
+.text-side .subtitle {
+    font-size: clamp(14px, 2.5vw, 16px);
+    color: #000;
+    margin-top: 0px;
+}
+
+.step {
+    margin-bottom: 0px;
+}
+
+.step h4 {
+    font-size: clamp(20px, 4vw, 20px);
+    font-weight: 600;
+    margin-bottom: 0px;
+}
+
+.step p {
+    font-size: clamp(14px, 2.5vw, 16px);
+    color: #000;
+    margin-top: 0px;
+    padding-left: 10px;
+}
+
+.image-side {
+    flex: 1;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+}
+
+.image-container-work {
+    position: relative;
+    width: 500px;
+}
+
+.main-image-work {
+    width: 100%;
+    height: auto;
+}
+
+.icon {
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: radial-gradient(50% 50% at 50% 50%, #F3BA6F 0%, #D27C0C 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.icon img {
+    width: 40px;
+    height: 40px;
+}
+
+.circle-work{
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background-color: #D27C0C;
+    border-radius: 50%;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+@media (min-width: 940px) and (max-width: 1100px) {
+    .text-side {
+        padding: 0px 0px 50px 2% !important;
+    }
+    [dir="rtl"] .text-side{
+        padding: 0px 2% 50px 0px !important
+    }
+}
+
+@media (max-width: 941px) {
+
+    .four-step-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 0;
+    }
+
+    .text-side, .image-side {
+        width: 100%;
+    }
+
+    .text-side {
+        padding: 10px !important;
+    }
+
+    [dir="rtl"] .text-side{
+        padding: 0px !important;
+    }
+}
+
 @media (min-width: 996px) and (max-width: 1120px) {
 
     /*.doctor-image {
@@ -2758,6 +3045,11 @@ color: #FFFFFF;
         font-size: 55px !important;
     }
 
+    .header-container .header .custom-h1{
+        font-size: 40px !important;
+        line-height: normal !important;
+    }
+
     .header-container .header p {
         font-size: 15px !important;
     }
@@ -2805,6 +3097,11 @@ color: #FFFFFF;
         line-height: 55px !important;
     }
 
+    .header-container .header .custom-h1{
+        font-size: 35px !important;
+        line-height: normal !important;
+    }
+
     .header-container .header p {
         font-size: 15px !important;
     }
@@ -2821,9 +3118,6 @@ color: #FFFFFF;
     }
     .doctors-section .doctor-content p {
         font-size: 15px;
-    }
-    .stat-card {
-        width: 100%;
     }
     .stat-card {
         width: 100%;
@@ -2893,12 +3187,16 @@ color: #FFFFFF;
     .header-container .header h1 {
         font-size: 40px !important;
         line-height: 55px;
-
     }
 
     .header-container .header h1 span {
-        font-size: 40px !important;
+        font-size: 25px !important;
         line-height: 55px;
+    }
+
+    .header-container .header .custom-h1{
+        font-size: 25px !important;
+        line-height: normal !important;
     }
 
     .header-container .header p {
@@ -2977,6 +3275,12 @@ color: #FFFFFF;
         text-align: start !important;
         align-items: start !important;
     }
+    .section-description {
+        width: 70% !important;
+    }
+    .section-description h2 {
+        font-size: 22px;
+    }
 }
 
 @media (max-width: 574px) {
@@ -3018,6 +3322,18 @@ color: #FFFFFF;
         flex-direction: column;
         text-align: start !important;
         align-items: start !important;
+    }
+    .section-description {
+        width: 70% !important;
+    }
+    .section-description h2 {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 393px) {
+    .section-description h2 {
+        font-size: 15px !important;
     }
 }
 

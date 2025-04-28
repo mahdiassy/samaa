@@ -156,6 +156,17 @@ return [
     'Awards' => 'الجوائز',
     'Go Global Award 2022 (Corporate Social Responsibility)' => 'جائزة Go Global 2022 (المسؤولية الاجتماعية للشركات)',
 
+    'Partners' => 'الشركاء',
+    'Month Trial Results' => 'نتائج تجربة لمدة شهر',
+    'NAAM Women’s Empowerment' => 'تمكين المرأة في نعم',
+    '80% better sleep quality reported by parents.' => '80% تحسن في جودة النوم حسب ما أفاد به الآباء.',
+    '65% reduced anxiety/emotional outbursts.' => 'انخفاض القلق والانفجارات العاطفية بنسبة 65%.',
+    '70% improved sensory processing.' => 'تم تحسين المعالجة الحسية بنسبة 70%.',
+    'Proven Impact on Autism & Beyond' => 'تأثير مثبت على التوحد وما بعده',
+    'Clinical' => 'السريري',
+    'Proof' => 'الدليل',
+    'Global Recognition' => 'الاعتراف العالمي',
+
     'About' => 'من نحن',
 
     'Therapy With' =>'العلاج بواسطة',
@@ -399,10 +410,40 @@ return [
 
     // How it work
     'How It Works' => 'كيف يعمل',
-    'The' => '',
-    'science' => 'العلم',
+    'The' => 'ال',
+    'science' => 'علم',
     'Healing Through Sound, Perfected by Science' => 'الشفاء من خلال الصوت، متقن بالعلم',
     'Behind SAMAA'=> 'خلف سمع',
     'work-description' => 'تم تطوير سمع من قبل الدكتورة نادية شعيب، العالمة المدرجة في مجلة فوربس، ويجمع بين عقود من البحث السريري مع ابتكار الذكاء الاصطناعي لتقديم علاج صوتي مخصص للتوحد والقلق وغيرهما.',
+
+    'The' => 'ال',
+    'U-Shaped' => 'على شكل حرف U',
+    'Sound' => 'الصوتي',
+    'Therapy' => 'علاج',
+    'Protocol' => 'بروتوكول',
+    'How U-Shaped Sound Transforms Lives' => 'كيف يُغيّر الصوت على شكل حرف U حياة الناس',
+    'U-Saped-description' => 'تقنية المونتاج على شكل حرف U، التي ابتكرها جان ماري جيرو كالادو، تستخدم تدرجًا صوتيًا منظمًا (الإيقاع، النغمة، الشدة) لتحفيز الاسترخاء وتحسين الاتصال العصبي. يُكيّف الذكاء الاصطناعي في SAMAA هذه الطريقة مع العلاج الحديث.',
+
+    'Ready to Experience' => 'جاهز لتجربة',
+    'Healing Through' => 'الشفاء من خلال',
+    'sound?' => 'الصوت؟',
+    'Partner With SAMAA' => 'شريك مع سمع',
+    'Join Our Waitlist' => 'انضم إلى قائمة الانتظار لدينا',
+    'SAMAA adheres to GDPR and global privacy standards. Your data is never shared without consent' => 'تلتزم سمع بمعايير حماية البيانات العامة (GDPR) ومعايير الخصوصية العالمية. لن تتم مشاركة بياناتك أبدًا دون موافقتك.',
+    'SAMAA’s AI replicates the U-shaped technique validated in European clinical studies' => 'يكرر الذكاء الاصطناعي التابع لشركة سمع تقنية الشكل U التي تم التحقق من صحتها في الدراسات السريرية الأوروبية',
+
+
+    'The 4-Step Process' => 'عملية من 4 خطوات',
+    'Personalized Profile Setup' => 'إعداد ملف التعريف الشخصي',
+    'Tell Us About Your Needs (Age, Condition, Goals). SAMAA Respects Privacy—No Medical Data Is Stored Without Consent.' => 'أخبرنا عن احتياجاتك (العمر، الحالة، الأهداف). تحترم سمع الخصوصية - لا يتم تخزين أي بيانات طبية دون موافقة.',
+    'Dr-Nadia’s Quote: "Just As Every Patient Is Unique, So Is Their Path To Healing."' => 'Dr. Nadia’s Quote: "Just As Every Patient Is Unique, So Is Their Path To Healing.',
+    'AI-Driven Customization' => 'التخصيص المدعوم بالذكاء الاصطناعي',
+    'SAMAA’s AI Crafts A U-Shaped Sound Journey Tailored To Your Profile.' => 'الذكاء الاصطناعي من سمع يصمم رحلة صوتية على شكل حرف U مصممة خصيصًا لملفك الشخصي.',
+    'Clinicals Backing: European Studies Show U-Shaped Therapy Improves Emotional Regulation In 60% Of Autism Cases.' => 'دعم سريري: دراسات أوروبية تظهر أن العلاج على شكل حرف U يحسن التنظيم العاطفي في 60٪ من حالات التوحد.',
+    'Real-Time Adjustments' => 'التعديلات في الوقت الفعلي',
+    'SAMAA Adapts Tempo/Pitch Mid-Session Using Machine Learning.' => 'تتكيف سمع مع الإيقاع/النغمة في منتصف الجلسة باستخدام التعلم الآلي.',
+    'Tech Proof: Powered By Clinicouris AI. Recognized At The Go Global Awards 2022.' => 'مُثبّت تقنيًا: مدعوم بتقنية الذكاء الاصطناعي من Clinicouris. مُكرّم في جوائز Go Global لعام ٢٠٢٢.',
+    'Progress Tracking' => 'تتبع التقدم',
+    'Monthly Reports Track Improvements In Focus, Behavior, And Sensory Responses Against Clinical Benchmarks.' => 'تتبع التقارير الشهرية التحسن في التركيز والسلوك والاستجابات الحسية مقابل المعايير السريرية.',
 
 ];
