@@ -119,9 +119,9 @@
                     <li title="{{ __('site.Doctor list') }}"><a href="{{ route('doctor.index') }}"><img
                         src="{{ asset('assets/images/icons/Medical history.svg') }}"
                         alt="Profile"><span>{{ __('site.Doctor list') }}</span></a></li>
-                    <li title="{{ __('site.Therapy') }}"><a href="{{ route('therapy.index') }}"><img
+                    <li title="{{ __('site.therapy') }}"><a href="{{ route('therapy.index') }}"><img
                                 src="{{ asset('assets/images/icons/therapy.svg') }}"
-                                alt="Therapy"><span>{{ __('site.Therapy') }}</span></a></li>
+                                alt="Therapy"><span>{{ __('site.therapy') }}</span></a></li>
                     <li title="{{ __('site.Feedback') }}"><a href="{{ route('feedback-list') }}"><img
                                 src="{{ asset('assets/images/icons/review.svg') }}"
                                 alt="Review"><span>{{ __('site.Feedback') }}</span></a></li>
@@ -183,7 +183,7 @@
             <div class="footer-links">
                 <div class="column">
                     <a href="{{ route('home') }}">{{ __('site.Home') }}</a>
-                    <a href="{{ route('therapy.index') }}">{{ __('site.Therapy') }}</a>
+                    <a href="{{ route('therapy.index') }}">{{ __('site.therapy') }}</a>
                     @if (Auth::check())
                         <a href="#"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">

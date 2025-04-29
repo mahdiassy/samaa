@@ -59,6 +59,7 @@
             <h2 class="menu-title">{{ __('site.Menu') }}</h2>
             <a href="{{ route('home') }}">{{ __('site.Home') }}</a>
             <a href="{{ route('how-it-work') }}">{{ __('site.How It Works') }}</a>
+            <a href="{{ route('therapists') }}">{{ __('site.Therapists') }}</a>
             <a href="{{ route('about-us') }}">{{ __('site.About Us') }}</a>
             <a href="{{ route('contact-us') }}">{{ __('site.Contact Us') }}</a>
             @if (Auth::check())

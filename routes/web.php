@@ -39,6 +39,8 @@ Route::group(
 
         Route::get('/how-it-work', [HomeController::class, 'howItWork'])->name('how-it-work');
 
+        Route::get('/therapists', [HomeController::class, 'therapists'])->name('therapists');
+
         Route::get('/listenToMusic', function () {
             return view('frontend/listenToMusic');
         });

@@ -97,4 +97,9 @@ class HomeController extends Controller
     {
         return view($this->dir . "how-it-work");
     }
+
+    public function therapists()
+    {
+        return view($this->dir . "Therapists");
+    }
 }

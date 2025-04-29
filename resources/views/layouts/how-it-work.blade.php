@@ -28,25 +28,25 @@
                                 <div class="timeline-item">
                                     <div class="timeline-dot"></div>
                                     <div class="timeline-content">
-                                        7x Forbes Most Influential Arab Woman
+                                        {{ __('site.7x Forbes Most Influential Arab Woman') }}
                                     </div>
                                 </div>
                                 <div class="timeline-item">
                                     <div class="timeline-dot"></div>
                                     <div class="timeline-content">
-                                        Pioneer In AI-Driven Healthcare Solutions
+                                        {{ __('site.Pioneer In AI-Driven Healthcare Solutions') }}
                                     </div>
                                 </div>
                                 <div class="timeline-item">
                                     <div class="timeline-dot"></div>
                                     <div class="timeline-content">
-                                        Backed By A 6-Month Clinical Trial Using<br> The U-Shaped Montage Technique.
+                                        {{ __('site.Backed By A 6-Month Clinical Trial Using The U-Shaped Montage Technique.') }}
                                     </div>
                                 </div>
                                 <div class="timeline-item">
                                     <div class="timeline-dot"></div>
                                     <div class="timeline-content">
-                                        Endorsed By The American European Music<br> Therapy Association.
+                                        {{ __('site.Endorsed By The American European Music Therapy Association.') }}
                                     </div>
                                 </div>
                             </div>

@@ -44,6 +44,10 @@ nav.scrolled {
     height: 60px;
 }
 
+.language-selector {
+    align-content: center;
+}
+
 .menu {
     display: flex;
     gap: 20px;
@@ -54,11 +58,11 @@ nav.scrolled {
     color: rgba(0, 0, 0, 1);
     text-decoration: none;
     font-family: 'Inter', Arial, sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     font-weight: 400;
     line-height: 14.52px;
-    text-align: left;
-    padding: 10px 8px;
+    text-align: start;
+    padding: 10px 0px;
     position: relative;
 }
 
@@ -87,36 +91,39 @@ nav.scrolled {
     padding-right: 30px;*/
 
 }
+
+
 .profile-ar {
-    padding-right: 350px;
+    padding-right: 200px;
 }
 
 .profile-fr {
-    padding-left: 200px;
+    padding-left: 50px;
 }
 
 .profile-en {
-    padding-left: 350px;
+    padding-left: 200px;
 }
 @media (min-width: 1092px) and (max-width: 1150px) {
 
     /* newer */
     .profile {
-        padding-left: 250px !important;
+        padding-left: 50px !important;
     }
     [dir="rtl"] .profile {
         padding-left: 0px !important;
     }
+
     .profile-ar {
-        padding-right: 350px;
+        padding-right: 200px;
     }
 
     .profile-fr {
-        padding-left: 200px;
+        padding-left: 50px;
     }
 
     .profile-en {
-        padding-left: 350px;
+        padding-left: 200px;
     }
 }
 
@@ -2081,6 +2088,15 @@ input[type="radio"] {
     .login-text h2 span {
         font-size: 20px;
     }
+
+    .step-desc {
+        text-align: center;
+    }
+
+    .step-header {
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 @media (max-width: 480px) {
@@ -2319,6 +2335,15 @@ color: #FFFFFF;
 .header-container .header .custom-h1{
     font-size: 45px !important;
     line-height: normal !important;
+}
+
+.header-container .header .custom-p{
+    font-size: 16px !important;
+    color: #000 !important;
+}
+
+.header-container .header .custom-p a{
+    color: #006BB3 !important;
 }
 
 .header-container .header h1 span {
@@ -2711,9 +2736,9 @@ color: #FFFFFF;
     margin: 40px auto;
     padding-left: 20px;
     width: fit-content;
-  }
+}
 
-  .timeline::before {
+.timeline::before {
     content: "";
     position: absolute;
     top: 0;
@@ -2722,13 +2747,13 @@ color: #FFFFFF;
     width: 4px;
     background-color: #e69138;
     border-radius: 10px;
-  }
+}
 
-  .timeline-item {
+.timeline-item {
     position: relative;
     margin-bottom: 30px;
     padding-left: 20px;
-  }
+}
 
 .timeline-dot {
     position: absolute;
@@ -2740,9 +2765,25 @@ color: #FFFFFF;
     border-radius: 50%;
 }
 
+[dir="rtl"] .timeline {
+    padding-right: 20px;
+}
+
+[dir="rtl"] .timeline::before {
+    right: 20px;
+}
+
+[dir="rtl"] .timeline-item {
+    padding-right: 20px;
+}
+
+[dir="rtl"] .timeline-dot {
+    right: -4px;
+}
+
 .timeline-content {
     font-family: 'Roboto', sans-serif;
-    font-size: 16px;
+    font-size: clamp(14px, 2.5vw, 16px);
     font-weight: 500;
     color: #000;
     line-height: 1.5;
@@ -2760,6 +2801,10 @@ color: #FFFFFF;
     position: relative;
     z-index: 1;
     padding: 0px 15%;
+}
+
+[dir="rtl"] .proof-work {
+    background-image: url('../../images/section-headphone-ar.png');
 }
 
 .proof-text h2 {
@@ -2911,6 +2956,341 @@ color: #FFFFFF;
     border-radius: 50%;
     margin-right: 10px;
     vertical-align: middle;
+}
+
+/** Therapists **/
+.our-therapists {
+    background-image: url('../../images/therapists.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: start;
+    align-items: end;
+    min-height: 100vh;
+    position: relative;
+    z-index: 1;
+    padding: 0px 15% 80px 15%;
+    margin-top: 5%;
+}
+
+
+.therapists-text{
+    backdrop-filter: blur(6px);
+    box-shadow: 40px 20px 16.4px 0px #0000001A;
+    border-radius: 30px;
+    border: 1px solid #FFFFFF99;
+    padding: 0px 30px;
+    background: linear-gradient(108.27deg, rgba(255, 255, 255, 0.5) 3.59%, rgba(255, 255, 255, 0.2) 98.72%);
+    width: 500px;
+}
+
+.therapists-text h2{
+    font-weight: 800;
+    font-size: clamp(24px, 4vw, 34px);
+    color: #ffffff;
+}
+
+.therapists-text h2 .span-coler{
+    color: #D67E0D;
+}
+
+.crossed-orange {
+    position: relative;
+    display: inline;
+    z-index: 1;
+  }
+
+.crossed-orange::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 45%;
+    height: 10px;
+    background-color: #D67E0D;
+    transform: rotate(0deg);
+    z-index: -1;
+}
+
+.organizations-title{
+    font-family: 'Roboto', sans-serif;
+    font-size: clamp(22px, 4vw, 32px);
+}
+
+.organizations-title span{
+    color: #D67E0D;
+}
+
+
+.steps-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.step {
+    flex: 1;
+    min-width: 250px;
+    margin: 20px;
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    /*justify-content: center;*/
+}
+
+.step-number {
+    background: radial-gradient(50% 50% at 50% 50%, #F3BA6F 0%, #D27C0C 100%);
+    color: white;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 8px;
+}
+
+.step-title-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.step-title {
+    font-weight: bold;
+    color: #000;
+    white-space: nowrap;
+}
+
+.step-line {
+    height: 2px;
+    width: 145px;
+    background-color: #C87C1E;
+}
+
+.step-desc {
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.steps-heading {
+    font-family: 'Roboto', sans-serif;
+    font-size: clamp(30px, 4vw, 40px);
+    font-weight: 800;
+    text-align: center;
+    color: #000;
+    margin: 40px;
+    text-transform: capitalize;
+}
+
+.steps-heading span {
+    background-color: #C87C1E;
+    color: white;
+    padding: 3px 8px;
+    border-radius: 4px;
+}
+
+
+/**/
+.benefits-section {
+    padding: 8% 0px;
+}
+
+.benefits-heading {
+    font-family: 'Roboto', sans-serif;
+    font-size: clamp(30px, 4vw, 40px);
+    font-weight: 800;
+    text-align: center;
+    color: #000;
+    margin-bottom: 65px;
+    text-transform: capitalize;
+}
+
+.benefits-heading span {
+    color: #C87C1E;
+}
+
+.benefits-heading p {
+    font-family: 'Roboto', sans-serif;
+    font-size: clamp(20px, 4vw, 30px);
+    font-weight: 400;
+    text-align: center;
+    color: #000;
+    text-transform: capitalize;
+    line-height: 0.5;
+}
+
+.box-container {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 15%;
+    row-gap: 60px;
+    justify-content: center;
+}
+
+.info-box {
+    width: 400px;
+    height: 180px;
+    position: relative;
+    min-width: 280px;
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    background: linear-gradient(243.12deg, #FFF4E6 10.17%, #F6971B 124.01%);
+
+}
+
+.info-box img {
+    width: 125px;
+    height: 110px;
+    left: 274.03px;
+    top: 0px;
+    border-top-right-radius: 11px;
+    mix-blend-mode: Overlay;
+}
+
+[dir="rtl"] .info-box img {
+    width: 125px;
+    height: 110px;
+    right: 274.03px;
+    top: 0px;
+    border-top-right-radius: 11px;
+    mix-blend-mode: Overlay;
+    transform: scaleX(-1);
+}
+
+.box-icon {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+}
+
+.box-title {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.box-description {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #000;
+    width: 70%;
+}
+
+
+.therapy-section1 {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    padding: 40px;
+}
+
+.therapy-left {
+    text-transform: capitalize;
+    flex: 1 1 350px;
+    max-width: 500px;
+}
+
+.therapy-left h2 {
+    font-size: clamp(20px, 4vw, 32px);
+    font-weight: 800;
+    line-height: 1.3;
+}
+
+.highlight {
+    color: #D67E0D;
+}
+
+.therapy-left p {
+    margin: 20px 0;
+    font-size: clamp(14px, 4vw, 16px);
+    color: #333;
+    line-height: 1.5;
+}
+
+.badges {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    background-color: #e0e0e0;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 14px;
+    text-align: center;
+    max-width: 160px;
+}
+
+.therapy-right {
+    flex: 1 1 350px;
+    position: relative;
+}
+
+.therapy-image-benf {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.quote-box {
+    font-family: 'Roboto', sans-serif;
+    position: absolute;
+    bottom: -30px;
+    left: 20px;
+    right: 20px;
+    background: #D67E0D94;
+    backdrop-filter: blur(17.600000381469727px);
+    color: white;
+    padding: 15px;
+    border-radius: 6px;
+    font-size: clamp(10px, 2.5vw, 14px);
+    line-height: 1.5;
+}
+
+.quote-author {
+    float: right;
+    font-weight: bold;
+}
+
+
+.crossed-orange2 {
+    position: relative;
+    display: inline;
+    z-index: 1;
+  }
+
+.crossed-orange2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 45%;
+    height: 4px;
+    background-color: #D67E0D;
+    transform: rotate(0deg);
+    z-index: -1;
 }
 
 @media (min-width: 940px) and (max-width: 1100px) {
@@ -3322,6 +3702,14 @@ color: #FFFFFF;
 @media (max-width: 393px) {
     .section-description h2 {
         font-size: 15px !important;
+    }
+
+    .info-box {
+        width: 60% !important;
+    }
+
+    .info-box img {
+        display: none;
     }
 }
 
