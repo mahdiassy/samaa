@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Doctor;
 use App\Models\Feedback;
 use App\Models\Patient;
@@ -18,7 +19,8 @@ class HomeController extends Controller
 
     public function home()
     {
-        return view($this->dir . "home");
+        $blogs = Blog::latest()->take(3)->get();
+        return view($this->dir . "home", compact('blogs'));
     }
 
     public function index()

@@ -37,8 +37,13 @@
                     <tbody id="patientTbody">
                         @foreach ($blogs as $blog)
                             <tr>
+                                @php
+                                    $locale = App::getLocale();
+                                    $title = json_decode($blog->title, true)[$locale] ?? '';
+                                    $description = json_decode($blog->description, true)[$locale] ?? '';
+                                @endphp
                                 <td>{{ $blog->id }}</td>
-                                <td>{{ $blog->title }}</td>
+                                <td>{{ $title }}</td>
                                 <!--<td>{{ \Illuminate\Support\Str::words($blog->description, 10, '...') }}</td>-->
                                 <td class="custom-date">{{ \Carbon\Carbon::parse($blog->created_at)->format('d-m-Y') }}</td>
                                 <td>

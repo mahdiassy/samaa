@@ -126,6 +126,26 @@ return [
 
     'LISTEN TO MUSIC' => 'LISTEN TO MUSIC',
 
+    'How' => 'How',
+    'Works' => 'works',
+    'Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.' => 'Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.',
+    'You Share Your Needs' => 'You Share Your Needs',
+    'SAMAA Creates Personalized Sessions' => 'SAMAA Creates Personalized Sessions',
+    'You Listen, Heal, and Grow' => 'You Listen, Heal, and Grow',
+
+    'Personalized Sound Healing' => 'Personalized Sound Healing',
+    'Tailored therapy based on mood, needs, and goals.' => 'Tailored therapy based on mood, needs, and goals.',
+    'Scientifically Validated' => 'Scientifically Validated',
+    'Developed and backed by experts ​SAMAA Profile.' => 'Developed and backed by experts ​SAMAA Profile.',
+    'For Autism and Beyond' => 'For Autism and Beyond' ,
+    'Special modules designed for children and adults on the spectrum ​ClinGroup_Music therapy…​Autism & Sound Virtual' => 'Special modules designed for children and adults on the spectrum ​ClinGroup_Music therapy…​Autism & Sound Virtual',
+    'Accessible Anytime, Anywhere' => 'Accessible Anytime, Anywhere',
+    'Mobile-friendly virtual therapy sessions Autism & Sound Virtual ….' => 'Mobile-friendly virtual therapy sessions Autism & Sound Virtual ….',
+
+    'Partner with' => 'Partner with',
+    'Expand your practice with AI-driven music therapy' => 'Expand your practice with AI-driven music therapy',
+    'Let’s Partner Up' => 'Let’s Partner Up',
+
     // About Us Page
     'Where' => 'Where',
     'Science' => 'Science',

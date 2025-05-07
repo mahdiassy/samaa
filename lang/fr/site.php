@@ -128,6 +128,26 @@ return [
 
     'LISTEN TO MUSIC' => 'ÉCOUTEZ DE LA MUSIQUE',
 
+    'How' => 'Comment',
+    'Works' => 'ça fonctionne',
+    'Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.' => 'La musicothérapie est une discipline largement utilisée dans le domaine médical comme outil thérapeutique. Elle peut aider à la rééducation physique et émotionnelle des individus et contribuer au développement des compétences en communication et des relations positives avec les autres.',
+    'You Share Your Needs' => 'Vous partagez vos besoins',
+    'SAMAA Creates Personalized Sessions' => 'SAMAA crée des séances personnalisées',
+    'You Listen, Heal, and Grow' => 'Vous écoutez, guérissez et évoluez',
+
+    'Personalized Sound Healing' => 'Guérison sonore personnalisée',
+    'Tailored therapy based on mood, needs, and goals.' => 'Thérapie adaptée à l’humeur, aux besoins et aux objectifs.',
+    'Scientifically Validated' => 'Validé scientifiquement',
+    'Developed and backed by experts ​SAMAA Profile.' => 'Développé et soutenu par des experts - Profil SAMAA.',
+    'For Autism and Beyond' => 'Pour l’autisme et au-delà',
+    'Special modules designed for children and adults on the spectrum ​ClinGroup_Music therapy…​Autism & Sound Virtual' => 'Modules spéciaux conçus pour les enfants et les adultes sur le spectre - ClinGroup, musicothérapie... Autisme & Son Virtuel',
+    'Accessible Anytime, Anywhere' => 'Accessible à tout moment, partout',
+    'Mobile-friendly virtual therapy sessions Autism & Sound Virtual ….' => 'Séances de thérapie virtuelle compatibles mobile - Autisme & Son Virtuel...',
+
+    'Partner with' => 'Devenez partenaire de',
+    'Expand your practice with AI-driven music therapy' => 'Développez votre pratique grâce à la musicothérapie basée sur l’IA.',
+    'Let’s Partner Up' => 'Faisons équipe',
+
     // About Us Page
     'Where' => 'Là Où',
     'Science' => 'la science',

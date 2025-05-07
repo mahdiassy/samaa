@@ -128,6 +128,26 @@ return [
 
     'LISTEN TO MUSIC' => 'استمع إلى الموسيقى',
 
+    'How' => 'كيف',
+    'Works' => 'تعمل',
+    'Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.' => 'العلاج بالموسيقى هو تخصص يُستخدم على نطاق واسع في المجال الطبي كأداة علاجية. يمكن أن يساعد في إعادة التأهيل الجسدي والعاطفي للأفراد ويساهم في تطوير مهارات التواصل والعلاقات الإيجابية مع الآخرين.',
+    'You Share Your Needs' => 'تشارك احتياجاتك',
+    'SAMAA Creates Personalized Sessions' => 'سما تنشئ جلسات مخصصة',
+    'You Listen, Heal, and Grow' => 'تستمع، تشفى، وتنمو',
+
+    'Personalized Sound Healing' => 'العلاج بالصوت المخصص',
+    'Tailored therapy based on mood, needs, and goals.' => 'علاج مصمم خصيصًا حسب الحالة المزاجية والاحتياجات والأهداف.',
+    'Scientifically Validated' => 'مثبت علميًا',
+    'Developed and backed by experts ​SAMAA Profile.' => 'تم تطويره بدعم من الخبراء - ملف سما.',
+    'For Autism and Beyond' => 'للتوحد وما بعده',
+    'Special modules designed for children and adults on the spectrum ​ClinGroup_Music therapy…​Autism & Sound Virtual' => 'وحدات خاصة مصممة للأطفال والبالغين على طيف التوحد - كلين جروب، العلاج بالموسيقى... التوحد والصوت الافتراضي',
+    'Accessible Anytime, Anywhere' => 'متاح في أي وقت ومن أي مكان',
+    'Mobile-friendly virtual therapy sessions Autism & Sound Virtual ….' => 'جلسات علاج افتراضية متوافقة مع الهواتف - التوحد والصوت الافتراضي...',
+
+    'Partner with' => 'تعاون مع',
+    'Expand your practice with AI-driven music therapy' => 'وسّع نطاق ممارستك مع العلاج الموسيقي المدعوم بالذكاء الاصطناعي.',
+    'Let’s Partner Up' => 'دعونا نتعاون',
+
     // About Us Page
     'Where' => 'حيث',
     'Science' => 'يلتقي',

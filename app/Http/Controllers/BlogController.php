@@ -32,8 +32,18 @@ class BlogController extends Controller
     {
         try {
             $blog = new blog;
-            $blog->title = $request->title;
-            $blog->description = $request->description;
+            $titles = [];
+            $descriptions = [];
+
+            foreach (config('app.locales') as $locale) {
+                $titles[$locale] = $request->input("title_$locale");
+                $descriptions[$locale] = $request->input("description_$locale");
+            }
+
+            $blog = new Blog;
+            $blog->title = json_encode($titles);
+            $blog->description = json_encode($descriptions);
+
             $blog->user_id = Auth::user()->id;
 
             if ($request->has('image')) {
@@ -62,8 +72,16 @@ class BlogController extends Controller
     public function update(Request $request, Blog $blog)
     {
         try {
-            $blog->title = $request->title;
-            $blog->description = $request->description;
+            $titles = [];
+            $descriptions = [];
+
+            foreach (config('app.locales') as $locale) {
+                $titles[$locale] = $request->input("title_$locale");
+                $descriptions[$locale] = $request->input("description_$locale");
+            }
+
+            $blog->title = json_encode($titles);
+            $blog->description = json_encode($descriptions);
             $blog->user_id = Auth::user()->id;
 
             if ($request->has('image')) {

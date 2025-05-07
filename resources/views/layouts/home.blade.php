@@ -6,7 +6,8 @@
         <div class="hero-text {{ App::getLocale() == 'ar' ? 'text-right' : 'text-left' }}">
             <h2>{{ __('site.Welcome to SAMAA') }}</h2>
             @if (App::getLocale() == 'ar')
-                <h1 class="heal-Arabic">
+                <h1 class="
+                heal-Arabic">
                     صحت<span class="different-r-Arabic">ك</span> في سمع<span class="different-l-Arabic">ك</span>
                 </h1>
             @elseif (App::getLocale() == 'fr')
@@ -23,6 +24,78 @@
             </p>
         </div>
     </section>
+
+    <div class="sound-therapy-section">
+        <div class="home-heading">
+            <h1><span>{{ __('site.Sound') }} </span>{{ __('site.Therapy') }}</h1>
+            <p>{{ __('site.Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.') }}</p>
+
+           <h1> {{ __('site.How') }} <span>{{ __('site.Sama’a') }} </span>{{ __('site.Works') }} </h1>
+        </div>
+
+        <div class="container">
+
+            <div class="card" style="opacity: 1;">
+                <img src="{{ asset('assets/images/icons/Brain-icon.svg') }}" alt="Brain Icon">
+                <h3>{{ __('site.You Share Your Needs') }}</h3>
+                </p>
+            </div>
+            <div class="card" style="opacity: 1;">
+                <img src="{{ asset('assets/images/icons/AI.svg') }}" alt="AI Icon">
+                <h3>{{ __('site.SAMAA Creates Personalized Sessions') }}</h3>
+            </div>
+            <div class="card" style="opacity: 1;">
+                <img src="{{ asset('assets/images/icons/Arrow-icon.svg') }}" alt="Arrow Icon">
+                <h3>{{ __('site.You Listen, Heal, and Grow') }}</h3>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="doctors-section">
+        <div class="doctor-cards">
+
+            <div class="doctor-card">
+                <div class="">
+                    <img class="image-section4" src="{{ asset('assets/images/home-section4.png') }}" />
+                </div>
+            </div>
+
+            <div class="doctor-card">
+                <div class="doctor-content">
+                    <div class="text-side">
+
+                        <div class="step">
+                            <h4 class="star-point" >{{ __('site.Personalized Sound Healing') }}</h4>
+                            <p>
+                                {{ __('site.Tailored therapy based on mood, needs, and goals.') }}</p>
+                        </div>
+
+                        <div class="step">
+                            <h4 class="star-point">{{ __('site.Scientifically Validated') }}</h4>
+                            <p>
+                                {{ __('site.Developed and backed by experts ​SAMAA Profile.') }}<br>
+                            </p>
+                        </div>
+
+                        <div class="step">
+                            <h4  class="star-point" >{{ __('site.For Autism and Beyond') }}</h4>
+                            <p>
+                                {{ __('site.Special modules designed for children and adults on the spectrum ​ClinGroup_Music therapy…​Autism & Sound Virtual') }}<br>
+                            </p>
+                        </div>
+
+                        <div class="step">
+                            <h4  class="star-point" >{{ __('site.Accessible Anytime, Anywhere') }}</h4>
+                            <p>
+                                {{ __('site.Mobile-friendly virtual therapy sessions Autism & Sound Virtual ….') }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <section class="therapy-section">
         <div class="therapy-content">
@@ -46,31 +119,32 @@
         </div>
     </section>
 
-    <div class="container">
-        <div class="card" style="opacity: 1;">
-            <img src="{{ asset('assets/images/music.png') }}" alt="Music Selection Icon">
-            <h3>{{ __('site.Music Selection') }}</h3>
-            <p>{{ __('site.Choose from a variety of music genres and styles to create your personalized therapeutic experience.') }}
-            </p>
-        </div>
-        <div class="card" style="opacity: 1;">
-            <img src="{{ asset('assets/images/dial.png') }}" alt="Mood Enhancement Icon">
-            <h3>{{ __('site.Mood Enhancement') }}</h3>
-            <p>{{ __('site.Enhance your mood by selecting music that matches your emotions and feelings.') }}</p>
-        </div>
-        <div class="card" style="opacity: 1;">
-            <img src="{{ asset('assets/images/relacsation.png') }}" alt="Relaxation Icon">
-            <h3>{{ __('site.Relaxation') }}</h3>
-            <p>{{ __('site.Immerse yourself in calming melodies to unwind, reduce stress, and find tranquility.') }}</p>
-        </div>
-    </div>
-
     <section class="section2">
-        <div class="section-description">
-            <h2>{{ __('site.Sound Therapy and Composers') }}</h2>
-            <p>{{ __('site.Learn about the role of music therapy in healing and relaxation. Discover how famous composers like Beethoven utilized the power of music to overcome challenges and inspire others.') }}
-            </p>
-            <button>{{ __('site.LISTEN TO MUSIC') }}</button>
+        <div class="section2-description">
+            <h2>{{ __('site.Partner with') }} <span>{{ __('site.Sama’a') }}</span>. {{ __('site.Expand your practice with AI-driven music therapy') }} </h2>
+
+            <button>{{ __('site.Let’s Partner Up') }}</button>
+        </div>
+    </section>
+
+    <section class="doctors-section">
+        <div class="blog">
+            <h3>Resource</h3>
+            <div class="blog-cards">
+                @foreach ($blogs as $blog)
+                    <div class="blog-card">
+                        <img src="{{ $blog->image ? Storage::url($blog->image) : asset('assets/images/blog-image.png') }}">
+                        <div class="blog-info">
+                            <h3>{{$blog->title}}</h3>
+                            <!--<p>{{ \Illuminate\Support\Str::words(strip_tags($blog->description), 10, '...') }}</p>-->
+                        </div>
+                        <div class="button-calendar">
+                            <img class="uim_calender" src="{{asset('assets/images/icons/uim_calender.svg') }}">
+                            <button>learn more</button>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
     </section>
 @endsection
