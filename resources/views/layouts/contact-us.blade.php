@@ -13,14 +13,19 @@
                         <div class="icon">
                             <img src="{{ asset('assets/images/email.png') }}" alt="Email Icon">
                         </div>
-                        <p><strong>{{ __('site.Message') }}</strong> <a href="mailto:Samaa@gmail.com">Samaa@gmail.com</a></p>
+                        <div class="contact-message">
+                            <p><strong>{{ __('site.Message') }}</strong> <a href="mailto:Samaa@gmail.com">Samaa@gmail.com</a>
+                            </p>
+                        </div>
                     </div>
                     <div class="contact-item">
                         <div class="icon">
                             <img src="{{ asset('assets/images/phone.png') }}" alt="Phone Icon">
                         </div>
-                        <p><strong>{{ __('site.Contact Us') }}</strong> <a href="tel:+961 0 551 511"> +961 0 551 511 </a>
-                        </p>
+                        <div class="contact-message">
+                            <p><strong>{{ __('site.Contact Us') }}</strong> <a href="tel:+961 0 551 511"> +961 0 551 511 </a>
+                            </p>
+                        </div>
                     </div>
                 </div>
 

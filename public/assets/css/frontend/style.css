@@ -2087,6 +2087,14 @@ input[type="radio"] {
     color: #F1EEEC;
 }
 
+.contact-message{
+    padding-left: 75px;
+}
+
+[dir="rtl"] .contact-message{
+    padding-right: 75px;
+}
+
 .contact-item {
     display: flex;
     align-items: center;
