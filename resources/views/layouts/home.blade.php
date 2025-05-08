@@ -52,6 +52,28 @@
         </div>
     </div>
 
+    <section class="therapy-section2">
+        <div class="therapy-image2"></div>
+        <!--<img src="{{ asset('assets/images/music-therapy2.png') }}" alt="Music Therapy">-->
+        <div class="therapy-content2">
+            <!--<h2>{{ __('site.What is Music Therapy?') }}</h2>-->
+            <p>
+                {{ __('site.What is Music Therapy (answer)') }}
+            </p>
+        </div>
+    </section>
+
+    <section class="therapy-section">
+        <div class="therapy-content">
+            <!--<h2>{{ __('site.Music Therapy') }}</h2>-->
+            <p>
+                {{ __('site.Music Therapy (description)') }}
+            </p>
+        </div>
+        <div class="therapy-image"></div>
+        <!--<img src="{{ asset('assets/images/music-therapy.jpg') }}" alt="Music Therapy">-->
+    </section>
+
     <div class="doctors-section">
         <div class="doctor-cards">
 
@@ -97,28 +119,6 @@
         </div>
     </div>
 
-    <section class="therapy-section">
-        <div class="therapy-content">
-            <!--<h2>{{ __('site.Music Therapy') }}</h2>-->
-            <p>
-                {{ __('site.Music Therapy (description)') }}
-            </p>
-        </div>
-        <div class="therapy-image"></div>
-        <!--<img src="{{ asset('assets/images/music-therapy.jpg') }}" alt="Music Therapy">-->
-    </section>
-
-    <section class="therapy-section2">
-        <div class="therapy-image2"></div>
-        <!--<img src="{{ asset('assets/images/music-therapy2.png') }}" alt="Music Therapy">-->
-        <div class="therapy-content2">
-            <!--<h2>{{ __('site.What is Music Therapy?') }}</h2>-->
-            <p>
-                {{ __('site.What is Music Therapy (answer)') }}
-            </p>
-        </div>
-    </section>
-
     <section class="section2">
         <div class="section2-description">
             <h2>{{ __('site.Partner with') }} <span>{{ __('site.Sama’a') }}</span>. {{ __('site.Expand your practice with AI-driven music therapy') }} </h2>
@@ -129,21 +129,68 @@
 
     <section class="doctors-section">
         <div class="blog">
-            <h3>Resource</h3>
+            <h3 class="blog-title">{{ __('site.Resource') }}</h3>
             <div class="blog-cards">
                 @foreach ($blogs as $blog)
+                @php
+                    $locale = App::getLocale();
+                    $title = json_decode($blog->title, true)[$locale] ?? '';
+                @endphp
                     <div class="blog-card">
                         <img src="{{ $blog->image ? Storage::url($blog->image) : asset('assets/images/blog-image.png') }}">
                         <div class="blog-info">
-                            <h3>{{$blog->title}}</h3>
+                            <h3>{{$title}}</h3>
                             <!--<p>{{ \Illuminate\Support\Str::words(strip_tags($blog->description), 10, '...') }}</p>-->
                         </div>
                         <div class="button-calendar">
-                            <img class="uim_calender" src="{{asset('assets/images/icons/uim_calender.svg') }}">
-                            <button>learn more</button>
+                            <div class="calendar-date">
+                                <img class="uim_calender" src="{{asset('assets/images/icons/uim_calender.svg') }}">
+                                <p class="date-text">
+                                    {{ now()->diffInDays($blog->created_at) === 0 ? __('site.today') : (now()->diffInDays($blog->created_at) === 1 ? __('site.1_day_ago')  : __('site.x_days_ago', ['count' => now()->diffInDays($blog->created_at)])) }}
+                                </p>
+                            </div>
+                            <button>{{ __('site.learn more') }}</button>
                         </div>
                     </div>
                 @endforeach
+            </div>
+        </div>
+    </section>
+
+    <section class="doctors-section">
+        <div class="CTA-container">
+            <div class="text-section">
+                @if (App::getLocale() == 'ar')
+                    <h1>
+                        {{ __('site.start') }}<br>
+                        <span class="highlight">{{ __('site.Journey') }}</span> {{ __('site.Healing') }}<br>
+                        {{ __('site.Your') }} <span class="highlight">{{ __('site.today') }}</span>
+                    </h1>
+                @elseif (App::getLocale() == 'fr')
+                    <h1>
+                        {{ __('site.start') }}<br>
+                        {{ __('site.Your') }} <span class="highlight">{{ __('site.Journey') }}</span><br>
+                        <span class="highlight">{{ __('site.Healing') }} </span>{{ __('site.today') }}
+                    </h1>
+                @else
+                    <h1>
+                        {{ __('site.start') }}<br>
+                        {{ __('site.Your') }} <span class="highlight">{{ __('site.Healing') }}</span><br>
+                        <span class="highlight">{{ __('site.Journey') }} </span>{{ __('site.today') }}
+                    </h1>
+                @endif
+            </div>
+
+            <div class="cta-section">
+                <form>
+                    <div class="form-row">
+                        <input type="text" placeholder="{{ __('site.First Name') }}" required>
+                        <input type="text" placeholder="{{ __('site.Last Name') }}" required>
+                    </div>
+                    <input type="email" placeholder="{{ __('site.Email') }}" required>
+                    <textarea placeholder="{{ __('site.Message') }}"></textarea>
+                    <button type="submit">{{ __('site.Submit') }}</button>
+                </form>
             </div>
         </div>
     </section>

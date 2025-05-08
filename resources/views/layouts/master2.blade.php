@@ -251,11 +251,14 @@
             "site.Canceled": "{{ __('site.Canceled') }}",
             "site.Canceled By Patient": "{{ __('site.Canceled By Patient') }}",
         };
-        ClassicEditor
-            .create(document.querySelector('#Bio'))
-            .catch(error => {
-                console.error(error);
-            });
+
+        @foreach (config('app.locales') as $locale)
+            ClassicEditor
+                .create(document.querySelector('#description_{{ $locale }}'))
+                .catch(error => {
+                    console.error('CKEditor error for locale {{ $locale }}:', error);
+                });
+        @endforeach
     </script>
 
     <script src="{{ asset('assets/js/scripts.js') }}"></script>

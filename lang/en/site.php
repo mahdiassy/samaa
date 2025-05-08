@@ -146,6 +146,14 @@ return [
     'Expand your practice with AI-driven music therapy' => 'Expand your practice with AI-driven music therapy',
     'Let’s Partner Up' => 'Let’s Partner Up',
 
+    'learn more' => 'learn more',
+    'Resource' => 'Resource',
+    'start' => 'start',
+    'Your' => 'Your',
+    'Journey' => 'Journey',
+    'Healing' => 'Healing',
+
+
     // About Us Page
     'Where' => 'Where',
     'Science' => 'Science',
@@ -366,6 +374,8 @@ return [
     'next' => 'Next',
     'prev' => 'Prev',
     'today' => 'Today',
+    '1_day_ago' => '1 day ago',
+    'x_days_ago' => ':count days ago',
     'week' => 'Week',
     'month' => 'Month',
     'day' => 'Day',

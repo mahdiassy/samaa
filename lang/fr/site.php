@@ -148,6 +148,13 @@ return [
     'Expand your practice with AI-driven music therapy' => 'Développez votre pratique grâce à la musicothérapie basée sur l’IA.',
     'Let’s Partner Up' => 'Faisons équipe',
 
+    'learn more' => 'plus',
+    'Resource' => 'Ressource',
+    'start' => 'Commencez',
+    'Your' => 'votre',
+    'Journey' => 'voyage',
+    'Healing' => 'de guérison',
+
     // About Us Page
     'Where' => 'Là Où',
     'Science' => 'la science',
@@ -367,6 +374,8 @@ return [
     'next' => 'suivante',
     'prev' => 'précédente',
     'today' => 'aujourd’hui',
+    '1_day_ago' => 'il y a 1 jour',
+    'x_days_ago' => 'Il y a :count jours',
     'week' => 'semaine',
     'month' => 'mois',
     'day' => 'jour',
