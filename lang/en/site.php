@@ -438,6 +438,10 @@ return [
     'Title' => 'Title',
     'posted Date' => 'posted Date',
     'Set the Blog thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted' => 'Set the Blog thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted',
+    'Posted on' => 'Posted on',
+    'Search' => 'Search',
+    'related Post' => 'Related Post',
+    'blogs' => 'Blogs',
 
     // How it work
     'How It Works' => 'How It Works',

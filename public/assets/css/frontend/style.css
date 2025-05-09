@@ -19,7 +19,7 @@ body {
     background-color: #f5f5f5;
 }
 
-nav {
+.main-nav {
     background-color: #CECECE42;
     padding: 10px 50px !important;
     display: flex;
@@ -34,7 +34,7 @@ nav {
     transition: box-shadow 0.3s ease, background-color 0.3s ease;
 }
 
-nav.scrolled {
+.main-nav.scrolled {
     backdrop-filter: blur(25.4px);
     background: rgba(199, 199, 199, 0.38);
     box-shadow: 0 15px 17px rgba(0, 0, 0, 0.2)
@@ -884,6 +884,58 @@ nav.scrolled {
     font-family: 'Inter', sans-serif;
     font-size: 14px;
     color: #4D4D4D;
+    margin: 0;
+}
+
+.blog-detail-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.blog-card-detail {
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    background-color: #fff;
+}
+
+.blog-card-detail img {
+    width: 100%;
+    height: 80vh;
+    object-fit: cover;
+    display: block;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.blog-card-detail-info {
+    background-color: #fafafa;
+    border-radius: 0 0 5px 5px;
+    padding: 20px;
+    text-align: start;
+}
+
+.h3-colored {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #D67E0D;
+}
+
+.blog-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+.date-text-colored {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #D67E0D;
     margin: 0;
 }
 
@@ -2309,6 +2361,11 @@ input[type="radio"] {
 }
 
 @media (max-width: 768px) {
+
+    .blog-grid {
+        grid-template-columns: 1fr !important;
+    }
+
     .landing-page {
         height: 70vh;
     }
@@ -2983,6 +3040,269 @@ color: #FFFFFF;
     text-align: left;
     margin-bottom: 15px;
     color: #4D4D4D;
+}
+
+/* blog */
+/* Blog page sidebar */
+.blog-page-right {
+    margin-top: 40px;
+}
+
+.blog-sidebar-widget {
+    background-color: #f5f5f5;
+    padding: 20px;
+    margin-bottom: 30px;
+    border-radius: 8px;
+}
+
+.blog-sidebar-widget h3 {
+    font-size: 1.25rem;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+.blog-sidebar-widget input[type="search"] {
+    width: calc(100% - 50px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.blog-sidebar-widget input[type="search"]:focus {
+    outline: none;
+    border-color: #dbab52;
+}
+
+.blog-sidebar-widget button {
+    background: #C87C28;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    margin-left: 5px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.featured-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidebr-pro-widget {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.blog-thumb-info-image img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+.blog-thumb-info-content h4 {
+    font-size: 1rem;
+    margin: 0;
+    color: #333;
+}
+
+.blog-thumb-info-content p {
+    font-size: 0.875rem;
+    color: #777;
+}
+
+.blog-thumb-info-content a {
+    color: #333;
+    text-decoration: none;
+}
+
+.blog-thumb-info-content a:hover {
+    color: #dbab52;
+}
+
+.blog-thumb-info-content span {
+    color: #D67E0D;
+}
+
+/* Responsive grid system */
+.container-blog {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.row-blog {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15px;
+}
+
+.col-lg-8,
+.col-lg-4 {
+    padding: 0 15px;
+    box-sizing: border-box;
+}
+
+.col-lg-8 {
+    width: 66.6666%;
+}
+
+.col-lg-4 {
+    width: 33.3333%;
+}
+
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responsive behavior */
+@media (max-width: 992px) {
+    .col-lg-8,
+    .col-lg-4 {
+        width: 100%;
+        padding: 0 15px;
+    }
+
+    .row-blog {
+        flex-direction: column;
+    }
+
+}
+
+/* Blog area */
+.jobguru-blog-page-area {
+    padding: 60px 0;
+    background-color: #fff;
+}
+
+/* Blog grid with responsiveness */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 20px 0;
+}
+
+/* Blog cards */
+.blog-card-new {
+    background-color: #FEFEFE;
+    border-radius: 5px;
+    box-shadow: 8px 8px 0px 0px #FB8A2ECC;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.blog-card-new:hover {
+    transform: translateY(-5px);
+}
+
+.blog-card-new img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.blog-info-new {
+    padding: 15px;
+    font-family: 'Inter', sans-serif;
+}
+
+.blog-info-new h3 {
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin: 0;
+    color: #242424;
+}
+
+.blog-card-new .a-card {
+    position: relative;
+    width:120px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #F6F6F6;
+    border: 2px solid #E7A959;
+    color: #4D4D4D;
+    font-size: 14px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.blog-card-new .a-card:hover {
+    color: #F6F6F6;
+    background-color: #E7A959;
+}
+
+.pagination-box-row {
+	text-align: center;
+}
+
+.pagination-box-row p {
+	display: inline-block;
+	font-size: 15px;
+	color: #444;
+	margin-right: 15px
+}
+
+.pagination {
+	margin-top: 50px;
+	text-align: center;
+	float: none;
+	display: inline-block;
+}
+
+.pagination li {
+	display: inline-block;
+	margin-right: 5px
+}
+
+.pagination li:last-child {
+	margin-right: 0
+}
+
+.pagination li a {
+	display: block;
+	width: 35px;
+	height: 35px;
+	font-size: 15px;
+	line-height: 35px;
+	border-radius: 50%;
+	color: #111;
+	font-weight: 500;
+    text-decoration: none;
+}
+
+.pagination li.active a,
+.pagination li a:hover {
+	background: #D67E0D none repeat scroll 0 0;
+	color: #fff;
+}
+
+.pagination li.active span {
+	background-color: #888;
+	color: #fff;
+	pointer-events: none;
+	width: 35px;
+	height: 35px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%;
+	text-align: center;
+	line-height: 35px;
+	font-size: 15px;
+	font-weight: 500;
+}
+
+.pagination li.disabled span {
+	color: #aaa;
+	pointer-events: none;
+	cursor: not-allowed;
 }
 
 /* How It Work */

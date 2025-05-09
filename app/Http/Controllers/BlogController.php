@@ -18,9 +18,20 @@ class BlogController extends Controller
 
     public function index(Request $request)
     {
-        $blogs = Blog::paginate(10);
+        $locale = app()->getLocale();
 
-        return view($this->dir . "index", compact('blogs'));
+        $query = Blog::query();
+
+        if ($request->filled('title')) {
+            $query->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, '$.\"$locale\"'))) LIKE ?", ['%' . strtolower($request->title) . '%']);
+        }
+
+        $blogs = $query->orderBy('created_at', 'desc')->paginate(8)->appends([
+            'title' => $request->title,
+        ]);
+        $last_blogs = Blog::latest()->limit(3)->get();
+
+        return view($this->dir . "index", compact('blogs', 'last_blogs'));
     }
 
     public function create()
@@ -104,7 +115,8 @@ class BlogController extends Controller
 
     public function show(Blog $blog)
     {
-        return view($this->dir . "show", compact('blog'));
+        $last_blogs = Blog::latest()->limit(3)->get();
+        return view($this->dir . "show", compact('blog','last_blogs'));
     }
 
     public function destroy(Blog $blog)

@@ -45,7 +45,7 @@
     </div>
     <div id="overlay" class="overlay"></div>
 
-    <nav>
+    <nav class="main-nav">
         <div class="logo">
             <a href="{{ route('home') }}"><img src="{{ asset('assets/images/samaa-logo.png') }}" alt="Logo"></a>
         </div>
@@ -60,6 +60,7 @@
             <a href="{{ route('home') }}">{{ __('site.Home') }}</a>
             <a href="{{ route('how-it-work') }}">{{ __('site.How It Works') }}</a>
             <a href="{{ route('therapists') }}">{{ __('site.Therapists') }}</a>
+            <a href="{{ route('blog.index') }}">{{ __('site.blogs') }}</a>
             <a href="{{ route('about-us') }}">{{ __('site.About Us') }}</a>
             <a href="{{ route('contact-us') }}">{{ __('site.Contact Us') }}</a>
             @if (Auth::check())

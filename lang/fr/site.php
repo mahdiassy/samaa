@@ -438,6 +438,10 @@ return [
     'Title' => 'Titre',
     'posted Date' => 'Date de publication',
     'Set the Blog thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted' => 'Définissez l’image miniature du blog. Seuls les fichiers *.png, *.jpg et *.jpeg sont acceptés.',
+    'Posted on' => 'Publié sur',
+    'Search' => 'Recherche',
+    'related Post' => 'Article connexe',
+    'blogs' => 'Blogues',
 
     // How it work
     'How It Works' => 'Comment ça marche',

@@ -437,6 +437,10 @@ return [
     'Title' => 'العنوان',
     'posted Date' => 'تاريخ النشر',
     'Set the Blog thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted' => 'عيّن صورة مصغرة للمدونة. تُقبل ملفات الصور *.png و*.jpg و*.jpeg فقط.',
+    'Posted on' => 'تم النشر',
+    'Search' => 'بحث',
+    'related Post' => 'مقالات ذات صلة',
+    'blogs' => 'المقالات',
 
     // How it work
     'How It Works' => 'كيف يعمل',
