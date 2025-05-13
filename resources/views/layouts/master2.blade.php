@@ -39,6 +39,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <!-- Trumbowyg CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/trumbowyg@2.27.3/dist/ui/trumbowyg.min.css">
+
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+    <!-- Trumbowyg JS -->
+    <script src="https://cdn.jsdelivr.net/npm/trumbowyg@2.27.3/dist/trumbowyg.min.js"></script>
+
 </head>
 
 <body>
@@ -223,10 +232,8 @@
         </div>
     </footer>
     </div>
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/ckeditor5-classic-free-full-feature@35.4.1/build/ckeditor.min.js"></script>
 
     <script>
 
@@ -253,11 +260,9 @@
         };
 
         @foreach (config('app.locales') as $locale)
-            ClassicEditor
-                .create(document.querySelector('#description_{{ $locale }}'))
-                .catch(error => {
-                    console.error('CKEditor error for locale {{ $locale }}:', error);
-                });
+            $(document).ready(function () {
+                $('#editor_{{ $locale }}').trumbowyg();
+            });
         @endforeach
     </script>
 

@@ -67,7 +67,7 @@
                                     <div class="blog-thumb-info">
                                         <div class="blog-thumb-info-image">
                                             <a href="{{ route('blog.show',$last_blog) }}">
-                                                <img src="{{ $last_blog->image ? Storage::url($last_blog->image) : asset('assets/img/blog.jpg') }}" alt="proudct" />
+                                                <img src="{{ $last_blog->image ? Storage::url($last_blog->image) : asset('assets/images/blog-image.png') }}" alt="proudct" />
                                             </a>
                                         </div>
                                         <div class="blog-thumb-info-content">

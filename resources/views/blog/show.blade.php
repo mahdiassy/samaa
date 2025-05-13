@@ -15,17 +15,12 @@
             <div class="row-blog">
                 <div class="col-lg-8 col-sm-10 mx-auto">
                     <div class="blog-detail-wrapper">
-                        @php
-                            $locale = App::getLocale();
-                            $title = json_decode($blog->title, true)[$locale] ?? '';
-                            $description = json_decode($blog->description, true)[$locale] ?? '';
-                        @endphp
 
                         <div class="blog-card-detail">
-                            <img src="{{ $blog->image ? Storage::url($blog->image) : asset('assets/images/blog-image.png') }}" alt="{{ $title }}">
+                            <img src="{{ $blog->image ? Storage::url($blog->image) : asset('assets/images/blog-image.png') }}" alt="{{ $currentTitle }}">
                             <div class="blog-card-detail-info">
-                                <h3 class="h3-colored">{{ $title }}</h3>
-                                <p class="blog-description">{!! nl2br(e($description)) !!}</p>
+                                <h3 class="h3-colored">{{ $currentTitle }}</h3>
+                                <div class="blog-description">{!! $currentDescription !!}</div>
 
                                 <div class="button-calendar">
                                     <div class="calendar-date">
@@ -61,7 +56,7 @@
                                     <div class="blog-thumb-info">
                                         <div class="blog-thumb-info-image">
                                             <a href="{{ route('blog.show',$last_blog) }}">
-                                                <img src="{{ $last_blog->image ? Storage::url($last_blog->image) : asset('assets/img/blog.jpg') }}" alt="proudct" />
+                                                <img src="{{ $last_blog->image ? Storage::url($last_blog->image) : asset('assets/images/blog-image.png') }}" alt="proudct" />
                                             </a>
                                         </div>
                                         <div class="blog-thumb-info-content">

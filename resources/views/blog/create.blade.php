@@ -19,7 +19,7 @@
             <div class="form-section">
                 <div class="image-upload-wrapper">
                     <input type="file" id="image-upload" name="image" accept="image/*"
-                        onchange="showPreview(event)" style="display:none;" />
+                           onchange="showPreview(event)" style="display:none;" />
                     <label for="image-upload" class="upload-label" >
                         <div class="image-placeholder">
                             <img id="image-preview" src="https://via.placeholder.com/150" alt="Placeholder" class="placeholder-img">
@@ -28,14 +28,16 @@
                             </div>
                         </div>
                     </label>
-                    <p class="image-upload-instruction">{{ __('site.Set the Blog thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted') }}</p>
+                    <p class="image-upload-instruction">
+                        {{ __('site.Set the Blog thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted') }}
+                    </p>
                 </div>
 
                 <ul class="nav nav-tabs" id="langTabs" role="tablist">
                     @foreach (config('app.locales') as $index => $locale)
                         <li class="nav-item" role="presentation">
-                            <button class="nav-link {{ $index == 0 ? 'active' : '' }}" id="tab-{{ $locale }}" data-bs-toggle="tab"
-                                data-bs-target="#content-{{ $locale }}" type="button" role="tab">
+                            <button class="nav-link {{ $index == 0 ? 'active' : '' }}" id="tab-{{ $locale }}"
+                                    data-bs-toggle="tab" data-bs-target="#content-{{ $locale }}" type="button" role="tab">
                                 {{ strtoupper($locale) }}
                             </button>
                         </li>
@@ -48,12 +50,12 @@
                             <div class="input-group">
                                 <label for="title_{{ $locale }}">{{ __('site.Title') }} ({{ strtoupper($locale) }})</label>
                                 <input type="text" name="title_{{ $locale }}" class="form-input"
-                                    placeholder="{{ __('site.Title') }} ({{ strtoupper($locale) }})" required>
+                                       placeholder="{{ __('site.Title') }} ({{ strtoupper($locale) }})" required>
                             </div>
 
                             <div class="input-group mt-2">
                                 <label for="description_{{ $locale }}">{{ __('site.Description') }} ({{ strtoupper($locale) }})</label>
-                                <textarea name="description_{{ $locale }}" id="description_{{ $locale }}"></textarea>
+                                <textarea id="editor_{{ $locale }}" name="description_{{ $locale }}" rows="10"></textarea>
                             </div>
                         </div>
                     @endforeach

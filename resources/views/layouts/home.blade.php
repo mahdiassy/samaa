@@ -149,7 +149,7 @@
                                     {{ now()->diffInDays($blog->created_at) === 0 ? __('site.today') : (now()->diffInDays($blog->created_at) === 1 ? __('site.1_day_ago')  : __('site.x_days_ago', ['count' => now()->diffInDays($blog->created_at)])) }}
                                 </p>
                             </div>
-                            <button>{{ __('site.learn more') }}</button>
+                            <a class="a-card" href="{{ route('blog.show', $blog) }}" >{{ __('site.learn more') }}</a>
                         </div>
                     </div>
                 @endforeach

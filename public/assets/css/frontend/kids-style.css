@@ -3223,7 +3223,7 @@ color: #FFFFFF;
     color: #242424;
 }
 
-.blog-card-new .a-card {
+.a-card {
     position: relative;
     width:120px;
     padding: 10px 20px;
@@ -3236,7 +3236,7 @@ color: #FFFFFF;
     text-decoration: none;
 }
 
-.blog-card-new .a-card:hover {
+.a-card:hover {
     color: #F6F6F6;
     background-color: #E7A959;
 }

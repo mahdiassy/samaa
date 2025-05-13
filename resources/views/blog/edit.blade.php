@@ -60,7 +60,7 @@
 
                             <div class="input-group mt-2">
                                 <label for="description_{{ $locale }}">{{ __('site.Description') }} ({{ strtoupper($locale) }})</label>
-                                <textarea name="description_{{ $locale }}" id="description_{{ $locale }}">{{ old('description_' . $locale) ?? ($descData[$locale] ?? '') }}</textarea>
+                                <textarea name="description_{{ $locale }}" id="editor_{{ $locale }}">{{ old('description_' . $locale) ?? ($descData[$locale] ?? '') }}</textarea>
                             </div>
                         </div>
                     @endforeach

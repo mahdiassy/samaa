@@ -12,7 +12,7 @@ class BlogController extends Controller
 
     public function list()
     {
-        $blogs = Blog::paginate(6);
+        $blogs = Blog::orderBy('created_at', 'desc')->paginate(6);
         return view($this->dir . "list", compact('blogs'));
     }
 
@@ -53,7 +53,7 @@ class BlogController extends Controller
 
             $blog = new Blog;
             $blog->title = json_encode($titles);
-            $blog->description = json_encode($descriptions);
+            $blog->description = json_encode($descriptions, JSON_UNESCAPED_UNICODE);
 
             $blog->user_id = Auth::user()->id;
 
@@ -92,7 +92,7 @@ class BlogController extends Controller
             }
 
             $blog->title = json_encode($titles);
-            $blog->description = json_encode($descriptions);
+            $blog->description = json_encode($descriptions, JSON_UNESCAPED_UNICODE);
             $blog->user_id = Auth::user()->id;
 
             if ($request->has('image')) {
@@ -115,8 +115,13 @@ class BlogController extends Controller
 
     public function show(Blog $blog)
     {
+        $descriptions = json_decode($blog->description, true);
+        $titles = json_decode($blog->title, true);
+        $currentDescription = $descriptions[app()->getLocale()] ?? '';
+        $currentTitle = $titles[app()->getLocale()] ?? '';
+
         $last_blogs = Blog::latest()->limit(3)->get();
-        return view($this->dir . "show", compact('blog','last_blogs'));
+        return view($this->dir . "show", compact('blog','last_blogs','currentDescription','currentTitle'));
     }
 
     public function destroy(Blog $blog)
