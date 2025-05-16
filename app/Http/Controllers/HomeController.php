@@ -3,14 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
-use App\Models\Doctor;
 use App\Models\Feedback;
-use App\Models\Patient;
-use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Date;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
@@ -35,59 +29,28 @@ class HomeController extends Controller
 
     public function storeContactUsForm(Request $request)
     {
-        $existingUser = User::where('email', $request->email)->first();
-
-        if (!$existingUser) {
-            $user = new User;
-            $user->name = $request->name;
-            $user->email = $request->email;
-            $user->password = Hash::make("password");
-            $user->save();
-
-            $patient = new Patient;
-            $patient->user_id = $user->id;
-            $patient->first_name = $request->name;
-            $patient->country_id = 1;
-            $patient->language_id = 1;
-            $patient->save();
-
-            $user->assignRole('Patient');
-
+        try {
             $feedback = new Feedback();
-            $feedback->user_id = $user->id;
-            $feedback->feedback = null;
+            if($request->full_name){
+                $feedback->full_name = $request->full_name;
+            }else{
+                $feedback->full_name = $request->first_name.' '.$request->surname;
+            }
+            $feedback->email = $request->email;
             $feedback->date = now();
             $feedback->subject = $request->subject;
-            $feedback->improvement = null;
-            $feedback->note = $request->message;
-            $feedback->save();
-
-            Session::flash('success', __("site.Feedback created successfully"));
-            return redirect()->back();
-        }
-
-        if (!Auth::check()) {
-            Session::flash('error', __("site.The email already exists. Please log in to submit feedback."));
-            return redirect()->back();
-        }
-
-        if (Auth::user()->email === $request->email) {
-            $feedback = new Feedback();
-            $feedback->user_id = Auth::user()->id;
-            $feedback->feedback = null;
-            $feedback->date = now();
-            $feedback->subject = $request->subject;
-            $feedback->improvement = null;
-            $feedback->note = $request->message;
+            $feedback->message = $request->message;
+            $feedback->cta_type = 'Feedback';
+            $feedback->cta_source = $request->cta_source;
             $feedback->save();
 
             Session::flash('success', __("site.Feedback created successfully"));
 
             return redirect()->back();
-        }
 
-        Session::flash('error', __("site.This email is associated with another account."));
-        return redirect()->back();
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::flash('error', __("site.Error"));
+        }
     }
 
     public function aboutUs()

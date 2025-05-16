@@ -6,14 +6,7 @@
 
             <div class="actions" style="padding-bottom: 20px">
                 <div class="title-container">
-                <h1 class="page-title">{{ __('site.Feedback list') }}</h1>
-                    @role('Patient|Doctor')
-                        <p class="page-subtitle big-title">{{ Auth::user()->name}}</p>
-                        <div class="page-subtitle small-title">
-                            <p>{{ __('site.User') }}</p>
-                            <p>{{ __('site.ID') }}:#<strong>{{ Auth::user()->id }}</strong></p>
-                        </div>
-                    @endrole
+                    <h1 class="page-title">{{ __('site.Feedback list') }}</h1>
                 </div>
                 <div class="button-container">
                     <a href="#" class="filter-link">
@@ -26,9 +19,6 @@
                                 stroke-linejoin="round" />
                         </svg>
                     </a>
-                    @role('Patient|Doctor')
-                        <a href="{{ route('feedback') }}" class="add-patient-btn">{{ __('site.Add Feedback') }}</a>
-                    @endrole
                 </div>
             </div>
 
@@ -38,7 +28,7 @@
                         <tr>
                             <th>#</th>
                             <th>{{ __('site.User Name') }}</th>
-                            <th>{{ __('site.Feedback') }}</th>
+                            <th>{{ __('site.Email') }}</th>
                             <th>{{ __('site.Subject') }}</th>
                             <th>{{ __('site.Date') }}</th>
                             <th>{{ __('site.Actions') }}</th>
@@ -48,8 +38,8 @@
                         @foreach ($feedbacks as $feedback)
                             <tr>
                                 <td>{{ $feedback->id }}</td>
-                                <td>{{ $feedback->user->name }}</td>
-                                <td>{{ $feedback->feedback }}</td>
+                                <td>{{ $feedback->full_name }}</td>
+                                <td>{{ $feedback->email }}</td>
                                 <td>{{ __($feedback->subject) }}</td>
                                 <td class="custom-date">{{ \Carbon\Carbon::parse($feedback->date)->format('d-m-Y') }}</td>
                                 <td>

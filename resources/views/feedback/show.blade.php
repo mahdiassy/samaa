@@ -25,7 +25,11 @@
                             </div>
                             <div class="text-info">
                                 <p>{{ __('site.User Name') }}</p>
-                                <input type="text" name="patient-name" value="{{ $feedback->user->name }}" class="styled-input" disabled />
+                                <input type="text" name="full_name" value="{{ $feedback->full_name }}" class="styled-input" disabled />
+                            </div>
+                             <div class="text-info">
+                                <p>{{ __('site.Email') }}</p>
+                                <input type="text" name="email" value="{{ $feedback->email }}" class="styled-input" disabled />
                             </div>
                             <div class="text-info">
                                 <p>{{ __('site.Feedback') }} (1/10)</p>
@@ -36,17 +40,17 @@
                                 <p>{{ __('site.Date') }}</p>
                                 <input name="date" value="{{ \Carbon\Carbon::parse($feedback->date)->format('m/d/Y') }}" class="styled-input date-input" disabled />
                             </div>
-                            <div class="text-info">
+                            {{-- <div class="text-info">
                                 <p>{{ __('site.Improvement') }} (1% - 100%)</p>
                                 <input type="number" name="improvement" min="1" max="100" value="{{$feedback->improvement}}" class="styled-input" disabled />
-                            </div>
+                            </div> --}}
                             <div class="text-info">
                                 <p>{{ __('site.Subject') }}</p>
                                 <input type="text" name="subject" value="{{ __($feedback->subject) }}" class="styled-input" disabled />
                             </div>
                             <div class="text-info">
-                                <p>{{ __('site.Note') }}</p>
-                                <textarea name="note" value="{{$feedback->note}}" class="styled-input textarea-input" disabled >{{$feedback->note}}</textarea>
+                                <p>{{ __('site.Message') }}</p>
+                                <textarea name="message" value="{{$feedback->message}}" class="styled-input textarea-input" disabled >{{$feedback->message}}</textarea>
                             </div>
                         </div>
 

@@ -75,17 +75,15 @@
 
                 <form action="{{ route('contactUs.store') }}" method="post">
                     @csrf
-                    <p class="contact-p">{{ __('site.First Name') }}:</p>
+                    <p class="contact-p">{{ __('site.Full Name') }}:</p>
                     <div class="form-group">
-                        <input type="text" name="name" placeholder="{{ __('site.Enter Your Name') }}*"
-                            value="{{ Auth::check() ? Auth::user()->name : '' }}" {{ Auth::check() ? 'readonly' : '' }}
-                            required>
+                        <input type="text" name="full_name" placeholder="{{ __('site.Enter Your Name') }}*"
+                            value="" required>
                     </div>
                     <p class="contact-p">{{ __('site.Email Address') }}:</p>
                     <div class="form-group">
                         <input type="email" name="email" placeholder="{{ __('site.Email Address') }}"
-                            value="{{ Auth::check() ? Auth::user()->email : '' }}" {{ Auth::check() ? 'readonly' : '' }}
-                            required>
+                            value="" required>
                     </div>
                     <p class="contact-p">{{ __('site.Subject') }}:</p>
                     <div class="form-group">
@@ -95,6 +93,7 @@
                             @endforeach
                         </select>
                     </div>
+                    <input type="hidden" name="cta_source" value="contactUsPage">
                     <p class="contact-p">{{ __('site.How can we support your healing journey?') }}</p>
                     <div class="form-group">
                         <textarea name="message" placeholder="{{ __('site.Your Message') }}" required></textarea>

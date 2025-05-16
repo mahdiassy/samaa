@@ -3,13 +3,6 @@
     <div class="main-content">
         @include('search_form')
         <div class="header">
-            <a href="{{ route('feedback-list') }}" onclick="history.back();" class="btn-back">
-                @if (App::getLocale() == 'ar')
-                <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
-                @else
-                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
-                @endif
-            </a>
 
         </div>
         <div>
@@ -28,21 +21,26 @@
                             </div>
                             <div class="text-info">
                                 <p>{{ __('site.User Name') }}</p>
-                                <input type="text" name="patient-name" value="{{ Auth::user()->name }}" class="styled-input" disabled />
+                                <input type="text" name="full_name" value="{{ Auth::user()->name }}" class="styled-input" required/>
+                            </div>
+                            <div class="text-info">
+                                <p>{{ __('site.Email') }}</p>
+                                <input type="email" name="email" class="styled-input" required/>
                             </div>
                             <div class="text-info">
                                 <p>{{ __('site.Feedback') }} (1/10)</p>
                                 <input type="number" name="feedback" placeholder="form (1-10)" min="1" max="10" value=""
-                                    class="styled-input"/>
+                                    class="styled-input" required/>
                             </div>
                             <div class="text-info">
                                 <p>{{ __('site.Date') }}</p>
-                                <input type="date" name="date" value="2024-10-22" class="styled-input date-input" />
+                                <input type="date" name="date" value="{{ now()->format('Y-m-d') }}" class="styled-input date-input" />
                             </div>
-                            <div class="text-info">
+                            <input type="hidden" name="cta_source" value="dashboard_feedback">
+                            {{-- <div class="text-info">
                                 <p>{{ __('site.Improvement') }} (1% - 100%)</p>
                                 <input type="number" name="improvement" min="1" max="100" value="" class="styled-input"/>
-                            </div>
+                            </div> --}}
                             <div class="text-info">
                                 <p style="margin-bottom: -20px">{{ __('site.Subject') }}</p>
                                 <select name="subject" class="styled-input">
@@ -52,8 +50,8 @@
                                 </select>
                             </div>
                             <div class="text-info">
-                                <p>{{ __('site.Note') }}</p>
-                                <textarea name="note" required class="styled-input textarea-input"></textarea>
+                                <p>{{ __('site.Message') }}</p>
+                                <textarea name="message" required class="styled-input textarea-input"></textarea>
                             </div>
                         </div>
                         <div class="feedback-action-buttons">

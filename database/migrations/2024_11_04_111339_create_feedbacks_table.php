@@ -14,14 +14,14 @@ return new class extends Migration
     {
         Schema::create('feedbacks', function (Blueprint $table) {
             $table->id();
+            $table->string('full_name')->nullable();
+            $table->string('email');
             $table->integer('feedback')->nullable();
+            $table->string('cta_type');
+            $table->string('cta_source')->nullable();
             $table->datetime('date')->default(DB::raw('CURRENT_TIMESTAMP'));
-            $table->integer('improvement')->nullable();
             $table->string('subject')->nullable();
-            $table->text('note')->nullable();
-
-            $table->unsignedBigInteger('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->text('message')->nullable();
 
             $table->timestamps();
         });

@@ -154,6 +154,7 @@ return [
     'Journey' => 'رحلة',
     'Healing' => 'الشفاء',
     'Your' => 'الخاصة بك',
+    'signup now' => 'قم بالتسجيل الآن',
 
     // About Us Page
     'Where' => 'حيث',

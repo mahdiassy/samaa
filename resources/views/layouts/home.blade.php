@@ -87,27 +87,27 @@
                 <div class="doctor-content">
                     <div class="text-side">
 
-                        <div class="step">
+                        <div class="step-card">
                             <h4 class="star-point" >{{ __('site.Personalized Sound Healing') }}</h4>
                             <p>
                                 {{ __('site.Tailored therapy based on mood, needs, and goals.') }}</p>
                         </div>
 
-                        <div class="step">
+                        <div class="step-card">
                             <h4 class="star-point">{{ __('site.Scientifically Validated') }}</h4>
                             <p>
                                 {{ __('site.Developed and backed by experts ​SAMAA Profile.') }}<br>
                             </p>
                         </div>
 
-                        <div class="step">
+                        <div class="step-card">
                             <h4  class="star-point" >{{ __('site.For Autism and Beyond') }}</h4>
                             <p>
                                 {{ __('site.Special modules designed for children and adults on the spectrum ​ClinGroup_Music therapy…​Autism & Sound Virtual') }}<br>
                             </p>
                         </div>
 
-                        <div class="step">
+                        <div class="step-card">
                             <h4  class="star-point" >{{ __('site.Accessible Anytime, Anywhere') }}</h4>
                             <p>
                                 {{ __('site.Mobile-friendly virtual therapy sessions Autism & Sound Virtual ….') }}
@@ -182,13 +182,20 @@
             </div>
 
             <div class="cta-section">
-                <form>
+                <form action="{{ route('contactUs.store') }}" method="post">
+                    @csrf
                     <div class="form-row">
-                        <input type="text" placeholder="{{ __('site.First Name') }}" required>
-                        <input type="text" placeholder="{{ __('site.Last Name') }}" required>
+                        <input type="text" name="first_name" placeholder="{{ __('site.First Name') }}" required>
+                        <input type="text" name="surname" placeholder="{{ __('site.Surname') }}">
                     </div>
-                    <input type="email" placeholder="{{ __('site.Email') }}" required>
-                    <textarea placeholder="{{ __('site.Message') }}"></textarea>
+                    <input name="email" type="email" placeholder="{{ __('site.Email') }}" required>
+                    <select name="subject">
+                        @foreach (\App\Enums\SubjectsEnum::all() as $key)
+                            <option value="{{ $key }}">{{ __($key) }}</option>
+                        @endforeach
+                    </select>
+                    <textarea name="message" placeholder="{{ __('site.Message') }}" required></textarea>
+                    <input type="hidden" name="cta_source" value="homePage">
                     <button type="submit">{{ __('site.Submit') }}</button>
                 </form>
             </div>

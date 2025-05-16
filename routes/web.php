@@ -89,10 +89,10 @@ Route::group(
                 Route::post('therapy/admin/store', [TherapyController::class, 'admin_therapy_store'])->middleware('role:Admin')->name('admin_therapy_store');
                 Route::get('/therapies/playlist', [TherapyController::class, 'playlist'])->name('playlist')->middleware('role:Admin|Doctor|Patient');
 
-                Route::get('/feedback/create', [FeedbackController::class, 'create'])->name('feedback')->middleware('role:Patient|Doctor');
-                Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store')->middleware('role:Patient|Doctor');
-                Route::get('/feedback/index', [FeedbackController::class, 'index'])->name('feedback-list')->middleware('role:Admin|Patient|Doctor');
-                Route::get('/feedback/show/{feedback}', [FeedbackController::class, 'show'])->name('feedback.show')->middleware('role:Admin|Patient|Doctor');
+                Route::get('/feedback/create', [FeedbackController::class, 'create'])->name('feedback')->middleware('role:Admin|Patient|Doctor');
+                Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store')->middleware('role:Admin|Patient|Doctor');
+                Route::get('/feedback/index', [FeedbackController::class, 'index'])->name('feedback-list')->middleware('role:Admin');
+                Route::get('/feedback/show/{feedback}', [FeedbackController::class, 'show'])->name('feedback.show')->middleware('role:Admin');
                 Route::delete('/feedback/delete/{feedback}', [FeedbackController::class, 'destroy'])->name('feedback.destroy')->middleware('role:Admin');
 
                 Route::get('blogs/list', [BlogController::class, 'list'])->name('blog.list')->middleware('role:Admin');

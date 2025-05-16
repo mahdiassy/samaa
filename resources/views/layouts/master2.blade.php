@@ -131,14 +131,19 @@
                     <li title="{{ __('site.therapy') }}"><a href="{{ route('therapy.index') }}"><img
                                 src="{{ asset('assets/images/icons/therapy.svg') }}"
                                 alt="Therapy"><span>{{ __('site.therapy') }}</span></a></li>
-                    <li title="{{ __('site.Feedback') }}"><a href="{{ route('feedback-list') }}"><img
+                @endrole
+                @role('Doctor|Patient')
+                <li title="{{ __('site.Add Feedback') }}"><a href="{{ route('feedback') }}"><img
                                 src="{{ asset('assets/images/icons/review.svg') }}"
-                                alt="Review"><span>{{ __('site.Feedback') }}</span></a></li>
+                                alt="Review"><span>{{ __('site.Add Feedback') }}</span></a></li>
                 @endrole
                 @role('Admin')
                     <li title="{{ __('site.Blog list') }}"><a href="{{ route('blog.list') }}"><img
                         src="{{ asset('assets/images/icons/library.svg') }}"
                         alt="Profile"><span>{{ __('site.Blog list') }}</span></a></li>
+                    <li title="{{ __('site.Feedback') }}"><a href="{{ route('feedback-list') }}"><img
+                                src="{{ asset('assets/images/icons/review.svg') }}"
+                                alt="Review"><span>{{ __('site.Feedback') }}</span></a></li>
                 @endrole
                 <li title="{{ __('site.Contact Us') }}"><a href="{{ route('contact-us') }}"><img
                             src="{{ asset('assets/images/icons/phone.svg') }}"

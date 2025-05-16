@@ -42,13 +42,14 @@
 }
 
 .footer-links {
-    display: flex;
+    display: ruby;
     gap: 40px;
 }
 
 .footer-links .column {
     display: flex;
     flex-direction: column;
+    padding: 10px;
 }
 
 .footer-links a {

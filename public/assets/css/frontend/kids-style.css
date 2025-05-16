@@ -944,7 +944,6 @@ body {
 
 .text-section {
     flex: 1;
-    min-width: 300px;
     text-align: start;
     text-transform: capitalize;
 }
@@ -971,7 +970,7 @@ body {
     gap: 10px;
 }
 
-.cta-section input, .cta-section textarea {
+.cta-section input, .cta-section textarea , .cta-section select {
     padding: 10px;
     border: 2px solid #D6861F;
     border-radius: 5px;
@@ -1050,13 +1049,14 @@ body {
 }
 
 .footer-links {
-    display: flex;
+    display: ruby !important;
     gap: 40px;
 }
 
 .footer-links .column {
     display: flex;
     flex-direction: column;
+    padding: 10px;
 }
 
 .footer-links a {
@@ -2235,6 +2235,7 @@ input[type="radio"] {
     font-size: 13px !important;
     color: #524f4e !important;
     margin-bottom: 0px !important;
+    padding-bottom: 5px;
 }
 
 .contact-info h2 {
@@ -2450,6 +2451,15 @@ input[type="radio"] {
 
     .section2 button {
         width: 100%;
+    }
+
+    .CTA-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    .text-section h1 {
+        font-size: 36px;
     }
 }
 
@@ -3511,19 +3521,19 @@ color: #FFFFFF;
     margin-top: 0px;
 }
 
-.step {
+.step-card {
     margin-bottom: 0px;
     font-family: 'Roboto', sans-serif;
 }
 
-.step h4 {
+.step-card h4 {
     font-size: clamp(20px, 4vw, 20px);
     font-weight: 600;
     margin-bottom: 0px;
     color: #242424;
 }
 
-.step p {
+.step-card p {
     font-size: clamp(14px, 2.5vw, 16px) !important;
     color: #242424 !important;
     margin-top: 0px !important;
@@ -4272,6 +4282,15 @@ color: #FFFFFF;
     }
     .section-description h2 {
         font-size: 22px;
+    }
+
+    .CTA-container {
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+    }
+    .text-section h1 {
+        font-size: 36px;
     }
 }
 

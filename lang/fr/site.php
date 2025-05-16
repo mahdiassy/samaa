@@ -154,6 +154,7 @@ return [
     'Your' => 'votre',
     'Journey' => 'voyage',
     'Healing' => 'de guérison',
+    'signup now' => 'Inscrivez-vous Maintenant',
 
     // About Us Page
     'Where' => 'Là Où',

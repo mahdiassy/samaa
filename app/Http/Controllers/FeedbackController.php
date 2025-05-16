@@ -23,8 +23,6 @@ class FeedbackController extends Controller
     {
         if (auth()->user()->hasRole('Admin')) {
             $feedbacks = Feedback::paginate(9);
-        } else {
-            $feedbacks = Feedback::where('user_id', Auth::user()->id)->paginate(9);
         }
         return view($this->dir . "index", compact('feedbacks'));
     }
@@ -41,16 +39,18 @@ class FeedbackController extends Controller
     public function store(Request $request)
     {
         $feedback = new Feedback;
-        $feedback->user_id = Auth::user()->id;
+        $feedback->full_name = $request->full_name;
+        $feedback->email = $request->email;
         $feedback->feedback = $request->feedback;
         $feedback->date = $request->date;
         $feedback->subject = $request->subject;
-        $feedback->improvement = $request->improvement;
-        $feedback->note = $request->note;
+        $feedback->cta_type = 'Feedback';
+        $feedback->cta_source = $request->cta_source;
+        $feedback->message = $request->message;
 
         $feedback->save();
 
-        return redirect()->route('feedback-list')->with('status', [
+        return redirect()->route('feedback')->with('status', [
             'type' => 'success',
             'title' =>  __("site.Success"),
             'msg' => __("site.Feedback created successfully")

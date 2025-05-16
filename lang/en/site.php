@@ -152,7 +152,7 @@ return [
     'Your' => 'Your',
     'Journey' => 'Journey',
     'Healing' => 'Healing',
-
+    'signup now' => 'Signup Now',
 
     // About Us Page
     'Where' => 'Where',
