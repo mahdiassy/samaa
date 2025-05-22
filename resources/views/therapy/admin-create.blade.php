@@ -20,7 +20,7 @@
                             onchange="showPreview(event)" style="display:none;">
                         <label for="image-upload" class="upload-label">
                             <div class="image-placeholder">
-                                <img id="image-preview" src="https://via.placeholder.com/150" alt="Placeholder"
+                                <img id="image-preview" src="https://placehold.co/150x150" alt="Placeholder"
                                     class="placeholder-img">
                                 <div class="edit-icon">
                                     <img src="https://img.icons8.com/ios-filled/30/000000/edit.png" alt="Edit" />

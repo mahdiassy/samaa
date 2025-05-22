@@ -119,7 +119,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-document.addEventListener('DOMContentLoaded', () => {
+/*document.addEventListener('DOMContentLoaded', () => {
     const savedTheme = localStorage.getItem('theme');
 
     if (!savedTheme) {
@@ -164,7 +164,52 @@ document.getElementById('default-theme-btn').addEventListener('click', () => {
 document.getElementById('kids-theme-btn').addEventListener('click', () => {
     applyTheme('kids');
     closePopup();
+});*/
+
+document.addEventListener('DOMContentLoaded', function () {
+    const themeOverrideStyle = document.getElementById('theme-override-style');
+    const kidsOverridePath = themeOverrideStyle?.dataset.kidsPath;
+    const defaultBtn = document.getElementById('default-theme-btn');
+    const kidsBtn = document.getElementById('kids-theme-btn');
+    const popup = document.getElementById('theme-popup');
+    const overlay = document.getElementById('overlay');
+
+    const savedTheme = localStorage.getItem('theme');
+    console.log('Saved theme:', savedTheme);
+
+    if (savedTheme === 'kids' && themeOverrideStyle) {
+        console.log("Applying kids theme override", kidsOverridePath);
+        themeOverrideStyle.href = kidsOverridePath;
+    }
+
+    if (defaultBtn) {
+        defaultBtn.addEventListener('click', () => {
+            localStorage.setItem('theme', 'default');
+            if (themeOverrideStyle) themeOverrideStyle.removeAttribute('href');
+            closeThemePopup();
+        });
+    }
+
+    if (kidsBtn) {
+        kidsBtn.addEventListener('click', () => {
+            localStorage.setItem('theme', 'kids');
+            if (themeOverrideStyle) themeOverrideStyle.href = kidsOverridePath;
+            closeThemePopup();
+        });
+    }
+
+    if (!localStorage.getItem('themeSelectedOnce')) {
+        if (popup) popup.style.display = 'block';
+        if (overlay) overlay.style.display = 'block';
+        localStorage.setItem('themeSelectedOnce', 'true');
+    }
+
+    function closeThemePopup() {
+        if (popup) popup.style.display = 'none';
+        if (overlay) overlay.style.display = 'none';
+    }
 });
+
 document.addEventListener('DOMContentLoaded', function () {
     const therapeuticSelect = document.getElementById('therapeutic_areas_select');
     const inputWrapper = document.getElementById('medication_input_wrapper');

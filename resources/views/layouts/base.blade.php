@@ -1,12 +1,5 @@
 <!DOCTYPE html>
-<html dir="{{ App::getLocale() == 'ar' ? 'rtl' : 'ltr' }}"
-    lang="{{ App::getLocale() == 'ar'
-        ? 'ar'
-        : (App::getLocale() == 'fr'
-            ? 'fr'
-            : (App::getLocale() == 'en'
-                ? 'en'
-                : 'en')) }}">
+<html dir="{{ App::isLocale('ar') ? 'rtl' : 'ltr' }}" lang="{{ app()->getLocale() }}">
 
 <head>
     @laravelPWA
@@ -20,10 +13,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.0.13/dist/js/select2.min.js"></script>
 
+    <link rel="stylesheet" href="{{ asset('assets/css/frontend/style.css') }}">
+    <link id="theme-override-style" rel="stylesheet" href="" data-kids-path="{{ asset('assets/css/frontend/kids-style.css') }}">
+
     <!-- Default Theme Styles -->
-    <link id="theme-style" type="text/css" rel="stylesheet" href="{{ asset('assets/css/frontend/style.css') }}">
+    {{-- <link id="theme-style" type="text/css" rel="stylesheet" href="{{ asset('assets/css/frontend/style.css') }}"> --}}
     <!-- Include Kids Theme Styles (Loaded Dynamically) -->
-    <link id="kids-style" type="text/css" rel="stylesheet" href="{{ asset('assets/css/frontend/kids-style.css') }}">
+    {{-- <link id="kids-style" type="text/css" rel="stylesheet" href="{{ asset('assets/css/frontend/kids-style.css') }}"> --}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho&family=Work+Sans:wght@400;800&display=swap"
@@ -167,10 +163,6 @@
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('site.Logout') }}
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                            style="display: none;">
-                            @csrf
-                        </form>
                     @else
                         <a href="{{ route('login') }}"> {{ __('site.Login/Sign-up') }}</a>
                         <!--<a href="{{ route('register') }}"> {{ __('site.Register') }}</a>-->

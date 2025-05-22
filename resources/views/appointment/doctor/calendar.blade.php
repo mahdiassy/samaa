@@ -161,6 +161,7 @@
         })
 
         var calendarEl = document.getElementById('calendar');
+        const openInWeekView = localStorage.getItem('openInWeekView') === 'true';
 
         let selectedStartDate = '';
         let selectedEndDate = '';
@@ -220,7 +221,7 @@
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
             locale: locale === 'ar' ? 'ar' : locale === 'fr' ? 'fr' : 'en',
-            initialView: 'dayGridMonth',
+            initialView: openInWeekView ? 'timeGridWeek' : 'dayGridMonth',
             headerToolbar: {
                 left: 'prev,next today',
                 center: 'title',
@@ -290,6 +291,8 @@
 
         calendar.render();
 
+        localStorage.removeItem('openInWeekView');
+        
         var saveMonthModalEvent = document.getElementById('saveMonthModalEvent');
         if (saveMonthModalEvent) {
             saveMonthModalEvent.addEventListener('click', function() {
@@ -413,6 +416,8 @@
                             confirmButtonText: "{{ __('site.OK') }}"
                             });
 
+                            localStorage.setItem('openInWeekView', 'true');
+                            location.reload();
                         } else {
                             //alert('{{ __('This time has been predetermined') }}');
                             Swal.fire({

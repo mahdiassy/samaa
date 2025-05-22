@@ -1,12 +1,5 @@
 <!DOCTYPE html>
-<html dir="{{ App::getLocale() == 'ar' ? 'rtl' : 'ltr' }}"
-    lang="{{ App::getLocale() == 'ar'
-        ? 'ar'
-        : (App::getLocale() == 'fr'
-            ? 'fr'
-            : (App::getLocale() == 'en'
-                ? 'en'
-                : 'en')) }}">
+<html dir="{{ App::isLocale('ar') ? 'rtl' : 'ltr' }}" lang="{{ app()->getLocale() }}">
 
 <head>
     @laravelPWA
@@ -30,11 +23,12 @@
         href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@500&family=Roboto:wght@400;800&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/css/dashboard/style.css') }}">
+    <link id="theme-override-style" rel="stylesheet" href="" data-kids-path="{{ asset('assets/css/dashboard/kids-footer.css') }}">
 
     <!-- Default Theme Styles -->
-    <link id="theme-style" type="text/css" rel="stylesheet" href="{{ asset('assets/css/dashboard/footer.css') }}">
-    <!-- Include Kids Theme Styles (Loaded Dynamically) -->
-    <link id="kids-style" type="text/css" rel="stylesheet" href="{{ asset('assets/css/dashboard/kids-footer.css') }}">
+   {{-- <link id="theme-style" type="text/css" rel="stylesheet" href="{{ asset('assets/css/dashboard/footer.css') }}">
+     <!-- Include Kids Theme Styles (Loaded Dynamically) -->
+    <link id="kids-style" type="text/css" rel="stylesheet" href="{{ asset('assets/css/dashboard/kids-footer.css') }}"> --}}
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
@@ -202,10 +196,6 @@
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('site.Logout') }}
                         </a>
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                            style="display: none;">
-                            @csrf
-                        </form>
                     @else
                         <a href="{{ route('login') }}">{{ __('site.Login/Sign-up') }}</a>
                         <!--<a href="{{ route('register') }}">{{ __('site.Register') }}</a>-->

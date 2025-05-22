@@ -1412,6 +1412,17 @@ select {
     color: #333;
 }
 
+
+.footer {
+    background-color: #1F1F1F;
+    padding: 15px 20px;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    width: 100%;
+    position: relative;
+    bottom: auto;
+}
+
 .footer-container {
     display: flex;
     justify-content: space-between;
@@ -1419,6 +1430,17 @@ select {
     flex-wrap: wrap;
     padding: 2% 10%;
     border-bottom: 1px solid #FFFFFF33;
+}
+
+.footer-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-image: url('../../images/samaa-logo.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 80px;
+    height: 100px;
 }
 
 .footer-logo img {
@@ -1433,13 +1455,14 @@ select {
 }
 
 .footer-links {
-    display: flex;
+    display: ruby;
     gap: 40px;
 }
 
 .footer-links .column {
     display: flex;
     flex-direction: column;
+    padding: 10px;
 }
 
 .footer-links a {
@@ -1472,6 +1495,12 @@ select {
     margin-bottom: 20px;
 }
 
+.help-btn:hover{
+    background-color: #FFCB89;
+    color: #1F1F1F;
+    border: 1px solid #1F1F1F;
+}
+
 .social-icons img {
     width: 25px;
     height: 25px;
@@ -1489,6 +1518,15 @@ select {
 .footer-bottom img {
     width: 20px;
     margin-right: 10px;
+}
+
+.footer-bottom a{
+    text-decoration: none;
+    color: white;
+}
+
+.footer-bottom a:hover{
+    opacity: 0.6;
 }
 
 .social-icons {

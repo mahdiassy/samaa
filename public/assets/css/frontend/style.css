@@ -1341,7 +1341,7 @@ body {
     .hero-text h1 {
         font-family: 'M PLUS Rounded 1c', sans-serif;
         text-transform: uppercase;
-        font-size: 22px;
+        font-size: 30px;
         font-weight: 600;
         margin: 0;
         z-index: 2;
@@ -1349,7 +1349,7 @@ body {
 
     .hero-text h2 {
         font-family: 'Roboto', sans-serif;
-        font-size: 20px;
+        font-size: 25px;
         font-weight: 300;
         /*line-height: 50px;*/
         /*text-align: left;*/
@@ -1359,9 +1359,8 @@ body {
 
     .hero-text p {
         font-family: 'Roboto', sans-serif;
-        font-size: 14px;
+        font-size: 16px;
         font-weight: 500;
-        line-height: 37.5px;
         /*text-align: left;*/
         z-index: 2;
         margin: 10px 0 0;
@@ -2322,7 +2321,7 @@ input[type="radio"] {
     margin-bottom: 20px;
 }
 
-.contact-form input {
+.contact-form input, .contact-form select {
     width: 100%;
     padding: 15px;
     margin-bottom: 10px;
@@ -2962,6 +2961,7 @@ color: #FFFFFF;
     margin-bottom: 20px;
     color: #000;
     width: 100%;
+    text-transform: capitalize;
 }
 
 .doctors-section .doctor-content p {
@@ -2969,10 +2969,12 @@ color: #FFFFFF;
     font-weight: 400;
     color: #4D4D4D;
     width: 100%;
+    text-transform: capitalize;
 }
 
 .doctors-section .doctor-content h2 span {
     color: #D67E0D;
+    text-transform: capitalize;
 }
 
 .doctor-cards {
