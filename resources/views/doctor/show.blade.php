@@ -4,7 +4,7 @@
         @include('search_form')
         <div class="header">
             <a href="{{ route('doctor.index') }}" class="btn-back">
-                @if (App::getLocale() == 'ar')
+                @if(App::getLocale() == 'ar')
                 <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
                 @else
                 <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
@@ -51,7 +51,7 @@
                             <p>{{ $doctor->phone }}</p>
                         </div>
                         <div class="medias">
-                            @if ($doctor->facebook)
+                            @if($doctor->facebook)
                                 <a target="_blank" href="{{ $doctor->facebook }}">
                                     <svg width="19" height="19" version="1.1" id="Layer_1"
                                         xmlns="http://www.w3.org/2000/svg"
@@ -67,7 +67,7 @@
                                     </svg>
                                 </a>
                             @endif
-                            @if ($doctor->instagram)
+                            @if($doctor->instagram)
                                 <a target="_blank" href="{{ $doctor->instagram }}">
                                     <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -113,7 +113,7 @@
                                     </svg>
                                 </a>
                             @endif
-                            @if ($doctor->twitter)
+                            @if($doctor->twitter)
                             <a target="_blank" href="{{ $doctor->twitter }}">
                                 <svg width="22" height="22" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <circle cx="24" cy="24" r="20" fill="#1DA1F2"/>

@@ -28,7 +28,7 @@
                         </tr>
                     </thead>
                     <tbody id="patientTbody">
-                        @foreach ($patientBookings as $key => $patientBooking)
+                        @foreach($patientBookings as $key => $patientBooking)
                             <tr id="{{ $key }}">
                                 <td>{{ $patientBooking->id }}</td>
                                 <td>
@@ -41,7 +41,7 @@
 
                                 <td class="custom-date">{{ __($patientBooking->status) }}</td>
                                 <td>
-                                    @if ($patientBooking->status == \App\Enums\BookingEnum::DOCTOR_CANCEL)
+                                    @if($patientBooking->status == \App\Enums\BookingEnum::DOCTOR_CANCEL)
                                         <a href="{{ route('patients.calendar', $patientBooking->availability->doctor) }}"
                                             class="btn edit-btn">
                                             {{ __('site.Reschedule appointment') }}

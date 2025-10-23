@@ -35,7 +35,7 @@
                         </tr>
                     </thead>
                     <tbody id="patientTbody">
-                        @foreach ($feedbacks as $feedback)
+                        @foreach($feedbacks as $feedback)
                             <tr>
                                 <td>{{ $feedback->id }}</td>
                                 <td>{{ $feedback->full_name }}</td>
@@ -63,7 +63,7 @@
                 </table>
 
                 <div class="pagination1">
-                    {{$feedbacks->links('pagination::bootstrap-4')}}
+                    {{ $feedbacks->links('pagination::bootstrap-4')}}
                 </div>
             </div>
         </div>

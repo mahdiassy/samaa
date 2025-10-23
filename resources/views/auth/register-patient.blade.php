@@ -74,7 +74,7 @@
                     <div>
                         <label>{{ __('site.Country') }}</label>
                         <select name="country">
-                            @foreach ($countries as $country)
+                            @foreach($countries as $country)
                                 <option value="{{ $country->id }}">{{ $country->name }}</option>
                             @endforeach
                         </select>
@@ -82,7 +82,7 @@
                     <div>
                         <label>{{ __('site.Language Spoken') }}</label>
                         <select name="language">
-                            @foreach ($languages as $language)
+                            @foreach($languages as $language)
                                 <option value="{{ $language->id }}">{{ $language->name }}</option>
                             @endforeach
                         </select>
@@ -124,10 +124,10 @@
                         <div>
                             <div class="form-group">
                                 <label>{{ __('site.Have you been diagnosed with any of the following mental health conditions?') }}
-                                    {{ __('site.Select all that apply') }}</label>
+                                    {{ __('site.Select all that apply') }}') }}</label>
                                 <select name="psychological_diseases[]" class="form-control diseases-select select2"
                                     multiple>
-                                    @foreach ($psychological_diseases as $psychological_disease)
+                                    @foreach($psychological_diseases as $psychological_disease)
                                         <option value="{{ $psychological_disease->id }}">
                                             {{ $psychological_disease->getTranslatedName() }}
                                         </option>
@@ -138,7 +138,7 @@
                             <div class="form-group">
                                 <label>{{ __('site.Have you ever received therapy or counseling before?') }}</label>
                                 <select name="consultation">
-                                    @foreach ($consultations as $consultation)
+                                    @foreach($consultations as $consultation)
                                         <option value="{{ $consultation->id }}">{{ $consultation->getTranslatedName() }}
                                         </option>
                                     @endforeach
@@ -147,9 +147,9 @@
 
                             <div class="form-group">
                                 <label>{{ __('site.Have you experienced any of the following symptoms in the past 6 months?') }}
-                                    {{ __('site.Select all that apply') }}</label>
+                                    {{ __('site.Select all that apply') }}') }}</label>
                                 <select name="symptoms[]" class="form-control diseases-select select2" multiple>
-                                    @foreach ($symptoms as $symptom)
+                                    @foreach($symptoms as $symptom)
                                         <option value="{{ $symptom->id }}">
                                             {{ $symptom->getTranslatedName() }}</option>
                                     @endforeach
@@ -159,7 +159,7 @@
                             <div class="form-group">
                                 <label>{{ __('site.Are you currently taking any medications for mental health conditions?') }}</label>
                                 <select name="therapeutic_areas" id="therapeutic_areas_select" class="form-control">
-                                    @foreach ($therapeutic_areas as $therapeutic_area)
+                                    @foreach($therapeutic_areas as $therapeutic_area)
                                         <option value="{{ $therapeutic_area->id }}">
                                             {{ $therapeutic_area->getTranslatedName() }}</option>
                                     @endforeach
@@ -177,9 +177,9 @@
                     <div class="right-column">
                         <div class="form-group">
                             <label>{{ __('site.Have you ever been diagnosed with any neurological conditions?') }}
-                                {{ __('site.Select all that apply') }}</label>
+                                {{ __('site.Select all that apply') }}') }}</label>
                             <select name="nervouses[]" class="form-control diseases-select select2" multiple>
-                                @foreach ($nervouses as $nervous)
+                                @foreach($nervouses as $nervous)
                                     <option value="{{ $nervous->id }}">
                                         {{ $nervous->getTranslatedName() }}
                                     </option>
@@ -190,7 +190,7 @@
                         <div class="form-group">
                             <label>{{ __('site.Do you have a history of substance use or addiction?') }}</label>
                             <select name="addiction">
-                                @foreach ($addictions as $addiction)
+                                @foreach($addictions as $addiction)
                                     <option value="{{ $addiction->id }}">{{ $addiction->getTranslatedName() }}</option>
                                 @endforeach
                             </select>
@@ -198,9 +198,9 @@
 
                         <div class="form-group">
                             <label>{{ __('site.Have you experienced any major life events or traumas that may impact your mental health?') }}
-                                {{ __('site.Select all that apply') }}</label>
+                                {{ __('site.Select all that apply') }}') }}</label>
                             <select name="incidents[]" class="form-control diseases-select select2" multiple>
-                                @foreach ($incidents as $incident)
+                                @foreach($incidents as $incident)
                                     <option value="{{ $incident->id }}">
                                         {{ $incident->getTranslatedName() }}
                                     </option>
@@ -211,7 +211,7 @@
                         <div class="form-group">
                             <label>{{ __('site.Do you have any chronic physical health conditions?') }}</label>
                             <select name="diseases[]" class="form-control diseases-select select2" multiple>
-                                @foreach ($diseases as $disease)
+                                @foreach($diseases as $disease)
                                     <option value="{{ $disease->id }}">
                                         {{ $disease->getTranslatedName() }}
                                     </option>

@@ -5,7 +5,7 @@
 
         <div class="header">
             <a href="{{ route('therapy.index') }}" class="btn-back">
-                @if (App::getLocale() == 'ar')
+                @if(App::getLocale() == 'ar')
                 <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
                 @else
                 <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
@@ -57,16 +57,34 @@
                         <div class="input-row">
                             <div class="input-group">
                                 <label for="audioFile">{{ __('site.Edit Audio (optional)') }}:</label>
-                                <input type="file" class="form-input" id="audioFile" name="file" accept="audio/mp3">
+                                <input type="file" class="form-input" id="audioFile" name="file" accept="audio/mp3,audio/wav,audio/mpeg" onchange="previewNewAudio(event)">
+                                <div id="new-audio-preview-container" style="display: none; margin-top: 10px;">
+                                    <label>{{ __('site.New Audio Preview') }}</label>
+                                    <div class="audio-player-container">
+                                        <audio id="new-audio-preview" controls style="width: 100%;">
+                                            Your browser does not support the audio element.
+                                        </audio>
+                                    </div>
+                                    <div class="audio-info" style="margin-top: 5px; font-size: 12px; color: #666;">
+                                        <span id="new-audio-file-name"></span> | <span id="new-audio-file-size"></span> | <span id="new-audio-duration"></span>
+                                    </div>
+                                </div>
                             </div>
                             <div class="input-group">
-                                <label for="oldAudio">{{ __('site.Old Audio') }}:</label>
+                                <label for="oldAudio">{{ __('site.Current Audio') }}:</label>
                                 <div>
-                                    <audio controls>
-                                        <source src="{{ Storage::url('Doctor therapy/' . decrypt($therapy->file)) }}"
-                                            type="audio/mpeg">
+                                    <audio id="current-audio" controls preload="metadata" style="width: 100%;">
+                                        <source src="{{ route('therapy.audio', $therapy->id) }}" type="audio/mpeg">
+                                        <source src="{{ route('therapy.audio', $therapy->id) }}" type="audio/mp3">
+                                        <source src="{{ route('therapy.audio', $therapy->id) }}" type="audio/wav">
                                         Your browser does not support the audio element.
                                     </audio>
+                                    <div class="audio-info" style="margin-top: 5px; font-size: 12px; color: #666;">
+                                        {{ $therapy->name }} | {{ __('site.Current Audio') }}
+                                    </div>
+                                    <div id="audio-error" style="display: none; color: #dc2626; font-size: 12px; margin-top: 5px;">
+                                        Error loading audio file. Please check if the file exists.
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -78,7 +96,7 @@
                                     <option value="">{{ __('site.Search or Create Album') }}</option>
                                     @foreach($albums as $album)
                                         <option value="{{ $album->name }}"
-                                            @if ($album->name == $therapy->album->name) selected @endif>
+                                            @if($album->name == $therapy->album->name) selected @endif>
                                             {{ $album->name }}
                                         </option>
                                     @endforeach
@@ -114,6 +132,81 @@
         }
     }
 
+    function previewNewAudio(event) {
+        var file = event.target.files[0];
+        var audioPreviewContainer = document.getElementById('new-audio-preview-container');
+        var audioPreview = document.getElementById('new-audio-preview');
+        var audioFileName = document.getElementById('new-audio-file-name');
+        var audioFileSize = document.getElementById('new-audio-file-size');
+        var audioDuration = document.getElementById('new-audio-duration');
+
+        if (file) {
+            // Check file size (100MB limit)
+            var maxSize = 100 * 1024 * 1024; // 100MB in bytes
+            if (file.size > maxSize) {
+                alert('File size is too large! Maximum allowed size is 100MB. Your file is ' + formatFileSize(file.size) + '. Please compress your audio file or choose a smaller file.');
+                event.target.value = ''; // Clear the file input
+                return;
+            }
+            
+            // Show warning for large files (>50MB)
+            if (file.size > 50 * 1024 * 1024) {
+                var warningDiv = document.getElementById('new-file-size-warning');
+                if (!warningDiv) {
+                    warningDiv = document.createElement('div');
+                    warningDiv.id = 'new-file-size-warning';
+                    warningDiv.style.cssText = 'background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; padding: 10px; margin: 10px 0; border-radius: 4px; font-size: 14px;';
+                    warningDiv.innerHTML = '⚠️ <strong>Large File Warning:</strong> This file is ' + formatFileSize(file.size) + '. Upload may take longer. Consider compressing your audio for better performance.';
+                    audioPreviewContainer.parentNode.insertBefore(warningDiv, audioPreviewContainer);
+                }
+            } else {
+                // Remove warning if file is smaller
+                var warningDiv = document.getElementById('new-file-size-warning');
+                if (warningDiv) {
+                    warningDiv.remove();
+                }
+            }
+            
+            // Show the preview container
+            audioPreviewContainer.style.display = 'block';
+            
+            // Create object URL for the audio file
+            var audioURL = URL.createObjectURL(file);
+            audioPreview.src = audioURL;
+            
+            // Display file information
+            audioFileName.textContent = file.name;
+            audioFileSize.textContent = formatFileSize(file.size);
+            
+            // Get audio duration when loaded
+            audioPreview.addEventListener('loadedmetadata', function() {
+                audioDuration.textContent = formatDuration(audioPreview.duration);
+            });
+        } else {
+            // Hide the preview container if no file selected
+            audioPreviewContainer.style.display = 'none';
+            // Remove warning
+            var warningDiv = document.getElementById('new-file-size-warning');
+            if (warningDiv) {
+                warningDiv.remove();
+            }
+        }
+    }
+
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        var k = 1024;
+        var sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        var i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    function formatDuration(seconds) {
+        var minutes = Math.floor(seconds / 60);
+        var remainingSeconds = Math.floor(seconds % 60);
+        return minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
+    }
+
     $(document).ready(function() {
         $('#album-select').select2({
             tags: true,
@@ -135,5 +228,18 @@
                 data.push(tag);
             }
         });
+
+        // Handle audio loading errors
+        const currentAudio = document.getElementById('current-audio');
+        if (currentAudio) {
+            currentAudio.addEventListener('error', function(e) {
+                console.error('Audio loading error:', e);
+                document.getElementById('audio-error').style.display = 'block';
+            });
+
+            currentAudio.addEventListener('loadedmetadata', function() {
+                document.getElementById('audio-error').style.display = 'none';
+            });
+        }
     });
 </script>

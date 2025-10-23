@@ -35,6 +35,9 @@ class TherapySeeder extends Seeder
 
             if (file_exists(public_path($filePath))) {
                 $therapy->file = $this->storeFileEncrypt($filePath, 'Doctor therapy', 'public_disk');
+            } else {
+                // Ensure non-null file column
+                $therapy->file = encrypt('placeholder.mp3');
             }
 
             $therapy->save();

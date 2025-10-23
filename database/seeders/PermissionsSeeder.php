@@ -20,17 +20,17 @@ class PermissionsSeeder extends Seeder
         // Reset cached roles and permissions
         app()[PermissionRegistrar::class]->forgetCachedPermissions();
 
-        // create permissions
+        // create permissions (idempotent)
         $permissions = Permissions::getConstants();
         foreach ($permissions as $permission) {
-            Permission::create(['name' => $permission]);
+            Permission::firstOrCreate(['name' => $permission], ['name' => $permission]);
         }
 
         // create roles
-        $role1 = Role::create(['name' => 'Admin']);
+        $role1 = Role::firstOrCreate(['name' => 'Admin']);
         $role1->givePermissionTo(Permission::all());
 
-        $role2 = Role::create(['name' => 'Doctor']);
+        $role2 = Role::firstOrCreate(['name' => 'Doctor']);
         $role2->givePermissionTo([
             Permissions::DOCTOR_LIST,
             Permissions::DOCTOR_SHOW,
@@ -55,7 +55,7 @@ class PermissionsSeeder extends Seeder
             Permissions::BLOG_SHOW,
         ]);
 
-        $role3 = Role::create(['name' => 'Patient']);
+        $role3 = Role::firstOrCreate(['name' => 'Patient']);
         $role3->givePermissionTo([
             Permissions::DOCTOR_LIST,
             Permissions::DOCTOR_SHOW,
@@ -72,38 +72,43 @@ class PermissionsSeeder extends Seeder
         ]);
 
         // create users
-        $user = \App\Models\User::factory()->create([
-            'name' => 'admin',
+        $user = \App\Models\User::firstOrCreate([
             'email' => 'admin@sama3.com',
+        ], [
+            'name' => 'admin',
+            'password' => bcrypt('password'),
         ]);
         $user->assignRole($role1);
 
 
-        $userdoctor = \App\Models\User::factory()->create([
-            'name' => 'doctor1',
+        $userdoctor = \App\Models\User::firstOrCreate([
             'email' => 'doctor1@sama3.com',
+        ], [
+            'name' => 'doctor1',
+            'password' => bcrypt('password'),
         ]);
         $userdoctor->assignRole($role2);
 
-        Doctor::create([
-            'first_name' => 'doctor1',
+        Doctor::firstOrCreate([
             'user_id' => $userdoctor->id,
+        ], [
+            'first_name' => 'doctor1',
         ]);
 
-        $userpatient = \App\Models\User::factory()->create([
-            'name' => 'patient1',
+        $userpatient = \App\Models\User::firstOrCreate([
             'email' => 'patient1@sama3.com',
+        ], [
+            'name' => 'patient1',
+            'password' => bcrypt('password'),
         ]);
         $userpatient->assignRole($role3);
 
-        Patient::create([
-            'first_name' => 'patient1',
+        Patient::firstOrCreate([
             'user_id' => $userpatient->id,
+        ], [
+            'first_name' => 'patient1',
             'language_id' => 1,
             'country_id' => 1,
-            //'therapeutic_area_id' => 1,
-            //'disease_id' => 1,
-            //'psychological_id' => 1,
         ]);
     }
 }

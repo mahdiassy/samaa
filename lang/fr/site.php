@@ -8,6 +8,7 @@ return [
     // Menu & Footer
     'Menu' => 'Menu',
     'Home' => 'Accueil',
+    'Language' => 'Langue',
     'About Us' => 'À propos de nous',
     'Therapists' => 'Thérapeutes',
     'Contact Us' => 'Contactez-nous',

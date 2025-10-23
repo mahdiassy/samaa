@@ -4,7 +4,7 @@
         @include('search_form')
         <div class="header">
             <a href="{{ route('patient.index') }}" class="btn-back">
-                @if (App::getLocale() == 'ar')
+                @if(App::getLocale() == 'ar')
                 <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
                 @else
                 <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
@@ -52,7 +52,7 @@
                                 <p><strong>{{ __('site.Have you been diagnosed with any of the following mental health conditions?') }}:</strong></p>
                                 <p>    @foreach($psychologicals as $psychological)
                                     {{ $psychological->getTranslatedName() }}
-                                    @if (!$loop->last), @endif
+                                    @if(!$loop->last), @endif
                                     @endforeach
                                 </p>
                             </div>
@@ -64,7 +64,7 @@
                                 <p>
                                     @foreach($nervouses as $nervous)
                                         {{ $nervous->getTranslatedName() }}
-                                        @if (!$loop->last), @endif
+                                        @if(!$loop->last), @endif
                                     @endforeach
                                 </p>
                             </div>
@@ -76,7 +76,7 @@
                                 <p>
                                     @foreach($therapeutic_areas as $therapeutic_area)
                                         {{ $therapeutic_area->getTranslatedName() }}
-                                        @if (!$loop->last), @endif
+                                        @if(!$loop->last), @endif
                                     @endforeach
                                 </p>
                             </div>
@@ -85,7 +85,7 @@
                         @if($medications)
                         <div class="text-info">
                             <p><strong>{{ __('site.medication names') }}:</strong></p>
-                            <p>{{$medications}}</p>
+                            <p>{{ $medications}}</p>
                         </div>
                         @endif
 
@@ -95,7 +95,7 @@
                                 <p>
                                     @foreach($symptomes as $symptom)
                                     {{ $symptom->getTranslatedName() }}
-                                    @if (!$loop->last), @endif
+                                    @if(!$loop->last), @endif
                                     @endforeach
                                 </p>
                             </div>
@@ -107,7 +107,7 @@
                                 <p>
                                     @foreach($addictiones as $addiction)
                                         {{ $addiction->getTranslatedName() }}
-                                        @if (!$loop->last), @endif
+                                        @if(!$loop->last), @endif
                                     @endforeach
                                 </p>
                             </div>
@@ -118,7 +118,7 @@
                             <p>
                                 @foreach($diseases as $disease)
                                     {{ $disease->getTranslatedName() }}
-                                    @if (!$loop->last), @endif
+                                    @if(!$loop->last), @endif
                                 @endforeach
                             </p>
                         </div>
@@ -128,7 +128,7 @@
                             <p>
                                 @foreach($incidents as $incident)
                                     {{ $incident->getTranslatedName() }}
-                                    @if (!$loop->last), @endif
+                                    @if(!$loop->last), @endif
                                 @endforeach
                             </p>
                         </div>
@@ -138,7 +138,7 @@
                                 <p>
                                     @foreach($consultationes as $consultation)
                                         {{ $consultation->getTranslatedName() }}
-                                        @if (!$loop->last), @endif
+                                        @if(!$loop->last), @endif
                                     @endforeach
                                 </p>
                             </div>

@@ -34,23 +34,87 @@ document.addEventListener('scroll', function () {
 });
 
 const menuToggle = document.getElementById('menuToggle');
+const mobileMenuToggle = document.getElementById('mobileMenuToggle');
 const menu = document.getElementById('menu');
+const mobileMenu = document.getElementById('mobileMenu');
 const closeMenu = document.getElementById('closeMenu');
 
-menuToggle.addEventListener('click', () => {
-    menu.classList.toggle('active');
+console.log('Frontend scripts loaded. Elements found:', {
+    menuToggle: !!menuToggle,
+    mobileMenuToggle: !!mobileMenuToggle,
+    menu: !!menu,
+    mobileMenu: !!mobileMenu,
+    closeMenu: !!closeMenu
 });
 
-closeMenu.addEventListener('click', () => {
-    menu.classList.remove('active');
-});
+// Handle desktop menu toggle
+if (menuToggle && menu) {
+    menuToggle.addEventListener('click', () => {
+        menu.classList.toggle('active');
+    });
+}
+
+// Handle mobile menu toggle
+if (mobileMenuToggle && mobileMenu) {
+    mobileMenuToggle.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        mobileMenu.classList.toggle('hidden');
+        
+        // Animate burger lines
+        const spans = mobileMenuToggle.querySelectorAll('span');
+        if (mobileMenu.classList.contains('hidden')) {
+            // Menu is closing - reset burger lines
+            spans[0].style.transform = 'rotate(0deg)';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'rotate(0deg)';
+        } else {
+            // Menu is opening - animate to X
+            spans[0].style.transform = 'rotate(45deg) translateY(6px)';
+            spans[1].style.opacity = '0';
+            spans[2].style.transform = 'rotate(-45deg) translateY(-6px)';
+        }
+        
+        console.log('Mobile menu toggled. Hidden:', mobileMenu.classList.contains('hidden'));
+    });
+    
+    // Add touch events for better mobile support
+    mobileMenuToggle.addEventListener('touchstart', (e) => {
+        mobileMenuToggle.style.opacity = '0.8';
+    });
+    
+    mobileMenuToggle.addEventListener('touchend', (e) => {
+        mobileMenuToggle.style.opacity = '1';
+    });
+}
+
+if (closeMenu) {
+    closeMenu.addEventListener('click', () => {
+        if (menu) menu.classList.remove('active');
+        if (mobileMenu) mobileMenu.classList.add('hidden');
+    });
+}
 
 document.addEventListener('click', (event) => {
-    const isClickInsideMenu = menu.contains(event.target);
-    const isClickInsideToggle = menuToggle.contains(event.target);
+    const isClickInsideMenu = menu && menu.contains(event.target);
+    const isClickInsideToggle = menuToggle && menuToggle.contains(event.target);
+    const isClickInsideMobileMenu = mobileMenu && mobileMenu.contains(event.target);
+    const isClickInsideMobileToggle = mobileMenuToggle && mobileMenuToggle.contains(event.target);
 
-    if (!isClickInsideMenu && !isClickInsideToggle) {
+    if (!isClickInsideMenu && !isClickInsideToggle && menu) {
         menu.classList.remove('active');
+    }
+    
+    if (!isClickInsideMobileMenu && !isClickInsideMobileToggle && mobileMenu) {
+        mobileMenu.classList.add('hidden');
+        // Reset burger lines when clicking outside
+        if (mobileMenuToggle) {
+            const spans = mobileMenuToggle.querySelectorAll('span');
+            spans[0].style.transform = 'rotate(0deg)';
+            spans[1].style.opacity = '1';
+            spans[2].style.transform = 'rotate(0deg)';
+        }
     }
 });
 

@@ -4,7 +4,7 @@
     <div class="main-content">
         <div class="header">
             <a href="javascript:void(0);" onclick="history.back();" class="btn-back">
-                @if (App::getLocale() == 'ar')
+                @if(App::getLocale() == 'ar')
                 <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
                 @else
                 <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
@@ -36,8 +36,19 @@
                                 required>
                         </div>
                         <div class="input-group">
-                            <label for="file-upload">{{ __('site.Upload File') }}</label>
-                            <input type="file" class="form-input" name="file" id="file-upload" accept="audio/mp3" required>
+                            <label for="file-upload">{{ __('site.Upload Audio File') }}</label>
+                            <input type="file" class="form-input" name="file" id="file-upload" accept="audio/mp3,audio/wav,audio/mpeg" onchange="previewAudio(event)" required>
+                            <div id="audio-preview-container" style="display: none; margin-top: 10px;">
+                                <label>{{ __('site.Audio Preview') }}:</label>
+                                <div class="audio-player-container">
+                                    <audio id="audio-preview" controls style="width: 100%;">
+                                        Your browser does not support the audio element.
+                                    </audio>
+                                </div>
+                                <div class="audio-info" style="margin-top: 5px; font-size: 12px; color: #666;">
+                                    <span id="audio-file-name"></span> | <span id="audio-file-size"></span> | <span id="audio-duration"></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -76,6 +87,84 @@
             }
             reader.readAsDataURL(file);
         }
+    }
+
+    function previewAudio(event) {
+        var file = event.target.files[0];
+        var audioPreviewContainer = document.getElementById('audio-preview-container');
+        var audioPreview = document.getElementById('audio-preview');
+        var audioFileName = document.getElementById('audio-file-name');
+        var audioFileSize = document.getElementById('audio-file-size');
+        var audioDuration = document.getElementById('audio-duration');
+
+        if (file) {
+            // Check file size (100MB limit)
+            var maxSize = 100 * 1024 * 1024; // 100MB in bytes
+            if (file.size > maxSize) {
+                alert('File size is too large! Maximum allowed size is 100MB. Your file is ' + formatFileSize(file.size) + '. Please compress your audio file or choose a smaller file.');
+                event.target.value = ''; // Clear the file input
+                return;
+            }
+            
+            // Show warning for large files (>50MB)
+            if (file.size > 50 * 1024 * 1024) {
+                var warningDiv = document.getElementById('file-size-warning');
+                if (!warningDiv) {
+                    warningDiv = document.createElement('div');
+                    warningDiv.id = 'file-size-warning';
+                    warningDiv.style.cssText = 'background: #fff3cd; border: 1px solid #ffeaa7; color: #856404; padding: 10px; margin: 10px 0; border-radius: 4px; font-size: 14px;';
+                    warningDiv.innerHTML = '⚠️ <strong>Large File Warning:</strong> This file is ' + formatFileSize(file.size) + '. Upload may take longer. Consider compressing your audio for better performance.';
+                    audioPreviewContainer.parentNode.insertBefore(warningDiv, audioPreviewContainer);
+                }
+            } else {
+                // Remove warning if file is smaller
+                var warningDiv = document.getElementById('file-size-warning');
+                if (warningDiv) {
+                    warningDiv.remove();
+                }
+            }
+            
+            // Show the preview container
+            audioPreviewContainer.style.display = 'block';
+            
+            // Create object URL for the audio file
+            var audioURL = URL.createObjectURL(file);
+            audioPreview.src = audioURL;
+            
+            // Display file information
+            audioFileName.textContent = file.name;
+            audioFileSize.textContent = formatFileSize(file.size);
+            
+            // Get audio duration when loaded
+            audioPreview.addEventListener('loadedmetadata', function() {
+                audioDuration.textContent = formatDuration(audioPreview.duration);
+            });
+            
+            // Auto-play for testing (optional)
+            // audioPreview.play();
+        } else {
+            // Hide the preview container if no file selected
+            audioPreviewContainer.style.display = 'none';
+            // Remove warning
+            var warningDiv = document.getElementById('file-size-warning');
+            if (warningDiv) {
+                warningDiv.remove();
+            }
+        }
+    }
+
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        var k = 1024;
+        var sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        var i = Math.floor(Math.log(bytes) / Math.log(k));
+        return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+    }
+
+    function formatDuration(seconds) {
+        var minutes = Math.floor(seconds / 60);
+        var remainingSeconds = Math.floor(seconds % 60);
+        return minutes + ':' + (remainingSeconds < 10 ? '0' : '') + remainingSeconds;
     }
 
     $(document).ready(function() {

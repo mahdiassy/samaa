@@ -5,7 +5,7 @@
 <div class="main-content">
     <div class="header">
         <a href="javascript:void(0);" onclick="history.back();" class="btn-back">
-            @if (App::getLocale() == 'ar')
+            @if(App::getLocale() == 'ar')
                 <i class="fas fa-long-arrow-alt-right"></i> {{ __('site.Go Back') }}
             @else
                 <i class="fas fa-long-arrow-alt-left"></i> {{ __('site.Go Back') }}
@@ -34,7 +34,7 @@
                 </div>
 
                 <ul class="nav nav-tabs" id="langTabs" role="tablist">
-                    @foreach (config('app.locales') as $index => $locale)
+                    @foreach(config('app.locales') as $index => $locale)
                         <li class="nav-item" role="presentation">
                             <button class="nav-link {{ $index == 0 ? 'active' : '' }}" id="tab-{{ $locale }}"
                                     data-bs-toggle="tab" data-bs-target="#content-{{ $locale }}" type="button" role="tab">
@@ -45,7 +45,7 @@
                 </ul>
 
                 <div class="tab-content mt-3">
-                    @foreach (config('app.locales') as $index => $locale)
+                    @foreach(config('app.locales') as $index => $locale)
                         <div class="tab-pane fade {{ $index == 0 ? 'show active' : '' }}" id="content-{{ $locale }}" role="tabpanel">
                             <div class="input-group">
                                 <label for="title_{{ $locale }}">{{ __('site.Title') }} ({{ strtoupper($locale) }})</label>

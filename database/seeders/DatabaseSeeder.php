@@ -20,7 +20,7 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         $this->call([
-
+            UserSeeder::class,
             CountriesSeeder::class,
             LanguageSeeder::class,
             TherapeuticSeeder::class,

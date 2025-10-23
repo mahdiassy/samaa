@@ -1,102 +1,299 @@
 @extends('layouts.base')
 @section('content')
-    <section class="about-section">
+    <main id="main-content" class="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-800">
+        
+        <!-- Hero Section: Where Science Meets Soul -->
+        <section class="relative py-20 sm:py-24 lg:py-32 overflow-hidden">
+            <!-- Scientific Background Pattern -->
+            <div class="absolute inset-0 opacity-5">
+                <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0); background-size: 20px 20px;"></div>
+            </div>
+            
+            <!-- Floating Elements -->
+            <div class="absolute top-20 left-10 w-20 h-20 bg-blue-400/10 rounded-full blur-xl animate-pulse"></div>
+            <div class="absolute bottom-20 right-10 w-32 h-32 bg-emerald-400/10 rounded-full blur-xl animate-pulse delay-1000"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-4xl mx-auto">
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold mb-8 leading-tight">
+                        <span class="text-white">{{ __('site.Where') }}</span>
+                        <span class="bg-gradient-to-r from-blue-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent">
+                            {{ __('site.Science') }}
+                        </span>
+                        <span class="text-white">{{ __('site.Meets') }}</span>
+                        <span class="bg-gradient-to-r from-emerald-400 via-blue-400 to-teal-400 bg-clip-text text-transparent">
+                            {{ __('site.Soul') }}
+                        </span>
+                    </h1>
+                    
+                    <p class="text-xl sm:text-2xl text-slate-300 mb-12 leading-relaxed font-light">
+                        {{ __('site.story-description') }}
+                    </p>
 
-        <div class="about-container">
-            <div class="our-story">
-                <div class="story-text">
-                    <h2>{{ __('site.Where') }} </h2>
-                    <h2><span>{{ __('site.Science') }}</span></h2>
-                    <h2>{{ __('site.Meets') }} <span>{{ __('site.Soul') }} </span> </h2>
-                    <p>{{ __('site.story-description') }}</p>
+                    <!-- Elegant CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                        <a href="{{ Auth::check() ? (\App\Models\Therapy::getTherapiesBasedRole()->isNotEmpty() ? route('playlist') : route('therapy.index')) : route('login')  }}" 
+                           class="group px-8 py-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white font-semibold rounded-2xl text-lg hover:from-blue-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-blue-500/25">
+                            <span class="flex items-center">
+                                {{ __('site.Explore') }} SAMAA {{ __('site.Therapy') }}
+                                <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                </svg>
+                            </span>
+                        </a>
+                        
+                        <a href="{{ route('contact-us') }}" 
+                           class="group px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-2xl text-lg hover:bg-white/20 hover:border-white/30 transform hover:scale-105 transition-all duration-300">
+                            <span class="flex items-center">
+                                {{ __('site.Become a Partner') }}
+                                <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
                 </div>
             </div>
+        </section>
 
-            <div class="doctors-section">
-                <div class="doctor-cards">
-                    <div class="doctor-card">
-                        <div class="doctor-content">
-                            <h2><span>{{ __('site.our') }}</span> {{ __('site.Mission') }}</h2>
+        <!-- Mission Section -->
+        <section class="py-16 sm:py-20 lg:py-24 relative">
+            <!-- Elegant Separator -->
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-3 gap-8 lg:gap-12 items-center">
+                    <!-- Mission Title -->
+                    <div class="lg:col-span-1 text-center lg:text-left">
+                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
+                            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-6">
+                                <span class="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
+                                    {{ __('site.our') }}
+                                </span>
+                                <br>
+                                <span class="text-white">{{ __('site.Mission') }}</span>
+                            </h2>
                         </div>
                     </div>
-                    <div class="mission-center">
-                        <img src="{{ asset('assets/images/headphone2.png') }}" alt="Headphones">
+                    
+                    <!-- Central Image -->
+                    <div class="lg:col-span-1 flex justify-center">
+                        <div class="relative group">
+                            <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-teal-600 rounded-full blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+                            <div class="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-full p-8 lg:p-12">
+                                <img src="{{ asset('assets/images/headphone2.png') }}" 
+                                     alt="Professional headphones for music therapy" 
+                                     class="w-32 h-32 lg:w-40 lg:h-40 object-contain filter drop-shadow-2xl" 
+                                     loading="lazy">
+                            </div>
+                        </div>
                     </div>
-                    <div class="doctor-card">
-                        <div class="doctor-content">
-                            <p>
-                                {{ __('site.Mission Description') }}
+                    
+                    <!-- Mission Description -->
+                    <div class="lg:col-span-1 text-center lg:text-right">
+                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
+                            <p class="text-lg sm:text-xl text-slate-300 leading-relaxed font-light">
+                                {{ __('site.mission-description') }}
                             </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="doctors-section">
-                <div class="doctor-cards">
-                    <div class="doctor-card">
-                        <div class="doctor-content">
-                            <h2> <span> {{ __('site.Our') }} </span> {{ __('site.Founder') }} </h2>
-                            <h3>{{ __('site.Dr. Nadia Cheaib') }} </h3>
-                            <p>{{ __('site.Forbes Most Influential Arab Woman (2014-2018).') }}</p>
-                            <p>{{ __('site.Pioneer in integrating AI with holistic therapies.') }}</p>
-                        </div>
-                    </div>
-
-                    <div class="doctor-card">
-                        <div class="doctor-image"
-                            style="background-image: url('{{ asset('assets/images/Dr.Nadia.png') }}');">
-                            <div class="stat-card">
-                                <p>{{ __('site.Music isn’t just art—it’s a language of healing') }}</p>
+                            <div class="mt-6 flex justify-center lg:justify-end">
+                                <div class="w-16 h-px bg-gradient-to-r from-transparent to-teal-400"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="listeners-section">
-                <h2>{{ __('site.Join Our Movement') }}</h2>
-                <p>{{ __('site.Their experience throughout every platform') }}</p>
-
-                <div class="image-container">
-                    <!--<img src="{{ asset('assets/images/about-us.jfif') }}" alt="Microphone" class="main-image">-->
-
-                    <svg class="overlay-svg" width="425" height="333" viewBox="0 0 425 333" fill="none"
-                        xmlns="http://www.w3.org/2000/svg">
-                        <path
-                            d="M260.389 53.1007C253.765 52.4346 247.479 51.5588 241.117 51.2866C231.794 50.8711 222.832 50.9607 213.724 50.8314C211.359 50.7883 209.091 51.4225 206.112 48.677C204.163 46.8769 204.899 45.6014 208.275 44.7428C210.239 44.2574 212.344 43.9065 214.645 43.7778C227.688 43.0206 241.95 44.1017 257.399 47.082C260.032 47.6034 262.833 48.3031 265.605 49.3366C270.869 51.3231 273.783 54.8407 271.885 57.0924C270.665 58.5474 268.589 59.5083 266.699 60.5228C263.095 62.4369 259.24 64.1257 255.705 66.1071C254.737 66.6549 253.296 67.7394 253.952 68.9552C255.167 70.8981 261.926 71.2371 264.961 71.3431C274.255 71.7148 283.374 71.8238 292.609 72.108C301.857 72.3719 311.615 73.4439 322.187 76.1191C325.268 76.8992 328.494 77.8982 331.65 79.2075C336.739 81.3089 339.588 85.0323 337.848 87.2938C337.007 88.3739 335.613 89.1887 333.975 89.6736C329.812 90.8606 325.341 91.7346 321.08 92.8105C316.626 93.9373 312.05 94.9935 308.816 98.1475C311.327 98.4095 312.924 98.6562 314.375 98.6841C323.767 98.978 333.032 99.1172 342.483 99.4987C351.083 99.848 360.003 100.679 369.829 103.328C373.539 104.337 377.551 105.762 381.277 107.59C386.436 110.136 388.771 113.995 386.379 115.88C384.605 117.259 382.052 118.106 379.545 118.872C374.758 120.292 369.733 121.467 364.889 122.801C363.799 123.089 360.745 123.485 362.566 124.753C365.223 124.856 367.892 124.939 370.578 125.086C377.727 125.408 384.777 125.618 392.043 126.115C398.586 126.545 405.501 127.649 413.222 131.027C419.731 133.867 422.964 138.244 420.209 140.757C418.867 141.952 417.012 142.906 414.855 143.442C405.423 145.852 395.822 148.083 386.25 150.358C385.195 150.586 384.035 150.807 382.678 150.617C381.425 150.434 379.445 149.911 378.572 149.165C377.699 148.418 376.28 146.735 377.221 145.577C378.102 144.52 379.298 144.05 380.843 143.538C387.967 141.173 395.301 139.01 402.566 136.779C404.536 136.189 406.577 135.666 408.588 135.1C409.258 134.974 409.171 134.843 409.009 134.56C408.002 133.574 404.029 132.927 402.31 132.798C392.481 132.037 382.751 131.386 373.05 130.779C369.222 130.539 365.557 130.583 361.729 130.343C358.583 130.146 355.17 129.094 352.255 126.331C349.341 123.569 349.385 121.327 350.891 120.037C353.074 118.139 355.483 116.318 358.69 115.281C363.529 113.674 369.16 112.768 374.429 111.545C375.316 111.328 376.144 111.023 377.689 110.512C375.312 109.734 373.903 109.163 372.535 108.805C363.553 106.481 355.321 105.588 347.554 105.396C338.231 105.169 329.24 105.404 319.963 105.285C316.292 105.244 312.516 105.197 308.491 104.546C300.667 103.322 295.029 98.3128 296.517 93.8539C297.237 91.7593 298.953 90.1046 300.914 88.7798C305.855 85.397 313.298 84.2684 320.479 82.9347C322.001 82.6523 323.522 82.3699 324.747 81.7543C316.052 78.6511 308.269 77.451 300.911 76.9276C289.485 76.1079 278.397 75.8337 267.128 75.2126C264.232 75.0524 261.116 74.7105 257.906 73.9643C252.454 72.6793 248.021 68.689 248.399 65.3983C248.654 62.9809 249.841 60.8316 251.574 59.2409C254.078 56.8803 260.854 53.8011 260.878 53.3831C261.054 53.0794 260.389 53.1007 260.389 53.1007Z"
-                            fill="#81ADC8" />
-                        <path
-                            d="M117.483 48.0203C109.516 44.1298 101.875 40.2487 94.3456 36.7977C83.3085 31.7284 72.8619 27.2353 62.1722 22.498C59.3923 21.26 56.9537 20.5985 52.552 16.9475C49.6708 14.5557 50.1045 13.939 53.7626 14.9899C55.8966 15.6127 58.2388 16.4113 60.8866 17.4832C75.8791 23.5345 92.9141 31.6365 111.971 41.8185C115.223 43.5643 118.733 45.5346 122.319 47.7493C129.138 51.9739 133.722 56.1918 132.258 56.9762C131.319 57.4861 129.214 57.1762 127.344 57.0028C123.772 56.6559 119.832 56.0063 116.363 55.7473C115.415 55.6802 114.094 55.7896 115.268 57.069C117.338 59.1979 125.353 62.9024 128.937 64.5304C139.926 69.5509 150.622 74.2784 161.513 79.2012C172.411 84.1142 184.178 89.9159 197.432 97.3779C201.295 99.553 205.401 101.972 209.529 104.597C216.182 108.822 220.759 113.167 219.482 114.039C218.861 114.451 217.504 114.374 215.752 113.917C211.283 112.721 206.35 111.124 201.728 109.791C196.899 108.4 191.904 106.891 189.18 107.697C192.203 109.179 194.152 110.183 195.857 110.944C206.935 115.954 217.812 120.779 228.988 125.887C239.158 130.537 249.864 135.725 262.237 142.787C266.912 145.46 272.08 148.611 277.048 151.929C283.931 156.534 287.954 160.724 285.788 160.971C284.177 161.14 281.475 160.498 278.801 159.818C273.682 158.485 268.201 156.841 262.984 155.41C261.807 155.08 258.369 153.833 260.923 155.746C264.064 157.179 267.211 158.602 270.4 160.084C278.865 163.974 287.178 167.727 295.837 171.812C303.63 175.478 312.083 179.856 322.24 186.413C330.801 191.936 336.045 196.984 333.667 197.535C332.498 197.781 330.649 197.579 328.308 196.897C318.088 193.968 307.612 190.815 297.185 187.71C296.028 187.35 294.746 186.932 293.096 186.093C291.57 185.313 289.08 183.898 287.81 182.874C286.539 181.849 284.317 179.818 285.028 179.396C285.705 179.024 286.945 179.266 288.579 179.655C296.116 181.444 303.965 183.496 311.71 185.46C313.816 186.005 316.026 186.637 318.187 187.221C318.929 187.464 318.783 187.318 318.498 187.015C316.991 185.736 312.13 183.21 310.078 182.235C298.333 176.639 286.741 171.179 275.197 165.769C270.642 163.633 266.372 161.801 261.817 159.666C258.073 157.911 253.731 155.355 249.399 151.724C245.066 148.092 244.368 146.372 245.696 146.135C247.611 145.771 249.818 145.582 253.219 146.408C258.338 147.623 264.617 149.785 270.368 151.518C271.331 151.8 272.197 151.984 273.831 152.373C270.793 150.559 268.955 149.398 267.235 148.422C255.957 142.043 246.035 137.158 236.891 133.054C225.917 128.131 215.485 123.736 204.601 118.921C200.296 117.02 195.866 115.061 190.943 112.505C181.387 107.571 173.119 100.806 173.364 98.0968C173.505 96.8351 174.957 96.4223 176.804 96.3903C181.448 96.2761 189.771 99.1882 197.719 101.807C199.402 102.362 201.086 102.917 202.312 103.062C191.109 96.2232 181.609 91.3277 172.831 87.1744C159.201 80.7202 146.147 74.8617 132.766 68.6419C129.327 67.043 125.569 65.1904 121.568 62.9763C114.764 59.2016 108.245 53.8422 107.585 51.4766C107.074 49.7269 107.741 48.6601 109.234 48.3059C111.371 47.7454 118.261 48.8015 118.149 48.4887C118.252 48.3419 117.483 48.0203 117.483 48.0203Z"
-                            fill="black" />
-                        <path
-                            d="M86.2082 240.505C77.0983 235.232 68.2021 230.38 59.8316 225.088C47.5501 217.344 36.2484 209.596 24.5359 201.859C21.4837 199.855 19.2556 197.516 12.6327 196.661C8.29554 196.104 7.91435 197.526 11.3188 200.956C13.315 202.943 15.6279 204.966 18.4215 207.022C34.2208 218.685 53.4707 230.257 76.1894 241.669C80.0753 243.605 84.3599 245.576 88.9515 247.315C97.6961 250.602 105.033 250.922 104.946 247.898C104.898 245.949 103.251 243.571 101.896 241.32C99.2907 237.04 96.1344 232.685 93.6872 228.423C93.022 227.253 92.31 225.344 94.4002 225.153C97.9511 224.992 106.894 230.583 110.863 233.122C123.063 240.869 134.769 248.628 146.804 256.379C158.833 264.152 172.347 271.863 188.55 279.279C193.273 281.44 198.407 283.59 203.772 285.487C212.413 288.553 219.881 288.69 220.004 285.794C220.05 284.403 219.12 282.702 217.538 280.995C213.471 276.687 208.69 272.308 204.384 267.983C199.885 263.462 195.158 258.88 194.305 254.149C197.768 256.142 200.052 257.359 201.925 258.587C214.171 266.467 226.093 274.333 238.503 282.208C249.797 289.373 261.996 296.514 277.225 303.305C282.983 305.864 289.557 308.425 296.182 310.49C305.37 313.339 312.325 312.952 311.231 309.73C310.4 307.354 308.028 304.637 305.632 302.01C301.014 297.021 295.839 291.98 291.057 286.996C289.969 285.881 286.495 283.015 290.121 283.792C293.605 286.009 297.084 288.248 300.651 290.462C310.072 296.399 319.253 302.32 329.003 308.248C337.766 313.597 347.697 318.848 361.002 323.381C372.213 327.208 380.843 327.27 379.936 323.348C379.464 321.455 378.092 319.272 375.903 317.088C366.4 307.499 356.498 297.875 346.679 288.25C345.572 287.203 344.326 286.07 342.404 285.023C340.623 284.061 337.565 282.686 335.684 282.399C333.803 282.113 330.261 281.939 330.26 283.463C330.29 284.875 331.324 286.192 332.759 287.836C339.375 295.417 346.465 303.053 353.396 310.67C355.292 312.727 357.347 314.802 359.319 316.88C360.041 317.533 359.794 317.539 359.295 317.575C356.998 317.323 351.278 314.314 348.96 312.918C335.677 304.954 322.635 297.006 309.674 289.056C304.56 285.919 299.945 282.746 294.831 279.609C290.627 277.03 285.201 274.754 278.642 273.964C272.083 273.175 269.825 274.603 270.406 276.695C271.22 279.745 272.403 282.942 275.409 286.337C279.902 291.486 286.124 296.88 291.561 302.161C292.464 303.056 293.201 303.956 294.637 305.599C290.813 304.042 288.432 303.186 286.321 302.233C272.502 295.965 261.115 289.453 251.041 282.905C238.954 275.044 227.765 267.181 215.848 259.293C211.139 256.167 206.289 252.956 200.5 249.904C189.289 243.947 176.947 242.214 174.233 246.254C172.985 248.171 173.458 250.669 174.582 253.173C177.37 259.51 185.667 266.598 193.419 273.589C195.062 275.069 196.704 276.55 197.626 277.983C183.367 272.444 172.232 266.508 162.336 260.516C146.963 251.218 132.583 241.871 117.615 232.584C113.768 230.198 109.452 227.734 104.601 225.442C96.3421 221.559 86.5841 220.227 83.6666 222.592C81.4935 224.309 80.7821 226.66 81.3429 229.133C82.088 232.745 87.5227 240.47 87.1215 240.75C87.0307 241.089 86.2082 240.505 86.2082 240.505Z"
-                            fill="#CD4631" />
-                    </svg>
-                    <div class="overlay-text">
-                        <h1>{{ __('site.Trusted By')}}:</h1>
-                        <p>{{ __('site.Dubai Autism Center')}}</p>
-                        <p>{{ __('site.American European Music Therapy Association')}}</p>
-                        <p>{{ __('site.Forbes')}}</p>
-                        <p>{{ __('site.Hope MCF Foundation')}}</p>
-                        <h1>{{ __('site.Awards')}}:</h1>
-                        <p>{{ __('site.Go Global Award 2022 (Corporate Social Responsibility)')}}</p>
+        <!-- Founder Section -->
+        <section class="py-16 sm:py-20 lg:py-24 relative">
+            <!-- Elegant Separator -->
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <!-- Founder Info -->
+                    <div class="order-2 lg:order-1 text-center lg:text-left">
+                        <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12">
+                            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-6">
+                                {{ __('site.Meet') }}
+                                <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent block">
+                                    {{ __('site.Dr. Nadia Cheaib') }}
+                                </span>
+                            </h2>
+                            
+                            <div class="space-y-6">
+                                <p class="text-xl font-semibold text-blue-300">
+                                    {{ __('site.Founder & Clinical Director') }}
+                                </p>
+                                
+                                <p class="text-lg text-slate-300 leading-relaxed">
+                                    {{ __('site.founder-description') }}
+                                </p>
+                                
+                                <!-- Professional Credentials -->
+                                <div class="bg-white/5 rounded-2xl p-6 border border-white/10">
+                                    <h3 class="text-lg font-semibold text-white mb-4">{{ __('site.Professional Credentials') }}</h3>
+                                    <ul class="space-y-2 text-slate-300">
+                                        <li class="flex items-center">
+                                            <svg class="w-4 h-4 text-emerald-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                            </svg>
+                                            {{ __('site.PhD in Music Therapy') }}
+                                        </li>
+                                        <li class="flex items-center">
+                                            <svg class="w-4 h-4 text-emerald-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                            </svg>
+                                            {{ __('site.Board-Certified Music Therapist') }}
+                                        </li>
+                                        <li class="flex items-center">
+                                            <svg class="w-4 h-4 text-emerald-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                            </svg>
+                                            {{ __('site.15+ Years Clinical Experience') }}
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Founder Image -->
+                    <div class="order-1 lg:order-2 flex justify-center">
+                        <div class="relative group">
+                            <div class="absolute inset-0 bg-gradient-to-r from-emerald-600 to-blue-600 rounded-3xl blur-xl opacity-30 group-hover:opacity-50 transition-opacity duration-500"></div>
+                            <div class="relative bg-white/10 backdrop-blur-sm border border-white/20 rounded-3xl p-8 lg:p-10">
+                                <img src="{{ asset('assets/images/Dr.Nadia.png') }}" 
+                                     alt="Dr. Nadia Cheaib - Founder of SAMAA" 
+                                     class="w-full max-w-sm h-auto object-cover rounded-2xl filter drop-shadow-2xl" 
+                                     loading="lazy">
+                                <div class="absolute -bottom-6 -right-6 bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-xl">
+                                    {{ __('site.Founder') }}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-            <div class="header-container">
-                <div class="header">
-                    <h1>{{ __('site.Let’s') }}</h1>
-                    <h1><span> {{ __('site.Heal') }}</span> {{ __('site.Together') }}</h1>
-                    <div class="bar-graph"></div>
-                    <div class="buttons">
-                        <button class="btn-sponsor">{{ __('site.Explore SAMAA’s Therapy') }}</button>
-                        <button class="btn-subscribe">{{ __('site.Become a Partner') }}</button>
+        <!-- Recognition & Partnership Section -->
+        <section class="py-16 sm:py-20 lg:py-24 relative">
+            <!-- Elegant Separator -->
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-blue-400 to-transparent"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Section Header -->
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-6">
+                        <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+                            {{ __('site.Recognition') }}
+                        </span>
+                        <span class="text-white">&</span>
+                        <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
+                            {{ __('site.Partnerships') }}
+                        </span>
+                    </h2>
+                    <div class="flex justify-center">
+                        <div class="w-24 h-px bg-gradient-to-r from-transparent via-teal-400 to-transparent"></div>
+                    </div>
+                </div>
+
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-16">
+                    <!-- Awards Section -->
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
+                        <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-8 text-center">
+                            <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
+                                {{ __('site.Awards') }}
+                            </span>
+                        </h3>
+                        
+                        <div class="space-y-6">
+                            <div class="bg-white/5 rounded-2xl p-6 border border-white/10 hover:border-emerald-400/30 transition-colors duration-300">
+                                <div class="flex items-start space-x-4">
+                                    <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full flex items-center justify-center">
+                                        <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
+                                        </svg>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-lg font-semibold text-white mb-2">{{ __('site.Go Global Award 2022') }}</h4>
+                                        <p class="text-slate-300">{{ __('site.Corporate Social Responsibility') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trusted Partners Section -->
+                    <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
+                        <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-8 text-center">
+                            <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
+                                {{ __('site.Trusted By') }}
+                            </span>
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-white/5 rounded-2xl p-4 border border-white/10 hover:border-blue-400/30 transition-colors duration-300">
+                                <p class="text-white font-medium">{{ __('site.Dubai Autism Center') }}</p>
+                            </div>
+                            <div class="bg-white/5 rounded-2xl p-4 border border-white/10 hover:border-blue-400/30 transition-colors duration-300">
+                                <p class="text-white font-medium">{{ __('site.American European Music Therapy Association') }}</p>
+                            </div>
+                            <div class="bg-white/5 rounded-2xl p-4 border border-white/10 hover:border-blue-400/30 transition-colors duration-300">
+                                <p class="text-white font-medium">{{ __('site.Forbes') }}</p>
+                            </div>
+                            <div class="bg-white/5 rounded-2xl p-4 border border-white/10 hover:border-blue-400/30 transition-colors duration-300">
+                                <p class="text-white font-medium">{{ __('site.Hope MCF Foundation') }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+        </section>
 
-        </div>
-    </section>
+        <!-- Final CTA Section -->
+        <section class="py-16 sm:py-20 lg:py-24 relative">
+            <!-- Elegant Separator -->
+            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 w-32 h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
+            
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12">
+                    <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-6">
+                        {{ __('site.Let') }}<span class="text-white">'s</span>
+                        <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent block">
+                            {{ __('site.Heal') }} {{ __('site.Together') }}
+                        </span>
+                    </h2>
+                    
+                    <p class="text-xl text-slate-300 mb-8 leading-relaxed">
+                        {{ __('site.join-journey-description') }}
+                    </p>
+
+                    <!-- Final CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                        <a href="{{ Auth::check() ? (\App\Models\Therapy::getTherapiesBasedRole()->isNotEmpty() ? route('playlist') : route('therapy.index')) : route('login')  }}" 
+                           class="group px-8 py-4 bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-semibold rounded-2xl text-lg hover:from-blue-700 hover:to-emerald-700 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-emerald-500/25">
+                            <span class="flex items-center">
+                                {{ __('site.Explore') }} SAMAA {{ __('site.Therapy') }}
+                                <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                </svg>
+                            </span>
+                        </a>
+                        
+                        <a href="{{ route('contact-us') }}" 
+                           class="group px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-2xl text-lg hover:bg-white/20 hover:border-white/30 transform hover:scale-105 transition-all duration-300">
+                            <span class="flex items-center">
+                                {{ __('site.Become a Partner') }}
+                                <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                </svg>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 @endsection

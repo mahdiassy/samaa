@@ -38,29 +38,31 @@
     <!-- Trumbowyg CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/trumbowyg@2.27.3/dist/ui/trumbowyg.min.css">
 
+    <!-- Global Frontend Theme (luxury-modern design system) -->
+    <link rel="stylesheet" href="{{ asset('assets/css/frontend/style.css') }}">
+
     <!-- Trumbowyg JS -->
     <script src="https://cdn.jsdelivr.net/npm/trumbowyg@2.27.3/dist/trumbowyg.min.js"></script>
 
 </head>
 
 <body>
+    <!-- Mobile Menu Toggle using CSS checkbox hack -->
+    <input type="checkbox" id="mobile-menu-toggle" style="display: none;">
+    <label for="mobile-menu-toggle" class="toggle-btn" style="background: #007bff; border: none; color: white; cursor: pointer; padding: 12px; border-radius: 8px; display: flex; align-items: center; justify-content: center; position: fixed; top: 20px; left: 20px; z-index: 10000; box-shadow: 0 4px 15px rgba(0,0,0,0.5); min-width: 48px; min-height: 48px; font-weight: bold;">
+        ☰
+    </label>
+
     <div id="sidebar" class="sidebar">
         <div class="toggle">
-            <span><a href="{{route('home')}}"><img src="{{ asset('assets/images/samaa-logo.png') }}" alt="logo"></a></span>
-            <button class="toggle-btn" onclick="toggleMenu()">
-                <svg width="21" height="21" viewBox="0 0 21 21" fill="none"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path d="M1 1.75H19.1818M4.40909 10.8409H19.1818M7.81818 19.9318H19.1818" stroke="#F1EEEC"
-                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-            </button>
+            <span><a href="{{ route('home') }}"><img src="{{ asset('assets/images/samaa-logo.png') }}" alt="logo"></a></span>
         </div>
 
         <div class="user-profile">
 
-            @if (Auth::check() && Auth::user()->hasRole('Patient'))
+            @if(Auth::check() && Auth::user()->hasRole('Patient'))
 
-                @if (Auth::check() && Auth::user()->patient && Auth::user()->patient->image)
+                @if(Auth::check() && Auth::user()->patient && Auth::user()->patient->image)
                     <img src="{{ asset('storage/' . Auth::user()->patient->image) }}" alt="Profile">
                 @else
                     <img src="{{ asset('assets/images/avatar1.png') }}" alt="Profile">
@@ -71,8 +73,8 @@
                         <h3>{{ Auth::user()->patient->first_name }} {{ Auth::user()->patient->last_name }}</h3>
                     </a>
                 </div>
-            @elseif (Auth::check() && Auth::user()->hasRole('Doctor'))
-                @if (Auth::check() && Auth::user()->doctor && Auth::user()->doctor->image)
+            @elseif(Auth::check() && Auth::user()->hasRole('Doctor'))
+                @if(Auth::check() && Auth::user()->doctor && Auth::user()->doctor->image)
                     <img src="{{ asset('storage/' . Auth::user()->doctor->image) }}" alt="Profile">
                 @else
                     <img src="{{ asset('assets/images/avatar1.png') }}" alt="Profile">
@@ -83,7 +85,7 @@
                         <h3>{{ Auth::user()->doctor->first_name }} {{ Auth::user()->doctor->last_name }}</h3>
                     </a>
                 </div>
-            @elseif (Auth::check() && Auth::user()->hasRole('Admin'))
+            @elseif(Auth::check() && Auth::user()->hasRole('Admin'))
                 <img src="{{ asset('assets/images/avatar1.png') }}" alt="Profile">
                 <div class="desc-profile">
                     <h3>{{ Auth::user()->name }}</h3>
@@ -146,7 +148,7 @@
                     src="{{ asset('assets/images/icons/Reset password.svg') }}"
                     alt="Phone"><span>{{ __('site.change password') }}</span></a></li>
                 <li title="{{ __('site.Logout') }}">
-                    @if (Auth::check())
+                    @if(Auth::check())
                         <a href="#"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             <img src="{{ asset('assets/images/icons/logout.svg') }}"
@@ -162,13 +164,13 @@
         </div>
     </div>
 
-    @if (App::getLocale() == 'ar')
+    @if(App::getLocale() == 'ar')
         <div class="profile-container-Arabic">
         @else
             <div class="profile-container">
     @endif
 
-    @if (session('status'))
+    @if(session('status'))
         <script>
             Swal.fire({
                 icon: '{{ session('status')['type'] }}',
@@ -191,7 +193,7 @@
                 <div class="column">
                     <a href="{{ route('home') }}">{{ __('site.Home') }}</a>
                     <a href="{{ route('therapy.index') }}">{{ __('site.therapy') }}</a>
-                    @if (Auth::check())
+                    @if(Auth::check())
                         <a href="#"
                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                             {{ __('site.Logout') }}
@@ -207,7 +209,7 @@
                     <a href="{{ route('contact-us') }}">{{ __('site.Contact Us') }}</a>
                 </div>
                 <div class="column">
-                    <a href="{{ Auth::check() ? (\App\Models\Therapy::getTherapiesBasedRole()->isNotEmpty() ? route('playlist') : route('therapy.index')) : route('login') }}">
+                    <a href="{{ Auth::check() ? (\App\Models\Therapy::getTherapiesBasedRole()->isNotEmpty() ? route('playlist') : route('therapy.index')) : route('login')  }}">
                         {{ __('site.Library') }}
                     </a>
                 </div>
@@ -228,6 +230,8 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <!-- Global UI Enhancements (animations, dropdowns, accessibility) -->
+    <script src="{{ asset('assets/js/frontend/ui-enhancements.js') }}" defer></script>
 
     <script>
 
@@ -253,7 +257,7 @@
             "site.Canceled By Patient": "{{ __('site.Canceled By Patient') }}",
         };
 
-        @foreach (config('app.locales') as $locale)
+        @foreach(config('app.locales') as $locale)
             $(document).ready(function () {
                 $('#editor_{{ $locale }}').trumbowyg();
             });
@@ -261,6 +265,7 @@
     </script>
 
     <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    <script src="{{ asset('assets/js/mobile-menu.js') }}"></script>
     <script src="{{ asset('assets/js/dashboard/script.js') }}"></script>
 
 </body>

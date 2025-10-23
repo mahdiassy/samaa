@@ -14,7 +14,9 @@ class HomeController extends Controller
     public function home()
     {
         $blogs = Blog::latest()->take(3)->get();
-        return view($this->dir . "home", compact('blogs'));
+        $response = response()->view($this->dir . "home", compact('blogs'));
+        $response->header('Content-Type', 'text/html; charset=UTF-8');
+        return $response;
     }
 
     public function index()

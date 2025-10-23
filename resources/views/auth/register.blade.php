@@ -16,7 +16,7 @@
                         <a href="{{ route('showRegisterDoctor') }}" class="btn btn-doctor m-2">{{ __('site.Register as Doctor') }}</a>
                     </div>
                     <div class="btn-login">
-                        <a href="{{ route('login') }}">{{__('site.Already have an account?')}}</a>
+                        <a href="{{ route('login') }}">{{ __('site.Already have an account?'') }})}}</a>
                     </div>
                 </div>
             </div>

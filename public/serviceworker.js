@@ -56,7 +56,12 @@ self.addEventListener("fetch", event => {
                 return response || fetch(event.request);
             })
             .catch(() => {
-                return caches.match('offline');
+                // Return a simple response instead of trying to match 'offline'
+                return new Response('Network error occurred', {
+                    status: 200,
+                    statusText: 'OK',
+                    headers: {'Content-Type': 'text/plain'}
+                });
             })
-    )
+    );
 });

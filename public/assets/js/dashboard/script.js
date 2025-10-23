@@ -1,31 +1,133 @@
 function toggleMenu() {
+    console.log('toggleMenu called'); // Debug log
     const sidebar = document.getElementById('sidebar');
     const descProfile = document.querySelector('.user-profile .desc-profile');
     const logo = document.querySelector('.toggle img');
     const toggle = document.querySelector('.toggle');
 
+    if (!sidebar) {
+        console.error('Sidebar not found');
+        return;
+    }
+
     sidebar.classList.toggle('open');
+    console.log('Sidebar classes:', sidebar.className); // Debug log
+
+    // Add/remove body class for backdrop on mobile
+    if (window.innerWidth <= 768) {
+        document.body.classList.toggle('menu-open', sidebar.classList.contains('open'));
+        console.log('Mobile mode - body classes:', document.body.className);
+    }
 
     if (sidebar.classList.contains('open')) {
-        descProfile.style.opacity = '1';
-        descProfile.style.display = 'block';
+        if (descProfile) {
+            descProfile.style.opacity = '1';
+            descProfile.style.display = 'block';
+        }
 
-        logo.style.opacity = '1';
-        logo.style.display = 'block';
+        if (logo) {
+            logo.style.opacity = '1';
+            logo.style.display = 'block';
+        }
 
-        toggle.style.gap = '100px';
+        if (toggle) {
+            toggle.style.gap = '100px';
+        }
     } else {
-        descProfile.style.opacity = '0';
-        descProfile.style.display = 'none';
+        if (descProfile) {
+            descProfile.style.opacity = '0';
+            descProfile.style.display = 'none';
+        }
 
-        logo.style.opacity = '0';
-        logo.style.display = 'none';
+        if (logo) {
+            logo.style.opacity = '0';
+            logo.style.display = 'none';
+        }
 
-        toggle.style.gap = '0px';
+        if (toggle) {
+            toggle.style.gap = '0px';
+        }
     }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+// Make toggleMenu available globally for onclick
+window.toggleMenu = toggleMenu;
+
+// Enhanced mobile menu functionality
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM loaded, setting up mobile menu'); // Debug log
+    
+    // Find toggle button by both ID and class
+    const toggleButton = document.getElementById('mobile-toggle-btn') || document.querySelector('.toggle-btn');
+    
+    if (toggleButton) {
+        console.log('Toggle button found:', toggleButton); // Debug log
+        
+        // Ensure button properties
+        toggleButton.style.cursor = 'pointer';
+        toggleButton.style.pointerEvents = 'auto';
+        
+        // Add click event listener (works for both mouse and touch)
+        toggleButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Toggle button clicked via event listener'); // Debug log
+            toggleMenu();
+        });
+        
+        // Add touch events for mobile
+        toggleButton.addEventListener('touchstart', function(e) {
+            console.log('Toggle button touched'); // Debug log
+            this.style.opacity = '0.7';
+        });
+        
+        toggleButton.addEventListener('touchend', function(e) {
+            this.style.opacity = '1';
+        });
+        
+        // Prevent any form submission if inside a form
+        toggleButton.addEventListener('submit', function(e) {
+            e.preventDefault();
+        });
+        
+    } else {
+        console.error('Toggle button not found!');
+    }
+    
+    // Close menu when clicking outside on mobile
+    document.addEventListener('click', function(e) {
+        const sidebar = document.getElementById('sidebar');
+        const toggleButton = document.getElementById('mobile-toggle-btn') || document.querySelector('.toggle-btn');
+        
+        if (window.innerWidth <= 768 && sidebar && sidebar.classList.contains('open')) {
+            if (!sidebar.contains(e.target) && !toggleButton.contains(e.target)) {
+                toggleMenu();
+            }
+        }
+    });
+
+    // Close menu when touching backdrop
+    document.addEventListener('touchstart', function(e) {
+        const sidebar = document.getElementById('sidebar');
+        const toggleButton = document.getElementById('mobile-toggle-btn') || document.querySelector('.toggle-btn');
+        
+        if (window.innerWidth <= 768 && sidebar && sidebar.classList.contains('open')) {
+            if (!sidebar.contains(e.target) && !toggleButton.contains(e.target)) {
+                toggleMenu();
+            }
+        }
+    });
+    
+    // Handle window resize to ensure proper mobile behavior
+    window.addEventListener('resize', function() {
+        const sidebar = document.getElementById('sidebar');
+        if (window.innerWidth > 768 && sidebar) {
+            // Reset sidebar state on desktop
+            sidebar.classList.remove('open');
+        }
+    });
+
+    // Original image upload functionality
     const replaceBtn = document.getElementById('replaceBtn');
     const imageUpload = document.getElementById('imageUpload');
     const patientPhoto = document.getElementById('patientPhoto');

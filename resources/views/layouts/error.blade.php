@@ -60,8 +60,8 @@ data-open="click" data-menu="vertical-menu-modern" data-col="1-column">
                             <div
                                 class="card-header bg-transparent border-0">
                                 <h2
-                                    class="error-code text-center mb-2">{{$error}}</h2>
-                                <h3 class="text-uppercase text-center">{{$message}}</h3>
+                                    class="error-code text-center mb-2">{{ $error}}</h2>
+                                <h3 class="text-uppercase text-center">{{ $message}}</h3>
                             </div>
                             <div class="card-footer bg-transparent">
                                 <div class="row">

@@ -35,7 +35,7 @@
                         </tr>
                     </thead>
                     <tbody id="patientTbody">
-                        @foreach ($blogs as $blog)
+                        @foreach($blogs as $blog)
                             <tr>
                                 @php
                                     $locale = App::getLocale();
@@ -66,7 +66,7 @@
                 </table>
 
                 <div class="pagination1">
-                    {{$blogs->links('pagination::bootstrap-4')}}
+                    {{ $blogs->links('pagination::bootstrap-4')}}
                 </div>
             </div>
         </div>

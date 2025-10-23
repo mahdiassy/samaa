@@ -55,6 +55,15 @@ Route::group(
         Route::post('login', [AuthController::class, 'login'])->name('login');
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
+        // Demo route: UI without database/auth
+        Route::get('demo', function () {
+            // Prefer the cleaned dashboard if present; otherwise fallback
+            if (view()->exists('layouts.dashboard_clean')) {
+                return view('layouts.dashboard_clean');
+            }
+            return view('layouts.dashboard');
+        })->name('demo');
+
         Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
         Route::get('register/patient', [AuthController::class, 'showRegisterPatient'])->name('showRegisterPatient');
         Route::post('registerPatient', [AuthController::class, 'registerPatient'])->name('registerPatient');
@@ -133,3 +142,4 @@ Route::post('/get-peaks', [TherapyController::class, 'getPeaks'])->name('get-pea
 Route::post('/save-peaks', [TherapyController::class, 'savePeaks'])->name('save-peaks');
 Route::post('/control-music', [TherapyController::class, 'controlMusic'])->name('controlMusic');
 Route::get('/getDiseases/{id}', [TherapyController::class, 'getDiseases'])->name('getDiseases');
+Route::get('/therapy/{therapy}/audio', [TherapyController::class, 'getAudio'])->name('therapy.audio');

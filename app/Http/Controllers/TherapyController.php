@@ -65,6 +65,21 @@ class TherapyController extends Controller
 
     public function admin_therapy_store(Request $request)
     {
+        // Validate file size for audio files
+        if ($request->has('file')) {
+            $file = $request->file('file');
+            $maxSize = config('upload.max_audio_size', 100 * 1024 * 1024); // 100MB
+            
+            if ($file->getSize() > $maxSize) {
+                $status = [
+                    'type' => 'error',
+                    'title' => __('site.Error'),
+                    'msg' => __('site.File size exceeds maximum allowed size of 100MB')
+                ];
+                return redirect()->back()->with('status', $status)->withInput();
+            }
+        }
+
         $albumName = $request->album_name;
 
         $album = Album::firstOrCreate(['name' => $albumName]);
@@ -101,6 +116,21 @@ class TherapyController extends Controller
 
     public function store(Request $request)
     {
+        // Validate file size for audio files
+        if ($request->has('file')) {
+            $file = $request->file('file');
+            $maxSize = config('upload.max_audio_size', 100 * 1024 * 1024); // 100MB
+            
+            if ($file->getSize() > $maxSize) {
+                $status = [
+                    'type' => 'error',
+                    'title' => __('site.Error'),
+                    'msg' => __('site.File size exceeds maximum allowed size of 100MB')
+                ];
+                return redirect()->back()->with('status', $status)->withInput();
+            }
+        }
+
         $albumName = $request->album_name;
 
         $album = Album::firstOrCreate(['name' => $albumName]);
@@ -140,6 +170,21 @@ class TherapyController extends Controller
 
     public function update(Request $request, Therapy $therapy)
     {
+        // Validate file size for audio files
+        if ($request->has('file')) {
+            $file = $request->file('file');
+            $maxSize = config('upload.max_audio_size', 100 * 1024 * 1024); // 100MB
+            
+            if ($file->getSize() > $maxSize) {
+                $status = [
+                    'type' => 'error',
+                    'title' => __('site.Error'),
+                    'msg' => __('site.File size exceeds maximum allowed size of 100MB')
+                ];
+                return redirect()->back()->with('status', $status)->withInput();
+            }
+        }
+
         $albumName = $request->album_name;
 
         $album = Album::firstOrCreate(['name' => $albumName]);
@@ -181,7 +226,7 @@ class TherapyController extends Controller
 
     public function show(Therapy $therapy)
     {
-        //return view($this->dir . "show", compact('therapy'));
+        return view($this->dir . "show", compact('therapy'));
     }
 
     public function playlist()
@@ -213,7 +258,7 @@ class TherapyController extends Controller
                     'artist' => $therapy->user->name,
                     'album' => $therapy->album->name,
                     'album_id' => $therapy->album->id,
-                    'url' => Storage::url('Doctor therapy/' . decrypt($therapy->file)),
+                    'url' => route('therapy.audio', $therapy->id),
                     'live' => false,
                     'type' => 'direct',
                     'cover_art_url' =>  Storage::url($therapy->image),
@@ -238,7 +283,7 @@ class TherapyController extends Controller
                     'artist' => $therapy->user->name,
                     'album' => $therapy->album->name,
                     'album_id' => $therapy->album->id,
-                    'url' => Storage::url('Doctor therapy/' . decrypt($therapy->file)),
+                    'url' => route('therapy.audio', $therapy->id),
                     'live' => false,
                     'type' => 'direct',
                     'cover_art_url' =>  Storage::url($therapy->image),
@@ -267,7 +312,7 @@ class TherapyController extends Controller
                     'artist' => $therapy->user->name,
                     'album' => $therapy->album->name,
                     'album_id' => $therapy->album->id,
-                    'url' => Storage::url('Doctor therapy/' . decrypt($therapy->file)),
+                    'url' => route('therapy.audio', $therapy->id),
                     'live' => false,
                     'type' => 'direct',
                     'cover_art_url' =>  Storage::url($therapy->image),
@@ -324,6 +369,37 @@ class TherapyController extends Controller
         return response()->json([
             'diseases' => $diseases
         ]);
+    }
+
+    public function getAudio(Therapy $therapy)
+    {
+        try {
+            // Decrypt the file path
+            $decryptedFile = decrypt($therapy->file);
+            
+            // Get the full file path
+            $filePath = storage_path('app/public/Doctor therapy/' . $decryptedFile);
+            
+            // Check if file exists
+            if (!file_exists($filePath)) {
+                return response()->json(['error' => 'Audio file not found'], 404);
+            }
+            
+            // Get file info
+            $fileInfo = pathinfo($filePath);
+            $mimeType = mime_content_type($filePath);
+            
+            // Return the file with proper headers
+            return response()->file($filePath, [
+                'Content-Type' => $mimeType,
+                'Content-Disposition' => 'inline; filename="' . $therapy->name . '.' . $fileInfo['extension'] . '"',
+                'Cache-Control' => 'public, max-age=3600',
+            ]);
+            
+        } catch (\Exception $e) {
+            \Log::error('Audio file error: ' . $e->getMessage());
+            return response()->json(['error' => 'Error loading audio file'], 500);
+        }
     }
 
 }

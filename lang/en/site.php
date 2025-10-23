@@ -8,6 +8,7 @@ return [
     // Menu & Footer
     'Menu' => 'Menu',
     'Home' => 'Home',
+    'Language' => 'Language',
     'About Us' => 'About Us',
     'Therapists' => 'Therapists',
     'Contact Us' => 'Contact Us',
@@ -125,10 +126,19 @@ return [
     'Learn about the role of music therapy in healing and relaxation. Discover how famous composers like Beethoven utilized the power of music to overcome challenges and inspire others.' => 'Learn about the role of music therapy in healing and relaxation. Discover how famous composers like Beethoven utilized the power of music to overcome challenges and inspire others.',
 
     'LISTEN TO MUSIC' => 'LISTEN TO MUSIC',
+    'Listen to Music' => 'Listen to Music',
+    'Learn More' => 'Learn More',
 
     'How' => 'How',
     'Works' => 'works',
+    "Sama'a" => 'SAMAA',
     'Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.' => 'Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.',
+    'Share your needs' => 'Share your needs',
+    'Tell us about your mental health goals and current state through our comprehensive assessment.' => 'Tell us about your mental health goals and current state through our comprehensive assessment.',
+    'Generate therapeutic music' => 'Generate therapeutic music',
+    'Our AI analyzes your needs and creates personalized therapeutic music sessions tailored specifically for you.' => 'Our AI analyzes your needs and creates personalized therapeutic music sessions tailored specifically for you.',
+    'Track your progress' => 'Track your progress',
+    'Monitor your mental wellness journey with detailed analytics and insights into your therapeutic music sessions.' => 'Monitor your mental wellness journey with detailed analytics and insights into your therapeutic music sessions.',
     'You Share Your Needs' => 'You Share Your Needs',
     'SAMAA Creates Personalized Sessions' => 'SAMAA Creates Personalized Sessions',
     'You Listen, Heal, and Grow' => 'You Listen, Heal, and Grow',
@@ -145,6 +155,7 @@ return [
     'Partner with' => 'Partner with',
     'Expand your practice with AI-driven music therapy' => 'Expand your practice with AI-driven music therapy',
     'Let’s Partner Up' => 'Let’s Partner Up',
+    "Let's Partner Up" => "Let's Partner Up",
 
     'learn more' => 'learn more',
     'Resource' => 'Resource',

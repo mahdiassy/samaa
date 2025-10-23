@@ -4,7 +4,7 @@
         @include('search_form')
         <div class="header">
             <a href="{{ route('doctor.index') }}" class="btn-back">
-                @if (App::getLocale() == 'ar')
+                @if(App::getLocale() == 'ar')
                 <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
                 @else
                 <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}

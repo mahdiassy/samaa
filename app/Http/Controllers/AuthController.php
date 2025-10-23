@@ -43,25 +43,25 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials)) {
             return redirect()
-                ->intended(route('dashboard'))
+                ->route('dashboard')
                 ->with('status', [
                     'type' => 'success',
                     'title' => __("site.Success"),
                     'msg' => __("site.Successfully Logged-in"),
                 ]);
-        } else {
-            $user = User::where('email', $request->email)->first();
-
-            if (!$user) {
-                Session::flash('error', __("site.The email address is incorrect"));
-            } elseif (!Hash::check($request->password, $user->password)) {
-                Session::flash('error', __("site.Password is incorrect"));
-            } else {
-                Session::flash('error', __("site.Login failed. Please try again."));
-            }
-
-            return redirect()->back()->withInput();
         }
+
+        $user = User::where('email', $request->email)->first();
+
+        if (!$user) {
+            Session::flash('error', __("site.The email address is incorrect"));
+        } elseif (!Hash::check($request->password, $user->password)) {
+            Session::flash('error', __("site.Password is incorrect"));
+        } else {
+            Session::flash('error', __("site.Login failed. Please try again."));
+        }
+
+        return redirect()->back()->withInput();
     }
 
     public function logout()

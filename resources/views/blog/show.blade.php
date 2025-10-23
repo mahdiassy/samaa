@@ -47,7 +47,7 @@
                         <div class="blog-sidebar-widget">
                             <h3>{{ __('site.related Post') }}</h3>
                             <ul class="featured-list">
-                                @foreach ($last_blogs as $last_blog)
+                                @foreach($last_blogs as $last_blog)
                                 @php
                                     $locale = App::getLocale();
                                     $title_last = json_decode($last_blog->title, true)[$locale] ?? '';
@@ -60,7 +60,7 @@
                                             </a>
                                         </div>
                                         <div class="blog-thumb-info-content">
-                                            <h4><a href="{{ route('blog.show',$last_blog) }}">{{$title_last}}</a></h4>
+                                            <h4><a href="{{ route('blog.show',$last_blog) }}">{{ $title_last}}</a></h4>
                                             <p>{{ __('site.Posted on') }}: <span>{{ $last_blog->created_at->translatedFormat('d M Y') }}</span></p>
                                         </div>
                                     </div>

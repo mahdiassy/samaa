@@ -31,7 +31,7 @@
                         </tr>
                     </thead>
                     <tbody id="patientTbody">
-                        @foreach ($patientBookings as $patientBooking)
+                        @foreach($patientBookings as $patientBooking)
                             <tr>
                                 <td>{{ $patientBooking->id }}</td>
                                 <td>
@@ -42,7 +42,7 @@
                                 <td>{{ $patientBooking->reason }}</td>
 
                                 <td class="custom-date">{{ __($patientBooking->status) }}</td>
-                                @if ($patientBooking->status == \App\Enums\BookingEnum::APPROVED)
+                                @if($patientBooking->status == \App\Enums\BookingEnum::APPROVED)
                                     <td><a href="{{ route('therapy-create',$patientBooking->patient) }}" class="btn edit-btn">{{ __('site.Add') }}</a></td>
                                 @else
                                     <td>{{ __('site.be Approved before') }}</td>
@@ -56,7 +56,7 @@
                                             onchange="updateFormAction(this, '{{ $patientBooking->availability->id }}')"
                                             class="form-select">
                                             <option value="" disabled selected>{{ __('site.Change Status') }}</option>
-                                            @foreach (\App\Enums\BookingEnum::doctorActions() as $status)
+                                            @foreach(\App\Enums\BookingEnum::doctorActions() as $status)
                                                 <option value="{{ $status }}">{{ __($status) }}</option>
                                             @endforeach
                                         </select>
@@ -68,7 +68,7 @@
                 </table>
 
                 <div class="pagination1">
-                    {{$patientBookings->links('pagination::bootstrap-4')}}
+                    {{ $patientBookings->links('pagination::bootstrap-4')}}
                 </div>
             </div>
         </div>

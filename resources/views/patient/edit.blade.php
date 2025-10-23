@@ -4,7 +4,7 @@
         @include('search_form')
         <div class="header">
             <a href="{{ route('patient.index') }}" class="btn-back">
-                @if (App::getLocale() == 'ar')
+                @if(App::getLocale() == 'ar')
                     <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
                 @else
                     <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
@@ -58,9 +58,9 @@
                             <div class="text-info">
                                 <p>{{ __('site.Language Spoken') }}</p>
                                 <select name="language" style="margin-top: 0px;" class="styled-input">
-                                    @foreach ($languages as $language)
+                                    @foreach($languages as $language)
                                         <option value="{{ $language->id }}"
-                                            @if ($language->id == $patient->language->id) selected @endif>
+                                            @if($language->id == $patient->language->id) selected @endif>
                                             {{ $language->name }}
                                         </option>
                                     @endforeach
@@ -71,12 +71,12 @@
 
                             <div class="text-info">
                                 <label>{{ __('site.Have you been diagnosed with any of the following mental health conditions?') }}
-                                    {{ __('site.Select all that apply') }}</label>
+                                    {{ __('site.Select all that apply') }}') }}</label>
                                 <select name="psychological_diseases[]" style="margin-top: 0px;"
                                     class="styled-input form-control select2 diseases-select-backend" multiple>
-                                    @foreach ($psychological_diseases as $psychological_disease)
+                                    @foreach($psychological_diseases as $psychological_disease)
                                         <option value="{{ $psychological_disease->id }}"
-                                            @if (in_array($psychological_disease->id, old('psychologicals', isset($patient) ? $patient->psychologicals->pluck('id')->toArray() : []))) selected @endif>
+                                            @if(in_array($psychological_disease->id, old('psychologicals', isset($patient) ? $patient->psychologicals->pluck('id')->toArray() : []))) selected @endif>
                                             {{ $psychological_disease->getTranslatedName() }}
                                         </option>
                                     @endforeach
@@ -86,9 +86,9 @@
                             <div class="text-info">
                                 <label>{{ __('site.Are you currently taking any medications for mental health conditions?') }}</label>
                                 <select name="therapeutic_areas" id="therapeutic_areas_select" style="margin-top: 0px;" class="styled-input">
-                                    @foreach ($therapeutic_areas as $therapeutic_area)
+                                    @foreach($therapeutic_areas as $therapeutic_area)
                                         <option value="{{ $therapeutic_area->id }}"
-                                            @if (in_array($therapeutic_area->id, old('therapeutic_area', isset($patient) ? $patient->therapeutic_areas->pluck('id')->toArray() : []))) selected @endif>
+                                            @if(in_array($therapeutic_area->id, old('therapeutic_area', isset($patient) ? $patient->therapeutic_areas->pluck('id')->toArray() : []))) selected @endif>
                                             {{ $therapeutic_area->getTranslatedName() }}
                                         </option>
                                     @endforeach
@@ -102,12 +102,12 @@
 
                             <div class="text-info">
                                 <label>{{ __('site.Have you experienced any of the following symptoms in the past 6 months?') }}
-                                    {{ __('site.Select all that apply') }}</label>
+                                    {{ __('site.Select all that apply') }}') }}</label>
                                 <select name="symptoms[]" style="margin-top: 0px;"
                                     class="styled-input form-control select2 diseases-select-backend" multiple>
-                                    @foreach ($symptoms as $symptom)
+                                    @foreach($symptoms as $symptom)
                                         <option value="{{ $symptom->id }}"
-                                            @if (in_array($symptom->id, old('symptoms', isset($patient) ? $patient->symptomes->pluck('id')->toArray() : []))) selected @endif>
+                                            @if(in_array($symptom->id, old('symptoms', isset($patient) ? $patient->symptomes->pluck('id')->toArray() : []))) selected @endif>
                                             {{ $symptom->getTranslatedName() }}
                                         </option>
                                     @endforeach
@@ -116,14 +116,14 @@
                             <div class="text-info">
                                 <label>{{ __('site.Have you ever received therapy or counseling before?') }}</label>
                                 <select name="consultation" style="margin-top: 0px;" class="styled-input">
-                                    @foreach ($consultations as $consultation)
+                                    @foreach($consultations as $consultation)
                                         <option value="{{ $consultation->id }}">{{ $consultation->getTranslatedName() }}
                                         </option>
                                     @endforeach
 
-                                    @foreach ($consultations as $consultation)
+                                    @foreach($consultations as $consultation)
                                     <option value="{{ $consultation->id }}"
-                                        @if (in_array($consultation->id, old('consultations', isset($patient) ? $patient->consultationes->pluck('id')->toArray() : []))) selected @endif>
+                                        @if(in_array($consultation->id, old('consultations', isset($patient) ? $patient->consultationes->pluck('id')->toArray() : []))) selected @endif>
                                         {{ $consultation->getTranslatedName() }}
                                     </option>
                                     @endforeach
@@ -141,9 +141,9 @@
                             <div class="text-info">
                                 <p>{{ __('site.Country') }}</p>
                                 <select name="country" style="margin-top: 0px;" class="styled-input">
-                                    @foreach ($countries as $country)
+                                    @foreach($countries as $country)
                                         <option value="{{ $country->id }}"
-                                            @if ($country->id == $patient->country->id) selected @endif>
+                                            @if($country->id == $patient->country->id) selected @endif>
                                             {{ $country->name }}
                                         </option>
                                     @endforeach
@@ -173,12 +173,12 @@
 
                             <div class="text-info">
                                 <label>{{ __('site.Have you ever been diagnosed with any neurological conditions?') }}
-                                    {{ __('site.Select all that apply') }}</label>
+                                    {{ __('site.Select all that apply') }}') }}</label>
                                 <select name="nervouses[]" style="margin-top: 0px;"
                                     class="styled-input select2 diseases-select-backend" multiple>
-                                    @foreach ($nervouses as $nervous)
+                                    @foreach($nervouses as $nervous)
                                         <option value="{{ $nervous->id }}"
-                                            @if (in_array($nervous->id, old('nervouses', isset($patient) ? $patient->nervouses->pluck('id')->toArray() : []))) selected @endif>
+                                            @if(in_array($nervous->id, old('nervouses', isset($patient) ? $patient->nervouses->pluck('id')->toArray() : []))) selected @endif>
                                             {{ $nervous->getTranslatedName() }}
                                         </option>
                                     @endforeach
@@ -188,9 +188,9 @@
                             <div class="text-info">
                                 <label>{{ __('site.Do you have a history of substance use or addiction?') }}</label>
                                 <select name="addiction" style="margin-top: 0px;" class="styled-input">
-                                    @foreach ($addictions as $addiction)
+                                    @foreach($addictions as $addiction)
                                         <option value="{{ $addiction->id }}"
-                                            @if (in_array($addiction->id, old('addictions', isset($patient) ? $patient->addictiones->pluck('id')->toArray() : []))) selected @endif>
+                                            @if(in_array($addiction->id, old('addictions', isset($patient) ? $patient->addictiones->pluck('id')->toArray() : []))) selected @endif>
                                             {{ $addiction->getTranslatedName() }}
                                         </option>
                                     @endforeach
@@ -199,12 +199,12 @@
 
                             <div class="text-info">
                                 <label>{{ __('site.Have you experienced any major life events or traumas that may impact your mental health?') }}
-                                    {{ __('site.Select all that apply') }}</label>
+                                    {{ __('site.Select all that apply') }}') }}</label>
                                 <select name="incidents[]" style="margin-top: 0px;"
                                     class="styled-input form-control select2 diseases-select-backend" multiple>
-                                    @foreach ($incidents as $incident)
+                                    @foreach($incidents as $incident)
                                         <option value="{{ $incident->id }}"
-                                            @if (in_array($incident->id, old('nervouses', isset($patient) ? $patient->incidents->pluck('id')->toArray() : []))) selected @endif>
+                                            @if(in_array($incident->id, old('nervouses', isset($patient) ? $patient->incidents->pluck('id')->toArray() : []))) selected @endif>
                                             {{ $incident->getTranslatedName() }}
                                         </option>
                                     @endforeach
@@ -215,9 +215,9 @@
                                 <label>{{ __('site.Do you have any chronic physical health conditions?') }}</label>
                                 <select name="diseases[]" style="margin-top: 0px;"
                                     class="styled-input form-control select2 diseases-select-backend" multiple>
-                                    @foreach ($diseases as $disease)
+                                    @foreach($diseases as $disease)
                                         <option value="{{ $disease->id }}"
-                                            @if (in_array($disease->id, old('nervouses', isset($patient) ? $patient->diseases->pluck('id')->toArray() : []))) selected @endif>
+                                            @if(in_array($disease->id, old('nervouses', isset($patient) ? $patient->diseases->pluck('id')->toArray() : []))) selected @endif>
                                             {{ $disease->getTranslatedName() }}
                                         </option>
                                     @endforeach

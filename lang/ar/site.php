@@ -8,6 +8,7 @@ return [
     // Menu & Footer
     'Menu' => 'القائمة',
     'Home' => 'الرئيسية',
+    'Language' => 'اللغة',
     'About Us' => 'من نحن',
     'Therapists' => 'المعالجون',
     'Contact Us' => 'تواصل معنا',

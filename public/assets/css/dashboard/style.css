@@ -1963,3 +1963,151 @@ select {
 {
     margin: 0 !important;
 }
+
+/* Mobile Menu Enhancements - Pure CSS Solution with proper specificity */
+@media (max-width: 768px) {
+    /* Hide the checkbox */
+    #mobile-menu-toggle {
+        display: none !important;
+    }
+
+    /* Override desktop sidebar completely for mobile */
+    body .sidebar {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 280px !important;
+        height: 100vh !important;
+        transform: translateX(-100%) !important;
+        transition: transform 0.3s ease-in-out !important;
+        z-index: 9999 !important;
+        background-color: #1F1F1F !important;
+        border-radius: 0 10px 10px 0 !important;
+    }
+
+    /* When checkbox is checked, show sidebar */
+    #mobile-menu-toggle:checked ~ .sidebar,
+    .sidebar.mobile-open {
+        transform: translateX(0) !important;
+    }
+
+    /* Toggle button styling with higher specificity */
+    body .toggle-btn {
+        position: fixed !important;
+        top: 20px !important;
+        left: 20px !important;
+        z-index: 10000 !important;
+        background: rgba(255, 255, 255, 0.95) !important;
+        border-radius: 8px !important;
+        padding: 12px !important;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3) !important;
+        cursor: pointer !important;
+        transition: all 0.2s ease !important;
+        min-width: 48px !important;
+        min-height: 48px !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: #333 !important;
+        border: 2px solid rgba(0,0,0,0.1) !important;
+        user-select: none !important;
+        -webkit-user-select: none !important;
+        -webkit-tap-highlight-color: transparent !important;
+    }
+
+    body .toggle-btn:hover,
+    body .toggle-btn:active {
+        background: rgba(255, 255, 255, 1) !important;
+        transform: scale(1.05) !important;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.4) !important;
+    }
+
+    body .toggle-btn svg {
+        pointer-events: none !important;
+        width: 21px !important;
+        height: 21px !important;
+    }
+
+    body .toggle-btn svg path {
+        stroke: #333 !important;
+        stroke-width: 2 !important;
+    }
+
+    /* Hide desktop toggle elements */
+    .sidebar .toggle button,
+    .sidebar .toggle-btn-container {
+        display: none !important;
+    }
+
+    /* Backdrop when menu is open */
+    #mobile-menu-toggle:checked ~ .sidebar::after {
+        content: '';
+        position: fixed;
+        top: 0;
+        left: 280px;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: -1;
+    }
+
+    /* Navigation items mobile optimization */
+    .sidebar .navigation ul li a {
+        padding: 15px 20px !important;
+        min-height: 48px !important;
+        display: flex !important;
+        align-items: center !important;
+        touch-action: manipulation !important;
+        transition: background-color 0.2s ease !important;
+        font-size: 14px !important;
+    }
+
+    .sidebar .navigation ul li a:hover {
+        background-color: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    /* Improve touch targets */
+    .sidebar .menu-items li {
+        margin: 5px 0 !important;
+    }
+
+    /* Ensure main content doesn't overlap with toggle button */
+    .container {
+        margin-left: 0 !important;
+        padding-top: 70px !important;
+    }
+
+    /* Make sure sidebar content is properly sized */
+    .sidebar .sidebar-content {
+        width: 100% !important;
+        padding: 10px !important;
+    }
+
+    /* Ensure user profile section works in mobile */
+    .sidebar .user-profile {
+        width: 100% !important;
+        padding: 15px !important;
+        text-align: center !important;
+    }
+
+    .sidebar .user-profile img {
+        width: 60px !important;
+        height: 60px !important;
+        border-radius: 50% !important;
+        margin: 0 auto 10px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar.open {
+        width: 300px;
+        max-width: 85vw;
+    }
+    
+    .toggle-btn {
+        top: 15px !important;
+        left: 15px !important;
+        min-width: 44px !important;
+        min-height: 44px !important;
+    }
+}
