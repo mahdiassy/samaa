@@ -3,10 +3,10 @@
 namespace App\Enums;
 
 final class SubjectsEnum{
-    const GENERAL_INQUIRY = 'site.general_inquiry';
-    const THERAPIST_REGISTRATION = 'site.therapist_registration';
-    const INSTITUTIONAL_PARTNERSHIP = 'site.institutional_partnership';
-    const TECHNICAL_SUPPORT = 'site.technical_support';
+    const GENERAL_INQUIRY = 'home.general_inquiry';
+    const THERAPIST_REGISTRATION = 'home.therapist_registration';
+    const INSTITUTIONAL_PARTNERSHIP = 'home.institutional_partnership';
+    const TECHNICAL_SUPPORT = 'home.technical_support';
 
     public static function all() {
         return [

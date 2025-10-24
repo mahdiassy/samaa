@@ -16,19 +16,19 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center max-w-5xl mx-auto">
                     <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold mb-8 leading-tight">
-                        <span class="text-white">{{ __('site.The') }}') }}</span>
+                        <span class="text-white">{{ __('hIT.The') }}</span>
                         <span class="bg-gradient-to-r from-blue-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent">
-                            {{ __('site.science') }}
+                            {{ __('hIT.science') }}
                         </span>
-                        <span class="text-white">{{ __('site.Behind SAMAA') }}</span>
+                        <span class="text-white">{{ __('hIT.Behind SAMAA') }}</span>
                     </h1>
                     
                     <p class="text-xl sm:text-2xl text-slate-300 mb-8 leading-relaxed font-light">
-                        {{ __('site.Healing Through Sound, Perfected by Science') }}
+                        {{ __('hIT.Healing Through Sound, Perfected by Science') }}
                     </p>
                     
                     <p class="text-lg text-slate-400 mb-12 leading-relaxed max-w-4xl mx-auto">
-                        {{ __('site.work-description') }}
+                        {{ __('hIT.work-description') }}
                     </p>
 
                     <!-- Elegant CTA -->
@@ -71,26 +71,26 @@
                     <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
                         <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-8 text-center">
                             <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
-                                {{ __('site.Professional Credentials') }}
+                                {{ __('hIT.Professional Credentials') }}
                             </span>
                         </h3>
                         
                         <div class="space-y-6">
                             <div class="flex items-start">
                                 <div class="w-4 h-4 bg-emerald-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                                <p class="text-slate-300 text-lg">{{ __('site.7x Forbes Most Influential Arab Woman') }}</p>
+                                <p class="text-slate-300 text-lg">{{ __('hIT.7x Forbes Most Influential Arab Woman') }}</p>
                             </div>
                             <div class="flex items-start">
                                 <div class="w-4 h-4 bg-blue-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                                <p class="text-slate-300 text-lg">{{ __('site.Pioneer In AI-Driven Healthcare Solutions') }}</p>
+                                <p class="text-slate-300 text-lg">{{ __('hIT.Pioneer In AI-Driven Healthcare Solutions') }}</p>
                             </div>
                             <div class="flex items-start">
                                 <div class="w-4 h-4 bg-teal-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                                <p class="text-slate-300 text-lg">{{ __('site.Backed By A 6-Month Clinical Trial Using The U-Shaped Montage Technique.') }}</p>
+                                <p class="text-slate-300 text-lg">{{ __('hIT.Backed By A 6-Month Clinical Trial Using The U-Shaped Montage Technique.') }}</p>
                             </div>
                             <div class="flex items-start">
                                 <div class="w-4 h-4 bg-purple-400 rounded-full mt-2 mr-4 flex-shrink-0"></div>
-                                <p class="text-slate-300 text-lg">{{ __('site.Endorsed By The American European Music Therapy Association.') }}</p>
+                                <p class="text-slate-300 text-lg">{{ __('hIT.Endorsed By The American European Music Therapy Association.') }}</p>
                             </div>
                         </div>
                     </div>
@@ -109,37 +109,37 @@
                     <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
                         @if(App::getLocale() == 'ar')
                             <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-6">
-                                <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">{{ __('site.Protocol') }}</span>
-                                <span class="text-white">{{ __('site.The') }}') }}{{ __('site.Therapy') }}</span>
+                                <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">{{ __('hIT.Protocol') }}</span>
+                                <span class="text-white">{{ __('hIT.The') }} {{ __('hIT.Therapy') }}</span>
                             </h2>
                             <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-6">
-                                <span class="text-white">{{ __('site.Sound') }}</span>
-                                <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">{{ __('site.U-Shaped') }}</span>
+                                <span class="text-white">{{ __('hIT.Sound') }}</span>
+                                <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">{{ __('hIT.U-Shaped') }}</span>
                             </h2>
                         @elseif(App::getLocale() == 'fr')
                             <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-6">
-                                <span class="text-white">{{ __('site.The') }}') }}</span>
-                                <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">{{ __('site.Protocol') }}</span>
-                                <span class="text-white">{{ __('site.Therapy') }}</span>
+                                <span class="text-white">{{ __('hIT.The') }}</span>
+                                <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">{{ __('hIT.Protocol') }}</span>
+                                <span class="text-white">{{ __('hIT.Therapy') }}</span>
                             </h2>
                             <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-6">
-                                <span class="text-white">{{ __('site.Sound') }}</span>
-                                <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">{{ __('site.U-Shaped') }}</span>
+                                <span class="text-white">{{ __('hIT.Sound') }}</span>
+                                <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">{{ __('hIT.U-Shaped') }}</span>
                             </h2>
                         @else
                             <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-6">
-                                <span class="text-white">{{ __('site.The') }}') }}</span>
-                                <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">{{ __('site.U-Shaped') }}</span>
-                                <span class="text-white">{{ __('site.Sound') }}</span>
+                                <span class="text-white">{{ __('hIT.The') }}</span>
+                                <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">{{ __('hIT.U-Shaped') }}</span>
+                                <span class="text-white">{{ __('hIT.Sound') }}</span>
                             </h2>
                             <h2 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-6">
-                                <span class="text-white">{{ __('site.Therapy') }}</span>
-                                <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">{{ __('site.Protocol') }}</span>
+                                <span class="text-white">{{ __('hIT.Therapy') }}</span>
+                                <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">{{ __('hIT.Protocol') }}</span>
                             </h2>
                         @endif
                         
-                        <p class="text-xl text-slate-300 mb-6">{{ __('site.How U-Shaped Sound Transforms Lives') }}</p>
-                        <p class="text-lg text-slate-400 leading-relaxed mb-8">{{ __('site.U-Saped-description') }}</p>
+                        <p class="text-xl text-slate-300 mb-6">{{ __('hIT.How U-Shaped Sound Transforms Lives') }}</p>
+                        <p class="text-lg text-slate-400 leading-relaxed mb-8">{{ __('hIT.U-Saped-description') }}</p>
                     </div>
                     
                     <!-- AI Replication Card -->
@@ -150,7 +150,7 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
                                 </svg>
                             </div>
-                            <p class="text-lg text-slate-300 leading-relaxed">{{ __('site.SAMAA\'s AI replicates the U-shaped technique validated in European clinical studies') }}</p>
+                            <p class="text-lg text-slate-300 leading-relaxed">{{ __('hIT.SAMAA’s AI replicates the U-shaped technique validated in European clinical studies') }}</p>
                         </div>
                     </div>
                 </div>
@@ -167,7 +167,7 @@
                 <div class="text-center mb-16">
                     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-6">
                         <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-                            {{ __('site.The 4-Step Process') }}
+                            {{ __('hIT.The 4-Step Process') }}
                         </span>
                     </h2>
                     <div class="flex justify-center">
@@ -185,15 +185,15 @@
                                     <span class="text-white font-bold text-lg">1</span>
                                 </div>
                                 <div>
-                                    <h4 class="text-xl font-serif font-bold text-white mb-4">{{ __('site.Personalized Profile Setup') }}</h4>
+                                    <h4 class="text-xl font-serif font-bold text-white mb-4">{{ __('hIT.Personalized Profile Setup') }}</h4>
                                     <div class="space-y-3 text-slate-300">
                                         <p class="flex items-start">
                                             <span class="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                                            {{ __('site.Tell Us About Your Needs (Age, Condition, Goals). SAMAA Respects Privacy—No Medical Data Is Stored Without Consent.') }}
+                                            {{ __('hIT.Tell Us About Your Needs (Age, Condition, Goals). SAMAA Respects Privacy—No Medical Data Is Stored Without Consent.') }}
                                         </p>
                                         <p class="flex items-start italic text-blue-300">
                                             <span class="w-2 h-2 bg-blue-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                                            <em>{{ __('site.Dr-Nadia\'s Quote: "Just As Every Patient Is Unique, So Is Their Path To Healing."') }}</em>
+                                            <em>{{ __('hIT.Dr-Nadia’s Quote: "Just As Every Patient Is Unique, So Is Their Path To Healing."') }}</em>
                                         </p>
                                     </div>
                                 </div>
@@ -207,15 +207,15 @@
                                     <span class="text-white font-bold text-lg">2</span>
                                 </div>
                                 <div>
-                                    <h4 class="text-xl font-serif font-bold text-white mb-4">{{ __('site.AI-Driven Customization') }}</h4>
+                                    <h4 class="text-xl font-serif font-bold text-white mb-4">{{ __('hIT.AI-Driven Customization') }}</h4>
                                     <div class="space-y-3 text-slate-300">
                                         <p class="flex items-start">
                                             <span class="w-2 h-2 bg-emerald-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                                            {{ __('site.SAMAA\'s AI Crafts A U-Shaped Sound Journey Tailored To Your Profile.') }}
+                                            {{ __('hIT.SAMAA’s AI Crafts A U-Shaped Sound Journey Tailored To Your Profile.') }}
                                         </p>
                                         <p class="flex items-start">
                                             <span class="w-2 h-2 bg-emerald-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                                            {{ __('site.Clinicals Backing: European Studies Show U-Shaped Therapy Improves Emotional Regulation In 60% Of Autism Cases.') }}
+                                            {{ __('hIT.Clinicals Backing: European Studies Show U-Shaped Therapy Improves Emotional Regulation In 60% Of Autism Cases.') }}
                                         </p>
                                     </div>
                                 </div>
@@ -229,15 +229,15 @@
                                     <span class="text-white font-bold text-lg">3</span>
                                 </div>
                                 <div>
-                                    <h4 class="text-xl font-serif font-bold text-white mb-4">{{ __('site.Real-Time Adjustments') }}</h4>
+                                    <h4 class="text-xl font-serif font-bold text-white mb-4">{{ __('hIT.Real-Time Adjustments') }}</h4>
                                     <div class="space-y-3 text-slate-300">
                                         <p class="flex items-start">
                                             <span class="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                                            {{ __('site.SAMAA Adapts Tempo/Pitch Mid-Session Using Machine Learning.') }}
+                                            {{ __('hIT.SAMAA Adapts Tempo/Pitch Mid-Session Using Machine Learning.') }}
                                         </p>
                                         <p class="flex items-start">
                                             <span class="w-2 h-2 bg-purple-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                                            {{ __('site.Tech Proof: Powered By Clinicouris AI. Recognized At The Go Global Awards 2022.') }}
+                                            {{ __('hIT.Tech Proof: Powered By Clinicouris AI. Recognized At The Go Global Awards 2022.') }}
                                         </p>
                                     </div>
                                 </div>
@@ -251,11 +251,11 @@
                                     <span class="text-white font-bold text-lg">4</span>
                                 </div>
                                 <div>
-                                    <h4 class="text-xl font-serif font-bold text-white mb-4">{{ __('site.Progress Tracking') }}</h4>
+                                    <h4 class="text-xl font-serif font-bold text-white mb-4">{{ __('hIT.Progress Tracking') }}</h4>
                                     <div class="space-y-3 text-slate-300">
                                         <p class="flex items-start">
                                             <span class="w-2 h-2 bg-teal-400 rounded-full mt-2 mr-3 flex-shrink-0"></span>
-                                            {{ __('site.Monthly Reports Track Improvements In Focus, Behavior, And Sensory Responses Against Clinical Benchmarks.') }}
+                                            {{ __('hIT.Monthly Reports Track Improvements In Focus, Behavior, And Sensory Responses Against Clinical Benchmarks.') }}
                                         </p>
                                     </div>
                                 </div>
@@ -309,11 +309,11 @@
                 <!-- Section Header -->
                 <div class="text-center mb-16">
                     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-6">
-                        <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">{{ __('site.Clinical') }}</span>
-                        <span class="text-white">{{ __('site.Proof') }} &</span>
-                        <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent block">{{ __('site.Global Recognition') }}</span>
+                        <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">{{ __('hIT.Clinical') }}</span>
+                        <span class="text-white">{{ __('hIT.Proof') }} &</span>
+                        <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent block">{{ __('hIT.Global Recognition') }}</span>
                     </h2>
-                    <p class="text-xl text-slate-300 mb-8">{{ __('site.Proven Impact on Autism & Beyond') }}</p>
+                    <p class="text-xl text-slate-300 mb-8">{{ __('hIT.Proven Impact on Autism & Beyond') }}</p>
                     <div class="flex justify-center">
                         <div class="w-24 h-px bg-gradient-to-r from-transparent via-emerald-400 to-transparent"></div>
                     </div>
@@ -324,7 +324,7 @@
                     <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
                         <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-8 text-center">
                             <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
-                                {{ __('site.Month Trial Results') }}
+                                {{ __('hIT.Month Trial Results') }}
                             </span>
                         </h3>
                         
@@ -334,7 +334,7 @@
                                     <div class="w-12 h-12 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full flex items-center justify-center mr-4">
                                         <span class="text-white font-bold text-lg">70%</span>
                                     </div>
-                                    <p class="text-lg text-slate-300">{{ __('site.improved sensory processing.') }}</p>
+                                    <p class="text-lg text-slate-300">{{ __('hIT.improved sensory processing.') }}</p>
                                 </div>
                             </div>
                             
@@ -343,7 +343,7 @@
                                     <div class="w-12 h-12 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full flex items-center justify-center mr-4">
                                         <span class="text-white font-bold text-lg">65%</span>
                                     </div>
-                                    <p class="text-lg text-slate-300">{{ __('site.reduced anxiety/emotional outbursts.') }}</p>
+                                    <p class="text-lg text-slate-300">{{ __('hIT.reduced anxiety/emotional outbursts.') }}</p>
                                 </div>
                             </div>
                             
@@ -352,7 +352,7 @@
                                     <div class="w-12 h-12 bg-gradient-to-r from-teal-500 to-emerald-500 rounded-full flex items-center justify-center mr-4">
                                         <span class="text-white font-bold text-lg">80%</span>
                                     </div>
-                                    <p class="text-lg text-slate-300">{{ __('site.better sleep quality reported by parents.') }}</p>
+                                    <p class="text-lg text-slate-300">{{ __('hIT.better sleep quality reported by parents.') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -364,19 +364,19 @@
                         <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
                             <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-6 text-center">
                                 <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-                                    {{ __('site.Partners') }}
+                                    {{ __('hIT.Partners') }}
                                 </span>
                             </h3>
                             
                             <div class="space-y-4">
                                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 hover:border-blue-400/30 transition-colors duration-300">
-                                    <p class="text-white font-medium text-center">{{ __('site.Dubai Autism Center') }}</p>
+                                    <p class="text-white font-medium text-center">{{ __('hIT.Dubai Autism Center') }}</p>
                                 </div>
                                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 hover:border-blue-400/30 transition-colors duration-300">
-                                    <p class="text-white font-medium text-center">{{ __('site.Hope MCF Foundation') }}</p>
+                                    <p class="text-white font-medium text-center">{{ __('hIT.Hope MCF Foundation') }}</p>
                                 </div>
                                 <div class="bg-white/5 rounded-2xl p-4 border border-white/10 hover:border-blue-400/30 transition-colors duration-300">
-                                    <p class="text-white font-medium text-center">{{ __('site.NAAM Women\'s Empowerment') }}</p>
+                                    <p class="text-white font-medium text-center">{{ __('hIT.NAAM Women’s Empowerment') }}</p>
                                 </div>
                             </div>
                         </div>
@@ -385,7 +385,7 @@
                         <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
                             <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-6 text-center">
                                 <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
-                                    {{ __('site.Awards') }}
+                                    {{ __('hIT.Awards') }}
                                 </span>
                             </h3>
                             
@@ -397,8 +397,8 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h4 class="text-lg font-semibold text-white mb-2">{{ __('site.Go Global Award 2022') }}</h4>
-                                        <p class="text-slate-300">{{ __('site.Corporate Social Responsibility') }}</p>
+                                        <h4 class="text-lg font-semibold text-white mb-2">{{ __('hIT.Go Global Award 2022') }}</h4>
+                                        <p class="text-slate-300">{{ __('hIT.Corporate Social Responsibility') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -416,14 +416,14 @@
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12">
                     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-6">
-                        <span class="text-white">{{ __('site.Ready to Experience') }}</span>
+                        <span class="text-white">{{ __('hIT.Ready to Experience') }}</span>
                         <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent block">
-                            {{ __('site.Healing Through') }} <span class="text-white">{{ __('site.sound?') }}</span>
+                            {{ __('hIT.Healing Through') }} <span class="text-white">{{ __('hIT.sound?') }}</span>
                         </span>
                     </h2>
                     
                     <p class="text-lg text-slate-400 mb-8 leading-relaxed">
-                        {{ __('site.SAMAA adheres to GDPR and global privacy standards. Your data is never shared without consent') }}
+                        {{ __('hIT.SAMAA adheres to GDPR and global privacy standards. Your data is never shared without consent') }}
                     </p>
 
                     <!-- Final CTA Buttons -->
@@ -431,7 +431,7 @@
                         <a href="{{ route('login') }}" 
                            class="group px-8 py-4 bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-semibold rounded-2xl text-lg hover:from-blue-700 hover:to-emerald-700 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-emerald-500/25">
                             <span class="flex items-center">
-                                {{ __('site.Join Our Waitlist') }}
+                                {{ __('hIT.Join Our Waitlist') }}
                                 <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
                                 </svg>
@@ -441,7 +441,7 @@
                         <a href="{{ route('contact-us') }}" 
                            class="group px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-2xl text-lg hover:bg-white/20 hover:border-white/30 transform hover:scale-105 transition-all duration-300">
                             <span class="flex items-center">
-                                {{ __('site.Partner With SAMAA') }}
+                                {{ __('hIT.Partner With SAMAA') }}
                                 <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
                                 </svg>

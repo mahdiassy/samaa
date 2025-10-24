@@ -22,6 +22,7 @@ return [
     'Library' => 'Library',
     'Help Center' => 'Help Center',
     'update' => 'Update',
+    'How It Works' => 'How It Works',
 
     // Login Page
     'Welcome to SAMAA' => 'Welcome to SAMAA',
@@ -93,199 +94,99 @@ return [
     'The old password is incorrect' =>'The old password is incorrect',
     'Password updated successfully' =>'Password updated successfully',
 
-    // Layout Page
-    'Welcome to SAMAA' => 'Welcome to SAMAA',
 
-    'Welcome to' => 'Welcome to',
+    // 'Partners' => 'Partners',
+    // 'Month Trial Results' => 'Month Trial Results',
+    // 'NAAM Women’s Empowerment' => 'NAAM Women’s Empowerment.',
+    // '80% better sleep quality reported by parents.' => '80% better sleep quality reported by parents.',
+    // '65% reduced anxiety/emotional outbursts.' => '65% reduced anxiety/emotional outbursts.',
+    // '70% improved sensory processing.' => '70% improved sensory processing.',
+    // 'Proven Impact on Autism & Beyond' => 'Proven Impact on Autism & Beyond',
+    // 'Clinical' => 'Clinical',
+    // 'Proof' => 'Proof',
+    // 'Global Recognition' => 'Global Recognition',
 
-    'Hear to Heal' => 'Hear to Heal',
+    // 'About' => 'About',
 
-    'When healthcare professionals educate you using sound to enhance your health and well-being.' => 'When healthcare professionals educate you using sound to enhance your health and well-being.',
+    // 'Therapy With' =>'Therapy With ',
 
-    'Music Therapy' => 'Music Therapy',
+    // 'Sama’a' => 'SAMAA',
 
-    'Music Therapy (description)' => 'SAMAA combines the therapeutic power of music with artificial intelligence to deliver personalized music therapy experiences tailored to support emotional and physical healing. Validated by the American European Music Therapy Association, SAMAA offers a scientifically grounded approach to enhancing mental and physical well-being.',
-    'What is Music Therapy?' => 'What is Music Therapy?',
+    // 'Sama’a for kids' => 'SAMAA FOR KIDS',
 
-    'What is Music Therapy (answer)' => 'Children with ASD often show reduced connectivity in sensorimotor brain networks. Sound therapy has shown promise in addressing these neural challenges. Listening to music can create a calming, tranquil state, helping individuals transition from distress to receptivity.',
+    // 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam–quis.' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam–quis.',
 
-    'Music Selection' => 'Music Selection',
+    // 'BECOME SPONSOR' => 'BECOME SPONSOR',
 
-    'Choose from a variety of music genres and styles to create your personalized therapeutic experience.' => 'Choose from a variety of music genres and styles to create your personalized therapeutic experience.',
+    // 'SUBSCRIBE' => 'SUBSCRIBE',
 
-    'Mood Enhancement' => 'Mood Enhancement',
+    // 'Community Members' => 'Community Members',
 
-    'Enhance your mood by selecting music that matches your emotions and feelings.' => 'Enhance your mood by selecting music that matches your emotions and feelings.',
+    // 'Patients' => 'Patients',
 
-    'Relaxation' => 'Relaxation',
+    // 'Participating Doctors' => 'Participating Doctors',
 
-    'Immerse yourself in calming melodies to unwind, reduce stress, and find tranquility.' => 'Immerse yourself in calming melodies to unwind, reduce stress, and find tranquility.',
+    // 'K' => 'K',
 
-    'Sound Therapy and Composers' => 'Sound Therapy and Composers',
+    // 'What our listeners say' => 'What our listeners say',
 
-    'Learn about the role of music therapy in healing and relaxation. Discover how famous composers like Beethoven utilized the power of music to overcome challenges and inspire others.' => 'Learn about the role of music therapy in healing and relaxation. Discover how famous composers like Beethoven utilized the power of music to overcome challenges and inspire others.',
+    // 'Their experience throughout every platform' => 'Their experience throughout every platform',
 
-    'LISTEN TO MUSIC' => 'LISTEN TO MUSIC',
-    'Listen to Music' => 'Listen to Music',
-    'Learn More' => 'Learn More',
+    // 'Our Doctors' => 'Our Doctors',
 
-    'How' => 'How',
-    'Works' => 'works',
-    "Sama'a" => 'SAMAA',
-    'Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.' => 'Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.',
-    'Share your needs' => 'Share your needs',
-    'Tell us about your mental health goals and current state through our comprehensive assessment.' => 'Tell us about your mental health goals and current state through our comprehensive assessment.',
-    'Generate therapeutic music' => 'Generate therapeutic music',
-    'Our AI analyzes your needs and creates personalized therapeutic music sessions tailored specifically for you.' => 'Our AI analyzes your needs and creates personalized therapeutic music sessions tailored specifically for you.',
-    'Track your progress' => 'Track your progress',
-    'Monitor your mental wellness journey with detailed analytics and insights into your therapeutic music sessions.' => 'Monitor your mental wellness journey with detailed analytics and insights into your therapeutic music sessions.',
-    'You Share Your Needs' => 'You Share Your Needs',
-    'SAMAA Creates Personalized Sessions' => 'SAMAA Creates Personalized Sessions',
-    'You Listen, Heal, and Grow' => 'You Listen, Heal, and Grow',
+    // 'follow me' => 'Follow me:',
 
-    'Personalized Sound Healing' => 'Personalized Sound Healing',
-    'Tailored therapy based on mood, needs, and goals.' => 'Tailored therapy based on mood, needs, and goals.',
-    'Scientifically Validated' => 'Scientifically Validated',
-    'Developed and backed by experts ​SAMAA Profile.' => 'Developed and backed by experts ​SAMAA Profile.',
-    'For Autism and Beyond' => 'For Autism and Beyond' ,
-    'Special modules designed for children and adults on the spectrum ​ClinGroup_Music therapy…​Autism & Sound Virtual' => 'Special modules designed for children and adults on the spectrum ​ClinGroup_Music therapy…​Autism & Sound Virtual',
-    'Accessible Anytime, Anywhere' => 'Accessible Anytime, Anywhere',
-    'Mobile-friendly virtual therapy sessions Autism & Sound Virtual ….' => 'Mobile-friendly virtual therapy sessions Autism & Sound Virtual ….',
+    // 'Host' => 'Host',
 
-    'Partner with' => 'Partner with',
-    'Expand your practice with AI-driven music therapy' => 'Expand your practice with AI-driven music therapy',
-    'Let’s Partner Up' => 'Let’s Partner Up',
-    "Let's Partner Up" => "Let's Partner Up",
+    // 'doctor' => 'Doctor',
 
-    'learn more' => 'learn more',
-    'Resource' => 'Resource',
-    'start' => 'start',
-    'Your' => 'Your',
-    'Journey' => 'Journey',
-    'Healing' => 'Healing',
-    'signup now' => 'Signup Now',
+    // 'Contact' => 'Contact',
 
-    // About Us Page
-    'Where' => 'Where',
-    'Science' => 'Science',
-    'Meets' => 'Meets',
-    'Soul' => 'Soul',
-    'story-description' => 'SAMAA, born from ClinGroup Euromed’s legacy in healthcare innovation, is a revolutionary AI-powered sound therapy platform designed to transform mental and physical wellness. Founded by Dr. Nadia Cheaib—a Forbes-listed scientist, cancer survivor, and advocate for ethical healthcare—SAMAA merges cutting-edge technology with ancient healing traditions to empower individuals with autism, ADHD, anxiety, and chronic conditions.',
-    'Our' => 'Our',
-    'Founder' => 'Founder',
-    'Dr. Nadia Cheaib' => 'Dr. Nadia Cheaib',
-    'Forbes Most Influential Arab Woman (2014-2018).' => 'Forbes Most Influential Arab Woman (2014-2018).',
-    'Pioneer in integrating AI with holistic therapies.' => 'Pioneer in integrating AI with holistic therapies.',
-    'Music isn’t just art—it’s a language of healing' => 'Music isn’t just art—it’s a language of healing',
-    'Let’s' => 'Let’s',
-    'Heal' => 'Heal',
-    'Together' => 'Together',
-    'Become a Partner' => 'Become a Partner',
-    'Explore SAMAA’s Therapy' => 'Explore SAMAA’s Therapy',
-    'Join Our Movement' => 'Join Our Movement',
-    'our' => 'our',
-    'Mission' => 'Mission',
-    'Mission Description' => 'We believe every individual deserves access to compassionate, evidence-based care. SAMAA’s AI tailors music therapy sessions to each user’s unique emotional and sensory profile, bridging gaps in traditional healthcare and fostering global well-being.',
-    'Trusted By' => 'Trusted By',
-    'Dubai Autism Center' => 'Dubai Autism Center',
-    'American European Music Therapy Association' => 'American European Music Therapy Association',
-    'Forbes' => 'Forbes',
-    'Hope MCF Foundation' => 'Hope MCF Foundation',
-    'Awards' => 'Awards',
-    'Go Global Award 2022 (Corporate Social Responsibility)' => 'Go Global Award 2022 (Corporate Social Responsibility)',
+    // 'Get In Touch' => 'Get In Touch',
 
-    'Partners' => 'Partners',
-    'Month Trial Results' => 'Month Trial Results',
-    'NAAM Women’s Empowerment' => 'NAAM Women’s Empowerment.',
-    '80% better sleep quality reported by parents.' => '80% better sleep quality reported by parents.',
-    '65% reduced anxiety/emotional outbursts.' => '65% reduced anxiety/emotional outbursts.',
-    '70% improved sensory processing.' => '70% improved sensory processing.',
-    'Proven Impact on Autism & Beyond' => 'Proven Impact on Autism & Beyond',
-    'Clinical' => 'Clinical',
-    'Proof' => 'Proof',
-    'Global Recognition' => 'Global Recognition',
+    // 'We’re Here to Help You Heal' => 'We’re Here to Help You Heal',
 
-    'About' => 'About',
+    // 'contact-description' => 'Whether you’re a parent exploring therapy options, a therapist interested in collaboration, or a healthcare institution seeking partnerships, the SAMAA team is ready to assist.',
 
-    'Therapy With' =>'Therapy With ',
+    // 'Message' => 'Message',
 
-    'Sama’a' => 'SAMAA',
+    // 'Let’s Start Your Journey' => 'Let’s Start Your Journey',
 
-    'Sama’a for kids' => 'SAMAA FOR KIDS',
+    // 'Enter Your Name' => 'Enter Your Name',
 
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam–quis.' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam–quis.',
+    // 'Phone Number' => 'Phone Number',
 
-    'BECOME SPONSOR' => 'BECOME SPONSOR',
+    // 'Email Address' => 'Email Address',
 
-    'SUBSCRIBE' => 'SUBSCRIBE',
+    // 'Subject' => 'Subject',
 
-    'Community Members' => 'Community Members',
+    // 'Choose Subject' => 'Choose Subject',
 
-    'Patients' => 'Patients',
+    // 'general_inquiry' => 'General Inquiry',
 
-    'Participating Doctors' => 'Participating Doctors',
+    // 'therapist_registration' => 'Therapist Registration',
 
-    'K' => 'K',
+    // 'institutional_partnership' => 'Institutional Partnership',
 
-    'What our listeners say' => 'What our listeners say',
+    // 'technical_support' => 'Technical Support',
 
-    'Their experience throughout every platform' => 'Their experience throughout every platform',
+    // 'Your Message' => 'Your Message',
 
-    'Our Doctors' => 'Our Doctors',
+    // 'How can we support your healing journey?' => 'How can we support your healing journey?',
 
-    'follow me' => 'Follow me:',
+    // 'Submit' => 'Submit',
 
-    'Host' => 'Host',
+    // 'Follow SAMAA' => 'Follow SAMAA:',
 
-    'doctor' => 'Doctor',
+    // 'Join Our Newsletter' => 'Join Our Newsletter:',
 
-    'Contact' => 'Contact',
+    // 'Get free sound therapy tips and updates' => 'Get free sound therapy tips and updates',
 
-    'Get In Touch' => 'Get In Touch',
+    // 'Facebook link' => 'Facebook link',
 
-    'We’re Here to Help You Heal' => 'We’re Here to Help You Heal',
+    // 'Twitter link' => 'Twitter link',
 
-    'contact-description' => 'Whether you’re a parent exploring therapy options, a therapist interested in collaboration, or a healthcare institution seeking partnerships, the SAMAA team is ready to assist.',
-
-    'Message' => 'Message',
-
-    'Let’s Start Your Journey' => 'Let’s Start Your Journey',
-
-    'Enter Your Name' => 'Enter Your Name',
-
-    'Phone Number' => 'Phone Number',
-
-    'Email Address' => 'Email Address',
-
-    'Subject' => 'Subject',
-
-    'Choose Subject' => 'Choose Subject',
-
-    'general_inquiry' => 'General Inquiry',
-
-    'therapist_registration' => 'Therapist Registration',
-
-    'institutional_partnership' => 'Institutional Partnership',
-
-    'technical_support' => 'Technical Support',
-
-    'Your Message' => 'Your Message',
-
-    'How can we support your healing journey?' => 'How can we support your healing journey?',
-
-    'Submit' => 'Submit',
-
-    'Follow SAMAA' => 'Follow SAMAA:',
-
-    'Join Our Newsletter' => 'Join Our Newsletter:',
-
-    'Get free sound therapy tips and updates' => 'Get free sound therapy tips and updates',
-
-    'Facebook link' => 'Facebook link',
-
-    'Twitter link' => 'Twitter link',
-
-    'Instagram link' => 'Instagram link',
+    // 'Instagram link' => 'Instagram link',
 
     //Dashboard Menu
     'Patient list' => 'Patient list',
@@ -453,102 +354,8 @@ return [
     'Search' => 'Search',
     'related Post' => 'Related Post',
     'blogs' => 'Blogs',
+    
 
-    // How it work
-    'How It Works' => 'How It Works',
-    'The' => 'The ',
-    'science' => 'science',
-    'Healing Through Sound, Perfected by Science' => 'Healing Through Sound, Perfected by Science',
-    'Behind SAMAA'=> 'Behind SAMAA',
-    'work-description' => 'Developed by Forbes-listed scientist Dr. Nadia Cheaib, SAMAA combines decades of clinical research with AI innovation to deliver personalized sound therapy for autism, anxiety, and beyond.',
-
-    '7x Forbes Most Influential Arab Woman' => '7x Forbes Most Influential Arab Woman',
-    'Pioneer In AI-Driven Healthcare Solutions' => 'Pioneer In AI-Driven Healthcare Solutions',
-    'Backed By A 6-Month Clinical Trial Using The U-Shaped Montage Technique.' => 'Backed By A 6-Month Clinical Trial Using The U-Shaped Montage Technique.',
-    'Endorsed By The American European Music Therapy Association.' => 'Endorsed By The American European Music Therapy Association.',
-
-    'The' => 'The ',
-    'U-Shaped' => 'U-Shaped',
-    'Sound' => 'Sound',
-    'Therapy' => 'Therapy',
-    'Protocol' => 'Protocol',
-    'How U-Shaped Sound Transforms Lives' => 'How U-Shaped Sound Transforms Lives',
-    'U-Saped-description' => 'The U-shaped montage technique, conceptualized by Jean-Marie Guiraud-Caladou, uses structured sound progression (tempo, pitch, intensity) to induce relaxation and improve neural connectivity. SAMAA’s AI adapts this method for modern therapy',
-
-    'Ready to Experience' => 'Ready to Experience',
-    'Healing Through' => 'Healing Through',
-    'sound?' => 'Sound?',
-    'Partner With SAMAA' => 'Partner With SAMAA',
-    'Join Our Waitlist' => 'Join Our Waitlist',
-    'SAMAA adheres to GDPR and global privacy standards. Your data is never shared without consent' => 'SAMAA adheres to GDPR and global privacy standards. Your data is never shared without consent',
-    'SAMAA’s AI replicates the U-shaped technique validated in European clinical studies' => 'SAMAA’s AI replicates the U-shaped technique validated in European clinical studies',
-
-    'The 4-Step Process' => 'The 4-Step Process',
-    'Personalized Profile Setup' => 'Personalized Profile Setup',
-    'Tell Us About Your Needs (Age, Condition, Goals). SAMAA Respects Privacy—No Medical Data Is Stored Without Consent.' => 'Tell Us About Your Needs (Age, Condition, Goals). SAMAA Respects Privacy—No Medical Data Is Stored Without Consent.',
-    'Dr-Nadia’s Quote: "Just As Every Patient Is Unique, So Is Their Path To Healing."' => 'Dr. Nadia’s Quote: "Just As Every Patient Is Unique, So Is Their Path To Healing.',
-    'AI-Driven Customization' => 'AI-Driven Customization',
-    'SAMAA’s AI Crafts A U-Shaped Sound Journey Tailored To Your Profile.' => 'SAMAA’s AI Crafts A U-Shaped Sound Journey Tailored To Your Profile.',
-    'Clinicals Backing: European Studies Show U-Shaped Therapy Improves Emotional Regulation In 60% Of Autism Cases.' => 'Clinicals Backing: European Studies Show U-Shaped Therapy Improves Emotional Regulation In 60% Of Autism Cases.',
-    'Real-Time Adjustments' => 'Real-Time Adjustments',
-    'SAMAA Adapts Tempo/Pitch Mid-Session Using Machine Learning.' => 'SAMAA Adapts Tempo/Pitch Mid-Session Using Machine Learning.',
-    'Tech Proof: Powered By Clinicouris AI. Recognized At The Go Global Awards 2022.' => 'Tech Proof: Powered By Clinicouris AI. Recognized At The Go Global Awards 2022.',
-    'Progress Tracking' => 'Progress Tracking',
-    'Monthly Reports Track Improvements In Focus, Behavior, And Sensory Responses Against Clinical Benchmarks.' => 'Monthly Reports Track Improvements In Focus, Behavior, And Sensory Responses Against Clinical Benchmarks.',
-
-    // therapists
-    'Empowering' => 'Empowering',
-    'therapists' => 'Therapists',
-    'with' => 'With',
-    'AI-Driven' => 'AI-Driven',
-
-    'for Organizations' => 'for Organizations',
-    'Tailored Programs:' => 'Tailored Programs:',
-    'Integrate SAMAA into your wellness initiatives for autism, anxiety, or chronic pain.' => 'Integrate SAMAA into your wellness initiatives for autism, anxiety, or chronic pain.',
-    'Data-Driven Insights:' => 'Data-Driven Insights:',
-    'Receive aggregated reports to measure program efficacy and secure funding' => 'Receive aggregated reports to measure program efficacy and secure funding',
-    'Ethical Mission:' => 'Ethical Mission:',
-    'Align with Dr. Nadia Cheaib’s vision: 10% of SAMAA’s profits fund therapy for underserved communities.' => 'Align with Dr. Nadia Cheaib’s vision: 10% of SAMAA’s profits fund therapy for underserved communities.',
-
-    'SAMAA complies with HIPAA/GDPR. Patient data is fully encrypted.'=> 'SAMAA complies with HIPAA/GDPR. Patient data is fully encrypted.',
-    'Join' => 'Join',
-    'therapistss' => 'Therapists',
-    'Transforming' => 'Transforming',
-    'Lives' => 'Lives',
-    'Inquire About' => 'Inquire About',
-    'Institutional Partnerships' => 'Institutional Partnerships',
-
-    'Get Started In' => 'Get Started In',
-    '3 Steps' => '3 Steps',
-    'Apply' => 'Apply',
-    'Fill Out A Short Form.' => 'Fill Out A Short Form.',
-    'Onboard' => 'Onboard',
-    'Attend A 30-Minute Training Webinar.' => 'Attend A 30-Minute Training Webinar.',
-    'Launch' => 'Launch',
-    'Access SAMAA’s Portal And Start Healing' => 'Access SAMAA’s Portal And Start Healing',
-
-    'Benefits for' => 'Benefits for',
-    'Why Partner with SAMAA?' => 'Why Partner with SAMAA?',
-    'AI-Powered Tools:' => 'AI-Powered Tools:',
-    'Customize sessions using U-shaped sound therapy protocols, adapted in real-time for each patient.' => 'Customize sessions using U-shaped sound therapy protocols, adapted in real-time for each patient.',
-    'Global Collaboration:' => 'Global Collaboration:',
-    'Join a network of therapists and institutions pioneering ethical, tech-driven care' => 'Join a network of therapists and institutions pioneering ethical, tech-driven care',
-    'Progress Tracking:' => 'Progress Tracking:',
-    'Access dashboards to monitor behavioral improvements, sleep patterns, and sensory responses.' => 'Access dashboards to monitor behavioral improvements, sleep patterns, and sensory responses.',
-    'Training & Support:' => 'Training & Support:',
-    'Free onboarding and access to SAMAA’s research library' => 'Free onboarding and access to SAMAA’s research library',
-
-    'Join A' => 'Join A',
-    'Revolution In' => 'Revolution In',
-    'Music' => 'Music',
-    'Clinically Validated In Autism Studie' => 'Clinically Validated In Autism Studie',
-    'Dr. Nadia Cheaib' => 'Dr. Nadia Cheaib’s',
-
-    'SAMAA equips therapists and institutions with AI tools to enhance traditional practices, backed by' => 'SAMAA equips therapists and institutions with AI tools to enhance traditional practices, backed by',
-    'groundbreaking research.' => 'groundbreaking research.',
-
-    'Dr. Nadia’s' => 'Dr. Nadia’s',
-    'Therapists Are The Heart Of Healing' => 'Is Here To Amplify Your Impact.',
-    'Is Here To Amplify Your Impact.' => 'Is Here To Amplify Your Impact.',
+    
 
 ];

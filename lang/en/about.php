@@ -1,0 +1,42 @@
+<?php
+
+
+    return [
+        // About Us Page (Cleaned)
+        'Where' => 'Where',
+        'Science' => 'Science',
+        'Meets' => 'Meets',
+        'Soul' => 'Soul',
+        'story-description' => 'SAMAA, born from ClinGroup Euromed’s legacy in healthcare innovation, is a revolutionary AI-powered sound therapy platform designed to transform mental and physical wellness. Founded by Dr. Nadia Cheaib—a Forbes-listed scientist, cancer survivor, and advocate for ethical healthcare—SAMAA merges cutting-edge technology with ancient healing traditions to empower individuals with autism, ADHD, anxiety, and chronic conditions.',
+        'Explore' => 'Explore',
+        'Therapy' => 'Therapy',
+        'Become a Partner' => 'Become a Partner',
+        'our' => 'Our',
+        'Mission' => 'Mission',
+        'mission-description' => 'We believe every individual deserves access to compassionate, evidence-based care. SAMAA’s AI tailors music therapy sessions to each user’s unique emotional and sensory profile, bridging gaps in traditional healthcare and fostering global well-being.',
+        'Meet' => 'Meet',
+        'Dr. Nadia Cheaib' => 'Dr. Nadia Cheaib',
+        'Founder & Clinical Director' => 'Founder & Clinical Director',
+        'founder-description' => 'Dr. Nadia Cheaib is a Forbes-listed scientist and healthcare pioneer known for her work integrating AI into personalized therapy and wellness.',
+        'Professional Credentials' => 'Professional Credentials',
+        'PhD in Music Therapy' => 'PhD in Music Therapy',
+        'Board-Certified Music Therapist' => 'Board-Certified Music Therapist',
+        '15+ Years Clinical Experience' => '15+ Years Clinical Experience',
+        'Founder' => 'Founder',
+        'Let' => 'Let',
+        'Heal' => 'Heal',
+        'Together' => 'Together',
+        'join-journey-description' => 'Join SAMAA’s journey to make personalized sound therapy accessible to everyone. Together, we can heal through harmony and science.',
+        'Recognition' => 'Recognition',
+        '&' => '&',
+        'Partnerships' => 'Partnerships',
+        'Awards' => 'Awards',
+        'Go Global Award 2022' => 'Go Global Award 2022',
+        'Corporate Social Responsibility' => 'Corporate Social Responsibility',
+        'Trusted By' => 'Trusted By',
+        'Dubai Autism Center' => 'Dubai Autism Center',
+        'American European Music Therapy Association' => 'American European Music Therapy Association',
+        'Forbes' => 'Forbes',
+        'Hope MCF Foundation' => 'Hope MCF Foundation',
+        
+    ];

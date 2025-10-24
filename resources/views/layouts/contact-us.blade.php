@@ -93,13 +93,13 @@
                 <div class="bg-white/70 backdrop-blur-sm rounded-3xl p-8 border border-slate-200 shadow-xl">
                     <h3 class="text-3xl font-serif text-slate-800 mb-8">Send us a Message</h3>
                     
-                    <form action="{{ route('contactUs.store') }}" method="POST" class="space-y-6">
+                    <form action="{{ route('contactUs.store') }}" method="POST" class="space-y-6 p-4">
                         @csrf
                         <!-- Name -->
-                        <div>
+                        <div class="flex flex-col gap-2">
                             <label for="full_name" class="block text-sm font-semibold text-slate-700 mb-2">Full Name</label>
                             <input type="text" id="full_name" name="full_name" required 
-                                   class="w-full px-4 py-3 border border-slate-300 rounded-xl focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300"
+                                   class="w-full px-4 py-3 border border-slate-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300"
                                    placeholder="Enter Your Name">
                         </div>
                         
@@ -202,4 +202,3 @@
             </div>
         </div>
     </section>
-@endsection

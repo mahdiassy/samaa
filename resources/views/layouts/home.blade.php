@@ -43,7 +43,7 @@
             <!-- Welcome Message - Professional -->
             <div class="animate-fade-in-up" style="animation-delay: 0.2s;">
                 <h2 class="text-sm md:text-base text-white/70 font-medium mb-8 tracking-widest uppercase">
-                    {{ __('site.Welcome to SAMAA') }}
+                    {{ __('home.Welcome to SAMAA') }}
                 </h2>
             </div>
             
@@ -100,7 +100,7 @@
             <!-- Professional Description -->
             <div class="animate-fade-in-up" style="animation-delay: 0.6s;">
                 <p class="text-lg md:text-xl text-white/90 max-w-4xl mx-auto mb-20 leading-relaxed font-light tracking-wide">
-                    {{ __('site.When healthcare professionals educate you using sound to enhance your health and well-being.') }}
+                    {{ __('home.When healthcare professionals educate you using sound to enhance your health and well-being.') }}
                 </p>
             </div>
             </div>
@@ -124,7 +124,7 @@
                     <!-- Button content -->
                     <span class="relative flex items-center">
                         <i class="fas fa-magic mr-4 text-2xl group-hover:rotate-12 transition-transform duration-300"></i>
-                        <span class="tracking-wide">{{ __('site.Learn More') }}</span>
+                        <span class="tracking-wide">{{ __('home.Learn More') }}</span>
                         <i class="fas fa-arrow-right ml-4 text-xl transform group-hover:translate-x-2 group-hover:scale-125 transition-all duration-300"></i>
                     </span>
                 </a>
@@ -166,26 +166,26 @@
                     <!-- Sound Therapy Title -->
                     <h2 class="text-6xl md:text-7xl font-elegant font-bold mb-8 leading-tight">
                         <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent drop-shadow-lg">
-                            {{ __('site.Sound') }}
+                            {{ __('home.Sound') }}
                         </span> 
-                        <span class="text-white drop-shadow-lg">{{ __('site.Therapy') }}</span>
+                        <span class="text-white drop-shadow-lg">{{ __('home.Therapy') }}</span>
                     </h2>
                     
                     <!-- Beautiful description with better typography -->
                     <div class="max-w-5xl mx-auto">
                         <p class="text-xl md:text-2xl text-gray-300 leading-relaxed mb-16 font-light tracking-wide">
-                        {{ __('site.Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.') }}
+                        {{ __('home.Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.') }}
                     </p>
             </div>
 
                     <!-- How SAMAA Works Title -->
                     <div class="relative inline-block">
                         <h1 class="text-5xl md:text-6xl font-elegant font-bold text-white mb-20 leading-tight">
-                    {{ __('site.How') }} 
+                    {{ __('home.How') }} 
                             <span class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent">
-                                {{ __("site.Sama'a") }}
+                                {{ __("home.Sama'a") }}
                     </span> 
-                    {{ __('site.Works') }}
+                    {{ __('home.Works') }}
                         </h1>
                         
                         <!-- Decorative underline -->
@@ -223,7 +223,7 @@
                         <!-- Content -->
                         <div class="relative text-center flex-1 flex flex-col">
                             <h3 class="text-2xl md:text-3xl font-bold text-white mb-6 group-hover:text-cyan-300 transition-colors duration-500">
-                                {{ __('site.You Share Your Needs') }}
+                                {{ __('home.You Share Your Needs') }}
                             </h3>
                         </div>
 
@@ -261,7 +261,7 @@
                         <!-- Content -->
                         <div class="relative text-center flex-1 flex flex-col">
                             <h3 class="text-2xl md:text-3xl font-bold text-white mb-6 group-hover:text-purple-300 transition-colors duration-500">
-                                {{ __('site.SAMAA Creates Personalized Sessions') }}
+                                {{ __('home.SAMAA Creates Personalized Sessions') }}
                             </h3>
                         </div>
 
@@ -299,7 +299,7 @@
                         <!-- Content -->
                         <div class="relative text-center flex-1 flex flex-col">
                             <h3 class="text-2xl md:text-3xl font-bold text-white mb-6 group-hover:text-emerald-300 transition-colors duration-500">
-                                {{ __('site.You Listen, Heal, and Grow') }}
+                                {{ __('home.You Listen, Heal, and Grow') }}
                             </h3>
                         </div>
 
@@ -331,7 +331,7 @@
                     </div>
                     <div class="prose prose-lg max-w-none">
                         <p class="text-xl text-gray-700 leading-relaxed mb-6 font-light">
-                            {{ __('site.What is Music Therapy (answer)') }}
+                            {{ __('home.What is Music Therapy (answer)') }}
                         </p>
                         <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl">
                             <p class="text-gray-600 italic">
@@ -375,7 +375,7 @@
                     </div>
                     <div class="prose prose-lg max-w-none">
                         <p class="text-xl text-gray-700 leading-relaxed mb-6 font-light">
-                            {{ __('site.Music Therapy (description)') }}
+                            {{ __('home.Music Therapy (description)') }}
                         </p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                             <div class="bg-white p-6 rounded-xl shadow-lg border border-purple-100">
@@ -434,9 +434,9 @@
                                     <i class="fas fa-user-md text-white"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-2xl font-bold text-gray-800 mb-3">{{ __('site.Personalized Sound Healing') }}</h4>
+                                    <h4 class="text-2xl font-bold text-gray-800 mb-3">{{ __('home.Personalized Sound Healing') }}</h4>
                                     <p class="text-lg text-gray-600 leading-relaxed">
-                                        {{ __('site.Tailored therapy based on mood, needs, and goals.') }}
+                                        {{ __('home.Tailored therapy based on mood, needs, and goals.') }}
                                     </p>
                                 </div>
                             </div>
@@ -448,9 +448,9 @@
                                     <i class="fas fa-flask text-white"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-2xl font-bold text-gray-800 mb-3">{{ __('site.Scientifically Validated') }}</h4>
+                                    <h4 class="text-2xl font-bold text-gray-800 mb-3">{{ __('home.Scientifically Validated') }}</h4>
                                     <p class="text-lg text-gray-600 leading-relaxed">
-                                        {{ __('site.Developed and backed by experts ​SAMAA Profile.') }}
+                                        {{ __('home.Developed and backed by experts ​SAMAA Profile.') }}
                                     </p>
                                 </div>
                             </div>
@@ -462,9 +462,9 @@
                                     <i class="fas fa-heart text-white"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-2xl font-bold text-gray-800 mb-3">{{ __('site.For Autism and Beyond') }}</h4>
+                                    <h4 class="text-2xl font-bold text-gray-800 mb-3">{{ __('home.For Autism and Beyond') }}</h4>
                                     <p class="text-lg text-gray-600 leading-relaxed">
-                                        {{ __('site.Special modules designed for children and adults on the spectrum ​ClinGroup_Music therapy…​Autism & Sound Virtual') }}
+                                        {{ __('home.Special modules designed for children and adults on the spectrum ​ClinGroup_Music therapy…​Autism & Sound Virtual') }}
                                     </p>
                                 </div>
                             </div>
@@ -476,9 +476,9 @@
                                     <i class="fas fa-mobile-alt text-white"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-2xl font-bold text-gray-800 mb-3">{{ __('site.Accessible Anytime, Anywhere') }}</h4>
+                                    <h4 class="text-2xl font-bold text-gray-800 mb-3">{{ __('home.Accessible Anytime, Anywhere') }}</h4>
                                     <p class="text-lg text-gray-600 leading-relaxed">
-                                        {{ __('site.Mobile-friendly virtual therapy sessions Autism & Sound Virtual ….') }}
+                                        {{ __('home.Mobile-friendly virtual therapy sessions Autism & Sound Virtual ….') }}
                                     </p>
                                 </div>
                             </div>
@@ -514,7 +514,7 @@
                     <!-- Resources Title with Beautiful Gradient -->
                     <h3 class="text-5xl md:text-6xl font-elegant font-bold mb-6 leading-tight">
                         <span class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent drop-shadow-sm">
-                            {{ __('site.Resource') }}
+                            {{ __('home.Resource') }}
                         </span>
                     </h3>
                     <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
@@ -569,14 +569,14 @@
                                             <i class="fas fa-calendar-alt text-white text-sm"></i>
                                         </div>
                                         <p class="text-sm font-medium text-gray-600">
-                                            {{ now()->diffInDays($blog->created_at) === 0 ? __('site.today') : (now()->diffInDays($blog->created_at) === 1 ? __('site.1_day_ago') : __('site.x_days_ago', ['count' => now()->diffInDays($blog->created_at)])) }}
+                                            {{ now()->diffInDays($blog->created_at) === 0 ? __('home.today') : (now()->diffInDays($blog->created_at) === 1 ? __('home.1_day_ago') : __('home.x_days_ago', ['count' => now()->diffInDays($blog->created_at)])) }}
                                         </p>
                                     </div>
                                     <a href="{{ route('blog.show', ['blog' => $blog->id]) }}" 
                                        class="group/link inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 
                                               text-white font-semibold text-sm rounded-xl shadow-lg hover:shadow-xl
                                               transform hover:scale-105 transition-all duration-300">
-                                        {{ __('site.learn more') }}
+                                        {{ __('home.learn more') }}
                                         <i class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300"></i>
                                     </a>
                                 </div>
@@ -603,21 +603,21 @@
                 <div class="text-section text-white">
                     @if (App::getLocale() == 'ar')
                         <h1 class="text-4xl md:text-5xl font-elegant font-bold leading-tight">
-                            {{ __('site.start') }}<br>
-                            <span class="text-accent-200">{{ __('site.Journey') }}</span> {{ __('site.Healing') }}<br>
-                            {{ __('site.Your') }} <span class="text-accent-200">{{ __('site.today') }}</span>
+                            {{ __('home.start') }}<br>
+                            <span class="text-accent-200">{{ __('home.Journey') }}</span> {{ __('home.Healing') }}<br>
+                            {{ __('home.Your') }} <span class="text-accent-200">{{ __('home.today') }}</span>
                         </h1>
                     @elseif (App::getLocale() == 'fr')
                         <h1 class="text-4xl md:text-5xl font-elegant font-bold leading-tight">
-                            {{ __('site.start') }}<br>
-                            {{ __('site.Your') }} <span class="text-accent-200">{{ __('site.Journey') }}</span><br>
-                            <span class="text-accent-200">{{ __('site.Healing') }}</span> {{ __('site.today') }}
+                            {{ __('home.start') }}<br>
+                            {{ __('home.Your') }} <span class="text-accent-200">{{ __('home.Journey') }}</span><br>
+                            <span class="text-accent-200">{{ __('home.Healing') }}</span> {{ __('home.today') }}
                         </h1>
                     @else
                         <h1 class="text-4xl md:text-5xl font-elegant font-bold leading-tight">
-                            {{ __('site.start') }}<br>
-                            {{ __('site.Your') }} <span class="text-accent-200">{{ __('site.Healing') }}</span><br>
-                            <span class="text-accent-200">{{ __('site.Journey') }}</span> {{ __('site.today') }}
+                            {{ __('home.start') }}<br>
+                            {{ __('home.Your') }} <span class="text-accent-200">{{ __('home.Healing') }}</span><br>
+                            <span class="text-accent-200">{{ __('home.Journey') }}</span> {{ __('home.today') }}
                         </h1>
                     @endif
                 </div>
@@ -628,15 +628,15 @@
                         @csrf
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <input type="text" name="first_name" 
-                                   placeholder="{{ __('site.First Name') }}" 
+                                   placeholder="{{ __('home.First Name') }}" 
                                    required
                                    class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-accent-400 transition-all duration-300">
                             <input type="text" name="surname" 
-                                   placeholder="{{ __('site.Surname') }}"
+                                   placeholder="{{ __('home.Surname') }}"
                                    class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-accent-400 transition-all duration-300">
                         </div>
                         <input name="email" type="email" 
-                               placeholder="{{ __('site.Email') }}" 
+                               placeholder="{{ __('home.Email') }}" 
                                required
                                class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-accent-400 transition-all duration-300">
                         <select name="subject"
@@ -646,14 +646,14 @@
                             @endforeach
                         </select>
                         <textarea name="message" 
-                                  placeholder="{{ __('site.Message') }}" 
+                                  placeholder="{{ __('home.Message') }}" 
                                   required
                                   rows="4"
                                   class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-accent-400 transition-all duration-300 resize-none"></textarea>
                         <input type="hidden" name="cta_source" value="homePage">
                         <button type="submit" 
                                 class="w-full px-6 py-3 bg-accent-500 hover:bg-accent-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                            {{ __('site.Submit') }}
+                            {{ __('home.Submit') }}
                         </button>
                     </form>
                 </div>
@@ -673,11 +673,11 @@
         <div class="relative max-w-4xl mx-auto px-6 text-center">
             <div class="animate-fade-in-up">
                 <h2 class="text-4xl md:text-5xl font-elegant font-bold text-white mb-6 leading-tight">
-                    {{ __('site.Partner with') }} 
-                    <span class="text-accent-200">{{ __("site.Sama'a") }}</span>
+                    {{ __('home.Partner with') }} 
+                    <span class="text-accent-200">{{ __("home.Sama'a") }}</span>
                 </h2>
                 <p class="text-xl text-white/90 mb-10 leading-relaxed max-w-2xl mx-auto">
-                    {{ __('site.Expand your practice with AI-driven music therapy') }}
+                    {{ __('home.Expand your practice with AI-driven music therapy') }}
                 </p>
                 
                 <div class="animate-fade-in-up" style="animation-delay: 0.2s;">
@@ -686,7 +686,7 @@
                               font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl
                               transform hover:-translate-y-1 hover:scale-105 
                               transition-all duration-300 group">
-                        {{ __('site.Let\'s Partner Up') }}
+                        {{ __('home.Let’s Partner Up') }}
                         <i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-1 transition-transform duration-300"></i>
                     </a>
                 </div>
