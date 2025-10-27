@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'Contact' => 'تواصل',
+    'Get In Touch' => 'تواصل معنا',
+    'Were Here to Help You Heal' => 'نحن هنا لمساعدتك على الشفاء',
+    'contact-description' => 'سواء كنت أحد الوالدين الذين يستكشفون خيارات العلاج، أو معالجًا مهتمًا بالتعاون، أو مؤسسة رعاية صحية تبحث عن شراكات، فإن فريق سمع جاهز للمساعدة.',
+    'Message' => 'أرسل لنا',
+    'Lets Start Your Journey' => 'لنبدأ رحلتك',
+    'Enter Your Name' => 'أدخل اسمك',
+    'Phone Number' => 'رقم الهاتف',
+    'Email Address' => 'البريد الاكتروني',
+    'Subject' => 'الموضوع',
+    'Choose Subject' => 'اختر موضوع',
+    'general_inquiry' => 'استفسار عام',
+    'therapist_registration' => 'تسجيل المعالج',
+    'institutional_partnership' => 'شراكة مؤسسية',
+    'technical_support' => 'الدعم الفني',
+    'Your Message' => 'الرسالة',
+    'How can we support your healing journey?' => 'كيف يمكننا دعم رحلة الشفاء الخاصة بك؟',
+    'Submit' => 'أرسل',
+    'Follow SAMAA' => 'متابعة سمع:',
+    'Join Our Newsletter' => 'انضم إلى نشرتنا الإخبارية:',
+    'Get free sound therapy tips and updates' => 'احصل على نصائح وتحديثات مجانية حول العلاج الصوتي',
+];

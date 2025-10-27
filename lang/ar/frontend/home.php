@@ -1,0 +1,25 @@
+<?php
+
+return [
+    'Welcome to SAMAA' => 'أهلاً بكم في سمع',
+    'Hear to Heal' => 'صحتك في سمعك',
+    'When healthcare professionals educate you using sound to enhance your health and well-being.' => 'عندما يقوم متخصصو الرعاية الصحية بتثقيفك باستخدام الصوت لتعزيز صحتك ورفاهيتك.',
+    'Music Therapy' => 'العلاج بالموسيقى',
+    'Music Therapy (description)' => 'تجمع SAMAA بين القوة العلاجية للموسيقى والذكاء الاصطناعي لتقديم تجارب علاجية موسيقية شخصية مصممة خصيصًا لدعم الشفاء العاطفي والجسدي. SAMAA، المعتمدة من الجمعية الأمريكية الأوروبية للعلاج بالموسيقى، تقدم نهجًا قائمًا على أسس علمية لتعزيز الصحة العقلية والجسدية.',
+    'What is Music Therapy?' => 'ما هو العلاج بالموسيقى؟',
+    'What is Music Therapy (answer)' => 'غالبًا ما يُظهر الأطفال المصابون باضطراب طيف التوحد ضعفًا في الاتصال بين شبكات الدماغ الحسية والحركية. وقد أظهر العلاج الصوتي نتائج واعدة في معالجة هذه التحديات العصبية. فالاستماع إلى الموسيقى يُهيئ حالة من الهدوء والسكينة، مما يُساعد الأفراد على الانتقال من الضيق إلى التقبل.',
+    'Music Selection' => 'اختيار الموسيقى',
+    'Choose from a variety of music genres and styles to create your personalized therapeutic experience.' => 'اختر من مجموعة متنوعة من الأنواع والأساليب الموسيقية لتكوين تجربة علاجية خاصة لك.',
+    'Mood Enhancement' => 'تحسين المزاج',
+    'Enhance your mood by selecting music that matches your emotions and feelings.' => 'حسّن مزاجك من خلال اختيار الموسيقى التي تتناسب مع مشاعرك وأحاسيسك.',
+    'Relaxation' => 'الاسترخاء',
+    'Immerse yourself in calming melodies to unwind, reduce stress, and find tranquility.' => 'اندمج في الألحان الهادئة للاسترخاء، وتقليل التوتر، والبحث عن السكون.',
+    'Sound Therapy and Composers' => 'العلاج الصوتي والمؤلفون',
+    'Learn about the role of music therapy in healing and relaxation.' => 'تعرف على دور العلاج بالموسيقى في الشفاء والاسترخاء.',
+    'LISTEN TO MUSIC' => 'استمع إلى الموسيقى',
+    'How' => 'كيف',
+    'Works' => 'تعمل',
+    'You Share Your Needs' => 'تشارك احتياجاتك',
+    'SAMAA Creates Personalized Sessions' => 'سما تنشئ جلسات مخصصة',
+    'You Listen, Heal, and Grow' => 'تستمع، تشفى، وتنمو',
+];

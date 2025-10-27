@@ -1,0 +1,442 @@
+/* ==========================================================================
+   SAMAA Admin Panel - Responsive Design
+   Mobile and Tablet optimizations
+   ========================================================================== */
+
+/* ==========================================================================
+   MOBILE FIRST APPROACH
+   ========================================================================== */
+
+/* Base mobile styles are included in other CSS files */
+/* This file contains specific responsive overrides and mobile-only styles */
+
+/* ==========================================================================
+   MOBILE NAVIGATION (< 768px)
+   ========================================================================== */
+
+@media (max-width: 767.98px) {
+    .admin-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        transform: translateX(-100%);
+        z-index: 9999;
+        transition: transform var(--admin-transition-normal);
+    }
+
+    .admin-sidebar.open {
+        transform: translateX(0);
+    }
+
+    .admin-sidebar-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 9998;
+        opacity: 0;
+        visibility: hidden;
+        transition: all var(--admin-transition-normal);
+    }
+
+    .admin-sidebar.open + .admin-sidebar-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .admin-main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .admin-mobile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: var(--admin-space-4);
+        background: var(--admin-bg-primary);
+        border-bottom: 1px solid var(--admin-border-light);
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+    }
+
+    .admin-mobile-menu-btn {
+        background: none;
+        border: none;
+        padding: var(--admin-space-2);
+        border-radius: var(--admin-radius-md);
+        cursor: pointer;
+        transition: background-color var(--admin-transition-normal);
+    }
+
+    .admin-mobile-menu-btn:hover {
+        background: var(--admin-gray-100);
+    }
+
+    .admin-mobile-logo {
+        font-size: var(--admin-font-size-lg);
+        font-weight: 700;
+        color: var(--admin-primary);
+    }
+
+    .admin-mobile-user {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 2px solid var(--admin-border-light);
+    }
+}
+
+/* ==========================================================================
+   TABLET LANDSCAPE (768px - 1023px)
+   ========================================================================== */
+
+@media (min-width: 768px) and (max-width: 1023.98px) {
+    .admin-sidebar {
+        width: 240px;
+    }
+
+    .admin-main {
+        margin-left: 240px;
+    }
+
+    .admin-sidebar.collapsed {
+        width: 60px;
+    }
+
+    .admin-sidebar.collapsed ~ .admin-content-wrapper .admin-main {
+        margin-left: 60px;
+    }
+
+    .admin-content {
+        padding: var(--admin-space-6);
+    }
+
+    .admin-page-header {
+        padding: var(--admin-space-5) var(--admin-space-6);
+    }
+
+    .admin-page-title {
+        font-size: var(--admin-font-size-2xl);
+    }
+}
+
+/* ==========================================================================
+   MOBILE SPECIFIC COMPONENTS
+   ========================================================================== */
+
+@media (max-width: 767.98px) {
+    /* Tables become scrollable cards */
+    .admin-table-container {
+        border-radius: var(--admin-radius-lg);
+        overflow: hidden;
+    }
+
+    .admin-table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .admin-table {
+        min-width: 600px;
+    }
+
+    /* Cards stack vertically */
+    .admin-dashboard-stats,
+    .admin-patient-grid {
+        grid-template-columns: 1fr;
+        gap: var(--admin-space-4);
+    }
+
+    /* Form inputs take full width */
+    .admin-form-grid {
+        grid-template-columns: 1fr;
+        gap: var(--admin-space-4);
+    }
+
+    /* Button groups stack */
+    .admin-btn-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .admin-btn-group .admin-btn {
+        width: 100%;
+        border-radius: var(--admin-radius-md);
+        margin-left: 0;
+        margin-top: -1px;
+    }
+
+    .admin-btn-group .admin-btn:first-child {
+        margin-top: 0;
+    }
+
+    /* Page actions stack */
+    .admin-page-actions {
+        flex-direction: column;
+        width: 100%;
+        gap: var(--admin-space-3);
+    }
+
+    .admin-page-actions .admin-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    /* Search bars stack */
+    .admin-search-filters {
+        grid-template-columns: 1fr;
+        gap: var(--admin-space-3);
+    }
+
+    /* Modal adjustments */
+    .admin-modal-dialog {
+        margin: var(--admin-space-4);
+        max-width: calc(100% - var(--admin-space-8));
+    }
+
+    /* Patient cards become full width */
+    .admin-patient-card {
+        padding: var(--admin-space-4);
+    }
+
+    .admin-patient-info {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--admin-space-3);
+    }
+
+    .admin-patient-meta {
+        grid-template-columns: 1fr;
+        gap: var(--admin-space-2);
+    }
+
+    /* Content spacing */
+    .admin-content {
+        padding: var(--admin-space-4);
+    }
+
+    .admin-content-header {
+        margin-bottom: var(--admin-space-6);
+        text-align: center;
+    }
+
+    .admin-content-title {
+        font-size: var(--admin-font-size-xl);
+    }
+}
+
+/* ==========================================================================
+   SMALL MOBILE (< 480px)
+   ========================================================================== */
+
+@media (max-width: 479.98px) {
+    .admin-content {
+        padding: var(--admin-space-3);
+    }
+
+    .admin-card {
+        padding: var(--admin-space-4);
+    }
+
+    .admin-page-title {
+        font-size: var(--admin-font-size-xl);
+    }
+
+    .admin-content-title {
+        font-size: var(--admin-font-size-lg);
+    }
+
+    .admin-stat-card {
+        padding: var(--admin-space-4);
+        gap: var(--admin-space-3);
+    }
+
+    .admin-stat-icon {
+        width: 48px;
+        height: 48px;
+    }
+
+    .admin-stat-number {
+        font-size: var(--admin-font-size-2xl);
+    }
+
+    .admin-patient-card {
+        padding: var(--admin-space-3);
+    }
+
+    .admin-patient-avatar {
+        width: 48px;
+        height: 48px;
+    }
+
+    .admin-action-btn {
+        width: 36px;
+        height: 36px;
+    }
+
+    .admin-form-card {
+        padding: var(--admin-space-4);
+    }
+
+    .admin-form-title {
+        font-size: var(--admin-font-size-xl);
+    }
+
+    .admin-btn {
+        padding: var(--admin-space-3) var(--admin-space-4);
+        font-size: var(--admin-font-size-sm);
+    }
+}
+
+/* ==========================================================================
+   TOUCH OPTIMIZATIONS
+   ========================================================================== */
+
+@media (hover: none) and (pointer: coarse) {
+    /* Increase touch targets for mobile devices */
+    .admin-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .admin-nav-link {
+        padding: var(--admin-space-4);
+    }
+
+    .admin-form-control {
+        padding: var(--admin-space-4);
+        font-size: 16px; /* Prevent zoom on iOS */
+    }
+
+    .admin-action-btn {
+        min-width: 44px;
+        min-height: 44px;
+    }
+
+    /* Remove hover effects on touch devices */
+    .admin-card:hover,
+    .admin-btn:hover,
+    .admin-nav-link:hover {
+        transform: none;
+        box-shadow: var(--admin-shadow-md);
+    }
+}
+
+/* ==========================================================================
+   LANDSCAPE ORIENTATION ADJUSTMENTS
+   ========================================================================== */
+
+@media (max-width: 767.98px) and (orientation: landscape) {
+    .admin-sidebar {
+        width: 280px;
+    }
+
+    .admin-page-header {
+        padding: var(--admin-space-3) var(--admin-space-4);
+    }
+
+    .admin-page-title {
+        font-size: var(--admin-font-size-xl);
+    }
+
+    .admin-mobile-header {
+        padding: var(--admin-space-3) var(--admin-space-4);
+    }
+}
+
+/* ==========================================================================
+   PRINT STYLES
+   ========================================================================== */
+
+@media print {
+    .admin-sidebar,
+    .admin-mobile-header,
+    .admin-page-actions,
+    .admin-action-btn,
+    .admin-btn {
+        display: none !important;
+    }
+
+    .admin-main {
+        margin-left: 0 !important;
+        width: 100% !important;
+    }
+
+    .admin-content {
+        padding: 0 !important;
+    }
+
+    .admin-card {
+        border: 1px solid #000 !important;
+        box-shadow: none !important;
+        break-inside: avoid;
+    }
+
+    .admin-table {
+        border-collapse: collapse;
+    }
+
+    .admin-table th,
+    .admin-table td {
+        border: 1px solid #000 !important;
+        padding: 8px !important;
+    }
+
+    /* Ensure text is black for printing */
+    * {
+        color: #000 !important;
+        background: #fff !important;
+    }
+}
+
+/* ==========================================================================
+   HIGH CONTRAST MODE
+   ========================================================================== */
+
+@media (prefers-contrast: high) {
+    :root {
+        --admin-border-light: #000;
+        --admin-border-medium: #000;
+        --admin-text-secondary: #000;
+        --admin-text-muted: #333;
+    }
+
+    .admin-btn {
+        border-width: 2px;
+        font-weight: 700;
+    }
+
+    .admin-card {
+        border-width: 2px;
+    }
+
+    .admin-form-control {
+        border-width: 2px;
+    }
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        transition-delay: 0ms !important;
+    }
+
+    .admin-card:hover,
+    .admin-btn:hover,
+    .admin-action-btn:hover {
+        transform: none;
+    }
+}

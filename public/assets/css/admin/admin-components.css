@@ -1,0 +1,625 @@
+/* ==========================================================================
+   SAMAA Admin Panel - Components
+   Buttons, Forms, Tables, Cards, and UI Components
+   ========================================================================== */
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+/* Base Button Styles */
+.admin-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--admin-space-2);
+    padding: var(--admin-space-3) var(--admin-space-6);
+    font-family: var(--admin-font-family);
+    font-size: var(--admin-font-size-base);
+    font-weight: 600;
+    line-height: 1.5;
+    text-align: center;
+    text-decoration: none;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    border: 2px solid transparent;
+    border-radius: var(--admin-radius-md);
+    transition: all var(--admin-transition-normal);
+    background-color: var(--admin-bg-primary);
+    color: var(--admin-text-primary);
+}
+
+.admin-btn:focus {
+    outline: 2px solid var(--admin-primary);
+    outline-offset: 2px;
+}
+
+.admin-btn:disabled,
+.admin-btn.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Button Variants */
+.admin-btn-primary {
+    background: linear-gradient(
+        135deg,
+        var(--admin-primary) 0%,
+        var(--admin-primary-hover) 100%
+    );
+    border-color: var(--admin-primary);
+    color: var(--admin-text-inverse);
+}
+
+.admin-btn-primary:hover:not(:disabled) {
+    background: linear-gradient(
+        135deg,
+        var(--admin-primary-hover) 0%,
+        var(--admin-primary) 100%
+    );
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(79, 70, 229, 0.3);
+}
+
+.admin-btn-secondary {
+    background: linear-gradient(
+        135deg,
+        var(--admin-secondary) 0%,
+        var(--admin-secondary-hover) 100%
+    );
+    border-color: var(--admin-secondary);
+    color: var(--admin-text-inverse);
+}
+
+.admin-btn-secondary:hover:not(:disabled) {
+    background: linear-gradient(
+        135deg,
+        var(--admin-secondary-hover) 0%,
+        var(--admin-secondary) 100%
+    );
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(107, 114, 128, 0.3);
+}
+
+.admin-btn-success {
+    background: linear-gradient(
+        135deg,
+        var(--admin-success) 0%,
+        var(--admin-success-hover) 100%
+    );
+    border-color: var(--admin-success);
+    color: var(--admin-text-inverse);
+}
+
+.admin-btn-success:hover:not(:disabled) {
+    background: linear-gradient(
+        135deg,
+        var(--admin-success-hover) 0%,
+        var(--admin-success) 100%
+    );
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(16, 185, 129, 0.3);
+}
+
+.admin-btn-danger {
+    background: linear-gradient(
+        135deg,
+        var(--admin-danger) 0%,
+        var(--admin-danger-hover) 100%
+    );
+    border-color: var(--admin-danger);
+    color: var(--admin-text-inverse);
+}
+
+.admin-btn-danger:hover:not(:disabled) {
+    background: linear-gradient(
+        135deg,
+        var(--admin-danger-hover) 0%,
+        var(--admin-danger) 100%
+    );
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(239, 68, 68, 0.3);
+}
+
+.admin-btn-warning {
+    background: linear-gradient(
+        135deg,
+        var(--admin-warning) 0%,
+        var(--admin-warning-hover) 100%
+    );
+    border-color: var(--admin-warning);
+    color: var(--admin-text-inverse);
+}
+
+.admin-btn-warning:hover:not(:disabled) {
+    background: linear-gradient(
+        135deg,
+        var(--admin-warning-hover) 0%,
+        var(--admin-warning) 100%
+    );
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.3);
+}
+
+.admin-btn-info {
+    background: linear-gradient(
+        135deg,
+        var(--admin-info) 0%,
+        var(--admin-info-hover) 100%
+    );
+    border-color: var(--admin-info);
+    color: var(--admin-text-inverse);
+}
+
+.admin-btn-info:hover:not(:disabled) {
+    background: linear-gradient(
+        135deg,
+        var(--admin-info-hover) 0%,
+        var(--admin-info) 100%
+    );
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+}
+
+/* Outline Button Variants */
+.admin-btn-outline-primary {
+    background: transparent;
+    border-color: var(--admin-primary);
+    color: var(--admin-primary);
+}
+
+.admin-btn-outline-primary:hover:not(:disabled) {
+    background: var(--admin-primary);
+    color: var(--admin-text-inverse);
+}
+
+.admin-btn-outline-secondary {
+    background: transparent;
+    border-color: var(--admin-secondary);
+    color: var(--admin-secondary);
+}
+
+.admin-btn-outline-secondary:hover:not(:disabled) {
+    background: var(--admin-secondary);
+    color: var(--admin-text-inverse);
+}
+
+/* Button Sizes */
+.admin-btn-xs {
+    padding: var(--admin-space-1) var(--admin-space-3);
+    font-size: var(--admin-font-size-xs);
+}
+
+.admin-btn-sm {
+    padding: var(--admin-space-2) var(--admin-space-4);
+    font-size: var(--admin-font-size-sm);
+}
+
+.admin-btn-lg {
+    padding: var(--admin-space-4) var(--admin-space-8);
+    font-size: var(--admin-font-size-lg);
+}
+
+.admin-btn-xl {
+    padding: var(--admin-space-5) var(--admin-space-10);
+    font-size: var(--admin-font-size-xl);
+}
+
+/* Button Groups */
+.admin-btn-group {
+    display: inline-flex;
+    border-radius: var(--admin-radius-md);
+    overflow: hidden;
+}
+
+.admin-btn-group .admin-btn {
+    border-radius: 0;
+    margin-left: -2px;
+}
+
+.admin-btn-group .admin-btn:first-child {
+    border-top-left-radius: var(--admin-radius-md);
+    border-bottom-left-radius: var(--admin-radius-md);
+    margin-left: 0;
+}
+
+.admin-btn-group .admin-btn:last-child {
+    border-top-right-radius: var(--admin-radius-md);
+    border-bottom-right-radius: var(--admin-radius-md);
+}
+
+/* ==========================================================================
+   FORMS
+   ========================================================================== */
+
+/* Form Groups */
+.admin-form-group {
+    margin-bottom: var(--admin-space-6);
+}
+
+.admin-form-label {
+    display: block;
+    margin-bottom: var(--admin-space-2);
+    font-size: var(--admin-font-size-sm);
+    font-weight: 600;
+    color: var(--admin-text-primary);
+}
+
+.admin-form-label.required::after {
+    content: " *";
+    color: var(--admin-danger);
+}
+
+/* Form Controls */
+.admin-form-control {
+    display: block;
+    width: 100%;
+    padding: var(--admin-space-3) var(--admin-space-4);
+    font-family: var(--admin-font-family);
+    font-size: var(--admin-font-size-base);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--admin-text-primary);
+    background-color: var(--admin-bg-primary);
+    background-clip: padding-box;
+    border: 2px solid var(--admin-border-light);
+    border-radius: var(--admin-radius-md);
+    transition: border-color var(--admin-transition-normal),
+        box-shadow var(--admin-transition-normal);
+}
+
+.admin-form-control:focus {
+    border-color: var(--admin-primary);
+    outline: 0;
+    box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+}
+
+.admin-form-control::placeholder {
+    color: var(--admin-text-muted);
+    opacity: 1;
+}
+
+.admin-form-control:disabled,
+.admin-form-control[readonly] {
+    background-color: var(--admin-gray-100);
+    opacity: 1;
+}
+
+/* Form Control Sizes */
+.admin-form-control-sm {
+    padding: var(--admin-space-2) var(--admin-space-3);
+    font-size: var(--admin-font-size-sm);
+}
+
+.admin-form-control-lg {
+    padding: var(--admin-space-4) var(--admin-space-6);
+    font-size: var(--admin-font-size-lg);
+}
+
+/* Select Controls */
+.admin-form-select {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right var(--admin-space-3) center;
+    background-repeat: no-repeat;
+    background-size: 16px 12px;
+    padding-right: var(--admin-space-10);
+}
+
+/* Checkbox and Radio */
+.admin-form-check {
+    display: block;
+    min-height: 1.5rem;
+    padding-left: 2rem;
+    margin-bottom: var(--admin-space-3);
+}
+
+.admin-form-check-input {
+    float: left;
+    margin-left: -2rem;
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-top: 0.125rem;
+    vertical-align: top;
+    background-color: var(--admin-bg-primary);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border: 2px solid var(--admin-border-medium);
+    border-radius: var(--admin-radius-sm);
+    transition: all var(--admin-transition-normal);
+}
+
+.admin-form-check-input:checked {
+    background-color: var(--admin-primary);
+    border-color: var(--admin-primary);
+}
+
+.admin-form-check-label {
+    color: var(--admin-text-primary);
+    cursor: pointer;
+}
+
+/* Form Validation */
+.admin-form-control.is-valid {
+    border-color: var(--admin-success);
+}
+
+.admin-form-control.is-invalid {
+    border-color: var(--admin-danger);
+}
+
+.admin-valid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: var(--admin-space-1);
+    font-size: var(--admin-font-size-sm);
+    color: var(--admin-success);
+}
+
+.admin-invalid-feedback {
+    display: block;
+    width: 100%;
+    margin-top: var(--admin-space-1);
+    font-size: var(--admin-font-size-sm);
+    color: var(--admin-danger);
+}
+
+/* Input Groups */
+.admin-input-group {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 100%;
+}
+
+.admin-input-group-text {
+    display: flex;
+    align-items: center;
+    padding: var(--admin-space-3) var(--admin-space-4);
+    font-size: var(--admin-font-size-base);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--admin-text-secondary);
+    text-align: center;
+    white-space: nowrap;
+    background-color: var(--admin-gray-100);
+    border: 2px solid var(--admin-border-light);
+    border-radius: var(--admin-radius-md);
+}
+
+/* ==========================================================================
+   TABLES
+   ========================================================================== */
+
+.admin-table-container {
+    background: var(--admin-bg-primary);
+    border-radius: var(--admin-radius-xl);
+    border: 1px solid var(--admin-border-light);
+    overflow: hidden;
+    box-shadow: var(--admin-shadow-md);
+}
+
+.admin-table {
+    width: 100%;
+    margin-bottom: 0;
+    border-collapse: collapse;
+    background-color: transparent;
+}
+
+.admin-table thead th {
+    background: linear-gradient(
+        135deg,
+        var(--admin-gray-50) 0%,
+        var(--admin-gray-100) 100%
+    );
+    color: var(--admin-text-primary);
+    font-weight: 700;
+    padding: var(--admin-space-5) var(--admin-space-6);
+    text-align: left;
+    border-bottom: 2px solid var(--admin-border-medium);
+    font-size: var(--admin-font-size-sm);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.admin-table tbody td {
+    padding: var(--admin-space-5) var(--admin-space-6);
+    vertical-align: middle;
+    border-bottom: 1px solid var(--admin-border-light);
+    color: var(--admin-text-primary);
+    font-size: var(--admin-font-size-base);
+}
+
+.admin-table tbody tr {
+    transition: background-color var(--admin-transition-normal);
+}
+
+.admin-table tbody tr:hover {
+    background: linear-gradient(
+        135deg,
+        var(--admin-gray-50) 0%,
+        var(--admin-gray-100) 100%
+    );
+}
+
+.admin-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Table Variants */
+.admin-table-striped tbody tr:nth-of-type(odd) {
+    background-color: var(--admin-gray-50);
+}
+
+.admin-table-bordered {
+    border: 1px solid var(--admin-border-light);
+}
+
+.admin-table-bordered thead th,
+.admin-table-bordered tbody td {
+    border: 1px solid var(--admin-border-light);
+}
+
+/* ==========================================================================
+   CARDS
+   ========================================================================== */
+
+.admin-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: var(--admin-bg-primary);
+    background-clip: border-box;
+    border: 1px solid var(--admin-border-light);
+    border-radius: var(--admin-radius-xl);
+    box-shadow: var(--admin-shadow-md);
+    transition: all var(--admin-transition-normal);
+}
+
+.admin-card:hover {
+    box-shadow: var(--admin-shadow-lg);
+    transform: translateY(-2px);
+}
+
+.admin-card-header {
+    padding: var(--admin-space-6);
+    margin-bottom: 0;
+    background: linear-gradient(
+        135deg,
+        var(--admin-gray-50) 0%,
+        var(--admin-gray-100) 100%
+    );
+    border-bottom: 1px solid var(--admin-border-light);
+    border-top-left-radius: var(--admin-radius-xl);
+    border-top-right-radius: var(--admin-radius-xl);
+}
+
+.admin-card-body {
+    flex: 1 1 auto;
+    padding: var(--admin-space-6);
+}
+
+.admin-card-footer {
+    padding: var(--admin-space-6);
+    margin-top: 0;
+    background: linear-gradient(
+        135deg,
+        var(--admin-gray-50) 0%,
+        var(--admin-gray-100) 100%
+    );
+    border-top: 1px solid var(--admin-border-light);
+    border-bottom-left-radius: var(--admin-radius-xl);
+    border-bottom-right-radius: var(--admin-radius-xl);
+}
+
+.admin-card-title {
+    margin-bottom: var(--admin-space-3);
+    font-size: var(--admin-font-size-xl);
+    font-weight: 700;
+    color: var(--admin-text-primary);
+}
+
+.admin-card-text {
+    margin-bottom: var(--admin-space-4);
+    color: var(--admin-text-secondary);
+}
+
+/* ==========================================================================
+   ALERTS
+   ========================================================================== */
+
+.admin-alert {
+    position: relative;
+    padding: var(--admin-space-4) var(--admin-space-6);
+    margin-bottom: var(--admin-space-4);
+    border: 2px solid transparent;
+    border-radius: var(--admin-radius-lg);
+    font-size: var(--admin-font-size-base);
+}
+
+.admin-alert-primary {
+    color: var(--admin-primary);
+    background-color: var(--admin-primary-light);
+    border-color: var(--admin-primary);
+}
+
+.admin-alert-success {
+    color: var(--admin-success);
+    background-color: var(--admin-success-light);
+    border-color: var(--admin-success);
+}
+
+.admin-alert-danger {
+    color: var(--admin-danger);
+    background-color: var(--admin-danger-light);
+    border-color: var(--admin-danger);
+}
+
+.admin-alert-warning {
+    color: var(--admin-warning);
+    background-color: var(--admin-warning-light);
+    border-color: var(--admin-warning);
+}
+
+.admin-alert-info {
+    color: var(--admin-info);
+    background-color: var(--admin-info-light);
+    border-color: var(--admin-info);
+}
+
+/* ==========================================================================
+   PAGINATION
+   ========================================================================== */
+
+.admin-pagination {
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: var(--admin-radius-md);
+    justify-content: center;
+    margin-top: var(--admin-space-6);
+}
+
+.admin-page-item {
+    margin: 0 var(--admin-space-1);
+}
+
+.admin-page-link {
+    position: relative;
+    display: block;
+    padding: var(--admin-space-3) var(--admin-space-4);
+    margin-left: 0;
+    line-height: 1.25;
+    color: var(--admin-text-primary);
+    text-decoration: none;
+    background-color: var(--admin-bg-primary);
+    border: 2px solid var(--admin-border-light);
+    border-radius: var(--admin-radius-md);
+    transition: all var(--admin-transition-normal);
+}
+
+.admin-page-link:hover {
+    color: var(--admin-primary);
+    background-color: var(--admin-gray-100);
+    border-color: var(--admin-border-medium);
+}
+
+.admin-page-item.active .admin-page-link {
+    color: var(--admin-text-inverse);
+    background-color: var(--admin-primary);
+    border-color: var(--admin-primary);
+}
+
+.admin-page-item.disabled .admin-page-link {
+    color: var(--admin-text-muted);
+    pointer-events: none;
+    cursor: auto;
+    background-color: var(--admin-gray-100);
+    border-color: var(--admin-border-light);
+}

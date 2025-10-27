@@ -1,7 +1,7 @@
 @extends('layouts.base')
 @section('content')
     <!-- Login Hero Section -->
-    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900">
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-blue-900 pt-20">
         <!-- Scientific Grid Pattern -->
         <div class="absolute inset-0 opacity-20">
             <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0); background-size: 50px 50px;"></div>
@@ -75,26 +75,26 @@
                     
                     <!-- Right Side - Login Form -->
                     <div class="relative">
-                        <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-8 lg:p-12 border border-white/20 shadow-2xl">
-                            <div class="text-center mb-8">
-                                <h3 class="text-3xl lg:text-4xl font-serif text-white mb-2">Sign In</h3>
-                                <p class="text-slate-300">Access your healing dashboard</p>
+                        <div class="bg-white/10 backdrop-blur-lg rounded-2xl p-6 lg:p-8 border border-white/20 shadow-2xl max-w-md mx-auto">
+                            <div class="text-center mb-6">
+                                <h3 class="text-2xl lg:text-3xl font-serif text-white mb-2">Sign In</h3>
+                                <p class="text-slate-300 text-sm">Access your healing dashboard</p>
                             </div>
                             
-                            <form class="space-y-6" action="{{ route('login') }}" method="POST">
+                            <form class="space-y-4" action="{{ route('login') }}" method="POST">
                                 @csrf
                                 
                                 <!-- Email Field -->
                                 <div>
-                                    <label for="email" class="block text-sm font-semibold text-white mb-3">Email Address</label>
+                                    <label for="email" class="block text-sm font-semibold text-white mb-2">Email Address</label>
                                     <div class="relative">
-                                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                            <svg class="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
                                                 <path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
                                             </svg>
                                         </div>
                                         <input type="email" id="email" name="email" 
-                                               class="w-full pl-12 pr-4 py-4 bg-white/20 border border-white/30 rounded-xl text-white placeholder-slate-300 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-300"
+                                               class="w-full pl-10 pr-3 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-slate-300 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-300 text-sm"
                                                placeholder="Enter your email address"
                                                value="{{ old('email') }}" required>
                                     </div>
@@ -105,15 +105,15 @@
                                 
                                 <!-- Password Field -->
                                 <div>
-                                    <label for="password" class="block text-sm font-semibold text-white mb-3">Password</label>
+                                    <label for="password" class="block text-sm font-semibold text-white mb-2">Password</label>
                                     <div class="relative">
-                                        <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-                                            <svg class="w-5 h-5 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
+                                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                            <svg class="w-4 h-4 text-slate-400" fill="currentColor" viewBox="0 0 24 24">
                                                 <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
                                             </svg>
                                         </div>
                                         <input type="password" id="password" name="password" 
-                                               class="w-full pl-12 pr-4 py-4 bg-white/20 border border-white/30 rounded-xl text-white placeholder-slate-300 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-300"
+                                               class="w-full pl-10 pr-3 py-3 bg-white/20 border border-white/30 rounded-lg text-white placeholder-slate-300 focus:ring-2 focus:ring-emerald-400 focus:border-emerald-400 transition-all duration-300 text-sm"
                                                placeholder="Enter your password" required>
                                     </div>
                                     @error('password')
@@ -123,35 +123,42 @@
                                 
                                 <!-- Remember Me & Forgot Password -->
                                 <div class="flex items-center justify-between">
-                                    <label class="flex items-center">
-                                        <input type="checkbox" name="remember" class="rounded border-white/30 bg-white/20 text-emerald-400 focus:ring-emerald-400 focus:ring-offset-0">
-                                        <span class="ml-2 text-sm text-slate-300">Remember me</span>
+                                    <label class="flex items-center cursor-pointer group">
+                                        <div class="relative">
+                                            <input type="checkbox" name="remember" class="sr-only peer">
+                                            <div class="w-5 h-5 bg-white/20 border-2 border-white/30 rounded-md transition-all duration-300 peer-checked:bg-gradient-to-r peer-checked:from-emerald-500 peer-checked:to-blue-500 peer-checked:border-emerald-400 group-hover:border-emerald-400/60">
+                                                <svg class="w-3 h-3 text-white absolute top-0.5 left-0.5 opacity-0 peer-checked:opacity-100 transition-opacity duration-300" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <span class="ml-3 text-sm text-slate-300 group-hover:text-white transition-colors duration-300 select-none">Remember me</span>
                                     </label>
-                                    <a href="#" class="text-sm text-emerald-400 hover:text-emerald-300 transition-colors duration-300">
+                                    <a href="#" class="text-sm text-emerald-400 hover:text-emerald-300 transition-colors duration-300 hover:underline">
                                         Forgot password?
                                     </a>
                                 </div>
                                 
                                 <!-- Submit Button -->
                                 <button type="submit" 
-                                        class="w-full px-8 py-4 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
+                                        class="w-full px-6 py-3 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg text-sm">
                                     Sign In to SAMAA
                                 </button>
                                 
                                 <!-- Divider -->
-                                <div class="relative my-8">
+                                <div class="relative my-6">
                                     <div class="absolute inset-0 flex items-center">
                                         <div class="w-full border-t border-white/20"></div>
                                     </div>
                                     <div class="relative flex justify-center text-sm">
-                                        <span class="px-4 bg-transparent text-slate-300">Don't have an account?</span>
+                                        <span class="px-3 bg-transparent text-slate-300 text-xs">Don't have an account?</span>
                                     </div>
                                 </div>
                                 
                                 <!-- Register Link -->
                                 <div class="text-center">
                                     <a href="{{ route('register') }}" 
-                                       class="inline-flex items-center px-6 py-3 border-2 border-emerald-400 text-emerald-400 hover:bg-emerald-400 hover:text-slate-900 font-semibold rounded-xl transition-all duration-300">
+                                       class="inline-flex items-center px-4 py-2 border-2 border-emerald-400 text-emerald-400 hover:bg-emerald-400 hover:text-slate-900 font-semibold rounded-lg transition-all duration-300 text-sm">
                                         Create New Account
                                     </a>
                                 </div>
@@ -159,8 +166,8 @@
                         </div>
                         
                         <!-- Decorative Elements -->
-                        <div class="absolute -top-4 -right-4 w-24 h-24 bg-gradient-to-br from-emerald-400/20 to-blue-400/20 rounded-full blur-xl"></div>
-                        <div class="absolute -bottom-4 -left-4 w-32 h-32 bg-gradient-to-br from-blue-400/20 to-teal-400/20 rounded-full blur-xl"></div>
+                        <div class="absolute -top-3 -right-3 w-16 h-16 bg-gradient-to-br from-emerald-400/20 to-blue-400/20 rounded-full blur-xl"></div>
+                        <div class="absolute -bottom-3 -left-3 w-20 h-20 bg-gradient-to-br from-blue-400/20 to-teal-400/20 rounded-full blur-xl"></div>
                     </div>
                 </div>
             </div>

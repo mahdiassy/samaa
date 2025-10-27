@@ -1,0 +1,370 @@
+/* ==========================================================================
+   SAMAA Admin Panel - Core Styles
+   Clean, organized admin styling without conflicts
+   ========================================================================== */
+
+/* CSS Variables for Consistent Theming */
+:root {
+    /* Primary Color Scheme */
+    --admin-primary: #4f46e5;
+    --admin-primary-hover: #7c3aed;
+    --admin-primary-light: #ede9fe;
+
+    /* Secondary Colors */
+    --admin-secondary: #6b7280;
+    --admin-secondary-hover: #4b5563;
+    --admin-secondary-light: #f9fafb;
+
+    /* Status Colors */
+    --admin-success: #10b981;
+    --admin-success-hover: #059669;
+    --admin-success-light: #d1fae5;
+
+    --admin-danger: #ef4444;
+    --admin-danger-hover: #dc2626;
+    --admin-danger-light: #fee2e2;
+
+    --admin-warning: #f59e0b;
+    --admin-warning-hover: #d97706;
+    --admin-warning-light: #fef3c7;
+
+    --admin-info: #3b82f6;
+    --admin-info-hover: #2563eb;
+    --admin-info-light: #dbeafe;
+
+    /* Neutral Colors */
+    --admin-gray-50: #f9fafb;
+    --admin-gray-100: #f3f4f6;
+    --admin-gray-200: #e5e7eb;
+    --admin-gray-300: #d1d5db;
+    --admin-gray-400: #9ca3af;
+    --admin-gray-500: #6b7280;
+    --admin-gray-600: #4b5563;
+    --admin-gray-700: #374151;
+    --admin-gray-800: #1f2937;
+    --admin-gray-900: #111827;
+
+    /* Background Colors */
+    --admin-bg-primary: #ffffff;
+    --admin-bg-secondary: #f8fafc;
+    --admin-bg-tertiary: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+
+    /* Text Colors */
+    --admin-text-primary: #1f2937;
+    --admin-text-secondary: #6b7280;
+    --admin-text-muted: #9ca3af;
+    --admin-text-inverse: #ffffff;
+
+    /* Border Colors */
+    --admin-border-light: #e5e7eb;
+    --admin-border-medium: #d1d5db;
+    --admin-border-dark: #9ca3af;
+
+    /* Shadow Definitions */
+    --admin-shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --admin-shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    --admin-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    --admin-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+
+    /* Border Radius */
+    --admin-radius-sm: 6px;
+    --admin-radius-md: 8px;
+    --admin-radius-lg: 12px;
+    --admin-radius-xl: 16px;
+    --admin-radius-2xl: 20px;
+
+    /* Spacing Scale */
+    --admin-space-1: 0.25rem;
+    --admin-space-2: 0.5rem;
+    --admin-space-3: 0.75rem;
+    --admin-space-4: 1rem;
+    --admin-space-5: 1.25rem;
+    --admin-space-6: 1.5rem;
+    --admin-space-8: 2rem;
+    --admin-space-10: 2.5rem;
+    --admin-space-12: 3rem;
+
+    /* Typography */
+    --admin-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        Oxygen, Ubuntu, Cantarell, sans-serif;
+    --admin-font-size-xs: 0.75rem;
+    --admin-font-size-sm: 0.875rem;
+    --admin-font-size-base: 1rem;
+    --admin-font-size-lg: 1.125rem;
+    --admin-font-size-xl: 1.25rem;
+    --admin-font-size-2xl: 1.5rem;
+    --admin-font-size-3xl: 1.875rem;
+    --admin-font-size-4xl: 2.25rem;
+
+    /* Transitions */
+    --admin-transition-fast: 0.15s ease-in-out;
+    --admin-transition-normal: 0.3s ease-in-out;
+    --admin-transition-slow: 0.5s ease-in-out;
+}
+
+/* Base Reset and Typography */
+.admin-panel {
+    font-family: var(--admin-font-family);
+    color: var(--admin-text-primary);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.admin-panel *,
+.admin-panel *::before,
+.admin-panel *::after {
+    box-sizing: border-box;
+}
+
+/* Text Selection */
+.admin-panel ::selection {
+    background-color: var(--admin-primary-light);
+    color: var(--admin-primary);
+}
+
+/* Focus Outline for Accessibility */
+.admin-panel *:focus {
+    outline: 2px solid var(--admin-primary);
+    outline-offset: 2px;
+}
+
+/* Remove focus outline for mouse users */
+.admin-panel *:focus:not(:focus-visible) {
+    outline: none;
+}
+
+/* Utility Classes */
+.admin-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.admin-hidden {
+    display: none !important;
+}
+
+.admin-invisible {
+    visibility: hidden;
+}
+
+/* Text Utilities */
+.admin-text-left {
+    text-align: left;
+}
+.admin-text-center {
+    text-align: center;
+}
+.admin-text-right {
+    text-align: right;
+}
+.admin-text-justify {
+    text-align: justify;
+}
+
+.admin-text-primary {
+    color: var(--admin-text-primary);
+}
+.admin-text-secondary {
+    color: var(--admin-text-secondary);
+}
+.admin-text-muted {
+    color: var(--admin-text-muted);
+}
+.admin-text-inverse {
+    color: var(--admin-text-inverse);
+}
+
+/* Spacing Utilities */
+.admin-m-0 {
+    margin: 0;
+}
+.admin-m-1 {
+    margin: var(--admin-space-1);
+}
+.admin-m-2 {
+    margin: var(--admin-space-2);
+}
+.admin-m-3 {
+    margin: var(--admin-space-3);
+}
+.admin-m-4 {
+    margin: var(--admin-space-4);
+}
+.admin-m-6 {
+    margin: var(--admin-space-6);
+}
+.admin-m-8 {
+    margin: var(--admin-space-8);
+}
+
+.admin-p-0 {
+    padding: 0;
+}
+.admin-p-1 {
+    padding: var(--admin-space-1);
+}
+.admin-p-2 {
+    padding: var(--admin-space-2);
+}
+.admin-p-3 {
+    padding: var(--admin-space-3);
+}
+.admin-p-4 {
+    padding: var(--admin-space-4);
+}
+.admin-p-6 {
+    padding: var(--admin-space-6);
+}
+.admin-p-8 {
+    padding: var(--admin-space-8);
+}
+
+/* Display Utilities */
+.admin-block {
+    display: block;
+}
+.admin-inline {
+    display: inline;
+}
+.admin-inline-block {
+    display: inline-block;
+}
+.admin-flex {
+    display: flex;
+}
+.admin-inline-flex {
+    display: inline-flex;
+}
+.admin-grid {
+    display: grid;
+}
+
+/* Flex Utilities */
+.admin-flex-col {
+    flex-direction: column;
+}
+.admin-flex-row {
+    flex-direction: row;
+}
+.admin-flex-wrap {
+    flex-wrap: wrap;
+}
+.admin-flex-nowrap {
+    flex-wrap: nowrap;
+}
+
+.admin-justify-start {
+    justify-content: flex-start;
+}
+.admin-justify-center {
+    justify-content: center;
+}
+.admin-justify-end {
+    justify-content: flex-end;
+}
+.admin-justify-between {
+    justify-content: space-between;
+}
+.admin-justify-around {
+    justify-content: space-around;
+}
+
+.admin-items-start {
+    align-items: flex-start;
+}
+.admin-items-center {
+    align-items: center;
+}
+.admin-items-end {
+    align-items: flex-end;
+}
+.admin-items-stretch {
+    align-items: stretch;
+}
+
+/* Width and Height Utilities */
+.admin-w-full {
+    width: 100%;
+}
+.admin-h-full {
+    height: 100%;
+}
+.admin-min-h-screen {
+    min-height: 100vh;
+}
+
+/* Background Utilities */
+.admin-bg-white {
+    background-color: var(--admin-bg-primary);
+}
+.admin-bg-gray-50 {
+    background-color: var(--admin-gray-50);
+}
+.admin-bg-gray-100 {
+    background-color: var(--admin-gray-100);
+}
+
+/* Border Utilities */
+.admin-border {
+    border: 1px solid var(--admin-border-light);
+}
+.admin-border-t {
+    border-top: 1px solid var(--admin-border-light);
+}
+.admin-border-b {
+    border-bottom: 1px solid var(--admin-border-light);
+}
+.admin-border-l {
+    border-left: 1px solid var(--admin-border-light);
+}
+.admin-border-r {
+    border-right: 1px solid var(--admin-border-light);
+}
+
+/* Border Radius Utilities */
+.admin-rounded-none {
+    border-radius: 0;
+}
+.admin-rounded-sm {
+    border-radius: var(--admin-radius-sm);
+}
+.admin-rounded {
+    border-radius: var(--admin-radius-md);
+}
+.admin-rounded-lg {
+    border-radius: var(--admin-radius-lg);
+}
+.admin-rounded-xl {
+    border-radius: var(--admin-radius-xl);
+}
+.admin-rounded-2xl {
+    border-radius: var(--admin-radius-2xl);
+}
+.admin-rounded-full {
+    border-radius: 50%;
+}
+
+/* Shadow Utilities */
+.admin-shadow-sm {
+    box-shadow: var(--admin-shadow-sm);
+}
+.admin-shadow {
+    box-shadow: var(--admin-shadow-md);
+}
+.admin-shadow-lg {
+    box-shadow: var(--admin-shadow-lg);
+}
+.admin-shadow-xl {
+    box-shadow: var(--admin-shadow-xl);
+}
+.admin-shadow-none {
+    box-shadow: none;
+}

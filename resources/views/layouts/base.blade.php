@@ -6,15 +6,15 @@
     @laravelPWA
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ __('site.SAMAA - Sound therapy and music healing platform. Personalized AI-driven therapeutic sessions for wellness and healing.') }}">
+    <meta name="description" content="{{ __('components.common.SAMAA - Sound therapy and music healing platform. Personalized AI-driven therapeutic sessions for wellness and healing.') }}">
     <meta name="keywords" content="music therapy, sound healing, AI therapy, wellness, mental health, SAMAA">
     <meta name="author" content="SAMAA">
     <meta property="og:title" content="SAMAA - Hear to Heal">
-    <meta property="og:description" content="{{ __('site.Personalized sound therapy powered by AI for your wellness journey.') }}">
+    <meta property="og:description" content="{{ __('components.common.Personalized sound therapy powered by AI for your wellness journey.') }}">
     <meta property="og:type" content="website">
     <meta property="og:url" content="{{ url()->current() }}">
     <meta property="og:image" content="{{ asset('assets/images/samaa-logo.png') }}">
-    <title>SAMAA - {{ __('site.Hear to Heal') }}</title>
+    <title>SAMAA - {{ __('components.common.Hear to Heal') }}</title>
 
     <!-- Preload critical resources -->
     <!-- <link rel="preload" href="{{ asset('assets/css/frontend/style.css') }}" as="style"> -->
@@ -275,14 +275,53 @@
             }
         }
     </style>
+
+    <!-- Mobile Menu JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.getElementById('mobileMenuToggle');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuBars = mobileMenuBtn.getElementsByTagName('span');
+            let isMenuOpen = false;
+
+            function toggleMenu() {
+                isMenuOpen = !isMenuOpen;
+                mobileMenu.classList.toggle('hidden');
+                
+                if (isMenuOpen) {
+                    // Animate to X
+                    menuBars[0].style.transform = 'translateY(6px) rotate(45deg)';
+                    menuBars[1].style.opacity = '0';
+                    menuBars[2].style.transform = 'translateY(-6px) rotate(-45deg)';
+                } else {
+                    // Reset to hamburger
+                    menuBars[0].style.transform = 'none';
+                    menuBars[1].style.opacity = '1';
+                    menuBars[2].style.transform = 'none';
+                }
+            }
+
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+
+            // Close menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (isMenuOpen && !mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+                    toggleMenu();
+                }
+            });
+        });
+    </script>
 </head>
 
 <body>
     <!-- Skip to Content Link for Accessibility -->
-    <a href="#main-content" class="skip-link">{{ __('site.Skip to main content') }}</a>
+    <a href="#main-content" class="sr-only block md:hidden focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-accent-500 focus:text-white focus:rounded-lg focus:shadow-lg">
+        {{ __('site.Skip to main content') }}
+    </a>
 
     <!-- Modern High-Contrast Navigation -->
     <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-lg border-b border-gray-700/50 shadow-lg transition-all duration-300">
+        <!-- Desktop Navigation Container -->
         <div class="max-w-7xl mx-auto px-6">
             <div class="flex items-center justify-between h-20">
                 <!-- Brand Logo with Animation -->
@@ -363,6 +402,15 @@
                         </a>
                     @endguest
 
+                    <!-- Mobile Menu Toggle Button -->
+                    <button class="md:hidden rounded-lg p-2 text-gray-200 hover:text-white hover:bg-gray-700/70 transition-all duration-300 animate-fade-in-down"
+                            onclick="document.getElementById('mobileMenu').classList.toggle('hidden')"
+                            id="mobileMenuToggle" style="animation-delay: 0.8s">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+
                     <!-- Professional Language Switcher -->
                     <div class="relative animate-fade-in-down" style="animation-delay: 0.7s">
                         <div class="group">
@@ -411,13 +459,15 @@
                     </div>
                 </div>
 
-                <!-- Mobile Menu Toggle -->
-                <button class="md:hidden flex flex-col space-y-1 p-3 animate-fade-in-down bg-accent-500/20 rounded-lg hover:bg-accent-500/30 transition-all duration-300" 
-                        id="mobileMenuToggle" style="animation-delay: 0.8s">
-                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
-                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
-                    <span class="w-6 h-0.5 bg-white transition-all duration-300"></span>
-                </button>
+                <!-- Mobile Menu Toggle Button -->
+                <div class="block md:hidden">
+                    <button class="flex flex-col justify-center items-center w-10 h-10 rounded-lg bg-accent-500/20 hover:bg-accent-500/30 transition-colors duration-300" 
+                            id="mobileMenuToggle">
+                        <span class="w-5 h-0.5 bg-white mb-1 transform transition-transform duration-300"></span>
+                        <span class="w-5 h-0.5 bg-white mb-1 transition-opacity duration-300"></span>
+                        <span class="w-5 h-0.5 bg-white transform transition-transform duration-300"></span>
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -523,7 +573,7 @@
                             SAMAA
                         </h3>
                         <p class="text-slate-300 leading-relaxed text-sm sm:text-base mb-6 sm:mb-8">
-                            {{ __('site.Transforming lives through the healing power of music and sound therapy. Experience personalized AI-driven therapeutic sessions designed for your wellness journey.') }}
+                            {{ __('components/footer.company.description') }}  
                         </p>
                     </div>
                     
@@ -560,29 +610,29 @@
                 <!-- Quick Links -->
                 <div>
                     <h4 class="font-serif text-lg sm:text-xl lg:text-xl font-bold text-white mb-4 sm:mb-6">
-                        {{ __('site.Quick Links') }}
+                    {{ __('components/footer.navigation.quick_links') }}
                     </h4>
                     <ul class="space-y-3 sm:space-y-4">
-                        <li><a href="{{ route('home') }}" class="text-slate-300 hover:text-blue-300 transition-colors duration-300 text-sm sm:text-base">{{ __('site.Home') }}</a></li>
-                        <li><a href="{{ route('about-us') }}" class="text-slate-300 hover:text-blue-300 transition-colors duration-300 text-sm sm:text-base">{{ __('site.About Us') }}</a></li>
-                        <li><a href="{{ route('how-it-work') }}" class="text-slate-300 hover:text-blue-300 transition-colors duration-300 text-sm sm:text-base">{{ __('site.How It Works') }}</a></li>
-                        <li><a href="{{ route('therapists') }}" class="text-slate-300 hover:text-blue-300 transition-colors duration-300 text-sm sm:text-base">{{ __('site.Therapists') }}</a></li>
-                        <li><a href="{{ route('contact-us') }}" class="text-slate-300 hover:text-blue-300 transition-colors duration-300 text-sm sm:text-base">{{ __('site.Contact Us') }}</a></li>
+                        <li><a href="{{ route('home') }}" class="text-slate-300 hover:text-blue-300 transition-colors duration-300 text-sm sm:text-base">{{ __('components/footer.navigation.home') }}</a></li>
+                        <li><a href="{{ route('about-us') }}" class="text-slate-300 hover:text-blue-300 transition-colors duration-300 text-sm sm:text-base">{{ __('components/footer.navigation.about') }}</a></li>
+                        <li><a href="{{ route('how-it-work') }}" class="text-slate-300 hover:text-blue-300 transition-colors duration-300 text-sm sm:text-base">{{ __('components/footer.navigation.how_it_works') }}</a></li>
+                        <li><a href="{{ route('therapists') }}" class="text-slate-300 hover:text-blue-300 transition-colors duration-300 text-sm sm:text-base">{{ __('components/footer.navigation.therapists') }}</a></li>
+                        <li><a href="{{ route('contact-us') }}" class="text-slate-300 hover:text-blue-300 transition-colors duration-300 text-sm sm:text-base">{{ __('components/footer.navigation.contact') }}</a></li>
                     </ul>
                 </div>
 
                 <!-- Clinical Services -->
                 <div>
                     <h4 class="font-serif text-lg sm:text-xl lg:text-xl font-bold text-white mb-4 sm:mb-6">
-                        {{ __('site.Services') }}
+                        {{ __('components/footer.navigation.clinical_services') }}
                     </h4>
                     <ul class="space-y-3 sm:space-y-4">
-                        <li><a href="{{ route('therapy.index') }}" class="text-slate-300 hover:text-teal-300 transition-colors duration-300 text-sm sm:text-base">{{ __('site.Music Therapy') }}</a></li>
-                        <li><a href="#" class="text-slate-300 hover:text-teal-300 transition-colors duration-300 text-sm sm:text-base">{{ __('site.Sound Healing') }}</a></li>
-                        <li><a href="#" class="text-slate-300 hover:text-teal-300 transition-colors duration-300 text-sm sm:text-base">{{ __('site.Meditation Sessions') }}</a></li>
-                        <li><a href="#" class="text-slate-300 hover:text-teal-300 transition-colors duration-300 text-sm sm:text-base">{{ __('site.Personalized Playlists') }}</a></li>
+                        <li><a href="{{ route('therapy.index') }}" class="text-slate-300 hover:text-teal-300 transition-colors duration-300 text-sm sm:text-base">{{ __('components/footer.services.music_therapy') }}</a></li>
+                        <li><a href="#" class="text-slate-300 hover:text-teal-300 transition-colors duration-300 text-sm sm:text-base">{{ __('components/footer.services.sound_healing') }}</a></li>
+                        <li><a href="#" class="text-slate-300 hover:text-teal-300 transition-colors duration-300 text-sm sm:text-base">{{ __('components/footer.services.meditation') }}</a></li>
+                        <li><a href="#" class="text-slate-300 hover:text-teal-300 transition-colors duration-300 text-sm sm:text-base">{{ __('components/footer.services.personalized_playlists') }}</a></li>
                         @auth
-                            <li><a href="{{ route('playlist') }}" class="text-slate-300 hover:text-teal-300 transition-colors duration-300 text-sm sm:text-base">{{ __('site.My Dashboard') }}</a></li>
+                           <li><a href="{{ route('playlist') }}" class="text-slate-300 hover:text-teal-300 transition-colors duration-300 text-sm sm:text-base">{{ __('components/footer.services.dashboard') }}</a></li>
                         @endauth
                     </ul>
                 </div>
@@ -590,15 +640,15 @@
                 <!-- Contact & Newsletter -->
                 <div>
                     <h4 class="font-serif text-lg sm:text-xl lg:text-xl font-bold text-white mb-4 sm:mb-6">
-                        {{ __('site.Contact Info') }}
+                        {{ __('components/footer.navigation.contact') }}
                     </h4>
                     <ul class="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                         <li>
                             <a href="mailto:support@samaa.dnci.net" class="text-slate-300 hover:text-emerald-300 transition-colors duration-300 text-sm sm:text-base flex items-center">
-                                <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                {{ __('components/footer.services.services') }}
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                 </svg>
-                                support@samaa.dnci.net
+                                <li><a href="{{ route('therapy.index') }}" class="text-slate-300 hover:text-teal-300 transition-colors duration-300 text-sm sm:text-base">{{ __('components/footer.services.music_therapy') }}</a></li>
                             </a>
                         </li>
                         <li>
@@ -614,17 +664,17 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
                             </svg>
-                            {{ __('site.Lebanon, Beirut') }}
+                            {{ __('components/footer.contact_info.address') }}
                         </li>
                     </ul>
 
                     <!-- Elegant Newsletter Signup -->
                     <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-4 sm:p-6">
-                        <h5 class="font-serif text-base sm:text-lg font-bold text-white mb-3 sm:mb-4">{{ __('site.Newsletter') }}</h5>
+                                        <h5 class="font-serif text-base sm:text-lg font-bold text-white mb-3 sm:mb-4">{{ __('components/footer.newsletter.title') }}</h5>
                         <form class="space-y-3">
-                            <input type="email" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all duration-300 text-sm sm:text-base" placeholder="{{ __('site.Enter your email') }}" required>
+                            <input type="email" class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-400/50 focus:border-blue-400/50 transition-all duration-300 text-sm sm:text-base" placeholder="{{ __('components/footer.newsletter.enter_email') }}" required>
                             <button type="submit" class="w-full px-4 py-3 bg-gradient-to-r from-blue-600 to-teal-600 text-white font-semibold rounded-xl text-sm sm:text-base hover:from-blue-700 hover:to-teal-700 transform hover:scale-[1.02] transition-all duration-300">
-                                {{ __('site.Subscribe') }}
+                                                {{ __('components/footer.newsletter.subscribe') }}
                             </button>
                         </form>
                     </div>
@@ -636,10 +686,10 @@
                 <div class="flex flex-col sm:flex-row justify-between items-center space-y-4 sm:space-y-0">
                     <div class="text-center sm:text-left">
                         <p class="text-slate-400 text-sm sm:text-base">
-                            &copy; {{ date('Y') }} SAMAA. {{ __('site.All rights reserved.') }}
+                           &copy; {{ date('Y') }} SAMAA. {{ __('components/footer.copyright.all_rights_reserved') }}
                         </p>
                         <p class="text-slate-400 text-sm mt-1">
-                            {{ __('site.Made with') }} <span class="text-blue-400">♪</span> {{ __('site.for healing') }}
+                           {{ __('components/footer.company.made_with') }} <span class="text-blue-400">♪</span> {{ __('components/footer.company.for_healing') }}
                         </p>
                     </div>
                     
@@ -1248,21 +1298,24 @@
             }
             
             // Add magical chord on title click
-            document.querySelector('.interactive-title h1')?.addEventListener('click', function() {
-                playMagicalChord();
+            const titleElement = document.querySelector('.interactive-title h1');
+            if (titleElement) {
+                titleElement.addEventListener('click', function() {
+                    playMagicalChord();
+                    
+                    // Visual feedback for entire title
+                    this.style.transform = 'scale(1.05)';
+                    this.style.filter = 'drop-shadow(0 0 50px rgba(255,255,255,0.8))';
+                    
+                    // Trigger spectacular visual effects
+                    createSpectacularBurst();
                 
-                // Visual feedback for entire title
-                this.style.transform = 'scale(1.05)';
-                this.style.filter = 'drop-shadow(0 0 50px rgba(255,255,255,0.8))';
-                
-                // Trigger spectacular visual effects
-                createSpectacularBurst();
-                
-                setTimeout(() => {
-                    this.style.transform = '';
-                    this.style.filter = '';
-                }, 800);
-            });
+                    setTimeout(() => {
+                        this.style.transform = '';
+                        this.style.filter = '';
+                    }, 800);
+                });
+            }
             
             // Create spectacular visual burst effect
             function createSpectacularBurst() {
