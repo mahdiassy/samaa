@@ -35,6 +35,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 inputWrapper.style.display = "none";
             }
         });
+
+        selectEl.dispatchEvent(new Event("change"));
     }
 });
 
@@ -214,28 +216,6 @@ document.addEventListener("DOMContentLoaded", function () {
         if (popup) popup.style.display = "none";
         if (overlay) overlay.style.display = "none";
     }
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    const therapeuticSelect = document.getElementById(
-        "therapeutic_areas_select"
-    );
-    const inputWrapper = document.getElementById("medication_input_wrapper");
-
-    // Only run if elements exist (patient create/edit pages)
-    if (!therapeuticSelect || !inputWrapper) {
-        return; // Silently skip if elements don't exist
-    }
-
-    therapeuticSelect.addEventListener("change", function () {
-        const selectedValue = this.value;
-
-        if (selectedValue === "2") {
-            inputWrapper.style.display = "block";
-        } else {
-            inputWrapper.style.display = "none";
-        }
-    });
 });
 
 $(document).ready(function () {

@@ -1,188 +1,302 @@
 ﻿/* ==========================================================================
    PATIENT MANAGEMENT PAGE STYLES
+   Fluid table layout tailored for patient listings
    ========================================================================== */
 
 .patient-management-content {
-    padding: 2.5rem;
-    background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #dbeafe 100%);
-    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.patient-management-content .table-section {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.patient-management-content .table-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: clamp(0.75rem, 2vw, 1.25rem);
+    align-items: center;
+}
+
+.patient-management-content .table-container {
+    overflow-x: auto;
 }
 
 .patient-management-content .modern-table {
     width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
+    border-collapse: collapse;
+    min-width: clamp(48rem, 70vw, 68rem);
 }
 
 .patient-management-content .modern-table thead {
-    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    background: linear-gradient(135deg, rgba(148, 163, 184, 0.12) 0%, rgba(148, 163, 184, 0.05) 100%);
 }
 
 .patient-management-content .modern-table th {
-    padding: 1rem 1.25rem;
+    padding: clamp(0.75rem, 2vw, 1rem);
     text-align: left;
-    font-weight: 700;
-    color: #1e293b;
-    font-size: 0.875rem;
+    font-weight: 600;
+    font-size: clamp(0.75rem, 1.3vw, 0.875rem);
+    color: var(--admin-text-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.05em;
-    border-bottom: 2px solid #e2e8f0;
+    letter-spacing: 0.04em;
+    border-bottom: 0.0625rem solid var(--admin-border-light);
+    white-space: nowrap;
 }
 
 .patient-management-content .modern-table tbody tr {
-    transition: all 0.3s ease;
-    border-bottom: 1px solid #f1f5f9;
+    border-bottom: 0.0625rem solid rgba(148, 163, 184, 0.2);
+    transition: background var(--admin-transition-fast), transform var(--admin-transition-fast);
 }
 
 .patient-management-content .modern-table tbody tr:hover {
-    background: #f8fafc;
-    transform: scale(1.002);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    background: rgba(226, 232, 240, 0.45);
+    transform: translateY(-0.1rem);
 }
 
 .patient-management-content .modern-table td {
-    padding: 1.25rem;
-    color: #64748b;
-    font-size: 0.9375rem;
+    padding: clamp(0.875rem, 2.4vw, 1.25rem);
+    font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+    color: var(--admin-text-secondary);
     vertical-align: middle;
 }
 
 .patient-management-content .id-cell {
-    font-weight: 700;
-    color: #8b5cf6;
-    font-size: 1rem;
+    font-weight: 600;
+    color: var(--admin-primary);
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
 }
 
 .patient-management-content .patient-info {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 1rem;
+    gap: clamp(0.75rem, 2vw, 1.25rem);
 }
 
 .patient-management-content .patient-avatar {
-    width: 48px;
-    height: 48px;
+    inline-size: clamp(2.75rem, 4vw, 3.25rem);
+    block-size: clamp(2.75rem, 4vw, 3.25rem);
     border-radius: 50%;
     overflow: hidden;
+    background: var(--admin-primary-light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .patient-management-content .patient-avatar img {
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     object-fit: cover;
 }
 
 .patient-management-content .avatar-placeholder {
-    width: 48px;
-    height: 48px;
+    inline-size: 100%;
+    block-size: 100%;
     border-radius: 50%;
-    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    background: linear-gradient(135deg, var(--admin-primary) 0%, var(--admin-primary-hover) 100%);
+    color: var(--admin-text-inverse);
+    font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    font-weight: 700;
+    text-transform: uppercase;
 }
 
 .patient-management-content .patient-details h4 {
-    margin: 0 0 0.25rem 0;
-    font-size: 1rem;
+    margin: 0 0 0.25rem;
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+    color: var(--admin-text-primary);
     font-weight: 600;
-    color: #1e293b;
 }
 
 .patient-management-content .patient-id {
-    font-size: 0.75rem;
-    color: #94a3b8;
+    font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+    color: var(--admin-text-muted);
+}
+
+.patient-management-content .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
 }
 
 .patient-management-content .contact-info .phone {
     font-weight: 600;
-    color: #475569;
+    color: var(--admin-text-primary);
 }
 
 .patient-management-content .contact-info .email {
-    font-size: 0.875rem;
-    color: #94a3b8;
+    color: var(--admin-text-muted);
+    font-size: clamp(0.8rem, 1.2vw, 0.875rem);
 }
 
 .patient-management-content .blood-type {
     display: inline-flex;
-    padding: 0.375rem 0.875rem;
-    background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
-    border: 1px solid #fbbf24;
-    border-radius: 8px;
-    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(0.35rem, 1vw, 0.5rem) clamp(0.6rem, 1.4vw, 0.85rem);
+    border-radius: var(--admin-radius-sm);
+    background: rgba(245, 158, 11, 0.15);
     color: #92400e;
+    font-weight: 600;
+    letter-spacing: 0.02em;
 }
 
 .patient-management-content .status-badge {
     display: inline-flex;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.8125rem;
-    font-weight: 700;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(0.75rem, 1.6vw, 1rem);
+    border-radius: 999px;
+    font-size: clamp(0.7rem, 1.2vw, 0.8rem);
+    font-weight: 600;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.patient-management-content .status-badge::before {
+    content: "";
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    border-radius: 50%;
+    background: currentColor;
 }
 
 .patient-management-content .status-badge.active {
-    background: linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%);
-    color: #065f46;
-    border: 1px solid #6ee7b7;
+    background: rgba(34, 197, 94, 0.15);
+    color: #047857;
 }
 
 .patient-management-content .status-badge.inactive {
-    background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
-    color: #991b1b;
-    border: 1px solid #fca5a5;
+    background: rgba(248, 113, 113, 0.15);
+    color: #b91c1c;
 }
 
 .patient-management-content .action-buttons {
-    display: flex;
-    gap: 0.5rem;
+    display: inline-flex;
+    gap: clamp(0.35rem, 1vw, 0.6rem);
     justify-content: center;
 }
 
 .patient-management-content .action-btn {
-    width: 38px;
-    height: 38px;
-    border-radius: 10px;
+    inline-size: clamp(2.25rem, 3.5vw, 2.6rem);
+    block-size: clamp(2.25rem, 3.5vw, 2.6rem);
+    border-radius: var(--admin-radius-md);
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s ease;
-    text-decoration: none;
+    transition: transform var(--admin-transition-fast), box-shadow var(--admin-transition-fast);
+    color: var(--admin-text-inverse);
 }
 
 .patient-management-content .view-btn {
-    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
-    color: white;
-    box-shadow: 0 2px 8px rgba(59, 130, 246, 0.3);
-}
-
-.patient-management-content .view-btn:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+    background: linear-gradient(135deg, var(--admin-info) 0%, var(--admin-info-hover) 100%);
+    box-shadow: 0 0.5rem 1.25rem rgba(59, 130, 246, 0.25);
 }
 
 .patient-management-content .edit-btn {
-    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    color: white;
-    box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
-}
-
-.patient-management-content .edit-btn:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    background: linear-gradient(135deg, var(--admin-success) 0%, var(--admin-success-hover) 100%);
+    box-shadow: 0 0.5rem 1.25rem rgba(16, 185, 129, 0.25);
 }
 
 .patient-management-content .delete-btn {
-    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-    color: white;
-    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.3);
+    background: linear-gradient(135deg, var(--admin-danger) 0%, var(--admin-danger-hover) 100%);
+    box-shadow: 0 0.5rem 1.25rem rgba(239, 68, 68, 0.25);
 }
 
-.patient-management-content .delete-btn:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.4);
+.patient-management-content .action-btn:hover {
+    transform: translateY(-0.1rem);
+}
+
+.patient-management-content .empty-row td {
+    padding: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.patient-management-content .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.5rem, 1.5vw, 0.75rem);
+    text-align: center;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    background: rgba(248, 250, 252, 0.8);
+    border: 0.0625rem dashed var(--admin-border-light);
+    border-radius: var(--admin-radius-lg);
+}
+
+.patient-management-content .empty-state h3 {
+    margin: 0;
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+    color: var(--admin-text-primary);
+    font-weight: 600;
+}
+
+.patient-management-content .empty-state p {
+    margin: 0;
+    color: var(--admin-text-secondary);
+    font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+}
+
+.patient-management-content .empty-action-btn {
+    margin-top: clamp(0.75rem, 2vw, 1.1rem);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(0.55rem, 1.4vw, 0.75rem) clamp(1.25rem, 3vw, 1.75rem);
+    border-radius: var(--admin-radius-md);
+    background: linear-gradient(135deg, var(--admin-success) 0%, var(--admin-success-hover) 100%);
+    color: var(--admin-text-inverse);
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform var(--admin-transition-fast), box-shadow var(--admin-transition-fast);
+}
+
+.patient-management-content .empty-action-btn:hover {
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.75rem 1.5rem rgba(16, 185, 129, 0.25);
+}
+
+@media (max-width: 1024px) {
+    .patient-management-content .modern-table {
+        min-width: 100%;
+    }
+
+    .patient-management-content .table-section {
+        padding: clamp(1rem, 2vw, 1.5rem);
+    }
+}
+
+@media (max-width: 768px) {
+    .patient-management-content .table-header {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .patient-management-content .table-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .patient-management-content .action-buttons {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 620px) {
+    .patient-management-content .patient-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .patient-management-content .action-buttons {
+        gap: 0.4rem;
+    }
 }

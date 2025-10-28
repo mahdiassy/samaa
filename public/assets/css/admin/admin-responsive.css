@@ -85,8 +85,8 @@
     }
 
     .admin-mobile-user {
-        width: 32px;
-        height: 32px;
+        inline-size: 2rem;
+        block-size: 2rem;
         border-radius: 50%;
         object-fit: cover;
         border: 2px solid var(--admin-border-light);
@@ -99,19 +99,13 @@
 
 @media (min-width: 768px) and (max-width: 1023.98px) {
     .admin-sidebar {
-        width: 240px;
-    }
-
-    .admin-main {
-        margin-left: 240px;
+        flex-basis: clamp(15rem, 26vw, 18rem);
+        inline-size: clamp(15rem, 26vw, 18rem);
     }
 
     .admin-sidebar.collapsed {
-        width: 60px;
-    }
-
-    .admin-sidebar.collapsed ~ .admin-content-wrapper .admin-main {
-        margin-left: 60px;
+        flex-basis: clamp(4.5rem, 8vw, 6rem);
+        inline-size: clamp(4.5rem, 8vw, 6rem);
     }
 
     .admin-content {
@@ -144,7 +138,7 @@
     }
 
     .admin-table {
-        min-width: 600px;
+        min-width: 37.5rem;
     }
 
     /* Cards stack vertically */
@@ -259,8 +253,8 @@
     }
 
     .admin-stat-icon {
-        width: 48px;
-        height: 48px;
+        inline-size: 3rem;
+        block-size: 3rem;
     }
 
     .admin-stat-number {
@@ -272,13 +266,13 @@
     }
 
     .admin-patient-avatar {
-        width: 48px;
-        height: 48px;
+        inline-size: 3rem;
+        block-size: 3rem;
     }
 
     .admin-action-btn {
-        width: 36px;
-        height: 36px;
+        inline-size: 2.25rem;
+        block-size: 2.25rem;
     }
 
     .admin-form-card {
@@ -302,8 +296,8 @@
 @media (hover: none) and (pointer: coarse) {
     /* Increase touch targets for mobile devices */
     .admin-btn {
-        min-height: 44px;
-        min-width: 44px;
+        min-height: 2.75rem;
+        min-width: 2.75rem;
     }
 
     .admin-nav-link {
@@ -312,7 +306,7 @@
 
     .admin-form-control {
         padding: var(--admin-space-4);
-        font-size: 16px; /* Prevent zoom on iOS */
+        font-size: 1rem; /* Prevent zoom on iOS */
     }
 
     .admin-action-btn {
@@ -335,7 +329,7 @@
 
 @media (max-width: 767.98px) and (orientation: landscape) {
     .admin-sidebar {
-        width: 280px;
+        inline-size: clamp(16rem, 40vw, 18rem);
     }
 
     .admin-page-header {
@@ -385,8 +379,8 @@
 
     .admin-table th,
     .admin-table td {
-        border: 1px solid #000 !important;
-        padding: 8px !important;
+        border: 0.0625rem solid #000 !important;
+        padding: 0.5rem !important;
     }
 
     /* Ensure text is black for printing */

@@ -48,7 +48,7 @@
                     </button>
                 </div>
             </div>
-            
+
             <div class="table-container">
                 <table class="modern-table">
                     <thead>
@@ -119,14 +119,11 @@
                                 </td>
                             </tr>
                         @empty
-                            <tr>
-                                <td colspan="7" class="empty-state">
-                                    <div class="empty-content">
-                                        <svg viewBox="0 0 24 24" fill="currentColor">
-                                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
-                                        </svg>
-                                        <h3>No patients found</h3>
-                                        <p>Start by adding your first patient to the system.</p>
+                            <tr class="empty-row">
+                                <td colspan="7">
+                                    <div class="empty-state">
+                                        <h3>No patients yet</h3>
+                                        <p>Add a new patient record to populate this table.</p>
                                         <a href="{{ route('patient.create') }}" class="empty-action-btn">Add Patient</a>
                                     </div>
                                 </td>

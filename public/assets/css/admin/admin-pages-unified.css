@@ -1,25 +1,23 @@
 /* ==========================================================================
    UNIFIED ADMIN PAGES STYLES
-   Consistent layout and design system for all admin management pages
-   ========================================================================== */
+   Consistent, fluid layout system for all admin dashboards
+   ========================================================================= */
 
 /* ==========================================================================
    FULL WIDTH LAYOUT FOR ALL MANAGEMENT PAGES
-   ========================================================================== */
+   ========================================================================= */
 .patient-management-content,
 .doctor-management-content,
 .blog-management-content,
 .therapy-management-content,
 .feedback-management-content,
 .appointment-management-content {
-    max-width: 100% !important;
     width: 100% !important;
-    padding: 2rem;
+    padding: clamp(1.25rem, 3vw, 2.25rem);
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     min-height: 100vh;
 }
 
-/* Override any width constraints */
 .patient-management-content .admin-content-wrapper,
 .doctor-management-content .admin-content-wrapper,
 .blog-management-content .admin-content-wrapper,
@@ -32,8 +30,7 @@
 
 /* ==========================================================================
    UNIFIED PAGE HEADER STYLES
-   Consistent header design across all pages
-   ========================================================================== */
+   ========================================================================= */
 .patient-management-content .page-header,
 .doctor-management-content .page-header,
 .blog-management-content .page-header,
@@ -41,9 +38,9 @@
 .feedback-management-content .page-header,
 .appointment-management-content .page-header {
     background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
-    border-radius: 24px;
-    padding: 2rem;
-    margin-bottom: 2rem;
+    border-radius: 1.25rem;
+    padding: clamp(1.5rem, 3.5vw, 2.5rem);
+    margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
     color: white;
     position: relative;
     overflow: hidden;
@@ -57,19 +54,16 @@
 .appointment-management-content .page-header::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background-image: radial-gradient(
             circle at 20% 80%,
-            rgba(139, 92, 246, 0.3) 0%,
-            transparent 50%
+            rgba(139, 92, 246, 0.35) 0%,
+            transparent 55%
         ),
         radial-gradient(
             circle at 80% 20%,
-            rgba(16, 185, 129, 0.3) 0%,
-            transparent 50%
+            rgba(16, 185, 129, 0.35) 0%,
+            transparent 55%
         );
     pointer-events: none;
 }
@@ -86,7 +80,7 @@
     position: relative;
     z-index: 1;
     flex-wrap: wrap;
-    gap: 1.5rem;
+    gap: clamp(0.75rem, 2vw, 1.5rem);
 }
 
 .patient-management-content .header-info,
@@ -96,7 +90,7 @@
 .feedback-management-content .header-info,
 .appointment-management-content .header-info {
     flex: 1;
-    min-width: 250px;
+    min-inline-size: min(18rem, 100%);
 }
 
 .patient-management-content .page-title,
@@ -105,9 +99,9 @@
 .therapy-management-content .page-title,
 .feedback-management-content .page-title,
 .appointment-management-content .page-title {
-    font-size: 2.5rem;
+    font-size: clamp(1.6rem, 2.6vw, 2.3rem);
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin: 0;
     background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -121,8 +115,8 @@
 .therapy-management-content .page-subtitle,
 .feedback-management-content .page-subtitle,
 .appointment-management-content .page-subtitle {
-    font-size: 1.1rem;
-    opacity: 0.8;
+    font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+    opacity: 0.85;
     margin: 0;
     color: rgba(255, 255, 255, 0.9);
 }
@@ -134,14 +128,14 @@
 .feedback-management-content .header-actions,
 .appointment-management-content .header-actions {
     display: flex;
-    gap: 1rem;
+    gap: clamp(0.5rem, 1.5vw, 1.25rem);
     align-items: center;
     flex-wrap: wrap;
 }
 
 /* ==========================================================================
    UNIFIED SEARCH CONTAINER
-   ========================================================================== */
+   ========================================================================= */
 .patient-management-content .search-container,
 .doctor-management-content .search-container,
 .blog-management-content .search-container,
@@ -171,11 +165,11 @@
 .feedback-management-content .search-icon,
 .appointment-management-content .search-icon {
     position: absolute;
-    left: 1rem;
-    top: 50%;
+    inset-inline-start: 1rem;
+    inset-block-start: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
     color: #64748b;
     z-index: 1;
 }
@@ -187,12 +181,12 @@
 .feedback-management-content .search-input,
 .appointment-management-content .search-input {
     background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
-    padding: 0.75rem 1rem 0.75rem 3rem;
+    border: 0.0625rem solid rgba(255, 255, 255, 0.25);
+    border-radius: 0.65rem;
+    padding: 0.625rem 1rem 0.625rem 2.5rem;
     color: white;
-    width: 300px;
-    transition: all 0.3s ease;
+    inline-size: clamp(14rem, 28vw, 20rem);
+    transition: all var(--admin-transition-normal);
 }
 
 .patient-management-content .search-input::placeholder,
@@ -211,13 +205,13 @@
 .feedback-management-content .search-input:focus,
 .appointment-management-content .search-input:focus {
     outline: none;
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(139, 92, 246, 0.5);
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(139, 92, 246, 0.55);
 }
 
 /* ==========================================================================
    UNIFIED ACTION BUTTONS
-   ========================================================================== */
+   ========================================================================= */
 .patient-management-content .add-btn,
 .doctor-management-content .add-btn,
 .blog-management-content .add-btn,
@@ -233,13 +227,13 @@
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
     color: white;
     text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 12px;
+    padding: 0.65rem 1.25rem;
+    border-radius: 0.65rem;
     font-weight: 600;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    transition: all 0.3s ease;
+    transition: transform var(--admin-transition-fast), box-shadow var(--admin-transition-fast);
     border: none;
     cursor: pointer;
 }
@@ -274,8 +268,8 @@
 .therapy-management-content .playlist-btn:hover,
 .feedback-management-content .playlist-btn:hover,
 .appointment-management-content .playlist-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    transform: translateY(-0.1rem);
+    box-shadow: 0 0.5rem 1rem rgba(15, 23, 42, 0.2);
 }
 
 .patient-management-content .add-btn svg,
@@ -290,13 +284,13 @@
 .therapy-management-content .playlist-btn svg,
 .feedback-management-content .playlist-btn svg,
 .appointment-management-content .playlist-btn svg {
-    width: 18px;
-    height: 18px;
+    inline-size: 1rem;
+    block-size: 1rem;
 }
 
 /* ==========================================================================
    UNIFIED STATISTICS CARDS
-   ========================================================================== */
+   ========================================================================= */
 .patient-management-content .stats-grid,
 .doctor-management-content .stats-grid,
 .blog-management-content .stats-grid,
@@ -304,9 +298,9 @@
 .feedback-management-content .stats-grid,
 .appointment-management-content .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: clamp(1rem, 2.5vw, 1.75rem);
+    margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
 }
 
 .patient-management-content .stat-card,
@@ -316,13 +310,13 @@
 .feedback-management-content .stat-card,
 .appointment-management-content .stat-card {
     background: white;
-    border-radius: 20px;
-    padding: 2rem;
+    border-radius: 1rem;
+    padding: clamp(1.25rem, 2.4vw, 2.1rem);
     border: 1px solid #e2e8f0;
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    transition: all 0.3s ease;
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+    transition: transform var(--admin-transition-fast), box-shadow var(--admin-transition-fast);
 }
 
 .patient-management-content .stat-card:hover,
@@ -331,8 +325,8 @@
 .therapy-management-content .stat-card:hover,
 .feedback-management-content .stat-card:hover,
 .appointment-management-content .stat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-0.2rem);
+    box-shadow: 0 0.875rem 1.75rem rgba(15, 23, 42, 0.1);
 }
 
 .patient-management-content .stat-icon,
@@ -341,9 +335,9 @@
 .therapy-management-content .stat-icon,
 .feedback-management-content .stat-icon,
 .appointment-management-content .stat-icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 16px;
+    inline-size: clamp(2.75rem, 5vw, 3.5rem);
+    block-size: clamp(2.75rem, 5vw, 3.5rem);
+    border-radius: 0.9rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -356,8 +350,8 @@
 .therapy-management-content .stat-icon svg,
 .feedback-management-content .stat-icon svg,
 .appointment-management-content .stat-icon svg {
-    width: 32px;
-    height: 32px;
+    inline-size: clamp(1.35rem, 2.5vw, 1.75rem);
+    block-size: clamp(1.35rem, 2.5vw, 1.75rem);
     color: white;
 }
 
@@ -367,10 +361,10 @@
 .therapy-management-content .stat-content h3,
 .feedback-management-content .stat-content h3,
 .appointment-management-content .stat-content h3 {
-    font-size: 2rem;
+    font-size: clamp(1.35rem, 2.2vw, 1.95rem);
     font-weight: 700;
     color: #1e293b;
-    margin: 0 0 0.25rem 0;
+    margin: 0 0 0.25rem;
 }
 
 .patient-management-content .stat-content p,
@@ -386,7 +380,7 @@
 
 /* ==========================================================================
    UNIFIED TABLE SECTIONS
-   ========================================================================== */
+   ========================================================================= */
 .patient-management-content .table-section,
 .doctor-management-content .table-section,
 .blog-management-content .table-section,
@@ -394,10 +388,10 @@
 .feedback-management-content .table-section,
 .appointment-management-content .table-section {
     background: white;
-    border-radius: 20px;
-    padding: 2rem;
+    border-radius: 1rem;
+    padding: clamp(1.25rem, 2.5vw, 2.1rem);
     border: 1px solid #e2e8f0;
-    margin-bottom: 2rem;
+    margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
 }
 
 .patient-management-content .table-header,
@@ -409,9 +403,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
     flex-wrap: wrap;
-    gap: 1rem;
+    gap: clamp(0.75rem, 2vw, 1.25rem);
 }
 
 .patient-management-content .table-header h3,
@@ -420,7 +414,7 @@
 .therapy-management-content .table-header h3,
 .feedback-management-content .table-header h3,
 .appointment-management-content .table-header h3 {
-    font-size: 1.5rem;
+    font-size: clamp(1.25rem, 2vw, 1.75rem);
     font-weight: 700;
     color: #1e293b;
     margin: 0;
@@ -433,7 +427,7 @@
 .feedback-management-content .table-actions,
 .appointment-management-content .table-actions {
     display: flex;
-    gap: 0.75rem;
+    gap: clamp(0.5rem, 1.6vw, 1rem);
     flex-wrap: wrap;
 }
 
@@ -450,15 +444,15 @@
 .feedback-management-content .export-btn,
 .appointment-management-content .export-btn {
     background: #f1f5f9;
-    border: 1px solid #e2e8f0;
+    border: 0.0625rem solid #e2e8f0;
     color: #64748b;
-    padding: 0.75rem 1.5rem;
-    border-radius: 12px;
+    padding: 0.65rem 1.25rem;
+    border-radius: 0.65rem;
     cursor: pointer;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    transition: all 0.3s ease;
+    gap: 0.45rem;
+    transition: background var(--admin-transition-fast), color var(--admin-transition-fast), border-color var(--admin-transition-fast);
     font-weight: 500;
 }
 
@@ -490,13 +484,13 @@
 .therapy-management-content .export-btn svg,
 .feedback-management-content .export-btn svg,
 .appointment-management-content .export-btn svg {
-    width: 16px;
-    height: 16px;
+    inline-size: 1rem;
+    block-size: 1rem;
 }
 
 /* ==========================================================================
    UNIFIED PAGINATION
-   ========================================================================== */
+   ========================================================================= */
 .patient-management-content .pagination-container,
 .doctor-management-content .pagination-container,
 .blog-management-content .pagination-container,
@@ -505,20 +499,20 @@
 .appointment-management-content .pagination-container {
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: clamp(1.25rem, 3vw, 2rem);
 }
 
 /* ==========================================================================
    RESPONSIVE DESIGN
-   ========================================================================== */
-@media (max-width: 1024px) {
+   ========================================================================= */
+@media (max-width: 64rem) {
     .patient-management-content,
     .doctor-management-content,
     .blog-management-content,
     .therapy-management-content,
     .feedback-management-content,
     .appointment-management-content {
-        padding: 1.5rem;
+        padding: clamp(1.1rem, 4vw, 1.75rem);
     }
 
     .patient-management-content .header-content,
@@ -537,18 +531,18 @@
     .therapy-management-content .stats-grid,
     .feedback-management-content .stats-grid,
     .appointment-management-content .stats-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
     .patient-management-content,
     .doctor-management-content,
     .blog-management-content,
     .therapy-management-content,
     .feedback-management-content,
     .appointment-management-content {
-        padding: 1rem;
+        padding: clamp(1rem, 5vw, 1.75rem);
     }
 
     .patient-management-content .page-title,
@@ -557,7 +551,7 @@
     .therapy-management-content .page-title,
     .feedback-management-content .page-title,
     .appointment-management-content .page-title {
-        font-size: 2rem;
+        font-size: clamp(1.5rem, 4.5vw, 2rem);
     }
 
     .patient-management-content .page-subtitle,
@@ -566,7 +560,7 @@
     .therapy-management-content .page-subtitle,
     .feedback-management-content .page-subtitle,
     .appointment-management-content .page-subtitle {
-        font-size: 1rem;
+        font-size: clamp(0.9rem, 3.5vw, 1rem);
     }
 
     .patient-management-content .header-actions,
@@ -577,6 +571,7 @@
     .appointment-management-content .header-actions {
         width: 100%;
         flex-direction: column;
+        align-items: stretch;
     }
 
     .patient-management-content .search-input,
@@ -585,7 +580,7 @@
     .therapy-management-content .search-input,
     .feedback-management-content .search-input,
     .appointment-management-content .search-input {
-        width: 100%;
+        inline-size: 100%;
     }
 
     .patient-management-content .add-btn,
@@ -619,7 +614,7 @@
     .therapy-management-content .table-section,
     .feedback-management-content .table-section,
     .appointment-management-content .table-section {
-        padding: 1.5rem;
+        padding: clamp(1.25rem, 4vw, 1.75rem);
     }
 
     .patient-management-content .table-header,

@@ -1,39 +1,40 @@
 /* ==========================================================================
    SAMAA Admin Panel - Page-Specific Styles
-   Individual page customizations and overrides
-   ========================================================================== */
+   Fluid cards, grids, and forms across dashboard modules
+   ========================================================================= */
 
 /* ==========================================================================
    DASHBOARD PAGE
-   ========================================================================== */
+   ========================================================================= */
 
 .admin-dashboard-stats {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: var(--admin-space-6);
-    margin-bottom: var(--admin-space-8);
+    grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
 .admin-stat-card {
     background: var(--admin-bg-primary);
     border-radius: var(--admin-radius-xl);
-    padding: var(--admin-space-6);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
     border: 1px solid var(--admin-border-light);
     display: flex;
     align-items: center;
-    gap: var(--admin-space-4);
+    gap: clamp(1rem, 2vw, 1.5rem);
     transition: all var(--admin-transition-normal);
     box-shadow: var(--admin-shadow-md);
+    width: 100%;
 }
 
 .admin-stat-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-0.25rem);
     box-shadow: var(--admin-shadow-lg);
 }
 
 .admin-stat-icon {
-    width: 64px;
-    height: 64px;
+    inline-size: 4rem;
+    block-size: 4rem;
     border-radius: var(--admin-radius-lg);
     display: flex;
     align-items: center;
@@ -83,11 +84,11 @@
     margin: 0 0 var(--admin-space-2) 0;
     font-weight: 600;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.03125rem;
 }
 
 .admin-stat-number {
-    font-size: var(--admin-font-size-3xl);
+    font-size: clamp(2rem, 2.5vw, 2.75rem);
     font-weight: 700;
     color: var(--admin-text-primary);
     margin: 0 0 var(--admin-space-1) 0;
@@ -101,9 +102,8 @@
 
 /* ==========================================================================
    PATIENT MANAGEMENT PAGES
-   ========================================================================== */
+   ========================================================================= */
 
-/* Patient List Page */
 .admin-patient-header {
     background: linear-gradient(
         135deg,
@@ -111,11 +111,12 @@
         var(--admin-primary-hover) 100%
     );
     border-radius: var(--admin-radius-xl);
-    padding: var(--admin-space-8);
-    margin-bottom: var(--admin-space-8);
+    padding: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
     color: var(--admin-text-inverse);
     position: relative;
     overflow: hidden;
+    width: 100%;
 }
 
 .admin-patient-header::before {
@@ -123,8 +124,8 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 200px;
-    height: 200px;
+    inline-size: 12.5rem;
+    block-size: 12.5rem;
     background: rgba(255, 255, 255, 0.1);
     border-radius: 50%;
     transform: translate(50%, -50%);
@@ -133,71 +134,76 @@
 .admin-patient-header-content {
     position: relative;
     z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-space-3);
 }
 
 .admin-patient-title {
-    font-size: var(--admin-font-size-4xl);
+    font-size: clamp(2rem, 3vw, 2.75rem);
     font-weight: 700;
-    margin: 0 0 var(--admin-space-3) 0;
+    margin: 0;
 }
 
 .admin-patient-subtitle {
-    font-size: var(--admin-font-size-lg);
+    font-size: clamp(1.125rem, 2vw, 1.4rem);
     opacity: 0.9;
     margin: 0;
 }
 
-/* Patient Search */
 .admin-patient-search {
     background: var(--admin-bg-primary);
     border-radius: var(--admin-radius-xl);
-    padding: var(--admin-space-6);
-    margin-bottom: var(--admin-space-6);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
     border: 1px solid var(--admin-border-light);
     box-shadow: var(--admin-shadow-md);
+    width: 100%;
 }
 
 .admin-search-filters {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: var(--admin-space-4);
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
     align-items: end;
 }
 
-/* Patient Cards */
 .admin-patient-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: var(--admin-space-6);
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    width: 100%;
 }
 
 .admin-patient-card {
     background: var(--admin-bg-primary);
     border-radius: var(--admin-radius-xl);
-    padding: var(--admin-space-6);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
     border: 1px solid var(--admin-border-light);
     transition: all var(--admin-transition-normal);
     box-shadow: var(--admin-shadow-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-space-4);
 }
 
 .admin-patient-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-0.25rem);
     box-shadow: var(--admin-shadow-lg);
 }
 
 .admin-patient-info {
     display: flex;
     align-items: center;
-    gap: var(--admin-space-4);
-    margin-bottom: var(--admin-space-4);
+    gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .admin-patient-avatar {
-    width: 64px;
-    height: 64px;
+    inline-size: 4rem;
+    block-size: 4rem;
     border-radius: 50%;
     object-fit: cover;
-    border: 3px solid var(--admin-border-light);
+    border: 0.1875rem solid var(--admin-border-light);
 }
 
 .admin-patient-details h4 {
@@ -214,9 +220,8 @@
 
 .admin-patient-meta {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
     gap: var(--admin-space-3);
-    margin-bottom: var(--admin-space-4);
 }
 
 .admin-patient-meta-item {
@@ -229,7 +234,7 @@
     color: var(--admin-text-muted);
     text-transform: uppercase;
     font-weight: 600;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.03125rem;
 }
 
 .admin-patient-meta-value {
@@ -239,7 +244,6 @@
     margin-top: var(--admin-space-1);
 }
 
-/* Patient Actions */
 .admin-patient-actions {
     display: flex;
     gap: var(--admin-space-2);
@@ -247,8 +251,8 @@
 }
 
 .admin-action-btn {
-    width: 40px;
-    height: 40px;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
     border: none;
     border-radius: var(--admin-radius-md);
     cursor: pointer;
@@ -287,7 +291,7 @@
 }
 
 .admin-action-btn:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .admin-action-btn.view:hover {
@@ -307,53 +311,58 @@
 
 /* ==========================================================================
    BLOG MANAGEMENT PAGES
-   ========================================================================== */
+   ========================================================================= */
 
 .admin-blog-editor {
     background: var(--admin-bg-primary);
     border-radius: var(--admin-radius-xl);
-    padding: var(--admin-space-8);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
     border: 1px solid var(--admin-border-light);
     box-shadow: var(--admin-shadow-md);
+    display: grid;
+    gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .admin-blog-form {
     display: grid;
-    gap: var(--admin-space-6);
+    gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .admin-blog-meta {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--admin-space-4);
+    grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+    gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .admin-blog-content {
-    min-height: 400px;
+    min-height: 25rem;
 }
 
 .admin-blog-preview {
     background: var(--admin-gray-50);
     border-radius: var(--admin-radius-lg);
-    padding: var(--admin-space-6);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
     border: 1px solid var(--admin-border-light);
 }
 
 /* ==========================================================================
    FEEDBACK MANAGEMENT
-   ========================================================================== */
+   ========================================================================= */
 
 .admin-feedback-list {
     display: grid;
-    gap: var(--admin-space-4);
+    gap: clamp(1rem, 2vw, 1.5rem);
 }
 
 .admin-feedback-item {
     background: var(--admin-bg-primary);
     border-radius: var(--admin-radius-lg);
-    padding: var(--admin-space-6);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
     border: 1px solid var(--admin-border-light);
     transition: all var(--admin-transition-normal);
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-space-4);
 }
 
 .admin-feedback-item:hover {
@@ -365,7 +374,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: var(--admin-space-4);
+    gap: var(--admin-space-3);
 }
 
 .admin-feedback-user {
@@ -375,8 +384,8 @@
 }
 
 .admin-feedback-avatar {
-    width: 40px;
-    height: 40px;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
     border-radius: 50%;
     background: var(--admin-primary);
     color: var(--admin-text-inverse);
@@ -392,15 +401,14 @@
 }
 
 .admin-feedback-star {
-    width: 16px;
-    height: 16px;
+    inline-size: 1rem;
+    block-size: 1rem;
     color: var(--admin-warning);
 }
 
 .admin-feedback-content {
     color: var(--admin-text-secondary);
     line-height: 1.6;
-    margin-bottom: var(--admin-space-4);
 }
 
 .admin-feedback-meta {
@@ -409,46 +417,52 @@
     align-items: center;
     font-size: var(--admin-font-size-sm);
     color: var(--admin-text-muted);
+    gap: var(--admin-space-3);
 }
 
 /* ==========================================================================
    FORM PAGES
-   ========================================================================== */
+   ========================================================================= */
 
 .admin-form-container {
-    max-width: 800px;
-    margin: 0 auto;
+    width: 100%;
+    padding-inline: clamp(0rem, 5vw, 6rem);
 }
 
 .admin-form-card {
     background: var(--admin-bg-primary);
     border-radius: var(--admin-radius-xl);
-    padding: var(--admin-space-8);
+    padding: clamp(1.75rem, 4vw, 3rem);
     border: 1px solid var(--admin-border-light);
     box-shadow: var(--admin-shadow-md);
+    width: 100%;
 }
 
 .admin-form-header {
     text-align: center;
-    margin-bottom: var(--admin-space-8);
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    display: flex;
+    flex-direction: column;
+    gap: var(--admin-space-2);
 }
 
 .admin-form-title {
-    font-size: var(--admin-font-size-3xl);
+    font-size: clamp(2rem, 3vw, 2.5rem);
     font-weight: 700;
     color: var(--admin-text-primary);
-    margin: 0 0 var(--admin-space-3) 0;
+    margin: 0;
 }
 
 .admin-form-description {
     color: var(--admin-text-secondary);
     font-size: var(--admin-font-size-base);
+    margin: 0;
 }
 
 .admin-form-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: var(--admin-space-6);
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .admin-form-grid.single {
@@ -459,46 +473,49 @@
     display: flex;
     justify-content: center;
     gap: var(--admin-space-4);
-    margin-top: var(--admin-space-8);
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
     padding-top: var(--admin-space-6);
     border-top: 1px solid var(--admin-border-light);
+    flex-wrap: wrap;
 }
 
 /* ==========================================================================
    RESPONSIVE OVERRIDES
-   ========================================================================== */
+   ========================================================================= */
 
-@media (max-width: 768px) {
-    .admin-dashboard-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .admin-patient-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .admin-search-filters {
-        grid-template-columns: 1fr;
-    }
-
-    .admin-blog-meta {
-        grid-template-columns: 1fr;
-    }
-
-    .admin-form-grid {
-        grid-template-columns: 1fr;
+@media (max-width: 48rem) {
+    .admin-feedback-header,
+    .admin-feedback-meta {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .admin-form-actions {
         flex-direction: column;
+        align-items: stretch;
     }
 
+    .admin-patient-info {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .admin-patient-meta {
+        grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+    }
+}
+
+@media (max-width: 30rem) {
     .admin-patient-header {
-        padding: var(--admin-space-6);
         text-align: center;
     }
 
     .admin-patient-title {
-        font-size: var(--admin-font-size-3xl);
+        font-size: clamp(1.75rem, 6vw, 2rem);
+    }
+
+    .admin-dashboard-stats,
+    .admin-patient-grid {
+        grid-template-columns: 1fr;
     }
 }

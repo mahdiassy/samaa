@@ -67,11 +67,11 @@
     --admin-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
 
     /* Border Radius */
-    --admin-radius-sm: 6px;
-    --admin-radius-md: 8px;
-    --admin-radius-lg: 12px;
-    --admin-radius-xl: 16px;
-    --admin-radius-2xl: 20px;
+    --admin-radius-sm: 0.375rem;
+    --admin-radius-md: 0.5rem;
+    --admin-radius-lg: 0.75rem;
+    --admin-radius-xl: 1rem;
+    --admin-radius-2xl: 1.25rem;
 
     /* Spacing Scale */
     --admin-space-1: 0.25rem;
@@ -125,8 +125,8 @@
 
 /* Focus Outline for Accessibility */
 .admin-panel *:focus {
-    outline: 2px solid var(--admin-primary);
-    outline-offset: 2px;
+    outline: 0.125rem solid var(--admin-primary);
+    outline-offset: 0.125rem;
 }
 
 /* Remove focus outline for mouse users */
@@ -137,10 +137,10 @@
 /* Utility Classes */
 .admin-sr-only {
     position: absolute;
-    width: 1px;
-    height: 1px;
+    width: 0.0625rem;
+    height: 0.0625rem;
     padding: 0;
-    margin: -1px;
+    margin: -0.0625rem;
     overflow: hidden;
     clip: rect(0, 0, 0, 0);
     white-space: nowrap;
@@ -314,19 +314,19 @@
 
 /* Border Utilities */
 .admin-border {
-    border: 1px solid var(--admin-border-light);
+    border: 0.0625rem solid var(--admin-border-light);
 }
 .admin-border-t {
-    border-top: 1px solid var(--admin-border-light);
+    border-top: 0.0625rem solid var(--admin-border-light);
 }
 .admin-border-b {
-    border-bottom: 1px solid var(--admin-border-light);
+    border-bottom: 0.0625rem solid var(--admin-border-light);
 }
 .admin-border-l {
-    border-left: 1px solid var(--admin-border-light);
+    border-left: 0.0625rem solid var(--admin-border-light);
 }
 .admin-border-r {
-    border-right: 1px solid var(--admin-border-light);
+    border-right: 0.0625rem solid var(--admin-border-light);
 }
 
 /* Border Radius Utilities */

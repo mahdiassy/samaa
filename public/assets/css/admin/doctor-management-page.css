@@ -1,23 +1,20 @@
 /* ==========================================================================
    DOCTOR MANAGEMENT PAGE STYLES
-   Extracted from inline styles for better maintainability
-   ========================================================================== */
+   Fluid responsive layout for doctor listings and filters
+   ========================================================================= */
 
-/* Main Container */
 .doctor-management-content {
-    width: 100%;
-    max-width: 100%;
-    padding: 0;
+    inline-size: 100%;
     margin: 0;
+    padding: 0;
 }
 
-/* Page Header */
 .doctor-management-content .page-header {
     background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
-    border-radius: 24px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    color: white;
+    border-radius: 1.5rem;
+    padding: clamp(1.75rem, 4vw, 3rem);
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    color: #fff;
     position: relative;
     overflow: hidden;
 }
@@ -25,19 +22,16 @@
 .doctor-management-content .page-header::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background-image: radial-gradient(
             circle at 20% 80%,
-            rgba(16, 185, 129, 0.3) 0%,
-            transparent 50%
+            rgba(16, 185, 129, 0.35) 0%,
+            transparent 55%
         ),
         radial-gradient(
             circle at 80% 20%,
-            rgba(59, 130, 246, 0.3) 0%,
-            transparent 50%
+            rgba(59, 130, 246, 0.35) 0%,
+            transparent 55%
         );
     pointer-events: none;
 }
@@ -48,12 +42,14 @@
     align-items: center;
     position: relative;
     z-index: 1;
+    flex-wrap: wrap;
+    gap: clamp(1rem, 2vw, 1.75rem);
 }
 
 .doctor-management-content .page-title {
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 3vw, 3rem);
     font-weight: 700;
-    margin-bottom: 0.5rem;
+    margin: 0;
     background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -61,104 +57,102 @@
 }
 
 .doctor-management-content .page-subtitle {
-    font-size: 1.1rem;
-    opacity: 0.8;
+    font-size: clamp(1rem, 1.6vw, 1.25rem);
+    opacity: 0.85;
     margin: 0;
 }
 
 .doctor-management-content .header-actions {
     display: flex;
-    gap: 1rem;
+    gap: clamp(0.75rem, 2vw, 1.25rem);
     align-items: center;
+    flex-wrap: wrap;
 }
 
-/* Search Container */
 .doctor-management-content .search-container {
     position: relative;
 }
 
 .doctor-management-content .search-icon {
     position: absolute;
-    left: 1rem;
-    top: 50%;
+    inset-inline-start: 1rem;
+    inset-block-start: 50%;
     transform: translateY(-50%);
-    width: 20px;
-    height: 20px;
+    inline-size: 1.25rem;
+    block-size: 1.25rem;
     color: #64748b;
 }
 
 .doctor-management-content .search-input {
     background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
+    border: 0.0625rem solid rgba(255, 255, 255, 0.25);
+    border-radius: 0.75rem;
     padding: 0.75rem 1rem 0.75rem 3rem;
-    color: white;
-    width: 300px;
-    transition: all 0.3s ease;
+    color: #fff;
+    inline-size: clamp(16rem, 30vw, 22rem);
+    transition: all var(--admin-transition-normal);
 }
 
 .doctor-management-content .search-input::placeholder {
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.65);
 }
 
 .doctor-management-content .search-input:focus {
     outline: none;
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(16, 185, 129, 0.5);
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(16, 185, 129, 0.55);
 }
 
-/* Add Button */
 .doctor-management-content .add-btn {
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    color: white;
+    color: #fff;
     text-decoration: none;
     padding: 0.75rem 1.5rem;
-    border-radius: 12px;
+    border-radius: 0.75rem;
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    transition: all 0.3s ease;
+    transition: all var(--admin-transition-normal);
 }
 
 .doctor-management-content .add-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.75rem 1.5rem rgba(16, 185, 129, 0.3);
 }
 
 .doctor-management-content .add-btn svg {
-    width: 18px;
-    height: 18px;
+    inline-size: 1.125rem;
+    block-size: 1.125rem;
 }
 
-/* Statistics Grid */
 .doctor-management-content .stats-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
 }
 
 .doctor-management-content .stat-card {
-    background: white;
-    border-radius: 20px;
-    padding: 2rem;
-    border: 1px solid #e2e8f0;
+    background: #fff;
+    border-radius: 1.25rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border: 0.0625rem solid #e2e8f0;
     display: flex;
     align-items: center;
-    gap: 1.5rem;
-    transition: all 0.3s ease;
+    gap: clamp(1rem, 2vw, 1.5rem);
+    transition: all var(--admin-transition-normal);
 }
 
 .doctor-management-content .stat-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transform: translateY(-0.25rem);
+    box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.1);
 }
 
 .doctor-management-content .stat-icon {
-    width: 64px;
-    height: 64px;
-    border-radius: 16px;
+    inline-size: 4rem;
+    block-size: 4rem;
+    border-radius: 1rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -182,16 +176,16 @@
 }
 
 .doctor-management-content .stat-icon svg {
-    width: 32px;
-    height: 32px;
-    color: white;
+    inline-size: 2rem;
+    block-size: 2rem;
+    color: #fff;
 }
 
 .doctor-management-content .stat-content h3 {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 2.4vw, 2.25rem);
     font-weight: 700;
     color: #1e293b;
-    margin: 0 0 0.25rem 0;
+    margin: 0 0 0.25rem;
 }
 
 .doctor-management-content .stat-content p {
@@ -200,25 +194,24 @@
     font-weight: 500;
 }
 
-/* Filter Section */
 .doctor-management-content .filter-section {
-    background: white;
-    border-radius: 20px;
-    padding: 2rem;
-    margin-bottom: 2rem;
-    border: 1px solid #e2e8f0;
+    background: #fff;
+    border-radius: 1.25rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    border: 0.0625rem solid #e2e8f0;
 }
 
 .doctor-management-content .filter-container {
     display: flex;
-    gap: 2rem;
-    align-items: end;
+    gap: clamp(1rem, 3vw, 2rem);
+    align-items: flex-end;
     flex-wrap: wrap;
 }
 
 .doctor-management-content .filter-item {
     flex: 1;
-    min-width: 200px;
+    min-inline-size: min(14rem, 100%);
 }
 
 .doctor-management-content .filter-item label {
@@ -229,32 +222,32 @@
 }
 
 .doctor-management-content .filter-select {
-    width: 100%;
+    inline-size: 100%;
     padding: 0.75rem;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
+    border: 0.125rem solid #e2e8f0;
+    border-radius: 0.75rem;
     font-size: 1rem;
     background: #f8fafc;
-    transition: all 0.3s ease;
+    transition: all var(--admin-transition-normal);
 }
 
 .doctor-management-content .filter-select:focus {
     outline: none;
     border-color: #10b981;
-    background: white;
+    background: #fff;
 }
 
 .doctor-management-content .clear-filters-btn {
     background: #f1f5f9;
-    border: 1px solid #e2e8f0;
+    border: 0.0625rem solid #e2e8f0;
     color: #64748b;
     padding: 0.75rem 1.5rem;
-    border-radius: 12px;
+    border-radius: 0.75rem;
     cursor: pointer;
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    transition: all 0.3s ease;
+    transition: all var(--admin-transition-normal);
 }
 
 .doctor-management-content .clear-filters-btn:hover {
@@ -262,61 +255,64 @@
 }
 
 .doctor-management-content .clear-filters-btn svg {
-    width: 16px;
-    height: 16px;
+    inline-size: 1rem;
+    block-size: 1rem;
 }
 
-/* Doctors Section */
 .doctor-management-content .doctors-section {
-    background: white;
-    border-radius: 20px;
-    padding: 2rem;
-    border: 1px solid #e2e8f0;
+    background: #fff;
+    border-radius: 1.25rem;
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    border: 0.0625rem solid #e2e8f0;
 }
 
 .doctor-management-content .section-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .doctor-management-content .section-header h2 {
-    font-size: 2rem;
+    font-size: clamp(1.75rem, 2.5vw, 2.25rem);
     font-weight: 700;
     color: #1e293b;
-    margin: 0 0 0.5rem 0;
+    margin: 0;
 }
 
 .doctor-management-content .section-header p {
     color: #64748b;
-    font-size: 1.1rem;
+    font-size: clamp(1rem, 1.8vw, 1.15rem);
     margin: 0;
 }
 
-/* Doctors Grid */
 .doctor-management-content .doctors-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 2rem;
-    margin-bottom: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: clamp(1.5rem, 3vw, 2.5rem);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
 }
 
 .doctor-management-content .doctor-card {
-    background: white;
-    border: 1px solid #e2e8f0;
-    border-radius: 20px;
+    background: #fff;
+    border: 0.0625rem solid #e2e8f0;
+    border-radius: 1.25rem;
     overflow: hidden;
-    transition: all 0.3s ease;
+    transition: all var(--admin-transition-normal);
+    display: flex;
+    flex-direction: column;
 }
 
 .doctor-management-content .doctor-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-0.25rem);
+    box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.15);
     border-color: #10b981;
 }
 
 .doctor-management-content .doctor-image {
     position: relative;
-    height: 200px;
+    min-height: clamp(10rem, 24vh, 14rem);
     background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
     display: flex;
     align-items: center;
@@ -324,14 +320,14 @@
 }
 
 .doctor-management-content .doctor-image img {
-    width: 100%;
-    height: 100%;
+    inline-size: 100%;
+    block-size: 100%;
     object-fit: cover;
 }
 
 .doctor-management-content .avatar-placeholder {
-    width: 80px;
-    height: 80px;
+    inline-size: 5rem;
+    block-size: 5rem;
     background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
     border-radius: 50%;
     display: flex;
@@ -340,19 +336,19 @@
 }
 
 .doctor-management-content .avatar-placeholder svg {
-    width: 40px;
-    height: 40px;
-    color: white;
+    inline-size: 2.5rem;
+    block-size: 2.5rem;
+    color: #fff;
 }
 
 .doctor-management-content .status-badge {
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    inset-inline-end: 1rem;
+    inset-block-start: 1rem;
     background: rgba(16, 185, 129, 0.9);
-    color: white;
+    color: #fff;
     padding: 0.5rem 1rem;
-    border-radius: 20px;
+    border-radius: 1.25rem;
     font-size: 0.875rem;
     font-weight: 600;
     display: flex;
@@ -361,9 +357,9 @@
 }
 
 .doctor-management-content .status-dot {
-    width: 8px;
-    height: 8px;
-    background: white;
+    inline-size: 0.5rem;
+    block-size: 0.5rem;
+    background: #fff;
     border-radius: 50%;
     animation: pulse-doctor 2s infinite;
 }
@@ -378,22 +374,24 @@
     }
 }
 
-/* Doctor Info */
 .doctor-management-content .doctor-info {
-    padding: 1.5rem;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }
 
 .doctor-management-content .doctor-name {
-    font-size: 1.25rem;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
     font-weight: 700;
     color: #1e293b;
-    margin: 0 0 0.5rem 0;
+    margin: 0;
 }
 
 .doctor-management-content .doctor-specialty {
     color: #10b981;
     font-weight: 600;
-    margin: 0 0 1rem 0;
+    margin: 0;
 }
 
 .doctor-management-content .doctor-rating {
@@ -405,12 +403,12 @@
 
 .doctor-management-content .stars {
     display: flex;
-    gap: 2px;
+    gap: 0.25rem;
 }
 
 .doctor-management-content .star {
-    width: 16px;
-    height: 16px;
+    inline-size: 1rem;
+    block-size: 1rem;
     color: #fbbf24;
 }
 
@@ -434,15 +432,14 @@
 }
 
 .doctor-management-content .detail-icon {
-    width: 16px;
-    height: 16px;
+    inline-size: 1rem;
+    block-size: 1rem;
     color: #94a3b8;
     flex-shrink: 0;
 }
 
-/* Doctor Actions */
 .doctor-management-content .doctor-actions {
-    padding: 1.5rem;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
     background: #f8fafc;
     display: flex;
     gap: 0.75rem;
@@ -451,38 +448,38 @@
 
 .doctor-management-content .action-btn {
     flex: 1;
-    min-width: 120px;
+    min-inline-size: min(8rem, 100%);
     padding: 0.75rem 1rem;
-    border-radius: 12px;
+    border-radius: 0.75rem;
     text-decoration: none;
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    transition: all 0.3s ease;
+    transition: all var(--admin-transition-normal);
     font-size: 0.875rem;
 }
 
 .doctor-management-content .action-btn svg {
-    width: 16px;
-    height: 16px;
+    inline-size: 1rem;
+    block-size: 1rem;
 }
 
 .doctor-management-content .action-btn.primary {
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    color: white;
+    color: #fff;
 }
 
 .doctor-management-content .action-btn.primary:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.75rem 1.5rem rgba(16, 185, 129, 0.3);
 }
 
 .doctor-management-content .action-btn.secondary {
     background: #f1f5f9;
     color: #64748b;
-    border: 1px solid #e2e8f0;
+    border: 0.0625rem solid #e2e8f0;
 }
 
 .doctor-management-content .action-btn.secondary:hover {
@@ -492,23 +489,21 @@
 
 .doctor-management-content .action-btn.edit {
     background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-    color: white;
+    color: #fff;
 }
 
 .doctor-management-content .action-btn.edit:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+    transform: translateY(-0.125rem);
+    box-shadow: 0 0.75rem 1.5rem rgba(59, 130, 246, 0.3);
 }
 
-/* Pagination */
 .doctor-management-content .pagination-container {
     display: flex;
     justify-content: center;
-    margin-top: 2rem;
+    margin-top: clamp(1.5rem, 3vw, 2.5rem);
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 48rem) {
     .doctor-management-content .header-content {
         flex-direction: column;
         gap: 1.5rem;
@@ -521,7 +516,7 @@
     }
 
     .doctor-management-content .search-input {
-        width: 100%;
+        inline-size: 100%;
     }
 
     .doctor-management-content .stats-grid {
@@ -542,6 +537,6 @@
     }
 
     .doctor-management-content .action-btn {
-        min-width: auto;
+        min-inline-size: 100%;
     }
 }
