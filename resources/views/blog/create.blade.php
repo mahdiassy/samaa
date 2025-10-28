@@ -1,8 +1,13 @@
 @extends('layouts.master2')
+
+@push('styles')
+<link rel="stylesheet" href="{{ asset('assets/css/admin/blog-create-page.css') }}">
+@endpush
+
 @section('content')
 @include('search_form_with_backbround')
 
-<div class="main-content">
+<div class="blog-management-content">
     <div class="header">
         <a href="javascript:void(0);" onclick="history.back();" class="btn-back">
             @if(App::getLocale() == 'ar')
@@ -68,9 +73,6 @@
         </form>
     </div>
 </div>
-@endsection
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
     function showPreview(event) {
@@ -84,3 +86,5 @@
         }
     }
 </script>
+
+@endsection

@@ -1,7 +1,12 @@
 @extends('layouts.master2')
+
+@push('styles')
+<link rel="stylesheet" href="{{ asset('assets/css/admin/therapy-create-page.css') }}">
+@endpush
+
 @section('content')
     @include('search_form_with_backbround')
-    <div class="main-content">
+    <div class="therapy-management-content">
         <div class="header">
             <a href="javascript:void(0);" onclick="history.back();" class="btn-back">
                 @if(App::getLocale() == 'ar')
@@ -71,7 +76,14 @@
                     </div>
 
                     <div class="action-buttons">
-                        <button type="submit" class="btn patient-btn">{{ __('site.Create') }}</button>
+                        <button type="submit" class="btn patient-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
+                                <polyline points="17 21 17 13 7 13 7 21"/>
+                                <polyline points="7 3 7 8 15 8"/>
+                            </svg>
+                            {{ __('site.Create') }}
+                        </button>
                     </div>
                 </div>
             </form>

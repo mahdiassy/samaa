@@ -1,0 +1,185 @@
+/* ==========================================================================
+   FEEDBACK LIST PAGE STYLES
+   Consistent styling for feedback index page
+   ========================================================================== */
+
+.feedback-management-content .patient-contaier {
+    max-width: 100%;
+    width: 100%;
+}
+
+.feedback-management-content .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.feedback-management-content .title-container h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.feedback-management-content .button-container {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.feedback-management-content .filter-link {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.feedback-management-content .filter-link:hover {
+    background: #e2e8f0;
+    color: #374151;
+}
+
+.feedback-management-content .filter-link svg {
+    width: 18px;
+    height: 18px;
+}
+
+.feedback-management-content .table-container {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid #e2e8f0;
+    overflow-x: auto;
+}
+
+.feedback-management-content .patient-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.feedback-management-content .patient-table thead {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.feedback-management-content .patient-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.feedback-management-content .patient-table th:first-child {
+    border-top-left-radius: 12px;
+}
+
+.feedback-management-content .patient-table th:last-child {
+    border-top-right-radius: 12px;
+}
+
+.feedback-management-content .patient-table tbody tr {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.feedback-management-content .patient-table tbody tr:hover {
+    background: #f8fafc;
+    transform: scale(1.01);
+}
+
+.feedback-management-content .patient-table td {
+    padding: 1rem;
+    color: #64748b;
+    font-size: 0.9375rem;
+}
+
+.feedback-management-content .patient-table .custom-date {
+    font-weight: 500;
+    color: #475569;
+}
+
+.feedback-management-content .btn {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.feedback-management-content .view-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+}
+
+.feedback-management-content .view-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+}
+
+.feedback-management-content .delete-btn {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.feedback-management-content .delete-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(239, 68, 68, 0.3);
+}
+
+.feedback-management-content .delete-form {
+    display: inline-block;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .feedback-management-content .actions {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem;
+    }
+
+    .feedback-management-content .table-container {
+        padding: 1.5rem;
+        overflow-x: auto;
+    }
+
+    .feedback-management-content .patient-table {
+        font-size: 0.875rem;
+    }
+
+    .feedback-management-content .patient-table th,
+    .feedback-management-content .patient-table td {
+        padding: 0.75rem 0.5rem;
+    }
+}

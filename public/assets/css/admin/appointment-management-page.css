@@ -1,0 +1,230 @@
+/* ==========================================================================
+   APPOINTMENT MANAGEMENT PAGE STYLES
+   Consistent styling for appointment pages
+   ========================================================================== */
+
+.appointment-management-content .patient-contaier {
+    max-width: 100%;
+    width: 100%;
+}
+
+.appointment-management-content .actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: white;
+    border-radius: 20px;
+    border: 1px solid #e2e8f0;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.appointment-management-content .title-container h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.appointment-management-content .button-container2 {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.appointment-management-content .add-primery-btn,
+.appointment-management-content .add-patient-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.appointment-management-content .add-patient-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.appointment-management-content .add-primery-btn:hover,
+.appointment-management-content .add-patient-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.appointment-management-content .table-container {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid #e2e8f0;
+    overflow-x: auto;
+}
+
+.appointment-management-content .patient-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.appointment-management-content .patient-table thead {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+}
+
+.appointment-management-content .patient-table th {
+    padding: 1rem;
+    text-align: left;
+    font-weight: 600;
+    color: #1e293b;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.appointment-management-content .patient-table th:first-child {
+    border-top-left-radius: 12px;
+}
+
+.appointment-management-content .patient-table th:last-child {
+    border-top-right-radius: 12px;
+}
+
+.appointment-management-content .patient-table tbody tr {
+    transition: all 0.3s ease;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.appointment-management-content .patient-table tbody tr:hover {
+    background: #f8fafc;
+    transform: scale(1.01);
+}
+
+.appointment-management-content .patient-table td {
+    padding: 1rem;
+    color: #64748b;
+    font-size: 0.9375rem;
+}
+
+.appointment-management-content .patient-table .custom-date {
+    font-weight: 500;
+    color: #475569;
+}
+
+.appointment-management-content .patient-table .text-truncate {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+
+.appointment-management-content .patient-table .link {
+    color: #3b82f6;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.appointment-management-content .patient-table .link:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+}
+
+.appointment-management-content .btn {
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: none;
+    cursor: pointer;
+}
+
+.appointment-management-content .edit-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+}
+
+.appointment-management-content .edit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(16, 185, 129, 0.3);
+}
+
+.appointment-management-content .view-btn {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    color: white;
+}
+
+.appointment-management-content .view-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+}
+
+.appointment-management-content .delete-btn {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    color: white;
+}
+
+.appointment-management-content .delete-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(239, 68, 68, 0.3);
+}
+
+.appointment-management-content select.form-control {
+    padding: 0.5rem 1rem;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    background: white;
+    color: #64748b;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+}
+
+.appointment-management-content select.form-control:focus {
+    outline: none;
+    border-color: #8b5cf6;
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+@media (max-width: 768px) {
+    .appointment-management-content .actions {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1.5rem;
+    }
+
+    .appointment-management-content .button-container2 {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .appointment-management-content .add-primery-btn,
+    .appointment-management-content .add-patient-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .appointment-management-content .table-container {
+        padding: 1.5rem;
+        overflow-x: auto;
+    }
+
+    .appointment-management-content .patient-table {
+        font-size: 0.875rem;
+    }
+
+    .appointment-management-content .patient-table th,
+    .appointment-management-content .patient-table td {
+        padding: 0.75rem 0.5rem;
+    }
+}

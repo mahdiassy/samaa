@@ -1,4 +1,9 @@
 @extends('layouts.master2')
+
+@push('styles')
+<link rel="stylesheet" href="{{ asset('assets/css/admin/patient-create-page.css') }}">
+@endpush
+
 @section('content')
     <div class="main-content">
         @include('search_form')

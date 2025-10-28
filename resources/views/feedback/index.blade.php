@@ -1,6 +1,7 @@
 @extends('layouts.master2')
 @section('content')
-    <div class="main-content">
+    <!-- Feedback Management Content with Consistent Layout -->
+    <div class="feedback-management-content">
         @include('search_form')
         <div class="patient-contaier">
 

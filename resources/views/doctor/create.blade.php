@@ -1,4 +1,9 @@
 @extends('layouts.master2')
+
+@push('styles')
+<link rel="stylesheet" href="{{ asset('assets/css/admin/doctor-create-page.css') }}">
+@endpush
+
 @section('content')
     <div class="main-content">
         @include('search_form')
@@ -37,16 +42,16 @@
                     </div>
 
                     <div class="visit-details">
-
                         <div class="user-info">
-                            <div class="text-info">
+                            <h3 class="section-title">{{ __('site.Personal Information') }}</h3>
+                            <div class="text-info required">
                                 <p>{{ __('site.First Name') }}</p>
                                 <input type="text" name="first_name" placeholder="{{ __('site.First Name') }}" value=""
                                     class="styled-input" required />
                             </div>
-                            <div class="text-info">
+                            <div class="text-info required">
                                 <p>{{ __('site.Email Address') }}</p>
-                                <input type="text" name="email" placeholder="{{ __('site.Email Address') }}" value=""
+                                <input type="email" name="email" placeholder="{{ __('site.Email Address') }}" value=""
                                     class="styled-input" required/>
                             </div>
                             <div class="text-info">
@@ -61,16 +66,17 @@
                             </div>
                             <div class="text-info">
                                 <p>{{ __('site.Facebook link') }}</p>
-                                <input type="text" name="facebook" placeholder="{{ __('site.Facebook link') }}" value=""
+                                <input type="url" name="facebook" placeholder="https://facebook.com/..." value=""
                                     class="styled-input" />
                             </div>
                             <div class="text-info">
                                 <p>{{ __('site.Twitter link') }}</p>
-                                <input type="text" name="twitter" placeholder="{{ __('site.Twitter link') }}" value=""
+                                <input type="url" name="twitter" placeholder="https://twitter.com/..." value=""
                                     class="styled-input" />
                             </div>
                         </div>
                         <div class="diagnosis">
+                            <h3 class="section-title">{{ __('site.Additional Details') }}</h3>
                             <div class="text-info">
                                 <p>{{ __('site.Surname') }}</p>
                                 <input type="text" name="last_name" placeholder="{{ __('site.Surname') }}" value=""
@@ -81,9 +87,9 @@
                                 <input type="date" name="{{ __('site.Birthday') }}" value="2024-10-22"
                                     class="styled-input date-input" />
                             </div>
-                            <div class="text-info">
+                            <div class="text-info required">
                                 <p>{{ __('site.Password') }}</p>
-                                <input type="password" placeholder="XXXXXXXXX" name="password" value="" class="styled-input" />
+                                <input type="password" placeholder="••••••••" name="password" value="" class="styled-input" required />
                             </div>
                             <div class="text-info">
                                 <p>{{ __('site.Address') }}</p>
@@ -92,16 +98,87 @@
                             </div>
                             <div class="text-info">
                                 <p>{{ __('site.Instagram link') }}</p>
-                                <input type="text" name="instagram" placeholder="{{ __('site.Instagram link') }}" value=""
+                                <input type="url" name="instagram" placeholder="https://instagram.com/..." value=""
                                     class="styled-input" />
                             </div>
                         </div>
                     </div>
                     <div class="action-buttons">
-                        <button class="btn patient-btn">{{ __('site.Create') }}</button>
+                        <button type="submit" class="btn patient-btn">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z"/>
+                                <polyline points="17 21 17 13 7 13 7 21"/>
+                                <polyline points="7 3 7 8 15 8"/>
+                            </svg>
+                            {{ __('site.Create') }}
+                        </button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 @endsection
+
+@push('scripts')
+<script>
+    // Image upload preview functionality
+    document.addEventListener('DOMContentLoaded', function() {
+        const replaceBtn = document.getElementById('replaceBtn');
+        const imageUpload = document.getElementById('imageUpload');
+        const patientPhoto = document.getElementById('patientPhoto');
+        
+        if (replaceBtn && imageUpload && patientPhoto) {
+            replaceBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                imageUpload.click();
+            });
+            
+            imageUpload.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        patientPhoto.src = event.target.result;
+                        patientPhoto.style.animation = 'fadeIn 0.5s ease';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+        
+        // Form validation feedback
+        const form = document.querySelector('form');
+        const inputs = form.querySelectorAll('.styled-input[required]');
+        
+        inputs.forEach(input => {
+            input.addEventListener('blur', function() {
+                if (this.value.trim() !== '') {
+                    this.classList.remove('error');
+                    this.classList.add('success');
+                } else {
+                    this.classList.remove('success');
+                }
+            });
+        });
+        
+        form.addEventListener('submit', function(e) {
+            let isValid = true;
+            inputs.forEach(input => {
+                if (input.value.trim() === '') {
+                    input.classList.add('error');
+                    isValid = false;
+                }
+            });
+            
+            if (!isValid) {
+                e.preventDefault();
+                const firstError = form.querySelector('.styled-input.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    firstError.focus();
+                }
+            }
+        });
+    });
+</script>
+@endpush

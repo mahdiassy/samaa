@@ -30,16 +30,27 @@
     <!-- Trumbowyg CSS for Rich Text Editor -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/trumbowyg@2.27.3/dist/ui/trumbowyg.min.css">
 
+    <!-- Dashboard styles - Load early so page-specific styles can override -->
+    <link rel="stylesheet" href="{{ asset('assets/css/dashboard/style.css') }}">
+
     <!-- SAMAA Admin Panel - Organized CSS Structure -->
     <link rel="stylesheet" href="{{ asset('assets/css/admin/admin-core.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin/admin-components.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin/admin-layout.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin/admin-pages.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/admin/admin-responsive.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/admin/patient-management.css') }}">
     
-    <!-- Dashboard styles for existing sidebar functionality -->
-    <link rel="stylesheet" href="{{ asset('assets/css/dashboard/style.css') }}">
+    <!-- Unified Admin Pages Styling - Load First for Consistency -->
+    <link rel="stylesheet" href="{{ asset('assets/css/admin/admin-pages-unified.css') }}">
+    
+    <!-- Individual Management Pages -->
+    <link rel="stylesheet" href="{{ asset('assets/css/admin/patient-management.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin/doctor-management-page.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin/blog-management-page.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin/therapy-management-page.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin/feedback-management-page.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin/feedback-list-page.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/admin/appointment-management-page.css') }}">
     
     <!-- Additional UI Improvements -->
     <style>
@@ -195,9 +206,24 @@
             transform: translateX(4px) !important;
         }
 
-        /* Content wrapper adjustments */
+        /* Admin Layout Container */
+        .admin-layout {
+            display: flex !important;
+            min-height: 100vh !important;
+        }
+
+        /* Content wrapper adjustments - Full Width Layout */
         .admin-content-wrapper {
-            margin-left: 20px !important;
+            flex: 1 !important;
+            margin-left: 240px !important;
+            /* Reduce left padding to minimize gap between sidebar and content */
+            padding: 20px 20px 20px 8px !important;
+            min-height: 100vh !important;
+            width: calc(100% - 240px) !important;
+            box-sizing: border-box !important;
+            display: flex !important;
+            justify-content: flex-start !important;
+            align-items: flex-start !important;
         }
 
         /* Remove old sidebar styles */
@@ -207,33 +233,64 @@
 
         /* Improve admin content */
         .admin-main {
-            border-radius: 0 !important;
+            border-radius: 12px !important;
             box-shadow: none !important;
+            width: 100% !important;
+            margin: 0 !important;
         }
 
-        /* Responsive Design */
+        /* Responsive Design - Flexible Layout */
         @media (max-width: 1024px) {
             .modern-sidebar {
-                width: 180px !important;
+                width: 200px !important;
             }
             
             .admin-content-wrapper {
-                margin-left: 15px !important;
-                margin-right: 15px !important;
-                max-width: calc(100vw - 30px) !important;
+                margin-left: 200px !important;
+                /* Match desktop: smaller left padding to keep content closer to sidebar */
+                padding: 15px 15px 15px 8px !important;
+                width: calc(100% - 200px) !important;
             }
         }
 
         @media (max-width: 768px) {
             .modern-sidebar {
-                width: 100% !important;
+                width: 240px !important;
                 transform: translateX(-100%) !important;
                 transition: transform 0.3s ease !important;
+                position: fixed !important;
+                z-index: 1001 !important;
+            }
+            
+            .modern-sidebar.show {
+                transform: translateX(0) !important;
             }
             
             .admin-content-wrapper {
                 margin-left: 0 !important;
-                max-width: 100% !important;
+                padding: 10px !important;
+                width: 100% !important;
+            }
+            
+            /* Mobile menu toggle */
+            .mobile-menu-toggle {
+                display: block !important;
+                position: fixed !important;
+                top: 20px !important;
+                left: 20px !important;
+                z-index: 1002 !important;
+                background: #1e293b !important;
+                color: white !important;
+                border: none !important;
+                padding: 8px 12px !important;
+                border-radius: 6px !important;
+                cursor: pointer !important;
+            }
+        }
+
+        @media (min-width: 769px) {
+            .mobile-menu-toggle {
+                display: none !important;
             }
         }
     </style>
@@ -249,6 +306,11 @@
 <body class="admin-panel">
     <!-- Admin Layout Container -->
     <div class="admin-layout">
+
+    <!-- Mobile Menu Toggle (hidden on desktop) -->
+    <button class="mobile-menu-toggle" onclick="toggleSidebar()">
+        <i class="fas fa-bars"></i>
+    </button>
 
     <div id="sidebar" class="sidebar modern-sidebar">
         <!-- User Profile Section -->
@@ -440,11 +502,11 @@
         </div>
     </div>
 
-    <!-- Admin Content Wrapper -->
-    <div class="admin-content-wrapper" style="margin-left: 20px; margin-top: 20px; margin-right: 20px; min-height: 100vh; padding: 0; max-width: calc(100vw - 40px);">
+    <!-- SAMAA Admin Content Wrapper - Full Width Layout -->
+    <div class="admin-content-wrapper">
         
         <!-- Admin Main Content -->
-        <main class="admin-main" style="padding: 0; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); min-height: calc(100vh - 20px); border-radius: 12px;">
+        <main class="admin-main" style="padding: 0; background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%); min-height: calc(100vh - 40px); border-radius: 12px;">`
             @if(session('status'))
                 <script>
                     Swal.fire({
@@ -506,6 +568,25 @@
 
     <!-- Enhanced Sidebar Navigation -->
     <script>
+        // Mobile sidebar toggle function
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('show');
+        }
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.getElementById('sidebar');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            
+            if (window.innerWidth <= 768 && 
+                !sidebar.contains(event.target) && 
+                !toggle.contains(event.target) && 
+                sidebar.classList.contains('show')) {
+                sidebar.classList.remove('show');
+            }
+        });
+
         document.addEventListener('DOMContentLoaded', function() {
             // Add active class to current navigation item
             const currentPath = window.location.pathname;

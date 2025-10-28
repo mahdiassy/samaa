@@ -1,7 +1,7 @@
 @extends('layouts.master2')
 @section('content')
     @include('search_form_with_backbround')
-    <div class="main-content">
+    <div class="therapy-management-content">
         <div class="header">
             <a href="javascript:void(0);" onclick="history.back();" class="btn-back">
                 @if(App::getLocale() == 'ar')

@@ -1,7 +1,12 @@
 @extends('layouts.master2')
+
+@push('styles')
+<link rel="stylesheet" href="{{ asset('assets/css/admin/therapy-create-page.css') }}">
+@endpush
+
 @section('content')
     @include('search_form_with_backbround')
-    <div class="main-content">
+    <div class="therapy-management-content">
 
         <div class="header">
             <a href="{{ route('therapy.index') }}" class="btn-back">

@@ -1,0 +1,643 @@
+/* ==========================================================================
+   UNIFIED ADMIN PAGES STYLES
+   Consistent layout and design system for all admin management pages
+   ========================================================================== */
+
+/* ==========================================================================
+   FULL WIDTH LAYOUT FOR ALL MANAGEMENT PAGES
+   ========================================================================== */
+.patient-management-content,
+.doctor-management-content,
+.blog-management-content,
+.therapy-management-content,
+.feedback-management-content,
+.appointment-management-content {
+    max-width: 100% !important;
+    width: 100% !important;
+    padding: 2rem;
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    min-height: 100vh;
+}
+
+/* Override any width constraints */
+.patient-management-content .admin-content-wrapper,
+.doctor-management-content .admin-content-wrapper,
+.blog-management-content .admin-content-wrapper,
+.therapy-management-content .admin-content-wrapper,
+.feedback-management-content .admin-content-wrapper,
+.appointment-management-content .admin-content-wrapper {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* ==========================================================================
+   UNIFIED PAGE HEADER STYLES
+   Consistent header design across all pages
+   ========================================================================== */
+.patient-management-content .page-header,
+.doctor-management-content .page-header,
+.blog-management-content .page-header,
+.therapy-management-content .page-header,
+.feedback-management-content .page-header,
+.appointment-management-content .page-header {
+    background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+    border-radius: 24px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+}
+
+.patient-management-content .page-header::before,
+.doctor-management-content .page-header::before,
+.blog-management-content .page-header::before,
+.therapy-management-content .page-header::before,
+.feedback-management-content .page-header::before,
+.appointment-management-content .page-header::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: radial-gradient(
+            circle at 20% 80%,
+            rgba(139, 92, 246, 0.3) 0%,
+            transparent 50%
+        ),
+        radial-gradient(
+            circle at 80% 20%,
+            rgba(16, 185, 129, 0.3) 0%,
+            transparent 50%
+        );
+    pointer-events: none;
+}
+
+.patient-management-content .header-content,
+.doctor-management-content .header-content,
+.blog-management-content .header-content,
+.therapy-management-content .header-content,
+.feedback-management-content .header-content,
+.appointment-management-content .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+}
+
+.patient-management-content .header-info,
+.doctor-management-content .header-info,
+.blog-management-content .header-info,
+.therapy-management-content .header-info,
+.feedback-management-content .header-info,
+.appointment-management-content .header-info {
+    flex: 1;
+    min-width: 250px;
+}
+
+.patient-management-content .page-title,
+.doctor-management-content .page-title,
+.blog-management-content .page-title,
+.therapy-management-content .page-title,
+.feedback-management-content .page-title,
+.appointment-management-content .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    line-height: 1.2;
+}
+
+.patient-management-content .page-subtitle,
+.doctor-management-content .page-subtitle,
+.blog-management-content .page-subtitle,
+.therapy-management-content .page-subtitle,
+.feedback-management-content .page-subtitle,
+.appointment-management-content .page-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    margin: 0;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.patient-management-content .header-actions,
+.doctor-management-content .header-actions,
+.blog-management-content .header-actions,
+.therapy-management-content .header-actions,
+.feedback-management-content .header-actions,
+.appointment-management-content .header-actions {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   UNIFIED SEARCH CONTAINER
+   ========================================================================== */
+.patient-management-content .search-container,
+.doctor-management-content .search-container,
+.blog-management-content .search-container,
+.therapy-management-content .search-container,
+.feedback-management-content .search-container,
+.appointment-management-content .search-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.patient-management-content .search-input-wrapper,
+.doctor-management-content .search-input-wrapper,
+.blog-management-content .search-input-wrapper,
+.therapy-management-content .search-input-wrapper,
+.feedback-management-content .search-input-wrapper,
+.appointment-management-content .search-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.patient-management-content .search-icon,
+.doctor-management-content .search-icon,
+.blog-management-content .search-icon,
+.therapy-management-content .search-icon,
+.feedback-management-content .search-icon,
+.appointment-management-content .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: #64748b;
+    z-index: 1;
+}
+
+.patient-management-content .search-input,
+.doctor-management-content .search-input,
+.blog-management-content .search-input,
+.therapy-management-content .search-input,
+.feedback-management-content .search-input,
+.appointment-management-content .search-input {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 0.75rem 1rem 0.75rem 3rem;
+    color: white;
+    width: 300px;
+    transition: all 0.3s ease;
+}
+
+.patient-management-content .search-input::placeholder,
+.doctor-management-content .search-input::placeholder,
+.blog-management-content .search-input::placeholder,
+.therapy-management-content .search-input::placeholder,
+.feedback-management-content .search-input::placeholder,
+.appointment-management-content .search-input::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.patient-management-content .search-input:focus,
+.doctor-management-content .search-input:focus,
+.blog-management-content .search-input:focus,
+.therapy-management-content .search-input:focus,
+.feedback-management-content .search-input:focus,
+.appointment-management-content .search-input:focus {
+    outline: none;
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(139, 92, 246, 0.5);
+}
+
+/* ==========================================================================
+   UNIFIED ACTION BUTTONS
+   ========================================================================== */
+.patient-management-content .add-btn,
+.doctor-management-content .add-btn,
+.blog-management-content .add-btn,
+.therapy-management-content .add-btn,
+.feedback-management-content .add-btn,
+.appointment-management-content .add-btn,
+.patient-management-content .playlist-btn,
+.doctor-management-content .playlist-btn,
+.blog-management-content .playlist-btn,
+.therapy-management-content .playlist-btn,
+.feedback-management-content .playlist-btn,
+.appointment-management-content .playlist-btn {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: white;
+    text-decoration: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.patient-management-content .add-btn.secondary,
+.doctor-management-content .add-btn.secondary,
+.blog-management-content .add-btn.secondary,
+.therapy-management-content .add-btn.secondary,
+.feedback-management-content .add-btn.secondary,
+.appointment-management-content .add-btn.secondary {
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.patient-management-content .playlist-btn,
+.doctor-management-content .playlist-btn,
+.blog-management-content .playlist-btn,
+.therapy-management-content .playlist-btn,
+.feedback-management-content .playlist-btn,
+.appointment-management-content .playlist-btn {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.patient-management-content .add-btn:hover,
+.doctor-management-content .add-btn:hover,
+.blog-management-content .add-btn:hover,
+.therapy-management-content .add-btn:hover,
+.feedback-management-content .add-btn:hover,
+.appointment-management-content .add-btn:hover,
+.patient-management-content .playlist-btn:hover,
+.doctor-management-content .playlist-btn:hover,
+.blog-management-content .playlist-btn:hover,
+.therapy-management-content .playlist-btn:hover,
+.feedback-management-content .playlist-btn:hover,
+.appointment-management-content .playlist-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.patient-management-content .add-btn svg,
+.doctor-management-content .add-btn svg,
+.blog-management-content .add-btn svg,
+.therapy-management-content .add-btn svg,
+.feedback-management-content .add-btn svg,
+.appointment-management-content .add-btn svg,
+.patient-management-content .playlist-btn svg,
+.doctor-management-content .playlist-btn svg,
+.blog-management-content .playlist-btn svg,
+.therapy-management-content .playlist-btn svg,
+.feedback-management-content .playlist-btn svg,
+.appointment-management-content .playlist-btn svg {
+    width: 18px;
+    height: 18px;
+}
+
+/* ==========================================================================
+   UNIFIED STATISTICS CARDS
+   ========================================================================== */
+.patient-management-content .stats-grid,
+.doctor-management-content .stats-grid,
+.blog-management-content .stats-grid,
+.therapy-management-content .stats-grid,
+.feedback-management-content .stats-grid,
+.appointment-management-content .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.patient-management-content .stat-card,
+.doctor-management-content .stat-card,
+.blog-management-content .stat-card,
+.therapy-management-content .stat-card,
+.feedback-management-content .stat-card,
+.appointment-management-content .stat-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid #e2e8f0;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.patient-management-content .stat-card:hover,
+.doctor-management-content .stat-card:hover,
+.blog-management-content .stat-card:hover,
+.therapy-management-content .stat-card:hover,
+.feedback-management-content .stat-card:hover,
+.appointment-management-content .stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.patient-management-content .stat-icon,
+.doctor-management-content .stat-icon,
+.blog-management-content .stat-icon,
+.therapy-management-content .stat-icon,
+.feedback-management-content .stat-icon,
+.appointment-management-content .stat-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.patient-management-content .stat-icon svg,
+.doctor-management-content .stat-icon svg,
+.blog-management-content .stat-icon svg,
+.therapy-management-content .stat-icon svg,
+.feedback-management-content .stat-icon svg,
+.appointment-management-content .stat-icon svg {
+    width: 32px;
+    height: 32px;
+    color: white;
+}
+
+.patient-management-content .stat-content h3,
+.doctor-management-content .stat-content h3,
+.blog-management-content .stat-content h3,
+.therapy-management-content .stat-content h3,
+.feedback-management-content .stat-content h3,
+.appointment-management-content .stat-content h3 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0 0 0.25rem 0;
+}
+
+.patient-management-content .stat-content p,
+.doctor-management-content .stat-content p,
+.blog-management-content .stat-content p,
+.therapy-management-content .stat-content p,
+.feedback-management-content .stat-content p,
+.appointment-management-content .stat-content p {
+    color: #64748b;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* ==========================================================================
+   UNIFIED TABLE SECTIONS
+   ========================================================================== */
+.patient-management-content .table-section,
+.doctor-management-content .table-section,
+.blog-management-content .table-section,
+.therapy-management-content .table-section,
+.feedback-management-content .table-section,
+.appointment-management-content .table-section {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 2rem;
+}
+
+.patient-management-content .table-header,
+.doctor-management-content .table-header,
+.blog-management-content .table-header,
+.therapy-management-content .table-header,
+.feedback-management-content .table-header,
+.appointment-management-content .table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.patient-management-content .table-header h3,
+.doctor-management-content .table-header h3,
+.blog-management-content .table-header h3,
+.therapy-management-content .table-header h3,
+.feedback-management-content .table-header h3,
+.appointment-management-content .table-header h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1e293b;
+    margin: 0;
+}
+
+.patient-management-content .table-actions,
+.doctor-management-content .table-actions,
+.blog-management-content .table-actions,
+.therapy-management-content .table-actions,
+.feedback-management-content .table-actions,
+.appointment-management-content .table-actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.patient-management-content .filter-btn,
+.doctor-management-content .filter-btn,
+.blog-management-content .filter-btn,
+.therapy-management-content .filter-btn,
+.feedback-management-content .filter-btn,
+.appointment-management-content .filter-btn,
+.patient-management-content .export-btn,
+.doctor-management-content .export-btn,
+.blog-management-content .export-btn,
+.therapy-management-content .export-btn,
+.feedback-management-content .export-btn,
+.appointment-management-content .export-btn {
+    background: #f1f5f9;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.patient-management-content .filter-btn:hover,
+.doctor-management-content .filter-btn:hover,
+.blog-management-content .filter-btn:hover,
+.therapy-management-content .filter-btn:hover,
+.feedback-management-content .filter-btn:hover,
+.appointment-management-content .filter-btn:hover,
+.patient-management-content .export-btn:hover,
+.doctor-management-content .export-btn:hover,
+.blog-management-content .export-btn:hover,
+.therapy-management-content .export-btn:hover,
+.feedback-management-content .export-btn:hover,
+.appointment-management-content .export-btn:hover {
+    background: #e2e8f0;
+    color: #374151;
+}
+
+.patient-management-content .filter-btn svg,
+.doctor-management-content .filter-btn svg,
+.blog-management-content .filter-btn svg,
+.therapy-management-content .filter-btn svg,
+.feedback-management-content .filter-btn svg,
+.appointment-management-content .filter-btn svg,
+.patient-management-content .export-btn svg,
+.doctor-management-content .export-btn svg,
+.blog-management-content .export-btn svg,
+.therapy-management-content .export-btn svg,
+.feedback-management-content .export-btn svg,
+.appointment-management-content .export-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ==========================================================================
+   UNIFIED PAGINATION
+   ========================================================================== */
+.patient-management-content .pagination-container,
+.doctor-management-content .pagination-container,
+.blog-management-content .pagination-container,
+.therapy-management-content .pagination-container,
+.feedback-management-content .pagination-container,
+.appointment-management-content .pagination-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 1024px) {
+    .patient-management-content,
+    .doctor-management-content,
+    .blog-management-content,
+    .therapy-management-content,
+    .feedback-management-content,
+    .appointment-management-content {
+        padding: 1.5rem;
+    }
+
+    .patient-management-content .header-content,
+    .doctor-management-content .header-content,
+    .blog-management-content .header-content,
+    .therapy-management-content .header-content,
+    .feedback-management-content .header-content,
+    .appointment-management-content .header-content {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .patient-management-content .stats-grid,
+    .doctor-management-content .stats-grid,
+    .blog-management-content .stats-grid,
+    .therapy-management-content .stats-grid,
+    .feedback-management-content .stats-grid,
+    .appointment-management-content .stats-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .patient-management-content,
+    .doctor-management-content,
+    .blog-management-content,
+    .therapy-management-content,
+    .feedback-management-content,
+    .appointment-management-content {
+        padding: 1rem;
+    }
+
+    .patient-management-content .page-title,
+    .doctor-management-content .page-title,
+    .blog-management-content .page-title,
+    .therapy-management-content .page-title,
+    .feedback-management-content .page-title,
+    .appointment-management-content .page-title {
+        font-size: 2rem;
+    }
+
+    .patient-management-content .page-subtitle,
+    .doctor-management-content .page-subtitle,
+    .blog-management-content .page-subtitle,
+    .therapy-management-content .page-subtitle,
+    .feedback-management-content .page-subtitle,
+    .appointment-management-content .page-subtitle {
+        font-size: 1rem;
+    }
+
+    .patient-management-content .header-actions,
+    .doctor-management-content .header-actions,
+    .blog-management-content .header-actions,
+    .therapy-management-content .header-actions,
+    .feedback-management-content .header-actions,
+    .appointment-management-content .header-actions {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    .patient-management-content .search-input,
+    .doctor-management-content .search-input,
+    .blog-management-content .search-input,
+    .therapy-management-content .search-input,
+    .feedback-management-content .search-input,
+    .appointment-management-content .search-input {
+        width: 100%;
+    }
+
+    .patient-management-content .add-btn,
+    .doctor-management-content .add-btn,
+    .blog-management-content .add-btn,
+    .therapy-management-content .add-btn,
+    .feedback-management-content .add-btn,
+    .appointment-management-content .add-btn,
+    .patient-management-content .playlist-btn,
+    .doctor-management-content .playlist-btn,
+    .blog-management-content .playlist-btn,
+    .therapy-management-content .playlist-btn,
+    .feedback-management-content .playlist-btn,
+    .appointment-management-content .playlist-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .patient-management-content .stats-grid,
+    .doctor-management-content .stats-grid,
+    .blog-management-content .stats-grid,
+    .therapy-management-content .stats-grid,
+    .feedback-management-content .stats-grid,
+    .appointment-management-content .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .patient-management-content .table-section,
+    .doctor-management-content .table-section,
+    .blog-management-content .table-section,
+    .therapy-management-content .table-section,
+    .feedback-management-content .table-section,
+    .appointment-management-content .table-section {
+        padding: 1.5rem;
+    }
+
+    .patient-management-content .table-header,
+    .doctor-management-content .table-header,
+    .blog-management-content .table-header,
+    .therapy-management-content .table-header,
+    .feedback-management-content .table-header,
+    .appointment-management-content .table-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .patient-management-content .table-actions,
+    .doctor-management-content .table-actions,
+    .blog-management-content .table-actions,
+    .therapy-management-content .table-actions,
+    .feedback-management-content .table-actions,
+    .appointment-management-content .table-actions {
+        width: 100%;
+    }
+}
