@@ -1,0 +1,486 @@
+:root {
+    --therapy-primary: #f97316;
+    --therapy-primary-dark: #ea580c;
+    --therapy-secondary: #facc15;
+    --therapy-surface: #ffffff;
+    --therapy-muted: #64748b;
+    --therapy-deep: #0f172a;
+    --therapy-border: #f1f5f9;
+    --therapy-accent: #f97316;
+}
+
+.therapy-management-content.therapy-edit-page {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.75rem, 4vw, 2.75rem);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    min-height: 100vh;
+    background: linear-gradient(180deg, #fff7ed 0%, #fef3c7 100%);
+}
+
+.therapy-edit-page .page-header {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.75rem;
+    padding: clamp(1.75rem, 4vw, 2.75rem);
+    background: linear-gradient(135deg, #7c2d12 0%, #ea580c 55%, #facc15 100%);
+    color: #fff;
+}
+
+.therapy-edit-page .page-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+            circle at 20% 80%,
+            rgba(248, 113, 113, 0.24),
+            transparent 55%
+        ),
+        radial-gradient(
+            circle at 78% 18%,
+            rgba(250, 204, 21, 0.32),
+            transparent 55%
+        ),
+        radial-gradient(
+            circle at 50% 45%,
+            rgba(249, 115, 22, 0.22),
+            transparent 60%
+        );
+    pointer-events: none;
+}
+
+.therapy-edit-page .header-content {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(1rem, 2.5vw, 1.75rem);
+    z-index: 1;
+}
+
+.therapy-edit-page .header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: min(18rem, 100%);
+}
+
+.therapy-edit-page .page-title {
+    margin: 0;
+    font-size: clamp(1.9rem, 4vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.015em;
+}
+
+.therapy-edit-page .page-subtitle {
+    margin: 0;
+    font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 38rem;
+    line-height: 1.6;
+}
+
+.therapy-edit-page .header-actions {
+    display: inline-flex;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+}
+
+.therapy-edit-page .header-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.6rem;
+    border-radius: 0.9rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.therapy-edit-page .header-btn i {
+    font-size: 1.05rem;
+}
+
+.therapy-edit-page .primary-btn {
+    background: linear-gradient(
+        135deg,
+        var(--therapy-primary) 0%,
+        var(--therapy-primary-dark) 100%
+    );
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(234, 88, 12, 0.28);
+}
+
+.therapy-edit-page .primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 30px rgba(251, 191, 36, 0.32);
+}
+
+.therapy-edit-page .secondary-btn {
+    background: rgba(15, 23, 42, 0.25);
+    color: #fff;
+    border: 1px solid rgba(252, 211, 77, 0.45);
+}
+
+.therapy-edit-page .secondary-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.therapy-edit-page .ghost-btn {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+.therapy-edit-page .ghost-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.therapy-edit-page .header-meta {
+    position: relative;
+    z-index: 1;
+    margin-top: clamp(1rem, 2vw, 1.5rem);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+}
+
+.therapy-edit-page .meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    backdrop-filter: blur(4px);
+}
+
+.therapy-edit-page .insight-banner {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: clamp(1rem, 2.5vw, 1.75rem);
+}
+
+.therapy-edit-page .insight-card {
+    background: var(--therapy-surface);
+    border-radius: 1.2rem;
+    padding: clamp(1.25rem, 2.5vw, 1.75rem);
+    border: 1px solid var(--therapy-border);
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    box-shadow: 0 12px 24px rgba(249, 115, 22, 0.08);
+}
+
+.therapy-edit-page .insight-icon {
+    inline-size: 2.75rem;
+    block-size: 2.75rem;
+    border-radius: 0.9rem;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(
+        135deg,
+        rgba(250, 204, 21, 0.35),
+        rgba(249, 115, 22, 0.55)
+    );
+    color: var(--therapy-primary-dark);
+    font-size: 1.2rem;
+}
+
+.therapy-edit-page .insight-card h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.05rem;
+    color: var(--therapy-deep);
+}
+
+.therapy-edit-page .insight-card p {
+    margin: 0;
+    color: var(--therapy-muted);
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.therapy-edit-page .form-wrapper {
+    background: transparent;
+}
+
+.therapy-edit-page .therapy-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.therapy-edit-page .form-shell {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 3vw, 2rem);
+}
+
+.therapy-edit-page .form-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: var(--therapy-surface);
+    border-radius: 1.15rem;
+    padding: clamp(1.35rem, 3vw, 1.75rem);
+    border: 1px solid var(--therapy-border);
+    box-shadow: 0 12px 32px rgba(148, 163, 184, 0.12);
+}
+
+.therapy-edit-page .panel-header h2 {
+    margin: 0 0 0.4rem;
+    font-size: 1.2rem;
+    color: var(--therapy-deep);
+    font-weight: 700;
+}
+
+.therapy-edit-page .panel-header p {
+    margin: 0;
+    color: var(--therapy-muted);
+    font-size: 0.92rem;
+    line-height: 1.55;
+}
+
+.therapy-edit-page .section-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    background: #fffdfa;
+    border-radius: 1rem;
+    border: 1px solid var(--therapy-border);
+}
+
+.therapy-edit-page .section-heading h3 {
+    margin: 0 0 0.3rem;
+    font-size: 1.08rem;
+    color: var(--therapy-deep);
+    font-weight: 700;
+}
+
+.therapy-edit-page .section-heading p {
+    margin: 0;
+    color: var(--therapy-muted);
+    font-size: 0.9rem;
+}
+
+.therapy-edit-page .input-grid {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.therapy-edit-page .input-grid.two-col {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.therapy-edit-page .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.therapy-edit-page .input-group label {
+    font-weight: 600;
+    color: var(--therapy-deep);
+    font-size: 0.96rem;
+}
+
+.therapy-edit-page .form-input {
+    width: 100%;
+    padding: 1rem 1.1rem;
+    border: 2px solid rgba(250, 204, 21, 0.5);
+    border-radius: 0.95rem;
+    font-size: 0.97rem;
+    transition: border 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    background: #fff;
+    color: var(--therapy-deep);
+}
+
+.therapy-edit-page .form-input:focus {
+    outline: none;
+    border-color: var(--therapy-primary);
+    box-shadow: 0 0 0 4px rgba(249, 115, 22, 0.18);
+    background: #fffdfa;
+}
+
+.therapy-edit-page .static-value {
+    margin: 0;
+    padding: 0.9rem 1.1rem;
+    border-radius: 0.85rem;
+    background: rgba(250, 204, 21, 0.12);
+    border: 1px dashed rgba(234, 88, 12, 0.25);
+    font-weight: 600;
+    color: var(--therapy-deep);
+}
+
+.therapy-edit-page .static-value.empty {
+    color: #b45309;
+    background: rgba(254, 215, 170, 0.4);
+}
+
+.therapy-edit-page .audio-preview-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    background: #fff;
+    box-shadow: 0 10px 24px rgba(15, 23, 42, 0.08);
+}
+
+.therapy-edit-page .audio-preview-card.current {
+    background: linear-gradient(
+        135deg,
+        rgba(254, 215, 170, 0.35),
+        rgba(255, 247, 237, 0.8)
+    );
+}
+
+.therapy-edit-page .audio-preview-card.is-hidden {
+    display: none;
+}
+
+.therapy-edit-page .preview-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--therapy-deep);
+}
+
+.therapy-edit-page .audio-player-container audio {
+    width: 100%;
+    outline: none;
+}
+
+.therapy-edit-page .audio-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    font-size: 0.85rem;
+    color: var(--therapy-muted);
+}
+
+.therapy-edit-page .audio-info span + span {
+    position: relative;
+}
+
+.therapy-edit-page .audio-info span + span::before {
+    content: "•";
+    margin-right: 0.5rem;
+    color: rgba(15, 23, 42, 0.25);
+}
+
+.therapy-edit-page .warning-banner {
+    background: #fff7ed;
+    border: 1px solid rgba(251, 191, 36, 0.6);
+    color: #92400e;
+    padding: 0.75rem 0.9rem;
+    border-radius: 0.75rem;
+    font-size: 0.88rem;
+    margin-bottom: 0.75rem;
+}
+
+.therapy-edit-page .error-banner {
+    background: #fef2f2;
+    border: 1px solid rgba(248, 113, 113, 0.45);
+    color: #b91c1c;
+    padding: 0.65rem 0.85rem;
+    border-radius: 0.75rem;
+    font-size: 0.85rem;
+}
+
+.therapy-edit-page .action-bar {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+}
+
+.therapy-edit-page .select2-container--default .select2-selection--single,
+.therapy-edit-page .select2-container--default .select2-selection--multiple {
+    border: 2px solid rgba(250, 204, 21, 0.5);
+    border-radius: 0.95rem;
+    min-height: 52px;
+    padding: 0.35rem;
+    background: #fff;
+}
+
+.therapy-edit-page
+    .select2-container--default
+    .select2-selection--single
+    .select2-selection__rendered,
+.therapy-edit-page
+    .select2-container--default
+    .select2-selection--multiple
+    .select2-selection__rendered {
+    color: var(--therapy-deep);
+    line-height: 40px;
+    padding-left: 0.5rem;
+}
+
+.therapy-edit-page
+    .select2-container--default
+    .select2-selection--single
+    .select2-selection__arrow {
+    height: 50px;
+    right: 12px;
+}
+
+.therapy-edit-page
+    .select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice {
+    background: rgba(250, 204, 21, 0.2);
+    border: none;
+    color: var(--therapy-primary-dark);
+    font-weight: 600;
+}
+
+.therapy-edit-page
+    .select2-container--default
+    .select2-search--inline
+    .select2-search__field {
+    font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+    .therapy-management-content.therapy-edit-page {
+        padding: 1.5rem 1.1rem 2rem;
+    }
+
+    .therapy-edit-page .page-header {
+        border-radius: 1.35rem;
+    }
+
+    .therapy-edit-page .header-actions {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .therapy-edit-page .header-btn {
+        flex: 1;
+        justify-content: center;
+    }
+}
+
+@media (max-width: 520px) {
+    .therapy-edit-page .audio-info {
+        flex-direction: column;
+        gap: 0.35rem;
+    }
+
+    .therapy-edit-page .audio-info span + span::before {
+        display: none;
+    }
+}

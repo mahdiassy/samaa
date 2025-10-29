@@ -1,141 +1,238 @@
 @extends('layouts.master2')
+
+@push('styles')
+<link rel="stylesheet" href="{{ asset('assets/css/admin/doctor-show-page.css') }}">
+@endpush
+
 @section('content')
-    <div class="main-content">
-        @include('search_form')
-        <div class="header">
-            <a href="{{ route('doctor.index') }}" class="btn-back">
-                @if(App::getLocale() == 'ar')
-                <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
-                @else
-                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
-                @endif
-            </a>
-        </div>
-        <div>
-            <div class="profile-details">
-                <div class="doctor-details">
-                        <img src="{{ $doctor->image ? Storage::url($doctor->image) : asset('assets/images/avatar1.png') }}" alt="Doctor Photo" class="profile-img">
-                    <div class="user-info">
-                        <div class="extra-user-info">
-                            <p class="big-title">{{ $doctor->first_name }} {{ $doctor->last_name }}</p>
-                            <div class="small-title">
-                                <p>{{ __('site.ID') }}:#{{ $doctor->id }}</p>
-                            </div>
-                            <div class="text-info">
-                                <p><strong>{{ __('site.Specialization') }}</strong></p>
-                                <p>{{ $doctor->specialization }}</p>
-                            </div>
-                        </div>
+    @php
+        $backRoute = Route::has('doctor.index') ? route('doctor.index') : url()->previous();
+        $editRoute = Route::has('doctor.edit') ? route('doctor.edit', $doctor) : null;
+        $scheduleRoute = Route::has('doctors.calendar') ? route('doctors.calendar') : null;
+        $feedbackRoute = Route::has('feedback') ? route('feedback') : null;
+        $feedbackListRoute = Route::has('feedback-list') ? route('feedback-list') : null;
+        $age = $doctor->birthday ? \Carbon\Carbon::parse($doctor->birthday)->age : null;
+        $birthdayFormatted = $doctor->birthday ? \Carbon\Carbon::parse($doctor->birthday)->format('d-m-Y') : null;
+        $email = optional($doctor->user)->email;
+        $hasSocial = filled($doctor->facebook) || filled($doctor->instagram) || filled($doctor->twitter);
+    @endphp
+
+    <div class="doctor-view-page">
+        <div class="doctor-management-content">
+            <div class="page-header">
+                <div class="header-content">
+                    <div class="header-info">
+                        <h1 class="page-title">{{ $doctor->first_name }} {{ $doctor->last_name }}</h1>
+                        <p class="page-subtitle">{{ $doctor->specialization ?? __('site.Specialization') }}</p>
                     </div>
-                </div>
-
-                <div class="doctor-details">
-
-                    <div class="user-info">
-                        <p class="big-title">{{ $doctor->first_name }} {{ $doctor->last_name }}</p>
-                        <div class="small-title">
-                            <p>{{ __('site.ID') }}:#{{ $doctor->id }}</p>
-                        </div>
-                        <div class="text-info">
-                            <p><strong>{{ __('site.Address') }}:</strong> {{ $doctor->address }}</p>
-
-                            <p><strong>{{ __('site.Birthday') }}:</strong> {{ \Carbon\Carbon::parse($doctor->birthday)->format('d-m-Y') }}</p>
-                        </div>
-                    </div>
-                    <div class="diagnosis">
-                        <div class="text-info">
-                            <p><strong>{{ __('site.Email Address') }}:</strong></p>
-                            <p>{{ $doctor->user->email }}</p>
-
-                            <p><strong>{{ __('site.Phone') }}:</strong></p>
-                            <p>{{ $doctor->phone }}</p>
-                        </div>
-                        <div class="medias">
-                            @if($doctor->facebook)
-                                <a target="_blank" href="{{ $doctor->facebook }}">
-                                    <svg width="19" height="19" version="1.1" id="Layer_1"
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 291.319 291.319"
-                                        xml:space="preserve">
-                                        <g>
-                                            <path style="fill:#3B5998;" d="M145.659,0c80.45,0,145.66,65.219,145.66,145.66c0,80.45-65.21,145.659-145.66,145.659
-                                                S0,226.109,0,145.66C0,65.219,65.21,0,145.659,0z" />
-                                            <path style="fill:#FFFFFF;" d="M163.394,100.277h18.772v-27.73h-22.067v0.1c-26.738,0.947-32.218,15.977-32.701,31.763h-0.055
-                                            v13.847h-18.207v27.156h18.207v72.793h27.439v-72.793h22.477l4.342-27.156h-26.81v-8.366
-                                            C154.791,104.556,158.341,100.277,163.394,100.277z" />
-                                        </g>
-                                    </svg>
-                                </a>
+                    <div class="header-actions">
+                        <a href="{{ $backRoute }}" class="header-btn ghost-btn">
+                            @if (app()->getLocale() === 'ar')
+                                <span>{{ __('site.Go Back') }}</span>
+                                <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i>
+                            @else
+                                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i>
+                                <span>{{ __('site.Go Back') }}</span>
                             @endif
-                            @if($doctor->instagram)
-                                <a target="_blank" href="{{ $doctor->instagram }}">
-                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <rect x="1.25" y="1.25" width="17.5" height="17.5" rx="8.75"
-                                            fill="url(#paint0_radial_124_18375)" />
-                                        <rect x="1.25" y="1.25" width="17.5" height="17.5" rx="8.75"
-                                            fill="url(#paint1_radial_124_18375)" />
-                                        <rect x="1.25" y="1.25" width="17.5" height="17.5" rx="8.75"
-                                            fill="url(#paint2_radial_124_18375)" />
-                                        <path
-                                            d="M13.5 7.25C13.5 7.66421 13.1642 8 12.75 8C12.3358 8 12 7.66421 12 7.25C12 6.83579 12.3358 6.5 12.75 6.5C13.1642 6.5 13.5 6.83579 13.5 7.25Z"
-                                            fill="white" />
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M10 12.5C11.3807 12.5 12.5 11.3807 12.5 10C12.5 8.61929 11.3807 7.5 10 7.5C8.61929 7.5 7.5 8.61929 7.5 10C7.5 11.3807 8.61929 12.5 10 12.5ZM10 11.5C10.8284 11.5 11.5 10.8284 11.5 10C11.5 9.17157 10.8284 8.5 10 8.5C9.17157 8.5 8.5 9.17157 8.5 10C8.5 10.8284 9.17157 11.5 10 11.5Z"
-                                            fill="white" />
-                                        <path fill-rule="evenodd" clip-rule="evenodd"
-                                            d="M5 9.8C5 8.11984 5 7.27976 5.32698 6.63803C5.6146 6.07354 6.07354 5.6146 6.63803 5.32698C7.27976 5 8.11984 5 9.8 5H10.2C11.8802 5 12.7202 5 13.362 5.32698C13.9265 5.6146 14.3854 6.07354 14.673 6.63803C15 7.27976 15 8.11984 15 9.8V10.2C15 11.8802 15 12.7202 14.673 13.362C14.3854 13.9265 13.9265 14.3854 13.362 14.673C12.7202 15 11.8802 15 10.2 15H9.8C8.11984 15 7.27976 15 6.63803 14.673C6.07354 14.3854 5.6146 13.9265 5.32698 13.362C5 12.7202 5 11.8802 5 10.2V9.8ZM9.8 6H10.2C11.0566 6 11.6389 6.00078 12.089 6.03755C12.5274 6.07337 12.7516 6.1383 12.908 6.21799C13.2843 6.40973 13.5903 6.71569 13.782 7.09202C13.8617 7.24842 13.9266 7.47262 13.9624 7.91104C13.9992 8.36113 14 8.94342 14 9.8V10.2C14 11.0566 13.9992 11.6389 13.9624 12.089C13.9266 12.5274 13.8617 12.7516 13.782 12.908C13.5903 13.2843 13.2843 13.5903 12.908 13.782C12.7516 13.8617 12.5274 13.9266 12.089 13.9624C11.6389 13.9992 11.0566 14 10.2 14H9.8C8.94342 14 8.36113 13.9992 7.91104 13.9624C7.47262 13.9266 7.24842 13.8617 7.09202 13.782C6.71569 13.5903 6.40973 13.2843 6.21799 12.908C6.1383 12.7516 6.07337 12.5274 6.03755 12.089C6.00078 11.6389 6 11.0566 6 10.2V9.8C6 8.94342 6.00078 8.36113 6.03755 7.91104C6.07337 7.47262 6.1383 7.24842 6.21799 7.09202C6.40973 6.71569 6.71569 6.40973 7.09202 6.21799C7.24842 6.1383 7.47262 6.07337 7.91104 6.03755C8.36113 6.00078 8.94342 6 9.8 6Z"
-                                            fill="white" />
-                                        <defs>
-                                            <radialGradient id="paint0_radial_124_18375" cx="0"
-                                                cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                                gradientTransform="translate(7.5 14.375) rotate(-55.3758) scale(15.9498)">
-                                                <stop stop-color="#B13589" />
-                                                <stop offset="0.79309" stop-color="#C62F94" />
-                                                <stop offset="1" stop-color="#8A3AC8" />
-                                            </radialGradient>
-                                            <radialGradient id="paint1_radial_124_18375" cx="0"
-                                                cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                                gradientTransform="translate(6.875 19.375) rotate(-65.1363) scale(14.1214)">
-                                                <stop stop-color="#E0E8B7" />
-                                                <stop offset="0.444662" stop-color="#FB8A2E" />
-                                                <stop offset="0.71474" stop-color="#E2425C" />
-                                                <stop offset="1" stop-color="#E2425C" stop-opacity="0" />
-                                            </radialGradient>
-                                            <radialGradient id="paint2_radial_124_18375" cx="0"
-                                                cy="0" r="1" gradientUnits="userSpaceOnUse"
-                                                gradientTransform="translate(0.312501 1.875) rotate(-8.1301) scale(24.3068 5.19897)">
-                                                <stop offset="0.156701" stop-color="#406ADC" />
-                                                <stop offset="0.467799" stop-color="#6A45BE" />
-                                                <stop offset="1" stop-color="#6A45BE" stop-opacity="0" />
-                                            </radialGradient>
-                                        </defs>
-                                    </svg>
-                                </a>
-                            @endif
-                            @if($doctor->twitter)
-                            <a target="_blank" href="{{ $doctor->twitter }}">
-                                <svg width="22" height="22" viewBox="0 0 45 45" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <circle cx="24" cy="24" r="20" fill="#1DA1F2"/>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M36 16.3086C35.1177 16.7006 34.1681 16.9646 33.1722 17.0838C34.1889 16.4742 34.9697 15.5095 35.3368 14.36C34.3865 14.9247 33.3314 15.3335 32.2107 15.5551C31.3123 14.5984 30.0316 14 28.6165 14C25.8975 14 23.6928 16.2047 23.6928 18.9237C23.6928 19.3092 23.7368 19.6852 23.8208 20.046C19.7283 19.8412 16.1005 17.8805 13.6719 14.9015C13.2479 15.6287 13.0055 16.4742 13.0055 17.3766C13.0055 19.0845 13.8735 20.5916 15.1958 21.4747C14.3878 21.4491 13.6295 21.2275 12.9647 20.8587V20.9203C12.9647 23.3066 14.663 25.296 16.9141 25.7496C16.5013 25.8616 16.0661 25.9224 15.6174 25.9224C15.2998 25.9224 14.991 25.8912 14.6902 25.8336C15.3166 27.7895 17.1357 29.2134 19.2899 29.2534C17.6052 30.5733 15.4822 31.3612 13.1751 31.3612C12.7767 31.3612 12.3848 31.338 12 31.2916C14.1791 32.6884 16.7669 33.5043 19.5475 33.5043C28.6037 33.5043 33.5562 26.0016 33.5562 19.4956C33.5562 19.282 33.5522 19.0693 33.5418 18.8589C34.5049 18.1629 35.34 17.2958 36 16.3086Z" fill="white"/>
-                                </svg>
+                        </a>
+                        @if ($editRoute)
+                            <a href="{{ $editRoute }}" class="header-btn primary-btn">
+                                <i class="fas fa-edit" aria-hidden="true"></i>
+                                <span>{{ __('site.Edit') }}</span>
                             </a>
+                        @endif
+                    </div>
+                </div>
+                <div class="header-meta">
+                    <span class="meta-chip">{{ __('site.ID') }} #{{ $doctor->id }}</span>
+                    @if ($birthdayFormatted)
+                        <span class="meta-chip">{{ __('site.Birthday') }}: {{ $birthdayFormatted }}</span>
+                    @endif
+                    @if ($age)
+                        <span class="meta-chip">{{ $age }} yrs</span>
+                    @endif
+                    @if ($doctor->address)
+                        <span class="meta-chip">{{ $doctor->address }}</span>
+                    @endif
+                </div>
+            </div>
+
+            <div class="search-card">
+                @include('search_form')
+            </div>
+
+            <div class="content-shell">
+                <aside class="media-panel">
+                    <div class="avatar-wrapper">
+                        <img src="{{ $doctor->image ? Storage::url($doctor->image) : asset('assets/images/avatar1.png') }}" alt="{{ $doctor->first_name }} {{ $doctor->last_name }}" class="profile-img">
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-row">
+                            <span class="label">{{ __('site.Email Address') }}</span>
+                            <span class="value">{{ $email ?? 'N/A' }}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">{{ __('site.Phone') }}</span>
+                            <span class="value">{{ $doctor->phone ?? 'N/A' }}</span>
+                        </div>
+                        <div class="info-row">
+                            <span class="label">{{ __('site.Specialization') }}</span>
+                            <span class="value">{{ $doctor->specialization ?? 'N/A' }}</span>
+                        </div>
+                    </div>
+
+                    @if ($doctor->address)
+                        <div class="note-card">
+                            <h3>{{ __('site.Address') }}</h3>
+                            <p>{{ $doctor->address }}</p>
+                        </div>
+                    @endif
+
+                    @if ($hasSocial)
+                        <div class="social-card">
+                            <span class="label">{{ __('Connect') }}</span>
+                            <div class="social-links">
+                                @if ($doctor->facebook)
+                                    <a class="social-btn" target="_blank" href="{{ $doctor->facebook }}" aria-label="Facebook">
+                                        <svg width="18" height="18" viewBox="0 0 291.319 291.319" xmlns="http://www.w3.org/2000/svg">
+                                            <path fill="#3B5998" d="M145.659 0c80.45 0 145.66 65.219 145.66 145.66 0 80.45-65.21 145.659-145.66 145.659S0 226.109 0 145.66C0 65.219 65.21 0 145.659 0z"/>
+                                            <path fill="#fff" d="M163.394 100.277h18.772v-27.73h-22.067v.1c-26.738.947-32.218 15.977-32.701 31.763h-.055v13.847h-18.207v27.156h18.207v72.793h27.439v-72.793h22.477l4.342-27.156h-26.81v-8.366c0-5.466 3.55-9.745 8.603-9.745z"/>
+                                        </svg>
+                                    </a>
+                                @endif
+                                @if ($doctor->instagram)
+                                    <a class="social-btn" target="_blank" href="{{ $doctor->instagram }}" aria-label="Instagram">
+                                        <svg width="20" height="20" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                            <defs>
+                                                <radialGradient id="insta-a" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(7.5 14.375) rotate(-55.376) scale(15.95)">
+                                                    <stop stop-color="#B13589"/>
+                                                    <stop offset="0.793" stop-color="#C62F94"/>
+                                                    <stop offset="1" stop-color="#8A3AC8"/>
+                                                </radialGradient>
+                                                <radialGradient id="insta-b" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(6.875 19.375) rotate(-65.136) scale(14.121)">
+                                                    <stop stop-color="#E0E8B7"/>
+                                                    <stop offset="0.445" stop-color="#FB8A2E"/>
+                                                    <stop offset="0.715" stop-color="#E2425C"/>
+                                                    <stop offset="1" stop-color="#E2425C" stop-opacity="0"/>
+                                                </radialGradient>
+                                                <radialGradient id="insta-c" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(.313 1.875) rotate(-8.13) scale(24.307 5.199)">
+                                                    <stop offset="0.157" stop-color="#406ADC"/>
+                                                    <stop offset="0.468" stop-color="#6A45BE"/>
+                                                    <stop offset="1" stop-color="#6A45BE" stop-opacity="0"/>
+                                                </radialGradient>
+                                            </defs>
+                                            <rect x="1.25" y="1.25" width="17.5" height="17.5" rx="8.75" fill="url(#insta-a)"/>
+                                            <rect x="1.25" y="1.25" width="17.5" height="17.5" rx="8.75" fill="url(#insta-b)"/>
+                                            <rect x="1.25" y="1.25" width="17.5" height="17.5" rx="8.75" fill="url(#insta-c)"/>
+                                            <path fill="#fff" d="M13.5 7.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"/>
+                                            <path fill="#fff" d="M10 12.5a2.5 2.5 0 100-5 2.5 2.5 0 000 5zm0 1a3.5 3.5 0 110-7 3.5 3.5 0 010 7z"/>
+                                            <path fill="#fff" d="M5 9.8C5 8.12 5 7.28 5.327 6.638A2.5 2.5 0 016.638 5.327C7.28 5 8.12 5 9.8 5h.4c1.68 0 2.52 0 3.162.327.564.288 1.023.747 1.31 1.311C15 7.28 15 8.12 15 9.8v.4c0 1.68 0 2.52-.328 3.162a2.5 2.5 0 01-1.31 1.31C12.72 15 11.88 15 10.2 15h-.4c-1.68 0-2.52 0-3.162-.328a2.5 2.5 0 01-1.31-1.31C5 12.72 5 11.88 5 10.2V9.8z"/>
+                                        </svg>
+                                    </a>
+                                @endif
+                                @if ($doctor->twitter)
+                                    <a class="social-btn" target="_blank" href="{{ $doctor->twitter }}" aria-label="Twitter">
+                                        <svg width="20" height="20" viewBox="0 0 45 45" xmlns="http://www.w3.org/2000/svg">
+                                            <circle cx="24" cy="24" r="20" fill="#1DA1F2"/>
+                                            <path fill="#fff" d="M36 16.309a13.1 13.1 0 01-2.828.775 4.954 4.954 0 002.167-2.724 9.874 9.874 0 01-3.127 1.195 4.94 4.94 0 00-8.418 4.502 14.026 14.026 0 01-10.18-5.159 4.94 4.94 0 001.53 6.592 4.903 4.903 0 01-2.237-.618v.063a4.94 4.94 0 003.96 4.84 4.932 4.932 0 01-2.228.085 4.942 4.942 0 004.612 3.427A9.905 9.905 0 0112 31.292 13.965 13.965 0 0019.548 33.5c11.547 0 17.868-9.571 17.868-17.869 0-.272-.007-.543-.02-.813A12.78 12.78 0 0036 16.309z"/>
+                                        </svg>
+                                    </a>
+                                @endif
+                            </div>
+                        </div>
+                    @endif
+                </aside>
+
+                <section class="details-panel">
+                    <div class="section-block">
+                        <div class="section-heading">
+                            <h2>{{ __('Professional Overview') }}</h2>
+                        </div>
+                        <div class="detail-grid">
+                            @if ($doctor->specialization)
+                                <div class="detail-item">
+                                    <span class="detail-label">{{ __('site.Specialization') }}</span>
+                                    <p class="detail-value">{{ $doctor->specialization }}</p>
+                                </div>
+                            @endif
+                            @if ($birthdayFormatted)
+                                <div class="detail-item">
+                                    <span class="detail-label">{{ __('site.Birthday') }}</span>
+                                    <p class="detail-value">{{ $birthdayFormatted }} @if($age) ({{ $age }} yrs) @endif</p>
+                                </div>
+                            @endif
+                            @if ($doctor->phone)
+                                <div class="detail-item">
+                                    <span class="detail-label">{{ __('site.Phone') }}</span>
+                                    <p class="detail-value">{{ $doctor->phone }}</p>
+                                </div>
+                            @endif
+                            @if ($email)
+                                <div class="detail-item">
+                                    <span class="detail-label">{{ __('site.Email Address') }}</span>
+                                    <p class="detail-value">{{ $email }}</p>
+                                </div>
                             @endif
                         </div>
                     </div>
-                </div>
-                <div class="action-buttons">
-                    <a href="{{ route('doctor.index') }}" class="btn patient-btn">{{ __('site.Doctor list') }}</a>
-                    @role('Patient|Doctor')
-                    <a href="{{ route('feedback') }}" class="btn patient-btn">{{ __('site.Feedback') }}</a>
-                    @endrole
-                    @role('Admin')
-                    <a href="{{ route('feedback-list') }}" class="btn patient-btn">{{ __('site.Feedback') }}</a>
-                    @endrole
-                    @role('Doctor')
-                        <a href="{{ route('doctors.calendar') }}" class="btn patient-btn">+ {{ __('site.Schedule Appointment') }}</a>
-                    @endrole
-                </div>
+
+                    @if ($doctor->address || $hasSocial)
+                        <div class="section-block">
+                            <div class="section-heading">
+                                <h2>{{ __('Practice Insights') }}</h2>
+                            </div>
+                            <div class="detail-grid">
+                                @if ($doctor->address)
+                                    <div class="detail-item">
+                                        <span class="detail-label">{{ __('site.Address') }}</span>
+                                        <p class="detail-value">{{ $doctor->address }}</p>
+                                    </div>
+                                @endif
+                                @if ($hasSocial)
+                                    <div class="detail-item">
+                                        <span class="detail-label">{{ __('Digital presence') }}</span>
+                                        <p class="detail-value">{{ __('Follow the doctor across social platforms for timely updates.') }}</p>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    @endif
+                </section>
+            </div>
+
+            <div class="action-bar">
+                <a href="{{ $backRoute }}" class="header-btn ghost-btn">
+                    <i class="fas fa-user-md" aria-hidden="true"></i>
+                    <span>{{ __('site.Doctor list') }}</span>
+                </a>
+
+                @role('Patient|Doctor')
+                    @if ($feedbackRoute)
+                        <a href="{{ $feedbackRoute }}" class="header-btn secondary-btn">
+                            <i class="fas fa-comments" aria-hidden="true"></i>
+                            <span>{{ __('site.Feedback') }}</span>
+                        </a>
+                    @endif
+                @endrole
+
+                @role('Admin')
+                    @if ($feedbackListRoute)
+                        <a href="{{ $feedbackListRoute }}" class="header-btn secondary-btn">
+                            <i class="fas fa-comments" aria-hidden="true"></i>
+                            <span>{{ __('site.Feedback') }}</span>
+                        </a>
+                    @endif
+                @endrole
+
+                @role('Doctor')
+                    @if ($scheduleRoute)
+                        <a href="{{ $scheduleRoute }}" class="header-btn primary-btn">
+                            <i class="fas fa-calendar-plus" aria-hidden="true"></i>
+                            <span>{{ __('site.Schedule Appointment') }}</span>
+                        </a>
+                    @endif
+                @endrole
             </div>
         </div>
     </div>

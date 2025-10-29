@@ -1,185 +1,456 @@
 /* ==========================================================================
    FEEDBACK LIST PAGE STYLES
-   Consistent styling for feedback index page
-   ========================================================================== */
+   Modern admin layout for feedback management
+   ========================================================================= */
 
-.feedback-management-content .patient-contaier {
-    max-width: 100%;
-    width: 100%;
+.feedback-management-content {
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 3vw, 2.25rem);
 }
 
-.feedback-management-content .actions {
+.feedback-management-content .search-container {
+    gap: clamp(0.5rem, 1.5vw, 0.75rem);
+}
+
+.feedback-management-content .search-submit-btn {
+    inline-size: clamp(2.75rem, 6vw, 3rem);
+    block-size: clamp(2.75rem, 6vw, 3rem);
+    border-radius: 0.75rem;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    padding: 0;
+}
+
+.feedback-management-content .search-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.35);
+}
+
+.feedback-management-content .search-submit-btn svg {
+    inline-size: 1.1rem;
+    block-size: 1.1rem;
+}
+
+.feedback-management-content .clear-search-btn {
+    color: rgba(255, 255, 255, 0.85);
+    font-weight: 500;
+    text-decoration: none;
+    padding: 0.35rem 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    transition: background 0.2s ease, color 0.2s ease;
+}
+
+.feedback-management-content .clear-search-btn:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+}
+
+.feedback-management-content .stats-grid {
+    margin-top: -0.25rem;
+}
+
+.feedback-management-content .stat-icon.total-icon {
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+}
+
+.feedback-management-content .stat-icon.recent-icon {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+}
+
+.feedback-management-content .stat-icon.subject-icon {
+    background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+}
+
+.feedback-management-content .stat-icon.latest-icon {
+    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+}
+
+.feedback-management-content .stat-icon svg {
+    inline-size: 2rem;
+    block-size: 2rem;
+    color: #fff;
+}
+
+.feedback-management-content .stat-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.feedback-management-content .table-section {
     display: flex;
+    flex-direction: column;
+    gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.feedback-management-content .table-header {
+    display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 2rem;
-    padding: 2rem;
-    background: white;
-    border-radius: 20px;
+    gap: clamp(0.75rem, 2vw, 1.5rem);
+    background: #fff;
+    border-radius: 1.125rem;
     border: 1px solid #e2e8f0;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    padding: clamp(1rem, 2.5vw, 1.5rem);
 }
 
-.feedback-management-content .title-container h1 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #1e293b;
+.feedback-management-content .table-header h3 {
     margin: 0;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    color: #1e293b;
+    font-weight: 700;
 }
 
-.feedback-management-content .button-container {
-    display: flex;
-    gap: 1rem;
-    flex-wrap: wrap;
-}
-
-.feedback-management-content .filter-link {
-    background: #f1f5f9;
-    border: 1px solid #e2e8f0;
+.feedback-management-content .table-subtitle {
+    margin: 0.35rem 0 0;
+    font-size: 0.9rem;
     color: #64748b;
-    padding: 0.75rem 1.5rem;
-    border-radius: 12px;
-    text-decoration: none;
+}
+
+.feedback-management-content .table-search-summary {
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: all 0.3s ease;
-    font-weight: 500;
+    align-items: baseline;
+    gap: 0.35rem;
+    font-size: 0.9rem;
+    color: #334155;
 }
 
-.feedback-management-content .filter-link:hover {
-    background: #e2e8f0;
-    color: #374151;
-}
-
-.feedback-management-content .filter-link svg {
-    width: 18px;
-    height: 18px;
+.feedback-management-content .table-search-summary strong {
+    color: #1e293b;
 }
 
 .feedback-management-content .table-container {
-    background: white;
-    border-radius: 20px;
-    padding: 2rem;
+    background: #fff;
+    border-radius: 1.25rem;
     border: 1px solid #e2e8f0;
+    padding: clamp(1.25rem, 3vw, 2rem);
     overflow-x: auto;
 }
 
-.feedback-management-content .patient-table {
+.feedback-management-content .modern-table {
     width: 100%;
+    min-width: clamp(48rem, 70vw, 68rem);
     border-collapse: separate;
     border-spacing: 0;
 }
 
-.feedback-management-content .patient-table thead {
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+.feedback-management-content .modern-table thead {
+    background: linear-gradient(
+        135deg,
+        rgba(148, 163, 184, 0.12) 0%,
+        rgba(148, 163, 184, 0.05) 100%
+    );
 }
 
-.feedback-management-content .patient-table th {
-    padding: 1rem;
+.feedback-management-content .modern-table th {
+    padding: clamp(0.75rem, 2vw, 1rem);
     text-align: left;
     font-weight: 600;
-    color: #1e293b;
-    font-size: 0.875rem;
+    font-size: clamp(0.75rem, 1.3vw, 0.9rem);
+    color: #475569;
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    border-bottom: 2px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
+    white-space: nowrap;
 }
 
-.feedback-management-content .patient-table th:first-child {
-    border-top-left-radius: 12px;
+.feedback-management-content .modern-table tbody tr {
+    border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+    transition: background 0.2s ease, transform 0.2s ease;
 }
 
-.feedback-management-content .patient-table th:last-child {
-    border-top-right-radius: 12px;
+.feedback-management-content .modern-table tbody tr:hover {
+    background: rgba(226, 232, 240, 0.35);
+    transform: translateY(-1px);
 }
 
-.feedback-management-content .patient-table tbody tr {
-    transition: all 0.3s ease;
-    border-bottom: 1px solid #f1f5f9;
-}
-
-.feedback-management-content .patient-table tbody tr:hover {
-    background: #f8fafc;
-    transform: scale(1.01);
-}
-
-.feedback-management-content .patient-table td {
-    padding: 1rem;
-    color: #64748b;
-    font-size: 0.9375rem;
-}
-
-.feedback-management-content .patient-table .custom-date {
-    font-weight: 500;
+.feedback-management-content .modern-table td {
+    padding: clamp(0.85rem, 2.4vw, 1.2rem);
+    font-size: clamp(0.8rem, 1.4vw, 0.95rem);
     color: #475569;
+    vertical-align: middle;
 }
 
-.feedback-management-content .btn {
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    text-decoration: none;
-    font-weight: 500;
-    font-size: 0.875rem;
-    transition: all 0.3s ease;
+.feedback-management-content .id-cell {
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.feedback-management-content .sender-info {
     display: inline-flex;
     align-items: center;
+    gap: clamp(0.75rem, 2vw, 1rem);
+}
+
+.feedback-management-content .sender-avatar {
+    inline-size: clamp(2.75rem, 4vw, 3.25rem);
+    block-size: clamp(2.75rem, 4vw, 3.25rem);
+    border-radius: 50%;
+    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-weight: 600;
+    font-size: clamp(0.95rem, 1.6vw, 1.05rem);
+    text-transform: uppercase;
+}
+
+.feedback-management-content .sender-details h4 {
+    margin: 0;
+    font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+    color: #0f172a;
+    font-weight: 600;
+}
+
+.feedback-management-content .sender-source {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin-top: 0.25rem;
+    padding: 0.35rem 0.65rem;
+    border-radius: 999px;
+    background: rgba(15, 118, 110, 0.15);
+    color: #0f766e;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.feedback-management-content .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.feedback-management-content .contact-info .email {
+    color: #0f172a;
+    font-weight: 600;
+}
+
+.feedback-management-content .subject-cell {
+    max-width: clamp(12rem, 24vw, 16rem);
+}
+
+.feedback-management-content .subject-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 999px;
+    background: rgba(59, 130, 246, 0.12);
+    color: #1d4ed8;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.feedback-management-content .message-preview {
+    margin: 0.5rem 0 0;
+    color: #64748b;
+    font-size: 0.85rem;
+    line-height: 1.4;
+}
+
+.feedback-management-content .date-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.feedback-management-content .date-primary {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.feedback-management-content .date-secondary {
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.feedback-management-content .actions-cell {
+    min-width: 150px;
+}
+
+.feedback-management-content .action-buttons {
+    display: inline-flex;
     gap: 0.5rem;
+    align-items: center;
+}
+
+.feedback-management-content .action-btn {
+    inline-size: 2.25rem;
+    block-size: 2.25rem;
+    border-radius: 0.65rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    text-decoration: none;
     border: none;
+    padding: 0;
     cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feedback-management-content .action-btn svg {
+    inline-size: 1.05rem;
+    block-size: 1.05rem;
 }
 
 .feedback-management-content .view-btn {
-    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
-    color: white;
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    box-shadow: 0 6px 16px rgba(37, 99, 235, 0.25);
 }
 
 .feedback-management-content .view-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(59, 130, 246, 0.3);
+    box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
 }
 
 .feedback-management-content .delete-btn {
     background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    border: none;
-    font-weight: 500;
-    font-size: 0.875rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    box-shadow: 0 6px 16px rgba(220, 38, 38, 0.25);
 }
 
 .feedback-management-content .delete-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(239, 68, 68, 0.3);
+    box-shadow: 0 10px 20px rgba(220, 38, 38, 0.3);
 }
 
-.feedback-management-content .delete-form {
-    display: inline-block;
+.feedback-management-content .inline-delete-form {
+    display: inline;
+}
+
+.feedback-management-content .empty-row td {
+    padding: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.feedback-management-content .empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: clamp(0.5rem, 1.5vw, 0.75rem);
+    text-align: center;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    background: rgba(248, 250, 252, 0.9);
+    border: 1px dashed #cbd5f5;
+    border-radius: 1rem;
+}
+
+.feedback-management-content .empty-state h3 {
     margin: 0;
+    font-size: clamp(1.15rem, 2vw, 1.35rem);
+    color: #0f172a;
+    font-weight: 600;
 }
 
-@media (max-width: 768px) {
-    .feedback-management-content .actions {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 1.5rem;
+.feedback-management-content .empty-state p {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.9rem;
+}
+
+.feedback-management-content .empty-action-btn {
+    margin-top: clamp(0.75rem, 2vw, 1rem);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 1.5rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    color: #fff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.feedback-management-content .empty-action-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(5, 150, 105, 0.25);
+}
+
+.feedback-management-content .table-pagination {
+    display: flex;
+    justify-content: flex-end;
+    padding-top: clamp(1rem, 2vw, 1.5rem);
+}
+
+@media (max-width: 1024px) {
+    .feedback-management-content .modern-table {
+        min-width: 100%;
+    }
+
+    .feedback-management-content .table-header {
+        padding: clamp(0.85rem, 2vw, 1.25rem);
     }
 
     .feedback-management-content .table-container {
-        padding: 1.5rem;
-        overflow-x: auto;
+        padding: clamp(1rem, 2.5vw, 1.5rem);
+    }
+}
+
+@media (max-width: 820px) {
+    .feedback-management-content .header-actions {
+        width: 100%;
+        justify-content: space-between;
     }
 
-    .feedback-management-content .patient-table {
-        font-size: 0.875rem;
+    .feedback-management-content .search-container {
+        flex: 1;
     }
 
-    .feedback-management-content .patient-table th,
-    .feedback-management-content .patient-table td {
-        padding: 0.75rem 0.5rem;
+    .feedback-management-content .search-input {
+        inline-size: 100%;
+    }
+}
+
+@media (max-width: 680px) {
+    .feedback-management-content .modern-table th,
+    .feedback-management-content .modern-table td {
+        white-space: nowrap;
+    }
+
+    .feedback-management-content .sender-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .feedback-management-content .action-buttons {
+        gap: 0.35rem;
+    }
+}
+
+@media (max-width: 540px) {
+    .feedback-management-content .table-header,
+    .feedback-management-content .table-container {
+        padding: clamp(0.75rem, 2.4vw, 1rem);
+    }
+
+    .feedback-management-content .search-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .feedback-management-content .search-submit-btn {
+        inline-size: 100%;
+    }
+
+    .feedback-management-content .table-search-summary {
+        width: 100%;
     }
 }

@@ -1,0 +1,407 @@
+/* ===========================================================================
+   APPOINTMENT SCHEDULE PAGE STYLES (2025 REFRESH)
+   Harmonised booking calendar experience
+   =========================================================================== */
+
+.appointment-schedule-page {
+    --schedule-primary: #2563eb;
+    --schedule-primary-dark: #1d4ed8;
+    --schedule-accent: #38bdf8;
+    --schedule-muted: #64748b;
+    --schedule-surface: #ffffff;
+    --schedule-border: rgba(191, 219, 254, 0.6);
+    --schedule-shadow: rgba(15, 23, 42, 0.18);
+    min-height: 100vh;
+    padding: clamp(1.65rem, 4vw, 2.75rem);
+    background: linear-gradient(180deg, #eff6ff 0%, #dbeafe 100%);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 3.5vw, 2.5rem);
+}
+
+.appointment-schedule-page .schedule-shell {
+    max-width: 1180px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.5rem, 3vw, 2.4rem);
+}
+
+.appointment-schedule-page .schedule-page-header {
+    position: relative;
+    border-radius: 1.75rem;
+    padding: clamp(1.85rem, 4vw, 2.75rem);
+    background: linear-gradient(135deg, #0f172a 0%, #0b3b60 52%, #1d4ed8 100%);
+    color: #fff;
+    box-shadow: 0 26px 58px rgba(15, 23, 42, 0.24);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(1.25rem, 2.5vw, 1.9rem);
+    overflow: hidden;
+}
+
+.appointment-schedule-page .schedule-page-header::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+            circle at 24% 82%,
+            rgba(56, 189, 248, 0.32),
+            transparent 55%
+        ),
+        radial-gradient(
+            circle at 78% 18%,
+            rgba(37, 99, 235, 0.28),
+            transparent 55%
+        ),
+        radial-gradient(
+            circle at 50% 46%,
+            rgba(14, 165, 233, 0.18),
+            transparent 60%
+        );
+    pointer-events: none;
+}
+
+.appointment-schedule-page .schedule-header-content {
+    position: relative;
+    background: rgba(15, 23, 42, 0.32);
+    border: 1px solid rgba(148, 163, 184, 0.38);
+    border-radius: 1.35rem;
+    padding: clamp(1.65rem, 3.5vw, 2.25rem);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: clamp(1rem, 2.5vw, 1.5rem);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 22px 46px rgba(15, 23, 42, 0.26);
+    z-index: 1;
+}
+
+.appointment-schedule-page .schedule-header-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.appointment-schedule-page .schedule-title {
+    margin: 0;
+    font-size: clamp(1.9rem, 3.8vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.appointment-schedule-page .schedule-subtitle {
+    margin: 0;
+    font-size: clamp(0.95rem, 2.1vw, 1.1rem);
+    color: rgba(224, 231, 255, 0.82);
+    max-width: 38rem;
+    line-height: 1.6;
+}
+
+.appointment-schedule-page .schedule-header-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(0.75rem, 2vw, 1rem);
+}
+
+.appointment-schedule-page .header-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 0.85rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    color: inherit;
+}
+
+.appointment-schedule-page .header-btn i {
+    font-size: 1.05rem;
+}
+
+.appointment-schedule-page .header-btn.primary-btn {
+    background: linear-gradient(135deg, var(--schedule-primary) 0%, var(--schedule-primary-dark) 100%);
+    color: #fff;
+    box-shadow: 0 16px 36px rgba(37, 99, 235, 0.32);
+}
+
+.appointment-schedule-page .header-btn.primary-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 22px 44px rgba(29, 78, 216, 0.34);
+}
+
+.appointment-schedule-page .header-btn.ghost-btn {
+    background: rgba(255, 255, 255, 0.14);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.32);
+}
+
+.appointment-schedule-page .header-btn.ghost-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.25);
+    border-color: rgba(255, 255, 255, 0.44);
+}
+
+.appointment-schedule-page .schedule-header-meta {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    z-index: 1;
+}
+
+.appointment-schedule-page .schedule-meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 999px;
+    font-size: 0.83rem;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+    border: 1px solid rgba(255, 255, 255, 0.26);
+    backdrop-filter: blur(6px);
+}
+
+.appointment-schedule-page .schedule-meta-chip i {
+    font-size: 0.95rem;
+}
+
+.appointment-schedule-page .calendar-card {
+    background: rgba(255, 255, 255, 0.97);
+    border-radius: 1.5rem;
+    border: 1px solid var(--schedule-border);
+    box-shadow: 0 24px 52px rgba(15, 23, 42, 0.14);
+    padding: clamp(1.6rem, 3.2vw, 2.3rem);
+    display: flex;
+    flex-direction: column;
+    gap: 1.35rem;
+}
+
+.appointment-schedule-page .calendar-card-header {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+.appointment-schedule-page .calendar-card-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #0f172a;
+}
+
+.appointment-schedule-page .calendar-card-header p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--schedule-muted);
+}
+
+.appointment-schedule-page .calendar-instance {
+    background: rgba(248, 250, 252, 0.75);
+    border-radius: 1.1rem;
+    border: 1px solid rgba(226, 232, 240, 0.65);
+    padding: 1rem;
+    box-shadow: inset 0 0 0 1px rgba(148, 163, 184, 0.15);
+}
+
+.appointment-schedule-page .calendar-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.9rem;
+    align-items: center;
+    background: rgba(240, 249, 255, 0.7);
+    border-radius: 1rem;
+    padding: 0.85rem 1.1rem;
+    border: 1px solid rgba(191, 219, 254, 0.6);
+}
+
+.appointment-schedule-page .legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--schedule-muted);
+}
+
+.appointment-schedule-page .legend-dot {
+    inline-size: 0.85rem;
+    block-size: 0.85rem;
+    border-radius: 999px;
+    background: #64748b;
+}
+
+.appointment-schedule-page .legend-dot.available {
+    background: rgba(37, 99, 235, 0.65);
+}
+
+.appointment-schedule-page .legend-dot.reserved {
+    background: rgba(239, 68, 68, 0.8);
+}
+
+.appointment-schedule-page .legend-dot.pending {
+    background: rgba(250, 204, 21, 0.85);
+}
+
+.appointment-schedule-page .legend-dot.confirmed {
+    background: rgba(34, 197, 94, 0.8);
+}
+
+.appointment-schedule-page .legend-dot.canceled {
+    background: rgba(245, 158, 11, 0.85);
+}
+
+.appointment-schedule-page .schedule-note {
+    margin: 0;
+    font-size: 0.9rem;
+    color: var(--schedule-muted);
+    line-height: 1.5;
+}
+
+.appointment-schedule-page .modal-content {
+    border-radius: 1rem;
+    border: 1px solid rgba(148, 163, 184, 0.3);
+    box-shadow: 0 24px 50px rgba(15, 23, 42, 0.18);
+}
+
+.appointment-schedule-page .modal-header {
+    border-bottom: 1px solid rgba(226, 232, 240, 0.7);
+    background: rgba(248, 250, 252, 0.8);
+}
+
+.appointment-schedule-page .modal-footer {
+    border-top: 1px solid rgba(226, 232, 240, 0.7);
+    background: rgba(248, 250, 252, 0.8);
+}
+
+.appointment-schedule-page .modal-body label {
+    font-weight: 600;
+    color: #0f172a;
+}
+
+.appointment-schedule-page .modal-body .form-control,
+.appointment-schedule-page .modal-body textarea {
+    border-radius: 0.85rem;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    padding: 0.6rem 0.85rem;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+.appointment-schedule-page .modal-body .form-control:focus,
+.appointment-schedule-page .modal-body textarea:focus {
+    outline: none;
+    border-color: rgba(37, 99, 235, 0.45);
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+}
+
+.appointment-schedule-page .select2-container--default .select2-selection--multiple {
+    border-radius: 0.85rem;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    padding: 0.4rem;
+    min-height: 2.8rem;
+    background: rgba(248, 250, 252, 0.9);
+}
+
+.appointment-schedule-page .select2-container--default .select2-selection--multiple .select2-selection__choice {
+    border-radius: 999px;
+    border: none;
+    background: rgba(37, 99, 235, 0.15);
+    color: var(--schedule-primary-dark);
+    padding: 0.15rem 0.75rem;
+    font-weight: 600;
+}
+
+.appointment-schedule-page .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    color: var(--schedule-primary-dark);
+    margin-right: 0.35rem;
+}
+
+.appointment-schedule-page .select2-dropdown {
+    border-radius: 0.85rem;
+    border: 1px solid rgba(148, 163, 184, 0.4);
+    box-shadow: 0 18px 36px rgba(15, 23, 42, 0.12);
+}
+
+.appointment-schedule-page .select2-results__option--highlighted[aria-selected] {
+    background: rgba(37, 99, 235, 0.12);
+    color: var(--schedule-primary-dark);
+}
+
+.appointment-schedule-page .schedule-alert {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.1rem;
+    border-radius: 0.9rem;
+    background: rgba(56, 189, 248, 0.16);
+    color: #0369a1;
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+    .appointment-schedule-page {
+        padding: 1.5rem;
+    }
+
+    .appointment-schedule-page .calendar-card {
+        padding: 1.45rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .appointment-schedule-page .schedule-header-content {
+        padding: 1.35rem;
+    }
+
+    .appointment-schedule-page .schedule-header-actions {
+        width: 100%;
+        justify-content: center;
+        flex-direction: column;
+    }
+
+    .appointment-schedule-page .header-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .appointment-schedule-page .calendar-instance {
+        padding: 0.75rem;
+    }
+
+    .appointment-schedule-page .calendar-legend {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 540px) {
+    .appointment-schedule-page {
+        padding: 1.25rem 1rem;
+    }
+
+    .appointment-schedule-page .schedule-header-content {
+        border-radius: 1rem;
+    }
+
+    .appointment-schedule-page .schedule-header-meta {
+        flex-direction: column;
+    }
+
+    .appointment-schedule-page .schedule-meta-chip {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .appointment-schedule-page .calendar-card {
+        padding: 1.1rem;
+    }
+}

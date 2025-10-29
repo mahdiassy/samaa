@@ -1,406 +1,546 @@
 /* ==========================================================================
    PATIENT CREATE/EDIT PAGE STYLES
-   Modern form design for creating and editing patient records
+   Harmonised admin panel layout for patient onboarding
    ========================================================================== */
 
-/* Main Content */
-.main-content {
-    padding: 2rem;
-    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-    min-height: 100vh;
-    width: 100%;
-    max-width: 100%;
-}
-
-/* Header with Back Button */
-.main-content .header {
-    margin-bottom: 2rem;
-}
-
-.main-content .btn-back {
-    background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
-    color: white;
-    border: none;
-    padding: 0.875rem 1.5rem;
-    border-radius: 12px;
-    font-weight: 600;
-    text-decoration: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.75rem;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(30, 41, 59, 0.15);
-}
-
-.main-content .btn-back:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(30, 41, 59, 0.25);
-}
-
-.main-content .btn-back i {
-    font-size: 1.125rem;
-}
-
-/* Profile Details Container */
-.main-content .profile-details {
-    background: white;
-    border-radius: 20px;
-    padding: 2.5rem;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-    border: 1px solid #e2e8f0;
-}
-
-/* Profile Info - Image Section */
-.main-content .profile-info {
-    margin-bottom: 3rem;
-}
-
-.main-content .profile-header2 {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 2rem;
-}
-
-.main-content .image-container {
-    position: relative;
-    display: inline-block;
-}
-
-.main-content .profile-img {
-    width: 180px;
-    height: 180px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 5px solid #f1f5f9;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
-    transition: all 0.3s ease;
-}
-
-.main-content .image-container:hover .profile-img {
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
-    transform: scale(1.02);
-}
-
-.main-content .btn-replace {
-    position: absolute;
-    bottom: 8px;
-    right: 8px;
-    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 12px rgba(139, 92, 246, 0.4);
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.main-content .btn-replace:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 16px rgba(139, 92, 246, 0.5);
-}
-
-.main-content .btn-replace svg {
-    width: 24px;
-    height: 24px;
-}
-
-.main-content .btn-replace svg path {
-    fill: white;
-}
-
-/* Visit Details - Two Column Layout */
-.main-content .visit-details {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    margin-bottom: 2rem;
-}
-
-.main-content .user-info,
-.main-content .diagnosis {
+.patient-management-content {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: clamp(1.75rem, 4vw, 2.75rem);
+    padding: clamp(1.5rem, 3vw, 2.5rem);
+    min-height: 100vh;
+    background: linear-gradient(180deg, #f0fdfa 0%, #dcfce7 100%);
 }
 
-/* Section Headers */
-.main-content .visit-details h2 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #1e293b;
-    margin: 2rem 0 1rem 0;
-    padding-bottom: 0.75rem;
-    border-bottom: 3px solid #8b5cf6;
+.patient-create-page .page-header {
     position: relative;
+    overflow: hidden;
+    border-radius: 1.75rem;
+    padding: clamp(1.75rem, 4vw, 2.6rem);
+    background: linear-gradient(135deg, #0f172a 0%, #0b3d46 55%, #047857 100%);
+    color: #fff;
 }
 
-.main-content .visit-details h2::after {
+.patient-create-page .page-header::before {
     content: "";
     position: absolute;
-    bottom: -3px;
-    left: 0;
-    width: 80px;
-    height: 3px;
-    background: linear-gradient(90deg, #8b5cf6, transparent);
+    inset: 0;
+    background-image: radial-gradient(
+            circle at 25% 80%,
+            rgba(74, 222, 128, 0.32),
+            transparent 55%
+        ),
+        radial-gradient(
+            circle at 75% 20%,
+            rgba(45, 212, 191, 0.28),
+            transparent 55%
+        ),
+        radial-gradient(
+            circle at 52% 46%,
+            rgba(34, 197, 94, 0.22),
+            transparent 60%
+        );
+    pointer-events: none;
 }
 
-/* Text Info - Form Groups */
-.main-content .text-info {
+.patient-create-page .header-content {
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: clamp(1rem, 2.5vw, 1.5rem);
+    z-index: 1;
+}
+
+.patient-create-page .header-info {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 }
 
-.main-content .text-info p,
-.main-content .text-info label {
-    font-weight: 600;
-    color: #1e293b;
+.patient-create-page .page-title {
     margin: 0;
-    font-size: 0.9375rem;
+    font-size: clamp(1.9rem, 4vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
 }
 
-/* Styled Inputs */
-.main-content .styled-input {
-    width: 100%;
-    padding: 1rem 1.25rem;
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    background: #f8fafc;
+.patient-create-page .page-subtitle {
+    margin: 0;
+    font-size: clamp(0.95rem, 2.2vw, 1.1rem);
+    color: rgba(226, 232, 240, 0.9);
+    max-width: 36rem;
 }
 
-.main-content .styled-input:focus {
-    outline: none;
-    border-color: #8b5cf6;
-    background: white;
-    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
-}
-
-.main-content .styled-input::placeholder {
-    color: #94a3b8;
-}
-
-/* Select Inputs */
-.main-content select.styled-input {
-    cursor: pointer;
-    appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 1rem center;
-    padding-right: 3rem;
-}
-
-/* Date Input */
-.main-content .date-input {
-    font-family: inherit;
-}
-
-/* Select2 Multi-select Styling */
-.main-content .select2-container--default .select2-selection--multiple {
-    border: 2px solid #e2e8f0;
-    border-radius: 12px;
-    background: #f8fafc;
-    padding: 0.5rem;
-    min-height: 50px;
-}
-
-.main-content
-    .select2-container--default.select2-container--focus
-    .select2-selection--multiple {
-    border-color: #8b5cf6;
-    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
-}
-
-.main-content
-    .select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice {
-    background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
-    border: none;
-    color: white;
-    border-radius: 8px;
-    padding: 0.375rem 0.75rem;
-    margin: 0.25rem;
-}
-
-.main-content
-    .select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice__remove {
-    color: white;
-    margin-right: 0.5rem;
-}
-
-.main-content
-    .select2-container--default
-    .select2-selection--multiple
-    .select2-selection__choice__remove:hover {
-    color: #fef2f2;
-}
-
-/* Medication Input Wrapper */
-.main-content #medication_input_wrapper {
-    margin-top: 1rem;
-    padding: 1rem;
-    background: #f8fafc;
-    border-radius: 12px;
-    border: 2px dashed #cbd5e1;
-}
-
-.main-content #medication_input_wrapper label {
-    display: block;
-    margin-bottom: 0.5rem;
-    color: #475569;
-    font-weight: 600;
-}
-
-/* Action Buttons */
-.main-content .action-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    padding-top: 2rem;
-    border-top: 2px solid #f1f5f9;
-    margin-top: 2rem;
-}
-
-.main-content .btn {
-    padding: 1rem 2.5rem;
-    border: none;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: all 0.3s ease;
+.patient-create-page .header-actions {
     display: inline-flex;
-    align-items: center;
     gap: 0.75rem;
 }
 
-.main-content .patient-btn {
+.patient-create-page .header-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 0.85rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.patient-create-page .header-btn svg {
+    inline-size: 1.1rem;
+    block-size: 1.1rem;
+}
+
+.patient-create-page .primary-btn {
     background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-    color: white;
-    box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+    color: #fff;
+    box-shadow: 0 10px 24px rgba(16, 185, 129, 0.25);
 }
 
-.main-content .patient-btn:hover {
+.patient-create-page .primary-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.4);
+    box-shadow: 0 14px 28px rgba(5, 150, 105, 0.3);
 }
 
-.main-content .patient-btn:active {
-    transform: translateY(0);
+.patient-create-page .secondary-btn {
+    background: rgba(15, 23, 42, 0.2);
+    color: #fff;
+    border: 1px solid rgba(226, 232, 240, 0.35);
 }
 
-/* Error States */
-.main-content .styled-input.error {
-    border-color: #ef4444;
-    background: #fef2f2;
+.patient-create-page .secondary-btn:hover {
+    background: rgba(226, 232, 240, 0.18);
+    transform: translateY(-2px);
 }
 
-.main-content .error-message {
-    color: #ef4444;
-    font-size: 0.875rem;
-    margin-top: 0.5rem;
+.patient-create-page .ghost-btn {
+    background: #fff;
+    color: #0f172a;
+    border: 1px solid rgba(100, 116, 139, 0.35);
+}
+
+.patient-create-page .ghost-btn:hover {
+    border-color: rgba(16, 185, 129, 0.45);
+    color: #0f766e;
+    transform: translateY(-1px);
+}
+
+.patient-create-page .guideline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+.patient-create-page .guideline-card {
+    display: flex;
+    gap: 1.25rem;
+    background: #fff;
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    border: 1px solid #bbf7d0;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.05);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.patient-create-page .guideline-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+}
+
+.patient-create-page .guideline-icon {
+    inline-size: 3rem;
+    block-size: 3rem;
+    border-radius: 0.9rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #14b8a6 0%, #0f766e 100%);
+    color: #fff;
+    flex-shrink: 0;
+}
+
+.patient-create-page .guideline-icon svg {
+    inline-size: 1.4rem;
+    block-size: 1.4rem;
+}
+
+.patient-create-page .guideline-content h3 {
+    margin: 0 0 0.35rem;
+    font-size: 1.1rem;
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.patient-create-page .guideline-content p {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.patient-create-page .form-wrapper {
+    background: #fff;
+    border-radius: 1.5rem;
+    border: 1px solid #bbf7d0;
+    box-shadow: 0 18px 40px rgba(15, 23, 42, 0.08);
+    padding: clamp(1.75rem, 3.5vw, 2.5rem);
+}
+
+.patient-create-page .form-shell {
+    display: grid;
+    grid-template-columns: minmax(280px, 360px) minmax(0, 1fr);
+    gap: clamp(1.5rem, 3vw, 2rem);
+    align-items: flex-start;
+}
+
+.patient-create-page .form-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    background: #f8fafc;
+    border-radius: 1.1rem;
+    padding: clamp(1.35rem, 3vw, 1.75rem);
+    border: 1px solid #e2e8f0;
+}
+
+.patient-create-page .media-panel {
+    position: sticky;
+    top: 1.25rem;
+}
+
+.patient-create-page .panel-header h2 {
+    margin: 0 0 0.4rem;
+    font-size: 1.25rem;
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.patient-create-page .panel-header p {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.patient-create-page .image-upload-wrapper {
+    text-align: center;
+    padding: 1.75rem;
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    border-radius: 1rem;
+    border: 2px dashed #a7f3d0;
+}
+
+.patient-create-page .upload-label {
+    cursor: pointer;
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.patient-create-page .upload-label:hover {
+    transform: scale(1.02);
+}
+
+.patient-create-page .image-placeholder {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 1rem;
+}
+
+.patient-create-page .placeholder-img {
+    inline-size: clamp(200px, 32vw, 240px);
+    block-size: clamp(200px, 32vw, 240px);
+    border-radius: 50%;
+    object-fit: cover;
+    border: 6px solid #fff;
+    box-shadow: 0 14px 36px rgba(2, 122, 72, 0.18);
+    background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+    transition: box-shadow 0.3s ease;
+}
+
+.patient-create-page .upload-label:hover .placeholder-img {
+    box-shadow: 0 18px 44px rgba(2, 122, 72, 0.22);
+}
+
+.patient-create-page .edit-icon {
+    position: absolute;
+    inset-inline-end: 14px;
+    inset-block-end: 14px;
+    inline-size: 46px;
+    block-size: 46px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #14b8a6 0%, #0f766e 100%);
+    color: #fff;
+    box-shadow: 0 8px 22px rgba(15, 118, 110, 0.35);
+    transition: transform 0.2s ease;
+}
+
+.patient-create-page .upload-label:hover .edit-icon {
+    transform: translateY(-2px);
+}
+
+.patient-create-page .edit-icon svg {
+    inline-size: 1.2rem;
+    block-size: 1.2rem;
+}
+
+.patient-create-page .image-upload-instruction {
+    margin: 0.75rem auto 0;
+    max-width: 22rem;
+    color: #475569;
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+.patient-create-page .upload-guidelines {
+    margin: 0;
+    padding-left: 1.25rem;
+    color: #475569;
+    font-size: 0.9rem;
+    line-height: 1.55;
+}
+
+.patient-create-page .upload-guidelines li + li {
+    margin-top: 0.35rem;
+}
+
+.patient-create-page .section-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 1.25rem;
+    background: #fff;
+    border-radius: 0.95rem;
+    border: 1px solid #e2e8f0;
+}
+
+.patient-create-page .section-heading h3 {
+    margin: 0 0 0.3rem;
+    font-size: 1.15rem;
+    color: #0f172a;
+    font-weight: 700;
+}
+
+.patient-create-page .section-heading p {
+    margin: 0;
+    color: #64748b;
+    font-size: 0.92rem;
+}
+
+.patient-create-page .input-grid {
+    display: grid;
+    gap: 1.25rem;
+}
+
+.patient-create-page .input-grid.two-col {
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.patient-create-page .span-2 {
+    grid-column: span 2;
+}
+
+.patient-create-page .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.patient-create-page .input-group label {
+    font-weight: 600;
+    color: #0f172a;
+    font-size: 0.98rem;
+}
+
+.patient-create-page .form-input {
+    width: 100%;
+    padding: 1rem 1.1rem;
+    border: 2px solid #bbf7d0;
+    border-radius: 0.85rem;
+    font-size: 0.98rem;
+    transition: border 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    background: #fff;
+}
+
+.patient-create-page .form-input:focus {
+    outline: none;
+    border-color: #10b981;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.18);
+}
+
+.patient-create-page .form-input::placeholder {
+    color: #94a3b8;
+}
+
+.patient-create-page .form-input.error {
+    border-color: #f97316;
+    background: #fff7ed;
+}
+
+.patient-create-page .form-input.success {
+    border-color: #34d399;
+    background: #ecfdf5;
+}
+
+.patient-create-page .error-message {
+    color: #dc2626;
+    font-size: 0.82rem;
     font-weight: 500;
 }
 
-/* Success States */
-.main-content .styled-input.success {
-    border-color: #10b981;
+.patient-create-page .medication-wrapper {
+    margin-top: 0.9rem;
+    padding: 1rem;
+    border-radius: 0.85rem;
+    border: 2px dashed #a7f3d0;
     background: #f0fdf4;
 }
 
-/* Loading State */
-.main-content .btn.loading {
-    opacity: 0.7;
-    cursor: not-allowed;
-    pointer-events: none;
+.patient-create-page .medication-wrapper label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #0f766e;
+    font-weight: 600;
 }
 
-.main-content .btn.loading::after {
-    content: "";
-    width: 16px;
-    height: 16px;
-    border: 2px solid white;
-    border-top-color: transparent;
-    border-radius: 50%;
-    animation: spin 0.6s linear infinite;
+.patient-create-page .select2-container--default .select2-selection--multiple,
+.patient-create-page .select2-container--default .select2-selection--single {
+    border: 2px solid #bbf7d0;
+    border-radius: 0.85rem;
+    background: #fff;
+    min-height: 50px;
+    padding: 0.35rem 0.4rem;
 }
 
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
+.patient-create-page
+    .select2-container--default.select2-container--focus
+    .select2-selection--multiple,
+.patient-create-page
+    .select2-container--default.select2-container--focus
+    .select2-selection--single {
+    border-color: #10b981;
+    box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.18);
 }
 
-/* Responsive Design */
-@media (max-width: 1024px) {
-    .main-content .visit-details {
+.patient-create-page
+    .select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice {
+    background: linear-gradient(135deg, #14b8a6 0%, #0f766e 100%);
+    border: none;
+    color: #fff;
+    border-radius: 0.65rem;
+    padding: 0.35rem 0.75rem;
+    margin: 0.25rem;
+}
+
+.patient-create-page
+    .select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice__remove {
+    color: rgba(255, 255, 255, 0.85);
+    margin-right: 0.5rem;
+}
+
+.patient-create-page
+    .select2-container--default
+    .select2-selection--multiple
+    .select2-selection__choice__remove:hover {
+    color: #fff;
+}
+
+.patient-create-page
+    .select2-container--default
+    .select2-selection--single
+    .select2-selection__rendered {
+    padding-inline-start: 0.1rem;
+    color: #0f172a;
+}
+
+.patient-create-page
+    .select2-container--default
+    .select2-selection--single
+    .select2-selection__arrow {
+    inset-inline-end: 0.75rem;
+}
+
+.patient-create-page .action-bar {
+    margin-top: clamp(1.75rem, 3vw, 2.25rem);
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.85rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #bbf7d0;
+}
+
+.patient-create-page .action-bar .header-btn {
+    min-width: 7.5rem;
+    justify-content: center;
+}
+
+@media (max-width: 1100px) {
+    .patient-create-page .form-shell {
         grid-template-columns: 1fr;
-        gap: 2rem;
+    }
+
+    .patient-create-page .media-panel {
+        position: static;
+    }
+
+    .patient-create-page .span-2 {
+        grid-column: span 1;
     }
 }
 
 @media (max-width: 768px) {
-    .main-content {
+    .patient-management-content {
+        padding: 1.25rem;
+    }
+
+    .patient-create-page .header-actions {
+        width: 100%;
+        justify-content: stretch;
+    }
+
+    .patient-create-page .header-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .patient-create-page .guideline-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .patient-create-page .section-block {
         padding: 1rem;
     }
 
-    .main-content .profile-details {
-        padding: 1.5rem;
-        border-radius: 16px;
-    }
-
-    .main-content .profile-img {
-        width: 150px;
-        height: 150px;
-    }
-
-    .main-content .btn-replace {
-        width: 42px;
-        height: 42px;
-    }
-
-    .main-content .btn-replace svg {
-        width: 20px;
-        height: 20px;
-    }
-
-    .main-content .visit-details {
-        gap: 1.5rem;
-    }
-
-    .main-content .action-buttons {
-        flex-direction: column;
-    }
-
-    .main-content .btn {
-        width: 100%;
-        justify-content: center;
+    .patient-create-page .action-bar {
+        flex-direction: column-reverse;
+        align-items: stretch;
     }
 }
 
 @media (max-width: 480px) {
-    .main-content .profile-details {
+    .patient-management-content {
         padding: 1rem;
     }
 
-    .main-content .profile-img {
-        width: 120px;
-        height: 120px;
+    .patient-create-page .placeholder-img {
+        inline-size: 180px;
+        block-size: 180px;
     }
 
-    .main-content .styled-input {
-        padding: 0.875rem 1rem;
-        font-size: 0.9375rem;
-    }
-
-    .main-content .visit-details h2 {
-        font-size: 1.25rem;
+    .patient-create-page .edit-icon {
+        inline-size: 40px;
+        block-size: 40px;
     }
 }

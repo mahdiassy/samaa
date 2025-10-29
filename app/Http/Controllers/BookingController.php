@@ -33,7 +33,7 @@ class BookingController extends Controller
             })
             ->get();
 
-        return view($this->dir . "calendar", compact('availabilities'));
+    return view($this->dir . "calendar", compact('availabilities', 'doctor'));
     }
 
     public function addAppointment(Request $request)

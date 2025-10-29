@@ -5,104 +5,267 @@
 @endpush
 
 @section('content')
-    <div class="main-content">
-        @include('search_form')
-        <div class="header">
-            <a href="{{ route('doctor.index') }}" class="btn-back">
-                @if(App::getLocale() == 'ar')
-                <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
-                @else
-                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
-                @endif
-            </a>
-        </div>
-        <div>
-            <div class="profile-details">
-                <form action="{{ route('doctor.update', $doctor) }}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    @method('put')
-                    <div class="profile-info">
-                        <div class="profile-header2">
-                            <div class="image-container">
-                                <img src="{{ $doctor->image ? Storage::url($doctor->image) : asset('assets/images/avatar1.png') }}" alt="Doctor Photo" class="profile-img" id="patientPhoto">
-                                <a href="#" class="btn-replace" id="replaceBtn">
-                                    <svg width="25" height="25" viewBox="0 0 30 29" fill="none"
-                                        xmlns="http://www.w3.org/2000/svg">
-                                        <path
-                                            d="M24.0066 12.5735C23.5374 12.5735 23.157 12.9539 23.157 13.4231V25.8845C23.157 26.6653 22.5217 27.3005 21.7409 27.3005H3.61533C2.83452 27.3005 2.19927 26.6653 2.19927 25.8845V7.75889C2.19927 6.97807 2.83452 6.34283 3.61533 6.34283H16.0767C16.5459 6.34283 16.9263 5.96242 16.9263 5.49319C16.9263 5.02397 16.5459 4.64355 16.0767 4.64355H3.61533C1.89754 4.64355 0.5 6.04109 0.5 7.75889V25.8845C0.5 27.6023 1.89754 28.9998 3.61533 28.9998H21.7409C23.4587 28.9998 24.8563 27.6023 24.8563 25.8845V13.4231C24.8563 12.9539 24.4758 12.5735 24.0066 12.5735Z"
-                                            fill="black" />
-                                        <path
-                                            d="M28.9199 2.18184L27.3177 0.579707C26.5449 -0.193236 25.2872 -0.193236 24.5141 0.579707L11.6975 13.3964C11.5788 13.515 11.498 13.6661 11.4651 13.8306L10.664 17.8358C10.6083 18.1144 10.6955 18.4024 10.8964 18.6032C11.0573 18.7641 11.2741 18.8521 11.4971 18.8521C11.5526 18.8521 11.6083 18.8467 11.6637 18.8356L15.6689 18.0345C15.8334 18.0016 15.9845 17.9207 16.1031 17.8021L28.9199 4.98547C28.9199 4.98547 28.9199 4.98547 28.9199 4.98541C29.6928 4.21253 29.6928 2.95484 28.9199 2.18184ZM15.0835 16.4187L12.5802 16.9194L13.081 14.4162L23.5128 3.98415L25.5154 5.9868L15.0835 16.4187ZM27.7183 3.78391L26.717 4.78524L24.7143 2.78259L25.7156 1.78132C25.8261 1.67087 26.0057 1.67081 26.1162 1.78126L27.7183 3.3834C27.8288 3.49379 27.8288 3.67352 27.7183 3.78391Z"
-                                            fill="black" />
-                                    </svg>
-                                </a>
-                            </div>
-                            <input type="file" name="image" id="imageUpload" style="display:none" accept="image/*">
-                        </div>
-                    </div>
+    @php
+        $backRoute = Route::has('doctor.index') ? route('doctor.index') : url()->previous();
+        $currentLocale = app()->getLocale();
+        $avatarPath = $doctor->image ? Storage::url($doctor->image) : asset('assets/images/avatar1.png');
+    @endphp
 
-                    <div class="visit-details">
+    <div class="doctor-management-content doctor-create-page doctor-edit-page">
+        <div class="page-header">
+            <div class="header-content">
+                <div class="header-info">
+                    <h1 class="page-title">{{ __('site.Edit Doctor') }}</h1>
+                    <p class="page-subtitle">Refresh contact details, update specialties, and keep this doctor profile aligned with the SAMAA standard.</p>
+                </div>
 
-                        <div class="user-info">
-                            <div class="text-info">
-                                <p>{{ __('site.First Name') }}</p>
-                                <input type="text" name="first_name" placeholder="{{ __('site.First Name') }}" value="{{ $doctor->first_name }}"
-                                    class="styled-input" required />
-                            </div>
-                            <div class="text-info">
-                                <p>{{ __('site.Email Address') }}</p>
-                                <input type="text" name="email" placeholder="{{ __('site.Email Address') }}" value="{{ $doctor->user->email }}"
-                                    class="styled-input" required/>
-                            </div>
-                            <div class="text-info">
-                                <p>{{ __('site.Phone') }}</p>
-                                <input type="text" name="phone" placeholder="{{ __('site.Phone') }}" value="{{ $doctor->phone }}"
-                                    class="styled-input" />
-                            </div>
-                            <div class="text-info">
-                                <p>{{ __('site.Specialization') }}</p>
-                                <input type="text" name="specialization" placeholder="{{ __('site.Specialization') }}" value="{{ $doctor->specialization }}"
-                                    class="styled-input" />
-                            </div>
-                            <div class="text-info">
-                                <p>{{ __('site.Instagram link') }}</p>
-                                <input type="text" name="instagram" placeholder="{{ __('site.Instagram link') }}" value="{{ $doctor->instagram }}"
-                                    class="styled-input" />
-                            </div>
-                        </div>
-                        <div class="diagnosis">
-                            <div class="text-info">
-                                <p>{{ __('site.Surname') }}</p>
-                                <input type="text" name="last_name" placeholder="{{ __('site.Surname') }}" value="{{ $doctor->last_name }}"
-                                    class="styled-input" />
-                            </div>
-                            <div class="text-info">
-                                <p>{{ __('site.Birthday') }}</p>
-                                <input type="date" name="birthday" value="{{ $doctor->birthday }}"
-                                    class="styled-input date-input" />
-                            </div>
-                            <div class="text-info">
-                                <p>{{ __('site.Address') }}</p>
-                                <input type="text" name="address" placeholder="{{ __('site.Address') }}" value="{{ $doctor->address }}"
-                                    class="styled-input" />
-                            </div>
-                            <div class="text-info">
-                                <p>{{ __('site.Facebook link') }}</p>
-                                <input type="text" name="facebook" placeholder="{{ __('site.Facebook link') }}" value="{{ $doctor->facebook }}"
-                                    class="styled-input" />
-                            </div>
-                            <div class="text-info">
-                                <p>{{ __('site.Twitter link') }}</p>
-                                <input type="text" name="twitter" placeholder="{{ __('site.Twitter link') }}" value="{{ $doctor->twitter }}"
-                                    class="styled-input" />
-                            </div>
-                        </div>
-                    </div>
-                    <div class="action-buttons">
-                        <button class="btn patient-btn">{{ __('site.Update') }}</button>
-                    </div>
-                </form>
+                <div class="header-actions">
+                    <a href="{{ $backRoute }}" class="header-btn secondary-btn">
+                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            @if ($currentLocale === 'ar')
+                                <path d="M19 11H9.83l3.58-3.59L12 6l-6 6 6 6 1.41-1.41L9.83 13H19v-2z" />
+                            @else
+                                <path d="M5 13h9.17l-3.58 3.59L12 18l6-6-6-6-1.41 1.41L14.17 11H5v2z" />
+                            @endif
+                        </svg>
+                        {{ __('site.Go Back') }}
+                    </a>
+                </div>
             </div>
+        </div>
+
+        <div class="guideline-grid">
+            <div class="guideline-card">
+                <div class="guideline-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 2l3 7h7l-5.5 4.5L18 21l-6-3.5L6 21l1.5-7.5L2 9h7z" />
+                    </svg>
+                </div>
+                <div class="guideline-content">
+                    <h3>Keep expertise visible</h3>
+                    <p>Ensure speciality and credentials reflect the doctor’s most current focus areas.</p>
+                </div>
+            </div>
+            <div class="guideline-card">
+                <div class="guideline-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M4 5h16v2H4zm0 6h16v2H4zm0 6h10v2H4z" />
+                    </svg>
+                </div>
+                <div class="guideline-content">
+                    <h3>Verify accessibility</h3>
+                    <p>Double check phone, email, and address so patients can connect without friction.</p>
+                </div>
+            </div>
+            <div class="guideline-card">
+                <div class="guideline-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M12 4a8 8 0 1 0 8 8 8 8 0 0 0-8-8zm3 9h-2v2a1 1 0 0 1-2 0v-2H9a1 1 0 0 1 0-2h2V9a1 1 0 0 1 2 0v2h2a1 1 0 0 1 0 2z" />
+                    </svg>
+                </div>
+                <div class="guideline-content">
+                    <h3>Add personal warmth</h3>
+                    <p>Update the portrait and social links so patients recognise the doctor instantly.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-wrapper">
+            <form action="{{ route('doctor.update', $doctor) }}" method="post" enctype="multipart/form-data" class="doctor-create-form">
+                @csrf
+                @method('put')
+
+                <div class="form-shell">
+                    <section class="form-panel media-panel">
+                        <header class="panel-header">
+                            <h2>{{ __('site.Profile Picture') }}</h2>
+                            <p>Keep a professional, welcoming image that consistently represents this doctor.</p>
+                        </header>
+
+                        <div class="image-upload-wrapper">
+                            <input type="file" id="doctor-image" name="image" accept="image/*" hidden>
+                            <label for="doctor-image" class="upload-label">
+                                <div class="image-placeholder">
+                                    <img id="doctor-image-preview" src="{{ $avatarPath }}" alt="Doctor avatar preview" class="placeholder-img">
+                                    <div class="edit-icon">
+                                        <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                            <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75zM20.71 7.04a1 1 0 0 0 0-1.41l-2.34-2.34a1 1 0 0 0-1.41 0l-1.83 1.83 3.75 3.75z" />
+                                        </svg>
+                                    </div>
+                                </div>
+                            </label>
+                            <p class="image-upload-instruction">{{ __('site.Set the Blog thumbnail image. Only *.png, *.jpg, and *.jpeg image files are accepted') }}</p>
+                        </div>
+
+                        <ul class="upload-guidelines">
+                            <li>Use a centred headshot with a clean background.</li>
+                            <li>Recommended size: 600 × 600 px, minimum 400 × 400 px.</li>
+                            <li>Ensure the file is under 2 MB and in JPG or PNG format.</li>
+                        </ul>
+                    </section>
+
+                    <section class="form-panel content-panel">
+                        <header class="panel-header">
+                            <h2>{{ __('site.Doctor Profile') }}</h2>
+                            <p>Review personal, professional, and social details to keep the profile dependable.</p>
+                        </header>
+
+                        <div class="section-block">
+                            <div class="section-heading">
+                                <h3>{{ __('site.Personal Information') }}</h3>
+                                <p>Core profile fields used for communication and identification.</p>
+                            </div>
+
+                            <div class="input-grid two-col">
+                                <div class="input-group">
+                                    <label for="first_name">{{ __('site.First Name') }}</label>
+                                    <input type="text" id="first_name" name="first_name" class="form-input" placeholder="{{ __('site.First Name') }}" value="{{ old('first_name', $doctor->first_name) }}" required>
+                                    @error('first_name')
+                                        <span class="error-message">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="input-group">
+                                    <label for="last_name">{{ __('site.Surname') }}</label>
+                                    <input type="text" id="last_name" name="last_name" class="form-input" placeholder="{{ __('site.Surname') }}" value="{{ old('last_name', $doctor->last_name) }}">
+                                    @error('last_name')
+                                        <span class="error-message">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="input-group span-2">
+                                    <label for="email">{{ __('site.Email Address') }}</label>
+                                    <input type="email" id="email" name="email" class="form-input" placeholder="{{ __('site.Email Address') }}" value="{{ old('email', optional($doctor->user)->email) }}" required>
+                                    @error('email')
+                                        <span class="error-message">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="input-group">
+                                    <label for="phone">{{ __('site.Phone') }}</label>
+                                    <input type="text" id="phone" name="phone" class="form-input" placeholder="{{ __('site.Phone') }}" value="{{ old('phone', $doctor->phone) }}">
+                                    @error('phone')
+                                        <span class="error-message">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="input-group">
+                                    <label for="birthday">{{ __('site.Birthday') }}</label>
+                                    <input type="date" id="birthday" name="birthday" class="form-input" value="{{ old('birthday', $doctor->birthday) }}">
+                                    @error('birthday')
+                                        <span class="error-message">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="input-group">
+                                    <label for="specialization">{{ __('site.Specialization') }}</label>
+                                    <input type="text" id="specialization" name="specialization" class="form-input" placeholder="{{ __('site.Specialization') }}" value="{{ old('specialization', $doctor->specialization) }}">
+                                    @error('specialization')
+                                        <span class="error-message">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="input-group span-2">
+                                    <label for="address">{{ __('site.Address') }}</label>
+                                    <input type="text" id="address" name="address" class="form-input" placeholder="{{ __('site.Address') }}" value="{{ old('address', $doctor->address) }}">
+                                    @error('address')
+                                        <span class="error-message">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="section-block">
+                            <div class="section-heading">
+                                <h3>{{ __('site.Social Links') }}</h3>
+                                <p>Keep professional social accounts up to date for patients and colleagues.</p>
+                            </div>
+
+                            <div class="input-grid two-col">
+                                <div class="input-group span-2">
+                                    <label for="facebook">{{ __('site.Facebook link') }}</label>
+                                    <input type="url" id="facebook" name="facebook" class="form-input" placeholder="https://facebook.com/..." value="{{ old('facebook', $doctor->facebook) }}">
+                                    @error('facebook')
+                                        <span class="error-message">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="input-group">
+                                    <label for="twitter">{{ __('site.Twitter link') }}</label>
+                                    <input type="url" id="twitter" name="twitter" class="form-input" placeholder="https://twitter.com/..." value="{{ old('twitter', $doctor->twitter) }}">
+                                    @error('twitter')
+                                        <span class="error-message">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="input-group">
+                                    <label for="instagram">{{ __('site.Instagram link') }}</label>
+                                    <input type="url" id="instagram" name="instagram" class="form-input" placeholder="https://instagram.com/..." value="{{ old('instagram', $doctor->instagram) }}">
+                                    @error('instagram')
+                                        <span class="error-message">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <div class="action-bar">
+                    <a href="{{ $backRoute }}" class="header-btn ghost-btn">{{ __('site.Cancel') }}</a>
+                    <button type="submit" class="header-btn primary-btn">{{ __('site.Update') }}</button>
+                </div>
+            </form>
         </div>
     </div>
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const fileInput = document.getElementById('doctor-image');
+        const previewImg = document.getElementById('doctor-image-preview');
+        const form = document.querySelector('.doctor-create-form');
+        const requiredInputs = form ? form.querySelectorAll('.form-input[required]') : [];
+
+        if (fileInput && previewImg) {
+            fileInput.addEventListener('change', function (event) {
+                const file = event.target.files[0];
+                if (!file) {
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImg.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            });
+        }
+
+        requiredInputs.forEach(function (input) {
+            input.addEventListener('blur', function () {
+                if (input.value.trim() !== '') {
+                    input.classList.remove('error');
+                    input.classList.add('success');
+                } else {
+                    input.classList.remove('success');
+                }
+            });
+        });
+
+        if (form) {
+            form.addEventListener('submit', function (event) {
+                let isValid = true;
+
+                requiredInputs.forEach(function (input) {
+                    if (input.value.trim() === '') {
+                        input.classList.add('error');
+                        isValid = false;
+                    }
+                });
+
+                if (!isValid) {
+                    event.preventDefault();
+                    const firstInvalid = form.querySelector('.form-input.error');
+                    if (firstInvalid) {
+                        firstInvalid.focus({ preventScroll: true });
+                        firstInvalid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                    }
+                }
+            });
+        }
+    });
+</script>
+@endpush

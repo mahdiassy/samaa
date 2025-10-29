@@ -1,155 +1,167 @@
 @extends('layouts.master2')
 
+@push('styles')
+<link rel="stylesheet" href="{{ asset('assets/css/admin/appointment-schedule-page.css') }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+@endpush
+
 @section('content')
-<div class="main-content">
-    @include('search_form')
-    <div class="header">
-        <a href="{{ route('patients.booking.index') }}" class="btn-back">
-            @if(App::getLocale() == 'ar')
-            <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
-            @else
-            <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
-            @endif
-        </a>
+    @php
+        use App\Enums\BookingEnum;
+
+        $availabilityCollection = collect($availabilities);
+        $openSlots = $availabilityCollection
+            ->filter(fn ($slot) => !$slot->booking || optional($slot->booking)->status === BookingEnum::PATIENT_CANCEL)
+            ->count();
+        $reopenedSlots = $availabilityCollection
+            ->filter(fn ($slot) => optional($slot->booking)->status === BookingEnum::PATIENT_CANCEL)
+            ->count();
+    @endphp
+
+    <div class="appointment-schedule-page">
+        @include('search_form')
+
+        <div class="schedule-shell">
+            <header class="schedule-page-header">
+                <div class="schedule-header-content">
+                    <div class="schedule-header-info">
+                        <h1 class="schedule-title">{{ __('Appointment schedule') }}</h1>
+                        <p class="schedule-subtitle">
+                            {{ __('Pick a time that suits you best. Your doctor will review your note before confirming the visit.') }}
+                        </p>
+                    </div>
+                    <div class="schedule-header-actions">
+                        <a href="{{ route('patients.booking.index') }}" class="header-btn ghost-btn">
+                            <i class="fas fa-arrow-left" aria-hidden="true"></i>
+                            <span>{{ __('site.Go Back') }}</span>
+                        </a>
+                        @isset($doctor)
+                            <a href="{{ route('doctor.show', $doctor) }}" class="header-btn primary-btn">
+                                <i class="fas fa-user-md" aria-hidden="true"></i>
+                                <span>{{ __('site.View Doctor Profile') }}</span>
+                            </a>
+                        @endisset
+                    </div>
+                </div>
+
+                <div class="schedule-header-meta">
+                    @isset($doctor)
+                        <span class="schedule-meta-chip">
+                            <i class="fas fa-stethoscope" aria-hidden="true"></i>
+                            {{ $doctor->specialization }}
+                        </span>
+                    @endisset
+                    <span class="schedule-meta-chip">
+                        <i class="fas fa-calendar-check" aria-hidden="true"></i>
+                        {{ __('Available slots') }}: {{ $openSlots }}
+                    </span>
+                    <span class="schedule-meta-chip">
+                        <i class="fas fa-undo" aria-hidden="true"></i>
+                        {{ __('Recently reopened') }}: {{ $reopenedSlots }}
+                    </span>
+                </div>
+            </header>
+
+            <section class="calendar-card">
+                <div class="calendar-card-header">
+                    <div>
+                        <h2>{{ __('Schedule overview') }}</h2>
+                        <p>{{ __('Select a day to review available time slots and reserve your preferred option.') }}</p>
+                    </div>
+                    <p class="schedule-note d-none d-md-block">
+                        {{ __('Tap any highlighted time to confirm your request instantly.') }}
+                    </p>
+                </div>
+
+                <div class="calendar-legend" role="list">
+                    <span class="legend-item" role="listitem">
+                        <span class="legend-dot available"></span>
+                        {{ __('site.Available') }}
+                    </span>
+                    <span class="legend-item" role="listitem">
+                        <span class="legend-dot reserved"></span>
+                        {{ __('Reserved') }}
+                    </span>
+                </div>
+
+                <div class="calendar-instance">
+                    <div id="calendar"></div>
+                </div>
+
+                <p class="schedule-note">
+                    {{ __('Please arrive a few minutes early to settle in before your session begins.') }}
+                </p>
+            </section>
+        </div>
     </div>
-    <div class="container" id="content">
-        <div class="row justify-content-center">
-            <div class="col-md-12 box-design shadow w-100">
-                <div class="row mt-2 mb-2">
-                    <div class="col-md-12">
-                        <div id='calendar'></div>
-                    </div>
-                </div>
-                <!-- Modal for Month View -->
-                <div class="modal fade" id="monthModal" tabindex="-1" aria-labelledby="monthModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="monthModalLabel">{{ __('site.Select Appointment - Month View') }}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <input type="text" id="selectedMonthDate" class="form-control"
-                                    placeholder="Selected Date" readonly />
-                                <div class="pt-2">
-                                    <label for="users-movies-select2">{{ __('site.Select Time') }}:</label>
-                                    <select class="form-control" id="users-movies-select2" multiple="multiple">
-                                        <option value="08:00">08:00 {{ __('site.AM') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="08:30">08:30 {{ __('site.AM') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="09:00">09:00 {{ __('site.AM') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="09:30">09:30 {{ __('site.AM') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="10:00">10:00 {{ __('site.AM') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="10:30">10:30 {{ __('site.AM') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="11:00">11:00 {{ __('site.AM') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="11:30">11:30 {{ __('site.AM') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="12:00">12:00 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="12:30">12:30 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="13:00">01:00 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="13:30">01:30 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="14:00">02:00 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="14:30">02:30 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="15:00">03:00 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="15:30">03:30 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="16:00">04:00 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="16:30">04:30 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="17:00">05:00 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="17:30">05:30 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="18:00">06:00 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('site.Close') }}</button>
-                                <button type="button" class="btn btn-primary" id="saveMonthModalEvent">{{ __('site.Save') }}</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
 
-                <!-- Modal for Week View -->
-                <div class="modal fade" id="weekModal" tabindex="-1" aria-labelledby="weekModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="weekModalLabel">{{ __('site.Select Appointment - Week View') }}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <input type="text" id="selectedWeekDate" class="form-control" placeholder="Selected Date"
-                                    readonly />
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('site.Close') }}</button>
-                                <button type="button" class="btn btn-primary" id="saveWeekModalEvent">{{ __('site.Save') }}</button>
-                            </div>
-                        </div>
-                    </div>
+    <div class="modal fade" id="appointmentEventModal" tabindex="-1" aria-labelledby="appointmentEventModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="appointmentEventModalLabel">{{ __('site.Book Appointment') }}</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="{{ __('site.Close') }}"></button>
                 </div>
-
-                <!-- Modal for Deletion Confirmation -->
-                <div class="modal fade" id="appointmentEventModal" tabindex="-1" aria-labelledby="appointmentEventModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="appointmentEventModalLabel">{{ __('site.Appointment Event') }}</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <label>{{ __('site.Reason') }}:</label>
-                                <textarea type="text" id="reason" class="form-control" name="reason" >
-                                </textarea>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('site.Cancel') }}</button>
-                                <button type="button" class="btn btn-primary" id="saveAppointmentEvent">{{ __('site.Save') }}</button>
-                            </div>
-                        </div>
-                    </div>
+                <div class="modal-body">
+                    <label for="reason" class="form-label">{{ __('site.Reason') }}</label>
+                    <textarea id="reason" name="reason" class="form-control" rows="4" placeholder="{{ __('Let the doctor know what you would like to focus on.') }}"></textarea>
                 </div>
-
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('site.Cancel') }}</button>
+                    <button type="button" class="btn btn-primary" id="saveAppointmentEvent">{{ __('site.Confirm Booking') }}</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 @endsection
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"> <!-- new -->
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script><!-- new -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script><!-- new -->
-<!-- FullCalendar CSS and JS -->
-<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"><!-- new -->
-<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script><!-- new -->
-
-<script src="{{ asset('assets/vendors/js/forms/select/select2.full.min.js') }}"></script>
-
+@push('scripts')
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js"></script>
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
+        const calendarElement = document.getElementById('calendar');
 
-        var availabilities = [{!! $availabilities !!}];
-        availabile = []
-        $(availabilities[0]).each(function(i, time) {
-            availabile[i] = {
-                title: "{{ __('site.Available'') }})}}",
-                start: time.time,
-                id: time.id,
+        if (!calendarElement) {
+            return;
+        }
+
+        const locale = '{{ app()->getLocale() }}';
+        const availabilityData = @json($availabilities);
+        const statusLabels = @json([
+            \App\Enums\BookingEnum::PENDING => __(\App\Enums\BookingEnum::PENDING),
+            \App\Enums\BookingEnum::APPROVED => __(\App\Enums\BookingEnum::APPROVED),
+            \App\Enums\BookingEnum::DOCTOR_CANCEL => __(\App\Enums\BookingEnum::DOCTOR_CANCEL),
+            \App\Enums\BookingEnum::PATIENT_CANCEL => __(\App\Enums\BookingEnum::PATIENT_CANCEL),
+        ]);
+        const patientCancelledStatus = '{{ \App\Enums\BookingEnum::PATIENT_CANCEL }}';
+
+        const events = availabilityData.map((slot) => {
+            const booking = slot.booking;
+            const hasBooking = Boolean(booking);
+            const status = hasBooking ? booking.status : null;
+            const isUnavailable = hasBooking && status !== patientCancelledStatus;
+
+            const event = {
+                title: "{{ __('site.Available') }}",
+                start: slot.time,
+                id: slot.id,
+                extendedProps: {
+                    isUnavailable: isUnavailable
+                }
             };
-            if (time.booking) {
-                availabile[i].title = `{{ __('site.reserved') }} \n ${time.booking.user_name}`
-                availabile[i].color = 'red'
+
+            if (isUnavailable) {
+                event.title = statusLabels[status] ?? "{{ __('Reserved') }}";
+                event.color = '#ef4444';
+                event.textColor = '#ffffff';
             }
-        })
 
-        var calendarEl = document.getElementById('calendar');
+            return event;
+        });
 
-        let previewEvent = null;
-
-        var locale = '{{ app()->getLocale() }}';
-
-        var calendar = new FullCalendar.Calendar(calendarEl, {
+        const calendar = new FullCalendar.Calendar(calendarElement, {
             locale: locale === 'ar' ? 'ar' : locale === 'fr' ? 'fr' : 'en',
             initialView: 'dayGridMonth',
             headerToolbar: {
@@ -158,71 +170,91 @@
                 right: 'dayGridMonth,timeGridWeek'
             },
             buttonText: {
-                today: "{{ __('site.today'') }})}}",
-                month: "{{ __('site.month'') }})}}",
-                week: "{{ __('site.week'') }})}}",
-                day: "{{ __('site.day'') }})}}",
-                list: "{{ __('site.list'') }})}}",
-                prev: "{{ __('site.prev'') }})}}",
-                next: "{{ __('site.next'') }})}}",
+                today: "{{ __('site.today') }}",
+                month: "{{ __('site.month') }}",
+                week: "{{ __('site.week') }}",
+                day: "{{ __('site.day') }}",
+                list: "{{ __('site.list') }}",
+                prev: "{{ __('site.prev') }}",
+                next: "{{ __('site.next') }}",
             },
-            slotMinTime: "08:00:00",
-            slotMaxTime: "18:30:00",
+            slotMinTime: '08:00:00',
+            slotMaxTime: '18:30:00',
             slotDuration: '00:30:00',
             allDaySlot: false,
-            validRange: {
-                start: new Date()
-            },
-            selectable: true,
-            editable: true,
-            eventStartEditable: false,
-            eventDurationEditable: false,
+            selectable: false,
+            editable: false,
             displayEventTime: true,
-            defaultTimedEventDuration: '00:30',
+            events
+        });
 
-            eventClick: function(info) {
-                previewEvent = info.event;
+        let previewEvent = null;
+        const appointmentModalEl = document.getElementById('appointmentEventModal');
+        const reasonField = document.getElementById('reason');
 
-                var appointmentModal = new bootstrap.Modal(document.getElementById('appointmentEventModal'));
-                appointmentModal.show();
-            },
-            events: availabile
+        calendar.on('eventClick', function (info) {
+            if (info.event.extendedProps.isUnavailable) {
+                Swal.fire({
+                    title: "{{ __('site.Not Available') }}",
+                    text: "{{ __('This slot is no longer available. Please choose another time.') }}",
+                    icon: 'info',
+                    confirmButtonText: "{{ __('site.OK') }}"
+                });
+                return;
+            }
+
+            previewEvent = info.event;
+            const modalInstance = bootstrap.Modal.getOrCreateInstance(appointmentModalEl);
+            modalInstance.show();
         });
 
         calendar.render();
 
-        document.getElementById('saveAppointmentEvent').addEventListener('click', function() {
-            if (previewEvent) {
-                previewEvent.remove();
-
-                var appointmentModal = bootstrap.Modal.getInstance(document.getElementById('appointmentEventModal'));
-                var reason = document.getElementById("reason").value;
-                $.ajax({
-                    data: {
-                        id: previewEvent.id,
-                        reason:reason
-                    },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    url: "{{ route('addAppointment') }}",
-                    type: 'POST',
-                    success: function(data) {
-                        // location.reload();
-                        document.getElementById("reason").value = "";
-                        appointmentModal.hide();
-                        previewEvent = null;
-                        Swal.fire({
-                            title: "{{ __('site.Success') }}",
-                            text: "{{ __('site.The appointment has been booked successfully, If you want to check your reservation, click (go back) }}",
-                            icon: "success",
-                            confirmButtonText: "{{ __('site.OK') }}"
-                            });
-
-                    },
-                });
+        document.getElementById('saveAppointmentEvent')?.addEventListener('click', function () {
+            if (!previewEvent) {
+                return;
             }
-        });
 
+            const reason = reasonField?.value?.trim() || '';
+
+            $.ajax({
+                data: {
+                    id: previewEvent.id,
+                    reason: reason
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                url: "{{ route('addAppointment') }}",
+                type: 'POST',
+                success: function () {
+                    const modalInstance = bootstrap.Modal.getInstance(appointmentModalEl);
+                    modalInstance?.hide();
+
+                    if (reasonField) {
+                        reasonField.value = '';
+                    }
+
+                    previewEvent.remove();
+                    previewEvent = null;
+
+                    Swal.fire({
+                        title: "{{ __('site.Success') }}",
+                        text: "{{ __('Your appointment request has been sent successfully.') }}",
+                        icon: 'success',
+                        confirmButtonText: "{{ __('site.OK') }}"
+                    });
+                },
+                error: function () {
+                    Swal.fire({
+                        title: "{{ __('site.Error') }}",
+                        text: "{{ __('Something went wrong while booking this slot. Please try again.') }}",
+                        icon: 'error',
+                        confirmButtonText: "{{ __('site.OK') }}"
+                    });
+                }
+            });
+        });
     });
 </script>
+@endpush

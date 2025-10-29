@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Enums\Permissions;
 use App\Models\Feedback;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
@@ -19,12 +18,37 @@ class FeedbackController extends Controller
         $this->middleware('permission:' . Permissions::FEEDBACK_DELETE)->only(['destroy']);
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        if (auth()->user()->hasRole('Admin')) {
-            $feedbacks = Feedback::paginate(9);
+        $searchTerm = trim((string) $request->get('q', ''));
+
+        $feedbackQuery = Feedback::query()->latest();
+
+        if ($searchTerm !== '') {
+            $feedbackQuery->where(function ($query) use ($searchTerm) {
+                $query->where('full_name', 'like', "%{$searchTerm}%")
+                    ->orWhere('email', 'like', "%{$searchTerm}%")
+                    ->orWhere('subject', 'like', "%{$searchTerm}%")
+                    ->orWhere('message', 'like', "%{$searchTerm}%")
+                    ->orWhere('feedback', 'like', "%{$searchTerm}%");
+            });
         }
-        return view($this->dir . "index", compact('feedbacks'));
+
+    $feedbacks = $feedbackQuery->paginate(9)->appends($request->query());
+
+        $totalFeedback = Feedback::count();
+        $recentFeedbackCount = Feedback::where('created_at', '>=', now()->subDays(7))->count();
+        $uniqueSubjectsCount = Feedback::whereNotNull('subject')->distinct()->count('subject');
+        $latestFeedback = Feedback::latest('created_at')->first();
+
+        return view($this->dir . "index", compact(
+            'feedbacks',
+            'totalFeedback',
+            'recentFeedbackCount',
+            'uniqueSubjectsCount',
+            'latestFeedback',
+            'searchTerm'
+        ));
     }
 
     public function create()

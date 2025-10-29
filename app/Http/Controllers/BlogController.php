@@ -5,33 +5,54 @@ namespace App\Http\Controllers;
 use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Schema;
 
 class BlogController extends Controller
 {
     protected $dir = "blog.";
 
-    public function list()
+    public function list(Request $request)
     {
-        $blogs = Blog::orderBy('created_at', 'desc')->paginate(6);
-        return view($this->dir . "list", compact('blogs'));
+        return $this->index($request);
     }
 
     public function index(Request $request)
     {
         $locale = app()->getLocale();
+        $searchTerm = trim((string) $request->get('title', ''));
 
-        $query = Blog::query();
+        $query = Blog::query()->with('user')->latest('created_at');
 
-        if ($request->filled('title')) {
-            $query->whereRaw("LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, '$.\"$locale\"'))) LIKE ?", ['%' . strtolower($request->title) . '%']);
+        if ($searchTerm !== '') {
+            $query->whereRaw(
+                "LOWER(JSON_UNQUOTE(JSON_EXTRACT(title, '$.\"$locale\"'))) LIKE ?",
+                ['%' . strtolower($searchTerm) . '%']
+            );
         }
 
-        $blogs = $query->orderBy('created_at', 'desc')->paginate(8)->appends([
-            'title' => $request->title,
-        ]);
-        $last_blogs = Blog::latest()->limit(3)->get();
+        $blogs = $query->paginate(10)->appends($request->only('title'));
 
-        return view($this->dir . "index", compact('blogs', 'last_blogs'));
+        $totalBlogs = Blog::count();
+        $recentBlogs = Blog::where('created_at', '>=', now()->subDays(7))->count();
+
+        $hasFeaturedColumn = Schema::hasColumn('blogs', 'featured');
+        $featuredCount = $hasFeaturedColumn
+            ? Blog::where('featured', true)->count()
+            : 0;
+
+        $activeAuthors = Blog::whereNotNull('user_id')->distinct()->count('user_id');
+        $latestBlog = Blog::latest('created_at')->first();
+
+        return view($this->dir . "index", compact(
+            'blogs',
+            'searchTerm',
+            'totalBlogs',
+            'recentBlogs',
+            'featuredCount',
+            'activeAuthors',
+            'latestBlog',
+            'hasFeaturedColumn'
+        ));
     }
 
     public function create()

@@ -5,162 +5,224 @@
 @endpush
 
 @section('content')
-    <div class="main-content">
-        @include('search_form')
-        <div class="header">
-            <a href="{{ route('patient.index') }}" class="btn-back">
-                @if(App::getLocale() == 'ar')
-                <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i> {{ __('site.Go Back') }}
-                @else
-                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i> {{ __('site.Go Back') }}
-                @endif
-            </a>
-        </div>
-        <div>
-            <div class="profile-details">
-                <div class="profile-info">
-                    <div class="profile-header">
-                        <img src="{{ $patient->image ? Storage::url($patient->image) : asset('assets/images/avatar1.png') }}" alt="Patient Photo" class="profile-img">
-                        <a href="{{ route('patient.edit', $patient) }}" class="btn-edit">+ {{ __('site.Edit') }}</a>
+    @php
+        $age = $patient->birthday ? \Carbon\Carbon::parse($patient->birthday)->age : null;
+        $formatList = function ($items) {
+            if (!$items) {
+                return null;
+            }
+
+            $collection = $items instanceof \Illuminate\Support\Collection ? $items : collect($items);
+
+            if ($collection->isEmpty()) {
+                return null;
+            }
+
+            return $collection->map(function ($item) {
+                return $item->getTranslatedName();
+            })->implode(', ');
+        };
+
+        $psychologicalList = $formatList($psychologicals);
+        $neurologicalList = $formatList($nervouses);
+        $therapeuticList = $formatList($therapeutic_areas);
+        $symptomList = $formatList($symptomes);
+        $addictionList = $formatList($addictiones);
+        $diseaseList = $formatList($diseases);
+        $incidentList = $formatList($incidents);
+        $consultationList = $formatList($consultationes);
+        $backRoute = route('patient.index');
+    @endphp
+
+    <div class="patient-view-page">
+        <div class="patient-management-content">
+            <div class="page-header">
+                <div class="header-content">
+                    <div class="header-info">
+                        <h1 class="page-title">{{ $patient->first_name }} {{ $patient->last_name }}</h1>
+                        <p class="page-subtitle">
+                            {{ __('site.Patient Gender') }}: {{ $patient->gender ?? 'N/A' }}
+                        </p>
                     </div>
-
+                    <div class="header-actions">
+                        <a href="{{ $backRoute }}" class="header-btn ghost-btn">
+                            @if (App::getLocale() === 'ar')
+                                <span>{{ __('site.Go Back') }}</span>
+                                <i class="fas fa-long-arrow-alt-right" aria-hidden="true"></i>
+                            @else
+                                <i class="fas fa-long-arrow-alt-left" aria-hidden="true"></i>
+                                <span>{{ __('site.Go Back') }}</span>
+                            @endif
+                        </a>
+                        <a href="{{ route('patient.edit', $patient) }}" class="header-btn primary-btn">
+                            <i class="fas fa-edit" aria-hidden="true"></i>
+                            <span>{{ __('site.Edit') }}</span>
+                        </a>
+                    </div>
                 </div>
-                <div class="visit-details">
+                <div class="header-meta">
+                    <span class="meta-chip">{{ __('site.ID') }} #{{ $patient->id }}</span>
+                    @if ($patient->birthday)
+                        <span class="meta-chip">
+                            {{ __('site.Birthday') }}: {{ \Carbon\Carbon::parse($patient->birthday)->format('d-m-Y') }}
+                        </span>
+                    @endif
+                    @if ($age)
+                        <span class="meta-chip">{{ $age }} yrs</span>
+                    @endif
+                    <span class="meta-chip">{{ __('site.Country') }}: {{ optional($patient->country)->name ?? 'N/A' }}</span>
+                </div>
+            </div>
 
-                    <div class="user-info">
-                        <p class="big-title">{{ $patient->first_name }} {{ $patient->last_name }}</p>
-                        <div class="small-title">
-                            <p>{{ __('site.Patient Gender') }}: {{ $patient->gender}}</p>
-                            <p>{{ __('site.ID') }}:#{{ $patient->id }}</p>
+            <div class="search-card">
+                @include('search_form')
+            </div>
+
+            <div class="content-shell">
+                <aside class="media-panel">
+                    <div class="avatar-wrapper">
+                        <img src="{{ $patient->image ? Storage::url($patient->image) : asset('assets/images/avatar1.png') }}"
+                             alt="{{ $patient->first_name }} {{ $patient->last_name }}" class="profile-img">
+                    </div>
+                    <div class="info-card">
+                        <div class="info-row">
+                            <span class="label">{{ __('site.Email Address') }}</span>
+                            <span class="value">{{ optional($patient->user)->email ?? 'N/A' }}</span>
                         </div>
-                        <div class="text-info">
-                            <p><strong>{{ __('site.Country') }}:</strong> {{ $patient->country->name }}</p>
-
-                            <p><strong>{{ __('site.Birthday') }}:</strong> {{ \Carbon\Carbon::parse($patient->birthday)->format('d-m-Y') }}</p>
+                        <div class="info-row">
+                            <span class="label">{{ __('site.Phone') }}</span>
+                            <span class="value">{{ $patient->phone ?? 'N/A' }}</span>
                         </div>
-                        <div class="text-info">
-                            <p><strong>{{ __('site.Email Address') }}:</strong></p>
-                            <p>{{ $patient->user->email }}</p>
-
-                            <p><strong>{{ __('site.Phone') }}:</strong></p>
-                            <p>{{ $patient->phone }}</p>
+                        <div class="info-row">
+                            <span class="label">{{ __('site.Country') }}</span>
+                            <span class="value">{{ optional($patient->country)->name ?? 'N/A' }}</span>
                         </div>
-
-                        <div class="text-info">
-                            <p><strong>{{ __('site.more_description') }} </strong></p>
+                        <div class="info-row">
+                            <span class="label">{{ __('site.Birthday') }}</span>
+                            <span class="value">
+                                {{ $patient->birthday ? \Carbon\Carbon::parse($patient->birthday)->format('d-m-Y') : 'N/A' }}
+                            </span>
+                        </div>
+                    </div>
+                    @if (!empty($patient->open_description))
+                        <div class="note-card">
+                            <h3>{{ __('site.more_description') }}</h3>
                             <p>{{ $patient->open_description }}</p>
                         </div>
-                    </div>
-                    <div class="diagnosis">
-                        @if($psychologicals && $psychologicals->count())
-                            <div class="text-info">
-                                <p><strong>{{ __('site.Have you been diagnosed with any of the following mental health conditions?') }}:</strong></p>
-                                <p>    @foreach($psychologicals as $psychological)
-                                    {{ $psychological->getTranslatedName() }}
-                                    @if(!$loop->last), @endif
-                                    @endforeach
-                                </p>
-                            </div>
-                        @endif
+                    @endif
+                </aside>
 
-                        @if($nervouses && $nervouses->count())
-                            <div class="text-info">
-                                <p><strong>{{ __('site.Have you ever been diagnosed with any neurological conditions?') }}:</strong></p>
-                                <p>
-                                    @foreach($nervouses as $nervous)
-                                        {{ $nervous->getTranslatedName() }}
-                                        @if(!$loop->last), @endif
-                                    @endforeach
-                                </p>
+                <section class="details-panel">
+                    @if ($psychologicalList || $neurologicalList || $therapeuticList || $symptomList || $addictionList || $consultationList)
+                        <div class="section-block">
+                            <div class="section-heading">
+                                <h2>Mental Health Overview</h2>
                             </div>
-                        @endif
+                            <div class="detail-grid">
+                                @if ($psychologicalList)
+                                    <div class="detail-item">
+                                        <span class="detail-label">{{ __('site.Have you been diagnosed with any of the following mental health conditions?') }}</span>
+                                        <p class="detail-value">{{ $psychologicalList }}</p>
+                                    </div>
+                                @endif
 
-                        @if($therapeutic_areas && $therapeutic_areas->count())
-                            <div class="text-info">
-                                <p><strong>{{ __('site.Are you currently taking any medications for mental health conditions?') }}:</strong></p>
-                                <p>
-                                    @foreach($therapeutic_areas as $therapeutic_area)
-                                        {{ $therapeutic_area->getTranslatedName() }}
-                                        @if(!$loop->last), @endif
-                                    @endforeach
-                                </p>
+                                @if ($therapeuticList)
+                                    <div class="detail-item">
+                                        <span class="detail-label">{{ __('site.Are you currently taking any medications for mental health conditions?') }}</span>
+                                        <p class="detail-value">{{ $therapeuticList }}</p>
+                                    </div>
+                                @endif
+
+                                @if ($consultationList)
+                                    <div class="detail-item">
+                                        <span class="detail-label">{{ __('site.Have you ever received therapy or counseling before?') }}</span>
+                                        <p class="detail-value">{{ $consultationList }}</p>
+                                    </div>
+                                @endif
                             </div>
-                        @endif
-
-                        @if($medications)
-                        <div class="text-info">
-                            <p><strong>{{ __('site.medication names') }}:</strong></p>
-                            <p>{{ $medications}}</p>
                         </div>
-                        @endif
+                    @endif
 
-                        @if($symptomes && $symptomes->count())
-                            <div class="text-info">
-                                <p><strong>{{ __('site.Have you experienced any of the following symptoms in the past 6 months?') }}:</strong></p>
-                                <p>
-                                    @foreach($symptomes as $symptom)
-                                    {{ $symptom->getTranslatedName() }}
-                                    @if(!$loop->last), @endif
-                                    @endforeach
-                                </p>
+                    @if ($neurologicalList || $symptomList || $addictionList || $diseaseList)
+                        <div class="section-block">
+                            <div class="section-heading">
+                                <h2>Health Background</h2>
                             </div>
-                        @endif
+                            <div class="detail-grid">
+                                @if ($neurologicalList)
+                                    <div class="detail-item">
+                                        <span class="detail-label">{{ __('site.Have you ever been diagnosed with any neurological conditions?') }}</span>
+                                        <p class="detail-value">{{ $neurologicalList }}</p>
+                                    </div>
+                                @endif
 
-                        @if($addictiones && $addictiones->count())
-                            <div class="text-info">
-                                <p><strong>{{ __('site.Do you have a history of substance use or addiction?') }}:</strong></p>
-                                <p>
-                                    @foreach($addictiones as $addiction)
-                                        {{ $addiction->getTranslatedName() }}
-                                        @if(!$loop->last), @endif
-                                    @endforeach
-                                </p>
+                                @if ($symptomList)
+                                    <div class="detail-item">
+                                        <span class="detail-label">{{ __('site.Have you experienced any of the following symptoms in the past 6 months?') }}</span>
+                                        <p class="detail-value">{{ $symptomList }}</p>
+                                    </div>
+                                @endif
+
+                                @if ($addictionList)
+                                    <div class="detail-item">
+                                        <span class="detail-label">{{ __('site.Do you have a history of substance use or addiction?') }}</span>
+                                        <p class="detail-value">{{ $addictionList }}</p>
+                                    </div>
+                                @endif
+
+                                @if ($diseaseList)
+                                    <div class="detail-item">
+                                        <span class="detail-label">{{ __('site.Do you have any chronic physical health conditions?') }}</span>
+                                        <p class="detail-value">{{ $diseaseList }}</p>
+                                    </div>
+                                @endif
                             </div>
-                        @endif
-
-                        <div class="text-info">
-                            <p><strong>{{ __('site.Do you have any chronic physical health conditions?') }}:</strong></p>
-                            <p>
-                                @foreach($diseases as $disease)
-                                    {{ $disease->getTranslatedName() }}
-                                    @if(!$loop->last), @endif
-                                @endforeach
-                            </p>
                         </div>
+                    @endif
 
-                        <div class="text-info">
-                            <p><strong>{{ __('site.Have you experienced any major life events or traumas that may impact your mental health?') }}:</strong></p>
-                            <p>
-                                @foreach($incidents as $incident)
-                                    {{ $incident->getTranslatedName() }}
-                                    @if(!$loop->last), @endif
-                                @endforeach
-                            </p>
-                        </div>
-                        @if($consultationes)
-                            <div class="text-info">
-                                <p><strong>{{ __('site.Have you ever received therapy or counseling before?') }}:</strong></p>
-                                <p>
-                                    @foreach($consultationes as $consultation)
-                                        {{ $consultation->getTranslatedName() }}
-                                        @if(!$loop->last), @endif
-                                    @endforeach
-                                </p>
+                    @if ($incidentList || $medications)
+                        <div class="section-block">
+                            <div class="section-heading">
+                                <h2>Additional Notes</h2>
                             </div>
-                        @endif
+                            <div class="detail-grid">
+                                @if ($medications)
+                                    <div class="detail-item">
+                                        <span class="detail-label">{{ __('site.medication names') }}</span>
+                                        <p class="detail-value">{{ $medications }}</p>
+                                    </div>
+                                @endif
 
-                    </div>
-                </div>
-                <div class="action-buttons">
-                    <a href="{{ route('patient.index') }}" class="btn patient-btn">Patient List</a>
-                    @role('Admin')
-                    <a href="{{ route('feedback-list') }}" class="btn patient-btn">Feedback</a>
-                    @endrole
+                                @if ($incidentList)
+                                    <div class="detail-item">
+                                        <span class="detail-label">{{ __('site.Have you experienced any major life events or traumas that may impact your mental health?') }}</span>
+                                        <p class="detail-value">{{ $incidentList }}</p>
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    @endif
+                </section>
+            </div>
 
-                    @role('Doctor')
-                        <a href="{{ route('doctors.calendar') }}" class="btn patient-btn">+ Schedule Appointment</a>
-                    @endrole
-                </div>
+            <div class="action-bar">
+                <a href="{{ route('patient.index') }}" class="header-btn ghost-btn">
+                    <i class="fas fa-users" aria-hidden="true"></i>
+                    <span>Patient List</span>
+                </a>
+                @role('Admin')
+                    <a href="{{ route('feedback-list') }}" class="header-btn secondary-btn">
+                        <i class="fas fa-comments" aria-hidden="true"></i>
+                        <span>Feedback</span>
+                    </a>
+                @endrole
+
+                @role('Doctor')
+                    <a href="{{ route('doctors.calendar') }}" class="header-btn primary-btn">
+                        <i class="fas fa-calendar-plus" aria-hidden="true"></i>
+                        <span>Schedule Appointment</span>
+                    </a>
+                @endrole
             </div>
         </div>
     </div>
