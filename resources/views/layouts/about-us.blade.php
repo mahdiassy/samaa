@@ -15,19 +15,42 @@
             
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center max-w-4xl mx-auto">
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold mb-8 leading-tight">
-                        <span class="text-white">{{ __('about.Where') }}</span>
-                        <span class="bg-gradient-to-r from-blue-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent">
-                            {{ __('about.Science') }}
-                        </span>
-                        <span class="text-white">{{ __('about.Meets') }}</span>
-                        <span class="bg-gradient-to-r from-emerald-400 via-blue-400 to-teal-400 bg-clip-text text-transparent">
-                            {{ __('about.Soul') }}
-                        </span>
-                    </h1>
+                    @if (App::getLocale() == 'ar')
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold mb-8 leading-tight">
+                            <span class="text-white">{{ __('frontend/about.Where') }}</span>
+                            <span class="bg-gradient-to-r from-blue-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent">
+                                {{ __('frontend/about.Science') }}
+                            </span>
+                            <span class="text-white">{{ __('frontend/about.Meets') }}</span>
+                            <span class="bg-gradient-to-r from-emerald-400 via-blue-400 to-teal-400 bg-clip-text text-transparent">
+                                {{ __('frontend/about.Soul') }}
+                            </span>
+                        </h1>
+                    @elseif (App::getLocale() == 'fr')
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold mb-8 leading-tight">
+                            <span class="text-white">{{ __('frontend/about.Where') }}</span>
+                            <span class="text-white">la</span>
+                            <span class="bg-gradient-to-r from-blue-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent">
+                                {{ __('frontend/about.Science') }}
+                            </span>
+                            <span class="text-white">{{ __('frontend/about.Meets') }}</span>
+                            <span class="text-white">l'</span><span class="bg-gradient-to-r from-emerald-400 via-blue-400 to-teal-400 bg-clip-text text-transparent">{{ __('frontend/about.Soul') }}</span>
+                        </h1>
+                    @else
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold mb-8 leading-tight">
+                            <span class="text-white">{{ __('frontend/about.Where') }}</span>
+                            <span class="bg-gradient-to-r from-blue-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent">
+                                {{ __('frontend/about.Science') }}
+                            </span>
+                            <span class="text-white">{{ __('frontend/about.Meets') }}</span>
+                            <span class="bg-gradient-to-r from-emerald-400 via-blue-400 to-teal-400 bg-clip-text text-transparent">
+                                {{ __('frontend/about.Soul') }}
+                            </span>
+                        </h1>
+                    @endif
                     
                     <p class="text-xl sm:text-2xl text-slate-300 mb-12 leading-relaxed font-light">
-                        {{ __('about.story-description') }}
+                        {{ __('frontend/about.story-description') }}
                     </p>
 
                     <!-- Elegant CTA Buttons -->
@@ -35,20 +58,34 @@
                         <a href="{{ Auth::check() ? (\App\Models\Therapy::getTherapiesBasedRole()->isNotEmpty() ? route('playlist') : route('therapy.index')) : route('login')  }}" 
                            class="group px-8 py-4 bg-gradient-to-r from-blue-600 to-teal-600 text-white font-semibold rounded-2xl text-lg hover:from-blue-700 hover:to-teal-700 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-blue-500/25">
                             <span class="flex items-center">
-                                {{__('about.Explore') }} SAMAA {{ __('about.Therapy') }}
-                                <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                                </svg>
+                                @if(App::getLocale() == 'ar')
+                                    <svg class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                                    </svg>
+                                @endif
+                                {{__('frontend/about.Explore') }} SAMAA {{ __('frontend/about.Therapy') }}
+                                @if(App::getLocale() != 'ar')
+                                    <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                    </svg>
+                                @endif
                             </span>
                         </a>
                         
                         <a href="{{ route('contact-us') }}" 
                            class="group px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-2xl text-lg hover:bg-white/20 hover:border-white/30 transform hover:scale-105 transition-all duration-300">
                             <span class="flex items-center">
-                                {{ __('about.Become a Partner') }}
-                                <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                </svg>
+                                @if(App::getLocale() == 'ar')
+                                    <svg class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+                                    </svg>
+                                @endif
+                                {{ __('frontend/about.Become a Partner') }}
+                                @if(App::getLocale() != 'ar')
+                                    <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                @endif
                             </span>
                         </a>
                     </div>
@@ -68,10 +105,10 @@
                         <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
                             <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-6">
                                 <span class="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
-                                    {{ __('about.our') }}
+                                    {{ __('frontend/about.our') }}
                                 </span>
                                 <br>
-                                <span class="text-white">{{ __('about.Mission') }}</span>
+                                <span class="text-white">{{ __('frontend/about.Mission') }}</span>
                             </h2>
                         </div>
                     </div>
@@ -93,7 +130,7 @@
                     <div class="lg:col-span-1 text-center lg:text-right">
                         <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
                             <p class="text-lg sm:text-xl text-slate-300 leading-relaxed font-light">
-                                {{ __('about.mission-description') }}
+                                {{ __('frontend/about.mission-description') }}
                             </p>
                             <div class="mt-6 flex justify-center lg:justify-end">
                                 <div class="w-16 h-px bg-gradient-to-r from-transparent to-teal-400"></div>
@@ -115,42 +152,42 @@
                     <div class="order-2 lg:order-1 text-center lg:text-left">
                         <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12">
                             <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-6">
-                                {{ __('about.Meet') }}
+                                {{ __('frontend/about.Meet') }}
                                 <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent block">
-                                    {{ __('about.Dr. Nadia Cheaib') }}
+                                    {{ __('frontend/about.Dr. Nadia Cheaib') }}
                                 </span>
                             </h2>
                             
                             <div class="space-y-6">
                                 <p class="text-xl font-semibold text-blue-300">
-                                    {{ __('about.Founder & Clinical Director') }}
+                                    {{ __('frontend/about.Founder & Clinical Director') }}
                                 </p>
                                 
                                 <p class="text-lg text-slate-300 leading-relaxed">
-                                    {{ __('about.founder-description') }}
+                                    {{ __('frontend/about.founder-description') }}
                                 </p>
                                 
                                 <!-- Professional Credentials -->
                                 <div class="bg-white/5 rounded-2xl p-6 border border-white/10">
-                                    <h3 class="text-lg font-semibold text-white mb-4">{{ __('about.Professional Credentials') }}</h3>
+                                    <h3 class="text-lg font-semibold text-white mb-4">{{ __('frontend/about.Professional Credentials') }}</h3>
                                     <ul class="space-y-2 text-slate-300">
                                         <li class="flex items-center">
                                             <svg class="w-4 h-4 text-emerald-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
                                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                             </svg>
-                                            {{ __('about.PhD in Music Therapy') }}
+                                            {{ __('frontend/about.PhD in Music Therapy') }}
                                         </li>
                                         <li class="flex items-center">
                                             <svg class="w-4 h-4 text-emerald-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
                                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                             </svg>
-                                            {{ __('about.Board-Certified Music Therapist') }}
+                                            {{ __('frontend/about.Board-Certified Music Therapist') }}
                                         </li>
                                         <li class="flex items-center">
                                             <svg class="w-4 h-4 text-emerald-400 mr-3" fill="currentColor" viewBox="0 0 20 20">
                                                 <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
                                             </svg>
-                                            {{ __('about.15+ Years Clinical Experience') }}
+                                            {{ __('frontend/about.15+ Years Clinical Experience') }}
                                         </li>
                                     </ul>
                                 </div>
@@ -168,7 +205,7 @@
                                      class="w-full max-w-sm h-auto object-cover rounded-2xl filter drop-shadow-2xl" 
                                      loading="lazy">
                                 <div class="absolute -bottom-6 -right-6 bg-gradient-to-r from-emerald-500 to-blue-500 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-xl">
-                                    {{ __('about.Founder') }}
+                                    {{ __('frontend/about.Founder') }}
                                 </div>
                             </div>
                         </div>
@@ -187,11 +224,11 @@
                 <div class="text-center mb-16">
                     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-6">
                         <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-                            {{ __('about.Recognition') }}
+                            {{ __('frontend/about.Recognition') }}
                         </span>
                         <span class="text-white">&</span>
                         <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
-                            {{ __('about.Partnerships') }}
+                            {{ __('frontend/about.Partnerships') }}
                         </span>
                     </h2>
                     <div class="flex justify-center">
@@ -204,7 +241,7 @@
                     <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
                         <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-8 text-center">
                             <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
-                                {{ __('about.Awards') }}
+                                {{ __('frontend/about.Awards') }}
                             </span>
                         </h3>
                         
@@ -217,8 +254,8 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h4 class="text-lg font-semibold text-white mb-2">{{ __('about.Go Global Award 2022') }}</h4>
-                                        <p class="text-slate-300">{{ __('about.Corporate Social Responsibility') }}</p>
+                                        <h4 class="text-lg font-semibold text-white mb-2">{{ __('frontend/about.Go Global Award 2022') }}</h4>
+                                        <p class="text-slate-300">{{ __('frontend/about.Corporate Social Responsibility') }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -229,22 +266,22 @@
                     <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
                         <h3 class="text-2xl sm:text-3xl font-serif font-bold text-white mb-8 text-center">
                             <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent">
-                                {{ __('about.Trusted By') }}
+                                {{ __('frontend/about.Trusted By') }}
                             </span>
                         </h3>
                         
                         <div class="space-y-4">
                             <div class="bg-white/5 rounded-2xl p-4 border border-white/10 hover:border-blue-400/30 transition-colors duration-300">
-                                <p class="text-white font-medium">{{ __('about.Dubai Autism Center') }}</p>
+                                <p class="text-white font-medium">{{ __('frontend/about.Dubai Autism Center') }}</p>
                             </div>
                             <div class="bg-white/5 rounded-2xl p-4 border border-white/10 hover:border-blue-400/30 transition-colors duration-300">
-                                <p class="text-white font-medium">{{ __('about.American European Music Therapy Association') }}</p>
+                                <p class="text-white font-medium">{{ __('frontend/about.American European Music Therapy Association') }}</p>
                             </div>
                             <div class="bg-white/5 rounded-2xl p-4 border border-white/10 hover:border-blue-400/30 transition-colors duration-300">
-                                <p class="text-white font-medium">{{ __('about.Forbes') }}</p>
+                                <p class="text-white font-medium">{{ __('frontend/about.Forbes') }}</p>
                             </div>
                             <div class="bg-white/5 rounded-2xl p-4 border border-white/10 hover:border-blue-400/30 transition-colors duration-300">
-                                <p class="text-white font-medium">{{ __('about.Hope MCF Foundation') }}</p>
+                                <p class="text-white font-medium">{{ __('frontend/about.Hope MCF Foundation') }}</p>
                             </div>
                         </div>
                     </div>
@@ -260,14 +297,14 @@
             <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                 <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-12">
                     <h2 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white mb-6">
-                        {{ __('about.Let') }}<span class="text-white">'s</span>
+                        {{ __('frontend/about.Let') }}<span class="text-white">'s</span>
                         <span class="bg-gradient-to-r from-blue-400 to-emerald-400 bg-clip-text text-transparent block">
-                            {{ __('about.Heal') }} {{ __('about.Together') }}
+                            {{ __('frontend/about.Heal') }} {{ __('frontend/about.Together') }}
                         </span>
                     </h2>
                     
                     <p class="text-xl text-slate-300 mb-8 leading-relaxed">
-                        {{ __('about.join-journey-description') }}
+                        {{ __('frontend/about.join-journey-description') }}
                     </p>
 
                     <!-- Final CTA Buttons -->
@@ -275,20 +312,34 @@
                         <a href="{{ Auth::check() ? (\App\Models\Therapy::getTherapiesBasedRole()->isNotEmpty() ? route('playlist') : route('therapy.index')) : route('login')  }}" 
                            class="group px-8 py-4 bg-gradient-to-r from-blue-600 to-emerald-600 text-white font-semibold rounded-2xl text-lg hover:from-blue-700 hover:to-emerald-700 transform hover:scale-105 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-emerald-500/25">
                             <span class="flex items-center">
-                                {{ __('about.Explore') }} SAMAA {{ __('about.Therapy') }}
-                                <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
-                                </svg>
+                                @if(App::getLocale() == 'ar')
+                                    <svg class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 17l-5-5m0 0l5-5m-5 5h12"></path>
+                                    </svg>
+                                @endif
+                                {{ __('frontend/about.Explore') }} SAMAA {{ __('frontend/about.Therapy') }}
+                                @if(App::getLocale() != 'ar')
+                                    <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path>
+                                    </svg>
+                                @endif
                             </span>
                         </a>
                         
                         <a href="{{ route('contact-us') }}" 
                            class="group px-8 py-4 bg-white/10 backdrop-blur-sm border border-white/20 text-white font-semibold rounded-2xl text-lg hover:bg-white/20 hover:border-white/30 transform hover:scale-105 transition-all duration-300">
                             <span class="flex items-center">
-                                {{ __('about.Become a Partner') }}
-                                <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                                </svg>
+                                @if(App::getLocale() == 'ar')
+                                    <svg class="w-5 h-5 mr-2 group-hover:-translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16l-4-4m0 0l4-4m-4 4h18"></path>
+                                    </svg>
+                                @endif
+                                {{ __('frontend/about.Become a Partner') }}
+                                @if(App::getLocale() != 'ar')
+                                    <svg class="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                                    </svg>
+                                @endif
                             </span>
                         </a>
                     </div>

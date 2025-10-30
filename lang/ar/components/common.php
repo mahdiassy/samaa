@@ -7,4 +7,18 @@ return [
     'All rights reserved.' => 'جميع الحقوق محفوظة.',
     'Made with' => 'صُنع بـ',
     'for healing' => 'للشفاء',
+    'update' => 'تحديث',
+    'done' => 'تم',
+    'yes' => 'نعم',
+    'no' => 'لا',
+    'please_select' => 'يرجى الاختيار',
+    'submit' => 'إرسال',
+    'select_all' => '(حدد كل ما ينطبق)',
+    'contact_info' => 'معلومات الاتصال',
+    'services' => 'الخدمات',
+    'music_therapy' => 'العلاج بالموسيقى',
+    'sound_healing' => 'العلاج بالصوت',
+    'meditation_sessions' => 'جلسات التأمل',
+    'personalized_playlists' => 'قوائم تشغيل مخصصة',
+    'my_dashboard' => 'لوحة التحكم الخاصة بي'
 ];

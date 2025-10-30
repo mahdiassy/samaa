@@ -1,0 +1,42 @@
+<?php
+
+
+    return [
+        // About Us Page (Cleaned)
+        'Where' => 'Où',
+        'Science' => 'Science',
+        'Meets' => 'Rencontre',
+        'Soul' => 'Âme',
+        'story-description' => 'SAMAA, née de l\'héritage de ClinGroup Euromed en innovation santé, est une plateforme révolutionnaire de thérapie sonore alimentée par l\'IA, conçue pour transformer le bien-être mental et physique. Fondée par Dr. Nadia Cheaib—scientifique listée par Forbes, survivante du cancer et défenseure des soins de santé éthiques—SAMAA fusionne technologie de pointe avec les traditions de guérison ancestrales pour autonomiser les personnes atteintes d\'autisme, TDAH, anxiété et maladies chroniques.',
+        'Explore' => 'Explorer',
+        'Therapy' => 'Thérapie',
+        'Become a Partner' => 'Devenez partenaire',
+        'our' => 'Notre',
+        'Mission' => 'Mission',
+        'mission-description' => 'Nous croyons que chaque individu mérite un accès à des soins compatissants et fondés sur des preuves. L\'IA de SAMAA adapte les sessions de musicothérapie au profil émotionnel et sensoriel unique de chaque utilisateur, comblant les lacunes des soins de santé traditionnels et favorisant le bien-être mondial.',
+        'Meet' => 'Rencontrez',
+        'Dr. Nadia Cheaib' => 'Dr. Nadia Cheaib',
+        'Founder & Clinical Director' => 'Fondatrice et Directrice Clinique',
+        'founder-description' => 'Dr. Nadia Cheaib est une scientifique listée par Forbes et pionnière des soins de santé connue pour son travail intégrant l\'IA dans la thérapie et le bien-être personnalisés.',
+        'Professional Credentials' => 'Qualifications Professionnelles',
+        'PhD in Music Therapy' => 'Doctorat en Musicothérapie',
+        'Board-Certified Music Therapist' => 'Musicothérapeute Certifiée',
+        '15+ Years Clinical Experience' => 'Plus de 15 ans d\'Expérience Clinique',
+        'Founder' => 'Fondatrice',
+        'Let' => 'Guérissons',
+        'Heal' => 'Guérir',
+        'Together' => 'Ensemble',
+        'join-journey-description' => 'Rejoignez le parcours de SAMAA pour rendre la thérapie sonore personnalisée accessible à tous. Ensemble, nous pouvons guérir grâce à l\'harmonie et à la science.',
+        'Recognition' => 'Reconnaissance',
+        '&' => '&',
+        'Partnerships' => 'Partenariats',
+        'Awards' => 'Récompenses',
+        'Go Global Award 2022' => 'Prix Go Global 2022',
+        'Corporate Social Responsibility' => 'Responsabilité Sociale des Entreprises',
+        'Trusted By' => 'Approuvé par',
+        'Dubai Autism Center' => 'Centre d\'Autisme de Dubaï',
+        'American European Music Therapy Association' => 'Association Américaine Européenne de Musicothérapie',
+        'Forbes' => 'Forbes',
+        'Hope MCF Foundation' => 'Fondation Hope MCF',
+        
+    ];

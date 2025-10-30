@@ -45,8 +45,9 @@
 
         'How' => 'How',
         'Works' => 'works',
-        "Sama'a" => 'SAMAA',
-        'Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.' => 'Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.',
+        'Sama\'a' => 'SAMAA',
+        'Samaa' => 'SAMAA',
+        'Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.' => 'Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.',
         'Share your needs' => 'Share your needs',
         'Tell us about your mental health goals and current state through our comprehensive assessment.' => 'Tell us about your mental health goals and current state through our comprehensive assessment.',
         'Generate therapeutic music' => 'Generate therapeutic music',
@@ -68,7 +69,8 @@
 
         'Partner with' => 'Partner with',
         'Expand your practice with AI-driven music therapy' => 'Expand your practice with AI-driven music therapy',
-        'Let’s Partner Up' => 'Let’s Partner Up',
+        'Let\'s Partner Up' => 'Let\'s Partner Up',
+        'Let us Partner Up' => 'Let\'s Partner Up',
 
         'First Name' => 'First Name',
         'Surname' => 'Surname',

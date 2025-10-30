@@ -1,6 +1,10 @@
 <?php
 
 return [
+    'Get In' => 'ابق على',
+    'Touch' => 'تواصل',
+    'We are Here to Help You Heal' => 'نحن هنا لمساعدتك على الشفاء',
+    'contact_description' => 'تواصل مع فريق الخبراء لدينا. سواء كنت مريضًا تبحث عن الشفاء أو معالجًا مستعدًا لتحويل الحياة، نحن هنا لدعم رحلتك مع سماع.',
     'Contact' => 'تواصل',
     'Get In Touch' => 'تواصل معنا',
     'Were Here to Help You Heal' => 'نحن هنا لمساعدتك على الشفاء',
@@ -22,4 +26,32 @@ return [
     'Follow SAMAA' => 'متابعة سمع:',
     'Join Our Newsletter' => 'انضم إلى نشرتنا الإخبارية:',
     'Get free sound therapy tips and updates' => 'احصل على نصائح وتحديثات مجانية حول العلاج الصوتي',
+    
+    // Contact Page Form
+    'Contact Details' => 'تفاصيل الاتصال',
+    'Details' => 'التفاصيل',
+    'Contact Us' => 'اتصل بنا',
+    'Visit Us' => 'قم بزيارتنا',
+    'Beirut, Lebanon' => 'بيروت، لبنان',
+    'Research & Innovation Center' => 'مركز البحث والابتكار',
+    'Send us a' => 'أرسل لنا',
+    'Full Name' => 'الاسم الكامل',
+    'Enter Your Name' => 'أدخل اسمك',
+    'Select a subject' => 'اختر موضوعًا',
+    'Patient Inquiry' => 'استفسار المريض',
+    'Therapist Partnership' => 'شراكة المعالج',
+    'Institutional Partnership' => 'شراكة مؤسسية',
+    'Technical Support' => 'الدعم الفني',
+    'Research Collaboration' => 'التعاون البحثي',
+    'Other' => 'أخرى',
+    'Your Message' => 'رسالتك',
+    'We\'re Here to' => 'نحن هنا',
+    'Help' => 'للمساعدة',
+    'Our dedicated team is committed to supporting your healing journey and professional growth.' => 'فريقنا المتفاني ملتزم بدعم رحلة الشفاء الخاصة بك ونموك المهني.',
+    'Quick Response' => 'استجابة سريعة',
+    'We respond to all inquiries within 24 hours during business days.' => 'نرد على جميع الاستفسارات خلال 24 ساعة خلال أيام العمل.',
+    'Expert Guidance' => 'إرشاد الخبراء',
+    'Connect directly with our research and clinical teams for specialized support.' => 'تواصل مباشرة مع فرق البحث والسريرية لدينا للحصول على دعم متخصص.',
+    'Secure & Private' => 'آمن وخاص',
+    'All communications are encrypted and HIPAA/GDPR compliant for your privacy.' => 'جميع الاتصالات مشفرة ومتوافقة مع HIPAA/GDPR لخصوصيتك.',
 ];

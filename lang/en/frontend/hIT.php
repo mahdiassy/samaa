@@ -19,7 +19,7 @@
         'Therapy' => 'Therapy',
         'Protocol' => 'Protocol',
         'How U-Shaped Sound Transforms Lives' => 'How U-Shaped Sound Transforms Lives',
-        'U-Saped-description' => 'The U-shaped montage technique, conceptualized by Jean-Marie Guiraud-Caladou, uses structured sound progression (tempo, pitch, intensity) to induce relaxation and improve neural connectivity. SAMAA’s AI adapts this method for modern therapy',
+        'U-Shaped-description' => 'The U-shaped montage technique, conceptualized by Jean-Marie Guiraud-Caladou, uses structured sound progression (tempo, pitch, intensity) to induce relaxation and improve neural connectivity. SAMAA’s AI adapts this method for modern therapy',
 
         'Ready to Experience' => 'Ready to Experience',
         'Healing Through' => 'Healing Through',

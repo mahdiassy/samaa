@@ -320,104 +320,103 @@
     </a>
 
     <!-- Modern High-Contrast Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-gray-900/95 backdrop-blur-lg border-b border-gray-700/50 shadow-lg transition-all duration-300">
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-gray-900/98 via-slate-900/98 to-gray-900/98 backdrop-blur-xl border-b border-gray-700/30 shadow-2xl transition-all duration-300" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
         <!-- Desktop Navigation Container -->
-        <div class="max-w-7xl mx-auto px-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 <!-- Brand Logo with Animation -->
                 <a href="{{ route('home') }}" 
-                   class="flex items-center space-x-3 hover:opacity-80 
-                          transform hover:scale-105 transition-all duration-300 animate-fade-in-down">
-                    <img src="{{ asset('assets/images/samaa-logo.png') }}" alt="SAMAA Logo" class="h-10 w-auto">
-                    <span class="text-2xl font-elegant font-bold text-white">SAMAA</span>
+                   class="flex items-center @if(app()->getLocale() == 'ar') space-x-reverse @endif space-x-3 hover:opacity-90 
+                          transform hover:scale-105 transition-all duration-300 animate-fade-in-down group">
+                    <div class="relative">
+                        <div class="absolute inset-0 bg-accent-400/20 blur-xl rounded-full group-hover:bg-accent-400/30 transition-all duration-300"></div>
+                        <img src="{{ asset('assets/images/samaa-logo.png') }}" alt="SAMAA Logo" class="h-12 w-auto relative z-10">
+                    </div>
+                    <span class="text-2xl font-elegant font-bold bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent">SAMAA</span>
                 </a>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden md:flex items-center space-x-8">
+                <div class="hidden lg:flex items-center @if(app()->getLocale() == 'ar') space-x-reverse @endif space-x-2">
                     <a href="{{ route('home') }}" 
-                       class="nav-link {{ request()->routeIs('home') ? 'text-accent-400 bg-accent-500/10' : 'text-gray-200' }} 
-                              hover:text-accent-400 hover:bg-accent-500/10 px-4 py-2 rounded-lg transition-all duration-300
-                              relative group animate-fade-in-down font-medium"
+                       class="nav-link {{ request()->routeIs('home') ? 'text-accent-400 bg-accent-500/20 shadow-lg shadow-accent-500/20' : 'text-gray-300 hover:text-white' }} 
+                              hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition-all duration-300
+                              relative group animate-fade-in-down font-medium text-sm whitespace-nowrap
+                              border border-transparent hover:border-gray-700/50"
                        style="animation-delay: 0.1s">
-                        {{ __('site.Home') }}
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-400 transition-all duration-300 group-hover:w-full"></span>
+                        <span class="relative z-10">{{ __('site.Home') }}</span>
+                        <span class="absolute inset-0 bg-gradient-to-r from-accent-500/0 via-accent-500/5 to-accent-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></span>
                     </a>
                     <a href="{{ route('about-us') }}" 
-                       class="nav-link {{ request()->routeIs('about-us') ? 'text-accent-400 bg-accent-500/10' : 'text-gray-200' }} 
-                              hover:text-accent-400 hover:bg-accent-500/10 px-4 py-2 rounded-lg transition-all duration-300
-                              relative group animate-fade-in-down font-medium"
+                       class="nav-link {{ request()->routeIs('about-us') ? 'text-accent-400 bg-accent-500/20 shadow-lg shadow-accent-500/20' : 'text-gray-300 hover:text-white' }} 
+                              hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition-all duration-300
+                              relative group animate-fade-in-down font-medium text-sm whitespace-nowrap
+                              border border-transparent hover:border-gray-700/50"
                        style="animation-delay: 0.2s">
-                        {{ __('site.About Us') }}
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-400 transition-all duration-300 group-hover:w-full"></span>
+                        <span class="relative z-10">{{ __('site.About Us') }}</span>
+                        <span class="absolute inset-0 bg-gradient-to-r from-accent-500/0 via-accent-500/5 to-accent-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></span>
                     </a>
                     <a href="{{ route('how-it-work') }}" 
-                       class="nav-link {{ request()->routeIs('how-it-work') ? 'text-accent-400 bg-accent-500/10' : 'text-gray-200' }} 
-                              hover:text-accent-400 hover:bg-accent-500/10 px-4 py-2 rounded-lg transition-all duration-300
-                              relative group animate-fade-in-down font-medium"
+                       class="nav-link {{ request()->routeIs('how-it-work') ? 'text-accent-400 bg-accent-500/20 shadow-lg shadow-accent-500/20' : 'text-gray-300 hover:text-white' }} 
+                              hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition-all duration-300
+                              relative group animate-fade-in-down font-medium text-sm whitespace-nowrap
+                              border border-transparent hover:border-gray-700/50"
                        style="animation-delay: 0.3s">
-                        {{ __('site.How It Works') }}
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-400 transition-all duration-300 group-hover:w-full"></span>
+                        <span class="relative z-10">{{ __('site.How It Works') }}</span>
+                        <span class="absolute inset-0 bg-gradient-to-r from-accent-500/0 via-accent-500/5 to-accent-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></span>
                     </a>
                     <a href="{{ route('therapists') }}" 
-                       class="nav-link {{ request()->routeIs('therapists') ? 'text-accent-400 bg-accent-500/10' : 'text-gray-200' }} 
-                              hover:text-accent-400 hover:bg-accent-500/10 px-4 py-2 rounded-lg transition-all duration-300
-                              relative group animate-fade-in-down font-medium"
+                       class="nav-link {{ request()->routeIs('therapists') ? 'text-accent-400 bg-accent-500/20 shadow-lg shadow-accent-500/20' : 'text-gray-300 hover:text-white' }} 
+                              hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition-all duration-300
+                              relative group animate-fade-in-down font-medium text-sm whitespace-nowrap
+                              border border-transparent hover:border-gray-700/50"
                        style="animation-delay: 0.4s">
-                        {{ __('site.Therapists') }}
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-400 transition-all duration-300 group-hover:w-full"></span>
+                        <span class="relative z-10">{{ __('site.Therapists') }}</span>
+                        <span class="absolute inset-0 bg-gradient-to-r from-accent-500/0 via-accent-500/5 to-accent-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></span>
                     </a>
                     <a href="{{ route('contact-us') }}" 
-                       class="nav-link {{ request()->routeIs('contact-us') ? 'text-accent-400 bg-accent-500/10' : 'text-gray-200' }} 
-                              hover:text-accent-400 hover:bg-accent-500/10 px-4 py-2 rounded-lg transition-all duration-300
-                              relative group animate-fade-in-down font-medium"
+                       class="nav-link {{ request()->routeIs('contact-us') ? 'text-accent-400 bg-accent-500/20 shadow-lg shadow-accent-500/20' : 'text-gray-300 hover:text-white' }} 
+                              hover:bg-gray-800/50 px-4 py-2.5 rounded-xl transition-all duration-300
+                              relative group animate-fade-in-down font-medium text-sm whitespace-nowrap
+                              border border-transparent hover:border-gray-700/50"
                        style="animation-delay: 0.5s">
-                        {{ __('site.Contact Us') }}
-                        <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-accent-400 transition-all duration-300 group-hover:w-full"></span>
+                        <span class="relative z-10">{{ __('site.Contact Us') }}</span>
+                        <span class="absolute inset-0 bg-gradient-to-r from-accent-500/0 via-accent-500/5 to-accent-500/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></span>
                     </a>
                 </div>
 
                 <!-- CTA Buttons -->
-                <div class="hidden md:flex items-center space-x-4">
+                <div class="hidden lg:flex items-center @if(app()->getLocale() == 'ar') space-x-reverse space-x-3 @else space-x-3 @endif">
                     @guest
                         <a href="{{ route('login') }}" 
-                           class="inline-flex items-center px-6 py-3 text-white font-semibold rounded-xl
+                           class="inline-flex items-center px-4 xl:px-6 py-2 xl:py-3 text-white font-semibold rounded-xl text-sm xl:text-base
                                   bg-gradient-to-r from-primary-500 to-primary-600 
                                   hover:from-primary-600 hover:to-primary-700
                                   transform hover:scale-105 transition-all duration-300
-                                  shadow-lg hover:shadow-xl
+                                  shadow-lg hover:shadow-xl whitespace-nowrap
                                   animate-fade-in-down"
                            style="animation-delay: 0.6s">
                             {{ __('site.Login') }}
                         </a>
                     @else
                         <a href="{{ route('dashboard') }}" 
-                           class="inline-flex items-center px-6 py-3 text-white font-semibold rounded-xl
+                           class="inline-flex items-center px-4 xl:px-6 py-2 xl:py-3 text-white font-semibold rounded-xl text-sm xl:text-base
                                   bg-gradient-to-r from-secondary-500 to-secondary-600 
                                   hover:from-secondary-600 hover:to-secondary-700
                                   transform hover:scale-105 transition-all duration-300
-                                  shadow-lg hover:shadow-xl
+                                  shadow-lg hover:shadow-xl whitespace-nowrap
                                   animate-fade-in-down"
                            style="animation-delay: 0.6s">
                             {{ __('site.Dashboard') }}
                         </a>
                     @endguest
 
-                    <!-- Mobile Menu Toggle Button -->
-                    <button class="md:hidden rounded-lg p-2 text-gray-200 hover:text-white hover:bg-gray-700/70 transition-all duration-300 animate-fade-in-down"
-                            onclick="document.getElementById('mobileMenu').classList.toggle('hidden')"
-                            id="mobileMenuToggle" style="animation-delay: 0.8s">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                        </svg>
-                    </button>
-
                     <!-- Professional Language Switcher -->
                     <div class="relative animate-fade-in-down" style="animation-delay: 0.7s">
                         <div class="group">
                             <!-- Current Language Display -->
-                            <button class="flex items-center space-x-2 text-gray-200 hover:text-white bg-gray-800/50 hover:bg-gray-700/70 px-4 py-2 rounded-xl border border-gray-600/50 hover:border-gray-500/70 transition-all duration-300 backdrop-blur-sm">
+                            <button class="flex items-center @if(app()->getLocale() == 'ar') space-x-reverse @endif space-x-2 text-gray-200 hover:text-white bg-gray-800/50 hover:bg-gray-700/70 px-3 xl:px-4 py-2 rounded-xl border border-gray-600/50 hover:border-gray-500/70 transition-all duration-300 backdrop-blur-sm">
                                 <i class="fas fa-globe text-accent-400"></i>
-                                <span class="font-medium">
+                                <span class="font-medium text-sm xl:text-base">
                                     @if(app()->getLocale() == 'en')
                                         EN
                                     @elseif(app()->getLocale() == 'ar')
@@ -430,25 +429,25 @@
                             </button>
                             
                             <!-- Dropdown Menu -->
-                            <div class="absolute right-0 top-full mt-2 w-48 bg-gray-800/95 backdrop-blur-lg rounded-xl border border-gray-600/50 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                            <div class="absolute @if(app()->getLocale() == 'ar') left-0 @else right-0 @endif top-full mt-2 w-48 bg-gray-800/95 backdrop-blur-lg rounded-xl border border-gray-600/50 shadow-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
                                 <div class="p-2">
                                     @if(app()->getLocale() != 'en')
                                         <a href="{{ LaravelLocalization::getLocalizedURL('en', null, [], true) }}" 
-                                           class="flex items-center space-x-3 text-gray-200 hover:text-white hover:bg-accent-500/20 px-3 py-2 rounded-lg transition-all duration-300">
+                                           class="flex items-center @if(app()->getLocale() == 'ar') space-x-reverse @endif space-x-3 text-gray-200 hover:text-white hover:bg-accent-500/20 px-3 py-2 rounded-lg transition-all duration-300">
                                             <span class="w-6 text-center font-medium">EN</span>
                                             <span>English</span>
                                         </a>
                                     @endif
                                     @if(app()->getLocale() != 'ar')
                                         <a href="{{ LaravelLocalization::getLocalizedURL('ar', null, [], true) }}" 
-                                           class="flex items-center space-x-3 text-gray-200 hover:text-white hover:bg-accent-500/20 px-3 py-2 rounded-lg transition-all duration-300">
+                                           class="flex items-center @if(app()->getLocale() == 'ar') space-x-reverse @endif space-x-3 text-gray-200 hover:text-white hover:bg-accent-500/20 px-3 py-2 rounded-lg transition-all duration-300">
                                             <span class="w-6 text-center font-medium">AR</span>
                                             <span>العربية</span>
                                         </a>
                                     @endif
                                     @if(app()->getLocale() != 'fr')
                                         <a href="{{ LaravelLocalization::getLocalizedURL('fr', null, [], true) }}" 
-                                           class="flex items-center space-x-3 text-gray-200 hover:text-white hover:bg-accent-500/20 px-3 py-2 rounded-lg transition-all duration-300">
+                                           class="flex items-center @if(app()->getLocale() == 'ar') space-x-reverse @endif space-x-3 text-gray-200 hover:text-white hover:bg-accent-500/20 px-3 py-2 rounded-lg transition-all duration-300">
                                             <span class="w-6 text-center font-medium">FR</span>
                                             <span>Français</span>
                                         </a>
@@ -460,7 +459,7 @@
                 </div>
 
                 <!-- Mobile Menu Toggle Button -->
-                <div class="block md:hidden">
+                <div class="block lg:hidden">
                     <button class="flex flex-col justify-center items-center w-10 h-10 rounded-lg bg-accent-500/20 hover:bg-accent-500/30 transition-colors duration-300" 
                             id="mobileMenuToggle">
                         <span class="w-5 h-0.5 bg-white mb-1 transform transition-transform duration-300"></span>
@@ -472,26 +471,26 @@
         </div>
 
         <!-- Mobile Menu -->
-        <div class="md:hidden hidden bg-gray-900/95 backdrop-blur-lg border-t border-gray-700/50 transform transition-all duration-300 ease-in-out" id="mobileMenu">
-            <div class="px-6 py-4 space-y-4">
+        <div class="lg:hidden hidden bg-gray-900/95 backdrop-blur-lg border-t border-gray-700/50 transform transition-all duration-300 ease-in-out" id="mobileMenu">
+            <div class="px-4 sm:px-6 py-4 space-y-2">
                 <a href="{{ route('home') }}" 
-                   class="block text-gray-200 hover:text-accent-400 hover:bg-accent-500/10 py-3 px-4 rounded-lg transition-all duration-300 font-medium">
+                   class="block text-gray-200 hover:text-accent-400 hover:bg-accent-500/10 py-3 px-4 rounded-lg transition-all duration-300 font-medium {{ request()->routeIs('home') ? 'text-accent-400 bg-accent-500/10' : '' }}">
                     {{ __('site.Home') }}
                 </a>
                 <a href="{{ route('about-us') }}" 
-                   class="block text-gray-200 hover:text-accent-400 hover:bg-accent-500/10 py-3 px-4 rounded-lg transition-all duration-300 font-medium">
+                   class="block text-gray-200 hover:text-accent-400 hover:bg-accent-500/10 py-3 px-4 rounded-lg transition-all duration-300 font-medium {{ request()->routeIs('about-us') ? 'text-accent-400 bg-accent-500/10' : '' }}">
                     {{ __('site.About Us') }}
                 </a>
                 <a href="{{ route('how-it-work') }}" 
-                   class="block text-gray-200 hover:text-accent-400 hover:bg-accent-500/10 py-3 px-4 rounded-lg transition-all duration-300 font-medium">
+                   class="block text-gray-200 hover:text-accent-400 hover:bg-accent-500/10 py-3 px-4 rounded-lg transition-all duration-300 font-medium {{ request()->routeIs('how-it-work') ? 'text-accent-400 bg-accent-500/10' : '' }}">
                     {{ __('site.How It Works') }}
                 </a>
                 <a href="{{ route('therapists') }}" 
-                   class="block text-gray-200 hover:text-accent-400 hover:bg-accent-500/10 py-3 px-4 rounded-lg transition-all duration-300 font-medium">
+                   class="block text-gray-200 hover:text-accent-400 hover:bg-accent-500/10 py-3 px-4 rounded-lg transition-all duration-300 font-medium {{ request()->routeIs('therapists') ? 'text-accent-400 bg-accent-500/10' : '' }}">
                     {{ __('site.Therapists') }}
                 </a>
                 <a href="{{ route('contact-us') }}" 
-                   class="block text-gray-200 hover:text-accent-400 hover:bg-accent-500/10 py-3 px-4 rounded-lg transition-all duration-300 font-medium">
+                   class="block text-gray-200 hover:text-accent-400 hover:bg-accent-500/10 py-3 px-4 rounded-lg transition-all duration-300 font-medium {{ request()->routeIs('contact-us') ? 'text-accent-400 bg-accent-500/10' : '' }}">
                     {{ __('site.Contact Us') }}
                 </a>
                 
@@ -645,10 +644,10 @@
                     <ul class="space-y-3 sm:space-y-4 mb-6 sm:mb-8">
                         <li>
                             <a href="mailto:support@samaa.dnci.net" class="text-slate-300 hover:text-emerald-300 transition-colors duration-300 text-sm sm:text-base flex items-center">
-                                {{ __('components/footer.services.services') }}
+                                <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
                                 </svg>
-                                <li><a href="{{ route('therapy.index') }}" class="text-slate-300 hover:text-teal-300 transition-colors duration-300 text-sm sm:text-base">{{ __('components/footer.services.music_therapy') }}</a></li>
+                                <span dir="ltr">support@samaa.dnci.net</span>
                             </a>
                         </li>
                         <li>
@@ -656,7 +655,7 @@
                                 <svg class="w-4 h-4 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
                                 </svg>
-                                +961 0 551 511
+                                <span dir="ltr">+961 0 551 511</span>
                             </a>
                         </li>
                         <li class="text-slate-300 text-sm sm:text-base flex items-center">

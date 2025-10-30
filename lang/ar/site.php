@@ -22,6 +22,8 @@ return [
     'Library' => 'المكتبة',
     'Help Center' => 'مركز المساعدة',
     'update' => 'تحديث',
+    'How It Works' => 'كيف يعمل',
+    'Skip to main content' => 'انتقل إلى المحتوى الرئيسي',
 
     // Login Page
     'Welcome to SAMAA' => 'أهلاً بكم في سمع',

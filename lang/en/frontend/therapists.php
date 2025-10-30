@@ -5,12 +5,16 @@
 
         'Empowering' => 'Empowering',
 
-        'therapists' => 'Therapists',
+        'therapists' => 'therapists',
 
         'with' => 'With',
 
         'AI-Driven' => 'AI-Driven',
 
+        'Sound' => 'Sound',
+        'therapy' => 'Therapy',
+
+        'samaa' => 'SAMAA',
         'for Organizations' => 'for Organizations',
         'Tailored Programs:' => 'Tailored Programs:',
         'Integrate SAMAA into your wellness initiatives for autism, anxiety, or chronic pain.' => 'Integrate SAMAA into your wellness initiatives for autism, anxiety, or chronic pain.',

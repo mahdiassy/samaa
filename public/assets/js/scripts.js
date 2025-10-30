@@ -58,14 +58,18 @@ document.addEventListener("DOMContentLoaded", function () {
         const query = this.value.trim();
 
         if (query.length === 0) {
-            box.style.display = "none";
-            box.innerHTML = "";
+            if (box) {
+                box.style.display = "none";
+                box.innerHTML = "";
+            }
             input.classList.remove("rounded-top");
             return;
         }
 
         if (query.length < 2) {
-            box.style.display = "none";
+            if (box) {
+                box.style.display = "none";
+            }
             return;
         }
 
@@ -111,7 +115,9 @@ document.addEventListener("DOMContentLoaded", function () {
                     });
                 }
 
-                box.style.display = "block";
+                if (box) {
+                    box.style.display = "block";
+                }
             })
             .catch((err) => {
                 console.error("Error fetching doctors:", err);
@@ -119,7 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.addEventListener("click", function (e) {
-        if (!doctorSearch.contains(e.target) && !box.contains(e.target)) {
+        if (box && doctorSearch && !doctorSearch.contains(e.target) && !box.contains(e.target)) {
             box.style.display = "none";
             box.innerHTML = "";
             input.classList.remove("rounded-top");

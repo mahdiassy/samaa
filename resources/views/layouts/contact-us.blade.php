@@ -15,19 +15,35 @@
             
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
                 <div class="text-center max-w-5xl mx-auto">
-                    <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold mb-8 leading-tight">
-                        <span class="text-white">Get In</span>
-                        <span class="bg-gradient-to-r from-blue-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent">
-                            Touch
-                        </span>
-                    </h1>
+                    @if (App::getLocale() == 'ar')
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold mb-8 leading-tight">
+                            <span class="text-white">{{ __('frontend/contact.Get In') }}</span>
+                            <span class="bg-gradient-to-r from-blue-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent">
+                                {{ __('frontend/contact.Touch') }}
+                            </span>
+                        </h1>
+                    @elseif (App::getLocale() == 'fr')
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold mb-8 leading-tight">
+                            <span class="text-white">{{ __('frontend/contact.Get In') }}</span>
+                            <span class="bg-gradient-to-r from-blue-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent">
+                                {{ __('frontend/contact.Touch') }}
+                            </span>
+                        </h1>
+                    @else
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-serif font-bold mb-8 leading-tight">
+                            <span class="text-white">{{ __('frontend/contact.Get In') }}</span>
+                            <span class="bg-gradient-to-r from-blue-400 via-teal-400 to-emerald-400 bg-clip-text text-transparent">
+                                {{ __('frontend/contact.Touch') }}
+                            </span>
+                        </h1>
+                    @endif
                     
                     <p class="text-xl sm:text-2xl text-slate-300 mb-8 leading-relaxed font-light">
-                        We are Here to Help You Heal
+                        {{ __('frontend/contact.We are Here to Help You Heal') }}
                     </p>
                     
                     <p class="text-lg text-slate-400 mb-12 leading-relaxed max-w-4xl mx-auto">
-                        Connect with our team of experts. Whether you're a patient seeking healing or a therapist ready to transform lives, we're here to support your journey with SAMAA.
+                        {{ __('frontend/contact.contact_description') }}
                     </p>
                 </div>
             </div>
@@ -45,9 +61,9 @@
                         <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
                             <h3 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-8">
                                 <span class="bg-gradient-to-r from-blue-400 to-teal-400 bg-clip-text text-transparent">
-                                    Contact
+                                    {{ __('frontend/contact.Contact') }}
                                 </span>
-                                <span class="text-white"> Details</span>
+                                <span class="text-white"> {{ __('frontend/contact.Details') }}</span>
                             </h3>
                             
                             <div class="space-y-6">
@@ -59,9 +75,9 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h4 class="text-xl font-bold text-white mb-2">Message</h4>
+                                        <h4 class="text-xl font-bold text-white mb-2">{{ __('frontend/contact.Message') }}</h4>
                                         <a href="mailto:support@samaa.dnci.net" class="text-emerald-400 hover:text-emerald-300 font-semibold text-lg transition-colors duration-300">
-                                            support@samaa.dnci.net
+                                            <span dir="ltr">support@samaa.dnci.net</span>
                                         </a>
                                     </div>
                                 </div>
@@ -74,9 +90,9 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h4 class="text-xl font-bold text-white mb-2">Contact Us</h4>
+                                        <h4 class="text-xl font-bold text-white mb-2">{{ __('frontend/contact.Contact Us') }}</h4>
                                         <a href="tel:+96105551511" class="text-emerald-400 hover:text-emerald-300 font-semibold text-lg transition-colors duration-300">
-                                            +961 0 551 511
+                                            <span dir="ltr">+961 0 551 511</span>
                                         </a>
                                     </div>
                                 </div>
@@ -89,10 +105,10 @@
                                         </svg>
                                     </div>
                                     <div>
-                                        <h4 class="text-xl font-bold text-white mb-2">Visit Us</h4>
+                                        <h4 class="text-xl font-bold text-white mb-2">{{ __('frontend/contact.Visit Us') }}</h4>
                                         <p class="text-slate-300 text-lg">
-                                            Beirut, Lebanon<br>
-                                            Research & Innovation Center
+                                            {{ __('frontend/contact.Beirut, Lebanon') }}<br>
+                                            {{ __('frontend/contact.Research & Innovation Center') }}
                                         </p>
                                     </div>
                                 </div>
@@ -103,40 +119,40 @@
                     <!-- Contact Form -->
                     <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-8 lg:p-10">
                         <h3 class="text-3xl sm:text-4xl font-serif font-bold text-white mb-8">
-                            <span class="text-white">Send us a </span>
-                            <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">Message</span>
+                            <span class="text-white">{{ __('frontend/contact.Send us a') }} </span>
+                            <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">{{ __('frontend/contact.Message') }}</span>
                         </h3>
                         
                         <form action="{{ route('contactUs.store') }}" method="POST" class="space-y-6">
                             @csrf
                             <!-- Name -->
                             <div>
-                                <label for="full_name" class="block text-sm font-semibold text-white mb-2">Full Name</label>
+                                <label for="full_name" class="block text-sm font-semibold text-white mb-2">{{ __('frontend/contact.Full Name') }}</label>
                                 <input type="text" id="full_name" name="full_name" required 
                                        class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-slate-400 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300"
-                                       placeholder="Enter Your Name">
+                                       placeholder="{{ __('frontend/contact.Enter Your Name') }}">
                             </div>
                             
                             <!-- Email -->
                             <div>
-                                <label for="email" class="block text-sm font-semibold text-white mb-2">Email Address</label>
+                                <label for="email" class="block text-sm font-semibold text-white mb-2">{{ __('frontend/contact.Email Address') }}</label>
                                 <input type="email" id="email" name="email" required 
                                        class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-slate-400 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300"
-                                       placeholder="Email Address">
+                                       placeholder="{{ __('frontend/contact.Email Address') }}">
                             </div>
                             
                             <!-- Subject -->
                             <div>
-                                <label for="subject" class="block text-sm font-semibold text-white mb-2">Subject</label>
+                                <label for="subject" class="block text-sm font-semibold text-white mb-2">{{ __('frontend/contact.Subject') }}</label>
                                 <select id="subject" name="subject" required 
                                         class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300">
-                                    <option value="" class="bg-slate-800">Select a subject</option>
-                                    <option value="patient-inquiry" class="bg-slate-800">Patient Inquiry</option>
-                                    <option value="therapist-partnership" class="bg-slate-800">Therapist Partnership</option>
-                                    <option value="institutional-partnership" class="bg-slate-800">Institutional Partnership</option>
-                                    <option value="technical-support" class="bg-slate-800">Technical Support</option>
-                                    <option value="research-collaboration" class="bg-slate-800">Research Collaboration</option>
-                                    <option value="other" class="bg-slate-800">Other</option>
+                                    <option value="" class="bg-slate-800">{{ __('frontend/contact.Select a subject') }}</option>
+                                    <option value="patient-inquiry" class="bg-slate-800">{{ __('frontend/contact.Patient Inquiry') }}</option>
+                                    <option value="therapist-partnership" class="bg-slate-800">{{ __('frontend/contact.Therapist Partnership') }}</option>
+                                    <option value="institutional-partnership" class="bg-slate-800">{{ __('frontend/contact.Institutional Partnership') }}</option>
+                                    <option value="technical-support" class="bg-slate-800">{{ __('frontend/contact.Technical Support') }}</option>
+                                    <option value="research-collaboration" class="bg-slate-800">{{ __('frontend/contact.Research Collaboration') }}</option>
+                                    <option value="other" class="bg-slate-800">{{ __('frontend/contact.Other') }}</option>
                                 </select>
                             </div>
                             
@@ -145,16 +161,16 @@
                             
                             <!-- Message -->
                             <div>
-                                <label for="message" class="block text-sm font-semibold text-white mb-2">How can we support your healing journey?</label>
+                                <label for="message" class="block text-sm font-semibold text-white mb-2">{{ __('frontend/contact.How can we support your healing journey?') }}</label>
                                 <textarea id="message" name="message" rows="5" required 
                                           class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-white placeholder-slate-400 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-300 resize-vertical"
-                                          placeholder="Your Message"></textarea>
+                                          placeholder="{{ __('frontend/contact.Your Message') }}"></textarea>
                             </div>
                             
                             <!-- Submit Button -->
                             <button type="submit" 
                                     class="w-full px-8 py-4 bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-700 hover:to-blue-700 text-white font-semibold rounded-xl transition-all duration-300 transform hover:scale-105 shadow-lg">
-                                Submit
+                                {{ __('frontend/contact.Submit') }}
                             </button>
                         </form>
                     </div>
@@ -171,11 +187,11 @@
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div class="text-center mb-12 lg:mb-16">
                     <h2 class="text-4xl sm:text-5xl lg:text-6xl font-serif font-bold mb-6">
-                        <span class="text-white">We're Here to </span>
-                        <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">Help</span>
+                        <span class="text-white">{{ __('frontend/contact.We\'re Here to') }} </span>
+                        <span class="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">{{ __('frontend/contact.Help') }}</span>
                     </h2>
                     <p class="text-xl text-slate-300 max-w-3xl mx-auto">
-                        Our dedicated team is committed to supporting your healing journey and professional growth.
+                        {{ __('frontend/contact.Our dedicated team is committed to supporting your healing journey and professional growth.') }}
                     </p>
                 </div>
                 
@@ -187,9 +203,9 @@
                                 <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4">Quick Response</h3>
+                        <h3 class="text-xl font-bold text-white mb-4">{{ __('frontend/contact.Quick Response') }}</h3>
                         <p class="text-slate-300">
-                            We respond to all inquiries within 24 hours during business days.
+                            {{ __('frontend/contact.We respond to all inquiries within 24 hours during business days.') }}
                         </p>
                     </div>
                     
@@ -200,9 +216,9 @@
                                 <path d="M16 4c0-1.11.89-2 2-2s2 .89 2 2-.89 2-2 2-2-.89-2-2zm4 18v-6h2.5l-2.54-7.63A2.996 2.996 0 0 0 17.04 6H16c-.8 0-1.54.37-2.01.97L12 9.5 9.01 6.97A2.495 2.495 0 0 0 7 6H5.96c-1.29 0-2.4.82-2.82 2.01L1 16h2.5v6h2v-6h2.5v6h2v-6h2.5v6h2z"/>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4">Expert Guidance</h3>
+                        <h3 class="text-xl font-bold text-white mb-4">{{ __('frontend/contact.Expert Guidance') }}</h3>
                         <p class="text-slate-300">
-                            Connect directly with our research and clinical teams for specialized support.
+                            {{ __('frontend/contact.Connect directly with our research and clinical teams for specialized support.') }}
                         </p>
                     </div>
                     
@@ -213,9 +229,9 @@
                                 <path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
                             </svg>
                         </div>
-                        <h3 class="text-xl font-bold text-white mb-4">Secure & Private</h3>
+                        <h3 class="text-xl font-bold text-white mb-4">{{ __('frontend/contact.Secure & Private') }}</h3>
                         <p class="text-slate-300">
-                            All communications are encrypted and HIPAA/GDPR compliant for your privacy.
+                            {{ __('frontend/contact.All communications are encrypted and HIPAA/GDPR compliant for your privacy.') }}
                         </p>
                     </div>
                 </div>

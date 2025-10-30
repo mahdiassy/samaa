@@ -43,7 +43,7 @@
             <!-- Welcome Message - Professional -->
             <div class="animate-fade-in-up" style="animation-delay: 0.2s;">
                 <h2 class="text-sm md:text-base text-white/70 font-medium mb-8 tracking-widest uppercase">
-                    {{ __('home.Welcome to SAMAA') }}
+                    {{ __('frontend/home.Welcome to SAMAA') }}
                 </h2>
             </div>
             
@@ -100,7 +100,7 @@
             <!-- Professional Description -->
             <div class="animate-fade-in-up" style="animation-delay: 0.6s;">
                 <p class="text-lg md:text-xl text-white/90 max-w-4xl mx-auto mb-20 leading-relaxed font-light tracking-wide">
-                    {{ __('home.When healthcare professionals educate you using sound to enhance your health and well-being.') }}
+                    {{ __('frontend/home.When healthcare professionals educate you using sound to enhance your health and well-being.') }}
                 </p>
             </div>
             </div>
@@ -123,9 +123,15 @@
                                  group-hover:opacity-20 transition-opacity duration-500 blur-sm"></span>
                     <!-- Button content -->
                     <span class="relative flex items-center">
-                        <i class="fas fa-magic mr-4 text-2xl group-hover:rotate-12 transition-transform duration-300"></i>
-                        <span class="tracking-wide">{{ __('home.Learn More') }}</span>
-                        <i class="fas fa-arrow-right ml-4 text-xl transform group-hover:translate-x-2 group-hover:scale-125 transition-all duration-300"></i>
+                        @if(App::getLocale() == 'ar')
+                            <i class="fas fa-arrow-left mr-4 text-xl transform group-hover:-translate-x-2 group-hover:scale-125 transition-all duration-300"></i>
+                            <span class="tracking-wide">{{ __('frontend/home.Learn More') }}</span>
+                            <i class="fas fa-magic ml-4 text-2xl group-hover:rotate-12 transition-transform duration-300"></i>
+                        @else
+                            <i class="fas fa-magic mr-4 text-2xl group-hover:rotate-12 transition-transform duration-300"></i>
+                            <span class="tracking-wide">{{ __('frontend/home.Learn More') }}</span>
+                            <i class="fas fa-arrow-right ml-4 text-xl transform group-hover:translate-x-2 group-hover:scale-125 transition-all duration-300"></i>
+                        @endif
                     </span>
                 </a>
             </div>
@@ -166,26 +172,26 @@
                     <!-- Sound Therapy Title -->
                     <h2 class="text-6xl md:text-7xl font-elegant font-bold mb-8 leading-tight">
                         <span class="bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent drop-shadow-lg">
-                            {{ __('home.Sound') }}
+                            {{ __('frontend/home.Sound') }}
                         </span> 
-                        <span class="text-white drop-shadow-lg">{{ __('home.Therapy') }}</span>
+                        <span class="text-white drop-shadow-lg">{{ __('frontend/home.Therapy') }}</span>
                     </h2>
                     
                     <!-- Beautiful description with better typography -->
                     <div class="max-w-5xl mx-auto">
                         <p class="text-xl md:text-2xl text-gray-300 leading-relaxed mb-16 font-light tracking-wide">
-                        {{ __('home.Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.') }}
+                        {{ __('frontend/home.Music therapy is a discipline widely used in the medical field as a therapeutic tool. It can aid physical and emotional rehabilitation of individuals and help develop communication skills and positive relationships with others.') }}
                     </p>
             </div>
 
                     <!-- How SAMAA Works Title -->
                     <div class="relative inline-block">
                         <h1 class="text-5xl md:text-6xl font-elegant font-bold text-white mb-20 leading-tight">
-                    {{ __('home.How') }} 
+                    {{ __('frontend/home.How') }} 
                             <span class="bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400 bg-clip-text text-transparent">
-                                {{ __("home.Sama'a") }}
+                                {{ __("frontend/home.Sama'a") }}
                     </span> 
-                    {{ __('home.Works') }}
+                    {{ __('frontend/home.Works') }}
                         </h1>
                         
                         <!-- Decorative underline -->
@@ -223,7 +229,7 @@
                         <!-- Content -->
                         <div class="relative text-center flex-1 flex flex-col">
                             <h3 class="text-2xl md:text-3xl font-bold text-white mb-6 group-hover:text-cyan-300 transition-colors duration-500">
-                                {{ __('home.You Share Your Needs') }}
+                                {{ __('frontend/home.You Share Your Needs') }}
                             </h3>
                         </div>
 
@@ -261,7 +267,7 @@
                         <!-- Content -->
                         <div class="relative text-center flex-1 flex flex-col">
                             <h3 class="text-2xl md:text-3xl font-bold text-white mb-6 group-hover:text-purple-300 transition-colors duration-500">
-                                {{ __('home.SAMAA Creates Personalized Sessions') }}
+                                {{ __('frontend/home.SAMAA Creates Personalized Sessions') }}
                             </h3>
                         </div>
 
@@ -299,7 +305,7 @@
                         <!-- Content -->
                         <div class="relative text-center flex-1 flex flex-col">
                             <h3 class="text-2xl md:text-3xl font-bold text-white mb-6 group-hover:text-emerald-300 transition-colors duration-500">
-                                {{ __('home.You Listen, Heal, and Grow') }}
+                                {{ __('frontend/home.You Listen, Heal, and Grow') }}
                             </h3>
                         </div>
 
@@ -331,7 +337,7 @@
                     </div>
                     <div class="prose prose-lg max-w-none">
                         <p class="text-xl text-gray-700 leading-relaxed mb-6 font-light">
-                            {{ __('home.What is Music Therapy (answer)') }}
+                            {{ __('frontend/home.What is Music Therapy (answer)') }}
                         </p>
                         <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-xl">
                             <p class="text-gray-600 italic">
@@ -375,7 +381,7 @@
                     </div>
                     <div class="prose prose-lg max-w-none">
                         <p class="text-xl text-gray-700 leading-relaxed mb-6 font-light">
-                            {{ __('home.Music Therapy (description)') }}
+                            {{ __('frontend/home.Music Therapy (description)') }}
                         </p>
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
                             <div class="bg-white p-6 rounded-xl shadow-lg border border-purple-100">
@@ -421,7 +427,7 @@
                 <!-- Professional Image -->
                 <div class="relative">
                     <img class="w-full h-auto rounded-3xl shadow-2xl transform hover:scale-105 transition-transform duration-700" 
-                         src="{{ asset('assets/images/home-section4.png') }}" alt="SAMAA Professional Features" />
+                         src="{{ asset('assets/images/frontend/home-section4.png') }}" alt="SAMAA Professional Features" />
                     <div class="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-2xl opacity-20"></div>
                 </div>
 
@@ -434,9 +440,9 @@
                                     <i class="fas fa-user-md text-white"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-2xl font-bold text-gray-800 mb-3">{{ __('home.Personalized Sound Healing') }}</h4>
+                                    <h4 class="text-2xl font-bold text-gray-800 mb-3">{{ __('frontend/home.Personalized Sound Healing') }}</h4>
                                     <p class="text-lg text-gray-600 leading-relaxed">
-                                        {{ __('home.Tailored therapy based on mood, needs, and goals.') }}
+                                        {{ __('frontend/home.Tailored therapy based on mood, needs, and goals.') }}
                                     </p>
                                 </div>
                             </div>
@@ -448,9 +454,9 @@
                                     <i class="fas fa-flask text-white"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-2xl font-bold text-gray-800 mb-3">{{ __('home.Scientifically Validated') }}</h4>
+                                    <h4 class="text-2xl font-bold text-gray-800 mb-3">{{ __('frontend/home.Scientifically Validated') }}</h4>
                                     <p class="text-lg text-gray-600 leading-relaxed">
-                                        {{ __('home.Developed and backed by experts ​SAMAA Profile.') }}
+                                        {{ __('frontend/home.Developed and backed by experts ​SAMAA Profile.') }}
                                     </p>
                                 </div>
                             </div>
@@ -462,9 +468,9 @@
                                     <i class="fas fa-heart text-white"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-2xl font-bold text-gray-800 mb-3">{{ __('home.For Autism and Beyond') }}</h4>
+                                    <h4 class="text-2xl font-bold text-gray-800 mb-3">{{ __('frontend/home.For Autism and Beyond') }}</h4>
                                     <p class="text-lg text-gray-600 leading-relaxed">
-                                        {{ __('home.Special modules designed for children and adults on the spectrum ​ClinGroup_Music therapy…​Autism & Sound Virtual') }}
+                                        {{ __('frontend/home.Special modules designed for children and adults on the spectrum ​ClinGroup_Music therapy…​Autism & Sound Virtual') }}
                                     </p>
                                 </div>
                             </div>
@@ -476,9 +482,9 @@
                                     <i class="fas fa-mobile-alt text-white"></i>
                                 </div>
                                 <div>
-                                    <h4 class="text-2xl font-bold text-gray-800 mb-3">{{ __('home.Accessible Anytime, Anywhere') }}</h4>
+                                    <h4 class="text-2xl font-bold text-gray-800 mb-3">{{ __('frontend/home.Accessible Anytime, Anywhere') }}</h4>
                                     <p class="text-lg text-gray-600 leading-relaxed">
-                                        {{ __('home.Mobile-friendly virtual therapy sessions Autism & Sound Virtual ….') }}
+                                        {{ __('frontend/home.Mobile-friendly virtual therapy sessions Autism & Sound Virtual ….') }}
                                     </p>
                                 </div>
                             </div>
@@ -514,7 +520,7 @@
                     <!-- Resources Title with Beautiful Gradient -->
                     <h3 class="text-5xl md:text-6xl font-elegant font-bold mb-6 leading-tight">
                         <span class="bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent drop-shadow-sm">
-                            {{ __('home.Resource') }}
+                            {{ __('frontend/home.Resource') }}
                         </span>
                     </h3>
                     <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed font-light">
@@ -569,15 +575,20 @@
                                             <i class="fas fa-calendar-alt text-white text-sm"></i>
                                         </div>
                                         <p class="text-sm font-medium text-gray-600">
-                                            {{ now()->diffInDays($blog->created_at) === 0 ? __('home.today') : (now()->diffInDays($blog->created_at) === 1 ? __('home.1_day_ago') : __('home.x_days_ago', ['count' => now()->diffInDays($blog->created_at)])) }}
+                                            {{ now()->diffInDays($blog->created_at) === 0 ? __('frontend/home.today') : (now()->diffInDays($blog->created_at) === 1 ? __('frontend/home.1_day_ago') : __('frontend/home.x_days_ago', ['count' => now()->diffInDays($blog->created_at)])) }}
                                         </p>
                                     </div>
                                     <a href="{{ route('blog.show', ['blog' => $blog->id]) }}" 
                                        class="group/link inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 
                                               text-white font-semibold text-sm rounded-xl shadow-lg hover:shadow-xl
                                               transform hover:scale-105 transition-all duration-300">
-                                        {{ __('home.learn more') }}
-                                        <i class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300"></i>
+                                        @if(App::getLocale() == 'ar')
+                                            <i class="fas fa-arrow-left mr-2 transform group-hover/link:-translate-x-1 transition-transform duration-300"></i>
+                                        @endif
+                                        {{ __('frontend/home.learn more') }}
+                                        @if(App::getLocale() != 'ar')
+                                            <i class="fas fa-arrow-right ml-2 transform group-hover/link:translate-x-1 transition-transform duration-300"></i>
+                                        @endif
                                     </a>
                                 </div>
                             </div>
@@ -603,21 +614,21 @@
                 <div class="text-section text-white">
                     @if (App::getLocale() == 'ar')
                         <h1 class="text-4xl md:text-5xl font-elegant font-bold leading-tight">
-                            {{ __('home.start') }}<br>
-                            <span class="text-accent-200">{{ __('home.Journey') }}</span> {{ __('home.Healing') }}<br>
-                            {{ __('home.Your') }} <span class="text-accent-200">{{ __('home.today') }}</span>
+                            {{ __('frontend/home.start') }}<br>
+                            <span class="text-accent-200">{{ __('frontend/home.Journey') }}</span> {{ __('frontend/home.Healing') }}<br>
+                            {{ __('frontend/home.Your') }} <span class="text-accent-200">{{ __('frontend/home.today') }}</span>
                         </h1>
                     @elseif (App::getLocale() == 'fr')
                         <h1 class="text-4xl md:text-5xl font-elegant font-bold leading-tight">
-                            {{ __('home.start') }}<br>
-                            {{ __('home.Your') }} <span class="text-accent-200">{{ __('home.Journey') }}</span><br>
-                            <span class="text-accent-200">{{ __('home.Healing') }}</span> {{ __('home.today') }}
+                            {{ __('frontend/home.start') }}<br>
+                            {{ __('frontend/home.Your') }} <span class="text-accent-200">{{ __('frontend/home.Journey') }}</span><br>
+                            <span class="text-accent-200">{{ __('frontend/home.Healing') }}</span> {{ __('frontend/home.today') }}
                         </h1>
                     @else
                         <h1 class="text-4xl md:text-5xl font-elegant font-bold leading-tight">
-                            {{ __('home.start') }}<br>
-                            {{ __('home.Your') }} <span class="text-accent-200">{{ __('home.Healing') }}</span><br>
-                            <span class="text-accent-200">{{ __('home.Journey') }}</span> {{ __('home.today') }}
+                            {{ __('frontend/home.start') }}<br>
+                            {{ __('frontend/home.Your') }} <span class="text-accent-200">{{ __('frontend/home.Healing') }}</span><br>
+                            <span class="text-accent-200">{{ __('frontend/home.Journey') }}</span> {{ __('frontend/home.today') }}
                         </h1>
                     @endif
                 </div>
@@ -628,15 +639,15 @@
                         @csrf
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <input type="text" name="first_name" 
-                                   placeholder="{{ __('home.First Name') }}" 
+                                   placeholder="{{ __('frontend/home.First Name') }}" 
                                    required
                                    class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-accent-400 transition-all duration-300">
                             <input type="text" name="surname" 
-                                   placeholder="{{ __('home.Surname') }}"
+                                   placeholder="{{ __('frontend/home.Surname') }}"
                                    class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-accent-400 transition-all duration-300">
                         </div>
                         <input name="email" type="email" 
-                               placeholder="{{ __('home.Email') }}" 
+                               placeholder="{{ __('frontend/home.Email') }}" 
                                required
                                class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-accent-400 transition-all duration-300">
                         <select name="subject"
@@ -646,14 +657,14 @@
                             @endforeach
                         </select>
                         <textarea name="message" 
-                                  placeholder="{{ __('home.Message') }}" 
+                                  placeholder="{{ __('frontend/home.Message') }}" 
                                   required
                                   rows="4"
                                   class="w-full px-4 py-3 bg-white/20 border border-white/30 rounded-xl text-white placeholder-white/70 focus:outline-none focus:ring-2 focus:ring-accent-400 focus:border-accent-400 transition-all duration-300 resize-none"></textarea>
-                        <input type="hidden" name="cta_source" value="homePage">
+                        <input type="hidden" name="cta_source" value="frontend/homePage">
                         <button type="submit" 
                                 class="w-full px-6 py-3 bg-accent-500 hover:bg-accent-600 text-white font-bold rounded-xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
-                            {{ __('home.Submit') }}
+                            {{ __('frontend/home.Submit') }}
                         </button>
                     </form>
                 </div>
@@ -673,11 +684,11 @@
         <div class="relative max-w-4xl mx-auto px-6 text-center">
             <div class="animate-fade-in-up">
                 <h2 class="text-4xl md:text-5xl font-elegant font-bold text-white mb-6 leading-tight">
-                    {{ __('home.Partner with') }} 
-                    <span class="text-accent-200">{{ __("home.Sama'a") }}</span>
+                    {{ __('frontend/home.Partner with') }} 
+                    <span class="text-accent-200">{{ __('frontend/home.Samaa') }}</span>
                 </h2>
                 <p class="text-xl text-white/90 mb-10 leading-relaxed max-w-2xl mx-auto">
-                    {{ __('home.Expand your practice with AI-driven music therapy') }}
+                    {{ __('frontend/home.Expand your practice with AI-driven music therapy') }}
                 </p>
                 
                 <div class="animate-fade-in-up" style="animation-delay: 0.2s;">
@@ -686,8 +697,13 @@
                               font-bold text-lg rounded-2xl shadow-xl hover:shadow-2xl
                               transform hover:-translate-y-1 hover:scale-105 
                               transition-all duration-300 group">
-                        {{ __('home.Let’s Partner Up') }}
-                        <i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                        @if(App::getLocale() == 'ar')
+                            <i class="fas fa-arrow-left mr-3 transform group-hover:-translate-x-1 transition-transform duration-300"></i>
+                        @endif
+                        {{ __('frontend/home.Let us Partner Up') }}
+                        @if(App::getLocale() != 'ar')
+                            <i class="fas fa-arrow-right ml-3 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                        @endif
                     </a>
                 </div>
             </div>
