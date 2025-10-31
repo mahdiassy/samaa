@@ -100,4 +100,15 @@ class Patient extends Model
     {
         return $this->hasMany(Feedback::class, 'patient_id');
     }
+
+    // Accessors
+    public function getFullNameAttribute()
+    {
+        return $this->first_name . ' ' . $this->last_name;
+    }
+
+    public function getAgeAttribute()
+    {
+        return $this->birthday ? \Carbon\Carbon::parse($this->birthday)->age : null;
+    }
 }
