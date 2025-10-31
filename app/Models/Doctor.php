@@ -14,6 +14,12 @@ class Doctor extends Model
         'first_name','last_name','image','phone','address','twitter','facebook','instagram','birthday','user_id'
     ];
 
+    protected $casts = [
+        'birthday' => 'date',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

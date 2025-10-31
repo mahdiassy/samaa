@@ -14,6 +14,12 @@ class Availability extends Model
         'doctor_id',
     ];
 
+    protected $casts = [
+        'time' => 'datetime',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);

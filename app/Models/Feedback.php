@@ -20,6 +20,12 @@ class Feedback extends Model
         'user_id',
     ];
 
+    protected $casts = [
+        'date' => 'date',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);

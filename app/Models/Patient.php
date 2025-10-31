@@ -31,6 +31,12 @@ class Patient extends Model
         'open_description'
     ];
 
+    protected $casts = [
+        'birthday' => 'date',
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
