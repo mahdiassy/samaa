@@ -22,15 +22,18 @@ use App\Models\Therapeutic_area;
 use App\Http\Requests\Therapy\StoreTherapyRequest;
 use App\Http\Requests\Therapy\UpdateTherapyRequest;
 use App\Services\File\FileUploadService;
+use App\Services\Therapy\TherapyAccessService;
+use App\Services\Response\ResponseService;
 
 class TherapyController extends Controller
 {
     protected $dir = "therapy.";
-    protected $fileUploadService;
 
-    public function __construct(FileUploadService $fileUploadService)
-    {
-        $this->fileUploadService = $fileUploadService;
+    public function __construct(
+        protected FileUploadService $fileUploadService,
+        protected TherapyAccessService $therapyAccessService,
+        protected ResponseService $responseService
+    ) {
         $this->middleware('permission:' . Permissions::THERAPY_LIST)->only(['index']);
         $this->middleware('permission:' . Permissions::THERAPY_CREATE)->only(['create', 'store']);
         $this->middleware('permission:' . Permissions::THERAPY_SHOW)->only(['show', 'playlist']);
@@ -57,7 +60,7 @@ class TherapyController extends Controller
     public function index()
     {
         $patients = Patient::all();
-        $therapies = Therapy::getTherapiesBasedRole();
+        $therapies = $this->therapyAccessService->getTherapiesForUser(Auth::user());
 
         return view($this->dir . "index", compact('therapies', 'patients'));
     }
@@ -94,23 +97,28 @@ class TherapyController extends Controller
         $therapy->album_id = $album->id;
         $therapy->user_id = Auth::id();
 
-        if ($request->has('image')) {
-            $image = $request->file('image');
-            $therapy->image = $this->storeFile($image, 'Doctor therapy');
+        // Upload image securely if provided
+        if ($request->hasFile('image')) {
+            $therapy->image = $this->fileUploadService->uploadImage(
+                $request->file('image'),
+                'therapies'
+            );
         }
-        if ($request->has('file')) {
-            $file = $request->file('file');
-            $therapy->file = $this->storeFileEncrypt($file, 'Doctor therapy');
+
+        // Upload encrypted audio file if provided
+        if ($request->hasFile('file')) {
+            $therapy->file = $this->fileUploadService->uploadEncryptedAudio(
+                $request->file('file'),
+                'therapies'
+            );
         }
+        
         $therapy->save();
 
-        $status = [
-            'type' => 'success',
-            'title' =>  __("site.Success"),
-            'msg' => __("site.Therapy Created successfully")
-        ];
-
-        return redirect()->route('therapy.index')->with('status', $status);
+        return $this->responseService->success(
+            __("site.Therapy Created successfully"),
+            'therapy.index'
+        );
     }
 
     public function create(Patient $patient)
@@ -205,12 +213,11 @@ class TherapyController extends Controller
         }
         $therapy->save();
 
-        $therapies = Therapy::getTherapiesBasedRole();;
+        $therapies = $this->therapyAccessService->getTherapiesForUser(Auth::user());
 
         if($request->patient_id){
             $patient = Patient::find($request->patient_id);
-            $therapy->patients()->sync($patient->id);
-            //$therapy->patients()->sync($request->patients);
+            $this->therapyAccessService->assignTherapyToPatients($therapy, $patient);
         }
 
         $status = [

@@ -9,6 +9,8 @@ use App\Models\Doctor;
 use App\Models\Patient;
 use App\Models\Therapy;
 use App\Models\User;
+use App\Services\File\FileUploadService;
+use App\Services\Therapy\TherapyAccessService;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -17,6 +19,12 @@ use Illuminate\Support\Facades\Validator;
 
 class TherapyController extends Controller
 {
+    public function __construct(
+        protected FileUploadService $fileUploadService,
+        protected TherapyAccessService $therapyAccessService
+    ) {
+    }
+
     /*public function __construct()
     {
         $this->middleware('permission:' . Permissions::THERAPY_LIST)->only(['index']);
@@ -28,7 +36,7 @@ class TherapyController extends Controller
 
     public function index()
     {
-        $therapies = $this->getTherapiesBasedRole();
+        $therapies = $this->therapyAccessService->getTherapiesForUser(Auth::user());
         return ApiResponse::successResponse($therapies);
     }
 
@@ -47,18 +55,24 @@ class TherapyController extends Controller
         $therapy->name = $request->name;
         $therapy->user_id = Auth::id();
 
-        if ($request->has('image')) {
-            $image = $request->file('image');
-            $therapy->image = $this->storeFile($image, 'Doctor therapy');
+        if ($request->hasFile('image')) {
+            $therapy->image = $this->fileUploadService->uploadImage(
+                $request->file('image'),
+                'therapies'
+            );
         }
-        if ($request->has('file')) {
-            $file = $request->file('file');
-            $therapy->file = $this->storeFileEncrypt($file, 'Doctor therapy');
+        
+        if ($request->hasFile('file')) {
+            $therapy->file = $this->fileUploadService->uploadEncryptedAudio(
+                $request->file('file'),
+                'therapies'
+            );
         }
+        
         $therapy->save();
 
         $patient = Patient::find($request->patient_id);
-        $therapy->patients()->sync($patient->id);
+        $this->therapyAccessService->assignTherapyToPatients($therapy, $patient);
 
         return ApiResponse::successResponse(true ,'Doctor created Therapy successfully.' );
     }
@@ -83,18 +97,28 @@ class TherapyController extends Controller
         $therapy->name = $request->name ? $request->name : $therapy->name;
         $therapy->user_id = Auth::id();
 
-        if ($request->has('image')) {
-            $image = $request->file('image');
-            $therapy->image = $this->storeFile($image, 'Doctor therapy');
+        if ($request->hasFile('image')) {
+            $oldImagePath = $therapy->image;
+            $therapy->image = $this->fileUploadService->uploadImage(
+                $request->file('image'),
+                'therapies',
+                $oldImagePath
+            );
         }
-        if ($request->has('file')) {
-            $file = $request->file('file');
-            $therapy->file = $this->storeFileEncrypt($file, 'Doctor therapy');
+        
+        if ($request->hasFile('file')) {
+            $oldFilePath = $therapy->file;
+            $therapy->file = $this->fileUploadService->uploadEncryptedAudio(
+                $request->file('file'),
+                'therapies',
+                $oldFilePath
+            );
         }
+        
         $therapy->save();
 
         $patient = Patient::find($request->patient_id);
-        $therapy->patients()->sync($patient->id);
+        $this->therapyAccessService->assignTherapyToPatients($therapy, $patient);
 
         return ApiResponse::successResponse(true ,'Doctor Updated Therapy successfully.' );
     }
@@ -118,30 +142,5 @@ class TherapyController extends Controller
             return ApiResponse::notFoundResponse($error);
         }
         return ApiResponse::successResponse($therapy);
-    }
-
-    public function getTherapiesBasedRole ()
-    {
-        $therapies = collect();
-        if (auth()->user()->hasRole('Admin')) {
-            $therapies = Therapy::paginate(9);
-        } elseif (auth()->user()->hasRole('Doctor')) {
-            //$therapies = Therapy::where('user_id', Auth::id())->paginate(9); /// edit
-            $therapies = Therapy::where('user_id', Auth::id())
-                ->orWhereHas('user', function ($query) {
-                    $query->whereHas('roles', function ($roleQuery) {
-                        $roleQuery->where('name', 'Admin');
-                    });
-                })
-                ->paginate(9);
-        } elseif (auth()->user()->hasRole('Patient')) {
-            $user = Patient::where('user_id', Auth::id())->first();
-            $therapyIds = DB::table('patient_therapy')
-                ->where('patient_id', $user->id)
-                ->pluck('therapy_id');
-
-            $therapies = Therapy::whereIn('id', $therapyIds)->get();
-        }
-        return $therapies;
     }
 }

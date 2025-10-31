@@ -7,12 +7,16 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\api\ApiResponse;
 use App\Models\Doctor;
 use App\Models\User;
+use App\Services\File\FileUploadService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class DoctorController extends Controller
 {
+    public function __construct(protected FileUploadService $fileUploadService)
+    {
+    }
     public function index()
     {
         $doctors = Doctor::paginate(9);
@@ -57,9 +61,11 @@ class DoctorController extends Controller
 
         $doctor->user_id = $user->id;
 
-        if ($request->has('image')) {
-            $image = $request->file('image');
-            $doctor->image = $this->storeFile($image, 'Doctor image');
+        if ($request->hasFile('image')) {
+            $doctor->image = $this->fileUploadService->uploadImage(
+                $request->file('image'),
+                'doctors'
+            );
         }
 
         $doctor->save();
@@ -108,9 +114,13 @@ class DoctorController extends Controller
         $user->save();
         $user->syncRoles($request->role ? $request->role : $doctor->role);
 
-        if ($request->has('image')) {
-            $image = $request->file('image') ? $request->file('image') : $doctor->image;
-            $doctor->image = $this->storeFile($image, 'Doctor image');
+        if ($request->hasFile('image')) {
+            $oldImagePath = $doctor->image;
+            $doctor->image = $this->fileUploadService->uploadImage(
+                $request->file('image'),
+                'doctors',
+                $oldImagePath
+            );
         }
 
         $doctor->save();

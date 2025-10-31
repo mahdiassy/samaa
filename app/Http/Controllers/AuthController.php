@@ -11,11 +11,13 @@ use App\Models\Incident;
 use App\Models\Language;
 use App\Models\Nervous;
 use App\Models\Patient;
-use App\Models\PatientDisease;
 use App\Models\Psychological;
 use App\Models\Symptom;
 use App\Models\Therapeutic_area;
 use App\Models\User;
+use App\Services\User\UserRegistrationService;
+use App\Services\Patient\PatientDiseaseService;
+use App\Services\Response\ResponseService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -27,8 +29,11 @@ class AuthController extends Controller
 {
     protected $dir = "auth.";
 
-    public function __construct()
-    {
+    public function __construct(
+        protected UserRegistrationService $userRegistrationService,
+        protected PatientDiseaseService $patientDiseaseService,
+        protected ResponseService $responseService
+    ) {
         $this->middleware('guest')->except('logout');
     }
 
@@ -94,150 +99,23 @@ class AuthController extends Controller
     public function registerPatient(\App\Http\Requests\Auth\RegisterPatientRequest $request)
     {
         try {
-            // Request is automatically validated by RegisterPatientRequest
-            // Email uniqueness is already checked in validation rules
+            // Register patient using service (handles user creation, role assignment, file upload)
+            $patient = $this->userRegistrationService->registerPatient($request->validated());
 
-            $patient = new Patient;
-            $patient->first_name = $request->first_name;
-            $patient->last_name = $request->last_name;
-            $patient->birthday = $request->birthday;
-            $patient->phone = $request->phone;
-            $patient->address = null;
-            $patient->country_id = $request->country;
-            $patient->language_id = $request->language;
-            $patient->gender = $request->gender;
-            $patient->open_description = $request->open_description;
-            $patient->twitter = null;
-            $patient->facebook = null;
-            $patient->instagram = null;
+            // Sync diseases using service (handles all 8 disease types)
+            $this->patientDiseaseService->syncDiseases($patient, $request->validated());
 
-            $user = new User;
-            $user->name = $request->first_name;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->save();
-            $user->assignRole('Patient');
+            // Login the newly registered user
+            Auth::guard()->login($patient->user);
 
-            $patient->user_id = $user->id;
-
-            if ($request->has('image')) {
-                $image = $request->file('image');
-                $patient->image = $this->storeFile($image, 'Patient image');
-            }
-
-            $patient->save();
-
-            $Ttherapeutic_area = Therapeutic_area::find($request->therapeutic_areas);
-            $medications = $request->therapeutic_areas == '2' ? $request->medications : null;
-            PatientDisease::create([
-                'patient_id' => $patient->id,
-                'diseasable_id' => $Ttherapeutic_area->id,
-                'diseasable_type' => get_class($Ttherapeutic_area),
-                'medications' => $medications,
-            ]);
-
-            $addiction = Addiction::find($request->addiction);
-            PatientDisease::create([
-                'patient_id' => $patient->id,
-                'diseasable_id' => $addiction->id,
-                'diseasable_type' => get_class($addiction),
-                'medications' => null,
-            ]);
-
-            $consultation = Consultation::find($request->consultation);
-            PatientDisease::create([
-                'patient_id' => $patient->id,
-                'diseasable_id' => $consultation->id,
-                'diseasable_type' => get_class($consultation),
-                'medications' => null,
-            ]);
-
-            if ($request->diseases) {
-                foreach ($request->diseases as $disease) {
-
-                    $Disease = Disease::find($disease);
-                    PatientDisease::create([
-                        'patient_id' => $patient->id,
-                        'diseasable_id' => $Disease->id,
-                        'diseasable_type' => get_class($Disease),
-                        'medications' => null,
-                    ]);
-                }
-            }
-
-            if ($request->nervouses) {
-                foreach ($request->nervouses as $nervous) {
-
-                    $Nervous = Nervous::find($nervous);
-                    PatientDisease::create([
-                        'patient_id' => $patient->id,
-                        'diseasable_id' => $Nervous->id,
-                        'diseasable_type' => get_class($Nervous),
-                        'medications' => null,
-                    ]);
-                }
-            }
-
-            if ($request->symptoms) {
-                foreach ($request->symptoms as $symptom) {
-
-                    $Symptom = Symptom::find($symptom);
-                    PatientDisease::create([
-                        'patient_id' => $patient->id,
-                        'diseasable_id' => $Symptom->id,
-                        'diseasable_type' => get_class($Symptom),
-                        'medications' => null,
-                    ]);
-                }
-            }
-
-            if ($request->incidents) {
-                foreach ($request->incidents as $incident) {
-
-                    $Incident = Incident::find($incident);
-                    PatientDisease::create([
-                        'patient_id' => $patient->id,
-                        'diseasable_id' => $Incident->id,
-                        'diseasable_type' => get_class($Incident),
-                        'medications' => null,
-                    ]);
-                }
-            }
-
-            if ($request->psychological_diseases) {
-                foreach ($request->psychological_diseases as $psychological_disease) {
-
-                    $Psychological = Psychological::find($psychological_disease);
-                    if ($Psychological) {
-
-                        PatientDisease::create([
-                            'patient_id' => $patient->id,
-                            'diseasable_id' => $Psychological->id,
-                            'diseasable_type' => get_class($Psychological),
-                            'medications' => null,
-                        ]);
-                    }
-                }
-            }
-
-            Auth::guard()->login($user);
-
-            return redirect()
-                ->intended(route('dashboard'))
-                ->with('status', [
-                    'type' => 'success',
-                    'title' =>  __("site.Success"),
-                    'msg' => __("site.Successfully Logged-in"),
-                ]);
-        } catch (\Illuminate\Database\QueryException $e) {
-            if ($e->getCode() === '23000') {
-                Session::flash('error',  __("site.Error"));
-            } else {
-                throw $e;
-            }
+            return $this->responseService->success(
+                __("site.Successfully Logged-in"),
+                'dashboard'
+            );
+        } catch (\Exception $e) {
+            Session::flash('error', __("site.Error") . ': ' . $e->getMessage());
+            return redirect()->back()->withInput();
         }
-
-        return redirect()->back();
     }    public function showRegisterDoctor()
     {
         $countries = Country::all();
@@ -256,53 +134,19 @@ class AuthController extends Controller
     public function registerDoctor(\App\Http\Requests\Auth\RegisterDoctorRequest $request)
     {
         try {
-            // Request is automatically validated by RegisterDoctorRequest
-            // Email uniqueness is already checked in validation rules
+            // Register doctor using service (handles user creation, role assignment, file upload)
+            $doctor = $this->userRegistrationService->registerDoctor($request->validated());
 
-            $doctor = new Doctor;
-            $doctor->first_name = $request->first_name;
-            $doctor->last_name = $request->last_name;
-            $doctor->birthday = $request->birthday;
-            $doctor->phone = $request->phone;
-            $doctor->address = $request->address;
-            $doctor->specialization = $request->specialization;
-            $doctor->twitter = null;
-            $doctor->facebook = null;
-            $doctor->instagram = null;
+            // Login the newly registered user
+            Auth::guard()->login($doctor->user);
 
-            $user = new User;
-            $user->name = $request->first_name;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->save();
-            $user->assignRole('Doctor');
-
-            $doctor->user_id = $user->id;
-
-            if ($request->has('image')) {
-                $image = $request->file('image');
-                $doctor->image = $this->storeFile($image, 'Doctor image');
-            }
-
-            $doctor->save();
-
-            Auth::guard()->login($user);
-
-            return redirect()
-                ->intended(route('dashboard'))
-                ->with('status', [
-                    'type' => 'success',
-                    'title' =>  __("site.Success"),
-                    'msg' => __("site.Successfully Logged-in"),
-                ]);
-        } catch (\Illuminate\Database\QueryException $e) {
-            if ($e->getCode() === '23000') {
-                Session::flash('error',  __("site.Error"));
-            } else {
-                throw $e;
-            }
+            return $this->responseService->success(
+                __("site.Successfully Logged-in"),
+                'dashboard'
+            );
+        } catch (\Exception $e) {
+            Session::flash('error', __("site.Error") . ': ' . $e->getMessage());
+            return redirect()->back()->withInput();
         }
-
-        return redirect()->back();
     }
 }

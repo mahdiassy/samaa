@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Controllers\api\ApiResponse;
 use App\Models\Patient;
 use App\Models\User;
+use App\Services\File\FileUploadService;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Validator;
 
 class PatientController extends Controller
 {
+    public function __construct(protected FileUploadService $fileUploadService)
+    {
+    }
     public function index()
     {
         $patients = Patient::paginate(9);
@@ -57,9 +61,11 @@ class PatientController extends Controller
 
         $patient->user_id = $user->id;
 
-        if ($request->has('image')) {
-            $image = $request->file('image');
-            $patient->image = $this->storeFile($image, 'Patient image');
+        if ($request->hasFile('image')) {
+            $patient->image = $this->fileUploadService->uploadImage(
+                $request->file('image'),
+                'patients'
+            );
         }
 
         $patient->save();
@@ -108,9 +114,13 @@ class PatientController extends Controller
         $user->save();
         $user->syncRoles($request->role ? $request->role : $patient->role);
 
-        if ($request->has('image')) {
-            $image = $request->file('image') ? $request->file('image') : $patient->image;
-            $patient->image = $this->storeFile($image, 'Patient image');
+        if ($request->hasFile('image')) {
+            $oldImagePath = $patient->image;
+            $patient->image = $this->fileUploadService->uploadImage(
+                $request->file('image'),
+                'patients',
+                $oldImagePath
+            );
         }
 
         $patient->save();

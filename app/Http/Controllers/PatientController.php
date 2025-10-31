@@ -25,15 +25,20 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Requests\Patient\StorePatientRequest;
 use App\Http\Requests\Patient\UpdatePatientRequest;
 use App\Services\File\FileUploadService;
+use App\Services\User\UserRegistrationService;
+use App\Services\Patient\PatientDiseaseService;
+use App\Services\Response\ResponseService;
 
 class PatientController extends Controller
 {
     protected $dir = "patient.";
-    protected $fileUploadService;
 
-    public function __construct(FileUploadService $fileUploadService)
-    {
-        $this->fileUploadService = $fileUploadService;
+    public function __construct(
+        protected FileUploadService $fileUploadService,
+        protected UserRegistrationService $userRegistrationService,
+        protected PatientDiseaseService $patientDiseaseService,
+        protected ResponseService $responseService
+    ) {
         $this->middleware('permission:' . Permissions::PATIENT_LIST)->only(['index']);
         $this->middleware('permission:' . Permissions::PATIENT_CREATE)->only(['create', 'store']);
         $this->middleware('permission:' . Permissions::PATIENT_SHOW)->only(['show']);
@@ -72,147 +77,20 @@ class PatientController extends Controller
     public function store(StorePatientRequest $request)
     {
         try {
-            $patient = new Patient;
-            $patient->first_name = $request->first_name;
-            $patient->last_name = $request->surname;
-            $patient->birthday = $request->birthday;
-            $patient->phone = $request->phone;
-            $patient->address = $request->address;
-            $patient->country_id = $request->country_id;
-            $patient->language_id = $request->language_id;
-            $patient->gender = $request->gender;
-            $patient->open_description = $request->open_description;
-            $patient->twitter = null;
-            $patient->facebook = null;
-            $patient->instagram = null;
+            // Register patient using service
+            $patient = $this->userRegistrationService->registerPatient($request->validated());
 
-            $user = new User;
-            $user->name = $request->first_name;
-            $user->email = $request->email;
-            $user->password = Hash::make($request->password);
-            $user->save();
+            // Sync diseases using service
+            $this->patientDiseaseService->syncDiseases($patient, $request->validated());
 
-            $user->assignRole('Patient');
-
-            $patient->user_id = $user->id;
-
-            // Upload profile image securely if provided
-            if ($request->hasFile('image')) {
-                $patient->image = $this->fileUploadService->uploadImage(
-                    $request->file('image'),
-                    'patients'
-                );
-            }
-
-            $patient->save();
-
-            $Ttherapeutic_area = Therapeutic_area::find($request->therapeutic_areas);
-            $medications = $request->therapeutic_areas == '2' ? $request->medications : null;
-            PatientDisease::create([
-                'patient_id' => $patient->id,
-                'diseasable_id' => $Ttherapeutic_area->id,
-                'diseasable_type' => get_class($Ttherapeutic_area),
-                'medications' => $medications,
-            ]);
-
-            $addiction = Addiction::find($request->addiction);
-            PatientDisease::create([
-                'patient_id' => $patient->id,
-                'diseasable_id' => $addiction->id,
-                'diseasable_type' => get_class($addiction),
-                'medications' => null,
-            ]);
-
-            $consultation = Consultation::find($request->consultation);
-            PatientDisease::create([
-                'patient_id' => $patient->id,
-                'diseasable_id' => $consultation->id,
-                'diseasable_type' => get_class($consultation),
-                'medications' => null,
-            ]);
-
-            if ($request->diseases) {
-                foreach ($request->diseases as $disease) {
-
-                    $Disease = Disease::find($disease);
-                    PatientDisease::create([
-                        'patient_id' => $patient->id,
-                        'diseasable_id' => $Disease->id,
-                        'diseasable_type' => get_class($Disease),
-                        'medications' => null,
-                    ]);
-                }
-            }
-
-            if ($request->nervouses) {
-                foreach ($request->nervouses as $nervous) {
-
-                    $Nervous = Nervous::find($nervous);
-                    PatientDisease::create([
-                        'patient_id' => $patient->id,
-                        'diseasable_id' => $Nervous->id,
-                        'diseasable_type' => get_class($Nervous),
-                        'medications' => null,
-                    ]);
-                }
-            }
-
-            if ($request->symptoms) {
-                foreach ($request->symptoms as $symptom) {
-
-                    $Symptom = Symptom::find($symptom);
-                    PatientDisease::create([
-                        'patient_id' => $patient->id,
-                        'diseasable_id' => $Symptom->id,
-                        'diseasable_type' => get_class($Symptom),
-                        'medications' => null,
-                    ]);
-                }
-            }
-
-            if ($request->incidents) {
-                foreach ($request->incidents as $incident) {
-
-                    $Incident = Incident::find($incident);
-                    PatientDisease::create([
-                        'patient_id' => $patient->id,
-                        'diseasable_id' => $Incident->id,
-                        'diseasable_type' => get_class($Incident),
-                        'medications' => null,
-                    ]);
-                }
-            }
-
-            if ($request->psychological_diseases) {
-                foreach ($request->psychological_diseases as $psychological_disease) {
-
-                    $Psychological = Psychological::find($psychological_disease);
-                    if ($Psychological) {
-
-                        PatientDisease::create([
-                            'patient_id' => $patient->id,
-                            'diseasable_id' => $Psychological->id,
-                            'diseasable_type' => get_class($Psychological),
-                            'medications' => null,
-                        ]);
-                    }
-                }
-            }
-
-            return redirect()->route('patient.index')->with('status', [
-                'type' => 'success',
-                'title' =>  __("site.Success"),
-                'msg' => __("site.Patient created successfully")
-            ]);
-        } catch (\Illuminate\Database\QueryException $e) {
-            if ($e->getCode() === '23000') {
-                Session::flash('error', __("site.This email is already registered."));
-            } else {
-                throw $e;
-            }
+            return $this->responseService->success(
+                __("site.Patient created successfully"),
+                'patient.index'
+            );
+        } catch (\Exception $e) {
+            Session::flash('error', __("site.Error") . ': ' . $e->getMessage());
+            return redirect()->back()->withInput();
         }
-
-        return redirect()->back();
     }
 
     public function edit(Request $request, Patient $patient)
@@ -237,151 +115,20 @@ class PatientController extends Controller
     public function update(UpdatePatientRequest $request, Patient $patient)
     {
         try {
-            $patient->first_name = $request->first_name;
-            $patient->last_name = $request->surname;
-            $patient->birthday = $request->birthday;
-            $patient->phone = $request->phone;
-            $patient->address = $request->address;
-            $patient->country_id = $request->country_id;
-            $patient->language_id = $request->language_id;
-            $patient->gender = $request->gender;
-            $patient->open_description = $request->open_description;
-            $patient->twitter = null;
-            $patient->facebook = null;
-            $patient->instagram = null;
+            // Update patient using service
+            $patient = $this->userRegistrationService->updatePatient($patient, $request->validated());
 
-            $user = User::find($patient->user_id);
-            $user->name = $request->first_name;
-            $user->email = $request->email;
-            
-            // Update password only if provided
-            if ($request->filled('password')) {
-                $user->password = Hash::make($request->password);
-            }
-            
-            $user->save();
-            $user->syncRoles('Patient');
+            // Sync diseases using service
+            $this->patientDiseaseService->syncDiseases($patient, $request->validated());
 
-            // Upload new profile image if provided
-            if ($request->hasFile('image')) {
-                $oldImagePath = $patient->image;
-                $patient->image = $this->fileUploadService->uploadImage(
-                    $request->file('image'),
-                    'patients',
-                    $oldImagePath
-                );
-            }
-
-            $patient->save();
-
-            PatientDisease::where('patient_id', $patient->id)->delete();
-
-            $Ttherapeutic_area = Therapeutic_area::find($request->therapeutic_areas);
-            $medications = $request->therapeutic_areas == '2' ? $request->medications : null;
-            PatientDisease::create([
-                'patient_id' => $patient->id,
-                'diseasable_id' => $Ttherapeutic_area->id,
-                'diseasable_type' => get_class($Ttherapeutic_area),
-                'medications' => $medications,
-            ]);
-
-            $addiction = Addiction::find($request->addiction);
-            PatientDisease::create([
-                'patient_id' => $patient->id,
-                'diseasable_id' => $addiction->id,
-                'diseasable_type' => get_class($addiction),
-                'medications' => null,
-            ]);
-
-            $consultation = Consultation::find($request->consultation);
-            PatientDisease::create([
-                'patient_id' => $patient->id,
-                'diseasable_id' => $consultation->id,
-                'diseasable_type' => get_class($consultation),
-                'medications' => null,
-            ]);
-
-            if ($request->diseases) {
-                foreach ($request->diseases as $disease) {
-
-                    $Disease = Disease::find($disease);
-                    PatientDisease::create([
-                        'patient_id' => $patient->id,
-                        'diseasable_id' => $Disease->id,
-                        'diseasable_type' => get_class($Disease),
-                        'medications' => null,
-                    ]);
-                }
-            }
-
-            if ($request->nervouses) {
-                foreach ($request->nervouses as $nervous) {
-
-                    $Nervous = Nervous::find($nervous);
-                    PatientDisease::create([
-                        'patient_id' => $patient->id,
-                        'diseasable_id' => $Nervous->id,
-                        'diseasable_type' => get_class($Nervous),
-                        'medications' => null,
-                    ]);
-                }
-            }
-
-            if ($request->symptoms) {
-                foreach ($request->symptoms as $symptom) {
-
-                    $Symptom = Symptom::find($symptom);
-                    PatientDisease::create([
-                        'patient_id' => $patient->id,
-                        'diseasable_id' => $Symptom->id,
-                        'diseasable_type' => get_class($Symptom),
-                        'medications' => null,
-                    ]);
-                }
-            }
-
-            if ($request->incidents) {
-                foreach ($request->incidents as $incident) {
-
-                    $Incident = Incident::find($incident);
-                    PatientDisease::create([
-                        'patient_id' => $patient->id,
-                        'diseasable_id' => $Incident->id,
-                        'diseasable_type' => get_class($Incident),
-                        'medications' => null,
-                    ]);
-                }
-            }
-
-            if ($request->psychological_diseases) {
-                foreach ($request->psychological_diseases as $psychological_disease) {
-
-                    $Psychological = Psychological::find($psychological_disease);
-                    if ($Psychological) {
-
-                        PatientDisease::create([
-                            'patient_id' => $patient->id,
-                            'diseasable_id' => $Psychological->id,
-                            'diseasable_type' => get_class($Psychological),
-                            'medications' => null,
-                        ]);
-                    }
-                }
-            }
-
-            return redirect()->route('patient.index')->with('status', [
-                'type' => 'success',
-                'title' =>  __("site.Success"),
-                'msg' => __("site.Patient updated successfully")
-            ]);
-        } catch (\Illuminate\Database\QueryException $e) {
-            if ($e->getCode() === '23000') {
-                Session::flash('error',  __("site.Error"));
-            } else {
-                throw $e;
-            }
+            return $this->responseService->success(
+                __("site.Patient updated successfully"),
+                'patient.index'
+            );
+        } catch (\Exception $e) {
+            Session::flash('error', __("site.Error") . ': ' . $e->getMessage());
+            return redirect()->back()->withInput();
         }
-        return redirect()->back();
     }
 
     public function editProfile(Request $request, Patient $patient)
@@ -406,148 +153,23 @@ class PatientController extends Controller
     public function updateProfile(Request $request, Patient $patient)
     {
         try {
-            if (User::where('email', $request->email)->where('id', '!=', $patient->user_id)->exists()) {
-                return redirect()->back()->with('status', [
-                    'type' => 'error',
-                    'title' =>  __("site.Success"),
-                    'msg' => __("site.The email address is already in use by another user"),
-                ]);
-            } else {
-                $patient->first_name = $request->first_name;
-                $patient->last_name = $request->last_name;
-                $patient->birthday = $request->birthday;
-                $patient->phone = $request->phone;
-                $patient->address = null;
-                $patient->country_id = $request->country;
-                $patient->language_id = $request->language;
-                $patient->gender = $request->gender;
-                $patient->open_description = $request->open_description;
-                $patient->twitter = null;
-                $patient->facebook = null;
-                $patient->instagram = null;
+            // Prepare data from request (convert old field names for backward compatibility)
+            $data = $request->all();
+            $data['surname'] = $data['last_name'] ?? $data['surname'] ?? null;
+            $data['country_id'] = $data['country'] ?? $data['country_id'] ?? null;
+            $data['language_id'] = $data['language'] ?? $data['language_id'] ?? null;
 
-                $user = User::find($patient->user_id);
-                $user->name = $request->first_name;
-                $user->email = $request->email;
-                $user->save();
-                $user->syncRoles('Patient');
+            // Update patient using service
+            $patient = $this->userRegistrationService->updatePatient($patient, $data);
 
-                if ($request->has('image')) {
-                    $image = $request->file('image');
-                    $patient->image = $this->storeFile($image, 'Patient image');
-                }
+            // Sync diseases using service
+            $this->patientDiseaseService->syncDiseases($patient, $data);
 
-                $patient->save();
-
-                PatientDisease::where('patient_id', $patient->id)->delete();
-
-                $Ttherapeutic_area = Therapeutic_area::find($request->therapeutic_areas);
-                $medications = $request->therapeutic_areas == '2' ? $request->medications : null;
-                PatientDisease::create([
-                    'patient_id' => $patient->id,
-                    'diseasable_id' => $Ttherapeutic_area->id,
-                    'diseasable_type' => get_class($Ttherapeutic_area),
-                    'medications' => $medications,
-                ]);
-
-                $addiction = Addiction::find($request->addiction);
-                PatientDisease::create([
-                    'patient_id' => $patient->id,
-                    'diseasable_id' => $addiction->id,
-                    'diseasable_type' => get_class($addiction),
-                    'medications' => null,
-                ]);
-
-                $consultation = Consultation::find($request->consultation);
-                PatientDisease::create([
-                    'patient_id' => $patient->id,
-                    'diseasable_id' => $consultation->id,
-                    'diseasable_type' => get_class($consultation),
-                    'medications' => null,
-                ]);
-
-                if ($request->diseases) {
-                    foreach ($request->diseases as $disease) {
-
-                        $Disease = Disease::find($disease);
-                        PatientDisease::create([
-                            'patient_id' => $patient->id,
-                            'diseasable_id' => $Disease->id,
-                            'diseasable_type' => get_class($Disease),
-                            'medications' => null,
-                        ]);
-                    }
-                }
-
-                if ($request->nervouses) {
-                    foreach ($request->nervouses as $nervous) {
-
-                        $Nervous = Nervous::find($nervous);
-                        PatientDisease::create([
-                            'patient_id' => $patient->id,
-                            'diseasable_id' => $Nervous->id,
-                            'diseasable_type' => get_class($Nervous),
-                            'medications' => null,
-                        ]);
-                    }
-                }
-
-                if ($request->symptoms) {
-                    foreach ($request->symptoms as $symptom) {
-
-                        $Symptom = Symptom::find($symptom);
-                        PatientDisease::create([
-                            'patient_id' => $patient->id,
-                            'diseasable_id' => $Symptom->id,
-                            'diseasable_type' => get_class($Symptom),
-                            'medications' => null,
-                        ]);
-                    }
-                }
-
-                if ($request->incidents) {
-                    foreach ($request->incidents as $incident) {
-
-                        $Incident = Incident::find($incident);
-                        PatientDisease::create([
-                            'patient_id' => $patient->id,
-                            'diseasable_id' => $Incident->id,
-                            'diseasable_type' => get_class($Incident),
-                            'medications' => null,
-                        ]);
-                    }
-                }
-
-                if ($request->psychological_diseases) {
-                    foreach ($request->psychological_diseases as $psychological_disease) {
-
-                        $Psychological = Psychological::find($psychological_disease);
-                        if ($Psychological) {
-
-                            PatientDisease::create([
-                                'patient_id' => $patient->id,
-                                'diseasable_id' => $Psychological->id,
-                                'diseasable_type' => get_class($Psychological),
-                                'medications' => null,
-                            ]);
-                        }
-                    }
-                }
-
-                return redirect()->back()->with('status', [
-                    'type' => 'success',
-                    'title' =>  __("site.Success"),
-                    'msg' => __("site.Patient Profile updated successfully")
-                ]);
-            }
-        } catch (\Illuminate\Database\QueryException $e) {
-            if ($e->getCode() === '23000') {
-                Session::flash('error',  __("site.Error"));
-            } else {
-                throw $e;
-            }
+            return $this->responseService->successBack(__("site.Patient Profile updated successfully"));
+        } catch (\Exception $e) {
+            Session::flash('error', __("site.Error") . ': ' . $e->getMessage());
+            return redirect()->back()->withInput();
         }
-        return redirect()->back();
     }
 
     public function destroy(Patient $patient)

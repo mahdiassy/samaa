@@ -18,15 +18,18 @@ use Spatie\Permission\Models\Role;
 use App\Http\Requests\Doctor\StoreDoctorRequest;
 use App\Http\Requests\Doctor\UpdateDoctorRequest;
 use App\Services\File\FileUploadService;
+use App\Services\User\UserRegistrationService;
+use App\Services\Response\ResponseService;
 
 class DoctorController extends Controller
 {
     protected $dir = "doctor.";
-    protected $fileUploadService;
 
-    public function __construct(FileUploadService $fileUploadService)
-    {
-        $this->fileUploadService = $fileUploadService;
+    public function __construct(
+        protected FileUploadService $fileUploadService,
+        protected UserRegistrationService $userRegistrationService,
+        protected ResponseService $responseService
+    ) {
         $this->middleware('permission:' . Permissions::DOCTOR_LIST)->only(['index']);
         $this->middleware('permission:' . Permissions::DOCTOR_CREATE)->only(['create', 'store']);
         $this->middleware('permission:' . Permissions::DOCTOR_SHOW)->only(['show']);
@@ -47,41 +50,13 @@ class DoctorController extends Controller
 
     public function store(StoreDoctorRequest $request)
     {
-        $doctor = new Doctor;
-        $doctor->first_name = $request->first_name;
-        $doctor->last_name = $request->surname;
-        $doctor->phone = $request->phone;
-        $doctor->specialization = $request->specialization;
-        $doctor->address = $request->address;
-        $doctor->birthday = $request->birthday;
-        $doctor->twitter = $request->twitter;
-        $doctor->facebook = $request->facebook;
-        $doctor->instagram = $request->instagram;
+        // Register doctor using service
+        $doctor = $this->userRegistrationService->registerDoctor($request->validated());
 
-        $user = new User;
-        $user->name = $request->first_name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->save();
-        $user->assignRole('Doctor');
-
-        $doctor->user_id = $user->id;
-
-        // Upload profile image securely if provided
-        if ($request->hasFile('image')) {
-            $doctor->image = $this->fileUploadService->uploadImage(
-                $request->file('image'),
-                'doctors'
-            );
-        }
-
-        $doctor->save();
-
-        return redirect()->route('doctor.index')->with('status', [
-            'type' => 'success',
-            'title' =>  __("site.Success"),
-            'msg' => __("site.Doctor created successfully")
-        ]);
+        return $this->responseService->success(
+            __("site.Doctor created successfully"),
+            'doctor.index'
+        );
     }
 
     public function edit(Request $request, Doctor $doctor)
@@ -96,82 +71,25 @@ class DoctorController extends Controller
 
     public function updateProfile(Request $request, Doctor $doctor)
     {
-        $doctor->first_name = $request->first_name;
-        $doctor->last_name = $request->last_name;
-        $doctor->phone = $request->phone;
-        $doctor->specialization = $request->specialization;
-        $doctor->address = $request->address;
-        $doctor->birthday = $request->birthday;
-        $doctor->twitter = $request->twitter;
-        $doctor->facebook = $request->facebook;
-        $doctor->instagram = $request->instagram;
+        // Prepare data from request (convert old field names for backward compatibility)
+        $data = $request->all();
+        $data['surname'] = $data['last_name'] ?? $data['surname'] ?? null;
 
-        $user = User::find($doctor->user_id);
-        $user->name = $request->first_name;
-        $user->email = $request->email;
-        $user->save();
-        $user->syncRoles('Doctor');
+        // Update doctor using service
+        $this->userRegistrationService->updateDoctor($doctor, $data);
 
-        // Upload new profile image if provided (using FileUploadService for security)
-        if ($request->hasFile('image')) {
-            $oldImagePath = $doctor->image;
-            $doctor->image = $this->fileUploadService->uploadImage(
-                $request->file('image'),
-                'doctors',
-                $oldImagePath
-            );
-        }
-
-        $doctor->save();
-
-        return redirect()->back()->with('status', [
-            'type' => 'success',
-            'title' =>  __("site.Success"),
-            'msg' => __("site.Doctor Profile updated successfully")
-        ]);
+        return $this->responseService->successBack(__("site.Doctor Profile updated successfully"));
     }
 
     public function update(UpdateDoctorRequest $request, Doctor $doctor)
     {
-        $doctor->first_name = $request->first_name;
-        $doctor->last_name = $request->surname;
-        $doctor->phone = $request->phone;
-        $doctor->specialization = $request->specialization;
-        $doctor->address = $request->address;
-        $doctor->birthday = $request->birthday;
-        $doctor->twitter = $request->twitter;
-        $doctor->facebook = $request->facebook;
-        $doctor->instagram = $request->instagram;
+        // Update doctor using service
+        $this->userRegistrationService->updateDoctor($doctor, $request->validated());
 
-        $user = User::find($doctor->user_id);
-        $user->name = $request->first_name;
-        $user->email = $request->email;
-        
-        // Update password only if provided
-        if ($request->filled('password')) {
-            $user->password = Hash::make($request->password);
-        }
-        
-        $user->save();
-        $user->syncRoles('Doctor');
-
-        // Upload new profile image if provided
-        if ($request->hasFile('image')) {
-            $oldImagePath = $doctor->image;
-            $doctor->image = $this->fileUploadService->uploadImage(
-                $request->file('image'),
-                'doctors',
-                $oldImagePath
-            );
-        }
-
-        $doctor->save();
-
-        return redirect()->route('doctor.index')->with('status', [
-            'type' => 'success',
-            'title' =>  __("site.Success"),
-            'msg' => __("site.Doctor updated successfully")
-        ]);
+        return $this->responseService->success(
+            __("site.Doctor updated successfully"),
+            'doctor.index'
+        );
     }
 
     public function destroy(Doctor $doctor)
