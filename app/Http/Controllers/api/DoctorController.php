@@ -19,7 +19,7 @@ class DoctorController extends Controller
     }
     public function index()
     {
-        $doctors = Doctor::paginate(9);
+        $doctors = Doctor::with('user')->paginate(9);
         return ApiResponse::successResponse($doctors);
     }
 

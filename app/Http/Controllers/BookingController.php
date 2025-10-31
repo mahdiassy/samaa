@@ -17,7 +17,10 @@ class BookingController extends Controller
     public function index()
     {
         $patient = Patient::where('user_id', auth()->user()->id)->first();
-        $patientBookings = Booking::where('patient_id', $patient->id)->whereNotIn('status', [BookingEnum::PATIENT_CANCEL])->paginate(9);
+        $patientBookings = Booking::with(['doctor.user', 'patient.user'])
+            ->where('patient_id', $patient->id)
+            ->whereNotIn('status', [BookingEnum::PATIENT_CANCEL])
+            ->paginate(9);
         return view($this->dir . "index", compact('patientBookings'));
     }
 

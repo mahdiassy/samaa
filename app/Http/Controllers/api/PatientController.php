@@ -19,7 +19,7 @@ class PatientController extends Controller
     }
     public function index()
     {
-        $patients = Patient::paginate(9);
+        $patients = Patient::with(['user', 'country', 'language'])->paginate(9);
         return ApiResponse::successResponse($patients);
     }
 

@@ -50,10 +50,10 @@ class PatientController extends Controller
     {
         $therapies = collect();
         if (auth()->user()->hasRole('Admin')) {
-            $patients = Patient::paginate(9);
+            $patients = Patient::with(['user', 'country', 'language'])->paginate(9);
         } elseif (auth()->user()->hasRole('Doctor')) {
             // ?????
-            $patients = Patient::paginate(9);
+            $patients = Patient::with(['user', 'country', 'language'])->paginate(9);
         }
 
         return view($this->dir . "index", compact('patients'));

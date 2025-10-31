@@ -158,7 +158,7 @@ class BlogController extends Controller
         $currentDescription = $descriptions[app()->getLocale()] ?? '';
         $currentTitle = $titles[app()->getLocale()] ?? '';
 
-        $last_blogs = Blog::latest()->limit(3)->get();
+        $last_blogs = Blog::with('user')->latest()->limit(3)->get();
         return view($this->dir . "show", compact('blog','last_blogs','currentDescription','currentTitle'));
     }
 

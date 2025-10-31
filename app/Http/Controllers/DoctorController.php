@@ -39,7 +39,7 @@ class DoctorController extends Controller
 
     public function index()
     {
-        $doctors = Doctor::paginate(9);
+        $doctors = Doctor::with('user')->paginate(9);
         return view($this->dir . "index", compact('doctors'));
     }
 
@@ -182,9 +182,10 @@ class DoctorController extends Controller
     {
         $doctor = Doctor::where('user_id', auth()->user()->id)->first();
 
-        $patientBookings = Booking::whereHas('availability', function ($query) use ($doctor) {
-            $query->where('doctor_id', $doctor->id);
-        })->paginate(9);
+        $patientBookings = Booking::with(['patient.user', 'availability'])
+            ->whereHas('availability', function ($query) use ($doctor) {
+                $query->where('doctor_id', $doctor->id);
+            })->paginate(9);
 
         return view("appointment.doctor.index", compact('patientBookings'));
     }

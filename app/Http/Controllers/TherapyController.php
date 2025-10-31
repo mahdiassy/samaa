@@ -59,7 +59,7 @@ class TherapyController extends Controller
     }
     public function index()
     {
-        $patients = Patient::all();
+        $patients = Patient::with('user')->get();
         $therapies = $this->therapyAccessService->getTherapiesForUser(Auth::user());
 
         return view($this->dir . "index", compact('therapies', 'patients'));
