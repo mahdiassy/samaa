@@ -17,7 +17,6 @@ use App\Models\Symptom;
 use App\Models\Therapeutic_area;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use App\Http\Requests\Patient\StorePatientRequest;
 use App\Http\Requests\Patient\UpdatePatientRequest;
 use App\Services\File\FileUploadService;
@@ -82,8 +81,11 @@ class PatientController extends Controller
                 'patient.index'
             );
         } catch (\Exception $e) {
-            Session::flash('error', __("site.Error") . ': ' . $e->getMessage());
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('status', [
+                'type' => 'error',
+                'title' => __("site.Error"),
+                'msg' => __("site.Error") . ': ' . $e->getMessage()
+            ]);
         }
     }
 
@@ -120,8 +122,11 @@ class PatientController extends Controller
                 'patient.index'
             );
         } catch (\Exception $e) {
-            Session::flash('error', __("site.Error") . ': ' . $e->getMessage());
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('status', [
+                'type' => 'error',
+                'title' => __("site.Error"),
+                'msg' => __("site.Error") . ': ' . $e->getMessage()
+            ]);
         }
     }
 
@@ -161,8 +166,11 @@ class PatientController extends Controller
 
             return $this->responseService->successBack(__("site.Patient Profile updated successfully"));
         } catch (\Exception $e) {
-            Session::flash('error', __("site.Error") . ': ' . $e->getMessage());
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('status', [
+                'type' => 'error',
+                'title' => __("site.Error"),
+                'msg' => __("site.Error") . ': ' . $e->getMessage()
+            ]);
         }
     }
 

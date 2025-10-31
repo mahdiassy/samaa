@@ -21,7 +21,6 @@ use App\Services\Response\ResponseService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Session;
 
 
 class AuthController extends Controller
@@ -57,14 +56,24 @@ class AuthController extends Controller
         $user = User::where('email', $request->email)->first();
 
         if (!$user) {
-            Session::flash('error', __("site.The email address is incorrect"));
+            return redirect()->back()->withInput()->with('status', [
+                'type' => 'error',
+                'title' => __("site.Error"),
+                'msg' => __("site.The email address is incorrect")
+            ]);
         } elseif (!Hash::check($request->password, $user->password)) {
-            Session::flash('error', __("site.Password is incorrect"));
-        } else {
-            Session::flash('error', __("site.Login failed. Please try again."));
+            return redirect()->back()->withInput()->with('status', [
+                'type' => 'error',
+                'title' => __("site.Error"),
+                'msg' => __("site.Password is incorrect")
+            ]);
         }
 
-        return redirect()->back()->withInput();
+        return redirect()->back()->withInput()->with('status', [
+            'type' => 'error',
+            'title' => __("site.Error"),
+            'msg' => __("site.Login failed. Please try again.")
+        ]);
     }
 
     public function logout()
@@ -110,8 +119,11 @@ class AuthController extends Controller
                 'dashboard'
             );
         } catch (\Exception $e) {
-            Session::flash('error', __("site.Error") . ': ' . $e->getMessage());
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('status', [
+                'type' => 'error',
+                'title' => __("site.Error"),
+                'msg' => __("site.Error") . ': ' . $e->getMessage()
+            ]);
         }
     }    public function showRegisterDoctor()
     {
@@ -142,8 +154,11 @@ class AuthController extends Controller
                 'dashboard'
             );
         } catch (\Exception $e) {
-            Session::flash('error', __("site.Error") . ': ' . $e->getMessage());
-            return redirect()->back()->withInput();
+            return redirect()->back()->withInput()->with('status', [
+                'type' => 'error',
+                'title' => __("site.Error"),
+                'msg' => __("site.Error") . ': ' . $e->getMessage()
+            ]);
         }
     }
 }
