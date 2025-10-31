@@ -16,138 +16,178 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
 */
 
-Route::group(
-    [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
-    ],
-    function () {
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+], function () {
 
-        Route::get('/', [HomeController::class, 'home'])->name('home');
+    // ========================================
+    // PUBLIC ROUTES (Guest)
+    // ========================================
+    Route::get('/', [HomeController::class, 'home'])->name('home');
+    Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
+    Route::get('/how-it-work', [HomeController::class, 'howItWork'])->name('how-it-work');
+    Route::get('/therapists', [HomeController::class, 'therapists'])->name('therapists');
+    
+    // Contact Us
+    Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact-us');
+    Route::post('/store-contact-us', [HomeController::class, 'storeContactUsForm'])
+        ->name('contactUs.store')
+        ->middleware('throttle:contact');
 
-        Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact-us');
-        Route::post('/store-contact-us', [HomeController::class, 'storeContactUsForm'])
-            ->name('contactUs.store')
-            ->middleware('throttle:contact');
+    // Static Pages
+    Route::get('/listenToMusic', fn() => view('frontend/listenToMusic'));
+    Route::get('/listener-statistics', fn() => view('frontend/listener-statistics'));
+    Route::get('/doctor-search', [DoctorController::class, 'search'])->name('doctor.search');
 
-        Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
+    // Public Blog
+    Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
+    Route::get('blog/{blog}', [BlogController::class, 'show'])->name('blog.show');
 
-        Route::get('/how-it-work', [HomeController::class, 'howItWork'])->name('how-it-work');
+    // Demo UI
+    Route::get('demo', function () {
+        return view()->exists('layouts.dashboard_clean') 
+            ? view('layouts.dashboard_clean') 
+            : view('layouts.dashboard');
+    })->name('demo');
 
-        Route::get('/therapists', [HomeController::class, 'therapists'])->name('therapists');
-
-        Route::get('/listenToMusic', function () {
-            return view('frontend/listenToMusic');
-        });
-        Route::get('/listener-statistics', function () {
-            return view('frontend/listener-statistics');
-        });
-
-        Route::get('/doctor-search', [DoctorController::class, 'search'])->name('doctor.search');
-
-        // Auth
-        Route::get('login', [AuthController::class, 'showLoginForm']);
+    // ========================================
+    // AUTHENTICATION ROUTES
+    // ========================================
+    Route::middleware('guest')->group(function () {
+        // Login
+        Route::get('login', [AuthController::class, 'showLoginForm'])->name('login.form');
         Route::post('login', [AuthController::class, 'login'])
             ->name('login')
             ->middleware('throttle:login');
-        Route::post('logout', [AuthController::class, 'logout'])->name('logout');
-
-        // Demo route: UI without database/auth
-        Route::get('demo', function () {
-            // Prefer the cleaned dashboard if present; otherwise fallback
-            if (view()->exists('layouts.dashboard_clean')) {
-                return view('layouts.dashboard_clean');
-            }
-            return view('layouts.dashboard');
-        })->name('demo');
-
+        
+        // Registration
         Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
+        
+        // Patient Registration
         Route::get('register/patient', [AuthController::class, 'showRegisterPatient'])->name('showRegisterPatient');
         Route::post('registerPatient', [AuthController::class, 'registerPatient'])
             ->name('registerPatient')
             ->middleware('throttle:register');
+        
+        // Doctor Registration
         Route::get('register/doctor', [AuthController::class, 'showRegisterDoctor'])->name('showRegisterDoctor');
         Route::post('registerDoctor', [AuthController::class, 'registerDoctor'])
             ->name('registerDoctor')
             ->middleware('throttle:register');
+    });
 
-        Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
-        Route::get('blog/{blog}', [BlogController::class, 'show'])->name('blog.show');
+    // Logout
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth:web');
 
-        Route::group([
-            'prefix' => 'control',
-        ], function () {
+    // ========================================
+    // AUTHENTICATED ROUTES (Control Panel)
+    // ========================================
+    Route::prefix('control')->middleware('auth:web')->group(function () {
+        
+        // Dashboard
+        Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
 
-            Route::middleware(['auth:web'])->group(function () {
+        // Password Management
+        Route::get('change-password', [UserController::class, 'changePassword'])->name('changePassword');
+        Route::post('change-password-saved', [UserController::class, 'changePasswordSaved'])->name('changePasswordSaved');
 
-                Route::get('/dashboard', [HomeController::class, 'index'])->name('dashboard');
+        // ========================================
+        // RESOURCE ROUTES (Admin/Doctor/Patient Management)
+        // ========================================
+        
+        // Patient Management (Admin & Doctor only)
+        Route::middleware('role:Admin|Doctor')->group(function () {
+            Route::resource('patient', PatientController::class);
+        });
 
-                Route::get('change-password', [UserController::class, 'changePassword'])->name('changePassword');
-                Route::post('change-password-saved', [UserController::class, 'changePasswordSaved'])->name('changePasswordSaved');
+        // Patient Profile (Self-editing)
+        Route::get('profile/patient/edit/{patient}', [PatientController::class, 'editProfile'])->name('profile.patient.edit');
+        Route::put('profile/patient/update/{patient}', [PatientController::class, 'updateProfile'])->name('profile.patient.update');
 
-                Route::resource('patient', PatientController::class)->middleware('role:Admin|Doctor');
-                Route::get('profile/patient/edit/{patient}', [PatientController::class, 'editProfile'])->name('profile.patient.edit');
-                Route::put('profile/patient/update/{patient}', [PatientController::class, 'updateProfile'])->name('profile.patient.update');
+        // Doctor Management (Admin, Patient & Doctor can view)
+        Route::middleware('role:Admin|Patient|Doctor')->group(function () {
+            Route::resource('doctor', DoctorController::class);
+        });
 
-                Route::resource('doctor', DoctorController::class)->middleware('role:Admin|Patient|Doctor');
-                Route::get('profile/doctor/edit/{doctor}', [DoctorController::class, 'editProfile'])->name('profile.doctor.edit');
-                Route::put('profile/doctor/update/{doctor}', [DoctorController::class, 'updateProfile'])->name('profile.doctor.update');
+        // Doctor Profile (Self-editing)
+        Route::get('profile/doctor/edit/{doctor}', [DoctorController::class, 'editProfile'])->name('profile.doctor.edit');
+        Route::put('profile/doctor/update/{doctor}', [DoctorController::class, 'updateProfile'])->name('profile.doctor.update');
 
-                Route::resource('therapy', TherapyController::class)->middleware('role:Admin|Doctor|Patient');
-                Route::get('therapy/create/{patient}', [TherapyController::class, 'create'])->middleware('role:Admin|Doctor|Patient')->name('therapy-create');
-                Route::get('therapy/admin/create', [TherapyController::class, 'admin_therapy_create'])->middleware('role:Admin')->name('admin_therapy_create');
-                Route::post('therapy/admin/store', [TherapyController::class, 'admin_therapy_store'])->middleware('role:Admin')->name('admin_therapy_store');
-                Route::get('/therapies/playlist', [TherapyController::class, 'playlist'])->name('playlist')->middleware('role:Admin|Doctor|Patient');
+        // Therapy Management (All roles)
+        Route::middleware('role:Admin|Doctor|Patient')->group(function () {
+            Route::resource('therapy', TherapyController::class);
+            Route::get('therapy/create/{patient}', [TherapyController::class, 'create'])->name('therapy-create');
+            Route::get('/therapies/playlist', [TherapyController::class, 'playlist'])->name('playlist');
+        });
 
-                Route::get('/feedback/create', [FeedbackController::class, 'create'])->name('feedback')->middleware('role:Admin|Patient|Doctor');
-                Route::post('/feedback/store', [FeedbackController::class, 'store'])->name('feedback.store')->middleware('role:Admin|Patient|Doctor');
-                Route::get('/feedback/index', [FeedbackController::class, 'index'])->name('feedback-list')->middleware('role:Admin');
-                Route::get('/feedback/show/{feedback}', [FeedbackController::class, 'show'])->name('feedback.show')->middleware('role:Admin');
-                Route::delete('/feedback/delete/{feedback}', [FeedbackController::class, 'destroy'])->name('feedback.destroy')->middleware('role:Admin');
+        // Admin-only Therapy Routes
+        Route::middleware('role:Admin')->group(function () {
+            Route::get('therapy/admin/create', [TherapyController::class, 'admin_therapy_create'])->name('admin_therapy_create');
+            Route::post('therapy/admin/store', [TherapyController::class, 'admin_therapy_store'])->name('admin_therapy_store');
+        });
 
-                Route::get('blogs/list', [BlogController::class, 'list'])->name('blog.list')->middleware('role:Admin');
-                Route::get('blogs/create', [BlogController::class, 'create'])->name('blog.create')->middleware('role:Admin');
-                Route::post('blogs/store', [BlogController::class, 'store'])->name('blog.store')->middleware('role:Admin');
-                Route::get('blogs/edit/{blog}', [BlogController::class, 'edit'])->name('blog.edit')->middleware('role:Admin');
-                Route::post('blogs/update/{blog}', [BlogController::class, 'update'])->name('blog.update')->middleware('role:Admin');
-                Route::delete('blogs/{blog}', [BlogController::class, 'destroy'])->name('blog.destroy')->middleware('role:Admin');
+        // ========================================
+        // FEEDBACK ROUTES
+        // ========================================
+        Route::prefix('feedback')->group(function () {
+            // Create Feedback (All authenticated users)
+            Route::middleware('role:Admin|Patient|Doctor')->group(function () {
+                Route::get('/create', [FeedbackController::class, 'create'])->name('feedback');
+                Route::post('/store', [FeedbackController::class, 'store'])->name('feedback.store');
             });
 
-            // Availabilities
-            Route::group([
-                'prefix' => 'doctors',
-                'middleware' => ['auth:web', 'role:Doctor']
-            ], function () {
-                Route::get('/calendar', [DoctorController::class, 'calendar'])->name('doctors.calendar');
-                Route::delete('/deletetime/{id}', [DoctorController::class, 'deleteTime'])->name('deletetime');
-                Route::post('/addTimes', [DoctorController::class, 'addTimes'])->name('addTimes');
-                Route::get('/booking', [DoctorController::class, 'patientBooking'])->name('doctors.booking.index');
-                Route::post('/changeStatus/{id}/{status}', [DoctorController::class, 'doctorChangeStatus'])->name('doctorChangeStatus');
-            });
-
-            Route::group([
-                'prefix' => 'patients',
-                'middleware' => ['auth:web', 'role:Patient']
-            ], function () {
-                Route::get('/calendar/{id}', [BookingController::class, 'calendar'])->name('patients.calendar');
-                Route::post('/addAppointment', [BookingController::class, 'addAppointment'])->name('addAppointment');
-                Route::get('/booking', [BookingController::class, 'index'])->name('patients.booking.index');
-                Route::post('/changeStatus/{id}/{status}', [BookingController::class, 'changeStatus'])->name('changeStatus');
+            // Admin Feedback Management
+            Route::middleware('role:Admin')->group(function () {
+                Route::get('/index', [FeedbackController::class, 'index'])->name('feedback-list');
+                Route::get('/show/{feedback}', [FeedbackController::class, 'show'])->name('feedback.show');
+                Route::delete('/delete/{feedback}', [FeedbackController::class, 'destroy'])->name('feedback.destroy');
             });
         });
-    }
-);
 
+        // ========================================
+        // BLOG MANAGEMENT (Admin only)
+        // ========================================
+        Route::prefix('blogs')->middleware('role:Admin')->group(function () {
+            Route::get('list', [BlogController::class, 'list'])->name('blog.list');
+            Route::get('create', [BlogController::class, 'create'])->name('blog.create');
+            Route::post('store', [BlogController::class, 'store'])->name('blog.store');
+            Route::get('edit/{blog}', [BlogController::class, 'edit'])->name('blog.edit');
+            Route::post('update/{blog}', [BlogController::class, 'update'])->name('blog.update');
+            Route::delete('{blog}', [BlogController::class, 'destroy'])->name('blog.destroy');
+        });
+
+        // ========================================
+        // DOCTOR BOOKING & AVAILABILITY
+        // ========================================
+        Route::prefix('doctors')->middleware('role:Doctor')->group(function () {
+            Route::get('/calendar', [DoctorController::class, 'calendar'])->name('doctors.calendar');
+            Route::delete('/deletetime/{id}', [DoctorController::class, 'deleteTime'])->name('deletetime');
+            Route::post('/addTimes', [DoctorController::class, 'addTimes'])->name('addTimes');
+            Route::get('/booking', [DoctorController::class, 'patientBooking'])->name('doctors.booking.index');
+            Route::post('/changeStatus/{id}/{status}', [DoctorController::class, 'doctorChangeStatus'])->name('doctorChangeStatus');
+        });
+
+        // ========================================
+        // PATIENT BOOKING
+        // ========================================
+        Route::prefix('patients')->middleware('role:Patient')->group(function () {
+            Route::get('/calendar/{id}', [BookingController::class, 'calendar'])->name('patients.calendar');
+            Route::post('/addAppointment', [BookingController::class, 'addAppointment'])->name('addAppointment');
+            Route::get('/booking', [BookingController::class, 'index'])->name('patients.booking.index');
+            Route::post('/changeStatus/{id}/{status}', [BookingController::class, 'changeStatus'])->name('changeStatus');
+        });
+    });
+});
+
+// ========================================
+// GLOBAL ROUTES (Outside localization)
+// ========================================
+Route::post('/control-music', [TherapyController::class, 'controlMusic'])->name('controlMusic');
 Route::get('/fetch-therapies', [TherapyController::class, 'fetchTherapies'])->name('fetch-therapies');
 Route::post('/get-peaks', [TherapyController::class, 'getPeaks'])->name('get-peaks');
 Route::post('/save-peaks', [TherapyController::class, 'savePeaks'])->name('save-peaks');
-Route::post('/control-music', [TherapyController::class, 'controlMusic'])->name('controlMusic');
 Route::get('/getDiseases/{id}', [TherapyController::class, 'getDiseases'])->name('getDiseases');
 Route::get('/therapy/{therapy}/audio', [TherapyController::class, 'getAudio'])->name('therapy.audio');
