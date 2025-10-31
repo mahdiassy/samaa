@@ -2,6 +2,7 @@
 
 namespace App\Observers;
 
+use App\Jobs\SendBookingNotification;
 use App\Models\Booking;
 use Illuminate\Support\Facades\Log;
 
@@ -17,6 +18,9 @@ class BookingObserver
             'patient_id' => $booking->patient_id,
             'status' => $booking->status,
         ]);
+
+        // Dispatch notification job to queue
+        SendBookingNotification::dispatch($booking, 'created');
     }
 
     /**
@@ -33,10 +37,14 @@ class BookingObserver
                 'new_status' => $booking->status,
             ]);
 
-            // Here you could add notification logic:
-            // if ($booking->status === 'approved') {
-            //     Notification::send($booking->patient->user, new BookingApprovedNotification($booking));
-            // }
+            // Dispatch notification based on status
+            $notificationType = match($booking->status) {
+                'approved' => 'approved',
+                'rejected' => 'rejected',
+                default => 'updated',
+            };
+
+            SendBookingNotification::dispatch($booking, $notificationType);
         }
     }
 
