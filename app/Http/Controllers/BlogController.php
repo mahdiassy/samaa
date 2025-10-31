@@ -6,10 +6,19 @@ use App\Models\Blog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Schema;
+use App\Http\Requests\Blog\StoreBlogRequest;
+use App\Http\Requests\Blog\UpdateBlogRequest;
+use App\Services\File\FileUploadService;
 
 class BlogController extends Controller
 {
     protected $dir = "blog.";
+    protected $fileUploadService;
+
+    public function __construct(FileUploadService $fileUploadService)
+    {
+        $this->fileUploadService = $fileUploadService;
+    }
 
     public function list(Request $request)
     {
@@ -60,10 +69,9 @@ class BlogController extends Controller
         return view($this->dir . "create");
     }
 
-    public function store(Request $request)
+    public function store(StoreBlogRequest $request)
     {
         try {
-            $blog = new blog;
             $titles = [];
             $descriptions = [];
 
@@ -75,13 +83,16 @@ class BlogController extends Controller
             $blog = new Blog;
             $blog->title = json_encode($titles);
             $blog->description = json_encode($descriptions, JSON_UNESCAPED_UNICODE);
-
             $blog->user_id = Auth::user()->id;
 
-            if ($request->has('image')) {
-                $image = $request->file('image');
-                $blog->image = $this->storeFile($image, 'Blog');
+            // Upload blog image securely
+            if ($request->hasFile('image')) {
+                $blog->image = $this->fileUploadService->uploadImage(
+                    $request->file('image'),
+                    'blogs'
+                );
             }
+            
             $blog->save();
 
             return redirect()->route('blog.list')->with('status', [
@@ -101,7 +112,7 @@ class BlogController extends Controller
         return view($this->dir . "edit", compact('blog'));
     }
 
-    public function update(Request $request, Blog $blog)
+    public function update(UpdateBlogRequest $request, Blog $blog)
     {
         try {
             $titles = [];
@@ -116,10 +127,16 @@ class BlogController extends Controller
             $blog->description = json_encode($descriptions, JSON_UNESCAPED_UNICODE);
             $blog->user_id = Auth::user()->id;
 
-            if ($request->has('image')) {
-                $image = $request->file('image');
-                $blog->image = $this->storeFile($image, 'Blog');
+            // Upload new blog image if provided
+            if ($request->hasFile('image')) {
+                $oldImagePath = $blog->image;
+                $blog->image = $this->fileUploadService->uploadImage(
+                    $request->file('image'),
+                    'blogs',
+                    $oldImagePath
+                );
             }
+            
             $blog->save();
 
             return redirect()->route('blog.list')->with('status', [

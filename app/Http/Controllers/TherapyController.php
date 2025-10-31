@@ -19,13 +19,18 @@ use App\Events\MusicControlEvent;
 use App\Models\Album;
 use App\Models\Disease;
 use App\Models\Therapeutic_area;
+use App\Http\Requests\Therapy\StoreTherapyRequest;
+use App\Http\Requests\Therapy\UpdateTherapyRequest;
+use App\Services\File\FileUploadService;
 
 class TherapyController extends Controller
 {
     protected $dir = "therapy.";
+    protected $fileUploadService;
 
-    public function __construct()
+    public function __construct(FileUploadService $fileUploadService)
     {
+        $this->fileUploadService = $fileUploadService;
         $this->middleware('permission:' . Permissions::THERAPY_LIST)->only(['index']);
         $this->middleware('permission:' . Permissions::THERAPY_CREATE)->only(['create', 'store']);
         $this->middleware('permission:' . Permissions::THERAPY_SHOW)->only(['show', 'playlist']);
@@ -114,23 +119,8 @@ class TherapyController extends Controller
         return view($this->dir . "create", compact('patient','albums'));
     }
 
-    public function store(Request $request)
+    public function store(StoreTherapyRequest $request)
     {
-        // Validate file size for audio files
-        if ($request->has('file')) {
-            $file = $request->file('file');
-            $maxSize = config('upload.max_audio_size', 100 * 1024 * 1024); // 100MB
-            
-            if ($file->getSize() > $maxSize) {
-                $status = [
-                    'type' => 'error',
-                    'title' => __('site.Error'),
-                    'msg' => __('site.File size exceeds maximum allowed size of 100MB')
-                ];
-                return redirect()->back()->with('status', $status)->withInput();
-            }
-        }
-
         $albumName = $request->album_name;
 
         $album = Album::firstOrCreate(['name' => $albumName]);
@@ -140,18 +130,31 @@ class TherapyController extends Controller
         $therapy->album_id = $album->id;
         $therapy->user_id = Auth::id();
 
-        if ($request->has('image')) {
-            $image = $request->file('image');
-            $therapy->image = $this->storeFile($image, 'Doctor therapy');
+        // Upload cover image if provided
+        if ($request->hasFile('image')) {
+            $therapy->image = $this->fileUploadService->uploadImage(
+                $request->file('image'),
+                'therapies'
+            );
         }
-        if ($request->has('file')) {
-            $file = $request->file('file');
-            $therapy->file = $this->storeFileEncrypt($file, 'Doctor therapy');
+
+        // Upload and encrypt audio file
+        if ($request->hasFile('file')) {
+            $therapy->file = $this->fileUploadService->uploadEncryptedAudio(
+                $request->file('file'),
+                'therapies'
+            );
         }
+
         $therapy->save();
 
-        $patient = Patient::find($request->patient_id);
-        $therapy->patients()->sync($patient->id);
+        // Attach patient if provided
+        if ($request->patient_id) {
+            $patient = Patient::find($request->patient_id);
+            if ($patient) {
+                $therapy->patients()->sync($patient->id);
+            }
+        }
 
         $status = [
             'type' => 'success',
@@ -168,23 +171,8 @@ class TherapyController extends Controller
         return view($this->dir . "edit", compact('therapy','albums'));
     }
 
-    public function update(Request $request, Therapy $therapy)
+    public function update(UpdateTherapyRequest $request, Therapy $therapy)
     {
-        // Validate file size for audio files
-        if ($request->has('file')) {
-            $file = $request->file('file');
-            $maxSize = config('upload.max_audio_size', 100 * 1024 * 1024); // 100MB
-            
-            if ($file->getSize() > $maxSize) {
-                $status = [
-                    'type' => 'error',
-                    'title' => __('site.Error'),
-                    'msg' => __('site.File size exceeds maximum allowed size of 100MB')
-                ];
-                return redirect()->back()->with('status', $status)->withInput();
-            }
-        }
-
         $albumName = $request->album_name;
 
         $album = Album::firstOrCreate(['name' => $albumName]);
@@ -196,14 +184,24 @@ class TherapyController extends Controller
             $therapy->user_id = Auth::id();
         }
 
-        if ($request->has('image')) {
-            $image = $request->file('image');
-            $therapy->image = $this->storeFile($image, 'Doctor therapy');
+        // Upload new cover image if provided
+        if ($request->hasFile('image')) {
+            $oldImagePath = $therapy->image;
+            $therapy->image = $this->fileUploadService->uploadImage(
+                $request->file('image'),
+                'therapies',
+                $oldImagePath
+            );
         }
 
-        if ($request->has('file')) {
-            $file = $request->file('file');
-            $therapy->file = $this->storeFileEncrypt($file, 'Doctor therapy');
+        // Upload new encrypted audio file if provided
+        if ($request->hasFile('file')) {
+            $oldFilePath = $therapy->file;
+            $therapy->file = $this->fileUploadService->uploadEncryptedAudio(
+                $request->file('file'),
+                'therapies',
+                $oldFilePath
+            );
         }
         $therapy->save();
 

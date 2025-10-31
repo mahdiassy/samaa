@@ -129,9 +129,9 @@
                                     @enderror
                                 </div>
                                 <div class="input-group">
-                                    <label for="last_name">{{ __('site.Surname') }}</label>
-                                    <input type="text" id="last_name" name="last_name" class="form-input" placeholder="{{ __('site.Surname') }}" value="{{ old('last_name') }}">
-                                    @error('last_name')
+                                    <label for="surname">{{ __('site.Surname') }}</label>
+                                    <input type="text" id="surname" name="surname" class="form-input" placeholder="{{ __('site.Surname') }}" value="{{ old('surname') }}">
+                                    @error('surname')
                                         <span class="error-message">{{ $message }}</span>
                                     @enderror
                                 </div>
@@ -192,26 +192,26 @@
                                     @enderror
                                 </div>
                                 <div class="input-group">
-                                    <label for="country">{{ __('site.Country') }}</label>
-                                    <select id="country" name="country" class="form-input" required>
-                                        <option value="" disabled {{ old('country') ? '' : 'selected' }}>{{ __('Select country') }}</option>
+                                    <label for="country_id">{{ __('site.Country') }}</label>
+                                    <select id="country_id" name="country_id" class="form-input" required>
+                                        <option value="" disabled {{ old('country_id') ? '' : 'selected' }}>{{ __('Select country') }}</option>
                                         @foreach($countries as $country)
-                                            <option value="{{ $country->id }}" {{ old('country') == $country->id ? 'selected' : '' }}>{{ $country->name }}</option>
+                                            <option value="{{ $country->id }}" {{ old('country_id') == $country->id ? 'selected' : '' }}>{{ $country->name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('country')
+                                    @error('country_id')
                                         <span class="error-message">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="input-group">
-                                    <label for="language">{{ __('site.Language Spoken') }}</label>
-                                    <select id="language" name="language" class="form-input" required>
-                                        <option value="" disabled {{ old('language') ? '' : 'selected' }}>{{ __('Select language') }}</option>
+                                    <label for="language_id">{{ __('site.Language Spoken') }}</label>
+                                    <select id="language_id" name="language_id" class="form-input" required>
+                                        <option value="" disabled {{ old('language_id') ? '' : 'selected' }}>{{ __('Select language') }}</option>
                                         @foreach($languages as $language)
-                                            <option value="{{ $language->id }}" {{ old('language') == $language->id ? 'selected' : '' }}>{{ $language->name }}</option>
+                                            <option value="{{ $language->id }}" {{ old('language_id') == $language->id ? 'selected' : '' }}>{{ $language->name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('language')
+                                    @error('language_id')
                                         <span class="error-message">{{ $message }}</span>
                                     @enderror
                                 </div>

@@ -29,9 +29,11 @@ class HomeController extends Controller
         return view($this->dir . "contact-us");
     }
 
-    public function storeContactUsForm(Request $request)
+    public function storeContactUsForm(\App\Http\Requests\Feedback\StoreFeedbackRequest $request)
     {
         try {
+            // Request is automatically validated by StoreFeedbackRequest
+            
             $feedback = new Feedback();
             if($request->full_name){
                 $feedback->full_name = $request->full_name;
@@ -46,12 +48,18 @@ class HomeController extends Controller
             $feedback->cta_source = $request->cta_source;
             $feedback->save();
 
-            Session::flash('success', __("site.Feedback created successfully"));
-
-            return redirect()->back();
+            return redirect()->back()->with('status', [
+                'type' => 'success',
+                'title' => __("site.Success"),
+                'msg' => __("site.Feedback created successfully"),
+            ]);
 
         } catch (\Illuminate\Database\QueryException $e) {
-            Session::flash('error', __("site.Error"));
+            return redirect()->back()->with('status', [
+                'type' => 'error',
+                'title' => __("site.Error"),
+                'msg' => __("site.Error"),
+            ]);
         }
     }
 

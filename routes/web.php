@@ -33,7 +33,9 @@ Route::group(
         Route::get('/', [HomeController::class, 'home'])->name('home');
 
         Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact-us');
-        Route::post('/store-contact-us', [HomeController::class, 'storeContactUsForm'])->name('contactUs.store');
+        Route::post('/store-contact-us', [HomeController::class, 'storeContactUsForm'])
+            ->name('contactUs.store')
+            ->middleware('throttle:contact');
 
         Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about-us');
 
@@ -52,7 +54,9 @@ Route::group(
 
         // Auth
         Route::get('login', [AuthController::class, 'showLoginForm']);
-        Route::post('login', [AuthController::class, 'login'])->name('login');
+        Route::post('login', [AuthController::class, 'login'])
+            ->name('login')
+            ->middleware('throttle:login');
         Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 
         // Demo route: UI without database/auth
@@ -66,9 +70,13 @@ Route::group(
 
         Route::get('register', [AuthController::class, 'showRegisterForm'])->name('register');
         Route::get('register/patient', [AuthController::class, 'showRegisterPatient'])->name('showRegisterPatient');
-        Route::post('registerPatient', [AuthController::class, 'registerPatient'])->name('registerPatient');
+        Route::post('registerPatient', [AuthController::class, 'registerPatient'])
+            ->name('registerPatient')
+            ->middleware('throttle:register');
         Route::get('register/doctor', [AuthController::class, 'showRegisterDoctor'])->name('showRegisterDoctor');
-        Route::post('registerDoctor', [AuthController::class, 'registerDoctor'])->name('registerDoctor');
+        Route::post('registerDoctor', [AuthController::class, 'registerDoctor'])
+            ->name('registerDoctor')
+            ->middleware('throttle:register');
 
         Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
         Route::get('blog/{blog}', [BlogController::class, 'show'])->name('blog.show');

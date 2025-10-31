@@ -41,8 +41,61 @@ class RouteServiceProvider extends ServiceProvider
      */
     protected function configureRateLimiting(): void
     {
+        // API rate limiting
         RateLimiter::for('api', function (Request $request) {
             return Limit::perMinute(60)->by($request->user()?->id ?: $request->ip());
+        });
+
+        // Login attempts - 5 per minute per IP
+        RateLimiter::for('login', function (Request $request) {
+            return Limit::perMinute(5)
+                ->by($request->ip())
+                ->response(function (Request $request, array $headers) {
+                    return redirect()->back()->with('status', [
+                        'type' => 'error',
+                        'title' => __('site.Error'),
+                        'msg' => __('site.Too many login attempts. Please try again in 1 minute.'),
+                    ]);
+                });
+        });
+
+        // Registration attempts - 3 per minute per IP
+        RateLimiter::for('register', function (Request $request) {
+            return Limit::perMinute(3)
+                ->by($request->ip())
+                ->response(function (Request $request, array $headers) {
+                    return redirect()->back()->with('status', [
+                        'type' => 'error',
+                        'title' => __('site.Error'),
+                        'msg' => __('site.Too many registration attempts. Please try again in 1 minute.'),
+                    ]);
+                });
+        });
+
+        // Contact form - 5 per hour per IP
+        RateLimiter::for('contact', function (Request $request) {
+            return Limit::perHour(5)
+                ->by($request->ip())
+                ->response(function (Request $request, array $headers) {
+                    return redirect()->back()->with('status', [
+                        'type' => 'error',
+                        'title' => __('site.Error'),
+                        'msg' => __('site.Too many submissions. Please try again later.'),
+                    ]);
+                });
+        });
+
+        // Password reset - 3 per hour per IP
+        RateLimiter::for('password-reset', function (Request $request) {
+            return Limit::perHour(3)
+                ->by($request->ip())
+                ->response(function (Request $request, array $headers) {
+                    return redirect()->back()->with('status', [
+                        'type' => 'error',
+                        'title' => __('site.Error'),
+                        'msg' => __('site.Too many password reset attempts. Please try again later.'),
+                    ]);
+                });
         });
     }
 }

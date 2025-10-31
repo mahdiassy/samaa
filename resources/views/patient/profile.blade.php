@@ -51,7 +51,7 @@
                             </div>
                             <div class="text-info">
                                 <p>{{ __('site.Language Spoken') }}</p>
-                                <select name="language" style="margin-top: 0px;" class="styled-input">
+                                <select name="language_id" style="margin-top: 0px;" class="styled-input">
                                     @foreach($languages as $language)
                                         <option value="{{ $language->id }}"
                                             @if($language->id == $patient->language->id) selected @endif>
@@ -129,12 +129,12 @@
 
                             <div class="text-info">
                                 <p>{{ __('site.Surname') }}</p>
-                                <input type="text" name="last_name" placeholder="{{ __('site.Surname') }}"
+                                <input type="text" name="surname" placeholder="{{ __('site.Surname') }}"
                                     value="{{ $patient->last_name }}" class="styled-input" />
                             </div>
                             <div class="text-info">
                                 <p>{{ __('site.Country') }}</p>
-                                <select name="country" style="margin-top: 0px;" class="styled-input">
+                                <select name="country_id" style="margin-top: 0px;" class="styled-input">
                                     @foreach($countries as $country)
                                         <option value="{{ $country->id }}"
                                             @if($country->id == $patient->country->id) selected @endif>

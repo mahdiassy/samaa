@@ -62,7 +62,7 @@
                         <div class="diagnosis">
                             <div class="text-info">
                                 <p>{{ __('site.Surname') }}</p>
-                                <input type="text" name="last_name" placeholder="{{ __('site.Surname') }}" value="{{ $doctor->last_name }}"
+                                <input type="text" name="surname" placeholder="{{ __('site.Surname') }}" value="{{ $doctor->last_name }}"
                                     class="styled-input" />
                             </div>
                             <div class="text-info">

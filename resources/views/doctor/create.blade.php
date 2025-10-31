@@ -123,9 +123,9 @@
                                     @enderror
                                 </div>
                                 <div class="input-group">
-                                    <label for="last_name">{{ __('site.Surname') }}</label>
-                                    <input type="text" id="last_name" name="last_name" class="form-input" placeholder="{{ __('site.Surname') }}" value="{{ old('last_name') }}">
-                                    @error('last_name')
+                                    <label for="surname">{{ __('site.Surname') }}</label>
+                                    <input type="text" id="surname" name="surname" class="form-input" placeholder="{{ __('site.Surname') }}" value="{{ old('surname') }}">
+                                    @error('surname')
                                         <span class="error-message">{{ $message }}</span>
                                     @enderror
                                 </div>

@@ -15,13 +15,18 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
+use App\Http\Requests\Doctor\StoreDoctorRequest;
+use App\Http\Requests\Doctor\UpdateDoctorRequest;
+use App\Services\File\FileUploadService;
 
 class DoctorController extends Controller
 {
     protected $dir = "doctor.";
+    protected $fileUploadService;
 
-    public function __construct()
+    public function __construct(FileUploadService $fileUploadService)
     {
+        $this->fileUploadService = $fileUploadService;
         $this->middleware('permission:' . Permissions::DOCTOR_LIST)->only(['index']);
         $this->middleware('permission:' . Permissions::DOCTOR_CREATE)->only(['create', 'store']);
         $this->middleware('permission:' . Permissions::DOCTOR_SHOW)->only(['show']);
@@ -40,11 +45,11 @@ class DoctorController extends Controller
         return view($this->dir . "create");
     }
 
-    public function store(Request $request)
+    public function store(StoreDoctorRequest $request)
     {
         $doctor = new Doctor;
         $doctor->first_name = $request->first_name;
-        $doctor->last_name = $request->last_name;
+        $doctor->last_name = $request->surname;
         $doctor->phone = $request->phone;
         $doctor->specialization = $request->specialization;
         $doctor->address = $request->address;
@@ -62,9 +67,12 @@ class DoctorController extends Controller
 
         $doctor->user_id = $user->id;
 
-        if ($request->has('image')) {
-            $image = $request->file('image');
-            $doctor->image = $this->storeFile($image, 'Doctor image');
+        // Upload profile image securely if provided
+        if ($request->hasFile('image')) {
+            $doctor->image = $this->fileUploadService->uploadImage(
+                $request->file('image'),
+                'doctors'
+            );
         }
 
         $doctor->save();
@@ -104,9 +112,14 @@ class DoctorController extends Controller
         $user->save();
         $user->syncRoles('Doctor');
 
-        if ($request->has('image')) {
-            $image = $request->file('image');
-            $doctor->image = $this->storeFile($image, 'Doctor image');
+        // Upload new profile image if provided (using FileUploadService for security)
+        if ($request->hasFile('image')) {
+            $oldImagePath = $doctor->image;
+            $doctor->image = $this->fileUploadService->uploadImage(
+                $request->file('image'),
+                'doctors',
+                $oldImagePath
+            );
         }
 
         $doctor->save();
@@ -118,11 +131,10 @@ class DoctorController extends Controller
         ]);
     }
 
-    public function update(Request $request, Doctor $doctor)
+    public function update(UpdateDoctorRequest $request, Doctor $doctor)
     {
-
         $doctor->first_name = $request->first_name;
-        $doctor->last_name = $request->last_name;
+        $doctor->last_name = $request->surname;
         $doctor->phone = $request->phone;
         $doctor->specialization = $request->specialization;
         $doctor->address = $request->address;
@@ -134,12 +146,23 @@ class DoctorController extends Controller
         $user = User::find($doctor->user_id);
         $user->name = $request->first_name;
         $user->email = $request->email;
+        
+        // Update password only if provided
+        if ($request->filled('password')) {
+            $user->password = Hash::make($request->password);
+        }
+        
         $user->save();
         $user->syncRoles('Doctor');
 
-        if ($request->has('image')) {
-            $image = $request->file('image');
-            $doctor->image = $this->storeFile($image, 'Doctor image');
+        // Upload new profile image if provided
+        if ($request->hasFile('image')) {
+            $oldImagePath = $doctor->image;
+            $doctor->image = $this->fileUploadService->uploadImage(
+                $request->file('image'),
+                'doctors',
+                $oldImagePath
+            );
         }
 
         $doctor->save();
