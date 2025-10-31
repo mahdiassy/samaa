@@ -8,8 +8,6 @@ use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
-    protected $dir = "feedback.";
-
     public function __construct()
     {
         $this->middleware('permission:' . Permissions::FEEDBACK_LIST)->only(['index']);
@@ -41,7 +39,7 @@ class FeedbackController extends Controller
         $uniqueSubjectsCount = Feedback::whereNotNull('subject')->distinct()->count('subject');
         $latestFeedback = Feedback::latest('created_at')->first();
 
-        return view($this->dir . "index", compact(
+        return view("feedback.index", compact(
             'feedbacks',
             'totalFeedback',
             'recentFeedbackCount',
@@ -57,7 +55,7 @@ class FeedbackController extends Controller
         if ($lastFeedback == null)
             $newFeedback = 1;
         else $newFeedback = $lastFeedback->id + 1;
-        return view($this->dir . "create", compact('newFeedback'));
+        return view("feedback.create", compact('newFeedback'));
     }
 
     public function store(Request $request)
@@ -83,7 +81,7 @@ class FeedbackController extends Controller
 
     public function show(Feedback $feedback)
     {
-        return view($this->dir . "show", compact('feedback'));
+        return view("feedback.show", compact('feedback'));
     }
 
     public function destroy(Feedback $feedback)

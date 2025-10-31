@@ -23,8 +23,6 @@ use App\Services\Response\ResponseService;
 
 class DoctorController extends Controller
 {
-    protected $dir = "doctor.";
-
     public function __construct(
         protected FileUploadService $fileUploadService,
         protected UserRegistrationService $userRegistrationService,
@@ -40,12 +38,12 @@ class DoctorController extends Controller
     public function index()
     {
         $doctors = Doctor::with('user')->paginate(9);
-        return view($this->dir . "index", compact('doctors'));
+        return view("doctor.index", compact('doctors'));
     }
 
     public function create()
     {
-        return view($this->dir . "create");
+        return view("doctor.create");
     }
 
     public function store(StoreDoctorRequest $request)
@@ -61,12 +59,12 @@ class DoctorController extends Controller
 
     public function edit(Request $request, Doctor $doctor)
     {
-        return view($this->dir . "edit", compact('doctor'));
+        return view("doctor.edit", compact('doctor'));
     }
 
     public function editProfile(Request $request, Doctor $doctor)
     {
-        return view($this->dir . "profile", compact('doctor'));
+        return view("doctor.profile", compact('doctor'));
     }
 
     public function updateProfile(Request $request, Doctor $doctor)
@@ -104,7 +102,7 @@ class DoctorController extends Controller
 
     public function show(Doctor $doctor)
     {
-        return view($this->dir . "show", compact('doctor'));
+        return view("doctor.show", compact('doctor'));
     }
 
     public function search(Request $request)

@@ -27,8 +27,6 @@ use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
 {
-    protected $dir = "auth.";
-
     public function __construct(
         protected UserRegistrationService $userRegistrationService,
         protected PatientDiseaseService $patientDiseaseService,
@@ -39,7 +37,7 @@ class AuthController extends Controller
 
     public function showLoginForm()
     {
-        return view($this->dir . "login");
+        return view("auth.login");
     }
 
     public function login(\App\Http\Requests\Auth\LoginRequest $request)
@@ -78,7 +76,7 @@ class AuthController extends Controller
 
     public function showRegisterForm()
     {
-        return view($this->dir . "register");
+        return view("auth.register");
     }
 
     public function showRegisterPatient()
@@ -93,7 +91,7 @@ class AuthController extends Controller
         $incidents = Incident::all();
         $consultations = Consultation::all();
         $psychological_diseases = Psychological::all();
-        return view($this->dir . "register-patient", compact('countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases', 'nervouses', 'symptoms', 'addictions', 'incidents', 'consultations'));
+        return view("auth.register-patient", compact('countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases', 'nervouses', 'symptoms', 'addictions', 'incidents', 'consultations'));
     }
 
     public function registerPatient(\App\Http\Requests\Auth\RegisterPatientRequest $request)
@@ -128,7 +126,7 @@ class AuthController extends Controller
         $incidents = Incident::all();
         $consultations = Consultation::all();
         $psychological_diseases = Psychological::all();
-        return view($this->dir . "register-doctor", compact('countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases', 'nervouses', 'symptoms', 'addictions', 'incidents', 'consultations'));
+        return view("auth.register-doctor", compact('countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases', 'nervouses', 'symptoms', 'addictions', 'incidents', 'consultations'));
     }
 
     public function registerDoctor(\App\Http\Requests\Auth\RegisterDoctorRequest $request)

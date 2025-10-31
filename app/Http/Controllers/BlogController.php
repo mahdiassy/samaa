@@ -12,7 +12,6 @@ use App\Services\File\FileUploadService;
 
 class BlogController extends Controller
 {
-    protected $dir = "blog.";
     protected $fileUploadService;
 
     public function __construct(FileUploadService $fileUploadService)
@@ -52,7 +51,7 @@ class BlogController extends Controller
         $activeAuthors = Blog::whereNotNull('user_id')->distinct()->count('user_id');
         $latestBlog = Blog::latest('created_at')->first();
 
-        return view($this->dir . "index", compact(
+        return view("blog.index", compact(
             'blogs',
             'searchTerm',
             'totalBlogs',
@@ -66,7 +65,7 @@ class BlogController extends Controller
 
     public function create()
     {
-        return view($this->dir . "create");
+        return view("blog.create");
     }
 
     public function store(StoreBlogRequest $request)
@@ -109,7 +108,7 @@ class BlogController extends Controller
 
     public function edit(Blog $blog)
     {
-        return view($this->dir . "edit", compact('blog'));
+        return view("blog.edit", compact('blog'));
     }
 
     public function update(UpdateBlogRequest $request, Blog $blog)
@@ -159,7 +158,7 @@ class BlogController extends Controller
         $currentTitle = $titles[app()->getLocale()] ?? '';
 
         $last_blogs = Blog::with('user')->latest()->limit(3)->get();
-        return view($this->dir . "show", compact('blog','last_blogs','currentDescription','currentTitle'));
+        return view("blog.show", compact('blog','last_blogs','currentDescription','currentTitle'));
     }
 
     public function destroy(Blog $blog)

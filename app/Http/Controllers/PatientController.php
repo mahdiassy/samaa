@@ -31,8 +31,6 @@ use App\Services\Response\ResponseService;
 
 class PatientController extends Controller
 {
-    protected $dir = "patient.";
-
     public function __construct(
         protected FileUploadService $fileUploadService,
         protected UserRegistrationService $userRegistrationService,
@@ -56,7 +54,7 @@ class PatientController extends Controller
             $patients = Patient::with(['user', 'country', 'language'])->paginate(9);
         }
 
-        return view($this->dir . "index", compact('patients'));
+        return view("patient.index", compact('patients'));
     }
 
     public function create()
@@ -71,7 +69,7 @@ class PatientController extends Controller
         $incidents = Incident::all();
         $consultations = Consultation::all();
         $psychological_diseases = Psychological::all();
-        return view($this->dir . "create", compact('countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases', 'nervouses', 'symptoms', 'addictions', 'incidents', 'consultations'));
+        return view("patient.create", compact('countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases', 'nervouses', 'symptoms', 'addictions', 'incidents', 'consultations'));
     }
 
     public function store(StorePatientRequest $request)
@@ -109,7 +107,7 @@ class PatientController extends Controller
             ->where('diseasable_type', Therapeutic_area::class)
             ->first();
         $medications = $patientDisease ? $patientDisease->medications : null;
-        return view($this->dir . "edit", compact('patient', 'countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases', 'nervouses', 'symptoms', 'addictions', 'incidents', 'consultations', 'medications'));
+        return view("patient.edit", compact('patient', 'countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases', 'nervouses', 'symptoms', 'addictions', 'incidents', 'consultations', 'medications'));
     }
 
     public function update(UpdatePatientRequest $request, Patient $patient)
@@ -147,7 +145,7 @@ class PatientController extends Controller
             ->where('diseasable_type', Therapeutic_area::class)
             ->first();
         $medications = $patientDisease ? $patientDisease->medications : null;
-        return view($this->dir . "profile", compact('patient', 'countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases', 'nervouses', 'symptoms', 'addictions', 'incidents', 'consultations', 'medications'));
+        return view("patient.profile", compact('patient', 'countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases', 'nervouses', 'symptoms', 'addictions', 'incidents', 'consultations', 'medications'));
     }
 
     public function updateProfile(Request $request, Patient $patient)
@@ -196,6 +194,6 @@ class PatientController extends Controller
             ->where('diseasable_type', Therapeutic_area::class)
             ->first();
         $medications = $patientDisease ? $patientDisease->medications : null;
-        return view($this->dir . "show", compact('patient', 'diseases', 'addictiones', 'consultationes', 'incidents', 'psychologicals', 'symptomes', 'therapeutic_areas', 'nervouses', 'medications'));
+        return view("patient.show", compact('patient', 'diseases', 'addictiones', 'consultationes', 'incidents', 'psychologicals', 'symptomes', 'therapeutic_areas', 'nervouses', 'medications'));
     }
 }

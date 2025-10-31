@@ -9,8 +9,6 @@ use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    protected $dir = "auth.";
-
     public function get_user($id) {
         $user = User::find($id)->load('roles');
         return $user;
@@ -18,7 +16,7 @@ class UserController extends Controller
 
     public function changePassword()
     {
-        return view($this->dir . "change_password");
+        return view("auth.change_password");
     }
 
     public function changePasswordSaved(Request $request)

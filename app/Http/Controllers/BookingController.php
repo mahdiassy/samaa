@@ -12,8 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class BookingController extends Controller
 {
-    protected $dir = "appointment.patient.";
-
     public function index()
     {
         $patient = Patient::where('user_id', auth()->user()->id)->first();
@@ -21,7 +19,7 @@ class BookingController extends Controller
             ->where('patient_id', $patient->id)
             ->whereNotIn('status', [BookingEnum::PATIENT_CANCEL])
             ->paginate(9);
-        return view($this->dir . "index", compact('patientBookings'));
+        return view("appointment.patient.index", compact('patientBookings'));
     }
 
     // Booking
@@ -36,7 +34,7 @@ class BookingController extends Controller
             })
             ->get();
 
-        return view($this->dir . "calendar", compact('availabilities'));
+        return view("appointment.patient.calendar", compact('availabilities'));
     }
 
     public function addAppointment(Request $request)

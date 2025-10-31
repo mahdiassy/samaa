@@ -9,24 +9,22 @@ use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
-    protected $dir = "layouts.";
-
     public function home()
     {
         $blogs = Blog::latest()->take(3)->get();
-        $response = response()->view($this->dir . "home", compact('blogs'));
+        $response = response()->view("layouts.home", compact('blogs'));
         $response->header('Content-Type', 'text/html; charset=UTF-8');
         return $response;
     }
 
     public function index()
     {
-        return view($this->dir . "dashboard");
+        return view("layouts.dashboard");
     }
 
     public function contactUs()
     {
-        return view($this->dir . "contact-us");
+        return view("layouts.contact-us");
     }
 
     public function storeContactUsForm(\App\Http\Requests\Feedback\StoreFeedbackRequest $request)
@@ -65,16 +63,16 @@ class HomeController extends Controller
 
     public function aboutUs()
     {
-        return view($this->dir . "about-us");
+        return view("layouts.about-us");
     }
 
     public function howItWork()
     {
-        return view($this->dir . "how-it-work");
+        return view("layouts.how-it-work");
     }
 
-    public function therapists()
+    public function Therapists()
     {
-        return view($this->dir . "Therapists");
+        return view("layouts.Therapists");
     }
 }

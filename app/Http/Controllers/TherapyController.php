@@ -27,8 +27,6 @@ use App\Services\Response\ResponseService;
 
 class TherapyController extends Controller
 {
-    protected $dir = "therapy.";
-
     public function __construct(
         protected FileUploadService $fileUploadService,
         protected TherapyAccessService $therapyAccessService,
@@ -62,13 +60,13 @@ class TherapyController extends Controller
         $patients = Patient::with('user')->get();
         $therapies = $this->therapyAccessService->getTherapiesForUser(Auth::user());
 
-        return view($this->dir . "index", compact('therapies', 'patients'));
+        return view("therapy.index", compact('therapies', 'patients'));
     }
 
     public function admin_therapy_create()
     {
         $albums = Album::all();
-        return view($this->dir . "admin-create", compact('albums'));
+        return view("therapy.admin-create", compact('albums'));
     }
 
     public function admin_therapy_store(Request $request)
@@ -124,7 +122,7 @@ class TherapyController extends Controller
     public function create(Patient $patient)
     {
         $albums = Album::all();
-        return view($this->dir . "create", compact('patient','albums'));
+        return view("therapy.create", compact('patient','albums'));
     }
 
     public function store(StoreTherapyRequest $request)
@@ -176,7 +174,7 @@ class TherapyController extends Controller
     public function edit(Request $request, Therapy $therapy)
     {
         $albums = Album::all();
-        return view($this->dir . "edit", compact('therapy','albums'));
+        return view("therapy.edit", compact('therapy','albums'));
     }
 
     public function update(UpdateTherapyRequest $request, Therapy $therapy)
@@ -231,12 +229,12 @@ class TherapyController extends Controller
 
     public function show(Therapy $therapy)
     {
-        return view($this->dir . "show", compact('therapy'));
+        return view("therapy.show", compact('therapy'));
     }
 
     public function playlist()
     {
-        return view($this->dir . "playlist");
+        return view("therapy.playlist");
     }
 
     public function destroy(Therapy $therapy)
