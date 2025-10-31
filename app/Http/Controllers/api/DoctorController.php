@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\api;
 
-use App\Enums\Permissions;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\api\ApiResponse;
 use App\Models\Doctor;

@@ -7,7 +7,6 @@ use App\Http\Controllers\api\ApiResponse;
 use App\Models\Patient;
 use App\Models\User;
 use App\Services\File\FileUploadService;
-use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
