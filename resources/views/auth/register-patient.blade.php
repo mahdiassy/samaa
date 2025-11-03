@@ -16,23 +16,23 @@
             <div class="absolute bottom-1/4 left-2/3 w-1.5 h-1.5 bg-blue-300 rounded-full animate-ping"></div>
         </div>
 
-        <div class="container mx-auto px-6 relative z-10 py-8">
-            <div class="max-w-4xl mx-auto">
+        <div class="container mx-auto px-4 relative z-10 py-4">
+            <div class="max-w-3xl mx-auto">
                 <!-- Main Registration Card -->
-                <div class="bg-white/10 backdrop-blur-lg rounded-3xl border border-white/20 shadow-2xl p-6 lg:p-8">
+                <div class="bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 shadow-2xl p-4 lg:p-6">
                     <!-- Header -->
-                    <div class="text-center mb-8">
-                        <div class="mb-4">
-                            <div class="w-16 h-16 bg-gradient-to-br from-emerald-400 to-teal-400 rounded-2xl flex items-center justify-center mx-auto mb-3">
-                                <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                    <div class="text-center mb-6">
+                        <div class="mb-3">
+                            <div class="w-12 h-12 bg-gradient-to-br from-emerald-400 to-teal-400 rounded-xl flex items-center justify-center mx-auto mb-2">
+                                <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
                                     <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                                 </svg>
                             </div>
                         </div>
-                        <h1 class="text-2xl lg:text-3xl font-serif font-bold text-white mb-3">
+                        <h1 class="text-xl lg:text-2xl font-serif font-bold text-white mb-2">
                             {{ __('site.Patient Registration') }}
                         </h1>
-                        <p class="text-base text-slate-300">
+                        <p class="text-sm text-slate-300">
                             {{ __('site.Join our community and get personalized therapy') }}
                         </p>
                     </div>
@@ -43,25 +43,25 @@
 
                         <!-- Step 1: Personal Information -->
                         <div id="step-1" class="form-step active">
-                            <div class="space-y-6">
+                            <div class="space-y-4">
                                 <!-- Profile Picture Section -->
                                 <div class="text-center">
                                     <div class="relative inline-block">
-                                        <div class="w-24 h-24 bg-white/20 rounded-full border-4 border-emerald-400/30 flex items-center justify-center mx-auto overflow-hidden">
+                                        <div class="w-16 h-16 bg-white/20 rounded-full border-2 border-emerald-400/30 flex items-center justify-center mx-auto overflow-hidden">
                                             <img id="profileImage" src="{{ asset('assets/images/profile.jfif') }}" alt="Profile Picture" class="w-full h-full object-cover">
                                         </div>
-                                        <button type="button" class="absolute -bottom-2 -right-2 w-8 h-8 bg-emerald-500 hover:bg-emerald-600 rounded-full flex items-center justify-center text-white transition-colors duration-200" onclick="document.getElementById('fileInput').click();">
-                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <button type="button" class="absolute -bottom-1 -right-1 w-6 h-6 bg-emerald-500 hover:bg-emerald-600 rounded-full flex items-center justify-center text-white transition-colors duration-200" onclick="document.getElementById('fileInput').click();">
+                                            <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"/>
                                             </svg>
                                         </button>
                                         <input type="file" name="image" id="fileInput" accept="image/*" class="hidden" onchange="updateProfilePicture(event)">
                                     </div>
-                                    <p class="text-slate-300 text-sm mt-2">{{ __('site.Upload Profile Picture') }}</p>
+                                    <p class="text-slate-300 text-xs mt-1">{{ __('site.Upload Profile Picture') }}</p>
                                 </div>
 
                                 <!-- Form Fields -->
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <!-- First Name -->
                                     <div>
                                         <label class="form-label">{{ __('site.First Name') }}</label>
@@ -173,7 +173,7 @@
                                 </div>
 
                                 <!-- Next Button -->
-                                <div class="flex justify-end pt-6 border-t border-white/20">
+                                <div class="flex justify-end pt-4 border-t border-white/20">
                                     <button type="button" class="btn-primary" onclick="validateAndGoToNext()">
                                         {{ __('site.Next') }}
                                         <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -186,20 +186,20 @@
 
                         <!-- Step 2: Medical History -->
                         <div id="step-2" class="form-step hidden">
-                            <div class="space-y-6">
+                            <div class="space-y-4">
                                 <!-- Step Header -->
-                                <div class="text-center mb-8">
-                                    <h2 class="text-xl lg:text-2xl font-serif font-bold text-white mb-2">
+                                <div class="text-center mb-6">
+                                    <h2 class="text-lg lg:text-xl font-serif font-bold text-white mb-1">
                                         {{ __('site.Medical History') }}
                                     </h2>
-                                    <p class="text-slate-300 text-sm">
+                                    <p class="text-slate-300 text-xs">
                                         {{ __('site.Help us understand your medical background') }}
                                     </p>
                                 </div>
 
-                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
                                     <!-- Left Column -->
-                                    <div class="space-y-6">
+                                    <div class="space-y-4">
                                         <!-- Mental Health Conditions -->
                                         <div>
                                             <label class="form-label">
@@ -269,7 +269,7 @@
                                     </div>
 
                                     <!-- Right Column -->
-                                    <div class="space-y-6">
+                                    <div class="space-y-4">
                                         <!-- Neurological Conditions -->
                                         <div>
                                             <label class="form-label">
@@ -379,68 +379,103 @@
             </div>
         </div>
     </section>
-@endsection
 
-<script>
-    // Form step management
-    function validateAndGoToNext() {
-        // Hide step 1, show step 2
-        document.getElementById('step-1').classList.add('hidden');
-        document.getElementById('step-2').classList.remove('hidden');
-        
-        // Update step indicators
-        document.getElementById('step-indicator-1').classList.remove('bg-emerald-500');
-        document.getElementById('step-indicator-1').classList.add('bg-emerald-600');
-        document.getElementById('step-indicator-2').classList.remove('bg-white/20');
-        document.getElementById('step-indicator-2').classList.add('bg-emerald-500');
-        
-        // Update progress bar
-        document.getElementById('progress-bar').style.width = '100%';
-    }
-
-    function showPreviousStep() {
-        // Hide step 2, show step 1
-        document.getElementById('step-2').classList.add('hidden');
-        document.getElementById('step-1').classList.remove('hidden');
-        
-        // Update step indicators
-        document.getElementById('step-indicator-1').classList.add('bg-emerald-500');
-        document.getElementById('step-indicator-1').classList.remove('bg-emerald-600');
-        document.getElementById('step-indicator-2').classList.add('bg-white/20');
-        document.getElementById('step-indicator-2').classList.remove('bg-emerald-500');
-        
-        // Update progress bar
-        document.getElementById('progress-bar').style.width = '50%';
-    }
-
-    // Profile picture update
-    function updateProfilePicture(event) {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function(e) {
-                document.getElementById('profileImage').src = e.target.result;
-            };
-            reader.readAsDataURL(file);
-        }
-    }
-
-    // Show/hide medication input based on therapeutic areas selection
-    document.addEventListener('DOMContentLoaded', function() {
-        const therapeuticAreasSelect = document.getElementById('therapeutic_areas_select');
-        const medicationWrapper = document.getElementById('medication_input_wrapper');
-        
-        if (therapeuticAreasSelect && medicationWrapper) {
-            therapeuticAreasSelect.addEventListener('change', function() {
-                if (this.value) {
-                    medicationWrapper.classList.remove('hidden');
-                } else {
-                    medicationWrapper.classList.add('hidden');
+    <!-- JavaScript for form functionality -->
+    <script>
+        // Form step management
+        function validateAndGoToNext() {
+            console.log('Next button clicked'); // Debug log
+            
+            // Hide step 1, show step 2
+            const step1 = document.getElementById('step-1');
+            const step2 = document.getElementById('step-2');
+            
+            if (step1 && step2) {
+                step1.classList.add('hidden');
+                step2.classList.remove('hidden');
+                
+                // Update step indicators
+                const indicator1 = document.getElementById('step-indicator-1');
+                const indicator2 = document.getElementById('step-indicator-2');
+                const progressBar = document.getElementById('progress-bar');
+                
+                if (indicator1) {
+                    indicator1.classList.remove('bg-emerald-500');
+                    indicator1.classList.add('bg-emerald-600');
                 }
-            });
+                
+                if (indicator2) {
+                    indicator2.classList.remove('bg-white/20');
+                    indicator2.classList.add('bg-emerald-500');
+                }
+                
+                if (progressBar) {
+                    progressBar.style.width = '100%';
+                }
+            } else {
+                console.error('Step elements not found');
+            }
         }
-    });
-</script>
 
-<!-- Bootstrap removed - now using Tailwind CSS -->
-<!-- Tailwind is loaded via the vite directive in the layout -->
+        function showPreviousStep() {
+            // Hide step 2, show step 1
+            const step1 = document.getElementById('step-1');
+            const step2 = document.getElementById('step-2');
+            
+            if (step1 && step2) {
+                step2.classList.add('hidden');
+                step1.classList.remove('hidden');
+                
+                // Update step indicators
+                const indicator1 = document.getElementById('step-indicator-1');
+                const indicator2 = document.getElementById('step-indicator-2');
+                const progressBar = document.getElementById('progress-bar');
+                
+                if (indicator1) {
+                    indicator1.classList.add('bg-emerald-500');
+                    indicator1.classList.remove('bg-emerald-600');
+                }
+                
+                if (indicator2) {
+                    indicator2.classList.add('bg-white/20');
+                    indicator2.classList.remove('bg-emerald-500');
+                }
+                
+                if (progressBar) {
+                    progressBar.style.width = '50%';
+                }
+            }
+        }
+
+        // Profile picture update
+        function updateProfilePicture(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const profileImage = document.getElementById('profileImage');
+                    if (profileImage) {
+                        profileImage.src = e.target.result;
+                    }
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        // Show/hide medication input based on therapeutic areas selection
+        document.addEventListener('DOMContentLoaded', function() {
+            const therapeuticAreasSelect = document.getElementById('therapeutic_areas_select');
+            const medicationWrapper = document.getElementById('medication_input_wrapper');
+            
+            if (therapeuticAreasSelect && medicationWrapper) {
+                therapeuticAreasSelect.addEventListener('change', function() {
+                    if (this.value) {
+                        medicationWrapper.classList.remove('hidden');
+                    } else {
+                        medicationWrapper.classList.add('hidden');
+                    }
+                });
+            }
+        });
+    </script>
+@endsection
