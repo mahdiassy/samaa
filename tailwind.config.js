@@ -5,7 +5,14 @@ module.exports = {
     "./resources/**/*.js",
     "./resources/**/*.vue",
     "./public/**/*.html",
+    "./app/Http/Controllers/**/*.php",
   ],
+  
+  // RTL Support for Arabic
+  experimental: {
+    rtlCss: true,
+  },
+  
   theme: {
     extend: {
       colors: {
@@ -18,9 +25,9 @@ module.exports = {
           400: '#38bdf8',
           500: '#0F4A6A', // Main brand color
           600: '#0A3B54',
-          700: '#0e7490',
-          800: '#155e75',
-          900: '#164e63',
+          700: '#0c4a6e',
+          800: '#075985',
+          900: '#0c4a6e',
           950: '#0c2d3e',
         },
         secondary: {

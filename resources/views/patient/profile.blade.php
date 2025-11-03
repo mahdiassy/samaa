@@ -67,7 +67,7 @@
                                 <label>{{ __('site.Have you been diagnosed with any of the following mental health conditions?') }}
                                     {{ __('site.Select all that apply') }}') }}</label>
                                 <select name="psychological_diseases[]" style="margin-top: 0px;"
-                                    class="styled-input form-control select2 diseases-select-backend" multiple>
+                                    class="styled-input form-select select2 diseases-select-backend" multiple>
                                     @foreach($psychological_diseases as $psychological_disease)
                                         <option value="{{ $psychological_disease->id }}"
                                             @if(in_array($psychological_disease->id, old('psychologicals', isset($patient) ? $patient->psychologicals->pluck('id')->toArray() : []))) selected @endif>
@@ -98,7 +98,7 @@
                                 <label>{{ __('site.Have you experienced any of the following symptoms in the past 6 months?') }}
                                     {{ __('site.Select all that apply') }}') }}</label>
                                 <select name="symptoms[]" style="margin-top: 0px;"
-                                    class="styled-input form-control select2 diseases-select-backend" multiple>
+                                    class="styled-input form-select select2 diseases-select-backend" multiple>
                                     @foreach($symptoms as $symptom)
                                         <option value="{{ $symptom->id }}"
                                             @if(in_array($symptom->id, old('symptoms', isset($patient) ? $patient->symptomes->pluck('id')->toArray() : []))) selected @endif>
@@ -195,7 +195,7 @@
                                 <label>{{ __('site.Have you experienced any major life events or traumas that may impact your mental health?') }}
                                     {{ __('site.Select all that apply') }}') }}</label>
                                 <select name="incidents[]" style="margin-top: 0px;"
-                                    class="styled-input form-control select2 diseases-select-backend" multiple>
+                                    class="styled-input form-select select2 diseases-select-backend" multiple>
                                     @foreach($incidents as $incident)
                                         <option value="{{ $incident->id }}"
                                             @if(in_array($incident->id, old('nervouses', isset($patient) ? $patient->incidents->pluck('id')->toArray() : []))) selected @endif>
@@ -208,7 +208,7 @@
                             <div class="text-info">
                                 <label>{{ __('site.Do you have any chronic physical health conditions?') }}</label>
                                 <select name="diseases[]" style="margin-top: 0px;"
-                                    class="styled-input form-control select2 diseases-select-backend" multiple>
+                                    class="styled-input form-select select2 diseases-select-backend" multiple>
                                     @foreach($diseases as $disease)
                                         <option value="{{ $disease->id }}"
                                             @if(in_array($disease->id, old('nervouses', isset($patient) ? $patient->diseases->pluck('id')->toArray() : []))) selected @endif>

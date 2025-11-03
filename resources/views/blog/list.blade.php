@@ -66,7 +66,7 @@
                 </table>
 
                 <div class="pagination1">
-                    {{ $blogs->links('pagination::bootstrap-4')}}
+                    {{ $blogs->links('pagination::tailwind')}}
                 </div>
             </div>
         </div>

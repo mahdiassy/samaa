@@ -125,7 +125,7 @@
                             <div class="form-group">
                                 <label>{{ __('site.Have you been diagnosed with any of the following mental health conditions?') }}
                                     {{ __('site.Select all that apply') }}') }}</label>
-                                <select name="psychological_diseases[]" class="form-control diseases-select select2"
+                                <select name="psychological_diseases[]" class="form-select diseases-select select2"
                                     multiple>
                                     @foreach($psychological_diseases as $psychological_disease)
                                         <option value="{{ $psychological_disease->id }}">
@@ -148,7 +148,7 @@
                             <div class="form-group">
                                 <label>{{ __('site.Have you experienced any of the following symptoms in the past 6 months?') }}
                                     {{ __('site.Select all that apply') }}') }}</label>
-                                <select name="symptoms[]" class="form-control diseases-select select2" multiple>
+                                <select name="symptoms[]" class="form-select diseases-select select2" multiple>
                                     @foreach($symptoms as $symptom)
                                         <option value="{{ $symptom->id }}">
                                             {{ $symptom->getTranslatedName() }}</option>
@@ -158,7 +158,7 @@
 
                             <div class="form-group">
                                 <label>{{ __('site.Are you currently taking any medications for mental health conditions?') }}</label>
-                                <select name="therapeutic_areas" id="therapeutic_areas_select" class="form-control">
+                                <select name="therapeutic_areas" id="therapeutic_areas_select" class="form-select">
                                     @foreach($therapeutic_areas as $therapeutic_area)
                                         <option value="{{ $therapeutic_area->id }}">
                                             {{ $therapeutic_area->getTranslatedName() }}</option>
@@ -168,7 +168,7 @@
                                 <div id="medication_input_wrapper" style="display: none; margin-top: 10px;">
                                     <label
                                         for="medications">{{ __('site.Please list the medications you are taking') }}</label>
-                                    <input type="text" name="medications" id="medications" class="form-control"
+                                    <input type="text" name="medications" id="medications" class="form-input"
                                         placeholder="{{ __('site.Enter medication names') }}">
                                 </div>
                             </div>
@@ -178,7 +178,7 @@
                         <div class="form-group">
                             <label>{{ __('site.Have you ever been diagnosed with any neurological conditions?') }}
                                 {{ __('site.Select all that apply') }}') }}</label>
-                            <select name="nervouses[]" class="form-control diseases-select select2" multiple>
+                            <select name="nervouses[]" class="form-select diseases-select select2" multiple>
                                 @foreach($nervouses as $nervous)
                                     <option value="{{ $nervous->id }}">
                                         {{ $nervous->getTranslatedName() }}
@@ -199,7 +199,7 @@
                         <div class="form-group">
                             <label>{{ __('site.Have you experienced any major life events or traumas that may impact your mental health?') }}
                                 {{ __('site.Select all that apply') }}') }}</label>
-                            <select name="incidents[]" class="form-control diseases-select select2" multiple>
+                            <select name="incidents[]" class="form-select diseases-select select2" multiple>
                                 @foreach($incidents as $incident)
                                     <option value="{{ $incident->id }}">
                                         {{ $incident->getTranslatedName() }}
@@ -210,7 +210,7 @@
 
                         <div class="form-group">
                             <label>{{ __('site.Do you have any chronic physical health conditions?') }}</label>
-                            <select name="diseases[]" class="form-control diseases-select select2" multiple>
+                            <select name="diseases[]" class="form-select diseases-select select2" multiple>
                                 @foreach($diseases as $disease)
                                     <option value="{{ $disease->id }}">
                                         {{ $disease->getTranslatedName() }}
@@ -257,6 +257,5 @@
     </div>
 @endsection
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Bootstrap removed - now using Tailwind CSS -->
+<!-- Tailwind is loaded via @vite in the layout -->

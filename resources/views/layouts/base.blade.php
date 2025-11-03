@@ -17,7 +17,6 @@
     <title>SAMAA - {{ __('components.common.Hear to Heal') }}</title>
 
     <!-- Preload critical resources -->
-    <!-- <link rel="preload" href="{{ asset('assets/css/frontend/style.css') }}" as="style"> -->
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" as="style">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,28 +25,41 @@
     <link rel="icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
     <link rel="shortcut icon" href="{{ asset('favicon.ico') }}" type="image/x-icon">
 
-    <!-- Main Styles -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Main Styles (includes legacy styles for compatibility) -->
     <link rel="stylesheet" href="{{ asset('assets/css/frontend/style.css') }}">
     
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            200: '#bae6fd',
-                            300: '#7dd3fc',
-                            400: '#38bdf8',
-                            500: '#0F4A6A',
-                            600: '#0A3B54',
-                            700: '#0c4a6e',
-                            800: '#075985',
-                            900: '#0c4a6e',
+    <!-- Vite Assets (Tailwind CSS) -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    
+    <!-- RTL Support for Arabic -->
+    @if(App::isLocale('ar'))
+    <style>
+        /* RTL specific overrides */
+        .rtl-flip {
+            transform: scaleX(-1);
+        }
+        
+        /* Custom RTL adjustments */
+        [dir="rtl"] .text-left {
+            text-align: right !important;
+        }
+        
+        [dir="rtl"] .text-right {
+            text-align: left !important;
+        }
+        
+        [dir="rtl"] .float-left {
+            float: right !important;
+        }
+        
+        [dir="rtl"] .float-right {
+            float: left !important;
+        }
+    </style>
+    @endif
                             DEFAULT: '#0F4A6A',
                         },
                         secondary: {

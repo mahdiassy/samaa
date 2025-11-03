@@ -191,3 +191,10 @@ Route::post('/get-peaks', [TherapyController::class, 'getPeaks'])->name('get-pea
 Route::post('/save-peaks', [TherapyController::class, 'savePeaks'])->name('save-peaks');
 Route::get('/getDiseases/{id}', [TherapyController::class, 'getDiseases'])->name('getDiseases');
 Route::get('/therapy/{therapy}/audio', [TherapyController::class, 'getAudio'])->name('therapy.audio');
+
+// ========================================
+// DEVELOPMENT ROUTES (Demo/Testing)
+// ========================================
+Route::get('/demo/tailwind', function () {
+    return view('demo.tailwind-showcase');
+})->name('demo.tailwind');
