@@ -14,14 +14,14 @@
                 <p class="page-subtitle">Therapy Session Details</p>
             </div>
             <div class="header-actions">
-                <a href="{{ route('therapy.index') }}" class="btn btn-secondary">
+                <a href="{{ route('therapy.index') }}" class="btn-secondary">
                     <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
                         <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
                     </svg>
                     Back to Therapies
                 </a>
                 @role('Admin|Doctor')
-                    <a href="{{ route('therapy.edit', $therapy) }}" class="btn btn-primary">
+                    <a href="{{ route('therapy.edit', $therapy) }}" class="btn-primary">
                         <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20">
                             <path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/>
                         </svg>

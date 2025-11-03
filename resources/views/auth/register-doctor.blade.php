@@ -111,4 +111,4 @@
 @endsection
 
 <!-- Bootstrap removed - now using Tailwind CSS -->
-<!-- Tailwind is loaded via @vite in the layout -->
+<!-- Tailwind is loaded via the vite directive in the layout -->

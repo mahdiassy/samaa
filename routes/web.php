@@ -198,3 +198,7 @@ Route::get('/therapy/{therapy}/audio', [TherapyController::class, 'getAudio'])->
 Route::get('/demo/tailwind', function () {
     return view('demo.tailwind-showcase');
 })->name('demo.tailwind');
+
+Route::get('/demo/medical', function () {
+    return view('demo.medical-dashboard');
+})->name('demo.medical');
