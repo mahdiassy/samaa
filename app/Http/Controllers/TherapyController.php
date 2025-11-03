@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\File;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use JamesHeinrich\GetID3\GetID3;
 use App\Events\MusicControlEvent;
@@ -396,7 +397,7 @@ class TherapyController extends Controller
             ]);
             
         } catch (\Exception $e) {
-            \Log::error('Audio file error: ' . $e->getMessage());
+            Log::error('Audio file error: ' . $e->getMessage());
             return response()->json(['error' => 'Error loading audio file'], 500);
         }
     }
