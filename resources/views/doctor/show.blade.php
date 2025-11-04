@@ -18,7 +18,7 @@
     @endphp
 
     <div class="doctor-view-page">
-        <div class="doctor-management-content">
+        <div class="admin-page-container">
             <div class="page-header">
                 <div class="header-content">
                     <div class="header-info">
@@ -55,10 +55,6 @@
                         <span class="meta-chip">{{ $doctor->address }}</span>
                     @endif
                 </div>
-            </div>
-
-            <div class="search-card">
-                @include('search_form')
             </div>
 
             <div class="content-shell">

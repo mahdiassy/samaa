@@ -46,6 +46,23 @@ Route::group([
     Route::get('blog', [BlogController::class, 'index'])->name('blog.index');
     Route::get('blog/{blog}', [BlogController::class, 'show'])->name('blog.show');
 
+    // Debug route - check permissions
+    Route::get('debug-permissions', function () {
+        $user = auth()->user();
+        if (!$user) {
+            return 'Not logged in';
+        }
+        return [
+            'user' => $user->name,
+            'email' => $user->email,
+            'id' => $user->id,
+            'roles' => $user->getRoleNames(),
+            'permissions_count' => $user->getAllPermissions()->count(),
+            'has_doctor_list' => $user->hasPermissionTo('doctor-list'),
+            'has_doctor_create' => $user->hasPermissionTo('doctor-create'),
+        ];
+    })->middleware('auth');
+
     // Demo UI
     Route::get('demo', function () {
         return view()->exists('layouts.dashboard_clean') 
@@ -110,6 +127,13 @@ Route::group([
         // Doctor Management (Admin, Patient & Doctor can view)
         Route::middleware('role:Admin|Patient|Doctor')->group(function () {
             Route::resource('doctor', DoctorController::class);
+        });
+
+        // Doctor Approval Management (Admin only)
+        Route::middleware('role:Admin')->group(function () {
+            Route::get('doctors/pending', [DoctorController::class, 'pendingApprovals'])->name('doctors.pending');
+            Route::post('doctors/{doctor}/approve', [DoctorController::class, 'approve'])->name('doctors.approve');
+            Route::post('doctors/{doctor}/reject', [DoctorController::class, 'reject'])->name('doctors.reject');
         });
 
         // Doctor Profile (Self-editing)

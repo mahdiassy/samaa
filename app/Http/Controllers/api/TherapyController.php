@@ -36,7 +36,7 @@ class TherapyController extends Controller
 
     public function index()
     {
-        $therapies = $this->therapyAccessService->getTherapiesForUser(Auth::user());
+        $therapies = $this->therapyAccessService->getAllTherapiesForUser(Auth::user());
         return ApiResponse::successResponse($therapies);
     }
 

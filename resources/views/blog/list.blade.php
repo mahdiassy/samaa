@@ -1,6 +1,6 @@
 @extends('layouts.master2')
 @section('content')
-    <div class="blog-management-content">
+    <div class="admin-page-container">
         @include('search_form')
         <div class="patient-contaier">
 

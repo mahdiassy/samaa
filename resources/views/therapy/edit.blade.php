@@ -16,7 +16,7 @@
         $audioRoute = route('therapy.audio', $therapy->id);
     @endphp
 
-    <div class="therapy-management-content therapy-edit-page">
+    <div class="admin-page-container therapy-edit-page">
         <div class="page-header">
             <div class="header-content">
                 <div class="header-info">

@@ -1,141 +1,1315 @@
-@tailwind base;
+@tailwind base;@tailwind base;@tailwind base;
+
 @tailwind components;
-@tailwind utilities;
 
-/* SAMAA Custom Components */
-@layer components {
-  /* Button Components */
-  .btn-primary {
-    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium px-6 py-2.5 rounded-lg transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed;
-  }
-  
-  .btn-secondary {
-    @apply bg-emerald-600 hover:bg-emerald-700 text-white font-medium px-6 py-2.5 rounded-lg transition-colors duration-200;
-  }
-  
-  .btn-outline {
-    @apply border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white font-medium px-6 py-2.5 rounded-lg transition-all duration-200;
-  }
-  
-  .btn-danger {
-    @apply bg-red-500 hover:bg-red-600 text-white font-medium px-6 py-2.5 rounded-lg transition-colors duration-200;
-  }
+@tailwind utilities;@tailwind components;@tailwind components;
 
-  /* Form Components */
-  .form-input {
-    @apply w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200;
-  }
-  
-  .form-label {
-    @apply block text-sm font-medium text-gray-700 mb-2;
-  }
-  
-  .form-error {
-    @apply text-red-500 text-sm mt-1;
-  }
-  
-  .form-select {
-    @apply w-full px-4 py-2.5 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 bg-white transition-colors duration-200;
-  }
 
-  /* Card Components */
-  .card {
-    @apply bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden;
-  }
-  
-  .card-header {
-    @apply px-6 py-4 border-b border-gray-100 bg-gray-50;
-  }
-  
-  .card-body {
-    @apply p-6;
-  }
-  
-  .card-footer {
-    @apply px-6 py-4 border-t border-gray-100 bg-gray-50;
-  }
+@tailwind utilities;@tailwind utilities;
 
-  /* Navigation Components */
-  .nav-link {
-    @apply text-gray-600 hover:text-blue-600 px-4 py-2 rounded-lg transition-colors duration-200;
-  }
-  
-  .nav-link-active {
-    @apply bg-blue-600 text-white px-4 py-2 rounded-lg;
-  }
 
-  /* Medical Platform Specific */
-  .therapy-card {
-    @apply bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 overflow-hidden;
-  }
-  
-  .doctor-card {
-    @apply bg-white rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-shadow duration-300;
-  }
-  
-  .booking-status {
-    @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
-  }
-  
-  .status-pending {
-    @apply bg-yellow-100 text-yellow-800;
-  }
-  
-  .status-confirmed {
-    @apply bg-green-100 text-green-800;
-  }
-  
-  .status-cancelled {
-    @apply bg-red-100 text-red-800;
-  }
-  
-  .status-completed {
-    @apply bg-blue-100 text-blue-800;
-  }
+        @apply p-6;
+    }
+
+    .card-footer {
+        @apply px-6 py-4 border-t border-gray-100 bg-gray-50;
+    }
+
+    /* Navigation Components */
+    .nav-link {
+        @apply text-gray-600 hover:text-blue-600 px-4 py-2 rounded-lg transition-colors duration-200;
+    }
+
+    .nav-link-active {
+        @apply bg-blue-600 text-white px-4 py-2 rounded-lg;
+    }
+
+    /* Medical Platform Specific */
+    .therapy-card {
+        @apply bg-white rounded-xl shadow-lg border border-gray-100 hover:shadow-xl transition-shadow duration-300 overflow-hidden;
+    }
+
+    .doctor-card {
+        @apply bg-white rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-shadow duration-300;
+    }
+
+    .booking-status {
+        @apply inline-flex items-center px-3 py-1 rounded-full text-sm font-medium;
+    }
+
+    .status-pending {
+        @apply bg-yellow-100 text-yellow-800;
+    }
+
+    .status-confirmed {
+        @apply bg-green-100 text-green-800;
+    }
+
+    .status-cancelled {
+        @apply bg-red-100 text-red-800;
+    }
+
+    .status-completed {
+        @apply bg-blue-100 text-blue-800;
+    }
+
+    /* Admin Management Pages */
+    .admin-page-container {
+        @apply w-full min-h-screen;
+        padding: clamp(1.25rem, 3vw, 2.25rem);
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    .page-header {
+        @apply rounded-2xl text-white relative overflow-hidden;
+        background: linear-gradient(
+            135deg,
+            #1e293b 0%,
+            #334155 50%,
+            #475569 100%
+        );
+        padding: clamp(1.5rem, 3.5vw, 2.5rem);
+        margin-bottom: clamp(1.25rem, 2.5vw, 2rem);
+    }
+
+    .page-header::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: radial-gradient(
+                circle at 20% 80%,
+                rgba(139, 92, 246, 0.35) 0%,
+                transparent 55%
+            ),
+            radial-gradient(
+                circle at 80% 20%,
+                rgba(16, 185, 129, 0.35) 0%,
+                transparent 55%
+            );
+        pointer-events: none;
+    }
+
+    .header-content {
+        @apply flex justify-between items-center relative z-10 flex-wrap;
+        gap: clamp(0.75rem, 2vw, 1.5rem);
+    }
+
+    .header-info {
+        @apply flex-1;
+        min-inline-size: min(18rem, 100%);
+    }
+
+    .page-title {
+        @apply font-bold m-0;
+        font-size: clamp(1.6rem, 2.6vw, 2.3rem);
+        background: linear-gradient(135deg, #ffffff 0%, #e2e8f0 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        line-height: 1.2;
+    }
+
+    .page-subtitle {
+        @apply m-0;
+        font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+        opacity: 0.85;
+        color: rgba(255, 255, 255, 0.9);
+    }
+
+    .header-actions {
+        @apply flex items-center flex-wrap;
+        gap: clamp(0.5rem, 1.5vw, 1.25rem);
+    }
+
+    /* Guideline Components (for create pages) */
+    .guideline-grid {
+        @apply grid mb-8;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: clamp(1rem, 2.5vw, 1.5rem);
+    }
+
+    .guideline-card {
+        @apply flex gap-5 bg-white rounded-[20px] p-6 border transition-all duration-200;
+        box-shadow: 0 12px 32px rgba(15, 23, 42, 0.05);
+    }
+
+    .guideline-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 16px 36px rgba(15, 23, 42, 0.08);
+    }
+
+    .patient-create-page .guideline-card {
+        @apply border-green-200;
+    }
+
+    .doctor-create-page .guideline-card {
+        @apply border-purple-200;
+    }
+
+    .blog-create-page .guideline-card {
+        @apply border-blue-200;
+    }
+
+    .guideline-icon {
+        @apply flex items-center justify-center flex-shrink-0 rounded-2xl;
+        width: 3rem;
+        height: 3rem;
+        color: white;
+    }
+
+    .patient-create-page .guideline-icon {
+        background: linear-gradient(135deg, #14b8a6 0%, #0f766e 100%);
+    }
+
+    .doctor-create-page .guideline-icon {
+        background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    }
+
+    .blog-create-page .guideline-icon {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    }
+
+    .guideline-icon svg {
+        width: 1.4rem;
+        height: 1.4rem;
+    }
+
+    .guideline-content h3 {
+        @apply font-bold text-slate-800 m-0 mb-1.5;
+        font-size: 1.1rem;
+    }
+
+    .guideline-content p {
+        @apply text-slate-500 leading-relaxed m-0;
+        font-size: 0.95rem;
+    }
+
+    /* Search Components */
+    .search-container {
+        @apply relative flex items-center;
+    }
+
+    .search-input-wrapper {
+        @apply relative flex items-center;
+    }
+
+    .search-icon {
+        @apply absolute z-10;
+        inset-inline-start: 1rem;
+        inset-block-start: 50%;
+        transform: translateY(-50%);
+        inline-size: 1.25rem;
+        block-size: 1.25rem;
+        color: #64748b;
+    }
+
+    .page-header .search-icon {
+        @apply text-slate-400;
+    }
+
+    .search-input {
+        @apply rounded-lg transition-all duration-200;
+        padding: 0.625rem 1rem 0.625rem 2.5rem;
+    }
+
+    .page-header .search-input {
+        background: rgba(255, 255, 255, 0.1);
+        border: 0.0625rem solid rgba(255, 255, 255, 0.25);
+        color: white;
+        inline-size: clamp(14rem, 28vw, 20rem);
+    }
+
+    .page-header .search-input::placeholder {
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .page-header .search-input:focus {
+        outline: none;
+        background: rgba(255, 255, 255, 0.18);
+        border-color: rgba(16, 185, 129, 0.55);
+    }
+
+    .table-section .search-input {
+        @apply w-full md:w-64 border border-slate-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500;
+    }
+
+    /* Action Buttons */
+    .add-btn {
+        @apply text-white font-semibold flex items-center rounded-lg transition-all duration-200 shadow-md;
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+        padding: 0.75rem 1.5rem;
+        gap: 0.5rem;
+    }
+
+    .add-btn:hover {
+        transform: translateY(-0.125rem);
+        box-shadow: 0 0.75rem 1.5rem rgba(16, 185, 129, 0.3);
+    }
+
+    .add-btn svg {
+        inline-size: 1.125rem;
+        block-size: 1.125rem;
+    }
+
+    .playlist-btn {
+        @apply flex items-center gap-2 px-6 py-3 rounded-lg font-semibold transition-all duration-200;
+        background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        color: white;
+    }
+
+    .playlist-btn:hover {
+        transform: translateY(-0.125rem);
+        box-shadow: 0 0.75rem 1.5rem rgba(139, 92, 246, 0.3);
+    }
+
+    /* Stats Grid */
+    .stats-grid {
+        @apply grid mb-6 md:mb-8;
+        grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+        gap: clamp(1.25rem, 3vw, 2.5rem);
+        margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .stat-card {
+        @apply bg-white rounded-xl flex items-center border border-slate-200 transition-all duration-300;
+        padding: clamp(1.5rem, 3vw, 2.5rem);
+        gap: clamp(1rem, 2vw, 1.5rem);
+    }
+
+    .stat-card:hover {
+        transform: translateY(-0.25rem);
+        box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.1);
+    }
+
+    .stat-icon {
+        @apply rounded-xl flex items-center justify-center flex-shrink-0;
+        inline-size: 4rem;
+        block-size: 4rem;
+    }
+
+    .doctor-icon {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    }
+
+    .active-icon {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+
+    .specialty-icon {
+        background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    }
+
+    .rating-icon {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    }
+
+    .stat-icon svg {
+        inline-size: 2rem;
+        block-size: 2rem;
+        color: #fff;
+    }
+
+    .stat-content h3 {
+        @apply font-bold text-slate-800 m-0;
+        font-size: clamp(1.5rem, 2.4vw, 2.25rem);
+        margin-bottom: 0.25rem;
+    }
+
+    .stat-content p {
+        @apply text-slate-600 m-0 font-medium;
+    }
+
+    /* Filter Section */
+    .filter-section {
+        @apply bg-white rounded-xl border border-slate-200;
+        padding: clamp(1.5rem, 3vw, 2.5rem);
+        margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .filter-container {
+        @apply flex items-end flex-wrap;
+        gap: clamp(1rem, 3vw, 2rem);
+    }
+
+    .filter-item {
+        @apply flex-1;
+        min-inline-size: min(14rem, 100%);
+    }
+
+    .filter-item label {
+        @apply block font-semibold text-gray-700 mb-2;
+    }
+
+    .filter-select {
+        @apply w-full px-3 py-3 border-2 border-slate-200 rounded-xl text-base bg-slate-50 transition-all duration-200;
+    }
+
+    .filter-select:focus {
+        @apply outline-none border-emerald-500 bg-white;
+    }
+
+    .clear-filters-btn {
+        @apply bg-slate-100 border border-slate-200 text-slate-600 rounded-xl cursor-pointer flex items-center transition-all duration-200;
+        padding: 0.75rem 1.5rem;
+        gap: 0.5rem;
+    }
+
+    .clear-filters-btn:hover {
+        @apply bg-slate-200;
+    }
+
+    .clear-filters-btn svg {
+        inline-size: 1rem;
+        block-size: 1rem;
+    }
+
+    /* Doctors Grid Section */
+    .doctors-section {
+        @apply bg-white rounded-xl border border-slate-200;
+        padding: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .section-header {
+        @apply text-center flex flex-col mb-8 md:mb-12;
+        margin-bottom: clamp(2rem, 4vw, 3rem);
+        gap: 0.5rem;
+    }
+
+    .section-header h2 {
+        @apply font-bold text-slate-800 m-0;
+        font-size: clamp(1.75rem, 2.5vw, 2.25rem);
+    }
+
+    .section-header p {
+        @apply text-slate-600 m-0;
+        font-size: clamp(1rem, 1.8vw, 1.15rem);
+    }
+
+    .doctors-grid {
+        @apply grid mb-8 md:mb-12;
+        grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+        gap: clamp(1.5rem, 3vw, 2.5rem);
+        margin-bottom: clamp(2rem, 4vw, 3rem);
+    }
+
+    .doctor-card {
+        @apply bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col transition-all duration-300;
+    }
+
+    .doctor-card:hover {
+        transform: translateY(-0.25rem);
+        box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.15);
+        border-color: #10b981;
+    }
+
+    .doctor-image {
+        @apply relative flex items-center justify-center;
+        min-height: clamp(10rem, 24vh, 14rem);
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    .doctor-image img {
+        @apply w-full h-full object-cover;
+    }
+
+    .avatar-placeholder {
+        @apply rounded-full flex items-center justify-center;
+        inline-size: 5rem;
+        block-size: 5rem;
+        background: linear-gradient(135deg, #94a3b8 0%, #64748b 100%);
+    }
+
+    .avatar-placeholder svg {
+        @apply text-white;
+        inline-size: 2.5rem;
+        block-size: 2.5rem;
+    }
+
+    .status-badge {
+        @apply absolute text-white rounded-full text-sm font-semibold flex items-center;
+        inset-inline-end: 1rem;
+        inset-block-start: 1rem;
+        background: rgba(16, 185, 129, 0.9);
+        padding: 0.5rem 1rem;
+        gap: 0.5rem;
+    }
+
+    .status-dot {
+        @apply bg-white rounded-full;
+        inline-size: 0.5rem;
+        block-size: 0.5rem;
+        animation: pulse-dot 2s infinite;
+    }
+
+    @keyframes pulse-dot {
+        0%,
+        100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+
+    .doctor-info {
+        @apply flex flex-col;
+        padding: clamp(1.25rem, 3vw, 1.75rem);
+        gap: 0.75rem;
+    }
+
+    .doctor-name {
+        @apply font-bold text-slate-800 m-0;
+        font-size: clamp(1.25rem, 2vw, 1.5rem);
+    }
+
+    .doctor-specialty {
+        @apply text-emerald-600 font-semibold m-0;
+    }
+
+    .doctor-rating {
+        @apply flex items-center gap-2;
+    }
+
+    .stars {
+        @apply flex gap-1;
+    }
+
+    .star {
+        inline-size: 1rem;
+        block-size: 1rem;
+    }
+
+    .star.filled {
+        @apply text-amber-400;
+    }
+
+    .rating-text {
+        @apply text-slate-600 text-sm;
+    }
+
+    .doctor-details {
+        @apply flex flex-col gap-2;
+    }
+
+    .detail-item {
+        @apply flex items-center gap-2 text-slate-600 text-sm;
+    }
+
+    .detail-icon {
+        @apply text-emerald-600 flex-shrink-0;
+        inline-size: 1.125rem;
+        block-size: 1.125rem;
+    }
+
+    .doctor-actions {
+        @apply flex flex-col gap-2 p-4 bg-slate-50 border-t border-slate-100;
+    }
+
+    .doctor-actions .action-btn {
+        @apply flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-200;
+    }
+
+    .doctor-actions .action-btn.primary {
+        @apply bg-emerald-600 text-white;
+    }
+
+    .doctor-actions .action-btn.primary:hover {
+        @apply bg-emerald-700;
+        transform: translateY(-0.125rem);
+    }
+
+    .doctor-actions .action-btn.secondary {
+        @apply bg-slate-100 text-slate-700 border border-slate-200;
+    }
+
+    .doctor-actions .action-btn.secondary:hover {
+        @apply bg-slate-200;
+    }
+
+    .doctor-actions .action-btn.edit {
+        @apply bg-amber-50 text-amber-600 border border-amber-200;
+    }
+
+    .doctor-actions .action-btn.edit:hover {
+        @apply bg-amber-100;
+    }
+
+    .doctor-actions .action-btn svg {
+        inline-size: 1.125rem;
+        block-size: 1.125rem;
+    }
+
+    /* Table Components */
+    .table-section {
+        @apply bg-white rounded-2xl shadow-lg overflow-hidden;
+    }
+
+    .table-header {
+        @apply px-6 py-4 flex flex-wrap justify-between items-center;
+        gap: clamp(0.75rem, 2vw, 1.25rem);
+    }
+
+    .table-header h3 {
+        @apply text-lg font-bold text-slate-800;
+    }
+
+    .table-subtitle {
+        @apply text-sm text-slate-500 mt-1;
+    }
+
+    .table-search-summary {
+        @apply text-sm text-slate-600 flex items-center gap-1;
+    }
+
+    .table-search-summary strong {
+        @apply font-semibold text-slate-800;
+    }
+
+    .stat-meta {
+        @apply text-xs text-slate-500 block mt-1;
+    }
+
+    .table-actions {
+        @apply flex gap-3;
+    }
+
+    .filter-btn,
+    .export-btn {
+        @apply flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-200;
+    }
+
+    .filter-btn {
+        @apply bg-slate-100 text-slate-700 hover:bg-slate-200;
+    }
+
+    .export-btn {
+        @apply bg-emerald-50 text-emerald-600 hover:bg-emerald-100;
+    }
+
+    .table-container {
+        @apply overflow-x-auto;
+    }
+
+    .modern-table {
+        @apply w-full border-collapse;
+        min-width: clamp(48rem, 70vw, 68rem);
+    }
+
+    .modern-table thead {
+        background: linear-gradient(
+            135deg,
+            rgba(148, 163, 184, 0.12) 0%,
+            rgba(148, 163, 184, 0.05) 100%
+        );
+    }
+
+    .modern-table th {
+        @apply text-left font-semibold text-slate-600 uppercase tracking-wide border-b border-slate-200 whitespace-nowrap;
+        padding: clamp(0.75rem, 2vw, 1rem);
+        font-size: clamp(0.75rem, 1.3vw, 0.875rem);
+        letter-spacing: 0.04em;
+    }
+
+    .modern-table tbody tr {
+        @apply border-b transition-all duration-150;
+        border-bottom: 0.0625rem solid rgba(148, 163, 184, 0.2);
+    }
+
+    .modern-table tbody tr:hover {
+        background: rgba(226, 232, 240, 0.45);
+        transform: translateY(-0.1rem);
+    }
+
+    .modern-table td {
+        @apply text-slate-600 align-middle;
+        padding: clamp(0.875rem, 2.4vw, 1.25rem);
+        font-size: clamp(0.85rem, 1.4vw, 0.95rem);
+    }
+
+    .id-cell {
+        @apply font-semibold text-blue-600;
+        font-size: clamp(0.9rem, 1.5vw, 1rem);
+    }
+
+    .patient-info {
+        @apply inline-flex items-center;
+        gap: clamp(0.75rem, 2vw, 1.25rem);
+    }
+
+    .patient-avatar {
+        @apply rounded-full overflow-hidden bg-blue-100 flex items-center justify-center flex-shrink-0;
+        inline-size: clamp(2.75rem, 4vw, 3.25rem);
+        block-size: clamp(2.75rem, 4vw, 3.25rem);
+    }
+
+    .patient-avatar img {
+        @apply w-full h-full object-cover;
+    }
+
+    /* Action Buttons in Tables */
+    .action-buttons {
+        @apply flex items-center gap-2;
+    }
+
+    .action-btn {
+        @apply rounded-lg flex items-center justify-center transition-all duration-200;
+        width: 2.25rem;
+        height: 2.25rem;
+    }
+
+    .action-btn svg {
+        width: 1.125rem;
+        height: 1.125rem;
+    }
+
+    .view-btn {
+        @apply bg-blue-50 text-blue-600 hover:bg-blue-100;
+    }
+
+    .edit-btn {
+        @apply bg-amber-50 text-amber-600 hover:bg-amber-100;
+    }
+
+    .delete-btn {
+        @apply bg-red-50 text-red-600 hover:bg-red-100;
+    }
+
+    /* Pagination */
+    .pagination-container {
+        @apply px-6 py-4 bg-slate-50 border-t border-slate-200 flex justify-center;
+    }
+
+    /* Therapy-Specific Components */
+    .therapy-icon {
+        background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    }
+
+    .success-icon {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    }
+
+    .total-icon {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    }
+
+    .recent-icon {
+        background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+    }
+
+    .author-icon,
+    .subject-icon {
+        background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+    }
+
+    .featured-icon,
+    .latest-icon {
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    }
+
+    .add-btn.secondary {
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    }
+
+    .therapies-section {
+        @apply bg-white rounded-xl border border-slate-200;
+        padding: clamp(1.5rem, 3vw, 2.25rem);
+    }
+
+    .therapies-grid {
+        @apply grid mb-8 md:mb-10;
+        grid-template-columns: repeat(auto-fit, minmax(min(18rem, 100%), 1fr));
+        gap: clamp(1.125rem, 2.5vw, 2rem);
+        margin-bottom: clamp(1.25rem, 3.5vw, 2.25rem);
+    }
+
+    .therapy-card {
+        @apply bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col transition-all duration-200;
+        min-block-size: 100%;
+    }
+
+    .therapy-card:hover {
+        transform: translateY(-0.2rem);
+        box-shadow: 0 1rem 2rem rgba(15, 23, 42, 0.12);
+        border-color: #8b5cf6;
+    }
+
+    .therapy-header {
+        @apply flex justify-between items-center;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        padding: clamp(1.1rem, 2.5vw, 1.6rem);
+        gap: clamp(0.6rem, 2vw, 1rem);
+    }
+
+    .therapy-type-badge {
+        @apply text-white rounded-full text-sm font-semibold inline-flex items-center;
+        background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+        padding: 0.45rem 0.9rem;
+        gap: 0.45rem;
+    }
+
+    .therapy-type-badge svg {
+        inline-size: 1rem;
+        block-size: 1rem;
+    }
+
+    .therapy-status {
+        @apply inline-flex items-center text-sm font-semibold text-slate-600;
+        gap: 0.4rem;
+    }
+
+    .therapy-status.available {
+        @apply text-emerald-600;
+    }
+
+    .therapy-content {
+        @apply flex flex-col;
+        padding: clamp(1.25rem, 2.5vw, 2rem);
+        gap: clamp(0.85rem, 2vw, 1.35rem);
+    }
+
+    .therapy-name {
+        @apply font-bold text-slate-800 m-0;
+        font-size: clamp(1.35rem, 2.2vw, 1.85rem);
+    }
+
+    .therapy-description {
+        @apply text-slate-600 m-0;
+        line-height: 1.65;
+    }
+
+    .therapy-details {
+        @apply grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(11rem, 100%), 1fr));
+        gap: clamp(0.75rem, 2vw, 1.25rem);
+    }
+
+    .therapy-features {
+        @apply flex flex-wrap gap-2;
+    }
+
+    .feature-tag {
+        @apply bg-emerald-50 text-emerald-700 rounded-lg text-xs font-semibold inline-flex items-center;
+        padding: 0.4rem 0.75rem;
+        gap: 0.35rem;
+    }
+
+    .feature-tag svg {
+        inline-size: 0.9rem;
+        block-size: 0.9rem;
+    }
+
+    .therapy-actions {
+        @apply flex flex-col gap-2 p-4 bg-slate-50 border-t border-slate-100;
+    }
+
+    .therapy-actions .action-btn {
+        @apply flex items-center justify-center gap-2 px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-200;
+    }
+
+    .therapy-actions .action-btn.primary {
+        @apply bg-emerald-600 text-white;
+    }
+
+    .therapy-actions .action-btn.primary:hover {
+        @apply bg-emerald-700;
+        transform: translateY(-0.125rem);
+    }
+
+    .therapy-actions .action-btn.secondary {
+        @apply bg-slate-100 text-slate-700 border border-slate-200;
+    }
+
+    .therapy-actions .action-btn.secondary:hover {
+        @apply bg-slate-200;
+    }
+
+    .therapy-actions .action-btn.edit {
+        @apply bg-amber-50 text-amber-600 border border-amber-200;
+    }
+
+    .therapy-actions .action-btn.edit:hover {
+        @apply bg-amber-100;
+    }
+
+    .therapy-actions .action-btn.delete {
+        @apply bg-red-50 text-red-600 border border-red-200;
+    }
+
+    .therapy-actions .action-btn.delete:hover {
+        @apply bg-red-100;
+    }
+
+    .therapy-actions .action-btn svg {
+        inline-size: 1.125rem;
+        block-size: 1.125rem;
+    }
+
+    /* Blog-Specific Components */
+    .blog-grid {
+        @apply grid mb-8 md:mb-10;
+        grid-template-columns: repeat(auto-fill, minmax(min(22rem, 100%), 1fr));
+        gap: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .blog-card {
+        @apply bg-white border border-slate-200 rounded-xl overflow-hidden flex flex-col transition-all duration-300;
+    }
+
+    .blog-card:hover {
+        transform: translateY(-0.25rem);
+        box-shadow: 0 1.25rem 2.5rem rgba(0, 0, 0, 0.1);
+        border-color: #3b82f6;
+    }
+
+    .blog-image {
+        @apply relative overflow-hidden;
+        min-height: clamp(12rem, 28vh, 16rem);
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    .blog-image img {
+        @apply w-full h-full object-cover transition-transform duration-300;
+    }
+
+    .blog-card:hover .blog-image img {
+        transform: scale(1.05);
+    }
+
+    .blog-category-badge {
+        @apply absolute top-4 left-4 text-white rounded-full text-xs font-bold px-3 py-1;
+        background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    }
+
+    .blog-content {
+        @apply flex flex-col flex-1;
+        padding: clamp(1.25rem, 2.5vw, 1.75rem);
+        gap: 0.75rem;
+    }
+
+    .blog-title {
+        @apply font-bold text-slate-800 m-0 line-clamp-2;
+        font-size: clamp(1.25rem, 2vw, 1.5rem);
+    }
+
+    .blog-excerpt {
+        @apply text-slate-600 m-0 line-clamp-3 flex-1;
+        line-height: 1.6;
+    }
+
+    .blog-meta {
+        @apply flex items-center justify-between text-sm text-slate-500 pt-3 border-t border-slate-100;
+    }
+
+    .blog-author {
+        @apply flex items-center gap-2;
+    }
+
+    .blog-author-avatar {
+        @apply w-8 h-8 rounded-full bg-blue-100;
+    }
+
+    .blog-date {
+        @apply flex items-center gap-1;
+    }
+
+    .blog-actions {
+        @apply flex gap-2 p-4 bg-slate-50 border-t border-slate-100;
+    }
+
+    /* Feedback-Specific Components */
+    .feedback-grid {
+        @apply grid;
+        grid-template-columns: repeat(auto-fill, minmax(min(20rem, 100%), 1fr));
+        gap: clamp(1.25rem, 2.5vw, 2rem);
+    }
+
+    .feedback-card {
+        @apply bg-white border border-slate-200 rounded-xl p-6 transition-all duration-200;
+    }
+
+    .feedback-card:hover {
+        transform: translateY(-0.15rem);
+        box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.08);
+        border-color: #10b981;
+    }
+
+    .feedback-header {
+        @apply flex items-start justify-between mb-4;
+    }
+
+    .feedback-user {
+        @apply flex items-center gap-3;
+    }
+
+    .feedback-avatar {
+        @apply w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center flex-shrink-0;
+    }
+
+    .feedback-user-info h4 {
+        @apply font-semibold text-slate-800 m-0;
+    }
+
+    .feedback-user-info p {
+        @apply text-sm text-slate-500 m-0;
+    }
+
+    .feedback-rating {
+        @apply flex gap-1;
+    }
+
+    .feedback-rating svg {
+        @apply w-4 h-4 text-amber-400;
+    }
+
+    .feedback-content {
+        @apply text-slate-600 leading-relaxed mb-4;
+    }
+
+    .feedback-footer {
+        @apply flex items-center justify-between text-sm text-slate-500 pt-4 border-t border-slate-100;
+    }
+
+    .feedback-status {
+        @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold;
+    }
+
+    .feedback-status.pending {
+        @apply bg-yellow-100 text-yellow-700;
+    }
+
+    .feedback-status.reviewed {
+        @apply bg-green-100 text-green-700;
+    }
+
+    .feedback-status.resolved {
+        @apply bg-blue-100 text-blue-700;
+    }
+
+    /* Feedback Create Page - Form Components */
+    .back-btn {
+        @apply inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white no-underline transition-all duration-300;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .back-btn:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateX(-4px);
+    }
+
+    .back-btn svg {
+        @apply w-5 h-5;
+    }
+
+    .feedback-info {
+        @apply grid gap-6 mb-8;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .info-card {
+        @apply bg-white rounded-[20px] p-8 border border-slate-200 flex items-center gap-6 transition-all duration-300;
+    }
+
+    .info-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .info-icon {
+        @apply w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0;
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    }
+
+    .info-icon svg {
+        @apply w-8 h-8 text-white;
+    }
+
+    .info-content h3 {
+        @apply text-xl font-semibold text-slate-800 m-0 mb-2;
+    }
+
+    .info-content p {
+        @apply text-slate-500 m-0;
+    }
+
+    .form-section {
+        @apply bg-white rounded-[20px] border border-slate-200 overflow-hidden;
+    }
+
+    .form-container {
+        @apply p-8;
+    }
+
+    .form-header {
+        @apply text-center mb-12;
+    }
+
+    .form-header h3 {
+        @apply text-3xl font-bold text-slate-800 m-0 mb-2;
+    }
+
+    .form-header p {
+        @apply text-slate-500 text-lg m-0;
+    }
+
+    .form-grid {
+        @apply grid gap-8 mb-8;
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    }
+
+    .form-section-card {
+        @apply bg-slate-50 rounded-2xl p-8 border border-slate-200;
+    }
+
+    .section-title {
+        @apply flex items-center gap-3 text-xl font-semibold text-slate-800 m-0 mb-6 pb-4 border-b-2 border-slate-200;
+    }
+
+    .section-title svg {
+        @apply w-6 h-6 text-amber-500;
+    }
+
+    .form-group {
+        @apply mb-6;
+    }
+
+    .form-label {
+        @apply block font-semibold text-slate-700 mb-2;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+        @apply w-full px-4 py-4 border-2 border-slate-200 rounded-xl text-base transition-all duration-300 bg-white;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+        @apply outline-none border-amber-500;
+        box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+    }
+
+    .form-input:disabled {
+        @apply bg-slate-100 text-slate-400;
+    }
+
+    .rating-container {
+        @apply flex flex-col gap-4;
+    }
+
+    .rating-stars {
+        @apply flex gap-2 flex-wrap;
+    }
+
+    .star-btn {
+        @apply bg-transparent border-0 cursor-pointer p-1 rounded-lg transition-all duration-300;
+    }
+
+    .star-btn svg {
+        @apply w-8 h-8 text-slate-200 transition-all duration-300;
+    }
+
+    .star-btn:hover svg {
+        @apply text-amber-400;
+        transform: scale(1.1);
+    }
+
+    .star-btn.active svg {
+        @apply text-amber-500;
+    }
+
+    .rating-display {
+        @apply flex items-center gap-2 px-4 py-4 bg-slate-100 rounded-xl border-2 border-slate-200;
+    }
+
+    .rating-value {
+        @apply text-3xl font-bold text-amber-500;
+    }
+
+    .rating-label {
+        @apply text-slate-500 font-medium;
+    }
+
+    .character-count {
+        @apply text-right text-sm text-slate-500 mt-2;
+    }
+
+    .submit-section {
+        @apply rounded-2xl p-8 text-center;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    }
+
+    .submit-info h4 {
+        @apply text-2xl font-semibold text-slate-800 m-0 mb-2;
+    }
+
+    .submit-info p {
+        @apply text-slate-500 m-0 mb-8;
+    }
+
+    .submit-actions {
+        @apply flex gap-4 justify-center items-center;
+    }
+
+    .submit-btn {
+        @apply text-white border-0 px-8 py-4 rounded-xl font-semibold cursor-pointer inline-flex items-center gap-2 transition-all duration-300 text-base;
+        background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+    }
+
+    .submit-btn:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 20px rgba(245, 158, 11, 0.3);
+    }
+
+    .submit-btn svg {
+        @apply w-5 h-5;
+    }
+
+    .cancel-btn {
+        @apply text-slate-500 no-underline px-4 py-4 font-medium transition-colors duration-300;
+    }
+
+    .cancel-btn:hover {
+        @apply text-slate-700;
+    }
+
+    /* Responsive adjustments for forms */
+    @media (max-width: 768px) {
+        .feedback-info {
+            @apply grid-cols-1;
+        }
+
+        .form-grid {
+            @apply grid-cols-1;
+        }
+
+        .form-container {
+            @apply p-6;
+        }
+
+        .submit-actions {
+            @apply flex-col;
+        }
+
+        .rating-stars {
+            @apply justify-center;
+        }
+    }
 }
 
 /* Custom Medical Theme Utilities */
 @layer utilities {
-  .text-gradient {
-    @apply bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent;
-  }
-  
-  .bg-gradient-samaa {
-    @apply bg-gradient-to-r from-blue-600 to-emerald-600;
-  }
-  
-  .shadow-samaa {
-    box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1), 0 8px 10px -6px rgba(59, 130, 246, 0.1);
-  }
-  
-  .border-gradient {
-    background: linear-gradient(white, white) padding-box,
-                linear-gradient(45deg, #2563eb, #059669) border-box;
-    border: 2px solid transparent;
-  }
+    .text-gradient {
+        @apply bg-gradient-to-r from-blue-600 to-emerald-600 bg-clip-text text-transparent;
+    }
+
+    .bg-gradient-samaa {
+        @apply bg-gradient-to-r from-blue-600 to-emerald-600;
+    }
+
+    .shadow-samaa {
+        box-shadow: 0 10px 25px -5px rgba(59, 130, 246, 0.1),
+            0 8px 10px -6px rgba(59, 130, 246, 0.1);
+    }
+
+    .border-gradient {
+        background: linear-gradient(white, white) padding-box,
+            linear-gradient(45deg, #2563eb, #059669) border-box;
+        border: 2px solid transparent;
+    }
+
+    /* Music Player Page - Chat scroll styling */
+    #chat-box::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    #chat-box::-webkit-scrollbar-track {
+        background: #f1f5f9;
+        border-radius: 10px;
+    }
+
+    #chat-box::-webkit-scrollbar-thumb {
+        background: #cbd5e1;
+        border-radius: 10px;
+    }
+
+    #chat-box::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8;
+    }
+
+    /* Therapy Playlist Page - Additional styles */
+    .smp {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+    }
+
+    /* Smooth animations for chat messages */
+    @keyframes slideInRight {
+        from {
+            opacity: 0;
+            transform: translateX(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes slideInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    #chat-box > div {
+        animation-duration: 0.3s;
+        animation-fill-mode: both;
+    }
+
+    #chat-box > div:has(.ml-auto) {
+        animation-name: slideInRight;
+    }
+
+    #chat-box > div:has(.mr-auto) {
+        animation-name: slideInLeft;
+    }
 }
 
 /* Animation Classes */
 .fade-in {
-  animation: fadeIn 0.5s ease-in-out;
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 .slide-up {
-  animation: slideUp 0.3s ease-out;
+    animation: slideUp 0.3s ease-out;
 }
 
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes slideUp {
-  from { 
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to { 
-    opacity: 1;
-    transform: translateY(0);
-  }
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }

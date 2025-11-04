@@ -35,7 +35,7 @@
     @endphp
 
     <div class="patient-view-page">
-        <div class="patient-management-content">
+        <div class="admin-page-container">
             <div class="page-header">
                 <div class="header-content">
                     <div class="header-info">

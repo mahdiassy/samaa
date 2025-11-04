@@ -10,7 +10,7 @@
         $currentLocale = app()->getLocale();
     @endphp
 
-    <div class="doctor-management-content doctor-create-page">
+    <div class="admin-page-container doctor-create-page">
         <div class="page-header">
             <div class="header-content">
                 <div class="header-info">

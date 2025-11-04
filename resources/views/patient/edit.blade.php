@@ -24,7 +24,7 @@
         $showMedication = (string) $therapeuticSelected === '2' || filled(old('medications', $medications ?? ''));
     @endphp
 
-    <div class="patient-management-content patient-create-page patient-edit-page">
+    <div class="admin-page-container patient-create-page patient-edit-page">
         <div class="page-header">
             <div class="header-content">
                 <div class="header-info">

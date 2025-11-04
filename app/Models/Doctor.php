@@ -12,11 +12,12 @@ class Doctor extends Model
 
     protected $fillable =
     [
-        'first_name','last_name','image','phone','address','twitter','facebook','instagram','birthday','user_id'
+        'first_name','last_name','image','phone','address','twitter','facebook','instagram','birthday','user_id','is_approved'
     ];
 
     protected $casts = [
         'birthday' => 'date',
+        'is_approved' => 'boolean',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
     ];

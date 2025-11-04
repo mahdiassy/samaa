@@ -21,6 +21,7 @@ use App\Services\Response\ResponseService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 
 class AuthController extends Controller
@@ -44,6 +45,20 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
+            // Check if user is a doctor and not approved
+            $user = Auth::user();
+            if ($user->hasRole('Doctor')) {
+                $doctor = Doctor::where('user_id', $user->id)->first();
+                if ($doctor && !$doctor->is_approved) {
+                    Auth::logout();
+                    return redirect()->back()->withInput()->with('status', [
+                        'type' => 'warning',
+                        'title' => __("site.Pending Approval"),
+                        'msg' => __("site.Your account is pending admin approval. You will receive an email once your account is approved.")
+                    ]);
+                }
+            }
+            
             return redirect()
                 ->route('dashboard')
                 ->with('status', [
@@ -114,30 +129,27 @@ class AuthController extends Controller
             // Login the newly registered user
             Auth::guard()->login($patient->user);
 
-            return $this->responseService->success(
-                __("site.Successfully Logged-in"),
-                'dashboard'
-            );
+            return redirect()->route('dashboard')->with('status', [
+                'type' => 'success',
+                'title' => __("site.Success"),
+                'msg' => __("site.Registration successful! Welcome to our platform.")
+            ]);
         } catch (\Exception $e) {
-            return redirect()->back()->withInput()->with('status', [
+            // Log the error for debugging
+            Log::error('Patient registration failed: ' . $e->getMessage(), [
+                'trace' => $e->getTraceAsString(),
+                'data' => $request->except(['password', 'password_confirmation'])
+            ]);
+
+            return redirect()->back()->withInput($request->except(['password', 'password_confirmation']))->with('status', [
                 'type' => 'error',
-                'title' => __("site.Error"),
-                'msg' => __("site.Error") . ': ' . $e->getMessage()
+                'title' => __("site.Registration Failed"),
+                'msg' => __("site.An error occurred during registration. Please check all fields and try again.") . ' ' . $e->getMessage()
             ]);
         }
     }    public function showRegisterDoctor()
     {
-        $countries = Country::all();
-        $languages = Language::all();
-        $therapeutic_areas = Therapeutic_area::all();
-        $diseases = Disease::all();
-        $nervouses = Nervous::all();
-        $symptoms = Symptom::all();
-        $addictions = Addiction::all();
-        $incidents = Incident::all();
-        $consultations = Consultation::all();
-        $psychological_diseases = Psychological::all();
-        return view("auth.register-doctor", compact('countries', 'languages', 'therapeutic_areas', 'diseases', 'psychological_diseases', 'nervouses', 'symptoms', 'addictions', 'incidents', 'consultations'));
+        return view("auth.register-doctor");
     }
 
     public function registerDoctor(\App\Http\Requests\Auth\RegisterDoctorRequest $request)
@@ -146,18 +158,23 @@ class AuthController extends Controller
             // Register doctor using service (handles user creation, role assignment, file upload)
             $doctor = $this->userRegistrationService->registerDoctor($request->validated());
 
-            // Login the newly registered user
-            Auth::guard()->login($doctor->user);
-
-            return $this->responseService->success(
-                __("site.Successfully Logged-in"),
-                'dashboard'
-            );
+            // Don't login the doctor, redirect to pending approval page
+            return view('auth.doctor-pending-approval')->with('status', [
+                'type' => 'success',
+                'title' => __("site.Registration Successful"),
+                'msg' => __("site.Thank you for registering! Your application is pending admin approval. You will receive an email once your account is approved.")
+            ]);
         } catch (\Exception $e) {
-            return redirect()->back()->withInput()->with('status', [
+            // Log the error for debugging
+            Log::error('Doctor registration failed: ' . $e->getMessage(), [
+                'trace' => $e->getTraceAsString(),
+                'data' => $request->except(['password', 'password_confirmation'])
+            ]);
+
+            return redirect()->back()->withInput($request->except(['password', 'password_confirmation']))->with('status', [
                 'type' => 'error',
-                'title' => __("site.Error"),
-                'msg' => __("site.Error") . ': ' . $e->getMessage()
+                'title' => __("site.Registration Failed"),
+                'msg' => __("site.An error occurred during registration. Please check all fields and try again.") . ' ' . $e->getMessage()
             ]);
         }
     }

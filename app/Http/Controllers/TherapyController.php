@@ -208,8 +208,6 @@ class TherapyController extends Controller
         }
         $therapy->save();
 
-        $therapies = $this->therapyAccessService->getTherapiesForUser(Auth::user());
-
         if($request->patient_id){
             $patient = Patient::find($request->patient_id);
             $this->therapyAccessService->assignTherapyToPatients($therapy, $patient);
@@ -221,7 +219,7 @@ class TherapyController extends Controller
             'msg' => __("site.Therapy Updated successfully")
         ];
 
-        return redirect()->route('therapy.index')->with(compact('therapies', 'patients'))->with('status', $status);
+        return redirect()->route('therapy.index')->with('status', $status);
     }
 
     public function show(Therapy $therapy)

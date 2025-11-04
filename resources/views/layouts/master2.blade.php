@@ -30,27 +30,8 @@
     <!-- Trumbowyg CSS for Rich Text Editor -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/trumbowyg@2.27.3/dist/ui/trumbowyg.min.css">
 
-    <!-- Dashboard styles - Load early so page-specific styles can override -->
-    <link rel="stylesheet" href="{{ asset('assets/css/dashboard/style.css') }}">
-
-    <!-- SAMAA Admin Panel - Organized CSS Structure -->
-    <link rel="stylesheet" href="{{ asset('assets/css/admin/admin-core.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/admin/admin-components.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/admin/admin-layout.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/admin/admin-pages.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/admin/admin-responsive.css') }}">
-    
-    <!-- Unified Admin Pages Styling - Load First for Consistency -->
-    <link rel="stylesheet" href="{{ asset('assets/css/admin/admin-pages-unified.css') }}">
-    
-    <!-- Individual Management Pages -->
-    <link rel="stylesheet" href="{{ asset('assets/css/admin/patient-management.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/admin/doctor-management-page.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/admin/blog-management-page.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/admin/therapy-management-page.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/admin/feedback-management-page.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/admin/feedback-list-page.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/admin/appointment-management-page.css') }}">
+    <!-- Vite with Tailwind CSS -->
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     <!-- Additional UI Improvements -->
     <style>
@@ -59,25 +40,27 @@
             position: fixed !important;
             top: 0 !important;
             left: 0 !important;
-            width: 240px !important;
+            width: 280px !important;
             height: 100vh !important;
             background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%) !important;
             border-right: none !important;
             z-index: 1000 !important;
             display: flex !important;
             flex-direction: column !important;
-            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.1) !important;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15) !important;
             transition: all 0.3s ease !important;
+            overflow-y: auto !important;
         }
 
         /* User Profile Section */
         .user-profile-section {
-            padding: 1.5rem 1.25rem !important;
-            border-bottom: none !important;
+            padding: 2rem 1.5rem !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
             display: flex !important;
             flex-direction: column !important;
             align-items: center !important;
             text-align: center !important;
+            background: rgba(255, 255, 255, 0.02) !important;
         }
 
         .user-avatar {
@@ -85,47 +68,71 @@
         }
 
         .user-avatar img {
-            width: 50px !important;
-            height: 50px !important;
+            width: 64px !important;
+            height: 64px !important;
             border-radius: 50% !important;
             border: 3px solid #3b82f6 !important;
             object-fit: cover !important;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
         }
 
         .avatar-placeholder {
-            width: 50px !important;
-            height: 50px !important;
+            width: 64px !important;
+            height: 64px !important;
             border-radius: 50% !important;
             background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%) !important;
             display: flex !important;
             align-items: center !important;
             justify-content: center !important;
             color: white !important;
-            font-weight: 600 !important;
-            font-size: 1.125rem !important;
+            font-weight: 700 !important;
+            font-size: 1.5rem !important;
             text-transform: uppercase !important;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
         }
 
         .user-info h3 {
             color: #f8fafc !important;
-            font-size: 1rem !important;
+            font-size: 1.125rem !important;
             font-weight: 600 !important;
-            margin: 0 0 0.25rem 0 !important;
+            margin: 0 0 0.5rem 0 !important;
+            letter-spacing: 0.01em !important;
         }
 
         .user-role {
             color: #94a3b8 !important;
-            font-size: 0.75rem !important;
+            font-size: 0.8rem !important;
             font-weight: 500 !important;
             text-transform: uppercase !important;
             letter-spacing: 0.05em !important;
+            background: rgba(59, 130, 246, 0.1) !important;
+            padding: 0.25rem 0.75rem !important;
+            border-radius: 12px !important;
+            display: inline-block !important;
         }
 
         /* Navigation */
         .sidebar-navigation {
             flex: 1 !important;
-            padding: 1rem 0 !important;
+            padding: 1.25rem 0 !important;
             overflow-y: auto !important;
+        }
+
+        .sidebar-navigation::-webkit-scrollbar {
+            width: 6px !important;
+        }
+
+        .sidebar-navigation::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05) !important;
+        }
+
+        .sidebar-navigation::-webkit-scrollbar-thumb {
+            background: rgba(59, 130, 246, 0.3) !important;
+            border-radius: 3px !important;
+        }
+
+        .sidebar-navigation::-webkit-scrollbar-thumb:hover {
+            background: rgba(59, 130, 246, 0.5) !important;
         }
 
         .nav-menu {
@@ -135,40 +142,65 @@
         }
 
         .nav-menu li {
-            margin: 0 !important;
+            margin: 0.25rem 0 !important;
         }
 
         .nav-link {
             display: flex !important;
             align-items: center !important;
-            padding: 0.75rem 1.25rem !important;
+            padding: 0.875rem 1.5rem !important;
             color: #cbd5e1 !important;
             text-decoration: none !important;
             transition: all 0.3s ease !important;
             border-left: 3px solid transparent !important;
+            position: relative !important;
+        }
+
+        .nav-link::before {
+            content: '' !important;
+            position: absolute !important;
+            left: 0 !important;
+            top: 0 !important;
+            height: 100% !important;
+            width: 0 !important;
+            background: rgba(59, 130, 246, 0.1) !important;
+            transition: width 0.3s ease !important;
         }
 
         .nav-link:hover {
             background: rgba(59, 130, 246, 0.1) !important;
-            color: #3b82f6 !important;
+            color: #60a5fa !important;
             border-left-color: #3b82f6 !important;
             text-decoration: none !important;
-            transform: translateX(4px) !important;
+            padding-left: 1.75rem !important;
+        }
+
+        .nav-link:hover::before {
+            width: 100% !important;
         }
 
         .nav-link.active {
             background: rgba(59, 130, 246, 0.15) !important;
-            color: #3b82f6 !important;
+            color: #60a5fa !important;
             border-left-color: #3b82f6 !important;
             font-weight: 600 !important;
+            padding-left: 1.75rem !important;
+        }
+
+        .nav-link.active::before {
+            width: 100% !important;
         }
 
         .nav-icon {
-            width: 18px !important;
-            height: 18px !important;
-            margin-right: 0.75rem !important;
+            width: 20px !important;
+            height: 20px !important;
+            margin-right: 1rem !important;
             flex-shrink: 0 !important;
+            transition: transform 0.3s ease !important;
         }
+
+        .nav-link:hover .nav-icon {
+            transform: scale(1.1) !important;
         }
 
         .nav-icon svg {
@@ -178,32 +210,39 @@
         }
 
         .nav-text {
-            font-size: 0.8rem !important;
+            font-size: 0.9rem !important;
             font-weight: 500 !important;
+            letter-spacing: 0.01em !important;
         }
 
         /* Sidebar Footer */
         .sidebar-footer {
-            padding: 1rem 0 !important;
-            border-top: none !important;
+            padding: 1.25rem 0 !important;
+            border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+            background: rgba(255, 255, 255, 0.02) !important;
         }
 
         .logout-link {
             display: flex !important;
             align-items: center !important;
-            padding: 0.75rem 1.25rem !important;
+            padding: 0.875rem 1.5rem !important;
             color: #f87171 !important;
             text-decoration: none !important;
             transition: all 0.3s ease !important;
             border-left: 3px solid transparent !important;
+            position: relative !important;
         }
 
         .logout-link:hover {
             background: rgba(248, 113, 113, 0.1) !important;
             border-left-color: #f87171 !important;
             text-decoration: none !important;
-            color: #f87171 !important;
-            transform: translateX(4px) !important;
+            color: #fca5a5 !important;
+            padding-left: 1.75rem !important;
+        }
+
+        .logout-link:hover .nav-icon {
+            transform: scale(1.1) !important;
         }
 
         /* Admin Layout Container */
@@ -212,18 +251,14 @@
             min-height: 100vh !important;
         }
 
-        /* Content wrapper adjustments - Full Width Layout */
+        /* Content wrapper adjustments - Consistent Padding */
         .admin-content-wrapper {
             flex: 1 !important;
-            margin-left: 240px !important;
-            /* Reduce left padding to minimize gap between sidebar and content */
-            padding: 20px 20px 20px 8px !important;
+            margin-left: 280px !important;
+            padding: 0 !important;
             min-height: 100vh !important;
-            width: calc(100% - 240px) !important;
+            width: calc(100% - 280px) !important;
             box-sizing: border-box !important;
-            display: flex !important;
-            justify-content: flex-start !important;
-            align-items: flex-start !important;
         }
 
         /* Remove old sidebar styles */
@@ -233,7 +268,7 @@
 
         /* Improve admin content */
         .admin-main {
-            border-radius: 12px !important;
+            border-radius: 0 !important;
             box-shadow: none !important;
             width: 100% !important;
             margin: 0 !important;
@@ -242,20 +277,18 @@
         /* Responsive Design - Flexible Layout */
         @media (max-width: 1024px) {
             .modern-sidebar {
-                width: 200px !important;
+                width: 240px !important;
             }
             
             .admin-content-wrapper {
-                margin-left: 200px !important;
-                /* Match desktop: smaller left padding to keep content closer to sidebar */
-                padding: 15px 15px 15px 8px !important;
-                width: calc(100% - 200px) !important;
+                margin-left: 240px !important;
+                width: calc(100% - 240px) !important;
             }
         }
 
         @media (max-width: 768px) {
             .modern-sidebar {
-                width: 240px !important;
+                width: 280px !important;
                 transform: translateX(-100%) !important;
                 transition: transform 0.3s ease !important;
                 position: fixed !important;
@@ -268,7 +301,7 @@
             
             .admin-content-wrapper {
                 margin-left: 0 !important;
-                padding: 10px !important;
+                padding: 0 !important;
                 width: 100% !important;
             }
             
@@ -426,7 +459,28 @@
                             <span class="nav-text">{{ __('site.Doctor list') }}</span>
                         </a>
                     </li>
+                @endrole
+                @role('Admin')
                     <li>
+                        <a href="{{ route('doctors.pending') }}" class="nav-link">
+                            <div class="nav-icon">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm4.2 14.2L11 13V7h1.5v5.2l4.5 2.7-.8 1.3z"/>
+                                </svg>
+                            </div>
+                            <span class="nav-text">{{ __('site.Doctor Approvals') }}</span>
+                            @php
+                                $pendingCount = \App\Models\Doctor::where('is_approved', false)->count();
+                            @endphp
+                            @if($pendingCount > 0)
+                                <span class="badge" style="background: #f59e0b; color: white; font-size: 0.75rem; padding: 0.25rem 0.5rem; border-radius: 9999px; margin-left: auto;">
+                                    {{ $pendingCount }}
+                                </span>
+                            @endif
+                        </a>
+                    </li>
+                @endrole
+                @role('Admin|Doctor|Patient')
                         <a href="{{ route('therapy.index') }}" class="nav-link">
                             <div class="nav-icon">
                                 <svg viewBox="0 0 24 24" fill="currentColor">

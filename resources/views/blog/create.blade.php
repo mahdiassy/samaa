@@ -11,7 +11,7 @@
         $currentLocale = app()->getLocale();
     @endphp
 
-    <div class="blog-management-content blog-create-page">
+    <div class="admin-page-container blog-create-page">
         <div class="page-header">
             <div class="header-content">
                 <div class="header-info">

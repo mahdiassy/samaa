@@ -11,7 +11,7 @@
         $avatarPath = $doctor->image ? Storage::url($doctor->image) : asset('assets/images/avatar1.png');
     @endphp
 
-    <div class="doctor-management-content doctor-create-page doctor-edit-page">
+    <div class="admin-page-container doctor-create-page doctor-edit-page">
         <div class="page-header">
             <div class="header-content">
                 <div class="header-info">

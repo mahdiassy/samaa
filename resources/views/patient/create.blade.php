@@ -16,7 +16,7 @@
         $showMedication = old('therapeutic_areas') == '2';
     @endphp
 
-    <div class="patient-management-content patient-create-page">
+    <div class="admin-page-container patient-create-page">
         <div class="page-header">
             <div class="header-content">
                 <div class="header-info">

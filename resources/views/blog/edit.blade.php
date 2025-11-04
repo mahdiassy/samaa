@@ -7,7 +7,7 @@
 @section('content')
 @include('search_form_with_backbround')
 
-<div class="blog-management-content">
+<div class="admin-page-container">
     <div class="header">
         <a href="javascript:void(0);" onclick="history.back();" class="btn-back">
             @if(App::getLocale() == 'ar')

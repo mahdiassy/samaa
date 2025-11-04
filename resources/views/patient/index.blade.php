@@ -2,7 +2,7 @@
 
 @section('content')
     <!-- Patient Management Content -->
-    <div class="patient-management-content">
+    <div class="admin-page-container">
         <!-- Page Header -->
         <div class="page-header">
             <div class="header-content">
@@ -58,7 +58,6 @@
                             <th>Contact Info</th>
                             <th>Location</th>
                             <th>Blood Type</th>
-                            <th>Status</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
@@ -95,9 +94,6 @@
                                 <td class="blood-cell">
                                     <span class="blood-type">{{ $patient->blood_type ?? 'Unknown' }}</span>
                                 </td>
-                                <td class="status-cell">
-                                    <span class="status-badge active">Active</span>
-                                </td>
                                 <td class="actions-cell">
                                     <div class="action-buttons">
                                         <a href="{{ route('patient.show', $patient) }}" class="action-btn view-btn" title="View Details">
@@ -133,5 +129,5 @@
                 </table>
             </div>
         </div>
-    </div> <!-- /patient-management-content -->
+    </div> <!-- /admin-page-container -->
 @endsection

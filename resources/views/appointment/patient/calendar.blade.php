@@ -35,27 +35,27 @@
                                 <div class="pt-2">
                                     <label for="users-movies-select2">{{ __('site.Select Time') }}:</label>
                                     <select class="form-control" id="users-movies-select2" multiple="multiple">
-                                        <option value="08:00">08:00 {{ __('site.AM') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="08:30">08:30 {{ __('site.AM') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="09:00">09:00 {{ __('site.AM') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="09:30">09:30 {{ __('site.AM') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="10:00">10:00 {{ __('site.AM') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="10:30">10:30 {{ __('site.AM') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="11:00">11:00 {{ __('site.AM') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="11:30">11:30 {{ __('site.AM') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="12:00">12:00 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="12:30">12:30 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="13:00">01:00 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="13:30">01:30 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="14:00">02:00 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="14:30">02:30 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="15:00">03:00 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="15:30">03:30 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="16:00">04:00 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="16:30">04:30 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="17:00">05:00 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="17:30">05:30 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
-                                        <option value="18:00">06:00 {{ __('site.PM') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}') }}</option>
+                                        <option value="08:00">08:00 {{ __('site.AM') }}</option>
+                                        <option value="08:30">08:30 {{ __('site.AM') }}</option>
+                                        <option value="09:00">09:00 {{ __('site.AM') }}</option>
+                                        <option value="09:30">09:30 {{ __('site.AM') }}</option>
+                                        <option value="10:00">10:00 {{ __('site.AM') }}</option>
+                                        <option value="10:30">10:30 {{ __('site.AM') }}</option>
+                                        <option value="11:00">11:00 {{ __('site.AM') }}</option>
+                                        <option value="11:30">11:30 {{ __('site.AM') }}</option>
+                                        <option value="12:00">12:00 {{ __('site.PM') }}</option>
+                                        <option value="12:30">12:30 {{ __('site.PM') }}</option>
+                                        <option value="13:00">01:00 {{ __('site.PM') }}</option>
+                                        <option value="13:30">01:30 {{ __('site.PM') }}</option>
+                                        <option value="14:00">02:00 {{ __('site.PM') }}</option>
+                                        <option value="14:30">02:30 {{ __('site.PM') }}</option>
+                                        <option value="15:00">03:00 {{ __('site.PM') }}</option>
+                                        <option value="15:30">03:30 {{ __('site.PM') }}</option>
+                                        <option value="16:00">04:00 {{ __('site.PM') }}</option>
+                                        <option value="16:30">04:30 {{ __('site.PM') }}</option>
+                                        <option value="17:00">05:00 {{ __('site.PM') }}</option>
+                                        <option value="17:30">05:30 {{ __('site.PM') }}</option>
+                                        <option value="18:00">06:00 {{ __('site.PM') }}</option>
                                     </select>
                                 </div>
                             </div>
@@ -133,7 +133,7 @@
         availabile = []
         $(availabilities[0]).each(function(i, time) {
             availabile[i] = {
-                title: "{{ __('site.Available'') }})}}",
+                title: "{{ __('site.Available') }}",
                 start: time.time,
                 id: time.id,
             };

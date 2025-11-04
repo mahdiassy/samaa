@@ -5,7 +5,7 @@
 @endpush
 
 @section('content')
-<div class="therapy-management-content">
+<div class="admin-page-container">
     <!-- Page Header -->
     <div class="page-header">
         <div class="header-content">

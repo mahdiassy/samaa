@@ -12,7 +12,7 @@
         }
     @endphp
 
-    <div class="feedback-management-content">
+    <div class="admin-page-container">
         <!-- Page Header -->
         <div class="page-header">
             <div class="header-content">

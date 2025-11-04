@@ -11,6 +11,7 @@ use App\Models\Patient;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use App\Http\Requests\Doctor\StoreDoctorRequest;
 use App\Http\Requests\Doctor\UpdateDoctorRequest;
 use App\Services\File\FileUploadService;
@@ -33,6 +34,13 @@ class DoctorController extends Controller
 
     public function index()
     {
+        Log::info('DoctorController@index - ACCESSED', [
+            'user_id' => auth()->id(),
+            'user_email' => auth()->user()->email,
+            'user_roles' => auth()->user()->getRoleNames(),
+            'has_doctor_list_permission' => auth()->user()->hasPermissionTo('doctor-list'),
+        ]);
+
         $doctors = Doctor::with('user')->paginate(9);
         return view("doctor.index", compact('doctors'));
     }
@@ -44,8 +52,20 @@ class DoctorController extends Controller
 
     public function store(StoreDoctorRequest $request)
     {
+        Log::info('DoctorController@store - START', [
+            'user_id' => auth()->id(),
+            'user_email' => auth()->user()->email,
+            'user_roles' => auth()->user()->getRoleNames(),
+            'has_doctor_list_permission' => auth()->user()->hasPermissionTo('doctor-list'),
+        ]);
+
         // Register doctor using service
         $doctor = $this->userRegistrationService->registerDoctor($request->validated());
+
+        Log::info('DoctorController@store - Doctor created', [
+            'doctor_id' => $doctor->id,
+            'redirecting_to' => 'doctor.index'
+        ]);
 
         return $this->responseService->success(
             __("site.Doctor created successfully"),
@@ -195,6 +215,59 @@ class DoctorController extends Controller
             'type' => 'success',
             'title' =>  __("site.Success"),
             'msg' => __("site.Doctor updated status successfully")
+        ]);
+    }
+
+    /**
+     * Show pending doctor approvals for admin
+     */
+    public function pendingApprovals()
+    {
+        $pendingDoctors = Doctor::with('user')
+            ->where('is_approved', false)
+            ->orderBy('created_at', 'desc')
+            ->paginate(10);
+
+        $approvedDoctors = Doctor::with('user')
+            ->where('is_approved', true)
+            ->orderBy('updated_at', 'desc')
+            ->paginate(10);
+
+        return view('doctor.pending-approvals', compact('pendingDoctors', 'approvedDoctors'));
+    }
+
+    /**
+     * Approve a doctor
+     */
+    public function approve(Doctor $doctor)
+    {
+        $doctor->update(['is_approved' => true]);
+
+        // TODO: Send approval email to doctor
+        // Mail::to($doctor->user->email)->send(new DoctorApprovedMail($doctor));
+
+        return redirect()->back()->with('status', [
+            'type' => 'success',
+            'title' => __("site.Success"),
+            'msg' => __("site.Doctor approved successfully. They can now login to the system.")
+        ]);
+    }
+
+    /**
+     * Reject a doctor (soft delete)
+     */
+    public function reject(Doctor $doctor)
+    {
+        // TODO: Send rejection email to doctor
+        // Mail::to($doctor->user->email)->send(new DoctorRejectedMail($doctor));
+
+        $doctor->delete(); // Soft delete
+        $doctor->user->delete(); // Also soft delete the user account
+
+        return redirect()->back()->with('status', [
+            'type' => 'success',
+            'title' => __("site.Success"),
+            'msg' => __("site.Doctor application rejected and removed from the system.")
         ]);
     }
 }

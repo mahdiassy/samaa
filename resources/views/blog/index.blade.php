@@ -9,7 +9,7 @@
     $hasFeaturedColumn = $hasFeaturedColumn ?? false;
     @endphp
 
-    <div class="blog-management-content">
+    <div class="admin-page-container">
         <div class="page-header">
             <div class="header-content">
                 <div class="header-info">

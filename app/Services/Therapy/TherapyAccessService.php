@@ -6,6 +6,7 @@ use App\Models\Therapy;
 use App\Models\User;
 use App\Models\Patient;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\Auth;
 
 class TherapyAccessService
@@ -14,9 +15,54 @@ class TherapyAccessService
      * Get therapies based on user's role.
      *
      * @param User|null $user If null, uses authenticated user
+     * @param int $perPage Number of items per page
+     * @return LengthAwarePaginator
+     */
+    public function getTherapiesForUser(?User $user = null, int $perPage = 15): LengthAwarePaginator
+    {
+        $user = $user ?? Auth::user();
+
+        if (!$user) {
+            return Therapy::with(['album', 'user', 'patients'])->paginate(0);
+        }
+
+        // Admin sees all therapies
+        if ($user->hasRole('Admin')) {
+            return Therapy::with(['album', 'user', 'patients'])->paginate($perPage);
+        }
+
+        // Doctor sees only their own therapies
+        if ($user->hasRole('Doctor')) {
+            $doctor = $user->doctor;
+            if (!$doctor) {
+                return Therapy::with(['album', 'user', 'patients'])->paginate(0);
+            }
+            return Therapy::where('user_id', $user->id)
+                ->with(['album', 'patients'])
+                ->paginate($perPage);
+        }
+
+        // Patient sees only assigned therapies
+        if ($user->hasRole('Patient')) {
+            $patient = $user->patient;
+            if (!$patient) {
+                return Therapy::with(['album', 'user'])->paginate(0);
+            }
+            return $patient->therapies()
+                ->with(['album', 'user'])
+                ->paginate($perPage);
+        }
+
+        return Therapy::with(['album', 'user', 'patients'])->paginate(0);
+    }
+
+    /**
+     * Get all therapies for user without pagination (for API).
+     *
+     * @param User|null $user If null, uses authenticated user
      * @return Collection
      */
-    public function getTherapiesForUser(?User $user = null): Collection
+    public function getAllTherapiesForUser(?User $user = null): Collection
     {
         $user = $user ?? Auth::user();
 

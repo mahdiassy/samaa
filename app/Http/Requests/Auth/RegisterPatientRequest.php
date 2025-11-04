@@ -17,6 +17,33 @@ class RegisterPatientRequest extends FormRequest
     }
 
     /**
+     * Prepare the data for validation.
+     */
+    protected function prepareForValidation(): void
+    {
+        $mergeData = [];
+
+        // Map 'surname' to 'last_name' if it exists
+        if ($this->has('surname')) {
+            $mergeData['last_name'] = $this->input('surname');
+        }
+
+        // Map 'country' to 'country_id' for the service layer
+        if ($this->has('country')) {
+            $mergeData['country_id'] = $this->input('country');
+        }
+        
+        // Map 'language' to 'language_id' for the service layer
+        if ($this->has('language')) {
+            $mergeData['language_id'] = $this->input('language');
+        }
+        
+        if (!empty($mergeData)) {
+            $this->merge($mergeData);
+        }
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
@@ -71,7 +98,15 @@ class RegisterPatientRequest extends FormRequest
                 'required',
                 'exists:countries,id',
             ],
+            'country_id' => [
+                'required',
+                'exists:countries,id',
+            ],
             'language' => [
+                'required',
+                'exists:languages,id',
+            ],
+            'language_id' => [
                 'required',
                 'exists:languages,id',
             ],

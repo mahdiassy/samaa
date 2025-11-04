@@ -1,6 +1,6 @@
 @extends('layouts.master2')
 @section('content')
-    <div class="feedback-management-content">
+    <div class="admin-page-container">
         @include('search_form')
         <div class="header">
             <a href="{{ route('feedback-list') }}" onclick="history.back();" class="btn-back">

@@ -11,7 +11,7 @@
         $currentLocale = app()->getLocale();
     @endphp
 
-    <div class="therapy-management-content therapy-create-page">
+    <div class="admin-page-container therapy-create-page">
         <div class="page-header">
             <div class="header-content">
                 <div class="header-info">
